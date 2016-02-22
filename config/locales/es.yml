@@ -1,0 +1,223 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+  date:
+    abbr_day_names:
+    - dom
+    - lun
+    - mar
+    - mié
+    - jue
+    - vie
+    - sáb
+    abbr_month_names:
+    -
+    - ene
+    - feb
+    - mar
+    - abr
+    - may
+    - jun
+    - jul
+    - ago
+    - sep
+    - oct
+    - nov
+    - dic
+    day_names:
+    - Domingo
+    - Lunes
+    - Martes
+    - Miércoles
+    - Jueves
+    - Viernes
+    - Sábado
+    formats:
+      default: ! "%d/%m/%Y"
+      long: ! "%A %d de %B de %Y"
+      long_no_time: ! "%A %d de %B de %Y"      
+      short: ! "%d de %b"
+      month_and_year: ! '%B de %Y'
+      day_and_number: ! "%A %d"
+    month_names:
+    -
+    - Enero
+    - Febrero
+    - Marzo
+    - Abril
+    - Mayo
+    - Junio
+    - Julio
+    - Agosto
+    - Septiembre
+    - Octubre
+    - Noviembre
+    - Diciembre
+    order:
+    - :day
+    - :month
+    - :year
+
+  actions:
+    new_title_male: "Nuevo %{model}"
+    new_title_female: "Nueva %{model}"
+    delete: "Borrar"
+    show: "Mostrar"
+    edit: "Editar"
+    saving: "Guardar"
+    save: "Guardar"
+    new: "Crear Nuevo"
+    back: "Volver"
+  "true": "Si"
+  "false": "No"    
+  details_of: "Detalles de %{model}"
+  are_you_sure?: "Estas Seguro que deseas eliminar el registro?"   
+  already_acount: "¿Ya tienes una cuenta?  Solo tienes que Iniciar Sesión"
+  log_in: "Inicio de Sesión"
+  not_account: "¿No tienes una cuenta con nosotros?"
+  just_click: "Solo da click aqui abajo y crea tu cuenta es rapido y sencillo"
+  make_acount: "Crear una cuenta de usuario"
+  log_in: "Iniciar Sesión"
+  remember_me: "Recuerdame"
+  sign_up: "Crear Cuenta Nueva "
+  sign_up_now: "Registrar Cuenta"
+  hello: "Hola"
+  users: "Usuarios" 
+  role: "Roles"
+  sports: "Deportes"
+  categories: "Categorias"
+  teams: "Equipos"
+  games: "Juegos"
+  lotteries: "Loterias"
+  sportcategories: "Categoria de deportes"
+  userlotteries: "Loterias por usuario"
+  login: "Iniciar Sesión"
+  signup: "Registrate"
+  created_lotteries: "Loterias Creadas"
+  viewdetails: "Ver Detalles"
+  registeredusers: "Usuarios"
+  registeredteams: "Equipos"
+  ticketpurchased: "Boletos vendidos"
+  
+  activerecord:
+    models:
+        categories: "Categorias"
+        category: "Categoria"
+        users: "Usuarios"
+        user: "Usuario"
+        roles: "Roles"
+        role: "Rol"
+        user_lotteries: "Loterias compradas por usuario"
+        user_lottery: "Loteria comprada por usuario"
+        sports: "Deportes"
+        sport: "Deporte"
+        sport_categories: "Categorias de deportes"
+        sport_category: "Categoria de deporte"
+        teams: "Equipos"
+        team: "Equipo"
+        games: "Juegos"
+        game: "Juego"
+        lotteries: "Loterias"
+        lottery: "Loteria"
+    attributes:
+        role:
+            created_at: "Fecha de Creación"
+            name: "Nombre"
+            description: "Descripción"
+            is_admin: "Es administrador?"
+            is_client: "Es Cliente?"
+        user:
+            name: "Nombre"
+            photo: "Imagen de Perfil"
+            last_name: "Apellidos"
+            address_1: "Dirección"
+            address_2: "Colonia"
+            zip_code: "Código Postal"
+            age: "Edad"
+            email: "Email"
+            phone: "Telefono"
+            cellphone: "Celular"
+            balance: "Saldo"
+            role_id : "Rol"
+            role: "Rol"
+            country: "Pais"
+            state: "Estado"
+            city: "Ciudad"
+            int_number: "Número Interior"
+            ext_number: "Número Exterior"
+            username: "Nombre de Usuario"
+            password: "Contraseña"
+            password_confirmation: "Confirmación de Contraseña"
+            created_at: "Fecha de Creación"
+        sport:
+            name: "Nombre"
+            description: "Descripción"
+            logo: "Logo"
+            created_at: "Fecha de Creación"
+        category:
+            name: "Nombre"
+            description: "Descripción"
+            logo: "Logo"
+            created_at: "Fecha de Creación"
+        sport_category:
+            sport_id: "Deporte"
+            category_id: "Categoria"
+            sport: "Deporte"
+            category: "Categoria"
+            created_at: "Fecha de Creación"
+        team:
+            name: "Nombre"
+            logo: "Logo"
+            created_at: "Fecha de Creación"
+            description: "Descripción"
+            sport_category_id: "Deporte por Categoria"
+            sport_category: "Deporte por Categoria"
+            
+        game:
+            team_id: "Equipo Local"
+            team: "Equipo Local"
+            game_date: "Fecha del Juego"
+            description: "Descripción"
+            local_score: "Marcador del Local"
+            visit_score: "Marcador del Visitante"
+            team2_id: "Equipo Visitante"
+            created_at: "Fecha de Creación"
+        lottery:
+            initial_balance: "Monto Inicial"
+            created_at: "Fecha de Creación"
+            rules: "Reglas"
+            description: "Descripción"
+            game: "Juego/partido"
+            lottery_game_id: "Juego/partido"
+            winner_number: "Número Ganador"
+            initial_number: "Número Inicial"
+            final_number: "Número Final"
+            price: "Precio"
+        user_lottery:
+            user: "Usuario"
+            created_at: "Fecha de Creación"
+            lottery: "Loteria"
+            status: "Estatus"
+            ticket_number: "Número de Boleto"
+            purchase_date: "Fecha de Compra"
+            
+            

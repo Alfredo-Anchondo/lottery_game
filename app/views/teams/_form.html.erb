@@ -1,0 +1,57 @@
+<%= form_for(@team, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @team.errors.any? %>
+<div id="error_explanation">
+  <% if @team.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.team")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.team"), :count => @team.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @team.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+              <div class="form-group">
+          <%= f.label :name, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :name, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :description, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :description, :class => "form-control" %>
+          </div>
+        </div>
+    
+    <div class="form-group">
+          <%= f.label :logo, :class => "col-md-3" %>
+          <div class="col-md-9">
+              <%= f.file_field :logo, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :sport_category_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:sport_category_id, @sport_categories_select, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+      </div>
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

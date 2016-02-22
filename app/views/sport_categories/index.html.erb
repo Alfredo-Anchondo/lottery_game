@@ -1,0 +1,73 @@
+<div class="row">
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <h3 style="margin-left:15px"><%= t("activerecord.models.sport_categories") %></h3>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
+            <thead>
+              <tr>
+                                  <th><%= t("activerecord.attributes.sport_category.sport") %></th>
+                                  <th><%= t("activerecord.attributes.sport_category.category") %></th>
+                                <th style="width: 155px"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @sport_categories.each do |sport_category| %>
+              <tr>
+                  <td><%= sport_category.sport.name %></td>
+                  <td><%= sport_category.category.name %></td>
+                                <td class="action-link">
+                  <% if can? :show,sport_category %>
+                    <%= link_to sport_category, :class => "btn btn-default", :title => t("actions.show") do %>
+                      <i class="fa fa-eye"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :edit, sport_category %>
+                    <%= link_to edit_sport_category_path(sport_category), :class => "btn btn-info", :title => t("actions.edit") do %>
+                      <i class="fa fa-pencil"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :delete, sport_category %>
+                    <%= link_to sport_category, :method => :delete, :data => { :confirm => t("are_you_sure?", model: t("activerecord.models.sport_category").downcase) }, :class => "btn btn-danger", :title => t("actions.delete") do %>
+                      <i class="fa fa-trash"></i>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center">
+   
+        </div>
+      </div>
+      <!-- end panel-body -->
+    </div>
+    <!-- end panel -->
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :new, SportCategory  %>
+      <%= link_to new_sport_category_path, :class => "btn btn-default" do %>
+        <i class="icon-plus-sign-alt"></i>
+        <%= t("actions.new") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->

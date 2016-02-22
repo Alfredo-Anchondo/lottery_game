@@ -1,0 +1,58 @@
+<!-- begin row -->
+<div class="row">
+  <!-- begin col-md-12 -->
+  <div class="col-md-12">
+    <div class="invoice">
+      <div class="invoice-content">
+        <div class="table-responsive">
+            <h3 class="header-show"><%= t("details_of", model: t("activerecord.models.sport_category").downcase) %></h3>
+            <br>
+            <div class="row">
+            <div class="col-md-4">
+              <h4 class="property-show">  <%= t("activerecord.attributes.sport_category.sport") %>:</h4> <br />
+                <h5 class="property-text"><%= @sport_category.sport.name %></h5> <hr>
+                </div>
+            <div class="col-md-4">
+               <h4 class="property-show">  <%= t("activerecord.attributes.sport_category.category") %>: </h4> <br />
+                <h5 class="property-text"><%= @sport_category.category.name %></h5> <hr>
+                </div>
+            <div class="col-md-4">
+                <h4 class="property-show"> <%= t("activerecord.attributes.sport_category.created_at") %>: </h4> <br />
+                <h5 class="property-text"><%= @sport_category.created_at %></h5> <hr>
+                </div>
+            </div>
+          
+        </div>
+      </div>
+      <div class="invoice-footer text-muted"></div>
+    </div>
+  </div>
+  <!-- end col-md-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :edit, @sport_category %>
+      <%= link_to edit_sport_category_path(@sport_category), :class => "btn btn-default" do %>
+        <i class="icon-pencil"></i>
+        <%= t("actions.edit") %>
+      <% end %>
+    <% end %>
+    <% if can? :delete, @sport_category %>
+      <%= link_to @sport_category, method: :delete, data: { confirm: t("are_you_sure?", model: t("activerecord.models.sport_category").downcase) }, :class => "btn btn-danger" do %>
+        <i class="icon-trash"></i>
+        <%= t("actions.delete") %>
+      <% end %>
+    <% end %>
+    <% if can? :index, SportCategory  %>
+      <%= link_to sport_categories_path, :class => "btn btn-default" do %>
+        <i class="icon-chevron-left"></i>
+        <%= t("actions.back") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->

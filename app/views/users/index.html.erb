@@ -1,0 +1,93 @@
+<div class="row">
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <h3 style="margin-left:15px"><%= t("activerecord.models.users") %></h3>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
+            <thead>
+              <tr>
+                                  <th><%= t("activerecord.attributes.user.name") %></th>
+                                  <th><%= t("activerecord.attributes.user.last_name") %></th>
+                                  <th><%= t("activerecord.attributes.user.address_1") %></th>
+                                  <th><%= t("activerecord.attributes.user.age") %></th>
+                                  <th><%= t("activerecord.attributes.user.email") %></th>
+                                  <th><%= t("activerecord.attributes.user.phone") %></th>
+                                  <th><%= t("activerecord.attributes.user.cellphone") %></th>
+                                  <th><%= t("activerecord.attributes.user.balance") %></th>
+                                  <th><%= t("activerecord.attributes.user.role") %></th>
+                                  <th><%= t("activerecord.attributes.user.country") %></th>
+                                  <th><%= t("activerecord.attributes.user.username") %></th>
+                     
+                                <th style="width: 155px"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @users.each do |user| %>
+              <tr>
+                                  <td><%= user.name %></td>
+                                  <td><%= user.last_name %></td>
+                                  <td><%= user.address_1 %></td>
+                                  <td><%= user.age %></td>
+                                  <td><%= user.email %></td>
+                                  <td><%= user.phone %></td>
+                                  <td><%= user.cellphone %></td>
+                                  <td><%= user.balance %></td>
+                                  <td><%= user.role.name %></td>
+                                  <td><%= user.country %></td>
+                                  <td><%= user.username %></td>
+                           
+                                <td class="action-link">
+                  <% if can? :show,user %>
+                    <%= link_to user, :class => "btn btn-default", :title => t("actions.show") do %>
+                      <i class="fa fa-eye"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :edit, user %>
+                    <%= link_to edit_user_path(user), :class => "btn btn-info", :title => t("actions.edit") do %>
+                      <i class="fa fa-pencil"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :delete, user %>
+                    <%= link_to user, :method => :delete, :data => { :confirm => t("are_you_sure?", model: t("activerecord.models.user").downcase) }, :class => "btn btn-danger", :title => t("actions.delete") do %>
+                      <i class="fa fa-trash"></i>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center">
+        
+        </div>
+      </div>
+      <!-- end panel-body -->
+    </div>
+    <!-- end panel -->
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :new, User  %>
+      <%= link_to new_user_path, :class => "btn btn-default" do %>
+        <i class="icon-plus-sign-alt"></i>
+        <%= t("actions.new") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->

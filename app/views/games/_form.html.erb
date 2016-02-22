@@ -1,0 +1,79 @@
+<%= form_for(@game, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @game.errors.any? %>
+<div id="error_explanation">
+  <% if @game.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.game")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.game"), :count => @game.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @game.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+              <div class="form-group">
+          <%= f.label :team_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:team_id, @teams_select, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :game_date, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.datetime_select :game_date, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :description, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_area :description, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :local_score, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :local_score, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :visit_score, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :visit_score, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :team2_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+             <%= f.collection_select(:team2_id, @team2s_select, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+      </div>
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<script>
+  $("#game_team_id").change(function(){
+      var x = $("#game_team_id").val();
+      
+      $("#game_team2_id  option[value='"+x+"']").remove();
+      
+  });
+  
+    
+</script>

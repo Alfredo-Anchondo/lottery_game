@@ -1,0 +1,149 @@
+<!-- begin row -->
+<div class="row">
+  <!-- begin col-md-12 -->
+  <div class="col-md-12">
+    <div class="invoice">
+      <div class="invoice-content">
+        <div class="table-responsive">
+             <h3 class="header-show"><%= t("details_of", model: t("activerecord.models.user").downcase) %></h3>
+            <div class="row">
+                 <div class="col-md-3">
+                  <h4 class="property-show"> <%= t("activerecord.attributes.user.photo") %>: </h4> <br />
+                    <h5 class="property-text" style="text-align:center"><img width="270px" src="<%= @user.photo %>"></h5> <hr>
+                </div>
+                
+               <div class="col-md-3">
+                <h4 class="property-show">   <%= t("activerecord.attributes.user.name") %>: </h4> <br />
+                    <h5 class="property-text"><%= @user.name %></h5> <hr>
+                </div>
+                
+               <div class="col-md-3">
+                       <h4 class="property-show"> <%= t("activerecord.attributes.user.last_name") %>: </h4> <br />
+                    <h5 class="property-text"><%= @user.last_name %></h5> <hr>
+                </div>
+            
+              
+            
+               <div class="col-md-3">
+                <h4 class="property-show"><%= t("activerecord.attributes.user.address_1") %>:</h4> <br />
+                    <h5 class="property-text"><%= @user.address_1 %></h5> <hr>
+                </div>
+            
+            </div>
+                
+                <div class="row">
+               <div class="col-md-3">
+                <h4 class="property-show"> <%= t("activerecord.attributes.user.address_2") %>: </h4> <br />
+                    <h5 class="property-text"><%= @user.address_2 %></h5> <hr>
+                </div>
+            
+               <div class="col-md-3">
+                     <h4 class="property-show"><%= t("activerecord.attributes.user.zip_code") %>:</h4>  <br />
+                    <h5 class="property-text"><%= @user.zip_code %></h5> <hr>
+                </div>
+            
+               <div class="col-md-3">
+               <h4 class="property-show"><%= t("activerecord.attributes.user.age") %>:</h4>  <br />
+                    <h5 class="property-text"><%= @user.age %></h5> <hr>
+                </div>
+            
+              <div class="col-md-3">
+                     <h4 class="property-show"> <%= t("activerecord.attributes.user.email") %>: </h4><br />
+                    <h5 class="property-text"><%= @user.email %></h5> <hr>
+                </div>
+            
+            </div>
+            
+            <div class="row">
+                    
+                <div class="col-md-3">
+                   <h4 class="property-show">  <%= t("activerecord.attributes.user.phone") %>: </h4> <br />
+                    <h5 class="property-text"><%= @user.phone %></h5> <hr>
+                </div>
+                  <div class="col-md-3">
+                  <h4 class="property-show"> <%= t("activerecord.attributes.user.cellphone") %>: </h4> <br />
+                    <h5 class="porperty-text"><%= @user.cellphone %></h5> <hr>
+                </div>
+                  <div class="col-md-3">
+                    <h4 class="property-show"><%= t("activerecord.attributes.user.balance") %>:</h4>  <br />
+                    <h5 class="property-text"><%= @user.balance %></h5> <hr>
+                </div>
+                  <div class="col-md-3">
+                 <h4 class="property-show"><%= t("activerecord.attributes.user.role") %>: </h4> <br />
+                      <h5 class="property-text"><%= @user.role.name %></h5> <hr>
+                </div>
+                
+            </div>
+            <div class="row">
+                  <div class="col-md-3">
+                    <h4 class="property-show"> <%= t("activerecord.attributes.user.country") %>: <br /> </h4>
+                    <h5 class="property-text"><%= @user.country %></h5> <hr>
+                </div>
+                  <div class="col-md-3">
+                  <h4 class="property-show"> <%= t("activerecord.attributes.user.state") %>: </h4> <br />
+                    <h5 class="property-text"><%= @user.state %></h5> <hr>
+                </div>
+                  <div class="col-md-3">
+                   <h4 class="property-show"> <%= t("activerecord.attributes.user.city") %>:  </h4> <br/>
+                    <h5 class="property-text"><%= @user.city %></h5> <hr>
+                </div>
+                  <div class="col-md-3">
+                 <h4 class="property-show"><%= t("activerecord.attributes.user.int_number") %>:</h4> <br />
+                    <h5 class="property-text"><%= @user.int_number %></h5> <hr>
+                </div>
+                
+            </div>
+            <div class="row">
+                  <div class="col-md-3">
+                 <h4 class="property-show">  <%= t("activerecord.attributes.user.ext_number") %>: </h4> <br />
+                    <h5 class="property-text"><%= @user.ext_number %></h5> <hr>
+                </div>
+                  <div class="col-md-3">
+                        <h4 class="property-show">    <%= t("activerecord.attributes.user.username") %>:</h4> <br />
+                    <h5 class="property-text"><%= @user.username %></h5> <hr>
+                </div>
+                  <div class="col-md-3">
+                     <h4 class="property-show"> <%= t("activerecord.attributes.user.password") %>: </h4> <br />
+                    <h5 class="property-text"><%= @user.password %></h5><hr>
+                </div>
+                 <div class="col-md-3">
+                  <h4 class="property-show">  <%= t("activerecord.attributes.user.created_at") %>: </h4> <br />
+                    <h5 class="property-text"><%= @user.created_at %></h5> <hr>
+                </div>
+
+            </div>
+         
+        </div>
+      </div>
+      <div class="invoice-footer text-muted"></div>
+    </div>
+  </div>
+  <!-- end col-md-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :edit, @user %>
+      <%= link_to edit_user_path(@user), :class => "btn btn-default" do %>
+        <i class="icon-pencil"></i>
+        <%= t("actions.edit") %>
+      <% end %>
+    <% end %>
+    <% if can? :delete, @user %>
+      <%= link_to @user, method: :delete, data: { confirm: t("are_you_sure?", model: t("activerecord.models.user").downcase) }, :class => "btn btn-danger" do %>
+        <i class="icon-trash"></i>
+        <%= t("actions.delete") %>
+      <% end %>
+    <% end %>
+    <% if can? :index, User  %>
+      <%= link_to users_path, :class => "btn btn-default" do %>
+        <i class="icon-chevron-left"></i>
+        <%= t("actions.back") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->

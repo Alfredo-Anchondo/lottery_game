@@ -1,0 +1,159 @@
+<%= form_for(@user, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @user.errors.any? %>
+<div id="error_explanation">
+  <% if @user.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.user")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.user"), :count => @user.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+              <div class="form-group">
+          <%= f.label :name, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :name, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :last_name, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :last_name, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :address_1, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :address_1, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :address_2, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :address_2, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :zip_code, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :zip_code, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :age, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :age, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :email, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :email, :class => "form-control" %>
+          </div>
+        </div>
+                
+    <div class="form-group">
+          <%= f.label :photo, :class => "col-md-3" %>
+          <div class="col-md-9">
+              <%= f.file_field :photo, :class => "form-control" %>
+          </div>
+        </div>
+    
+     <div class="form-group">
+          <%= f.label :username, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :username, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :password, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :password, :class => "form-control" %>
+          </div>
+        </div>
+    
+      </div>
+
+<div class="col-md-6">
+      <div class="form-group">
+          <%= f.label :phone, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :phone, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :cellphone, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :cellphone, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :balance, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :balance, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :role_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+                 <% if signed_in? %>
+            <%= f.collection_select(:role_id, @roles_select, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+              <% else %>
+              <%= f.text_field :role_id, :class => "form-control" %>
+              <% end %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :country, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :country, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :state, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :state, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :city, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :city, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :int_number, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :int_number, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :ext_number, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :ext_number, :class => "form-control" %>
+          </div>
+        </div>
+                 
+</div>
+
+
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

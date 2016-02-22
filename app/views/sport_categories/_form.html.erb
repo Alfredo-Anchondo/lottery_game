@@ -1,0 +1,44 @@
+<%= form_for(@sport_category, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @sport_category.errors.any? %>
+<div id="error_explanation">
+  <% if @sport_category.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.sport_category")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.sport_category"), :count => @sport_category.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @sport_category.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+              <div class="form-group">
+          <%= f.label :sport_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:sport_id, @sports_select, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :category_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:category_id, @categories_select, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+      </div>
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

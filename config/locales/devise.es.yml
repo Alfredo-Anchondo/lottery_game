@@ -1,0 +1,68 @@
+# Traducciones adicionales en https://github.com/plataformatec/devise/wiki/I18n
+
+es:
+  errors:
+    messages:
+      expired: "ha expirado, por favor solicite uno nuevo."
+      not_found: "no encontrado."
+      already_confirmed: "Su cuenta ya se encuentra confirmada, por favor intente ingresar."
+      not_locked: "Su cuenta no está bloqueada."
+      account_inactive: "Su cuenta ha sido desactivada, por favor contacté a su administrador."
+      not_saved:
+        one: "Un error evitó que este usuario fuera registrado:"
+        other: "%{count} errores evitaron que este usuario fuera registrado:"
+
+  devise:     
+    failure:
+      user:
+        not_found_in_database: "El usuario no existe en el sistema. "
+      already_authenticated: 'La cuenta ya ah sido confirmada.'         
+      unauthenticated: 'Es necesario iniciar sesión o registrarse para continuar.'
+      unconfirmed: 'Debe confirmar su cuenta para continuar.'
+      locked: 'Su cuenta está bloqueada.'
+      invalid: 'Usuario o contraseña inválidos.'
+      invalid_token: 'Ficha de autenticación inválida.'
+      timeout: 'Su sesión ha expirado, por favor inicie sesión nuevamente para continuar.'
+      inactive: 'Su cuenta aún no ha sido activada.'
+    sessions:
+      signed_in: 'Usted ha ingresado al sistema satisfactoriamente.'
+      signed_out: 'Usted ha salido del sistema satisfactoriamente.'
+      email: "Correo Electrónico" 
+    passwords:
+      send_instructions: 'En unos minutos usted recibirá un correo electrónico con instrucciones sobre cómo reiniciar su contraseña.'
+      updated: 'Su contraseña fue cambiada exitosamente. Usted ha sido ingresado al sistema.'
+      updated_not_active: 'Su contraseña fue cambiada exitosamente.'
+      send_paranoid_instructions: "Si su correo electrónico existe en nuestra base de datos, en unos minutos usted recibirá un correo con un enlace para reestablecer su contraseña."
+      no_token: 'No puede acceder a esta página si no proviene de un correo de reestablecimiento de contraseña. Si usted proviene de un correo de reestablecimiento de contraseña, por favor asegúrese que está utilizando la URL completa."'
+      password: "Contraseña"
+      email: "Correo Electrónico"   
+    confirmations:
+      send_instructions: 'En unos minutos usted recibirá un correo electrónico con instrucciones sobre cómo confirmar su cuenta.'
+      send_paranoid_instructions: 'Si su correo electrónico existe en nuestra base de datos, en unos minutos usted recibirá un correo con instrucciones sobre cómo confirmar su cuenta.'
+      confirmed: 'Su cuenta fue confirmada exitosamente. Usted ha sido ingresado al sistema.'
+      email: "Correo Electrónico" 
+      confirmation_token: "Token de confirmación invalido"      
+    registrations:
+      signed_up: '¡Bienvenido! Ha ingresado al sistema exitosamente.'
+      signed_up_but_unconfirmed: 'Un correo con el enlace de confirmación de su cuenta ha sido enviado a su correo electrónico. Por favor abra el enlace para activar su cuenta.'
+      signed_up_but_inactive: 'Se ha registrado satisfactoriamente. Sin embargo, no es posible ingresarlo al sistema debido a que su cuenta aún no ha sido activada.'
+      signed_up_but_locked: 'Se ha registrado satisfactoriamente. Sin embargo, no es posible ingresarlo al sistema debido a que su cuenta se encuentra bloqueada.'
+      updated: 'Ha actualizado su cuenta satisfactoriamente.'
+      update_needs_confirmation: "Ha actualizado su cuenta satisfactoriamente, pero es necesario verificar su correo electrónico. Por favor, verifique su bandeja de entrada y dé clic en el enlace de confirmación para finalizar el proceso."
+      destroyed: 'Adiós! Su cuenta fue cancelada satisfactoriamente. Esperamos verlo pronto nuevamente.'
+      email: "Correo Electrónico" 
+    unlocks:
+      send_instructions: 'En unos minutos usted recibirá un correo electrónico con instrucciones sobre cómo desbloquear su cuenta.'
+      unlocked: 'Su cuenta ha sido desbloqueada con éxito. Por favor inicie sesión para continuar.'
+      send_paranoid_instructions: 'Si su cuenta existe, en unos minutos usted recibirá un correo electrónico con instrucciones sobre cómo desbloquear su cuenta.'
+      email: "Correo Electrónico" 
+    omniauth_callbacks:
+      success: 'Exitosamente autorizado desde la cuenta %{kind}.'
+      failure: 'No fue posible autorizarlo desde %{kind} debido a "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'Instrucciones de confirmación'
+      reset_password_instructions:
+        subject: 'Instrucciones de reestablecimiento de contraseña'
+      unlock_instructions:
+        subject: 'Instrucciones de desbloqueo'

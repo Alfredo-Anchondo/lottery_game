@@ -1,0 +1,75 @@
+<div class="row">
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <h3 style="margin-left:15px"><%%= t("activerecord.models.<%= plural_table_name %>") %></h3>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
+            <thead>
+              <tr>
+                <% attributes.reject(&:password_digest?).each do |attribute| -%>
+                  <th><%%= t("activerecord.attributes.<%= singular_table_name %>.<%= attribute.name %>") %></th>
+                <% end -%>
+                <th style="width: 155px"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+              <tr>
+                <% attributes.reject(&:password_digest?).each do |attribute| -%>
+                  <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+                <% end -%>
+                <td class="action-link">
+                  <%% if can? :show,<%= singular_table_name %> %>
+                    <%%= link_to <%= singular_table_name %>, :class => "btn btn-default", :title => t("actions.show") do %>
+                      <i class="fa fa-eye"></i>
+                    <%% end %>
+                  <%% end %>
+                  <%% if can? :edit, <%= singular_table_name %> %>
+                    <%%= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>), :class => "btn btn-info", :title => t("actions.edit") do %>
+                      <i class="fa fa-pencil"></i>
+                    <%% end %>
+                  <%% end %>
+                  <%% if can? :delete, <%= singular_table_name %> %>
+                    <%%= link_to <%= singular_table_name %>, :method => :delete, :data => { :confirm => t("are_you_sure?", model: t("activerecord.models.<%= singular_table_name %>").downcase) }, :class => "btn btn-danger", :title => t("actions.delete") do %>
+                      <i class="fa fa-trash"></i>
+                    <%% end %>
+                  <%% end %>
+                </td>
+              </tr>
+              <%% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center">
+          <%%= will_paginate @<%= plural_table_name %> %>
+        </div>
+      </div>
+      <!-- end panel-body -->
+    </div>
+    <!-- end panel -->
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <%% if can? :new, <%= class_name %>  %>
+      <%%= link_to new_<%= singular_table_name %>_path, :class => "btn btn-default" do %>
+        <i class="icon-plus-sign-alt"></i>
+        <%%= t("actions.new") %>
+      <%% end %>
+    <%% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
