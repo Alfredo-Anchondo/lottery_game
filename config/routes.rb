@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :roles
 
   get 'welcome/index'
-  get 'welcome/index_client'
+  get 'welcome/index_client'  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

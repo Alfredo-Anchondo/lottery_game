@@ -5,71 +5,51 @@
     <div class="invoice">
       <div class="invoice-content">
         <div class="table-responsive">
-          <table class="table table-invoice">
-            <thead>
-              <tr>
-                <td colspan="2">
-                  <h4><%= t("details_of", model: t("activerecord.models.lottery").downcase) %></h4>
-                </td>
-              </tr>
-            </thead>
-            <tbody>
-                              <tr>
-                  <td>
-                    <%= t("activerecord.attributes.lottery.initial_balance") %>: <br />
-                    <small><%= @lottery.initial_balance %></small>
-                  </td>
-                </tr>
-                              <tr>
-                  <td>
-                    <%= t("activerecord.attributes.lottery.rules") %>: <br />
-                    <small><%= @lottery.rules %></small>
-                  </td>
-                </tr>
-                              <tr>
-                  <td>
-                    <%= t("activerecord.attributes.lottery.description") %>: <br />
-                    <small><%= @lottery.description %></small>
-                  </td>
-                </tr>
-                              <tr>
-                  <td>
-                    <%= t("activerecord.attributes.lottery.game") %>: <br />
-                    <small><%= @lottery.game %></small>
-                  </td>
-                </tr>
-                              <tr>
-                  <td>
-                    <%= t("activerecord.attributes.lottery.winner_number") %>: <br />
-                    <small><%= @lottery.winner_number %></small>
-                  </td>
-                </tr>
-                              <tr>
-                  <td>
-                    <%= t("activerecord.attributes.lottery.initial_number") %>: <br />
-                    <small><%= @lottery.initial_number %></small>
-                  </td>
-                </tr>
-                              <tr>
-                  <td>
-                    <%= t("activerecord.attributes.lottery.final_number") %>: <br />
-                    <small><%= @lottery.final_number %></small>
-                  </td>
-                </tr>
-                              <tr>
-                  <td>
-                    <%= t("activerecord.attributes.lottery.price") %>: <br />
-                    <small><%= @lottery.price %></small>
-                  </td>
-                </tr>
-                              <tr>
-                  <td>
-                    <%= t("activerecord.attributes.lottery.created_at") %>: <br />
-                    <small><%= @lottery.created_at %></small>
-                  </td>
-                </tr>
-            </tbody>
-          </table>
+             <h3 class="header-show"><%= t("details_of", model: t("activerecord.models.lottery").downcase) %></h3>
+            <br>
+            <div class="row">
+            <div class="col-md-3">
+                 <h4 class="property-show"> <%= t("activerecord.attributes.lottery.initial_balance") %>:</h4> <br />
+                    <h5 class="property-text"><%= @lottery.initial_balance %></h5> <hr>
+                </div>
+                 <div class="col-md-3">
+                 <h4 class="property-show"><%= t("activerecord.attributes.lottery.rules") %>: </h4> <br />
+                    <h5 class="property-text"><%= @lottery.rules %></h5> <hr>
+                </div>
+                 <div class="col-md-3">
+               <h4 class="property-show">  <%= t("activerecord.attributes.lottery.description") %>: </h4> <br />
+                    <h5 class="property-text"><%= @lottery.description %></h5> <hr>
+                </div>
+                 <div class="col-md-3">
+                     <h4 class="property-show"> <%= t("activerecord.attributes.lottery.game") %>: </h4> <br />
+                    <h5 class="property-text"><%= @lottery.game.team.name + " vs " + @lottery.game.team2.name %></h5> <hr>
+                </div>
+            </div>
+              <div class="row">
+            <div class="col-md-3">
+                   <h4 class="property-show">  <%= t("activerecord.attributes.lottery.winner_number") %>: </h4> <br />
+                    <h5 class="property-text"><%= @lottery.winner_number %></h5> <hr>
+                  </div>
+                 <div class="col-md-3">
+                      <h4 class="property-show"><%= t("activerecord.attributes.lottery.initial_number") %>: </h4> <br />
+                    <h5 class="property-text"><%= @lottery.initial_number %></h5><hr>
+                      </div> 
+                 <div class="col-md-3">
+                   <h4 class="property-show">  <%= t("activerecord.attributes.lottery.final_number") %>: </h4> <br />
+                    <h5 class="property-text"><%= @lottery.final_number %></h5><hr>
+                  </div>
+                 <div class="col-md-3">
+                    <h4 class="property-show">  <%= t("activerecord.attributes.lottery.price") %>:</h4> <br />
+                    <h5 class="property-text">$ <%= @lottery.price %></h5> <hr>
+                      </div>
+            </div>
+            <div class="row">
+            <div class="col-md-3">
+               <h4 class="property-show"> <%= t("activerecord.attributes.lottery.created_at") %>: </h4> <br />
+                    <h5 class="property-text"><%= @lottery.created_at %></h5> <hr>
+                </div>
+            </div>
+          
         </div>
       </div>
       <div class="invoice-footer text-muted"></div>

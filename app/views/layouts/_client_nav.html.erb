@@ -1,0 +1,37 @@
+<nav class="navbar navbar-teal">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" style="" data-toggle="collapse" data-target="#myNavbar">
+       <i class="fa fa-bars"></i> 
+      </button>
+      <a class="navbar-brand" href="/">Loteria</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+         <% if signed_in? %>
+   
+      <ul id="menu" class="nav navbar-nav metismenu">
+         <li><%=link_to current_user do %>
+             <img width="50px" src="<%= current_user.photo %>">
+            <span style="text-transform: uppercase;"><%= current_user.select_display %></span> 
+             <% end %>
+          </li>  
+         <li><a> Ver Loterias activas </a> </li>
+         <li><a> Ver Resultados De loterias </a> </li>
+         <li><a> Ver lista de Juegos Programados </a> </li>
+         <li><a> Comprar Credito </a> </li>
+        
+         
+      </ul>
+        <% end %>
+      <ul class="nav navbar-nav navbar-right">
+           <li>
+                   <% if signed_in? %>
+          <%= link_to destroy_user_session_path, :method => :delete do %>
+            <i class="fa fa-sign-out"></i>Cerrar sesión
+          <% end %>
+               <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

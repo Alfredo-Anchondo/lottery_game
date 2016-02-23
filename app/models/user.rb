@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
           :rememberable, :trackable, :validatable
+    
+     scope :except_user, ->(user_id) { where.not(:id => user_id) }
   
       #Associations
      belongs_to :role

@@ -1,0 +1,45 @@
+<nav class="navbar navbar-teal">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" style="" data-toggle="collapse" data-target="#myNavbar">
+       <i class="fa fa-bars"></i> 
+      </button>
+      <a class="navbar-brand" href="/">Loteria</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+         <% if signed_in? %>
+   
+      <ul id="menu" class="nav navbar-nav metismenu">
+          <li  class="<%= 'active' if controller_name == 'roles' %>"><a href="/roles"> <span class="nav-label"><%= t('roles') %></span>  </a>
+            </li>
+          <li  class="<%= 'active' if controller_name == 'users' %>"><a href="/users"> <span class="nav-label"><%= t('users') %></span>  </a>
+            </li>
+          <li  class="<%= 'active' if controller_name == 'sports' %>"><a href="/sports"> <span class="nav-label"><%= t('sports') %></span>  </a>
+            </li>
+          <li  class="<%= 'active' if controller_name == 'categories' %>"><a href="/categories"> <span class="nav-label"><%= t('categories') %></span>  </a>
+            </li>
+           <li  class="<%= 'active' if controller_name == 'sport_categories' %>"><a href="/sport_categories"> <span class="nav-label"><%= t('sportcategories') %></span>  </a>
+            </li>
+          <li  class="<%= 'active' if controller_name == 'teams' %>"><a href="/teams"> <span class="nav-label"><%= t('teams') %></span>  </a>
+            </li>
+          <li  class="<%= 'active' if controller_name == 'games' %>"><a href="/games"> <span class="nav-label"><%= t('games') %></span>  </a>
+            </li>
+          <li  class="<%= 'active' if controller_name == 'lotteries' %>"><a href="/lotteries"> <span class="nav-label"><%= t('lotteries') %></span>  </a>
+            </li>
+          <li  class="<%= 'active' if controller_name == 'user_lotteries' %>"><a href="/user_lotteries"> <span class="nav-label"><%= t('userlotteries') %></span>  </a>
+            </li>
+         
+      </ul>
+        <% end %>
+      <ul class="nav navbar-nav navbar-right">
+           <li>
+                   <% if signed_in? %>
+          <%= link_to destroy_user_session_path, :method => :delete do %>
+            <i class="fa fa-sign-out"></i>Cerrar sesión
+          <% end %>
+               <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
