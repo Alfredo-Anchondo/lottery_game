@@ -11,8 +11,9 @@
    
       <ul id="menu" class="nav navbar-nav metismenu">
          <li><%=link_to current_user do %>
-             <img width="50px" src="<%= current_user.photo %>">
+             <img width="40px" src="<%= current_user.photo %>">
             <span style="text-transform: uppercase;"><%= current_user.select_display %></span> 
+             <span style="text-transform: uppercase;">$<%= current_user.balance %></span> 
              <% end %>
           </li>  
          <li><a> Ver Loterias activas </a> </li>

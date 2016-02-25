@@ -3,7 +3,9 @@
 <head>
   <title>LotteryGame</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag  'application', media: 'all'%>
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %> 
+    <%= javascript_include_tag 'application'%> 
   <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js" type="text/javascript"></script>
@@ -23,10 +25,12 @@
     
  <p style="text-align:center; color:white" class="notice alert"><%= notice %> <%= alert %></p>
      <input style="display:none" id="current_language" value="<%= current_user %>">
+        
     
-<div class="row" style="margin-top:-4%"><%= yield %></div>
 
-
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>    
+ 
+    <div class="row" style="margin-top:-4%"><%= yield %></div>
+ 
+   
 </body>
 </html>

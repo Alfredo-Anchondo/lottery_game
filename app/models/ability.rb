@@ -2,6 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+        user ||= User.new
     if user.role.is_admin? 
       can :manage, :all
  
@@ -12,11 +13,11 @@ class Ability
         cannot [:new, :create, :edit, :update, :delete, :destroy], Team
         cannot [:new, :create, :edit, :update, :delete, :destroy], Category
         cannot [:new, :create, :edit, :update, :delete, :destroy], Sport
-        cannot [:new, :create, :edit, :update, :delete, :destroy], User
+        cannot [:new, :create, :delete, :destroy], User
         cannot [:new, :create, :edit, :update, :delete, :destroy], SportCategory
         cannot [:new, :create, :edit, :update, :delete, :destroy], Lottery
-        cannot [:new, :create, :edit, :update, :delete, :destroy], UserLottery
+        cannot [:edit, :update, :delete, :destroy], UserLottery
     end
-    #cannot [:new, :create, :delete, :destroy], Report50Template
+
   end
 end

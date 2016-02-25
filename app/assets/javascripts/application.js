@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require bootstrap
 //= require jquery
 //= require jquery.dataTables
@@ -20,9 +20,12 @@
 //= require metisMenu/jquery.metisMenu.js
 //= require pace/pace.min.js
 //= require slimscroll/jquery.slimscroll.min.js
-//= require dashboard
+//= require jquery-mask
+//= require countdown
+//= require moment-with-locales
+
 $(document).ready(function(){
- 
+      
     
     var current_language = $("#current_language").val();
        var languaje;

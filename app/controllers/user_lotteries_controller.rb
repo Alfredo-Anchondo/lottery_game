@@ -26,12 +26,14 @@ class UserLotteriesController < ApplicationController
   # POST /user_lotteries
   # POST /user_lotteries.json
   def create
+    
     @user_lottery = UserLottery.new(user_lottery_params)
 
     respond_to do |format|
       if @user_lottery.save
+          BuyMailer.buy_ticket(@user_lottery.user, @user_lottery.lottery, @user_lottery).deliver
         format.html { redirect_to @user_lottery, notice: 'User lottery was successfully created.' }
-        format.json { render :show, status: :created, location: @user_lottery }
+        format.json { render :show, status: :created, location: @user_lottery } 
       else
         format.html { render :new }
         format.json { render json: @user_lottery.errors, status: :unprocessable_entity }

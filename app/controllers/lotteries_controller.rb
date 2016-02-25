@@ -3,6 +3,7 @@ class LotteriesController < ApplicationController
   before_action :data, only: [:index, :new, :create, :edit, :update]
 
   respond_to :html
+  respond_to :json
 
   def index
     @lotteries = Lottery.all
@@ -12,6 +13,11 @@ class LotteriesController < ApplicationController
   def show
     respond_with(@lottery)
   end
+    
+    def day_lottery
+        params[:game_id]
+        render :json => Lottery.day_lottery 
+    end
 
   def new
     @lottery = Lottery.new

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :data, only: [:index, :new, :create, :edit, :update]
+  before_action :authenticate_user!
 
   # GET /users
   # GET /users.json
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+      @user = User.find(params[:id])
   end
 
   # GET /users/new
@@ -19,6 +21,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+     @user = User.find(params[:id])
   end
 
   # POST /users
@@ -27,6 +30,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.save
     respond_with(@user)
+      BuyMailer.welcome_user(@user).deliver
   end
 
   # PATCH/PUT /users/1
@@ -34,7 +38,8 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        sign_in(@user, :bypass => true)
+          format.html { redirect_to @user, notice: t('success_update') }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

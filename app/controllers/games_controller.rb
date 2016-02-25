@@ -10,6 +10,7 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+  
   end
 
   # GET /games/new
@@ -17,6 +18,10 @@ class GamesController < ApplicationController
     @game = Game.new
   end
 
+    def next_game
+        render :json => Game.next_game 
+    end
+    
   # GET /games/1/edit
   def edit
   end

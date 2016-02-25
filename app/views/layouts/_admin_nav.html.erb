@@ -1,15 +1,17 @@
-<nav class="navbar navbar-teal">
+<nav class="navbar navbar-teal ">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" style="" data-toggle="collapse" data-target="#myNavbar">
        <i class="fa fa-bars"></i> 
       </button>
+       
+        
       <a class="navbar-brand" href="/">Loteria</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
          <% if signed_in? %>
    
-      <ul id="menu" class="nav navbar-nav metismenu">
+      <ul id="menu" class="nav navbar-nav">
           <li  class="<%= 'active' if controller_name == 'roles' %>"><a href="/roles"> <span class="nav-label"><%= t('roles') %></span>  </a>
             </li>
           <li  class="<%= 'active' if controller_name == 'users' %>"><a href="/users"> <span class="nav-label"><%= t('users') %></span>  </a>

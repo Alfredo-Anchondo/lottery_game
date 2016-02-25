@@ -1,3 +1,26 @@
+
+@media screen and (max-width: 480px) {
+   #vs{
+    margin-top: 10px !important;
+   }
+    .center-text{
+        text-align:center;
+    }
+    
+    #move-top{
+        margin-top: 3%;
+    }
+    
+    #buy-ticket-button{
+        margin-left:25% !important;
+        margin-top: 2%;
+    }
+    
+    #header-loterry{
+        text-align: center !important;
+    }
+}
+
 .row{
     padding: 20px 30px;
 }

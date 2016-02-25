@@ -43,3 +43,4 @@ gem "devise"
 gem "cancan"
 gem "will_paginate"
 gem "paperclip", "~> 4.2"
+gem 'active_model_serializers'

@@ -2,7 +2,13 @@ Rails.application.routes.draw do
    devise_for :users 
   
     
-  resources :games
+    resources :games do
+        collection do
+            get 'next_game'     
+        end
+    end
+        
+    
 
   resources :teams
 
@@ -14,7 +20,12 @@ Rails.application.routes.draw do
 
   resources :user_lotteries
 
-  resources :lotteries
+    resources :lotteries do
+        collection do
+            get 'day_lottery/:game_id', to: 'lotteries#day_lottery'
+        end
+    end
+    
 
   resources :sports
 

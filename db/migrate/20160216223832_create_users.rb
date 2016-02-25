@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email, :null => false
       t.string :phone
       t.string :cellphone, :null => false
-      t.float :balance
+      t.float :balance. :default => 0
       t.references :role, index: true, :null => false
       t.foreign_key :roles
       t.string :country, :null => false

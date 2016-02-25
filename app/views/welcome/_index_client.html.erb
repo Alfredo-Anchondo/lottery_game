@@ -1,0 +1,240 @@
+<div class="row">
+    <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <div class="row" style="margin:0px; padding:0px;">
+                           <h4 id="header-loterry" style="text-align:left; color:white;">Proxima Loteria <span class="pull-right" style="color:aquamarine" id="getting-started"></span></h4>
+                       </div>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <div class="row">
+                        <div class="col-md-3 col-xs-12">
+                            <h4 style="text-align:center"> <%= t('lottery_rules') %> </h4>
+                                <h5  style="text-align:center" id="lottery_rules"></h5> <hr>
+                            </div>
+                        <div class="col-md-4 col-xs-12">
+                           <h3 style="text-align:center;font-size:30px;" id="team_name"></h3>
+                            <h2 style="text-align:center; "><img width="30%" height="100px" id="team1" src=""></h2>
+                            <h2 id="team_score" class="label-primary" style="text-align:center; font-size:40px; font-weight:800;"></h2>
+                        </div>
+                        <div class="col-md-1 col-xs-12" style="">
+                            <h1 id="vs" style="text-align:center; color:red; font-weight:800; font-size:50px; margin-top:30%;">VS</h1>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <h3 style="text-align:center; font-size:30px;" id="team2_name"></h3>
+                             <h2 style="text-align:center"><img id="team2" width="30%" height="100px" src=""></h2>
+                            <h2 id="team2_score" class="label-primary" style="text-align:center; font-size:40px; font-weight:800;"></h2>
+                       </div>
+                            
+                        </div>
+                    </div>
+                    <div class="ibox-footer" style="background-color:#009688; color:white;">
+                        <div class="row">
+                        <div class="col-md-7 col-xs-12">
+                            <h4 class="center-text" >Compra tu Boleto ahora <span class="pull-right"> Selecciona el numero con el cual deseas participar:</span> <input style="display:none" id="lottery_id" value=""> <input style="display:none" id="lottery_price" value=""> </h4>
+                          
+                        </div>
+                        <div class="col-md-1  col-xs-12" id="move-top">
+                             <input style="color:black" id="ticket_number" type="number" min="0" class="form-control"> 
+                         
+                            </div>
+                           
+                          <div class="col-md-4  col-xs-12" id="move-top">
+                            <span class="center-text" >¿No tienes saldo? Nosotros te redireccionamos</span> <button  id="buy-ticket-button" style="margin-left:2%" class="btn btn-primary center-text">Comprar Boleto</button>
+                              
+                            </div>
+                            </div>
+                    </div>
+                </div>
+    
+
+
+</div>
+
+<!--------------------- MODAL DE CONFIRMACION --------------------------->
+
+<div class="modal fade bs-example-modal-sm" id="confirm_buy" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div style="background-color:#009688" class="modal-dialog modal-sm">
+       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           <h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t('purchase_confirmation') %></h4>
+      </div>
+    <div class="modal-content">
+     <div class="row"> 
+         <h4 style="text-align:center">Boleto</h4>
+            <div class="col-md-12" style="border: 1px dotted black">
+                <div class="row" style="padding:0px">
+                <h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name"></h4>    
+                </div>
+                <div class="row" style="padding:0px; border-bottom:1px solid #009688;">
+                <div class="col-md-4 col-xs-4">
+                    <h4 style="text-align:center"><%= t('name') %>:</h4>
+                    <h5 style="text-align:center; text-transform:uppercase"><%= current_user.name %> </h5>
+                    </div>
+                    
+                <div class="col-md-4 col-xs-4">
+                    <h4 style="text-align:center"><%= t('last_name') %>:</h4>
+                    <h5 style="text-align:center; text-transform:uppercase"><%= current_user.last_name %> </h5>
+                    </div>
+                    <div class="col-md-4 col-xs-4">
+                    <h4 style="text-align:center"><%= t('ticket') %>:</h4>
+                 
+                    <h5 style="text-align:center" id="ticket_numer_lottery"></h5>
+                 
+                    </div>
+                </div>
+                <div class="row" style="padding:0px">
+                <h4 style="text-align:right; margin-right:8%;">Total: $ <span id="total_price"> </span> </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+       <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal"><%= t('close') %></button>
+        <button type="button" id="confirm-buy" class="btn btn-primary"><%= t('buy') %></button>
+      </div>
+  </div>
+</div>
+
+<!-----------------------------------TERMINA MODAL ------------------------->
+
+
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="99DRV5EN6MMSE">
+<input id="image-paypal" type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal. La forma rápida y segura de pagar en Internet.">
+<img alt="" border="0" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+<script>
+                var ticket_length;
+                var user_id;
+                var lottery_id;
+                var ticket_number;
+                var purchase_date;
+                var current_balance;
+                var lottery_price;
+                
+    
+        $(document).ready(function(){
+         $.ajax({
+  method: "GET",
+  url: "/games/next_game",
+  format: "json"
+})
+  .done(function( data) {
+    $('#team1').attr('src','/system/teams/logos/000/000/00'+data.game.team.id+'/original/'+data.game.team.logo_file_name);
+     $('#team_score').text(data.game.local_score);
+     $('#team_name').text(data.game.team.name);
+     $('#team2_name').text(data.game.team2.name);
+     $('#team2_score').text(data.game.visit_score);
+     $('#ticket_name').text(data.game.team.name + " vs " + data.game.team2.name);         
+             if(data.game.lotteries[0].final_number < 100){
+            $('#ticket_number').mask('00', {placeholder: "00", reverse: false});
+                 ticket_length = 2;
+             } else if(data.game.lotteries[0].final_number < 1000){
+                 $('#ticket_number').mask('000', {placeholder: "000", reverse: false});
+                  ticket_length = 3;
+             } else {
+                  $('#ticket_number').mask('0000', {placeholder: "0000", reverse: false});
+                  ticket_length = 4;
+             }
+     $('#ticket_number').attr('max',data.game.lotteries[0].final_number);
+     $('#lottery_rules').text(data.game.lotteries[0].rules);  
+    $('#team2').attr('src','/system/teams/logos/000/000/00'+data.game.team2.id+'/original/'+data.game.team2.logo_file_name)
+  
+    $('#lottery_id').val(data.game.lotteries[0].id);
+    $('#lottery_price').val(data.game.lotteries[0].price); 
+             
+             var countdown = data.game.game_date;
+        var countdown1 = moment(countdown).format('MM/DD/YYYY HH:mm');   
+             
+             
+          
+  $('#getting-started').countdown(countdown1, function(event) {
+      $(this).html(event.strftime('La loteria se cierra en:  %d <%= t('day') %> %H:%M:%S <%= t('hours') %>'));
+  });
+             
+                 user_id = <%= current_user.id %>;
+                 lottery_id = $('#lottery_id').val();
+                 purchase_date = new Date();
+                 current_balance = <%= current_user.balance %>;
+                 lottery_price = $('#lottery_price').val();
+  });
+
+             $('#buy-ticket-button').click(function(){
+                 get_ticket_info();
+                 if($('#ticket_number').val() != ""){
+                      var f = $('#ticket_number').val();
+                      f = f.length;
+                     if(f < ticket_length){
+                         alert('Te faltan mas digitos en el boleto');
+                     }else{
+                         $('#confirm_buy').modal('show');
+                     }
+                 }else{
+                    alert('Selecciona un numero para continuar');
+                 }       
+             })
+                 
+             
+             
+        $('#confirm-buy').click(function(){
+                      user_id = <%= current_user.id %>;
+                 lottery_id = $('#lottery_id').val();
+                 purchase_date = new Date();
+                 lottery_price = $('#lottery_price').val();
+              current_balance = <%= current_user.balance %>;
+            if( current_balance => $('#lottery_price').val()){
+             buy_ticket();
+             update_balance();
+                 
+            }else{
+                alert('saldo insuficiente,compra saldo para continuar'); 
+                $( "#image-paypal" ).trigger( "click" );
+            }
+            
+           
+        });
+            
+             function get_ticket_info(){
+                 $('#ticket_numer_lottery').text($('#ticket_number').val());
+                 $('#total_price').text($('#lottery_price').val());
+             }
+             
+             function buy_ticket(){
+                ticket_number = $('#ticket_number').val();
+                     $.ajax({
+                      method: "POST",
+                      url: "/user_lotteries",
+                      dataType: "json",     
+                      data: { user_lottery: {user_id: user_id, lottery_id: lottery_id, ticket_number: ticket_number ,purchase_date: purchase_date, status: "Comprado"}  }
+                    }).done(function( data) {
+                         alert('Se completo la compra');
+                     });
+            }
+            
+    function update_balance(){
+                  user_id = <%= current_user.id %>;
+                 lottery_id = $('#lottery_id').val();
+                 purchase_date = new Date();
+                 current_balance = <%= current_user.balance %>;
+                 lottery_price = $('#lottery_price').val();
+                 lottery_price = $('#lottery_price').val();
+        
+        var total_balance_update = current_balance - lottery_price;
+            $.ajax({
+                      method: "PUT",
+                      url: "/users/"+user_id+"",
+                      dataType: "json",     
+                      data: { user: {balance: total_balance_update} }
+                    }).done(function( data) {
+                         alert('Se actualizo tu saldo');
+                     });
+    }        
+            
+    });
+    
+
+</script>
