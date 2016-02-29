@@ -22,6 +22,10 @@ class GamesController < ApplicationController
         render :json => Game.next_game 
     end
     
+    def future_games
+        render :json => Game.future_games
+    end
+    
   # GET /games/1/edit
   def edit
   end

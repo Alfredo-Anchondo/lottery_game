@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     
     resources :games do
         collection do
-            get 'next_game'     
+            get 'next_game'
+            get 'future_games'
         end
     end
         
@@ -20,10 +21,8 @@ Rails.application.routes.draw do
 
   resources :user_lotteries
 
-    resources :lotteries do
-        collection do
-            get 'day_lottery/:game_id', to: 'lotteries#day_lottery'
-        end
+  resources :lotteries do
+       
     end
     
 

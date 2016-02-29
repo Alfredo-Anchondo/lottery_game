@@ -11,4 +11,8 @@ class Game < ActiveRecord::Base
         where('game_date >= ?', DateTime.now).order(:game_date).first 
     end
     
+    def self.future_games
+        where('game_date >= ?', DateTime.now).order(:game_date).all
+    end
+    
 end

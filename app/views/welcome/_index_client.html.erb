@@ -118,6 +118,14 @@
                 
     
         $(document).ready(function(){
+                  $.ajax({
+  method: "GET",
+  url: "/games/future_games",
+  format: "json"
+})
+            
+            
+            
          $.ajax({
   method: "GET",
   url: "/games/next_game",
