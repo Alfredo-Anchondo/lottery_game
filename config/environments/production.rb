@@ -81,7 +81,7 @@ Rails.application.configure do
     
     ActionMailer::Base.smtp_settings = {
         :enable_starttls_auto => true,
-        :openssl_verify_mode => 'none',
+        :ssl => true,
         :address => 'https://166.62.101.55:2096',
         :port => 587,
         :domain => 'donbillete.com',
