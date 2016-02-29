@@ -42,7 +42,7 @@ class SportsController < ApplicationController
   def update
     respond_to do |format|
       if @sport.update(sport_params)
-        format.html { redirect_to @sport, notice: 'Sport was successfully updated.' }
+        format.html { redirect_to @sport, notice: t('success_update_sport') }
         format.json { render :show, status: :ok, location: @sport }
       else
         format.html { render :edit }

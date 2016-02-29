@@ -46,7 +46,7 @@ class UserLotteriesController < ApplicationController
   def update
     respond_to do |format|
       if @user_lottery.update(user_lottery_params)
-        format.html { redirect_to @user_lottery, notice: 'User lottery was successfully updated.' }
+          format.html { redirect_to @user_lottery, notice: t('success_update_user_lotteries') }
         format.json { render :show, status: :ok, location: @user_lottery }
       else
         format.html { render :edit }

@@ -5,6 +5,8 @@ class Team < ActiveRecord::Base
     has_attached_file :logo,
     :styles => { :medium => "x300",
     :mobile => "x240" },
+    :path => "rails_root/public/system/:class/:attachment/:id/:style/:filename",
+    :url => "/system/:class/:attachment/:id/:style/:filename"
     :default_url => "no-image.png"
     
     #Validations
