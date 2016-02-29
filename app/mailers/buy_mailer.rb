@@ -1,5 +1,5 @@
 class BuyMailer < ActionMailer::Base
-    default from: "prueba@localhost.com"
+    default from: "no-reply@donbillete.com"
 
     
     def buy_ticket(user, lottery, lottery_user)
