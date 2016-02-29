@@ -124,7 +124,13 @@
   format: "json"
 })
   .done(function( data) {
-    $('#team1').attr('src','/system/teams/logos/000/000/00'+data.game.team.id+'/original/'+data.game.team.logo_file_name);
+             
+              if (data.game.team.id < 10){
+        $('#team1').attr('src','/system/teams/logos/000/000/00'+data.game.team.id+'/original/'+data.game.team.logo_file_name);
+    }   else{
+       $('#team1').attr('src','/system/teams/logos/000/000/0'+data.game.team.id+'/original/'+data.game.team.logo_file_name);
+    }  
+   
      $('#team_score').text(data.game.local_score);
      $('#team_name').text(data.game.team.name);
      $('#team2_name').text(data.game.team2.name);
