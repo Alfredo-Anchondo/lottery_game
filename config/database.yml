@@ -17,6 +17,7 @@ development:
 production:
   adapter: postgresql
   database: lottery_game
+  pool: 5
   host: localhost
   username: postgres
   password: postgres
