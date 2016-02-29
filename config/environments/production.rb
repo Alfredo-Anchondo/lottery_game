@@ -81,7 +81,7 @@ Rails.application.configure do
     
     ActionMailer::Base.smtp_settings = {
         :enable_starttls_auto => true,
-        :address => 'mail.donbillete.com',
+        :address => 'vps.donbillete.com',
         :port => 587,
         :domain => 'donbillete.com',
         :authentication => :login,
