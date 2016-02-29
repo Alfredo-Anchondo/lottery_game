@@ -198,7 +198,7 @@
                  lottery_price = $('#lottery_price').val();
               current_balance = <%= current_user.balance %>;
             if( current_balance => $('#lottery_price').val()){
-                alert(current_balance);
+                alert($('#lottery_price').val());
              buy_ticket();
              update_balance();
                  
