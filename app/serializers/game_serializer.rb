@@ -3,5 +3,6 @@ class GameSerializer < ActiveModel::Serializer
     has_one :team
     has_one :team2
     has_many :lotteries
+    has_one :sport_category
     has_one :category
 end
