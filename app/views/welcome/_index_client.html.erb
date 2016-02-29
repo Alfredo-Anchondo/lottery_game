@@ -141,8 +141,13 @@
                   ticket_length = 4;
              }
      $('#ticket_number').attr('max',data.game.lotteries[0].final_number);
-     $('#lottery_rules').text(data.game.lotteries[0].rules);  
-    $('#team2').attr('src','/system/teams/logos/000/000/00'+data.game.team2.id+'/original/'+data.game.team2.logo_file_name)
+     $('#lottery_rules').text(data.game.lotteries[0].rules); 
+    if (data.game.team2.id < 10){
+         $('#team2').attr('src','/system/teams/logos/000/000/00'+data.game.team2.id+'/original/'+data.game.team2.logo_file_name)
+    }   else{
+        $('#team2').attr('src','/system/teams/logos/000/000/0'+data.game.team2.id+'/original/'+data.game.team2.logo_file_name)
+    }      
+   
   
     $('#lottery_id').val(data.game.lotteries[0].id);
     $('#lottery_price').val(data.game.lotteries[0].price); 
