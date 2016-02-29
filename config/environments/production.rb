@@ -80,14 +80,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
     
     ActionMailer::Base.smtp_settings = {
-    :enable_starttls_auto => true,
-    :openssl_verify_mode => 'none',
+        :enable_starttls_auto => true,
+        :openssl_verify_mode => 'none',
         :address => 'mail.donbillete.com',
-    :port => 587,
+        :port => 587,
         :domain => 'donbillete.com',
-    :authentication => :login,
+        :authentication => :login,
         :user_name => 'no-reply@donbillete.com',
-    :password => 'patitos13'
+        :password => 'Patitos13'
 }
     
    
