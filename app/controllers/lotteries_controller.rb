@@ -34,6 +34,13 @@ class LotteriesController < ApplicationController
   end
 
   def update
+      attrs = ["winner_number"]
+
+      if (@lottery.changed & attrs).any?
+     format.html { redirect_to @lottery, notice: t('success_update_lottery') }
+end
+      
+      
        respond_to do |format|
            if @lottery.update(lottery_params)
                format.html { redirect_to @lottery, notice: t('success_update_lottery') }
