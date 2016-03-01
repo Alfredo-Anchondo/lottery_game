@@ -393,6 +393,7 @@
                        
                           $('.display_modal').click(function(){
                               $('#lottery_number_in_modal').unmask();
+                              $('#lottery_number_in_modal').val('');
                               $('.ticket_number').unmask();
                               $('#lottery_id_modal').val($(this).data("lotteryid"));
                               $('#rules_modal').text($(this).data("lotteryrules"));
