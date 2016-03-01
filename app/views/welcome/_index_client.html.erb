@@ -37,7 +37,7 @@
                           
                         </div>
                         <div class="col-md-1  col-xs-12" id="move-top">
-                             <input style="color:black" id="ticket_number" type="number" min="0" class="form-control"> 
+                             <input style="color:black" class="ticket_number" type="number" min="0" class="form-control"> 
                          
                             </div>
                            
@@ -130,7 +130,7 @@
       </div>
     <div class="modal-content">
      <div class="row"> 
-         <input style="color:black" id="ticket_number" type="number" min="0" class="form-control"> 
+         <input style="color:black" class="ticket_number" type="number" min="0" class="form-control"> 
         </div>
      <div class="row"> 
          <h4 style="text-align:center">Boleto</h4>
@@ -211,16 +211,16 @@
      $('#team2_score').text(data.game.visit_score);
      $('#ticket_name').text(data.game.team.name + " vs " + data.game.team2.name);         
              if(data.game.lotteries[0].final_number < 100){
-            $('#ticket_number').mask('00', {placeholder: "00", reverse: false});
+            $('.ticket_number').mask('00', {placeholder: "00", reverse: false});
                  ticket_length = 2;
              } else if(data.game.lotteries[0].final_number < 1000){
-                 $('#ticket_number').mask('000', {placeholder: "000", reverse: false});
+                 $('.ticket_number').mask('000', {placeholder: "000", reverse: false});
                   ticket_length = 3;
              } else {
-                  $('#ticket_number').mask('0000', {placeholder: "0000", reverse: false});
+                  $('.ticket_number').mask('0000', {placeholder: "0000", reverse: false});
                   ticket_length = 4;
              }
-     $('#ticket_number').attr('max',data.game.lotteries[0].final_number);
+     $('.ticket_number').attr('max',data.game.lotteries[0].final_number);
      $('#lottery_rules').text(data.game.lotteries[0].rules); 
     if (data.game.team2.id < 10){
          $('#team2').attr('src','/system/teams/logos/000/000/00'+data.game.team2.id+'/original/'+data.game.team2.logo_file_name)
@@ -251,8 +251,8 @@
 
              $('#buy-ticket-button').click(function(){
                  get_ticket_info();
-                 if($('#ticket_number').val() != ""){
-                      var f = $('#ticket_number').val();
+                 if($('.ticket_number').val() != ""){
+                      var f = $('.ticket_number').val();
                       f = f.length;
                      if(f < ticket_length){
                          alert('Te faltan mas digitos en el boleto');
@@ -293,12 +293,12 @@
                });
             
              function get_ticket_info(){
-                 $('#ticket_numer_lottery').text($('#ticket_number').val());
+                 $('#ticket_numer_lottery').text($('.ticket_number').val());
                  $('#total_price').text($('#lottery_price').val());
              }
              
              function buy_ticket(){
-                ticket_number = $('#ticket_number').val();
+                ticket_number = $('.ticket_number').val();
                      $.ajax({
                       method: "POST",
                       url: "/user_lotteries",
