@@ -339,7 +339,23 @@
                     }).done(function( data) {
                          alert('Se actualizo tu saldo');
                      });
+    }     
+    function update_balance_modal(){
+                 user_id = <%= current_user.id %>;
+                 current_balance = <%= current_user.balance %>;
+                 lottery_price = $('#total_price_modal').text();
+        
+        var total_balance_update = current_balance - lottery_price;
+            $.ajax({
+                      method: "PUT",
+                      url: "/users/"+user_id+"",
+                      dataType: "json",     
+                      data: { user: {balance: total_balance_update} }
+                    }).done(function( data) {
+                         alert('Se actualizo tu saldo');
+                     });
     }        
+          
              
             
                $.ajax({
@@ -387,6 +403,7 @@
              
            $('#confirm-buy-modal').click(function(){
                buy_ticket_modal();
+               update_balance_modal();
            })
              
          });
