@@ -136,7 +136,7 @@
          <h4 style="text-align:center">Boleto</h4>
             <div class="col-md-12" style="border: 1px dotted black">
                 <div class="row" style="padding:0px">
-                <h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name"></h4>    
+                <h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name_modal"></h4>    
                 </div>
                 <div class="row" style="padding:0px; border-bottom:1px solid #009688;">
                 <div class="col-md-4 col-xs-4">
@@ -355,12 +355,14 @@
                             var url = "/system/categories/logos/000/000/0"+ data.games[i].category.id+"/original/"+data.games[i].category.logo_file_name+"";
                        }
                        
-                       $("#future_lotteries").append('<div class="timeline-item"><div class="row"><div style="width:20%; padding-top:5px" class="col-xs-4 col-md-4 date"><img  class="category_logo" src=" '+url+' " ><span style="font-weight: 900;">'+moment(data.games[i].game_date ,"", "es" ).format("MMMM D YYYY, h:mm:ss a")+'</span></div><div class="col-xs-9 col-md-9 content no-top-border"><a data-lotteryid="'+data.games[i].lotteries[0].id+'" data-lotteryprice="'+data.games[i].lotteries[0].price+'"  class="display_modal"><h3 style="text-align:center"> '+ data.games[i].team.name + ' VS ' + data.games[i].team2.name + ' </h3><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"><img height="80px" class="logo_lotteries" src="'+image_url+'"> </h4></div><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"> <img height="80px" class="logo_lotteries"  src="'+image_url2+'"> </h4> </div></a></div></div></div> <hr>');
+                       $("#future_lotteries").append('<div class="timeline-item"><div class="row"><div style="width:20%; padding-top:5px" class="col-xs-4 col-md-4 date"><img  class="category_logo" src=" '+url+' " ><span style="font-weight: 900;">'+moment(data.games[i].game_date ,"", "es" ).format("MMMM D YYYY, h:mm:ss a")+'</span></div><div class="col-xs-9 col-md-9 content no-top-border"><a data-lotteryid="'+data.games[i].lotteries[0].id+'" data-lotteryprice="'+data.games[i].lotteries[0].price+'" data-teamname="'+data.games[i].team.name+'" data-team2name="'+data.games[i].team2.name+'"  class="display_modal"><h3 style="text-align:center"> '+ data.games[i].team.name + ' VS ' + data.games[i].team2.name + ' </h3><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"><img height="80px" class="logo_lotteries" src="'+image_url+'"> </h4></div><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"> <img height="80px" class="logo_lotteries"  src="'+image_url2+'"> </h4> </div></a></div></div></div> <hr>');
                        
                           $('.display_modal').click(function(){
                               alert($(this).data("lotteryid"));
                               $('#total_price_modal').text($(this).data("lotteryprice"));
+                               $("#ticket_name_modal").text($(this).data("teamname") + " Vs " + $(this).data("team2name"));
                               $('#buy_ticket_modal').modal('show');
+                             
                           })
                        
                    }
