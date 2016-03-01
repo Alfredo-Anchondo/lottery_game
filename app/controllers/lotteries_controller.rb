@@ -1,7 +1,7 @@
 class LotteriesController < ApplicationController
   before_action :set_lottery, only: [:show, :edit, :update, :destroy]
   before_action :data, only: [:index, :new, :create, :edit, :update]
-    
+  has_many :user_lotteries    
 
   respond_to :html
   respond_to :json

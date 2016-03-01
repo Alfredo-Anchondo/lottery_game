@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.save
     respond_with(@user)
-      BuyMailer.welcome_user(@user).deliver
+    BuyMailer.welcome_user(@user).deliver
   end
 
   # PATCH/PUT /users/1
