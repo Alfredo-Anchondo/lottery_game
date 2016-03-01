@@ -187,6 +187,7 @@
 
 <script>
                 var ticket_length;
+                var ticket_length_modal;
                 var user_id;
                 var lottery_id;
                 var ticket_number;
@@ -388,17 +389,29 @@
                             var url = "/system/categories/logos/000/000/0"+ data.games[i].category.id+"/original/"+data.games[i].category.logo_file_name+"";
                        }
                        
-                       $("#future_lotteries").append('<div class="timeline-item"><div class="row"><div style="width:20%; padding-top:5px" class="col-xs-4 col-md-4 date"><img  class="category_logo" src=" '+url+' " ><span style="font-weight: 900;">'+moment(data.games[i].game_date ,"", "es" ).format("MMMM D YYYY, h:mm:ss a")+'</span></div><div class="col-xs-9 col-md-9 content no-top-border"><a data-lotteryid="'+data.games[i].lotteries[0].id+'" data-lotteryprice="'+data.games[i].lotteries[0].price+'" data-lotteryrules="'+data.games[i].lotteries[0].rules+'" data-teamname="'+data.games[i].team.name+'" data-team2name="'+data.games[i].team2.name+'"  class="display_modal"><h3 style="text-align:center"> '+ data.games[i].team.name + ' VS ' + data.games[i].team2.name + ' </h3><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"><img height="80px" class="logo_lotteries" src="'+image_url+'"> </h4></div><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"> <img height="80px" class="logo_lotteries"  src="'+image_url2+'"> </h4> </div></a></div></div></div> <hr>');
+                       $("#future_lotteries").append('<div class="timeline-item"><div class="row"><div style="width:20%; padding-top:5px" class="col-xs-4 col-md-4 date"><img  class="category_logo" src=" '+url+' " ><span style="font-weight: 900;">'+moment(data.games[i].game_date ,"", "es" ).format("MMMM D YYYY, h:mm:ss a")+'</span></div><div class="col-xs-9 col-md-9 content no-top-border"><a data-lotteryid="'+data.games[i].lotteries[0].id+'" data-lotteryprice="'+data.games[i].lotteries[0].price+'" data-lotteryfinal="'+data.games[i].lotteries[0].final_number+'" data-lotteryrules="'+data.games[i].lotteries[0].rules+'" data-teamname="'+data.games[i].team.name+'" data-team2name="'+data.games[i].team2.name+'"  class="display_modal"><h3 style="text-align:center"> '+ data.games[i].team.name + ' VS ' + data.games[i].team2.name + ' </h3><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"><img height="80px" class="logo_lotteries" src="'+image_url+'"> </h4></div><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"> <img height="80px" class="logo_lotteries"  src="'+image_url2+'"> </h4> </div></a></div></div></div> <hr>');
                        
                           $('.display_modal').click(function(){
+                              
                               $('#lottery_id_modal').val($(this).data("lotteryid"));
                               $('#rules_modal').text($(this).data("lotteryrules"));
                               $('#total_price_modal').text($(this).data("lotteryprice"));
-                               $("#ticket_name_modal").text($(this).data("teamname") + " Vs " + $(this).data("team2name"));
+                              $("#ticket_name_modal").text($(this).data("teamname") + " Vs " + $(this).data("team2name"));
                               $('#buy_ticket_modal').modal('show');
+                              $('#lottery_number_in_modal').attr('max',$(this).data("lotteryfinal"));
+                                if($(this).data("lotteryfinal") < 100){
+                                    $('#lottery_number_in_modal').mask('00', {placeholder: "00", reverse: false});
+                                         ticket_length_modal = 2;
+                                     } else if($(this).data("lotteryfinal") < 1000){
+                                         $('.ticket_number').mask('000', {placeholder: "000", reverse: false});
+                                          ticket_length_modal = 3;
+                                     } else {
+                                          $('.ticket_number').mask('0000', {placeholder: "0000", reverse: false});
+                                          ticket_length_modal = 4;
+                                }
                               
                               $("#lottery_number_in_modal").change(function(){
-                                  $("#ticket_numer_lottery_modal").text($('#lottery_number_in_modal').val());
+                              $("#ticket_numer_lottery_modal").text($('#lottery_number_in_modal').val());
                               });
                              
                           })
@@ -408,15 +421,24 @@
              
            $('#confirm-buy-modal').click(function(){
                var balance = <%= current_user.balance %> ;
+               
+               
+               
                if($("#lottery_number_in_modal").val() != ''){
-                   if(balance < $('#total_price_modal').text()){
+                   var f = $('#lottery_number_in_modal').val();
+                      f = f.length;
+                     if(f < ticket_length_modal){
+                         alert('Te faltan mas digitos en el boleto');
+                     }else{
+                        if(balance < $('#total_price_modal').text()){
                       alert('No tienes saldo suficiente'); 
                    }else{
                          buy_ticket_modal();
                update_balance_modal();
                $('#buy_ticket_modal').modal('hide');
                    }
-             
+                     }
+    
                }else{
                    alert("Debes seleccionar un numero para participar");
                }
