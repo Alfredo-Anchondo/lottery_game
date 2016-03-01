@@ -7,7 +7,7 @@ class Lottery < ActiveRecord::Base
 
    
     
-      private
+     
     
     def notify_systtem_if_winner_is_changed
         notify_system if previous_changes['winner_number'].any?
