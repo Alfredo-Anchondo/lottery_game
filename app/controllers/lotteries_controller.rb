@@ -35,6 +35,9 @@ class LotteriesController < ApplicationController
 
   def update
        respond_to do |format|
+           if @lottery.winner_number_changed?
+               format.html { notice: "te la rifaste" }
+           end
            if @lottery.update(lottery_params)
                format.html { redirect_to @lottery, notice: t('success_update_lottery') }
                format.json { render :show, status: :ok, location: @lottery }
