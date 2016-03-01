@@ -407,11 +407,16 @@
                });
              
            $('#confirm-buy-modal').click(function(){
-               
+               var balance = <%= current_user.balance %> ;
                if($("#lottery_number_in_modal").val() != ''){
-               buy_ticket_modal();
+                   if(balance < $('#total_price_modal').text()){
+                      alert('No tienes saldo suficiente'); 
+                   }else{
+                         buy_ticket_modal();
                update_balance_modal();
                $('#buy_ticket_modal').modal('hide');
+                   }
+             
                }else{
                    alert("Debes seleccionar un numero para participar");
                }
