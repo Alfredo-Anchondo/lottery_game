@@ -3,9 +3,10 @@ class Lottery < ActiveRecord::Base
     
       def select_display
           game.team.name + " vs " + game.team2.name
-    end
+      end
     
-    def self.day_lottery()
-        where('game_id >= ?', params[:game_id])
-    end
+    
+    def update_winner_number
+        lottery.winner_number_changed?
+    end    
 end
