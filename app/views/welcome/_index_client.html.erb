@@ -12,7 +12,7 @@
                                 <h5  style="text-align:center" id="lottery_rules"></h5> <hr>
                             <input style="display:none" id="lottery_price" value="">
                             <h4 style="text-align:center"> <%= t('lottery_price') %>  </h4>
-                            <h2 style="text-align:center" id="lottery_display_price"></h2>
+                            <h2 style="text-align:center; font-weight:800" id="lottery_display_price"></h2> <hr>
                             </div>
                         <div class="col-md-4 col-xs-12">
                            <h3 style="text-align:center;font-size:30px;" id="team_name"></h3>
@@ -179,7 +179,7 @@
   
     $('#lottery_id').val(data.game.lotteries[0].id);
     $('#lottery_price').val(data.game.lotteries[0].price); 
-    $('#lottery_display_price').text(data.game.lotteries[0].price); 
+    $('#lottery_display_price').text("$"+data.game.lotteries[0].price); 
              
              var countdown = data.game.game_date;
         var countdown1 = moment(countdown).format('MM/DD/YYYY HH:mm');   
