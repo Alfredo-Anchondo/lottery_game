@@ -153,7 +153,7 @@
                     <h4 style="text-align:center"><%= t('ticket') %>:</h4>
                  
                     <h5 style="text-align:center" id="ticket_numer_lottery_modal"></h5>
-                 
+                    <input type="hidden" id="lottery_id_modal">
                     </div>
                 </div>
                 <div class="row" style="padding:0px">
@@ -164,7 +164,7 @@
     </div>
        <div class="modal-footer">
            <button type="button" class="btn btn-default" data-dismiss="modal"><%= t('close') %></button>
-        <button type="button" id="confirm-buy" class="btn btn-primary"><%= t('buy') %></button>
+           <button type="button" id="confirm-buy-modal" class="btn btn-primary"><%= t('buy') %></button>
       </div>
   </div>
 </div>
@@ -309,6 +309,18 @@
                          alert('Se completo la compra');
                      });
             }
+             
+                function buy_ticket_modal(){
+                ticket_number = $('#lottery_number_in_modal').val();
+                     $.ajax({
+                      method: "POST",
+                      url: "/user_lotteries",
+                      dataType: "json",     
+                      data: { user_lottery: {user_id: user_id, lottery_id: $('#lottery_id_modal').val(), ticket_number: ticket_number ,purchase_date: purchase_date, status: "Comprado"}  }
+                    }).done(function( data) {
+                         alert('Se completo la compra');
+                     });
+            }
             
     function update_balance(){
                   user_id = <%= current_user.id %>;
@@ -359,7 +371,7 @@
                        $("#future_lotteries").append('<div class="timeline-item"><div class="row"><div style="width:20%; padding-top:5px" class="col-xs-4 col-md-4 date"><img  class="category_logo" src=" '+url+' " ><span style="font-weight: 900;">'+moment(data.games[i].game_date ,"", "es" ).format("MMMM D YYYY, h:mm:ss a")+'</span></div><div class="col-xs-9 col-md-9 content no-top-border"><a data-lotteryid="'+data.games[i].lotteries[0].id+'" data-lotteryprice="'+data.games[i].lotteries[0].price+'" data-teamname="'+data.games[i].team.name+'" data-team2name="'+data.games[i].team2.name+'"  class="display_modal"><h3 style="text-align:center"> '+ data.games[i].team.name + ' VS ' + data.games[i].team2.name + ' </h3><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"><img height="80px" class="logo_lotteries" src="'+image_url+'"> </h4></div><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"> <img height="80px" class="logo_lotteries"  src="'+image_url2+'"> </h4> </div></a></div></div></div> <hr>');
                        
                           $('.display_modal').click(function(){
-                              alert($(this).data("lotteryid"));
+                              $('#lottery_id_modal').val($(this).data("lotteryid"));
                               $('#total_price_modal').text($(this).data("lotteryprice"));
                                $("#ticket_name_modal").text($(this).data("teamname") + " Vs " + $(this).data("team2name"));
                               $('#buy_ticket_modal').modal('show');
@@ -370,12 +382,12 @@
                              
                           })
                        
-                   }
-                        
-                   
+                   }      
                });
              
-           
+           $('#confirm-buy-modal').click(function(){
+               buy_ticket_modal();
+           })
              
          });
     
