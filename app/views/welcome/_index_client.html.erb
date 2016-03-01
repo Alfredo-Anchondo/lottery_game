@@ -153,7 +153,7 @@
                     </div>
                 </div>
                 <div class="row" style="padding:0px">
-                <h4 style="text-align:right; margin-right:8%;">Total: $ <span id="total_price"> </span> </h4>
+                <h4 style="text-align:right; margin-right:8%;">Total: $ <span id="total_price_modal"> </span> </h4>
                 </div>
             </div>
         </div>
@@ -356,7 +356,8 @@
                        
                           $('.display_modal').click(function(){
                               alert($(this).data("lotteryid"));
-                                $('#buy_ticket_modal').modal('show');
+                              $('#total_price_modal').text($(this).data("lotteryprice"));
+                              $('#buy_ticket_modal').modal('show');
                           })
                        
                    }
