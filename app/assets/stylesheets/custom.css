@@ -7,6 +7,10 @@
         width: 100% !important;
     }
     
+    .category_logo{
+        width 40px !important;
+    }
+    
     .center-text{
         text-align:center;
     }
@@ -86,3 +90,7 @@
 .logo_lotteries{
     width: 50%;
 }
+
+.category_logo{
+        width 80px;
+    }
