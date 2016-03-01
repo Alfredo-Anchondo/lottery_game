@@ -43,7 +43,7 @@ class LotteriesController < ApplicationController
            if @lottery.update(lottery_params)
                format.html { redirect_to @lottery, notice: t('success_update_lottery') }
                format.json { render :show, status: :ok, location: @lottery }
-               if @lottery.winner_number != ''
+               if @lottery.winner_number 
                    format.html { redirect_to @lottery, notice: 'cambio') } 
                end   
       else
