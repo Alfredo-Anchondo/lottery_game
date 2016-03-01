@@ -276,7 +276,13 @@
                }).done(function(data) {
                    for(var i in data.games){
                        
-                       $("#future_lotteries").append('<div class="timeline-item"><div class="row"><div style="width:20%" class="col-xs-4 col-md-4 date"><i class="fa fa-briefcase"></i>'+moment(data.games[i].game_date ,'', 'es' ).format("MMMM D YYYY, h:mm:ss a")+'</div><div class="col-xs-7 col-md-7 content no-top-border"><p class="m-b-xs"><strong>Meeting</strong></p><p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products.</p></div></div></div>');
+                       if(data.games[i].category.id < 10){
+                           var url = "/system/categories/logos/000/000/00"+ data.games[i].category.id+"/original/"+data.games[i].category.logo_file_name+"
+                       }else{
+                            var url = "/system/categories/logos/000/000/0"+ data.games[i].category.id+"/original/"+data.games[i].category.logo_file_name+"
+                       }
+                       
+                       $("#future_lotteries").append('<div class="timeline-item"><div class="row"><div style="width:20%" class="col-xs-4 col-md-4 date"><img class="" src=" '+url+' " >'+moment(data.games[i].game_date ,'', 'es' ).format("MMMM D YYYY, h:mm:ss a")+'</div><div class="col-xs-7 col-md-7 content no-top-border"><p class="m-b-xs"><strong>Meeting</strong></p><p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products.</p></div></div></div>');
                    }
                         
                    
