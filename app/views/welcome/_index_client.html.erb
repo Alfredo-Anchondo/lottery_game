@@ -130,7 +130,7 @@
       </div>
     <div class="modal-content">
      <div class="row"> 
-         <input style="color:black" class="ticket_number form-control" type="number" min="0" > 
+         <input style="color:black" class="ticket_number form-control" id="lottery_number_in_modal" type="number" min="0" > 
         </div>
      <div class="row"> 
          <h4 style="text-align:center">Boleto</h4>
@@ -151,7 +151,7 @@
                     <div class="col-md-4 col-xs-4">
                     <h4 style="text-align:center"><%= t('ticket') %>:</h4>
                  
-                    <h5 style="text-align:center" id="ticket_numer_lottery"></h5>
+                    <h5 style="text-align:center" id="ticket_numer_lottery_modal"></h5>
                  
                     </div>
                 </div>
@@ -362,6 +362,10 @@
                               $('#total_price_modal').text($(this).data("lotteryprice"));
                                $("#ticket_name_modal").text($(this).data("teamname") + " Vs " + $(this).data("team2name"));
                               $('#buy_ticket_modal').modal('show');
+                              
+                              $("#lottery_number_in_modal").change(function(){
+                                  $("#ticket_numer_lottery_modal").text($('#lottery_number_in_modal').val());
+                              });
                              
                           })
                        
