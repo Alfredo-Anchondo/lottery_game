@@ -3,6 +3,10 @@
    #vs{
     margin-top: 10px !important;
    }
+    .logo_lotteries{
+        width: 100%;
+    }
+    
     .center-text{
         text-align:center;
     }
@@ -77,4 +81,8 @@
 .property-text{
     margin-left:3%; 
     margin-top:3%; 
+}
+
+.logo_lotteries{
+    width: 50%;
 }
