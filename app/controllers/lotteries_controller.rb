@@ -1,7 +1,7 @@
 class LotteriesController < ApplicationController
   before_action :set_lottery, only: [:show, :edit, :update, :destroy]
   before_action :data, only: [:index, :new, :create, :edit, :update]
-    after_update :notify_systtem_if_winner_is_changed
+    
 
   respond_to :html
   respond_to :json
@@ -11,9 +11,7 @@ class LotteriesController < ApplicationController
     respond_with(@lotteries)
   end
     
-    def notify_systtem_if_winner_is_changed
-        notify_system if previous_changes['winner_number'].any?
-  end
+    
 
   def show
     respond_with(@lottery)
