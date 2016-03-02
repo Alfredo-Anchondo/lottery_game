@@ -340,7 +340,7 @@
                  purchase_date = new Date();
                  current_balance = <%= current_user.balance %>;
                  lottery_price = $('#lottery_price').val();
-        
+        var current_bag = parseInt($('#initial_balance').text()) + (lottery_price * .8);
         var total_balance_update = current_balance - lottery_price;
             $.ajax({
                       method: "PUT",
@@ -355,7 +355,7 @@
                       method: "PUT",
                       url: "/lotteries/"+lottery_id+"",
                       dataType: "json",     
-                      data: { lottery: {initial_balance: total_balance_update} }
+                      data: { lottery: {initial_balance: current_bag} }
                     }).done(function( data) {
                          alert('Se actualizo la bolsa');
                      });
