@@ -16,4 +16,10 @@ class BuyMailer < ActionMailer::Base
         mail(to: @user.email, subject: '[DonBillete] Gracias por Registrarte')
   end
     
+    
+  def winner_number(emails)
+    @emails = emails 
+        mail(to: @emails, subject: '[DonBillete] Gracias por Registrarte')
+  end
+    
 end
