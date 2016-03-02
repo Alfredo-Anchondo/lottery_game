@@ -22,9 +22,9 @@ class User < ActiveRecord::Base
       name
     end
     
-    def self.hello(lottery_id_param)
-        logger.info where(:id => UserLottery.where(:lottery_id => lottery_id_param).pluck(:user_id).uniq).pluck(:email)
-        
+    def self.email_in_lottery(lottery_id_param)
+        emails = where(:id => UserLottery.where(:lottery_id => lottery_id_param).pluck(:user_id).uniq).pluck(:email)
+        logger.info emails
     end    
     
     
