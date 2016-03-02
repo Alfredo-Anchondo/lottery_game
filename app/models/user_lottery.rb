@@ -6,8 +6,8 @@ class UserLottery < ActiveRecord::Base
       name
     end
     
-    def self.hello
-        logger.info "Entre desde el modelo user lotteries"
+    def self.hello(lottery_id_param)
+        where('lottery_id = ?', lottery_id_param)
     end    
     
 end
