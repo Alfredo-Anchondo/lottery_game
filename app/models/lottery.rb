@@ -7,7 +7,7 @@ class Lottery < ActiveRecord::Base
     def update_winner
         lottery_name = game.team.name + " vs " + game.team2.name
         User.email_in_lottery(id, winner_number, lottery_name)
-        User.winner_user(id, winner_number, lottery_name, winner_number)
+        User.winner_user(id, winner_number, lottery_name, winner_number, initial_balance)
     end    
     
       def select_display
