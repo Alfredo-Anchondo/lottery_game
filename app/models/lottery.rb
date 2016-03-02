@@ -6,7 +6,7 @@ class Lottery < ActiveRecord::Base
     
     def update_winner
         logger.info "ENTREEEEEEEEEEEEEEEEEE"
-        logger.info user_lotteries.hello(Loterry.id)
+        logger.info user_lotteries.hello(id)
     end    
     
       def select_display
