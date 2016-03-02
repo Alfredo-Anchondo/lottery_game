@@ -6,7 +6,7 @@ class UserLottery < ActiveRecord::Base
       name
     end
     
-    def hello
+    def self.hello
         logger.info "Entre desde el modelo user lotteries"
     end    
     
