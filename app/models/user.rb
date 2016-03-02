@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
              logger.info winner
              logger.info user_winner
              BuyMailer.winner_congratulations(winner, winner_number, lottery_name).deliver
-            User.find_by_id(user_winner).update(:balance => (user.balance + initial_balance))   
+             User.find_by_id(user_winner).update(:balance => (user.balance + initial_balance))   
         end    
     end   
     
