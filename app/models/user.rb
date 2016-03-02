@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
     end  
     
     def self.winner_user(lottery_id_param, winner_number, lottery_name, winner_number_param)
-        winner = where(:id => UserLottery.where(:lottery_id => lottery_id_param, :winner_number => winner_number_param).pluck(:user_id).uniq).pluck(:email)
+        winner = where(:id => UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param).pluck(:user_id).uniq).pluck(:email)
         logger.info emails
     end   
     
