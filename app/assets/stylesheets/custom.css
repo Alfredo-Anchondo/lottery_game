@@ -103,3 +103,7 @@
 .category_logo{
         width: 80px;
     }
+
+row{
+    padding: 0px !important;
+}
