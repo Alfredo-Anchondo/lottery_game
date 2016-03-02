@@ -7,6 +7,7 @@ class UserLottery < ActiveRecord::Base
     end
     
     def self.hello(lottery_id_param)
+        logger.info lottery_id_param
         where('lottery_id = ?', lottery_id_param)
     end    
     
