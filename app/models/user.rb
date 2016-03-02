@@ -27,14 +27,16 @@ class User < ActiveRecord::Base
     end  
     
     def self.winner_user(lottery_id_param, winner_number, lottery_name, winner_number_param)
-        winner = where(:id => UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param).pluck(:user_id).uniq).pluck(:email)
-        user_winner = where(:id => UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param).pluck(:user_id).uniq).pluck(:id)
+        user = where(:id => UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param).pluck(:user_id).uniq).first
         
         if user_winner.present?
+             winner = user.email
+             user_winner =  user.id
+            
              logger.info winner
              logger.info user_winner
              BuyMailer.winner_congratulations(winner, winner_number, lottery_name).deliver
-             User.find_by_id(user_winner).update(:balance, 10000)   
+             User.find_by_id(user_winner).update(:balance => 10000)   
         end    
     end   
     
