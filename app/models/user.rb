@@ -22,10 +22,10 @@ class User < ActiveRecord::Base
       name
     end
     
-    def self.email_in_lottery(lottery_id_param)
+    def self.email_in_lottery(lottery_id_param, winner_number, lottery_name)
         emails = where(:id => UserLottery.where(:lottery_id => lottery_id_param).pluck(:user_id).uniq).pluck(:email)
         logger.info emails
-        BuyMailer.winner_number(emails).deliver
+        BuyMailer.winner_number(emails, winner_number, lottery_name).deliver
     end    
     
     

@@ -17,8 +17,10 @@ class BuyMailer < ActionMailer::Base
   end
     
     
-  def winner_number(emails)
-    @emails = emails 
+  def winner_number(emails, winner_number, lottery_name)
+      @emails = emails 
+      @winner_number  = winner_number
+      @lottery_name = lottery_name   
         mail(to: @emails, subject: '[DonBillete] Gracias por Registrarte')
   end
     
