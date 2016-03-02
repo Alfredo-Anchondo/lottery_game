@@ -6,9 +6,6 @@ class UserLottery < ActiveRecord::Base
       name
     end
     
-    def self.hello(lottery_id_param)
-        logger.info lottery_id_param
-        logger.info where('lottery_id = ?', lottery_id_param).first.user.email
-    end    
+ 
     
 end

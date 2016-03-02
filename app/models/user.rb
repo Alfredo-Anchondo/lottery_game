@@ -22,6 +22,12 @@ class User < ActiveRecord::Base
       name
     end
     
+    def self.hello(lottery_id_param)
+        logger.info where(:id => UserLottery.where(:lottery_id => lottery_id_param).pluck(:user_id).uniq).pluck(:email)
+        
+    end    
+    
+    
       def password_required?
     !persisted? || !password.blank? || !password_confirmation.blank?
   end
