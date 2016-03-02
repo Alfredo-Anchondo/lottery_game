@@ -2,7 +2,7 @@
     <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <div class="row" style="margin:0px; padding:0px;">
-                           <h4 id="header-loterry" style="text-align:left; color:white;">Proxima Loteria <span class="pull-right" style="color:aquamarine" id="getting-started"></span></h4>
+                           <h4 id="header-loterry" style="text-align:left; color:white;">Proxima Loteria <span id="initial_balance"></span> <span class="pull-right" style="color:aquamarine" id="getting-started"></span></h4>
                        </div>
                     </div>
                     <div class="ibox-content" style="display: block;">
@@ -217,6 +217,7 @@
     }  
    
      $('#team_score').text(data.game.local_score);
+     $('#initial_balance').text(data.game.lotteries[0].initial_balance);         
      $('#team_name').text(data.game.team.name);
      $('#team2_name').text(data.game.team2.name);
      $('#team2_score').text(data.game.visit_score);
@@ -338,7 +339,6 @@
                  purchase_date = new Date();
                  current_balance = <%= current_user.balance %>;
                  lottery_price = $('#lottery_price').val();
-                 lottery_price = $('#lottery_price').val();
         
         var total_balance_update = current_balance - lottery_price;
             $.ajax({
@@ -348,6 +348,15 @@
                       data: { user: {balance: total_balance_update} }
                     }).done(function( data) {
                          alert('Se actualizo tu saldo');
+                     });
+        
+          $.ajax({
+                      method: "PUT",
+                      url: "/lotteries/"+lottery_id+"",
+                      dataType: "json",     
+                      data: { lottery: {initial_balance: total_balance_update} }
+                    }).done(function( data) {
+                         alert('Se actualizo la bolsa');
                      });
     }     
     function update_balance_modal(){
