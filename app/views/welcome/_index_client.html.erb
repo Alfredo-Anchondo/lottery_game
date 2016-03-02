@@ -2,7 +2,7 @@
     <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <div class="row" style="margin:0px; padding:0px;">
-                           <h4 id="header-loterry" style="text-align:left; color:white;">Proxima Loteria: #<span id="lottery_id_type" span> Bolsa Inicial: <span id="initial_balance"></span> <span class="pull-right" style="color:aquamarine" id="getting-started"></span></h4>
+                           <h4 id="header-loterry" style="text-align:left; color:white;">Proxima Loteria: #<span id="lottery_id_type" span> Bolsa Inicial: $<span id="initial_balance"></span> <span class="pull-right" style="color:aquamarine" id="getting-started"></span></h4>
                        </div>
                     </div>
                     <div class="ibox-content" style="display: block;">
@@ -242,7 +242,7 @@
    
   
     $('#lottery_id').val(data.game.lotteries[0].id);
-    $('#lottery_id_type').val(data.game.lotteries[0].id);
+    $('#lottery_id_type').text(data.game.lotteries[0].id);
     $('#lottery_price').val(data.game.lotteries[0].price); 
     $('#lottery_display_price').text("$"+data.game.lotteries[0].price); 
              
