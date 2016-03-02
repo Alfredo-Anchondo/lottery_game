@@ -2,7 +2,7 @@
     <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <div class="row" style="margin:0px; padding:0px;">
-                           <h4 id="header-loterry" style="text-align:left; color:white;">Proxima Loteria: #<span id="lottery_id_type"> </span> <span id='first_balance'>Bolsa Acumulada: $</span><span id="initial_balance"></span> <span class="pull-right" style="color:aquamarine" id="getting-started"></span></h4>
+                           <h4 id="header-loterry" style="text-align:left; color:white;">Proxima Loteria: #<span id="lottery_id_type"> </span> <span id='first_balance'>Bolsa Acumulada: $</span><span id="initial_balance"></span> USD <span class="pull-right" style="color:aquamarine" id="getting-started"></span></h4>
                        </div>
                     </div>
                     <div class="ibox-content" style="display: block;">
@@ -217,7 +217,7 @@
     }  
    
      $('#team_score').text(data.game.local_score);
-     $('#initial_balance').text(data.game.lotteries[0].initial_balance + ' USD');         
+     $('#initial_balance').text(data.game.lotteries[0].initial_balance);         
      $('#team_name').text(data.game.team.name);
      $('#team2_name').text(data.game.team2.name);
      $('#team2_score').text(data.game.visit_score);
