@@ -3,6 +3,11 @@
    #vs{
     margin-top: 10px !important;
    }
+    
+    #first_balance{
+        margin-left: 0px !important;
+    }
+    
     .logo_lotteries{
         width: 100% !important;
     }
@@ -37,6 +42,10 @@
     background-color: #00796B;
     color:white;
 }
+
+ #first_balance{
+        margin-left: 30%;
+    }
 
 .text-indicators {
     font-size: 22px;
