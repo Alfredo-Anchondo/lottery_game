@@ -4,6 +4,10 @@
     margin-top: 10px !important;
    }
     
+    #user_image{
+        float: none !important;
+    }
+    
     #current_bal{
         margin-left:3% !important;
     }
