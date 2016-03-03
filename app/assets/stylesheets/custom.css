@@ -4,9 +4,6 @@
     margin-top: 10px !important;
    }
     
-    #first_balance{
-        margin-left: 0px !important;
-    }
     
     .logo_lotteries{
         width: 100% !important;
@@ -43,9 +40,7 @@
     color:white;
 }
 
- #first_balance{
-        margin-left: 30%;
-    }
+
 
 .text-indicators {
     font-size: 22px;
