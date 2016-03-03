@@ -29,7 +29,14 @@
      <p style="text-align:center; color:white" class="notice alert"><%= notice %> <%= alert %></p>
      <input style="display:none" id="current_language" value="<%= current_user %>">
  
-    <div class="" style="margin-top:-5%; width:100%"  id="main-con"><%= yield %></div>
+       <% if signed_in? %>
+       <div class="" style="margin-top:-5%; width:100%"  id="main-con"><%= yield %></div>
+    <% else %>
+    <div class="" style="margin-top:0%; width:100%"  id="main-con"><%= yield %></div>
+    <% end %>
+       
+    
+   
  
    
 </body>
