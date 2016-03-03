@@ -4,7 +4,7 @@
     <div class="col-md-6">
         
      <%=link_to current_user do %>
-             <img width="120px" src="<%= current_user.photo %>">
+             <img width="120px" style="border-radius:150px;" src="<%= current_user.photo %>">
             <span style="text-transform: uppercase;"><%= current_user.select_display %></span> 
              <span style="text-transform: uppercase;">$<%= current_user.balance %></span> 
              <% end %> 
