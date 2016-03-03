@@ -9,7 +9,7 @@
     }
     
     #main-con{
-        margin-top:-21%;
+        margin-top:-21% !important;
     }
     
     #user_image{
@@ -82,7 +82,7 @@
 
 }
 #main-con{
-        margin-top:-5%;
+        margin-top:-5% !important;
     }
 
 #current_bal{
