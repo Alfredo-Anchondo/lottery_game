@@ -6,6 +6,7 @@ Rails.application.routes.draw do
         collection do
             get 'next_game'
             get 'future_games'
+            get 'finish_games'
         end
     end
         
