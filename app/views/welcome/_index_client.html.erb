@@ -203,7 +203,6 @@
     
         $(document).ready(function(){
             
-              $('#initial_balance').textillate();
                  
          $.ajax({
   method: "GET",
@@ -282,7 +281,7 @@
              
              
             
-                 
+                   $('#initial_balance').textillate({ in: { effect: 'rollIn' } });
              
              
         $('#confirm-buy').click(function(){
