@@ -4,6 +4,10 @@
     margin-top: 10px !important;
    }
     
+    #responsive-cellphone{
+        text-align:center;
+    }
+    
     #user_image{
         float: none !important;
     }
