@@ -4,10 +4,10 @@
     <div class="col-md-6" style="margin-top:2%">
              <%=link_to current_user do %>
         <div class="col-md-4"></div>
-        <div class="col-md-4">
+        <div class="col-md-3">
          <img class="pull-right" width="60px" height="60px" style="border-radius:150px;" src="<%= current_user.photo %>">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
          <h4> Bienvenido: <span style="text-transform: uppercase;"><%= current_user.select_display %></span> </h4>
              <span style="text-transform: uppercase;">$<%= current_user.balance %></span> 
         </div>
