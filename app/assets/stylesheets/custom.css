@@ -8,6 +8,10 @@
         text-align:center;
     }
     
+    #main-con{
+        margin-top:-21%;
+    }
+    
     #user_image{
         float: none !important;
     }
@@ -77,6 +81,9 @@
   padding: 13px 18px;
 
 }
+#main-con{
+        margin-top:-5%;
+    }
 
 #current_bal{
     margin-left: 10%;
