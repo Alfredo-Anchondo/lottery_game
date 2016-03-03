@@ -1,4 +1,10 @@
 @media screen and (max-width: 480px) {
+    
+    .col-xs-12{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    
    #vs{
     margin-top: 10px !important;
    }
