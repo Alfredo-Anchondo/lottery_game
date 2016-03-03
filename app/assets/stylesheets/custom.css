@@ -4,9 +4,16 @@
     margin-top: 10px !important;
    }
     
+    #current_bal{
+        margin-left:3% !important;
+    }
     
     .logo_lotteries{
         width: 100% !important;
+    }
+    
+    #logo-image{
+    width: 100% !important;
     }
     
     .category_logo{
@@ -40,6 +47,9 @@
     color:white;
 }
 
+#logo-image{
+    width: 50%;
+}
 
 
 .text-indicators {
@@ -58,6 +68,10 @@
   color: #fff;
   padding: 13px 18px;
 
+}
+
+#current_bal{
+    margin-left: 10%;
 }
 
 #myNavbar .navbar-nav li a:hover{
