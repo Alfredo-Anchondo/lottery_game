@@ -66,8 +66,8 @@
 }
 
 #myNavbar .navbar-nav li a:hover{
-    background-color: aquamarine;
-    color:#00796B;
+    background-color: #ff1e98;
+    color:gray;
 }
 
 #data-table thead {
