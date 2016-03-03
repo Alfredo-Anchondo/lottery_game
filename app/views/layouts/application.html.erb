@@ -30,7 +30,9 @@
      <input style="display:none" id="current_language" value="<%= current_user %>">
  
        <% if signed_in? %>
-       <div class="" style="margin-top:-5%; width:100%"  id="main-con"><%= yield %></div>
+    <% if current_user.role.is_admin? %>
+       <div class="" style="margin-top:-3%; width:100%"  id="main-con"><%= yield %></div>
+    <% end %>
     <% else %>
     <div class="" style="margin-top:0%; width:100%"  id="main-con"><%= yield %></div>
     <% end %>
