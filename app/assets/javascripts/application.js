@@ -14,7 +14,8 @@
 //= require jquery_ujs
 // require turbolinks
 //= require bootstrap
-//= require jquery
+//= require jquery_lettering
+//= require jquery_textillate
 //= require jquery.dataTables
 //= require dataTables.bootstrap
 //= require metisMenu/jquery.metisMenu.js
