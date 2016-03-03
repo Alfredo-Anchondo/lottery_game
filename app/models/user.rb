@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   
 
       def select_display
-      name
+        name + " " + last_name
     end
     
     def self.email_in_lottery(lottery_id_param, winner_number, lottery_name)
