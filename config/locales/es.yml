@@ -96,6 +96,7 @@ es:
   last_name: "Apellido"
   close: "Cerrar"
   buy: "Comprar"
+  welcome: "Bienvenido"
   lottery_rules: "Reglas de la Loteria"
   lottery_price: "Precio de la Loteria"
   purchase_confirmation: "Confirmación de Compra"

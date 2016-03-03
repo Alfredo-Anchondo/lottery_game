@@ -8,7 +8,7 @@
          <img class="pull-right" width="60px" height="60px" style="border-radius:150px;" src="<%= current_user.photo %>">
         </div>
         <div class="col-md-6">
-         <h4> Bienvenido: <span style="text-transform: uppercase;"><%= current_user.select_display %></span> </h4>
+            <h4> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.select_display %></span> </h4>
              <span style="text-transform: uppercase;">$<%= current_user.balance %></span> 
         </div>
 
