@@ -73,6 +73,35 @@
 
 </div>
 
+<div class="row">
+<div class="col-md-6 col-xs-12" style="padding-left:0px; padding-right:0px;">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Juegos Terminados</h5>
+                            <span class="label label-primary">Resultados de loterias</span>
+                        </div>
+
+                        <div class="ibox-content inspinia-timeline" id="finish_lotteries">
+                            <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Equipo local</th>
+                                <th>Equipo Visitante</th>
+                                <th>Marcador</th>
+                                <th>Numero Ganador</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+
+</div>
+
+
 
 <!--------------------- MODAL DE CONFIRMACION --------------------------->
 
@@ -465,6 +494,17 @@
                }
               
            })
+           
+           
+            $.ajax({
+            method: "GET",
+            url: "/games/finish_games",
+            format: "json"
+               }).done(function(data){
+                
+            })
+           
+           
              
          });
     
