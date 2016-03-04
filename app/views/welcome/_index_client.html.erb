@@ -74,8 +74,8 @@
     <div class="col-md-6 col-xs-12" style="padding-left:7px; padding-right:0px;">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Juegos Terminados</h5>
-                            <span class="label label-primary">Resultados de loterias</span>
+                            <h5>Resultado de Loterias</h5>
+                            <span class="label label-primary">Ultimos 10 resultados</span>
                         </div>
 
                         <div class="ibox-content inspinia-timeline" id="finish_lotteries">
@@ -495,7 +495,23 @@
             format: "json"
                }).done(function(data){
                 for(var i in data.games){
-                      $('#finish_lotteries').append(' <div class="row"><div class="col-md-2"><h5 style="text-align:center"> '+  data.games[i].lotteries[0].id+'</h5></div><div class="col-md-3"><h5 style="text-align:center"> '+ data.games[i].team.name +'</h5></div><div class="col-md-3"><h5 style="text-align:center">'+ data.games[i].team2.name +'</h5></div><div class="col-md-2"><h5 style="text-align:center">'+ data.games[i].local_score+ ' - ' + data.games[i].visit_score +'</h5></div><div class="col-md-2"><h5 style="text-align:center">' + data.games[i].lotteries[0].winner_number + '</h5></div></div> <hr>');
+                    
+                      if (data.games[i].team2.id < 10){
+                        var image_url2 ='/system/teams/logos/000/000/00'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
+                        }   else{
+                        var image_url2 = '/system/teams/logos/000/000/0'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
+                        }  
+                    
+                       if (data.games[i].team.id < 10){
+                        var image_url ='/system/teams/logos/000/000/00'+data.games[i].team.id+'/original/'+data.games[i].team.logo_file_name;
+                        }   else{
+                        var image_url = '/system/teams/logos/000/000/0'+data.games[i].team.id+'/original/'+data.games[i].team.logo_file_name;
+                        }  
+                    
+                    
+                    
+                    
+                      $('#finish_lotteries').append(' <div class="row"><div class="col-md-2"><h5 style="text-align:center"> '+  data.games[i].lotteries[0].id+'</h5></div><div class="col-md-3"><h5 style="text-align:center"> <img width="50px" src="'+image_url+'"> '+ data.games[i].team.name +'</h5></div><div class="col-md-3"><h5 style="text-align:center"> <img width="50px" src="'+image_url2+'">'+ data.games[i].team2.name +'</h5></div><div class="col-md-2"><h5 style="text-align:center">'+ data.games[i].local_score+ ' - ' + data.games[i].visit_score +'</h5></div><div class="col-md-2"><h5 style="text-align:center">' + data.games[i].lotteries[0].winner_number + '</h5></div></div> <hr>');
                 }
               
             })
