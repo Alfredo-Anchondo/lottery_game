@@ -96,6 +96,8 @@ es:
   last_name: "Apellido"
   close: "Cerrar"
   buy: "Comprar"
+  process: "Procesos"
+  winners_history: "Historial de Ganadores"
   welcome: "Bienvenido"
   current_user_balance: "Saldo Actual"
   lottery_rules: "Reglas de la Loteria"
