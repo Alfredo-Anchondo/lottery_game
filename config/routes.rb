@@ -20,7 +20,12 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :user_lotteries
+  resources :user_lotteries do
+    collection do
+        get 'winners'
+    end
+  end
+        
 
   resources :lotteries do
        

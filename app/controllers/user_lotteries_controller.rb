@@ -41,6 +41,10 @@ class UserLotteriesController < ApplicationController
     end
   end
 
+    def winners
+        render :json => UserLottery.winners
+    end
+    
   # PATCH/PUT /user_lotteries/1
   # PATCH/PUT /user_lotteries/1.json
   def update
