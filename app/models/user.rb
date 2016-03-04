@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
              logger.info user_winner
              BuyMailer.winner_congratulations(winner, winner_number, lottery_name).deliver
              User.find_by_id(user_winner).update(:balance => (user.balance + initial_balance)) 
-             UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param, :user_id => user_winner).update(:status => ("Ganador"))
+             UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param, :user_id => user_winner).update(:status => "Ganador")
         end    
     end   
     
