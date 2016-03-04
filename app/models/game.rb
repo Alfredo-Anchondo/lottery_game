@@ -18,7 +18,7 @@ class Game < ActiveRecord::Base
     end
     
       def self.finish_games
-        where('game_date <= ?', DateTime.now).order(:game_date).all
+        where('game_date <= ?', DateTime.now).order(:game_date :desc).all
     end
     
 end
