@@ -494,7 +494,10 @@
             url: "/games/finish_games",
             format: "json"
                }).done(function(data){
-                
+                for(var i in data.games){
+                      $('#finish_lotteries').append(' <div class="row"><div class="col-md-2"><h5 style="text-align:center"> '+  data.games[i].lotteries.id+'</h5></div><div class="col-md-3"><h5 style="text-align:center"> '+ data.games[i].team.name +'</h5></div><div class="col-md-3"><h5 style="text-align:center">'+ data.games[i].team2.name +'</h5></div><div class="col-md-2"><h5 style="text-align:center">'+ data.games[i].local_score+ ' - ' + data.games[i].visit_score +'</h5></div><div class="col-md-2"><h5 style="text-align:center">' + data.games[i].lotteries.winner_number + '</h5></div></div>');
+                }
+              
             })
            
            
