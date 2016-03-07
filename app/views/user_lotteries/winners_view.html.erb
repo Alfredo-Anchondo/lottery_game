@@ -51,7 +51,9 @@
         { data: 'lottery_id' },
         { data: 'lottery.winner_number' },
         { data: 'lottery.price' },
-        { data: 'lottery.initial_balance' },
+        { data:  function ( row, type, val, meta ) {
+            return  "$" + row.lottery.initial_balance + "USD"
+        } },
         { data: 'purchase_date' }
     ],
 } );
