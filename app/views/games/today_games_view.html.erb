@@ -32,9 +32,8 @@
                     }   else{
                     var image_url2 = '/system/teams/logos/000/000/0'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
                     }  
-              
-                            
-                            $('#append-games').append('<div class="row"> <div class="col-md-2"> <br> <h4 style="text-align:center"> <%= t("instruction_close_games") %> </h4> <br> <h4 style="text-align:center"> <button class="button btn   btn-default update_score" data-id="'+data.games[i].id+'" > <%= t("update_score") %> </button> </h4> <br> <h4 style="text-align:center"> Numero Ganador </h4> <input style="text-align:center" class="form-control" id="winner_number_input'+data.games[i].id+'" > <br> <h4 style="text-align:center"><button class="button btn btn-danger close_lottery" data-id="'+data.games[i].id+'" data-idlottery="'+data.games[i].lotteries[0].id+'"  > <%= t("close_lottery") %> </button> </h4> </div><div class="col-md-4"> <h4 style="text-align:center"><img width="60%" src="'+ image_url +'"> </h4> <h4 style="text-align:center"> <input type="number" style="width: 30%; margin-left:35%; text-align:center; font-size:30px; height:60px;" id="team_local_score'+data.games[i].id+'" value="' + data.games[i].local_score + '" class="form-control"> </h4> </div> <div class="col-md-2"> <br> <br> <br> <br> <br> <h1 style="text-align:center; font-size:50px; font-weight:900;"> VS </h1> </div> <div class="col-md-4"> <h4 style="text-align:center"> <img width="60%" src="'+ image_url2 +'">  </h4> <h4 style="text-align:center"> <input type="number" style="width: 30%; margin-left:35%;  text-align:center; font-size:30px; height:60px;" id="team_visit_score'+data.games[i].id+'" value="' + data.games[i].visit_score + '" class="form-control"> </h4> </div> </div> <hr>');
+                        if(data.games[i].lotteries[i].winner_numer = ''){
+                                    $('#append-games').append('<div class="row"> <div class="col-md-2"> <br> <h4 style="text-align:center"> <%= t("instruction_close_games") %> </h4> <br> <h4 style="text-align:center"> <button class="button btn   btn-default update_score" data-id="'+data.games[i].id+'" > <%= t("update_score") %> </button> </h4> <br> <h4 style="text-align:center"> Numero Ganador </h4> <input style="text-align:center" class="form-control" id="winner_number_input'+data.games[i].id+'" > <br> <h4 style="text-align:center"><button class="button btn btn-danger close_lottery" data-id="'+data.games[i].id+'" data-idlottery="'+data.games[i].lotteries[0].id+'"  > <%= t("close_lottery") %> </button> </h4> </div><div class="col-md-4"> <h4 style="text-align:center"><img width="60%" src="'+ image_url +'"> </h4> <h4 style="text-align:center"> <input type="number" style="width: 30%; margin-left:35%; text-align:center; font-size:30px; height:60px;" id="team_local_score'+data.games[i].id+'" value="' + data.games[i].local_score + '" class="form-control"> </h4> </div> <div class="col-md-2"> <br> <br> <br> <br> <br> <h1 style="text-align:center; font-size:50px; font-weight:900;"> VS </h1> </div> <div class="col-md-4"> <h4 style="text-align:center"> <img width="60%" src="'+ image_url2 +'">  </h4> <h4 style="text-align:center"> <input type="number" style="width: 30%; margin-left:35%;  text-align:center; font-size:30px; height:60px;" id="team_visit_score'+data.games[i].id+'" value="' + data.games[i].visit_score + '" class="form-control"> </h4> </div> </div> <hr>');
                                                       
                                                       
                                  var winner = String(data.games[i].local_score % 10) + String(data.games[i].visit_score % 10);                        
@@ -72,6 +71,10 @@
                                                  location.reload();
                                                  })
                                               });
+                           
+                        }else{ alert('Esta vacio');}
+                            
+                    
                         }
                         
                      });
