@@ -40,9 +40,9 @@
         { data: 'user.name' },
         { data: function ( row, type, val, meta ) {
             if(row.user.id < 10){
-                   return  "<img src='/system/users/photos/000/000/00"row.user.id"/original/"+row.user.photo_file_name+"'>" }
+                   return  "<img src='/system/users/photos/000/000/00"+row.user.id+"/original/"+row.user.photo_file_name+"'>" }
             else{
-                return  "<img src='/system/users/photos/000/000/0"row.user.id"/original/"+row.user.photo_file_name+"'>"
+                return  "<img src='/system/users/photos/000/000/0"+row.user.id+"/original/"+row.user.photo_file_name+"'>"
             }
         }
         },
