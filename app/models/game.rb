@@ -22,7 +22,7 @@ class Game < ActiveRecord::Base
     end
     
     def self.today_games
-        where('game_date = ?', DateTime.now).order(game_date: :desc).all
+        where('game_date >= ? && game_date <= ?', DateTime.now, Datetime.now +24 ).order(game_date: :desc).all
     end
     
 end
