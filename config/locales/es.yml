@@ -93,6 +93,7 @@ es:
   hours: "Horas"
   ticket: "Boleto"
   lottery_id: "ID de la Loteria"
+  instruction_close_games: "Selecciona actualizar para actualizar el marcador del partido. Selecciona la opcion de cerrar loteria para elegir el numero ganador y notificar a todos los usuarios cual fue el numero ganador."
   user_id: "ID del Usuario"
   total_win: "Monto Ganado"
   today_games: "Juegos del Dia"
