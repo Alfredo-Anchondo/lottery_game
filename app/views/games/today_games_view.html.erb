@@ -60,7 +60,7 @@
                                   $(".close_lottery").click(function(){
                                        var game_id = $(this).data("id");
                                       var lottery_id = $(this).data('idlottery');
-                                       var winner_number = $("#team_local_score"+game_id+"").val();   
+                                       var winner_number = $("#winner_number_input"+game_id+"").val();   
                                       
                                            $.ajax({
                                                   method: "PUT",
