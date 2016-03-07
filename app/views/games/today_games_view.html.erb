@@ -64,7 +64,7 @@
                                       
                                            $.ajax({
                                                   method: "PUT",
-                                                 url: "/lottery/"+lottery_id,
+                                                 url: "/lotteries/"+lottery_id,
                                                 data: { lottery: {winner_number: winner_number} },
                                                dataType: "json"  
                                                   }).done(function(data){
