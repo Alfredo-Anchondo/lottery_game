@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  helpers:
+     select:
+       prompt: Please select
   date:
     abbr_day_names:
     - dom
