@@ -92,6 +92,7 @@ es:
   day: "Dias"
   hours: "Horas"
   ticket: "Boleto"
+  lottery_id: "ID de la Loteria"
   name: "Nombre"
   last_name: "Apellido"
   close: "Cerrar"
