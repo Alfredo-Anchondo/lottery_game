@@ -56,14 +56,16 @@
                             
                                   $(".update_score").click(function(){
                                        var game_id = $(this).data("id");
+                                      var lottery_id = $(this).data('idlottery');
                                        var winner_number = $("#team_local_score"+game_id+"").val();   
                                       
                                            $.ajax({
                                                   method: "PUT",
-                                                 url: "/lottery/"+game_id,
+                                                 url: "/lottery/"+lottery_id,
                                                 data: { lottery: {winner_number: winner_number} },
                                                dataType: "json"  
                                                   }).done(function(data){
+                                               alert("Se cerro la loteria");
                                                  location.reload();
                                                  })
                                               });
