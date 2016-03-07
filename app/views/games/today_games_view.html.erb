@@ -14,6 +14,20 @@
 </div>
     
 <script>
+    
+    function update_score(){
+     var game_id = $(this).data("id");
+     var loca_score = $("#team_local_score"+game_id+"").val();   
+    var visit_score = $("#team_visit_score"+game_id+"").val();   
+          $.ajax({
+                      method: "PUT",
+                      url: "/games/"+game_id,
+                      data: { game: {local_score: loca_score, visit_score} },
+                      dataType: "json"  
+                    })
+    }
+    
+    
           $.ajax({
                       method: "GET",
                       url: "/games/today_games.json",
