@@ -93,6 +93,7 @@ es:
   hours: "Horas"
   ticket: "Boleto"
   lottery_id: "ID de la Loteria"
+  user_id: "ID del Usuario"
   name: "Nombre"
   last_name: "Apellido"
   close: "Cerrar"
