@@ -94,6 +94,7 @@ es:
   ticket: "Boleto"
   lottery_id: "ID de la Loteria"
   user_id: "ID del Usuario"
+  total_win: "Monto Ganado"
   name: "Nombre"
   last_name: "Apellido"
   close: "Cerrar"

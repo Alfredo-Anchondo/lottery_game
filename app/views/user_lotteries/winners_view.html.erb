@@ -16,6 +16,7 @@
                                   <th><%= t("lottery_id") %></th>
                                   <th><%= t("activerecord.attributes.lottery.winner_number") %></th>
                                   <th><%= t("activerecord.attributes.lottery.price") %></th>
+                                  <th><%= t("total_win") %></th>
                                   <th><%= t("activerecord.attributes.user_lottery.purchase_date") %></th>
               </tr>
             </thead>
@@ -50,6 +51,7 @@
         { data: 'lottery_id' },
         { data: 'lottery.winner_number' },
         { data: 'lottery.price' },
+        { data: 'lottery.initial_balance' },
         { data: 'purchase_date' }
     ],
 } );
