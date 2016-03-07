@@ -53,7 +53,9 @@
         { data:  function ( row, type, val, meta ) {
             return  "$ " + row.lottery.initial_balance + " USD"
         } },
-        { data: 'purchase_date' }
+        { data: function ( row, type, val, meta ) {
+            return moment(row.purchase_date ,'' ,'es').format('MM/DD/YYYY HH:mm');
+        }  }
     ],
 } );
       
