@@ -37,12 +37,12 @@
     },
     columns: [
         { data: 'user_id' },
-        { data: 'user.name' },
+        { data: 'user.username' },
         { data: function ( row, type, val, meta ) {
             if(row.user.id < 10){
-                   return  "<img width='60px' src='/system/users/photos/000/000/00"+row.user.id+"/original/"+row.user.photo_file_name+"'>" }
+                   return  "<img width='80px' src='/system/users/photos/000/000/00"+row.user.id+"/original/"+row.user.photo_file_name+"'>" }
             else{
-                return  "<img width='60px' src='/system/users/photos/000/000/0"+row.user.id+"/original/"+row.user.photo_file_name+"'>"
+                return  "<img width='80px' src='/system/users/photos/000/000/0"+row.user.id+"/original/"+row.user.photo_file_name+"'>"
             }
         }
         },
