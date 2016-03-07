@@ -13,6 +13,7 @@
           <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
             <thead>
               <tr>
+                                  <th><%= t("activerecord.attributes.lottery.id") %></th>
                                   <th><%= t("activerecord.attributes.lottery.initial_balance") %></th>
                                   <th><%= t("activerecord.attributes.lottery.game") %></th>
                                   <th><%= t("activerecord.attributes.lottery.winner_number") %></th>
@@ -26,6 +27,7 @@
             <tbody>
               <% @lotteries.each do |lottery| %>
               <tr>
+                  <td><%= lottery.id %></td>
                                   <td><%= lottery.initial_balance %></td>
                   <td><%= lottery.game.team.name + " vs " + lottery.game.team2.name %></td>
                                   <td><%= lottery.winner_number %></td>
