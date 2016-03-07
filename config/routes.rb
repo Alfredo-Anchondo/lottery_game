@@ -8,6 +8,7 @@ Rails.application.routes.draw do
             get 'future_games'
             get 'finish_games'
             get 'today_games'
+            get 'today_games_view'
         end
     end
         
