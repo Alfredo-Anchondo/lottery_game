@@ -10,3 +10,14 @@
       <!-- end panel-body -->
     </div>
 </div>
+    
+<script>
+          $.ajax({
+                      method: "GETT",
+                      url: "/games/today_games",
+                      dataType: "json"  
+                    }).done(function( data) {
+                         alert('Se cargaroj los juegos del dia');
+                     });
+      
+ </script>    
