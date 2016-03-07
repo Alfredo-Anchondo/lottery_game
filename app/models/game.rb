@@ -21,4 +21,8 @@ class Game < ActiveRecord::Base
           where('game_date <= ?', DateTime.now).order(game_date: :desc).all
     end
     
+    def self.today_games
+          where('game_date = ?', Date.now).order(game_date: :desc).all
+    end
+    
 end

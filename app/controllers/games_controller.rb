@@ -22,6 +22,10 @@ class GamesController < ApplicationController
         render :json => Game.next_game 
     end
     
+    def today_games
+        render :json => Game.today_games 
+    end
+    
     def future_games
         render :json => Game.future_games
     end
