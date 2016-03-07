@@ -12,7 +12,7 @@
               <tr>
                                   <th><%= t("user_id") %></th>    
                                   <th><%= t("activerecord.models.user") %></th>
-                                  <th><%= t("activerecord.attributes.user.logo") %></th>
+                                  <th><%= t("activerecord.attributes.user.photo") %></th>
                                   <th><%= t("lottery_id") %></th>
                                   <th><%= t("activerecord.attributes.lottery.winner_number") %></th>
                                   <th><%= t("activerecord.attributes.lottery.price") %></th>
@@ -40,9 +40,9 @@
         { data: 'user.name' },
         { data: function ( row, type, val, meta ) {
             if(row.user.id < 10){
-                   return  "<img width='40px' src='/system/users/photos/000/000/00"+row.user.id+"/original/"+row.user.photo_file_name+"'>" }
+                   return  "<img width='60px' src='/system/users/photos/000/000/00"+row.user.id+"/original/"+row.user.photo_file_name+"'>" }
             else{
-                return  "<img width='40px' src='/system/users/photos/000/000/0"+row.user.id+"/original/"+row.user.photo_file_name+"'>"
+                return  "<img width='60px' src='/system/users/photos/000/000/0"+row.user.id+"/original/"+row.user.photo_file_name+"'>"
             }
         }
         },
