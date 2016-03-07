@@ -7,7 +7,7 @@
       </div>
       <div class="panel-body">
               <div class="table-responsive">
-          <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
+          <table id="data-table"  class="winner-table table table-bordered table-hover table-striped nowrap" width="100%">
             <thead>
               <tr>
                                   <th><%= t("user_id") %></th>    
@@ -29,4 +29,20 @@
 </div>
 
 
-<script></script>
+<script>
+      $('.winner-table').DataTable( {
+    ajax: {
+        url: '/user_lotteries/winners',
+        dataSrc: 'user_lotteries'
+    },
+    columns: [
+        { data: 'user_id' },
+        { data: 'user.name' },
+        { data: 'user.photo_file_name' },
+        { data: 'lottery_id' },
+        { data: 'loterry.price' },
+        { data: 'purchase_date' }
+    ]
+} );
+      
+      </script>
