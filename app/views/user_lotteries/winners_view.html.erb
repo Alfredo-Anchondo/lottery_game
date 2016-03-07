@@ -38,17 +38,13 @@
     columns: [
         { data: 'user_id' },
         { data: 'user.name' },
-        { data: 'user.photo_file_name' },
+        { data: function ( row, type, val, meta ) {
+            return  "<img src='"user.photo_file_name"'>" }},
         { data: 'lottery_id' },
         { data: 'lottery.winner_number' },
         { data: 'lottery.price' },
         { data: 'purchase_date' }
     ],
-    "columnDefs": [ {
-        "targets": [ 2 ],
-        "data": 'user.photo_file_name',
-        "defaultContent": "<h1>  </h1>"
-    } ]
 } );
       
       </script>
