@@ -43,7 +43,12 @@
         { data: 'lottery.winner_number' },
         { data: 'lottery.price' },
         { data: 'purchase_date' }
-    ]
+    ],
+    "columnDefs": [ {
+        "targets": [ 2 ],
+        "data": 'user.photo_file_name',
+        "defaultContent": "HI"
+    } ]
 } );
       
       </script>
