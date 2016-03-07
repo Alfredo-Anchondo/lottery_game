@@ -19,7 +19,8 @@
                       url: "/games/today_games.json",
                       dataType: "json"  
                     }).done(function( data) {
-                if (data.games[i].team.id < 10){
+                        for(var i in data.games){
+                             if (data.games[i].team.id < 10){
                          var image_url = '/system/teams/logos/000/000/00'+data.games[i].team.id+'/original/'+data.games[i].team.logo_file_name;
                     }   else{
                     var image_url = '/system/teams/logos/000/000/0'+data.games[i].team.id+'/original/'+data.games[i].team.logo_file_name;
@@ -30,8 +31,7 @@
                     var image_url2 = '/system/teams/logos/000/000/0'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
                     }  
               
-              
-                        for(var i in data.games){
+                            
                             $('#append-games').append('<div class="row"><div class="col-md-6"> <img src="'+ image_url +'">  </div> <div class="col-md-6">  <img src="'+ image_url2 +'">  </div> </div>');
                         }
                         
