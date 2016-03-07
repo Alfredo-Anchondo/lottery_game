@@ -39,7 +39,8 @@
         { data: 'user_id' },
         { data: 'user.name' },
         { data: function ( row, type, val, meta ) {
-            return  "<img>" }},
+            x = 'user.photo_file_name'
+            return  "<img src='"+x+"'>" }},
         { data: 'lottery_id' },
         { data: 'lottery.winner_number' },
         { data: 'lottery.price' },
