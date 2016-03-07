@@ -96,7 +96,7 @@ es:
   user_id: "ID del Usuario"
   total_win: "Monto Ganado"
   today_games: "Juegos del Dia"
-  games_today: "Juegos que estan programados para el dia de Hoy"
+  games_today: "Juegos que estan programados para el dia de hoy"
   name: "Nombre"
   last_name: "Apellido"
   close: "Cerrar"
