@@ -15,22 +15,7 @@
     
 <script>
     
-    $(".update_score").click(function(){
-          var game_id = $(this).data("id");
-     var loca_score = $("#team_local_score"+game_id+"").val();   
-    var visit_score = $("#team_visit_score"+game_id+"").val();   
-          $.ajax({
-                      method: "PUT",
-                      url: "/games/"+game_id,
-                      data: { game: {local_score: loca_score, visit_score} },
-                      dataType: "json"  
-                    }).done(function(data){
-              alert("Se actualizo el marcador con exito");
-          })
-    });
-  
-    
-    
+
           $.ajax({
                       method: "GET",
                       url: "/games/today_games.json",
@@ -50,6 +35,21 @@
               
                             
                             $('#append-games').append('<div class="row"> <div class="col-md-2"> <h4 style="text-align:center"> <%= t("instruction_close_games") %> </h4> <h4 style="text-align:center"> <button class="button btn   btn-default update_score" data-id="'+data.games[i].id+'" > <%= t("update_score") %> </button> </h4> <br> <h4 style="text-align:center"><button class="button btn btn-danger" data-id="'+data.games[i].id+'" > <%= t("close_lottery") %> </button> </h4> </div><div class="col-md-4"> <h4 style="text-align:center"><img width="60%" src="'+ image_url +'"> </h4> <h4 style="text-align:center"> <input type="number" style="width: 30%; margin-left:35%; text-align:center; font-size:18px;" id="team_local_score'+data.games[i].id+'" value="' + data.games[i].local_score + '" class="form-control"> </h4> </div> <div class="col-md-2"> <br> <br> <br> <br> <br> <h1 style="text-align:center; font-size:50px; font-weight:900;"> VS </h1> </div> <div class="col-md-4"> <h4 style="text-align:center"> <img width="60%" src="'+ image_url2 +'">  </h4> <h4 style="text-align:center"> <input type="number" style="width: 30%; margin-left:35%;  text-align:center; font-size:18px;" id="team_visit_score'+data.games[i].id+'" value="' + data.games[i].visit_score + '" class="form-control"> </h4> </div> </div>');
+                                                      
+                                                      
+                                                          $(".update_score").click(function(){
+                                                          var game_id = $(this).data("id");
+                                                     var loca_score = $("#team_local_score"+game_id+"").val();   
+                                                    var visit_score = $("#team_visit_score"+game_id+"").val();   
+                                                          $.ajax({
+                                                                      method: "PUT",
+                                                                      url: "/games/"+game_id,
+                                                                      data: { game: {local_score: loca_score, visit_score} },
+                                                                      dataType: "json"  
+                                                                    }).done(function(data){
+                                                              alert("Se actualizo el marcador con exito");
+                                                          })
+                                                    });
                         }
                         
                      });
