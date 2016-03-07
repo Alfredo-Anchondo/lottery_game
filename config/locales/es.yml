@@ -95,6 +95,7 @@ es:
   lottery_id: "ID de la Loteria"
   close_lottery: "Cerrar Loteria"
   update_score: "Actualizar marcador"
+  close_lottery_message: "Esta loteria ya se encuentra cerrada, ya se notifico a los usuarios sobre el numero ganador."
   instruction_close_games: "Selecciona actualizar para actualizar el marcador del partido. Selecciona la opcion de cerrar loteria para elegir el numero ganador y notificar a todos los usuarios cual fue el numero ganador."
   user_id: "ID del Usuario"
   total_win: "Monto Ganado"
