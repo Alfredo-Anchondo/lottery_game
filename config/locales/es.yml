@@ -22,7 +22,7 @@
 es:
   helpers:
      select:
-       prompt: Please select
+       prompt: Por favor Selecciona
   date:
     abbr_day_names:
     - dom
