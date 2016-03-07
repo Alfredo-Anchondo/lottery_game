@@ -10,9 +10,9 @@
           <table id="winner-table"  class=" table table-bordered table-hover table-striped nowrap" width="100%">
             <thead style="background-color:#727272; color:white;">
               <tr>
+                                  <th><%= t("activerecord.attributes.user.photo") %></th>
                                   <th><%= t("user_id") %></th>    
                                   <th><%= t("activerecord.models.user") %></th>
-                                  <th><%= t("activerecord.attributes.user.photo") %></th>
                                   <th><%= t("lottery_id") %></th>
                                   <th><%= t("activerecord.attributes.lottery.winner_number") %></th>
                                   <th><%= t("activerecord.attributes.lottery.price") %></th>
@@ -37,8 +37,6 @@
         dataSrc: 'user_lotteries'
     },
     columns: [
-        { data: 'user_id' },
-        { data: 'user.username' },
         { data: function ( row, type, val, meta ) {
             if(row.user.id < 10){
                    return  "<img width='80px' src='/system/users/photos/000/000/00"+row.user.id+"/original/"+row.user.photo_file_name+"'>" }
@@ -47,7 +45,8 @@
             }
         }
         },
-         
+        { data: 'user_id' },
+        { data: 'user.username' },
         { data: 'lottery_id' },
         { data: 'lottery.winner_number' },
         { data: 'lottery.price' },
