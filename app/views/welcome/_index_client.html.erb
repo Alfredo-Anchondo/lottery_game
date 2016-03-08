@@ -99,7 +99,7 @@
 <!--------------------- MODAL DE CONFIRMACION --------------------------->
 
 <div class="modal fade bs-example-modal-sm" id="confirm_buy" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div style="background-color:#E4007D" id="confirm_buy_modal" class="modal-dialog modal-md">
+  <div style="background-color:#E4007D"  class="modal-dialog modal-md confirm_buy_modal">
        <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
            <h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t('purchase_confirmation') %></h4>
@@ -133,7 +133,7 @@
                 </div>
             </div>
          <div class="col-md-12">
-         <h4>Bolsa acumulada hasta el momento: <span id="total_initial_balance" style="color:#E4007D; font-size:120%;"></span> </h4> <small>* El valor de la bolsa que ves es el actual, este podra conservarse igual o aumentar segun la demanda de boletos.</small>
+         <h4>Bolsa acumulada hasta el momento: <span class="total_initial_balance" style="color:#E4007D; font-size:120%;"></span> </h4> <small>* El valor de la bolsa que ves es el actual, este podra conservarse igual o aumentar segun la demanda de boletos.</small>
          </div>
         </div>
     </div>
@@ -151,7 +151,7 @@
 <!--------------------- MODAL DE COMPRA --------------------------->
 
 <div class="modal fade bs-example-modal-sm" id="buy_ticket_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div style="background-color:#E4007D" class="modal-dialog modal-sm">
+  <div style="background-color:#E4007D" class="modal-dialog modal-sm confirm_buy_modal">
        <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
            <h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t('purchase_confirmation') %></h4>
@@ -193,7 +193,7 @@
                 </div>
             </div>
          <div class="col-md-12">
-          <h4>Bolsa acumulada hasta el momento: <span id="total_initial_balance" style="color:#E4007D; font-size:120%;"></span> </h4> <small>* El valor de la bolsa que ves es el actual, este podra conservarse igual o aumentar segun la demanda de boletos.</small>
+          <h4>Bolsa acumulada hasta el momento: <span class="total_initial_balance" style="color:#E4007D; font-size:120%;"></span> </h4> <small>* El valor de la bolsa que ves es el actual, este podra conservarse igual o aumentar segun la demanda de boletos.</small>
          </div>
         </div>
     </div>
@@ -262,7 +262,7 @@
              
      $('#team_score').text(data.game.local_score);
      $('#initial_balance').text(data.game.lotteries[0].initial_balance);   
-     $("#total_initial_balance").text("$"+data.game.lotteries[0].initial_balance+ " USD");         
+     $(".total_initial_balance").text("$"+data.game.lotteries[0].initial_balance+ " USD");         
      $('#team_name').text(data.game.team.name);
      $('#team2_name').text(data.game.team2.name);
      $('#team2_score').text(data.game.visit_score);
