@@ -4,22 +4,26 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
       
       <style>
-    h1{
-        font-size:40px;
-        text-align:center;
-    }
-    h2, h3, h4, h5{
-        text-align:center;
-    }
-    
-    #welcome{background-color:#E4007D;}
+    h1{font-size:40px; text-align:center;}
+    h2, h3, h4, h5{text-align:center;}
+    .welcome{color:white;}
+    .panel-header{background-color:#E4007D;}      
+          
 </style>
   </head>
   <body>
-        <h1 id="welcome">Gracias por participar con nosotros en esta loteria.</h1>
+      <div class="panel">
+        <div class="panel-header"></div>
+       <h1 class="welcome">Gracias por participar con nosotros en esta loteria.</h1>
+       <h2 class="welcome">Te deseamos la mejor de la suerte.Aqui los detalles de tu compra</h2>      
+      </div>
+      <div class="panel-body">
+      
+      </div>
+       
     
-      <h2></h2>
-      <hr>
+ 
+   
       
       <p>Gracias por tu compra, <span style="text-transform:uppercase"><%= @user.name %></span></p>
       <p>Compraste el numero   <span> <%= @user_lottery.ticket_number %> </span> </p>
