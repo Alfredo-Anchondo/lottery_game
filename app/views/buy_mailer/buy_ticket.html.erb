@@ -21,15 +21,39 @@
       
       </div>
       <div class="panel-body">
-      
+        <div class="col-md-12" style="border: 1px dotted black">
+                <div class="row" style="padding:0px">
+                <h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name_modal"></h4>    
+                </div>
+                <div class="row" style="padding:0px; border-bottom:1px solid #009688;">
+                <div class="col-md-4 col-xs-4">
+                    <h4 style="text-align:center"><%= t('name') %>:</h4>
+                    <h5 style="text-align:center; text-transform:uppercase"><%= @user.name %> </h5>
+                    </div>
+                    
+                <div class="col-md-4 col-xs-4">
+                    <h4 style="text-align:center"><%= t('last_name') %>:</h4>
+                    <h5 style="text-align:center; text-transform:uppercase"><%= @user.last_name %> </h5>
+                    </div>
+                    <div class="col-md-4 col-xs-4">
+                    <h4 style="text-align:center"><%= t('ticket') %>:</h4>
+                 
+                    <h5 style="text-align:center" ><%= @user_lottery.ticket_number %></h5>
+                    <input type="hidden" id="lottery_id_modal">
+                    </div>
+                </div>
+                <div class="row" style="padding:0px">
+                <h4 style="text-align:right; margin-right:8%;">Total: $ <span id="total_price_modal"><%= @lottery.game.team.name %> </span> </h4>
+                </div>
+            </div>
       </div>
        
     
  
    
       
-      <p>Gracias por tu compra, <span style="text-transform:uppercase"><%= @user.name %></span></p>
-      <p>Compraste el numero   <span> <%= @user_lottery.ticket_number %> </span> </p>
+      <p>Gracias por tu compra, <span style="text-transform:uppercase"></span></p>
+      <p>Compraste el numero   <span>  </span> </p>
       <p>Para el partido   <span> <%= @lottery.game.team.name + ' vs ' + @lottery.game.team2.name %>   </span> </p>
       <p>Te deseamos Mucha suerte</p>
   </body>
