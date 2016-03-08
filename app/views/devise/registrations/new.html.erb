@@ -15,18 +15,6 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, class: "form-control", style: "color:black", autofocus: false %>
   </div>
-<div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, class: "form-control", style: "color:black", autofocus: false %>
-  </div>
-
-<div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, class: "form-control", style: "color:black", autofocus: false %>
-    <%= f.hidden_field :balance, class: "form-control", style: "color:black", value: 0 , autofocus: false %>
-  </div>
-
-
 
 
   <div class="field">
@@ -37,16 +25,26 @@
     <%= f.password_field :password, class: "form-control",style: "color:black", autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, class: "form-control", style: "color:black", autocomplete: "off" %>
-  </div>
-
+ 
 
 
         </div>
         <div class="col-md-6">
-      
+            <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, class: "form-control", style: "color:black", autofocus: false %>
+  </div>
+
+<div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, class: "form-control", style: "color:black", autofocus: false %>
+    <%= f.hidden_field :balance, class: "form-control", style: "color:black", value: 0 , autofocus: false %>
+  </div>
+       <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, class: "form-control", style: "color:black", autocomplete: "off" %>
+  </div>
+
 
 <div class="field" style="display:none">
     <%= f.label :role_id %><br />
