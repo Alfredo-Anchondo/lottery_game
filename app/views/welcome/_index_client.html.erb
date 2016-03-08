@@ -322,7 +322,7 @@
              
             
                    $('#initial_balance2').textillate({ loop: true, in:{effect: 'wobble'}, out:{effect: 'flash'}  });
-                    $("#total_initial_balance").text($('#initial_balance2').text());
+                    
              
              
         $('#confirm-buy').click(function(){
@@ -349,6 +349,7 @@
              function get_ticket_info(){
                  $('#ticket_numer_lottery').text($('.ticket_number').val());
                  $('#total_price').text($('#lottery_price').val());
+                 $("#total_initial_balance").text($('#initial_balance2').text());
              }
              
              function buy_ticket(){
@@ -479,7 +480,7 @@
              
            $('#confirm-buy-modal').click(function(){
                var balance = <%= current_user.balance %> ;
-               
+               $("#total_initial_balance").text($('#initial_balance2').text());
                
                
                if($("#lottery_number_in_modal").val() != ''){
