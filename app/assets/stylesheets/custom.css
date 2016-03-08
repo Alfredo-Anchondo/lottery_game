@@ -1,7 +1,7 @@
 @media screen and (max-width: 480px) {
     
     #confirm_buy_modal{
-        width: 100%;
+        width: 100% !important;
     }
     
     .hide-mobile{
