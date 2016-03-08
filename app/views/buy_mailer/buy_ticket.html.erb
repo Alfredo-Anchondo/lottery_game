@@ -9,6 +9,9 @@
     .welcome{color:white;}
     .panel-header{background-color:#E4007D; width:100%;}    
     .panel{width:100%;}      
+    .row {width:100%}   
+    .col-md-4 {width:25%;}      
+    .col-md-12{width:100%;}      
           
 </style>
   </head>
@@ -43,7 +46,7 @@
                     </div>
                 </div>
                 <div class="row" style="padding:0px">
-                <h4 style="text-align:right; margin-right:8%;">Total: $ <span id="total_price_modal"><%= @lottery.game.team.name %> </span> </h4>
+                <h4 style="text-align:right; margin-right:8%;">Total: $ <span id="total_price_modal"><%= @lottery.price %> </span> </h4>
                 </div>
             </div>
       </div>
