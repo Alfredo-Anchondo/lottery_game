@@ -28,9 +28,9 @@
       <div class="panel-body">
         <div class="col-md-12" style="border: 1px dotted black">
                 <div class="row" style="padding:0px">
-                <h4 style="text-align:center; border-bottom:1px solid #009688;  border-top: 1px solid #009688; padding-bottom:2%;" id="ticket_name_modal"></h4>    
+                <h4 style="text-align:center; padding-bottom:2%;" id="ticket_name_modal"><%= @lottery.game.team.name + ' vs ' + @lottery.game.team2.name %> </h4>    
                 </div>
-                <div class="row" style="padding:0px; border-bottom:1px solid #009688;">
+                <div class="row" style="padding:0px;  border-top: 1px solid #009688; border-bottom:1px solid #009688;">
                 <div class="col-md-4 col-xs-4" style="float:left">
                     <h4 style="text-align:center">Nombre:</h4>
                     <h5 style="text-align:center; text-transform:uppercase"><%= @user.name %> </h5>
@@ -59,7 +59,7 @@
       
       <p>Gracias por tu compra, <span style="text-transform:uppercase"></span></p>
       <p>Compraste el numero   <span>  </span> </p>
-      <p>Para el partido   <span> <%= @lottery.game.team.name + ' vs ' + @lottery.game.team2.name %>   </span> </p>
+      <p>Para el partido   <span>    </span> </p>
       <p>Te deseamos Mucha suerte</p>
   </body>
 </html>
