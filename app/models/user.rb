@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     has_attached_file :photo,
     :styles => { :medium => "x300",
     :mobile => "x240" },
-    :default_url => "no-image.png"
+    :default_url => "/assets/no-image.png"
     
     #Validations
     validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
