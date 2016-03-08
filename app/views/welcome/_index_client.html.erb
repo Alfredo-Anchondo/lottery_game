@@ -132,6 +132,9 @@
                 <h4 style="text-align:right; margin-right:8%;">Total: $ <span id="total_price"> </span> </h4>
                 </div>
             </div>
+         <div class="col-md-12">
+         <h4>Bolsa acumulada hasta el momento: <span id="total_initial_balance"></span></h4>
+         </div>
         </div>
     </div>
        <div class="modal-footer">
@@ -319,6 +322,7 @@
              
             
                    $('#initial_balance2').textillate({ loop: true, in:{effect: 'wobble'}, out:{effect: 'flash'}  });
+                    $("#total_initial_balance").text($('#initial_balance2').text());
              
              
         $('#confirm-buy').click(function(){
