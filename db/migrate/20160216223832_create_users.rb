@@ -3,17 +3,17 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name, :null => false
       t.string :last_name, :null => false
-      t.string :address_1, :null => false
-      t.string :address_2, :null => false
-      t.string :zip_code, :null => false
+      t.string :address_1
+      t.string :address_2
+      t.string :zip_code
       t.integer :age
       t.string :email, :null => false
       t.string :phone
-      t.string :cellphone, :null => false
+      t.string :cellphone
       t.float :balance, :default => 0
       t.references :role, index: true, :null => false
       t.foreign_key :roles
-      t.string :country, :null => false
+      t.string :country
       t.string :state
       t.string :city
       t.integer :int_number
