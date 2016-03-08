@@ -18,7 +18,7 @@
                         <div class="col-md-4 col-xs-12">
                            <h3 style="text-align:center;font-size:30px;" id="team_name"></h3>
                             <h2 style="text-align:center; "><img width="30%" height="100px" id="team1" src=""></h2>
-                            <h2 id="team_score" class="label-primary" style="text-align:center; font-size:40px; font-weight:800;"></h2>
+                            <input type="number" id="team_score" class="label-primary" style="text-align:center; font-size:40px; font-weight:800;">
                         </div>
                         <div class="col-md-1 col-xs-12" style="">
                             <h1 id="vs" style="text-align:center; color:red; font-weight:800; font-size:50px; margin-top:30%;">VS</h1>
@@ -26,7 +26,7 @@
                         <div class="col-md-4 col-xs-12">
                             <h3 style="text-align:center; font-size:30px;" id="team2_name"></h3>
                              <h2 style="text-align:center"><img id="team2" width="30%" height="100px" src=""></h2>
-                            <h2 id="team2_score" class="label-primary" style="text-align:center; font-size:40px; font-weight:800;"></h2>
+                            <input type="number" id="team2_score" class="label-primary" style="text-align:center; font-size:40px; font-weight:800;">
                        </div>
                             
                         </div>
@@ -272,7 +272,7 @@
     $('#lottery_price').val(data.game.lotteries[0].price); 
     $('#lottery_display_price').text("$"+data.game.lotteries[0].price); 
              
-             var countdown = data.game.game_date;
+        var countdown = data.game.game_date;
         var countdown1 = moment(countdown).format('MM/DD/YYYY HH:mm');   
              
              
