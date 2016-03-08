@@ -14,6 +14,7 @@
     .row {width:100%; display:flex;}   
     .col-md-4 {width:33.33%; float: left;}      
     .col-md-12{width:100%;}      
+    .col-md-6{width:50%;}      
           
 </style>
   </head>
@@ -26,9 +27,9 @@
       
       </div>
       <div class="panel-body">
-        <div class="col-md-12" style="border: 1px dotted black">
+        <div class="col-md-6" style="border: 1px dotted black">
                 <div class="row" style="padding:0px">
-                <h4 style="text-align:center; padding-bottom:2%;" id="ticket_name_modal"><%= @lottery.game.team.name + ' vs ' + @lottery.game.team2.name %> </h4>    
+                <h4 style="" id="ticket_name_modal"><%= @lottery.game.team.name + ' vs ' + @lottery.game.team2.name %> </h4>    
                 </div>
                 <div class="row" style="padding:0px;  border-top: 1px solid #009688; border-bottom:1px solid #009688;">
                 <div class="col-md-4 col-xs-4" style="float:left">
