@@ -242,6 +242,19 @@
        $('#team1').attr('src','/system/teams/logos/000/000/0'+data.game.team.id+'/original/'+data.game.team.logo_file_name);
     }  
    
+             
+           $('#team_score').change(function(){
+                 var select_number = String($("#team_score").val() % 10) + String($('#team2_score') % 10);   
+                
+                                 $(".ticket_number").val(select_number);
+           })
+           
+            $('#team2_score').change(function(){
+                 var select_number = String($("#team_score").val() % 10) + String($('#team2_score') % 10);   
+                
+                                 $(".ticket_number").val(select_number);
+           })
+             
      $('#team_score').text(data.game.local_score);
      $('#initial_balance').text(data.game.lotteries[0].initial_balance);         
      $('#team_name').text(data.game.team.name);
