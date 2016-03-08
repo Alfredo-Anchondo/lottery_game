@@ -2,12 +2,46 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+      
+      <style>
+    h1{font-size:40px; text-align:center;}
+    h2, h3, h4, h5{text-align:center;}
+    h4{font-size:20px}
+    h5{font-size:16px}      
+    .welcome{color:white;}
+    .panel-header{background-color:#E4007D; width:100%;}    
+    .panel{width:100%;}      
+    .row {width:100%; display:block;}   
+    .col-md-4 {width:33.33%; float: left; display:table-cell;}      
+    .col-md-12{width:100%;}      
+    .col-md-6{width:50%;}     
+    #ticket_name_modal{margin-left:20%;}   
+    .margin-center{padding-left:25%}   
+    .panel-footer{background-color:#727272; width:100%;}
+</style>
+      
   </head>
   <body>
-      <h1>Gracias por participar con nosotros en esta loteria, el dia que termine la loteria recibiras unas notificacion con el numero que resulto ganador.</h1>
-      <hr>
+      <div class="panel">
+        <div class="panel-header">
+            <h1 class="welcome">DonBillete</h1>
+            <h2 class="welcome">Gracias por registrate con nosotros <%= @user.name %></h2>
+          </div>
       
-      <p>Gracias por tu compra, <span style="text-transform:uppercase"><%= @user.name %></span></p>
-      <p>Te deseamos Mucha suerte</p>
+      </div>
+      <div class="panel-body">
+          <h4>En Donbillete nos importan nuestros usuarios, aqui te mostramos tus datos de registro:</h4>
+          <h4>Nombre de usuario: <%= @user.username %> </h4>
+          <h4>Nombre completo del cliente: <%= @user.name + " " + @user.last_name %></h4>
+          <h4>Contraseña: <%= @user.password %></h4>
+          <br>
+      </div>
+    <div class="panel-footer">
+        <h4 style="color:white;">Participa en nuestras loterias en el deporte que sea de tu agrado.</h4>
+        <h4 style="color:white"> Te deseamos la mejor de la suerte </h4>
+        <a style="text-align:center; color:#2EFF9F; padding-left:33%; font-size:25px;" href="http://donbillete.com">Verifica tu cuenta con nosotros</a> <br>
+      </div>
   </body>
 </html>
+
+
