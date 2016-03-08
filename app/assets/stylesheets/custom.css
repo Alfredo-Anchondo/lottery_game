@@ -1,5 +1,9 @@
 @media screen and (max-width: 480px) {
     
+    #confirm_buy_modal{
+        width: 100%;
+    }
+    
     .hide-mobile{
         display:none;
     }
@@ -137,4 +141,8 @@
 .row{
     padding: 0px !important;
     margin: 0px !important;
+}
+
+#confirm_buy_modal{
+    width: 30%;
 }
