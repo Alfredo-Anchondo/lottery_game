@@ -244,13 +244,13 @@
    
              
            $('#team_score').change(function(){
-                 var select_number = String($("#team_score").val() % 10) + String($('#team2_score') % 10);   
+                 var select_number = String($("#team_score").val() % 10) + String($('#team2_score').val() % 10);   
                    alert(select_number);
                                  $(".ticket_number").val(select_number);
            })
            
             $('#team2_score').change(function(){
-                 var select_number = String($("#team_score").val() % 10) + String($('#team2_score') % 10);   
+                 var select_number = String($("#team_score").val() % 10) + String($('#team2_score').val() % 10);   
                 
                                  $(".ticket_number").val(select_number);
            })
