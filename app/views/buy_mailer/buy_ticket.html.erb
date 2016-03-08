@@ -30,7 +30,8 @@
       </div>
       <div class="panel-body">
           <h4>Aqui te mostramos la representacion de tu boleto comprado:</h4>
-        <div class="col-md-6 margin-center" style="border: 1px dotted black; margin-left:25%">
+          <div class="margin-center">
+          <div class="col-md-6 " style="border: 1px dotted black;">
                 <div class="row" style="padding:0px">
                 <h4 style="margin-left:30%;" id="ticket_name_modal"><%= @lottery.game.team.name + ' vs ' + @lottery.game.team2.name %> </h4>    
                 </div>
@@ -55,6 +56,7 @@
                 <h4 style="text-align:right; margin-right:8%;">Total: $ <span id="total_price_modal"><%= @lottery.price %> </span> </h4>
                 </div>
             </div>
+          </div>
       </div>
        
     
