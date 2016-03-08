@@ -37,10 +37,10 @@
                              <h4 style="text-align:center"> <%= t('lottery_rules') %>: <span style="font-size:84%;" id="lottery_rules"></span>  </h4>
                         </div>
                             <div class="col-md-3 col-xs-12">
-                            <h4 class="center-text" ><span class="pull-right"> Selecciona el numero con el cual deseas participar:</span> <input style="display:none" id="lottery_id" value="">  </h4>
+                            <h4 class="center-text" ><span class="pull-right"> Este es el numero seleccionado para participar:</span> <input style="display:none" id="lottery_id" value="">  </h4>
                             </div>
                         <div class="col-md-1  col-xs-12" id="move-top">
-                             <input style="color:black" class="ticket_number form-control" type="number" min="0" > 
+                             <input style="color:black" disabled class="ticket_number form-control" type="number" min="0" > 
                          
                             </div>
                            
@@ -245,7 +245,6 @@
              
            $('#team_score').change(function(){
                  var select_number = String($("#team_score").val() % 10) + String($('#team2_score').val() % 10);   
-                   alert(select_number);
                                  $(".ticket_number").val(select_number);
            })
            
