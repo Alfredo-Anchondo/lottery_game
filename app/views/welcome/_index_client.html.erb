@@ -99,7 +99,7 @@
 <!--------------------- MODAL DE CONFIRMACION --------------------------->
 
 <div class="modal fade bs-example-modal-sm" id="confirm_buy" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div style="background-color:#E4007D" class="modal-dialog modal-sm">
+  <div style="background-color:#E4007D" class="modal-dialog modal-md">
        <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
            <h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t('purchase_confirmation') %></h4>
@@ -328,7 +328,6 @@
                  lottery_price = $('#lottery_price').val();
               current_balance = <%= current_user.balance %>;
             if( current_balance >= $('#lottery_price').val()){
-                alert($('#lottery_price').val());
              buy_ticket();
              update_balance();
                  
