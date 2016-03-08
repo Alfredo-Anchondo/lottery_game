@@ -1,15 +1,15 @@
 <div class="row">
  <div style="margin-left:10%; margin-right:10%; height:80px;">
     <div class="col-md-6"> <img id="logo-image" src="/assets/no-logo.png"></div>
-    <div class="col-md-6" id="responsive-cellphone" style="margin-top:2.5%">
+    <div class="col-md-6" id="responsive-cellphone" style="margin-top:2%">
            <% if signed_in? %>
              <%=link_to current_user do %>
         <div class="col-md-4"></div>
         <div class="col-md-2">
-         <h4><img id="user_image" class="pull-right" width="60px" height="60px" style="border-radius:150px; border:2px solid #E4007D" src="<%= current_user.photo %>"></h4>
+         <h4><img id="user_image" class="pull-right" width="80px" height="80px" style="border-radius:150px; border:2px solid #E4007D" src="<%= current_user.photo %>"></h4>
         </div>
         <div class="col-md-6 col-xs-12">
-            <h4> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.select_display %></span> </h4>
+            <h4> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> </h4>
             <h4 id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;">$<%= current_user.balance %></span></h4>  
         </div>
              <% end %> 
