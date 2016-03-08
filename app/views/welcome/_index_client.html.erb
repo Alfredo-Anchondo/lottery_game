@@ -258,7 +258,8 @@
            })
              
      $('#team_score').text(data.game.local_score);
-     $('#initial_balance').text(data.game.lotteries[0].initial_balance);         
+     $('#initial_balance').text(data.game.lotteries[0].initial_balance);   
+     $("#total_initial_balance").text(data.game.lotteries[0].initial_balance);         
      $('#team_name').text(data.game.team.name);
      $('#team2_name').text(data.game.team2.name);
      $('#team2_score').text(data.game.visit_score);
@@ -349,7 +350,7 @@
              function get_ticket_info(){
                  $('#ticket_numer_lottery').text($('.ticket_number').val());
                  $('#total_price').text($('#lottery_price').val());
-                 $("#total_initial_balance").text($('#initial_balance2').text());
+                 
              }
              
              function buy_ticket(){
