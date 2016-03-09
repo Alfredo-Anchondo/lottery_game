@@ -6,7 +6,25 @@
                        </div>
                     </div>
                     <div class="ibox-content" style="display: block;">
-                        
+                        <div class="table-responsive">
+          <table id="history-table"  class=" table table-bordered table-hover table-striped nowrap" width="100%">
+            <thead style="background-color:#727272; color:white;">
+              <tr>
+                                  <th><%= t("activerecord.attributes.user.photo") %></th>
+                                  <th><%= t("user_id") %></th>    
+                                  <th><%= t("activerecord.models.user") %></th>
+                                  <th><%= t("lottery_id") %></th>
+                                  <th><%= t("activerecord.attributes.lottery.winner_number") %></th>
+                                  <th><%= t("activerecord.attributes.lottery.price") %></th>
+                                  <th><%= t("total_win") %></th>
+                                  <th><%= t("activerecord.attributes.user_lottery.purchase_date") %></th>
+              </tr>
+            </thead>
+
+            <tbody>
+                
+            </tbody>
+      </div>
                     </div>
                 </div>
 </div>
@@ -15,10 +33,54 @@
 <script>
        $.ajax({
   method: "GET",
-           url: "/users/lotteries/"+ <%= current_user.id %>+".json",
+           url: "",
            format: "json"
-       }).done(function( data) {
+       }).done(function( data){
            alert('se hizo el request');
        });
               
 </script>
+
+<script>
+    
+      var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+    
+      $('#history-table').DataTable( {
+    ajax: {
+        url: "/users/lotteries/"+ <%= current_user.id %>+".json",
+        dataSrc: 'users'
+    },
+            "language": {
+            "url": languaje
+        },
+    columns: [
+        { data: function ( row, type, val, meta ) {
+            if(row.user.id < 10){
+                   return  "<img width='80px' src='/system/users/photos/000/000/00"+row.user.id+"/original/"+row.user.photo_file_name+"'>" }
+            else{
+                return  "<img width='80px' src='/system/users/photos/000/000/0"+row.user.id+"/original/"+row.user.photo_file_name+"'>"
+            }
+        }
+        },
+        { data: 'user_id' },
+        { data: 'user.username' },
+        { data: 'lottery_id' },
+        { data: 'lottery.winner_number' },
+        { data: 'lottery.price' },
+        { data:  function ( row, type, val, meta ) {
+            return  "$ " + row.lottery.initial_balance + " USD"
+        } },
+        { data: function ( row, type, val, meta ) {
+            return moment(row.purchase_date ,'' ,'es').format('MM/DD/YYYY HH:mm');
+        }  }
+    ],
+} );
+      
+      </script>
