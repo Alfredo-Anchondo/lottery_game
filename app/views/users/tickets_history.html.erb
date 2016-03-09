@@ -53,11 +53,12 @@
         { data: 'user.username' },
         { data: function (row, type, val, meta) {
            
-                var x = $.ajax({
+                var x = JSON.stringify($.ajax({
                       method: "GET",
                       url: "/games/lottery_name/"+row.lottery.game_id+".json",
                       format: "json"
-                    })
+                    }))
+                
                  if(x){
                      return x
                  }
