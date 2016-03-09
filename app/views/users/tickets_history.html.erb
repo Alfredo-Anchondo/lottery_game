@@ -51,18 +51,20 @@
     columns: [
   
         { data: 'user.username' },
-        { data: function ( row, type, val, meta ) {
+        { data: function (row, type, val, meta) {
             var x;
                    $.ajax({
                       method: "GET",
                       url: "/games/lottery_name/"+row.lottery.game_id+".json",
                       format: "json"
-                    }).done(function(data) {
-                        alert( JSON.stringify(data));
+                    }).done(function(data){
+                        x =data;
                        
                    })
-                 
-            return x
+                 if(x){
+                     return x
+                 }
+            
         }
         },
         { data: 'ticket_number' },
