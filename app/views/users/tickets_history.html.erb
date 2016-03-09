@@ -13,6 +13,7 @@
                              
                                   <th><%= t("activerecord.models.user") %></th>
                                   <th><%= t("lottery_id") %></th>
+                                  <th><%= t('purchase_number') %> </th>
                                   <th><%= t("activerecord.attributes.lottery.winner_number") %></th>
                                   <th><%= t("activerecord.attributes.lottery.price") %></th>
                                   <th><%= t("activerecord.attributes.user_lottery.purchase_date") %></th>
@@ -62,6 +63,7 @@
   
         { data: 'user.username' },
         { data: 'lottery_id' },
+        { data: 'ticket_number' },
         { data: 'lottery.winner_number' },
         { data: 'lottery.price' },
         { data: function ( row, type, val, meta ) {

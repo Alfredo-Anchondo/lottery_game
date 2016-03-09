@@ -94,6 +94,7 @@ es:
   "false": "No"
   day: "Dias"
   hours: "Horas"
+  purchase_number: "Número comprado"
   ticket: "Boleto"
   lottery_id: "ID de la Loteria"
   close_lottery: "Cerrar Loteria"
