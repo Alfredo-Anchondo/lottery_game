@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :users do
       collection do
           get "/lotteries/:id", to: "users#lotteries"
+          get "tickets_history"
       end
   end
 
