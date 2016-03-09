@@ -15,7 +15,7 @@
 <script>
        $.ajax({
   method: "GET",
-           url: "/users/lotteries/"+ <%= current_user.id %>+" ,
+           url: "/users/lotteries/"+ <%= current_user.id %>+"",
            format: "json"
        })
         .done(function( data) {
