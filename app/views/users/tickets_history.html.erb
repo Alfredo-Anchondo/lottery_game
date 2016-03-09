@@ -63,13 +63,13 @@
       
     $(document).ready(function() {
       $('#history-table tbody').on('click', 'td', function () {
-        var data = table.row( $(this).parents('tr') ).data();
+        var data2 = table.row( $(this).parents('tr') ).data();
                  $.ajax({
                       method: "GET",
-                      url: "/games/lottery_name/"+data.lottery.game_id+".json",
+                      url: "/games/lottery_name/"+data2.lottery.game_id+".json",
                       format: "json"
                     }).done(function(data) {
-                      alert(data);
+                      alert(data2);
                  });
                             
     } );
