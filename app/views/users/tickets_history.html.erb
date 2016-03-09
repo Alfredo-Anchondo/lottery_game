@@ -17,8 +17,7 @@
   method: "GET",
            url: "/users/lotteries/"+ <%= current_user.id %>+".json",
            format: "json"
-       })
-        .done(function( data) {
+       }).done(function( data) {
            alert('se hizo el request');
        });
               
