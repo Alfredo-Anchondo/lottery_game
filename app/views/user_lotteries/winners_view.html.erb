@@ -41,7 +41,7 @@
     languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 }
     
-   var table = $('#winner-table').DataTable( {
+      $('#winner-table').DataTable( {
     ajax: {
         url: '/user_lotteries/winners',
         dataSrc: 'user_lotteries'
@@ -71,10 +71,5 @@
         }  }
     ],
 } );
-    
-    $('#winner-table tbody').on( 'hover', 'td', function () {
-        var data = table.row( $(this).parents('tr') ).data();
-        alert( data[0] +"'s salary is: "+ data[ 2 ] );
-    } );
       
       </script>
