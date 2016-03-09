@@ -64,8 +64,15 @@
     $(document).ready(function() {
       $('#history-table tbody').on('click', 'td', function () {
         var data = table.row( $(this).parents('tr') ).data();
-          alert(JSON.stringify(data));
-        alert( data.lottery.game_id +"'s salary is: " );
+                 $.ajax({
+                      method: "GET",
+                      url: "/games/lottery_name/"+data.lottery.game_id+".json",
+                      format: "json"
+                    })
+                      .done(function( data) {
+                      alert(data);
+                 }
+                            
     } );
     });
       </script>
