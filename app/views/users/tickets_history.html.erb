@@ -52,7 +52,20 @@
   
         { data: 'user.username' },
         { data: function (row, type, val, meta) {
-          
+          var return_first = function () {
+            var tmp = null;
+            $.ajax({
+                'async': false,
+                'type': "GET,
+                'global': false,
+                'dataType': 'html',
+                'url': "/games/lottery_name/"+row.lottery.game_id+".json",
+                'success': function (data) {
+                    tmp = data;
+                }
+            });
+            return tmp;
+        }();
            
                 var x;
                     
