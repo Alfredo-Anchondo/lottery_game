@@ -1,5 +1,13 @@
 @media screen and (max-width: 480px) {
     
+    #myNavbar{
+        width: 100% !important;
+    }
+    
+    #menu{
+        width: 100% !important;
+    }
+    
     #banner{
         background-size:contain !important; 
     }
