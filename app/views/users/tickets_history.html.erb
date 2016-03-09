@@ -1,4 +1,5 @@
 <div class="row" id="coming-lotteries">
+    <input type="hidden" id="lottery_name">
     <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <div class="row" style="margin:0px; padding:0px;">
@@ -70,8 +71,9 @@
                       url: "/games/lottery_name/"+data2.lottery.game_id+".json",
                       format: "json"
                     }).done(function(data) {
-                      x = data;
+                      $('lottery_name').val(data);
                  });
+          x =$('lottery_name').val();
             alert(x);                
     } );
     });
