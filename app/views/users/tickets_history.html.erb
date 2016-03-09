@@ -10,3 +10,16 @@
                     </div>
                 </div>
 </div>
+
+
+<script>
+       $.ajax({
+  method: "GET",
+           url: "/users/lotteries/"+ <%= current_user.id %>+" ,
+           format: "json"
+       })
+        .done(function( data) {
+           alert('se hizo el request');
+       }
+              
+</script>
