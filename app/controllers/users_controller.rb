@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :data, only: [:index, :new, :create, :edit, :update]
   before_action :authenticate_user!
+  respond_to :html, :json
 
   # GET /users
   # GET /users.json
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
     
     def lotteries
       @user = User.find(params[:id])
-        respond_with(@user.user_lotteries)
+      respond_with(@user.user_lotteries)
     end
 
   # GET /users/new
