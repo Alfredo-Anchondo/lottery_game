@@ -1,5 +1,9 @@
 @media screen and (max-width: 480px) {
     
+    #banner{
+        background-size:contain !important; 
+    }
+    
     .confirm_buy_modal{
         width: 100% !important;
     }
@@ -110,6 +114,11 @@
 
 .invoice{
     background-color: white;
+}
+
+#banner{
+     background-image:url('/assets/background.jpg');
+     background-size:cover; 
 }
 
 .header-show{
