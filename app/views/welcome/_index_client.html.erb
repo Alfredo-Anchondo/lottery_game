@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="coming-lotteries">
     <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <div class="row" style="margin:0px; padding:0px;">
@@ -242,7 +242,9 @@
 })
   .done(function( data) {
              
-              if (data.game.team.id < 10){
+        
+             if(data){
+                               if (data.game.team.id < 10){
         $('#team1').attr('src','/system/teams/logos/000/000/00'+data.game.team.id+'/original/'+data.game.team.logo_file_name);
     }   else{
        $('#team1').attr('src','/system/teams/logos/000/000/0'+data.game.team.id+'/original/'+data.game.team.logo_file_name);
@@ -346,6 +348,11 @@
             
            
         });
+             }else{
+                                  alert('sin datos');
+                                  }
+             
+
              
        
                });
