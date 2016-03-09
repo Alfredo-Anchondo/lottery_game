@@ -30,17 +30,6 @@
 
 
 <script>
-       $.ajax({
-  method: "GET",
-           url: "",
-           format: "json"
-       }).done(function( data){
-           alert('se hizo el request');
-       });
-              
-</script>
-
-<script>
     
       var current_language = $("#current_language").val();
        var languaje;
@@ -71,9 +60,10 @@
                     }).done(function(data) {
                      
                       x = data;
+                        alert(date);  
                        return data
                    })
-              alert(x);       
+                  
             return x
         }
         },
