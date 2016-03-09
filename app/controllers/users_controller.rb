@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
     
     def lotteries
-        respond_with(@user.user_lotteries,:root=>false)
+        respond_with(@user.user_lotteries)
     end
 
   # GET /users/new
