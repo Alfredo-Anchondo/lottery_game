@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
     
     def lotteries
+      @user = User.find(params[:id])
         respond_with(@user.user_lotteries)
     end
 
