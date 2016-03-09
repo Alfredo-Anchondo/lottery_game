@@ -528,14 +528,14 @@
               
            })
            
-           
+            var count = 0;
             $.ajax({
             method: "GET",
             url: "/games/finish_games",
             format: "json"
                }).done(function(data){
                 for(var i in data.games){
-                    var count = 0;
+                   
                     if (count < 10){
                         if (data.games[i].team2.id < 10){
                         var image_url2 ='/system/teams/logos/000/000/00'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
