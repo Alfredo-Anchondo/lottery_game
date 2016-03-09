@@ -37,7 +37,7 @@ class GamesController < ApplicationController
     
     def lottery_name
       @game = Game.find(params[:id])
-        respond_with(@game.team.name + "VS" + @game.team2.name)
+        respond_with(@game.team.name + " VS " + @game.team2.name)
     end
     
   # GET /games/1/edit
