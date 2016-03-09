@@ -11,12 +11,10 @@
             <thead style="background-color:#727272; color:white;">
               <tr>
                              
-                                  <th><%= t("user_id") %></th>    
                                   <th><%= t("activerecord.models.user") %></th>
                                   <th><%= t("lottery_id") %></th>
                                   <th><%= t("activerecord.attributes.lottery.winner_number") %></th>
                                   <th><%= t("activerecord.attributes.lottery.price") %></th>
-                                  <th><%= t("total_win") %></th>
                                   <th><%= t("activerecord.attributes.user_lottery.purchase_date") %></th>
               </tr>
             </thead>
@@ -62,14 +60,10 @@
         },
     columns: [
   
-        { data: 'user_id' },
         { data: 'user.username' },
         { data: 'lottery_id' },
         { data: 'lottery.winner_number' },
         { data: 'lottery.price' },
-        { data:  function ( row, type, val, meta ) {
-            return  "$ " + row.lottery.initial_balance + " USD"
-        } },
         { data: function ( row, type, val, meta ) {
             return moment(row.purchase_date ,'' ,'es').format('MM/DD/YYYY HH:mm');
         }  }
