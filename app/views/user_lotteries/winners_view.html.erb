@@ -41,7 +41,7 @@
     languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 }
     
-      $('#winner-table').DataTable( {
+   var table = $('#winner-table').DataTable( {
     ajax: {
         url: '/user_lotteries/winners',
         dataSrc: 'user_lotteries'
