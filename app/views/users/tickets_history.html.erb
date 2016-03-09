@@ -58,7 +58,7 @@
                       url: "/games/lottery_name/"+row.lottery.game_id+".json",
                       format: "json"
                     }).done(function(data) {
-                        x = data;
+                        x = JSON.stringify(data);
                        
                    })
                   alert(x);
