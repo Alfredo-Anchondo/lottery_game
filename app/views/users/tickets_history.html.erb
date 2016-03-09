@@ -62,7 +62,16 @@
     columns: [
   
         { data: 'user.username' },
-        { data: 'lottery_id' },
+        { data: function ( row, type, val, meta ) {
+                   $.ajax({
+                      method: "GET",
+                      url: "/games/"+row.lottery.id,
+                      format: "json"
+                    }).done(function(data) {
+                      return "entre"
+                   }
+        )}
+        },
         { data: 'ticket_number' },
         { data: 'lottery.winner_number' },
         { data: 'lottery.price' },
