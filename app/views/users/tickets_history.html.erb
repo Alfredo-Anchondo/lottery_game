@@ -52,15 +52,12 @@
   
         { data: 'user.username' },
         { data: function (row, type, val, meta) {
-            var x = "Hola";
-                   $.ajax({
+           
+                var x = $.ajax({
                       method: "GET",
                       url: "/games/lottery_name/"+row.lottery.game_id+".json",
                       format: "json"
-                    }).done(function(data){
-                        x =data;
-                       
-                   })
+                    })
                  if(x){
                      return x
                  }
