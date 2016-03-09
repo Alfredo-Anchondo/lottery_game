@@ -13,6 +13,10 @@ class UsersController < ApplicationController
   def show
       @user = User.find(params[:id])
   end
+    
+    def lotteries
+        respond_with(@user.user_lotteries,:root=>false)
+    end
 
   # GET /users/new
   def new

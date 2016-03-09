@@ -20,7 +20,11 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :users
+  resources :users do
+      collection do
+          get "/lotteries/:id" => "users#lotteries"
+      end
+  end
 
   resources :user_lotteries do
     collection do
