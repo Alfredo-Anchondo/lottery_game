@@ -10,7 +10,7 @@
           <table id="history-table"  class=" table table-bordered table-hover table-striped nowrap" width="100%">
             <thead style="background-color:#727272; color:white;">
               <tr>
-                                  <th><%= t("activerecord.attributes.user.photo") %></th>
+                             
                                   <th><%= t("user_id") %></th>    
                                   <th><%= t("activerecord.models.user") %></th>
                                   <th><%= t("lottery_id") %></th>
@@ -61,14 +61,7 @@
             "url": languaje
         },
     columns: [
-        { data: function ( row, type, val, meta ) {
-            if(row.user.id < 10){
-                   return  "<img width='80px' src='/system/users/photos/000/000/00"+row.user.id+"/original/"+row.user.photo_file_name+"'>" }
-            else{
-                return  "<img width='80px' src='/system/users/photos/000/000/0"+row.user.id+"/original/"+row.user.photo_file_name+"'>"
-            }
-        }
-        },
+  
         { data: 'user_id' },
         { data: 'user.username' },
         { data: 'lottery_id' },
