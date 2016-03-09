@@ -51,9 +51,19 @@
                             </div>
                     </div>
                 </div>
-    
+</div>
 
-
+<div class="row" id="no-lotteries" style="display:none;">
+    <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <div class="row" style="margin:0px; padding:0px;">
+                           <h4 style="text-align:left; color:white;">No hay loterias programadas<span id="lottery_id_type"> </span>Lo sentismo por la espera</span></h4>
+                       </div>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <h4>Lo sentimos pero actualmente no hay loterias disponibles.</h4>
+        </div>
+    </div>
 </div>
 
 <div class="row">
@@ -349,8 +359,9 @@
            
         });
              }else{
-                                 $('#coming-lotteries').hide();
-                                  }
+                 $('#coming-lotteries').hide();
+                 $('#no-lotteries').show();
+             }
              
 
              
