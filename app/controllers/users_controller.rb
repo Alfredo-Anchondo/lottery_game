@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     
     def lotteries
       @user = User.find(params[:id])
-        respond_with[@user.user_lotteries, Game.all]
+        respond_with(@user.user_lotteries.lottery.game, )
     end
 
   # GET /users/new
