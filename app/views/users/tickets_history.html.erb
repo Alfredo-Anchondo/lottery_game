@@ -63,14 +63,15 @@
   
         { data: 'user.username' },
         { data: function ( row, type, val, meta ) {
+            var x ;
                    $.ajax({
                       method: "GET",
-                      url: "/games/"+row.lottery.id+".json",
+                      url: "/games/lottery_name/"+row.lottery.game_id+".json",
                       format: "json"
                     }).done(function(data) {
-                      return 'entre'
+                      x = data;
                    })
-            return "entre"
+            return data
         }
         },
         { data: 'ticket_number' },

@@ -9,6 +9,7 @@ class Game < ActiveRecord::Base
          team.name + " vs " + team2.name
     end
     
+    
     def self.next_game
         where('game_date >= ?', DateTime.now).order(:game_date).first 
     end

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
             get 'finish_games'
             get 'today_games'
             get 'today_games_view'
+            get '/lottery_name/:id', to: "games#lottery_name"
         end
     end
         
