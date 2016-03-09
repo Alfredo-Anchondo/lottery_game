@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :users do
       collection do
-          get "/lotteries/:id" => "users#lotteries"
+          get "/lotteries/:id" => to: "users#lotteries"
       end
   end
 
