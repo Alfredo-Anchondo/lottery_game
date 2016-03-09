@@ -65,7 +65,7 @@
         { data: function ( row, type, val, meta ) {
                    $.ajax({
                       method: "GET",
-                      url: "/games/"+row.lottery.id,
+                      url: "/games/"+row.lottery.id+".json",
                       format: "json"
                     }).done(function(data) {
                       return "entre"
