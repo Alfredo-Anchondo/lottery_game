@@ -51,24 +51,7 @@
     columns: [
   
         { data: 'user.username' },
-        { data: function (row, type, val, meta) {
-          var return_first = function () {
-            var tmp = null;
-            $.ajax({
-                'async': false,
-                'type': "GET",
-                'global': false,
-                'dataType': 'json',
-                'url': "/games/lottery_name/"+row.lottery.game_id+".json",
-                'success': function (data) {
-                    tmp = data;
-                }
-            });
-            return tmp;
-        }();
-   
-        }
-        },
+        { data: 'lottery.id'},
         { data: 'ticket_number' },
         { data: 'lottery.winner_number' },
         { data: 'lottery.price' },
