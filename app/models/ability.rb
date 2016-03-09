@@ -7,8 +7,7 @@ class Ability
       can :manage, :all
  
     elsif user.role.is_client?
-      can :manage, :all
-        cannot [:show,:new, :create, :edit, :update, :delete, :destroy], Game
+        cannot [:new, :create, :edit, :update, :delete, :destroy], Game
         cannot [:new, :create, :edit, :update, :delete, :destroy], Role
         cannot [:new, :create, :edit, :update, :delete, :destroy], Team
         cannot [:new, :create, :edit, :update, :delete, :destroy], Category
