@@ -1,15 +1,35 @@
-<style>
-    h1{
-        font-size:40px;
-        text-align:center;
-    }
-    h2, h3, h4, h5{
-        text-align:center;
-    }
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+      
+      <style>
+    h1{font-size:40px; text-align:center;}
+    h2, h3, h4, h5{text-align:center;}
+    h4{font-size:20px}
+    h5{font-size:16px}      
+    .welcome{color:white;}
+    .panel-header{background-color:#E4007D; width:100%;}    
+    .panel{width:100%;}      
+    .row {width:100%; display:block;}   
+    .col-md-4 {width:33.33%; float: left; display:table-cell;}      
+    .col-md-12{width:100%;}      
+    .col-md-6{width:50%;}     
+    #ticket_name_modal{margin-left:20%;}   
+    .margin-center{padding-left:25%}   
+    .panel-footer{background-color:#727272; width:100%;}
 </style>
-
-
-<h1>!Hola!</h1>
+      
+  </head>
+  <body>
+      <div class="panel">
+        <div class="panel-header">
+            <h1 class="welcome">DonBillete</h1>
+            <h2 class="welcome">La loteria se a cerrado <%= @user.username %></h2>
+          </div>
+      
+      </div>
+      <di<h1>!Hola!</h1>
 <h2>Gracias por participar en la loteria  <%= @lottery_name %></h2>
 <h3>La loteria se a cerrado con exito, te deseamos la mayor de la suerte</h3>
 <h1>El numero ganador fue:</h1>
@@ -18,3 +38,12 @@
 <h2>Si tu numero no fue el ganador sigue participando en nuestras loterias.</h2>
 <h2>Saluods y Sigue participante</h2>
 <h2>Atentamente: DonBillete</h2>
+<br>
+      </div>
+    <div class="panel-footer">
+        <h4 style="color:white;">Sigue participando con nostros en Donbillete.</h4>
+        <h4 style="color:white"> Te deseamos la mejor de la suerte </h4>
+        <a style="text-align:center; color:#2EFF9F; padding-left:33%; font-size:25px;" href="http://donbillete.com">Accede a Donbillete</a> <br>
+      </div>
+  </body>
+</html>
