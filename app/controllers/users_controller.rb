@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-        if @user.update(:password)
+        if @user.update(params[:password])
         sign_in(@user, :bypass => true)
         else
         if @user.update(user_params)
