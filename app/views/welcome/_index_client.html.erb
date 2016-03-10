@@ -297,7 +297,7 @@
      $('#team_name').text(data.game.team.name);
      $('#team2_name').text(data.game.team2.name);
      $('#team2_score').text(data.game.visit_score);
-     $('#game_date').text(moment(data.game.game_date).format('MM/DD/YYYY HH:mm'));             
+     $('#game_date').text(moment(data.game.game_date).format('MMM/DDD/YYYYY HH:mm'));             
      $('#ticket_name').text(data.game.team.name + " vs " + data.game.team2.name);         
              if(data.game.lotteries[0].final_number < 100){
             $('.ticket_number').mask('00', {placeholder: "00", reverse: false});
