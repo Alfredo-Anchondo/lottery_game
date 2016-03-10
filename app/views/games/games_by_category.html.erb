@@ -26,15 +26,15 @@
                             var url = "/system/categories/logos/000/000/0"+ data[i].id+"/original/"+data[i].logo_file_name+"";
                        }
                
-               if(i == 1){
+               if(i == 0){
                  $('#nav-categories').append('<li class="active"><a data-toggle="tab" href="#category-'+data[i].id+'"> <img width="40px" src="'+url+'"> '+data[i].name+' </a></li>');
                    
-                $('#tab-contents').append('<div id="category-'+data[i].id+'" class="tab-pane"> <div class="ibox-content inspinia-timeline" id="future_lotteries-'+data[i].id+'"></div></div></div>'  );   
+                $('#tab-contents').append('<div id="category-'+data[i].id+'" class="tab-pane active"> <div class="ibox-content inspinia-timeline" id="future_lotteries-'+data[i].id+'"></div></div></div>'  );   
                    
                }else{
                    $('#nav-categories').append('<li><a data-toggle="tab" href="#category-'+data[i].id+'"> <img width="40px" src="'+url+'"> '+data[i].name+' </a></li>');
                    
-                     $('#tab-contents').append('<div id="category-'+data[i].id+'" class="tab-pane active"><div class="ibox-content inspinia-timeline" id="future_lotteries-'+data[i].id+'"></div></div>'  );   
+                     $('#tab-contents').append('<div id="category-'+data[i].id+'" class="tab-pane"><div class="ibox-content inspinia-timeline" id="future_lotteries-'+data[i].id+'"></div></div>'  );   
                }
         
            }
