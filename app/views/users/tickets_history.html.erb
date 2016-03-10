@@ -52,7 +52,9 @@
     columns: [
   
         { data: 'user.username' },
-        { data: 'lottery.id'},
+        { data: function ( row, type, val, meta ) {
+           return row.lottery.team.name + " vs " + row.lotteyr.team2.name
+        }},
         { data: 'ticket_number' },
         { data: 'lottery.winner_number' },
         { data: 'lottery.price' },
