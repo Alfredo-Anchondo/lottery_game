@@ -2,6 +2,8 @@ class Lottery < ActiveRecord::Base
   belongs_to :game
   before_update :update_winner, :if => :winner_number_changed? 
   has_many :user_lotteries 
+    has_one :team
+    has_one :team2
     
     
     def update_winner
