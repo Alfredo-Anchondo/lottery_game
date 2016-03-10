@@ -11,8 +11,6 @@
           <table id="history-table"  class=" table table-bordered table-hover table-striped nowrap" width="100%">
             <thead style="background-color:#727272; color:white;">
               <tr>
-                             
-                                  <th><%= t("activerecord.models.user") %></th>
                                   <th><%= t("lottery_id") %></th>
                                   <th><%= t('purchase_number') %> </th>
                                   <th><%= t("activerecord.attributes.lottery.winner_number") %></th>
@@ -51,7 +49,6 @@
         },
     columns: [
   
-        { data: 'user.username' },
         { data: function ( row, type, val, meta ) {
            return row.lottery.team.name + " vs " + row.lottery.team2.name
         }},
