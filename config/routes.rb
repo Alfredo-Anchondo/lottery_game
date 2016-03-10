@@ -10,6 +10,7 @@ Rails.application.routes.draw do
             get 'today_games'
             get 'today_games_view'
             get '/lottery_name/:id', to: "games#lottery_name"
+            get 'games_by_category'
         end
     end
         
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :sport_categories
 
-  resources :categories
+    resources :categories 
 
   resources :users do
       collection do
