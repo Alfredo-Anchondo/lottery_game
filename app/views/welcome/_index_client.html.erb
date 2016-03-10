@@ -92,6 +92,22 @@
                         </div>
 
                         <div class="ibox-content inspinia-timeline" id="finish_lotteries">
+                            <div class="table-responsive">
+          <table id="close_games_table"  class=" table responsive table-bordered table-hover table-striped nowrap" width="100%">
+            <thead style="background-color:#727272; color:white;">
+              <tr>
+                      <th><%= t("lottery_id") %></th>
+                      <th><%= t('activerecord.attributes.game.team') %> </th>
+                      <th><%= t("activerecord.attributes.game.team2") %></th>
+                      <th><%= t("score") %></th>
+                      <th><%= t("winner_number") %></th>
+              </tr>
+            </thead>
+
+            <tbody>
+                
+            </tbody>
+      </div>
                           <div class="row hide-mobile" >
                                   <div class="col-md-2"><h4 style="text-align:center"> # Loteria</h4></div>
                                   <div class="col-md-3"><h4 style="text-align:center"> Equipo Local</h4></div>
@@ -530,6 +546,36 @@
            })
            
             var count = 0;
+            
+       var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+    
+  var table = $('#close_games_table').DataTable( {
+       responsive: true,
+    ajax: {
+        url: "/games/finish_games",
+        dataSrc: 'games'
+    },
+            "language": {
+            "url": languaje
+        },
+    columns: [
+        { data: 'games.lottery[0].id'}   
+    ],
+} );
+            
+            
+            
+            
+            
+            
+            ////////////////////////////////////
             $.ajax({
             method: "GET",
             url: "/games/finish_games",
@@ -549,9 +595,6 @@
                         }   else{
                         var image_url = '/system/teams/logos/000/000/0'+data.games[i].team.id+'/original/'+data.games[i].team.logo_file_name;
                         }  
-                    
-                    
-                    
                     
                       $('#finish_lotteries').append(' <div class="row"><div class="col-md-2"><h5 style="text-align:center"> '+  data.games[i].lotteries[0].id+'</h5></div><div class="col-md-3"><h5 style="text-align:center"> <img width="30px" src="'+image_url+'"> '+ data.games[i].team.name +'</h5></div><div class="col-md-3"><h5 style="text-align:center"> <img width="30px" src="'+image_url2+'">'+ data.games[i].team2.name +'</h5></div><div class="col-md-2"><h5 style="text-align:center">'+ data.games[i].local_score+ ' - ' + data.games[i].visit_score +'</h5></div><div class="col-md-2"><h5 style="text-align:center">' + data.games[i].lotteries[0].winner_number + '</h5></div></div> <hr>');
                     }
