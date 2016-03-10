@@ -5,7 +5,7 @@
                         <ul class="nav nav-tabs" id="nav-categories">
                             <li class="active"><a data-toggle="tab" href="#tab-3"> <i class="fa fa-laptop"></i></a></li>
                         </ul>
-                        <div class="tab-content">
+                        <div class="tab-content" id="tab-contents">
                             <div id="tab-3" class="tab-pane active">
                                 <div class="panel-body">
                                     <strong>Lorem ipsum dolor sit amet, consectetuer adipiscing</strong>
@@ -39,8 +39,12 @@
                if(i == 0){
                  $('#nav-categories').append('<li class="active"><a data-toggle="tab" href="#category-'+data[i].id+'"> <img width="40px" src="'+url+'"> '+data[i].name+' </a></li>');
                    
+                $('#tab-contents').append('<div id="category-'+data[i].id+'" class="tab-pane active"></div>'  );   
+                   
                }else{
                    $('#nav-categories').append('<li><a data-toggle="tab" href="#category-'+data[i].id+'"> <img width="40px" src="'+url+'"> '+data[i].name+' </a></li>');
+                   
+                     $('#tab-contents').append('<div id="category-'+data[i].id+'" class="tab-pane active"></div>'  );   
                }
         
            }
