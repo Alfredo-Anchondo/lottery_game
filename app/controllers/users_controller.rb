@@ -44,9 +44,9 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-        if @user.update(:password){
-                  sign_in(@user, :bypass => true)
-            }else if @user.update(user_params)
+        if @user.update(:password)
+        sign_in(@user, :bypass => true)
+        else if @user.update(user_params)
         format.html { redirect_to @user, notice: t('success_update') }
         format.json { render :show, status: :ok, location: @user }
       else
