@@ -12,6 +12,66 @@
                 </div>
 </div>
 
+
+<!------------------------------------------------------------MODAL ------------------------------------------------>
+
+<div class="modal fade bs-example-modal-sm" id="buy_ticket_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div style="background-color:#E4007D" class="modal-dialog modal-md confirm_buy_modal">
+       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           <h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t('purchase_confirmation') %></h4>
+      </div>
+    <div class="modal-content">
+        <div class="row" style="padding:5px !important; ">
+        <h4 style="text-align:center">Reglas de la loteria</h4>
+            <h5 id="rules_modal"></h5>
+        </div>
+     <div class="row" style="padding:5px !important;"> 
+         <h4>Selecciona el numero para participar:</h4>
+         <input style="color:black" class="ticket_number form-control" id="lottery_number_in_modal" type="number" min="0" > 
+        </div>
+     <div class="row" style="padding:5px !important;"> 
+         <h4 style="text-align:center">Boleto</h4>
+            <div class="col-md-12" style="border: 1px dotted black">
+                <div class="row" style="padding:0px">
+                <h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name_modal"></h4>    
+                </div>
+                <div class="row" style="padding:0px; border-bottom:1px solid #009688;">
+                <div class="col-md-4 col-xs-4">
+                    <h4 style="text-align:center"><%= t('name') %>:</h4>
+                    <h5 style="text-align:center; text-transform:uppercase"><%= current_user.name %> </h5>
+                    </div>
+                    
+                <div class="col-md-4 col-xs-4">
+                    <h4 style="text-align:center"><%= t('last_name') %>:</h4>
+                    <h5 style="text-align:center; text-transform:uppercase"><%= current_user.last_name %> </h5>
+                    </div>
+                    <div class="col-md-4 col-xs-4">
+                    <h4 style="text-align:center"><%= t('ticket') %>:</h4>
+                 
+                    <h5 style="text-align:center" id="ticket_numer_lottery_modal"></h5>
+                    <input type="hidden" id="lottery_id_modal">
+                    </div>
+                </div>
+                <div class="row" style="padding:0px">
+                <h4 style="text-align:right; margin-right:8%;">Total: $ <span id="total_price_modal"> </span> </h4>
+                </div>
+            </div>
+         <div class="col-md-12">
+          <h4>Bolsa acumulada hasta el momento: <span class="total_initial_balance" style="color:#E4007D; font-size:120%;"></span> </h4> <small>* El valor de la bolsa que ves es el actual, este podra conservarse igual o aumentar segun la demanda de boletos.</small>
+         </div>
+        </div>
+    </div>
+       <div class="modal-footer">
+           <button type="button" style="background-color:gray; border-color:727272;" class="btn btn-default" data-dismiss="modal"><%= t('close') %></button>
+           <button type="button" id="confirm-buy-modal" style="background-color:#ab005c" class="btn btn-primary"><%= t('buy') %></button>
+      </div>
+  </div>
+</div>
+
+
+<!-------------------------------------------------------TERMINA MODAL ---------------------------------------------->
+
 <script>
        $.ajax({
   method: "GET",
