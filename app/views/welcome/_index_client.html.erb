@@ -96,9 +96,9 @@
           <table id="close_games_table"  class=" table responsive table-bordered table-hover table-striped nowrap" width="100%">
             <thead style="background-color:#727272; color:white;">
               <tr>
-                      <th><%= t("lottery_id") %></th>
+                      <th><%= t("lottery_id_id") %></th>
                       <th><%= t('activerecord.attributes.game.team') %> </th>
-                      <th><%= t("activerecord.attributes.game.team2") %></th>
+                      <th><%= t("activerecord.attributes.game.team2_id") %></th>
                       <th><%= t("score") %></th>
                       <th><%= t("winner_number") %></th>
               </tr>
@@ -108,13 +108,6 @@
                 
             </tbody>
       </div>
-                          <div class="row hide-mobile" >
-                                  <div class="col-md-2"><h4 style="text-align:center"> # Loteria</h4></div>
-                                  <div class="col-md-3"><h4 style="text-align:center"> Equipo Local</h4></div>
-                                  <div class="col-md-3"><h4 style="text-align:center">Equipo Visitante</h4></div>
-                                  <div class="col-md-2"><h4 style="text-align:center">Marcador</h4></div>
-                                  <div class="col-md-2"><h4 style="text-align:center"># Ganador</h4></div>
-                            </div> <hr>
                         </div>
                     </div>
                 </div>
@@ -575,41 +568,6 @@
            { data: 'lotteries[0].winner_number'}
     ],
 } );
-            
-            
-            
-            
-            
-            
-            ////////////////////////////////////
-            $.ajax({
-            method: "GET",
-            url: "/games/finish_games",
-            format: "json"
-               }).done(function(data){
-                for(var i in data.games){
-                   
-                    if (count < 10){
-                        if (data.games[i].team2.id < 10){
-                        var image_url2 ='/system/teams/logos/000/000/00'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
-                        }   else{
-                        var image_url2 = '/system/teams/logos/000/000/0'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
-                        }  
-                    
-                       if (data.games[i].team.id < 10){
-                        var image_url ='/system/teams/logos/000/000/00'+data.games[i].team.id+'/original/'+data.games[i].team.logo_file_name;
-                        }   else{
-                        var image_url = '/system/teams/logos/000/000/0'+data.games[i].team.id+'/original/'+data.games[i].team.logo_file_name;
-                        }  
-                    
-                      $('#finish_lotteries').append(' <div class="row"><div class="col-md-2"><h5 style="text-align:center"> '+  data.games[i].lotteries[0].id+'</h5></div><div class="col-md-3"><h5 style="text-align:center"> <img width="30px" src="'+image_url+'"> '+ data.games[i].team.name +'</h5></div><div class="col-md-3"><h5 style="text-align:center"> <img width="30px" src="'+image_url2+'">'+ data.games[i].team2.name +'</h5></div><div class="col-md-2"><h5 style="text-align:center">'+ data.games[i].local_score+ ' - ' + data.games[i].visit_score +'</h5></div><div class="col-md-2"><h5 style="text-align:center">' + data.games[i].lotteries[0].winner_number + '</h5></div></div> <hr>');
-                    }
-                      count ++;
-                }
-              
-            })
-           
-           
              
          });
     

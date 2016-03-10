@@ -99,6 +99,7 @@ es:
   ticket: "Boleto"
   score: "Marcador"
   lottery_id: "Nombre de la Loteria"
+  lottery_id_id: "Numero de Loteria"
   close_lottery: "Cerrar Loteria"
   update_score: "Actualizar marcador"
   close_lottery_message: "Esta loteria ya se encuentra cerrada, ya se notifico a los usuarios sobre el numero ganador."
