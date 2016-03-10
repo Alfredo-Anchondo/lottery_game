@@ -96,7 +96,7 @@ es:
   hours: "Horas"
   purchase_number: "Número comprado"
   ticket: "Boleto"
-  lottery_id: "ID de la Loteria"
+  lottery_id: "Nombre de la Loteria"
   close_lottery: "Cerrar Loteria"
   update_score: "Actualizar marcador"
   close_lottery_message: "Esta loteria ya se encuentra cerrada, ya se notifico a los usuarios sobre el numero ganador."
