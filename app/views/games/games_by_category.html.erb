@@ -2,7 +2,7 @@
     <br>
 <div class="col-md-12 col-xs-12">
                     <div class="tabs-container">
-                        <ul class="nav nav-tabs">
+                        <ul class="nav nav-tabs" id="nav-categories">
                             <li class="active"><a data-toggle="tab" href="#tab-3"> <i class="fa fa-laptop"></i></a></li>
                         </ul>
                         <div class="tab-content">
@@ -30,7 +30,19 @@
 })
   .done(function( data) {
            for(var i in data){
-                alert(data[i].name);
+                    if(data[i].id < 10){
+                           var url = "/system/categories/logos/000/000/00"+ data[i].id+"/original/"+data[i].logo_file_name+"" ;
+                       }else{
+                            var url = "/system/categories/logos/000/000/0"+ data[i].id+"/original/"+data.[i].logo_file_name+"";
+                       }
+               
+               if(i == 0){
+                 $('#nav-categories').append('<li class="active"><a data-toggle="tab" href="#category-'+data[i].id+'"> <img src="'+url+'"> </a></li>');
+                   
+               }else{
+                   $('#nav-categories').append('<li><a data-toggle="tab" href="#category-'+data[i].id+'"> <img src="'+url+'"> </a></li>');
+               }
+        
            }
           
        });
