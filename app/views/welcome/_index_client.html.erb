@@ -566,7 +566,13 @@
             "url": languaje
         },
     columns: [
-        { data: 'lotteries[0].id'}   
+        { data: 'lotteries[0].id'},
+        { data: 'team.name'},
+        { data: 'team2.name'},
+        { data: function(row, type, val, meta){
+            return row.local_score +" - "+ row.visit_score
+        }},
+           { data: 'lotteries[0].winner_number'}
     ],
 } );
             
