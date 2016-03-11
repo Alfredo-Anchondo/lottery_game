@@ -9,8 +9,7 @@ class User < ActiveRecord::Base
     has_many :user_lotteries
     has_attached_file :photo,
     :styles => { :medium => "x300",
-    :mobile => "x240" },
-    :default_url => "/assets/no-image.png"
+    :mobile => "x240" }
     
     #Validations
     validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
