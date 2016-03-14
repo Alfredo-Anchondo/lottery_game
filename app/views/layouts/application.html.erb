@@ -28,10 +28,12 @@
     
 
         
-    
+    <% if notice %>
     <p style="text-align:center; color:white" class="notice alert alert-success alert">
          <%= notice %> <%= alert %>
     </p>
+    <% end %>
+    
      <input style="display:none" id="current_language" value="<%= current_user %>">
  
        <% if signed_in? %>
