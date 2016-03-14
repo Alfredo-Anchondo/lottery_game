@@ -127,7 +127,8 @@
   <div class="actions" style="color:black">
       <%= f.submit t('log_in'), :class => "form-group btn", :style => "background-color:#ab005c; width:50%; color: white;
     font-weight: 900;" %> <br>
-          <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+         <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
       <div id="status">
 </div>
   </div>
