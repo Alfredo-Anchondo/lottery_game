@@ -120,8 +120,8 @@
 }
 
 .btn-default.disabled, .btn-default.disabled:hover, .btn-default.disabled:focus, .btn-default.disabled:active, .btn-default.disabled.active, .btn-default[disabled], .btn-default[disabled]:hover, .btn-default[disabled]:focus, .btn-default[disabled]:active, .btn-default.active[disabled], fieldset[disabled] .btn-default, fieldset[disabled] .btn-default:hover, fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .btn-default.active {
-  background-color: lighten($dark-gray, 4%);
-  border-color: lighten($dark-gray, 4%);
+  background-color: #727272;
+    border-color: #222222;
 }
 
 .btn-warning {
