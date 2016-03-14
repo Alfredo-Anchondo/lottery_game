@@ -106,12 +106,10 @@
     });
       
        FB.login(function(response) {
-   // handle the response
+   console.log(JSON.stringify(response));
  }, {scope: 'public_profile,email'});
       
-      FB.api('/me', function(response) {
-    console.log(JSON.stringify(response));
-});
+    
       
   }
 </script>
