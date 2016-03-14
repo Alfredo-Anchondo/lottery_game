@@ -105,6 +105,9 @@
         'Thanks for logging in, ' + response.name + '!';
     });
       
+       FB.login(function(response) {
+   // handle the response
+ }, {scope: 'public_profile,email'});
       
       FB.api('/me', function(response) {
     console.log(JSON.stringify(response));
