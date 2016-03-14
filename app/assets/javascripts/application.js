@@ -26,6 +26,10 @@
 //= require moment-with-locales
 
 $(document).ready(function(){
+    
+         $(".alert").fadeTo(3000, 500).slideUp(500, function(){
+    $(".alert").alert('close');
+});
       
     
     var current_language = $("#current_language").val();
