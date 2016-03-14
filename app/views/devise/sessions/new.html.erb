@@ -104,6 +104,12 @@
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
+      
+      
+      FB.api('/me', function(response) {
+    console.log(JSON.stringify(response));
+});
+      
   }
 </script>
 
