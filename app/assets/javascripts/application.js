@@ -27,6 +27,11 @@
 //= require datetimepicker
 
 $(document).ready(function(){
+    
+    
+                $('#datetimepicker').datetimepicker();
+
+    
       $('select').addClass('selectpicker');
     $('select').data('live-search', true);
    
