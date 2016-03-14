@@ -14,6 +14,14 @@
 </div>
 <% end %>
 
+<div class="col-md-12">
+  <div class="form-group">
+      <%= f.label :game_date, :class => "col-md-1", :style => 'width:12%' %>
+          <div class="col-md-10">
+              <%= f.datetime_select :game_date, :class => "form-control datetimepicker" %>
+          </div>
+        </div>
+</div>
 <!-- begin col-md-6 -->
 <div class="col-md-6">
               <div class="form-group">
@@ -49,14 +57,7 @@
       </div>
 <!-- end col-md-6 -->
 
-<div class="col-md-12">
-  <div class="form-group">
-          <%= f.label :game_date, :class => "col-md-3" %>
-          <div class="col-md-9">
-              <%= f.datetime_select :game_date, :class => "form-control datetimepicker" %>
-          </div>
-        </div>
-</div>
+
 
 <div class="col-md-12">
   <div class="form-group">
