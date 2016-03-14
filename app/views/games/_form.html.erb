@@ -25,7 +25,16 @@
                   <div class="form-group">
           <%= f.label :game_date, :class => "col-md-3" %>
           <div class="col-md-9">
-              <%= f.select :game_date, :class => "form-control datetimepicker" %>
+                <div class='input-group date' id='datetimepicker'>
+                    <input type='text' id="game_game_date" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+           
+              
+              
+             
           </div>
         </div>
                   <div class="form-group">
