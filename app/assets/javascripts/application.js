@@ -29,7 +29,7 @@
 $(document).ready(function(){
     
     
-                $('#datetimepicker').datetimepicker();
+                $('.datetimepicker').datetimepicker();
 
     
       $('select').addClass('selectpicker');
