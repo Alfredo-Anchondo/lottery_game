@@ -27,7 +27,7 @@
 
 $(document).ready(function(){
     
-    $('select .form-control').data('"live-search"', true);
+    $('#game_team2_id').data('"live-search"', true);
     
          $(".alert").fadeTo(3000, 500).slideUp(500, function(){
     $(".alert").alert('close');
