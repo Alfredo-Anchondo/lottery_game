@@ -10,19 +10,13 @@
       <%= f.text_field :username, :style => "color:black", :class => "form-control", autofocus: true %>
   </div>
 <br>
+       
   <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password, :style => "color:black",  :class => "form-control",  autocomplete: "off" %>
   </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-        <%= f.label t('remember_me') %>
-    </div>
-  <% end -%>
        
-       <script>
+          <script>
        // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -110,6 +104,21 @@
 -->
 
 
+       
+       <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+        <%= f.label t('remember_me') %>
+    </div>
+  <% end -%>
+       
+    
   <div class="actions" style="color:black">
       <%= f.submit t('log_in'), :class => "form-group btn", :style => "background-color:#ab005c; width:50%; color: white;
     font-weight: 900;" %>
@@ -121,10 +130,6 @@
      <div class="col-md-4"></div>
 </div>
 
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
 
-<div id="status">
-</div>
 
 
