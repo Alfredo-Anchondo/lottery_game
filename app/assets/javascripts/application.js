@@ -24,6 +24,7 @@
 //= require jquery-mask
 //= require countdown
 //= require moment-with-locales
+//= require datetimepicker
 
 $(document).ready(function(){
       $('select').addClass('selectpicker');
