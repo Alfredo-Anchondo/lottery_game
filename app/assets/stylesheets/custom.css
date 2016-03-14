@@ -38,7 +38,7 @@
     }
     
     #main-con{
-        margin-top:-21% !important;
+        margin-top: 0% !important;
     }
     
     #user_image{
@@ -48,6 +48,8 @@
     #current_bal{
         margin-left:3% !important;
     }
+    
+   
     
     .logo_lotteries{
         width: 100% !important;
@@ -132,6 +134,10 @@
   
      background-size:cover; 
 }
+
+ .alert-sucess{
+         background-color: fuchsia !important;
+    }
 
 .header-show{
     background-color:#ab005c;
