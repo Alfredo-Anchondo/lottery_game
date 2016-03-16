@@ -40,7 +40,7 @@ end
     def self.winner_user(lottery_id_param, winner_number, lottery_name, winner_number_param, initial_balance)
         users = where(:id => UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param).pluck(:user_id).uniq).all
         
-        if users.count > 1 
+        if users.count == 1 
             if users.present?
              winner = users.email
              user_winner =  users.id
