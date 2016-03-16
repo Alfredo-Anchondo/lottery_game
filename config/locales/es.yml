@@ -99,6 +99,7 @@ es:
   ticket: "Boleto"
   score: "Marcador"
   lottery_id: "Nombre de la Loteria"
+  login_with: "Iniciar Sesión con"
   lottery_id_id: "Numero de Loteria"
   close_lottery: "Cerrar Loteria"
   update_score: "Actualizar marcador"
