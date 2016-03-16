@@ -104,7 +104,6 @@
             <%= f.collection_select(:role_id, @roles_select, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
               <% end %>
               <% else %>
-              <%= f.text_field :role_id, :class => "form-control" %>
               <% end %>
           </div>
         </div>
