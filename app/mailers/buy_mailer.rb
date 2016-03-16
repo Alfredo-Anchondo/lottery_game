@@ -13,7 +13,7 @@ class BuyMailer < ActionMailer::Base
   def welcome_user(user)
     @user = user  
     @url  = 'http://example.com/login'
-        mail(to: @user.email, subject: '[DonBillete] Gracias por Registrarte')
+    mail(to: @user.email, subject: '[DonBillete] Gracias por Registrarte')
   end
     
     
