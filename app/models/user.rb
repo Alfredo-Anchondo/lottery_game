@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
-          :rememberable, :trackable, :validatable
+          :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
       #Associations
      belongs_to :role
@@ -14,7 +14,18 @@ class User < ActiveRecord::Base
     #Validations
     validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   
-
+def self.from_omniauth(auth)
+  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    user.email = auth.info.email
+    user.password = Devise.friendly_token[0,20]
+    user.name = auth.info.first_name  # assuming the user model has a name
+    user.username = auth.info.name
+    user.last_name =  auth.info.last_name
+    user.role_id = '2'  
+  end
+end
+    
+    
       def select_display
         name + " " + last_name
     end
