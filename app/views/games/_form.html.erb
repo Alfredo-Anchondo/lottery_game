@@ -75,7 +75,8 @@
   $("#game_team_id").change(function(){
       var x = $("#game_team_id").val();
       
-      $("#game_team2_id  option[value='"+x+"']").remove();
+      $("#game_team2_id  option[value='"+x+"']").remove
+      $("#game_team2_id").selectpicker('refresh');
       
   });
   
