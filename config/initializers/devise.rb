@@ -236,7 +236,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
     OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
-    config.omniauth :facebook, "810845932381003", "58ced0568b16643d8bce33866174930f", callback_url: "http://localhost:3000/users/auth/facebook/callback", scope: 'email', info_fields: 'email, first_name, last_name'
+    config.omniauth :facebook, "810845932381003", "58ced0568b16643d8bce33866174930f", callback_url: "http://donbillete.com/users/auth/facebook/callback", scope: 'email', info_fields: 'email, first_name, last_name'
     
     
 
