@@ -43,6 +43,7 @@ end
         if(user.count > 1){
             logger.info 'No mames hubo mas de un ganador'
             }
+        end
         
         user.each do |variable|
             logger.info variable.email 
