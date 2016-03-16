@@ -41,16 +41,7 @@ end
         user = where(:id => UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param).pluck(:user_id).uniq).all
         
         if user.count > 1 
-            logger.info 'No mames hubo mas de un ganador'
-        end
-        
-        user.each do |variable|
-            logger.info variable.email 
-        end
-    
-        
-        
-        if user.present?
+            if user.present?
              winner = user.email
              user_winner =  user.id
              logger.info winner
@@ -59,7 +50,16 @@ end
              User.find_by_id(user_winner).update(:balance => (user.balance + initial_balance)) 
              update_winner = UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param, :user_id => user_winner).pluck(:id)
              UserLottery.find_by_id(update_winner).update(:status => "Ganador") 
-        end    
+            end    
+        else
+        
+            user.each do |variable|
+                logger.info variable.email 
+            end
+        
+        end 
+    
+    
     end   
     
     
