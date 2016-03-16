@@ -251,14 +251,14 @@
 
 
 <script>
-                var ticket_length;
-                var ticket_length_modal;
-                var user_id;
-                var lottery_id;
-                var ticket_number;
-                var purchase_date;
-                var current_balance;
-                var lottery_price;
+        var ticket_length;
+        var ticket_length_modal;
+        var user_id;
+        var lottery_id;
+        var ticket_number;
+        var purchase_date;
+        var current_balance;
+        var lottery_price;
                 
     
         $(document).ready(function(){
@@ -446,11 +446,11 @@
                     }).done(function( data) {
                          alert('Se actualizo la bolsa');
                      });
-    }     
+    }  
+            
     function update_balance_modal(){
                  user_id = <%= current_user.id %>;
                  lottery_id = $('#lottery_id_modal').val();
-        alert(lottery_id);
                  user_id = <%= current_user.id %>;
                  current_balance = <%= current_user.balance %>;
                  lottery_price = $('#total_price_modal').text();
