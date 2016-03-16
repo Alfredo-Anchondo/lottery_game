@@ -40,7 +40,7 @@ end
     def self.winner_user(lottery_id_param, winner_number, lottery_name, winner_number_param, initial_balance)
         users = where(:id => UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param).pluck(:user_id).uniq).all
         
-        if users.count == 1 
+        if users.count <= 1 
             if users.present?
              winner = users.email
              user_winner =  users.id
@@ -57,12 +57,13 @@ end
             logger.info count 
             logger.info initial_balance
             logger.info total_update
+            
             users.each do |variable|
             logger.info variable.email 
             winner = variable.email
             user_winner =  variable.id
-                BuyMailer.winner_congratulations(winner, winner_number, lottery_name, total_update).deliver
-                User.find_by_id(user_winner).update(:balance => (variable.balance + initial_balance)) 
+            BuyMailer.winner_congratulations(winner, winner_number, lottery_name, total_update).deliver
+            User.find_by_id(user_winner).update(:balance => (variable.balance + initial_balance)) 
              update_winner = UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param, :user_id => user_winner).pluck(:id)
              UserLottery.find_by_id(update_winner).update(:status => "Ganador") 
             end
