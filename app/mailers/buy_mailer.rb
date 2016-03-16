@@ -2,7 +2,7 @@ class BuyMailer < ActionMailer::Base
     default from: "no-reply@donbillete.com"
 
     
-    def buy_ticket(user, lottery, lottery_user)
+  def buy_ticket(user, lottery, lottery_user)
     @user = user
     @lottery = lottery  
     @user_lottery = lottery_user    
