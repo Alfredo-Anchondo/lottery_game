@@ -103,7 +103,6 @@
                   <% if current_user.role.is_admin? %>
             <%= f.collection_select(:role_id, @roles_select, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
               <% end %>
-              <% else %>
               <% end %>
           </div>
         </div>
