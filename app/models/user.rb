@@ -52,9 +52,21 @@ end
              UserLottery.find_by_id(update_winner).update(:status => "Ganador") 
             end    
         else
-        
+            count = users.count
+            total_update = initial_balance / count
+            logger.info count 
+            logger.info initial_balance
+            logger.info total_update
             users.each do |variable|
-                logger.info variable.email 
+            logger.info variable.email 
+            winner = variable.email
+            user_winner =  variable.id
+             logger.info winner
+             logger.info user_winner
+             BuyMailer.winner_congratulations(winner, winner_number, lottery_name).deliver
+             User.find_by_id(user_winner).update(:balance => (users.balance + initial_balance)) 
+             update_winner = UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param, :user_id => user_winner).pluck(:id)
+             UserLottery.find_by_id(update_winner).update(:status => "Ganador") 
             end
         
         end 
