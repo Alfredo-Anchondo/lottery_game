@@ -42,12 +42,12 @@ end
         
         if users.count <= 1 
             if users.present?
-             winner = users.email
-             user_winner =  users.id
+             winner = users[0].email
+             user_winner =  users[0].id
              logger.info winner
              logger.info user_winner
                 BuyMailer.winner_congratulations(winner, winner_number, lottery_name, initial_balance).deliver
-             User.find_by_id(user_winner).update(:balance => (users.balance + initial_balance)) 
+             User.find_by_id(user_winner).update(:balance => (users[0].balance + initial_balance)) 
              update_winner = UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param, :user_id => user_winner).pluck(:id)
              UserLottery.find_by_id(update_winner).update(:status => "Ganador") 
             end    
