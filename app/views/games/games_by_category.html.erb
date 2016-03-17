@@ -190,6 +190,7 @@
     
           function buy_ticket_modal(){
                user_id = <%= current_user.id %>;
+                purchase_date = new Date();
                 ticket_number = $('#lottery_number_in_modal').val();
                      $.ajax({
                       method: "POST",
