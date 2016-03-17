@@ -722,3 +722,10 @@
 #login-container{
     border:1px solid #AB015C;
 }
+
+.date-date{
+    text-align: right;
+    width: inherit;
+    position: relative;
+    padding-top: 30px;
+}
