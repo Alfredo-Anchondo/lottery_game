@@ -1,11 +1,28 @@
 <div class="row">
-  <div class="col-md-4"></div>
-   <div class="col-md-4" style="border:1px solid black; background-color:#E4007D; color:white; text-align:center">
-    <h2 style="font-weight:700"><%= t('log_in') %> DONBILLETE</h2>
-         <h4 style="text-align:center"><img width="20%" src="/assets/DonBillete.png" ></h4>
-       <br>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="col-md-6">
+                <h2 class="font-bold">Welcome to IN+</h2>
+
+                <p>
+                    Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+                </p>
+
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                </p>
+
+                <p>
+                    When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                </p>
+
+                <p>
+                    <small>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</small>
+                </p>
+
+            </div>
+            <div class="col-md-6">
+                <div class="ibox-content">
+                   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, :style => "color:black", :class => "form-control", autofocus: true %>
@@ -36,6 +53,31 @@
 <% end %>
 <br>
 <%= render "devise/shared/links" %>
+                    <p class="m-t">
+                        <small>Inspinia we app framework base on Bootstrap 3 © 2014</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-md-4"></div>
+   <div class="col-md-4" style="border:1px solid black; background-color:#E4007D; color:white; text-align:center">
+    <h2 style="font-weight:700"><%= t('log_in') %> DONBILLETE</h2>
+         <h4 style="text-align:center"><img width="20%" src="/assets/DonBillete.png" ></h4>
+       <br>
+
+
     </div>
      <div class="col-md-4"></div>
 </div>
