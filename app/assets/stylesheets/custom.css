@@ -3,6 +3,9 @@
     #login-container{
     border:0px solid #AB015C !important;
 }
+    .loginColumns{
+        padding: 0px !important;
+    }
     
     .hide-phone{
         display:none;
