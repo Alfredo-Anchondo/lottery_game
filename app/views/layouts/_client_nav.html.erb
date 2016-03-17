@@ -33,8 +33,8 @@
          <% if signed_in? %>
         <span id="user_name" style="display:none"> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> <br> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;">$<%= current_user.balance %>  </span> </span> 
         <% end %>
-      <button type="button" class="navbar-toggle" style="" data-toggle="collapse" data-target="#myNavbar">
-       <i class="fa fa-bars"></i> 
+      <button  type="button" class="navbar-toggle" style="margin-left:4px" data-toggle="collapse" data-target="#myNavbar">
+       <i style="margin-left:7px;" class="fa fa-bars"></i> 
       </button>
       <a class="navbar-brand" href="/">DonBillete</a>
     </div>
