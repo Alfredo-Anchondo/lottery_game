@@ -1,3 +1,5 @@
+ <p style="text-align:center; id='notification' display:none; margin-bottom:70px; color:white" class="alert-success alert">
+    </p>
 <div class="row" id="coming-lotteries">
     <div class="ibox float-e-margins">
                     <div class="ibox-title">
@@ -352,7 +354,11 @@
                          $('#confirm_buy').modal('show');
                      }
                  }else{
+                     $('#notification').append('<span> Selecciona un numero para continuar </span>');
+                     $('#notification').css('display','block');
+                     
                     alert('Selecciona un numero para continuar');
+                     
                  }       
              })
              
