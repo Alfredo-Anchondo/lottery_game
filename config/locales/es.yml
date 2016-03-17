@@ -95,6 +95,7 @@ es:
   winner_number: "Numero Ganador"
   day: "Dias"
   hours: "Horas"
+  warning: "Cuidado: Revisa tus datos"
   purchase_number: "Número comprado"
   ticket: "Boleto"
   score: "Marcador"
