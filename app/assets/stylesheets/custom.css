@@ -1,3 +1,104 @@
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+       #user_name{
+        display:-webkit-inline-box  !important;
+        font-size:11px;
+        margin-top:2.5%;
+    }
+    
+    #login-container{
+    border:0px solid #AB015C !important;
+}
+    .loginColumns{
+        padding: 0px !important;
+    }
+    
+    .hide-phone{
+        display:none;
+    }
+    
+    #myNavbar{
+        width: 100% !important;
+    }
+    
+    #menu{
+        width: 100% !important;
+    }
+    
+    #banner{
+        background-size:contain !important; 
+    }
+    
+    .confirm_buy_modal{
+        width: 100% !important;
+    }
+    
+    .hide-mobile{
+        display:none;
+    }
+    
+    .col-xs-12{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    
+   #vs{
+    margin-top: 10px !important;
+   }
+    
+    #responsive-cellphone{
+        text-align:center;
+    }
+    
+    #main-con{
+        margin-top: 0% !important;
+    }
+    
+    #user_image{
+        float: none !important;
+    }
+    
+    #current_bal{
+        margin-left:3% !important;
+    }
+    
+   
+    
+    .logo_lotteries{
+        width: 100% !important;
+    }
+    
+    #logo-image{
+    width: 100% !important;
+    }
+    
+    .category_logo{
+        width: 40px !important;
+    }
+    
+    .center-text{
+        text-align:center;
+    }
+    
+    #move-top{
+        margin-top: 3%;
+    }
+    
+    #buy-ticket-button{
+        margin-left:25% !important;
+        margin-top: 2%;
+    }
+    
+    #header-loterry{
+        text-align: center !important;
+    }
+      
+}
+
+
+
 @media screen 
   and (device-width: 601px) 
   and (device-height: 906px) 
