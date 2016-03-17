@@ -167,5 +167,30 @@
                    }      
                });
     
+    $('#confirm-buy-modal').click(function(){
+               var balance = <%= current_user.balance %> ;
+               
+               
+               if($("#lottery_number_in_modal").val() != ''){
+                   var f = $('#lottery_number_in_modal').val();
+                      f = f.length;
+                     if(f < ticket_length_modal){
+                         alert('Te faltan mas digitos en el boleto');
+                     }else{
+                        if(balance < $('#total_price_modal').text()){
+                      alert('No tienes saldo suficiente'); 
+                   }else{
+                         buy_ticket_modal();
+               update_balance_modal();
+               $('#buy_ticket_modal').modal('hide');
+                   }
+                     }
+    
+               }else{
+                   alert("Debes seleccionar un numero para participar");
+               }
+              
+           })
+    
 </script>
 
