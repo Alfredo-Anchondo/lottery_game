@@ -1,7 +1,7 @@
 @media screen and (max-width: 480px) {
     
     #user_name{
-        display:inline-box  !important;
+        display:-webkit-inline-box  !important;
     }
     
     #login-container{
