@@ -208,7 +208,7 @@
                  user_id = <%= current_user.id %>;
                  current_balance = <%= current_user.balance %>;
                  lottery_price = $('#total_price_modal').text();
-                 var current_bag = parseInt($('#initial_balance').text()) + (lottery_price * .8);
+                 var current_bag = parseInt($('#total_modal_initial_balance').text()) + (lottery_price * .8);
         var total_balance_update = current_balance - lottery_price;
             $.ajax({
                       method: "PUT",
