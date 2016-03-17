@@ -1,5 +1,9 @@
 @media screen and (max-width: 480px) {
     
+    #user_name{
+        display:block !important;
+    }
+    
     #login-container{
     border:0px solid #AB015C !important;
 }
