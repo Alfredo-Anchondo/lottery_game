@@ -96,6 +96,7 @@ es:
   day: "Dias"
   hours: "Horas"
   warning: "Cuidado: Revisa tus datos"
+  select_numer: 'Debes de seleccionar un número para participar en la loteria antes de continuar con la compra.'
   purchase_number: "Número comprado"
   ticket: "Boleto"
   score: "Marcador"
