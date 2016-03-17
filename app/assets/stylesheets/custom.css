@@ -2,6 +2,8 @@
     
     #user_name{
         display:-webkit-inline-box  !important;
+        margin-left:5px;
+        margin-top:1.5%;
     }
     
     #login-container{
