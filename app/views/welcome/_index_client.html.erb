@@ -177,6 +177,19 @@
 
 <!-----------------------------------TERMINA MODAL ------------------------->
 
+    
+<!---------------------------------------MODAL PARA ALERTAS -------------------------------------->
+    
+<div class="modal fade bs-example-modal-sm" id="alert-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" id="alert-content">
+      
+    </div>
+  </div>
+</div>
+    
+<!-------------------------------------------FIN DE MODAL DE ALERTAS ------------------------------->    
+    
 
 
 <!--------------------- MODAL DE COMPRA --------------------------->
@@ -354,10 +367,8 @@
                          $('#confirm_buy').modal('show');
                      }
                  }else{
-                     $('#notification').append('<span> Selecciona un numero para continuar </span>');
-                     $('#notification').css('display', 'block');
-                     
-                     
+                     $('#alert-content').append('<p>Selecciona un numero para continuar</p>');
+                       $('#alert-modal').modal('show');
                     alert('Selecciona un numero para continuar');
                      
                  }       
