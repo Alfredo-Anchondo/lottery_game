@@ -100,6 +100,7 @@ es:
   purchase_number: "Número comprado"
   ticket: "Boleto"
   score: "Marcador"
+  acumulate_balance: "Valor de la bolsa acumulada:"
   lottery_id: "Nombre de la Loteria"
   login_with: "Iniciar Sesión con"
   lottery_id_id: "Numero de Loteria"
