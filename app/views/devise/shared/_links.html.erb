@@ -1,11 +1,11 @@
 <%- if controller_name != 'sessions' %>
-<p> <%= t('already_acount') %></p>
+<p style="text-align:center"> <%= t('already_acount') %></p>
   <%= link_to t('log_in'), new_session_path(resource_name) ,:class => "button btn", :style =>"background-color:#ab005c; color:white; font-weight:900;" %><br />
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <p> <%= t('not_account') %></p>
-  <p><%= t("just_click") %></p>    
+  <p style="text-align:center"> <%= t('not_account') %></p>
+  <p style="text-align:center"><%= t("just_click") %></p>    
 <%= link_to t('make_acount'), new_registration_path(resource_name) ,:class => "form-group btn", :style =>"background-color:#ab005c; color:white; font-weight:900;" %><br />
 <% end -%>
 
