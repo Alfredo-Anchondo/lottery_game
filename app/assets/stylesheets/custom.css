@@ -1,5 +1,9 @@
 @media screen and (max-width: 480px) {
     
+    #login-container{
+    border:0px solid #AB015C !important;
+}
+    
     .hide-phone{
         display:none;
     }
@@ -178,4 +182,8 @@
         background-color: #3B5998;
         color: white;
         margin-bottom: 10px;
+}
+
+#login-container{
+    border:1px solid #AB015C;
 }
