@@ -41,7 +41,7 @@ end
         UserLottery.count 
     end
     
-    def winner_lotteries_count
+    def self.winner_lotteries_count
         UserLoterry.winners_total
     end
     
