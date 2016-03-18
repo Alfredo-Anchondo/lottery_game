@@ -183,10 +183,9 @@
 
 <% end %>
 <script>
-
-$(document).ready(function(){
-    var win_lotteries;
+   var win_lotteries;
     var no_winners;
+$(document).ready(function(){
         $.ajax({
                       method: "GET",
                       url: "/user_lotteries/winners_total",
