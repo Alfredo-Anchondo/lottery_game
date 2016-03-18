@@ -191,7 +191,7 @@ $(document).ready(function(){
                       url: "/user_lotteries/winners_total",
                       dataType: "json",     
                     }).done(function( data) {
-            $('#win_lotteries').append(data + '<%= t('lotteries') %>');
+            $('#win_lotteries').append(data + ' <%= t('lotteries') %>');
                      });
     
     var data = [
