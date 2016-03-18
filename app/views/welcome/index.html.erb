@@ -193,7 +193,7 @@ $(document).ready(function(){
                       dataType: "json",     
                     }).done(function( data) {
                 win_lotteries = data;
-                no_winners = <%= current_user.lottery_count %> - data;
+                no_winners = (<%= current_user.lottery_count %> - data);
             $('#win_lotteries').append(data + ' <%= t('lotteries') %>');
             $('#no_winners').append(( <%= current_user.lottery_count %> - data)+ ' <%= t('lotteries') %>');
                      });
