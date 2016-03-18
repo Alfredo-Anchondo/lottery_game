@@ -25,6 +25,9 @@ def self.from_omniauth(auth)
   end
 end
     
+    def lottery_count
+        Lottery.count
+    end
     
       def select_display
         name + " " + last_name

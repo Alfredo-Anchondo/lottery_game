@@ -16,4 +16,5 @@ class Lottery < ActiveRecord::Base
           game.team.name + " vs " + game.team2.name
       end
     
+    
 end
