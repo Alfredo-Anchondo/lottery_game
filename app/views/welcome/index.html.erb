@@ -125,7 +125,7 @@
                                 <span class="label label-info">2</span> Loterias con Ganador
                             </li>
                             <li class="list-group-item">
-                                <span class="pull-right">
+                                <span class="pull-right" id="no_winners">
                                   
                                 </span>
                                 <span class="label label-success">3</span> Loterias sin Ganador
@@ -192,6 +192,7 @@ $(document).ready(function(){
                       dataType: "json",     
                     }).done(function( data) {
             $('#win_lotteries').append(data + ' <%= t('lotteries') %>');
+            $('#no_winners').append(( <%= current_user.lottery_count %> - data)+ ' <%= t('lotteries') %>');
                      });
     
     var data = [
