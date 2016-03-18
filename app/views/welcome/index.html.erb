@@ -198,7 +198,7 @@ $(document).ready(function(){
             $('#no_winners').append(( <%= current_user.lottery_count %> - data)+ ' <%= t('lotteries') %>');
                      });
     
-            alert(parseInt(win_lotteries) + parseInt(no_winners));
+            alert(parseInt(win_lotteries), parseInt(no_winners));
     var data = [
     {
         value: win_lotteries,
