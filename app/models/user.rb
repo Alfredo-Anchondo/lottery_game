@@ -41,9 +41,6 @@ end
         UserLottery.count 
     end
     
-    def self.winner_lotteries_count
-        UserLoterry.winners_total
-    end
     
       def select_display
         name + " " + last_name
