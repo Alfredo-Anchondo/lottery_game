@@ -193,16 +193,15 @@ $(document).ready(function(){
             $('#win_lotteries').append(data);
             $('#no_winners').append(( <%= current_user.lottery_count %> - data));
             
-                alert($('#win_lotteries').text());
     var data2 = [
-    {
-        value: $('#win_lotteries').text(),
+        {
+        value: parseInt($('#win_lotteries').text()),
         color:"#4d46f7",
         highlight: "#4431d6",
         label: "Loterias Sin Ganador"
     },
     {
-        value: $('#no_winners').text(),
+        value: parseInt($('#no_winners').text()),
         color: "#46BFBD",
         highlight: "#5AD3D1",
         label: "Loterias Con Ganador"
