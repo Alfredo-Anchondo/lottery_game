@@ -183,30 +183,27 @@
 
 <% end %>
 <script>
-   var win_lotteries;
-    var no_winners;
 $(document).ready(function(){
         $.ajax({
                       method: "GET",
                       url: "/user_lotteries/winners_total",
                       dataType: "json",     
                     }).done(function( data) {
-                win_lotteries = data;
-                no_winners = (<%= current_user.lottery_count %> - data);
-            $('#win_lotteries').append(data + ' <%= t('lotteries') %>');
-            $('#no_winners').append(( <%= current_user.lottery_count %> - data)+ ' <%= t('lotteries') %>');
+       
+            $('#win_lotteries').append(data);
+            $('#no_winners').append(( <%= current_user.lottery_count %> - data));
                      });
     
             alert(parseInt(win_lotteries), parseInt(no_winners));
     var data = [
     {
-        value: win_lotteries,
+        value: $('#win_lotteries').text(),
         color:"#4d46f7",
         highlight: "#4431d6",
         label: "Loterias Sin Ganador"
     },
     {
-        value: no_winners,
+        value: $('#no_winners').text(),
         color: "#46BFBD",
         highlight: "#5AD3D1",
         label: "Loterias Con Ganador"
