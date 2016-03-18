@@ -183,7 +183,16 @@
 
 <% end %>
 <script>
+
 $(document).ready(function(){
+    
+        $.ajax({
+                      method: "GET",
+                      url: "/user_lotteries/winners_total",
+                      dataType: "json",     
+                    }).done(function( data) {
+                         alert(data);
+                     });
     
     var data = [
     {
