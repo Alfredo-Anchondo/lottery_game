@@ -32,7 +32,8 @@ Rails.application.routes.draw do
   resources :user_lotteries do
     collection do
         get 'winners'
-          get 'winners_view'
+        get 'winners_total'
+        get 'winners_view'
     end
   end
         

@@ -17,6 +17,9 @@ class UserLotteriesController < ApplicationController
     @user_lottery = UserLottery.new
   end
 
+    def winners_total
+        render :json => UserLottery.winners_total
+    end
     
     
   # GET /user_lotteries/1/edit
