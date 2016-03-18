@@ -29,6 +29,18 @@ end
         Lottery.count
     end
     
+    def users_count
+        User.count
+    end    
+    
+    def teams_count
+        Team.count
+    end
+    
+    def user_lotteries_count
+        UserLotteries.count 
+    end    
+    
       def select_display
         name + " " + last_name
     end
