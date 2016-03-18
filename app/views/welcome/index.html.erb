@@ -185,25 +185,28 @@
 <script>
 
 $(document).ready(function(){
-    
+    var win_lotteries;
+    var no_winners;
         $.ajax({
                       method: "GET",
                       url: "/user_lotteries/winners_total",
                       dataType: "json",     
                     }).done(function( data) {
+                win_lotteries = data;
+                no_winners = <%= current_user.lottery_count %> - data;
             $('#win_lotteries').append(data + ' <%= t('lotteries') %>');
             $('#no_winners').append(( <%= current_user.lottery_count %> - data)+ ' <%= t('lotteries') %>');
                      });
     
     var data = [
     {
-        value: 300,
+        value: win_lotteries,
         color:"#4d46f7",
         highlight: "#4431d6",
         label: "Loterias Sin Ganador"
     },
     {
-        value: 50,
+        value: no_winners,
         color: "#46BFBD",
         highlight: "#5AD3D1",
         label: "Loterias Con Ganador"
