@@ -38,7 +38,7 @@ end
     end
     
     def user_lotteries_count
-        UserLotteries.count 
+        UserLottery.count 
     end    
     
       def select_display
