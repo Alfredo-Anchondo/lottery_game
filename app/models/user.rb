@@ -39,7 +39,11 @@ end
     
     def user_lotteries_count
         UserLottery.count 
-    end    
+    end
+    
+    def winner_lotteries_count
+        UserLoterry.winners_total
+    end
     
       def select_display
         name + " " + last_name
