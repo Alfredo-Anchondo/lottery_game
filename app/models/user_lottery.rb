@@ -12,6 +12,6 @@ class UserLottery < ActiveRecord::Base
     end
     
     def winners_total
-        where('status >= ?', 'Ganador').pluck(:lottery_id).uniq.count 
+        where('status >= ?', 'Ganador').count 
     end
 end
