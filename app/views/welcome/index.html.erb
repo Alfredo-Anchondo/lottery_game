@@ -192,10 +192,9 @@ $(document).ready(function(){
        
             $('#win_lotteries').append(data);
             $('#no_winners').append(( <%= current_user.lottery_count %> - data));
-                     });
-    
-    alert($('#win_lotteries').text());
-    var data = [
+            
+                alert($('#win_lotteries').text());
+    var data2 = [
     {
         value: $('#win_lotteries').text(),
         color:"#4d46f7",
@@ -211,7 +210,11 @@ $(document).ready(function(){
    
 ];
     var ctx = document.getElementById("myChart").getContext("2d");
-    var myPieChart = new Chart(ctx).Pie(data);
+    var myPieChart = new Chart(ctx).Pie(data2);
+            
+                     });
+    
+
 });
 
 
