@@ -11,7 +11,7 @@ class UserLottery < ActiveRecord::Base
         where('status >= ?', 'Ganador').order(:purchase_date)
     end
     
-    def winners_total
+    def self.winners_total
         where('status >= ?', 'Ganador').count 
     end
 end
