@@ -18,11 +18,10 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   helpers:
        select:
-       prompt: Please Select
+         prompt: Please Select
   date:
     abbr_day_names:
     - Sun
