@@ -4,7 +4,7 @@
     <div class="col-md-6" id="responsive-cellphone" style="margin-top:1%">
            <% if signed_in? %>
              <%=link_to current_user do %>
-        <div class="col-md-4">
+        <div class="col-md-2">
         </div>
         <div class="col-md-8 col-xs-12 hide-phone">
             <% if current_user.photo.present? %>
@@ -24,27 +24,30 @@
             
         </div>
         <% end %>
+        <div class="col-md-2">
         <!-- START Language list-->
                         <div class="pull-right">
                             <div class="btn-group i18n">
                                 <button type="button" data-toggle="dropdown" class="btn btn-default">
-                                    <%= image_tag "#{I18n.locale}-icon.png" ,:style => "width:50px" %> <%= t("language_#{I18n.locale}") %>
+                                    <%= image_tag "#{I18n.locale}-icon.png" ,:style => "width:30px" %> <%= t("language_#{I18n.locale}") %>
                                 </button>
                                 <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
                                     <li>
                                         <%= link_to "/users/i18n/es" do %>
-                                        <%= image_tag "es-icon.png", :style => "width:50px" %> <%= t("language_es") %>
+                                        <%= image_tag "es-icon.png", :style => "width:30px" %> <%= t("language_es") %>
                                         <% end %>
                                     </li>
                                     <li>
                                         <%= link_to "/users/i18n/en" do %>
-                                          <%= image_tag "en-icon.png", :style => "width:50px" %> <%= t("language_en") %>
+                                          <%= image_tag "en-icon.png", :style => "width:30px" %> <%= t("language_en") %>
                                         <% end %>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <!-- END Language list    -->
+        </div>
+        
      </div> 
     </div>
 </div>
