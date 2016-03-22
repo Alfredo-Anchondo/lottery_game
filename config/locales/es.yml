@@ -168,6 +168,7 @@ es:
   lotteries: "Loterias"
   all_lotteries: "Todas las loterias"
   result_lotteries: "Resultado de las loterias"
+  last_results: "Ultimos resultados"
   sportcategories: "Categoria de deportes"
   userlotteries: "Loterias por usuario"
   login: "Iniciar Sesión"
