@@ -108,9 +108,7 @@ en:
   no_balance_money: "You do not have balance? We will redirect
   buy_ticket: "Buy Ticket"
   no_lotteries_programed : "There is no currently scheduled lottery."
-  no_available_lotteries: "Sorry but there are currently no available Lotteries."
   purchased_ticket_history: "History Purchase Tickets"
-  warning_lotteries: "We recommend expect new lotteries are scheduled to participate."
   category_lotteries: "Lotteries by Category"
   buy_credit: "Buy Credit"
   program_games: "Games List"
