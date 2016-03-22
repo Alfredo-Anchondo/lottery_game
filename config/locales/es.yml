@@ -176,11 +176,11 @@ es:
   userlotteries: "Loterias por usuario"
   login: "Iniciar Sesión"
   signup: "Registrate"
-  created_lotteries: "Loterias Creadas"
+  created_lotteries: "Loterias"
   viewdetails: "Ver Detalles"
   registeredusers: "Usuarios"
   registeredteams: "Equipos"
-  ticketpurchased: "Boletos vendidos"
+  ticketpurchased: "Billetes"
   
   activerecord:
     models:
