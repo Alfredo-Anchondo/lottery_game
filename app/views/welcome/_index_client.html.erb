@@ -53,7 +53,7 @@
                             </div>
                            
                           <div class="col-md-4  col-xs-12" id="move-top">
-                            <span class="center-text" >¿No tienes saldo? Nosotros te redireccionamos</span> <button  id="buy-ticket-button" style="margin-left:2%" class="btn btn-primary center-text">Comprar Boleto</button>
+                              <span class="center-text" ><%= t('no_balance_money') %></span> <button  id="buy-ticket-button" style="margin-left:2%" class="btn btn-primary center-text"><%= t('buy_ticket') %></button>
                               
                             </div>
                             </div>
@@ -65,14 +65,14 @@
     <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <div class="row" style="margin:0px; padding:0px;">
-                           <h4 style="text-align:left; color:white;">No hay loterias programadas actualmente.<span id="lottery_id_type"> </h4>
+                            <h4 style="text-align:left; color:white;"><%= t('no_lotteries_programed') %><span id="lottery_id_type"> </h4>
                        </div>
                     </div>
                     <div class="ibox-content" style="display: block; text-align:center">
                         <br>
                         <h4 style="text-align:center"><img width="10%" src="/assets/sad.ico"></h4>
-                        <h2 style="color:#ab005c">Lo sentimos pero actualmente no hay loterias disponibles.</h2>
-                        <h5 style="color:#E4007D">Te sugerimos esperar que se programen nuevas loterias para participar en ellas.</h5>
+                        <h2 style="color:#ab005c"><%= t('no_available_lotteries') %></h2>
+                        <h5 style="color:#E4007D"><%= t('warning_lotteries') %></h5>
         </div>
     </div>
 </div>
