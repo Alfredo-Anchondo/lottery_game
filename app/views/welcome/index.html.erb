@@ -147,13 +147,13 @@
                                 <span class="pull-right" >
                                       <span id="win_lotteries"> </span>  <%= t('lotteries')%>
                                 </span>
-                                <span class="label label-info">2</span> Loterias con Ganador
+                                <span class="label label-info">2</span> <%= t('lotteries_with_winners') %>
                             </li>
                             <li class="list-group-item">
                                 <span class="pull-right">
                                     <span  id="no_winners"> </span> <%= t('lotteries')%>
                                 </span>
-                                <span class="label label-success">3</span> Loterias sin Ganador
+                                <span class="label label-success">3</span> <%= t('lotteries_without_winners') %>
                             </li>
                             
                         </ul>
@@ -223,13 +223,13 @@ $(document).ready(function(){
         value: parseInt($('#no_winners').text()),
         color:"#4d46f7",
         highlight: "#4431d6",
-        label: "Loterias Sin Ganador"
+        label: "<%= t('lotteries_without_winners') %>"
     },
     {
         value: parseInt($('#win_lotteries').text()),
         color: "#46BFBD",
         highlight: "#5AD3D1",
-        label: "Loterias Con Ganador"
+        label: "<%= t('lotteries_with_winners') %>"
     }
    
 ];

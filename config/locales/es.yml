@@ -104,6 +104,8 @@ es:
   ticket: "Billete"
   score: "Marcador"
   total_lotteries: "Loterias totales"
+  lotteries_with_winners: "Loterias con Ganadores"
+  lotteries_without_winners: "Loterias sin Ganadores"
   comparation: "Comparación entre Loterias existentes y Loterias ganadas"
   lotteries_winners: "Loterias con Ganador"
   bag_polity: "El valor de la bolsa que ves es el actual, este podra conservarse igual o aumentar segun la demanda de billetes"
