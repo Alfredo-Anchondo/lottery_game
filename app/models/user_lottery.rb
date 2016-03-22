@@ -7,6 +7,7 @@ class UserLottery < ActiveRecord::Base
     end
     
  
+
     def self.winners
         where('status >= ?', 'Ganador').order(:purchase_date)
     end
