@@ -96,6 +96,7 @@ en:
   day: "Days"
   language_es: "Spanish"
   language_en: "English"
+  next_lottery: "Next Lottery"
   hours: "Hours"
   warning: "Warning: Check the information"
   select_numer: 'You must select a number to participate in the lottery before proceeding with the purchase.'
