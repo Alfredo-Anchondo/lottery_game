@@ -166,6 +166,8 @@ es:
   teams: "Equipos"
   games: "Juegos"
   lotteries: "Loterias"
+  all_lotteries: "Todas las loterias"
+  result_lotteries: "Resultado de las loterias"
   sportcategories: "Categoria de deportes"
   userlotteries: "Loterias por usuario"
   login: "Iniciar Sesión"
