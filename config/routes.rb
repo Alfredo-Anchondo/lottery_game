@@ -58,7 +58,7 @@ Rails.application.routes.draw do
    root 'welcome#index'
 
     
-  get '/application/i18n/:locale' => 'api#i18n'
+  get '/application/i18n/:locale' => 'application#i18n'
     
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
