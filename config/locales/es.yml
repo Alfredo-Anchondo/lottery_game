@@ -135,6 +135,7 @@ es:
   process: "Procesos"
   winners_history: "Historial de Ganadores"
   welcome: "Bienvenido"
+  select_number: "Selecciona el numero para participar"
   current_user_balance: "Saldo Actual"
   lottery_rules: "Reglas de la Loteria"
   lottery_price: "Precio de la Loteria"
