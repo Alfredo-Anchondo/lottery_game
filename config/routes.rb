@@ -26,7 +26,6 @@ Rails.application.routes.draw do
       collection do
           get "/lotteries/:id", to: "users#lotteries"
           get "tickets_history"
-          get '/i18n/:locale' => 'users#i18n'
       end
   end
 
@@ -50,6 +49,7 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
   get 'welcome/index_client'  
+  get 'language/i18n/:locale' => 'language#i18n'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
