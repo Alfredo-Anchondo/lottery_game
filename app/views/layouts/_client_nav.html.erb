@@ -5,6 +5,25 @@
            <% if signed_in? %>
              <%=link_to current_user do %>
         <div class="col-md-4">
+        </div>
+        <div class="col-md-8 col-xs-12 hide-phone">
+            <% if current_user.photo.present? %>
+            <div class="col-md-2">
+                     <h4><img id="user_image" class="pull-right" width="80px" height="80px" style="border-radius:150px; border:2px solid #E4007D" src="<%= current_user.photo %>"></h4>
+            </div>
+            <% end %>
+            <div class="col-md-10" style="margin-top:5%;background-color: rgb(171, 0, 92); color: white;">
+                     <h4> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> </h4>
+            <h4 id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;">$<%= current_user.balance %></span></h4>  
+            </div>
+   
+        </div>
+             <% end %> 
+        <% else %>
+        <div class="row">
+            
+        </div>
+        <% end %>
         <!-- START Language list-->
                         <div class="pull-right">
                             <div class="btn-group i18n">
@@ -26,25 +45,6 @@
                             </div>
                         </div>
                         <!-- END Language list    -->
-        </div>
-        <div class="col-md-8 col-xs-12 hide-phone">
-            <% if current_user.photo.present? %>
-            <div class="col-md-2">
-                     <h4><img id="user_image" class="pull-right" width="80px" height="80px" style="border-radius:150px; border:2px solid #E4007D" src="<%= current_user.photo %>"></h4>
-            </div>
-            <% end %>
-            <div class="col-md-10" style="margin-top:5%;background-color: rgb(171, 0, 92); color: white;">
-                     <h4> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> </h4>
-            <h4 id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;">$<%= current_user.balance %></span></h4>  
-            </div>
-   
-        </div>
-             <% end %> 
-        <% else %>
-        <div class="row">
-            
-        </div>
-        <% end %>
      </div> 
     </div>
 </div>
