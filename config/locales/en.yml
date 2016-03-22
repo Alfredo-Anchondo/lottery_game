@@ -103,6 +103,8 @@ en:
   purchase_number: "Purchase Number"
   ticket: "Ticket"
   score: "Score"
+  estimate_jackpot: "Estimate Jackpot"
+  select_participe_number: "This is your Number"
   purchased_ticket_history: "History Purchase Tickets"
   category_lotteries: "Lotteries by Category"
   buy_credit: "Buy Credit"

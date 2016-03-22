@@ -103,6 +103,8 @@ es:
   purchase_number: "Número comprado"
   ticket: "Boleto"
   score: "Marcador"
+  estimate_jackpot: "Bolsa Acumulada"
+  select_participe_number: "Este es tu número seleccionado para participar"
   purchased_ticket_history: "Historial de boletos comprados"
   category_lotteries: "Loterias por categoria"
   buy_credit: "Comprar Credito"

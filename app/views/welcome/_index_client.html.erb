@@ -16,7 +16,7 @@
                             </div>
                            
                         <div class="col-md-3 col-xs-12">
-                            <h4 style="text-align:center"><span id='first_balance'>Bolsa Acumulada:</span> </h4>
+                            <h4 style="text-align:center"><span id='first_balance'><%= t('estimate_jackpot') %>:</span> </h4>
                             <h4 id="initial_balance2" style="text-align:center;font-size: 40px; color: #E4007D;">$<span id="initial_balance"></span> USD</h4>
                             <hr>
                             <input style="display:none" id="lottery_price" value="">
@@ -45,7 +45,7 @@
                              <h4 style="text-align:center"> <%= t('lottery_rules') %>: <span style="font-size:84%;" id="lottery_rules"></span>  </h4>
                         </div>
                             <div class="col-md-3 col-xs-12">
-                            <h4 class="center-text" ><span class="pull-right"> Este es el numero seleccionado para participar:</span> <input style="display:none" id="lottery_id" value="">  </h4>
+                                <h4 class="center-text" ><span class="pull-right"> <%= t('select_participe_number')%>:</span> <input style="display:none" id="lottery_id" value="">  </h4>
                             </div>
                         <div class="col-md-1  col-xs-12" id="move-top">
                              <input style="color:black" disabled class="ticket_number form-control" type="number" min="0" > 
