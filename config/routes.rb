@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       collection do
           get "/lotteries/:id", to: "users#lotteries"
           get "tickets_history"
+          get '/i18n/:locale' => 'users#i18n'
       end
   end
 
@@ -57,8 +58,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'welcome#index'
 
-    
-  get '/application/i18n/:locale' => 'application#i18n'
     
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

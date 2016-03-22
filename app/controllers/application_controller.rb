@@ -1,13 +1,6 @@
 class ApplicationController < ActionController::Base
     include ApplicationHelper   
   before_filter :configure_permitted_parameters, if: :devise_controller?
-
-    
-      def i18n
-    return if params[:locale].blank?
-    I18n.locale = params[:locale]
-    redirect_to :back
-  end
     
     
   protected
