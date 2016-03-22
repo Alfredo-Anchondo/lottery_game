@@ -356,7 +356,7 @@
              
           
   $('#getting-started').countdown(countdown1, function(event) {
-      $(this).html(event.strftime('La loteria se cierra en:  %d <%= t('day') %> %H:%M:%S <%= t('hours') %>'));
+      $(this).html(event.strftime('<%= t('lottery_finish') %>:  %d <%= t('day') %> %H:%M:%S <%= t('hours') %>'));
   });
              
                  user_id = <%= current_user.id %>;
