@@ -23,7 +23,7 @@
   
 </head>
 <body>
- 
+  <input id="current_language" type="hidden" value="<%= I18n.locale %>" >
     
        <% if signed_in? %>
     <% if current_user.role.is_admin? %>
@@ -44,7 +44,6 @@
     </p>
     <% end %>
     
-     <input style="display:none" id="current_language" value="<%= current_user %>">
  
        <% if signed_in? %>
     <% if current_user.role.is_admin? %>
