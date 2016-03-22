@@ -44,7 +44,7 @@
            <li>
                    <% if signed_in? %>
           <%= link_to destroy_user_session_path, :method => :delete do %>
-            <i class="fa fa-sign-out"></i>Cerrar sesión
+            <i class="fa fa-sign-out"></i><%= t('logout') %>
           <% end %>
                <% end %>
         </li>
