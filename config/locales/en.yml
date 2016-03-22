@@ -97,6 +97,9 @@ en:
   language_es: "Spanish"
   language_en: "English"
   next_lottery: "Next Lottery"
+  total_lotteries: "Total Lotteries"
+  lotteries_winners: "Lotteries with Winners"
+  comparation: "Comparison between existing Lotteries and Lotteries with winners"
   hours: "Hours"
   warning: "Warning: Check the information"
   select_numer: 'You must select a number to participate in the lottery before proceeding with the purchase.'
