@@ -176,11 +176,11 @@ en:
   userlotteries: "User-Lotteries"
   login: "Login"
   signup: "Sign Up"
-  created_lotteries: "Created Lotteries"
+  created_lotteries: "Lotteries"
   viewdetails: "View Details"
   registeredusers: "Users"
   registeredteams: "Teams"
-  ticketpurchased: "Purchased Tickets"
+  ticketpurchased: "Tickets"
   
   activerecord:
     models:
