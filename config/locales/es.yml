@@ -101,8 +101,9 @@ es:
   warning: "Cuidado: Revisa tus datos"
   select_numer: 'Debes de seleccionar un número para participar en la loteria antes de continuar con la compra.'
   purchase_number: "Número comprado"
-  ticket: "Boleto"
+  ticket: "Billete"
   score: "Marcador"
+  bag_polity: "El valor de la bolsa que ves es el actual, este podra conservarse igual o aumentar segun la demanda de billetes"
   estimate_jackpot: "Bolsa Acumulada"
   select_participe_number: "Este es tu número seleccionado para participar"
   no_balance_money: "¿No tienes saldo? Nosotros te redireccionamos"

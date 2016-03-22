@@ -136,7 +136,7 @@
       </div>
     <div class="modal-content">
      <div class="row" style="padding:5px !important;"> 
-         <h4 style="text-align:center">Boleto</h4>
+         <h4 style="text-align:center"><%= t('ticket') %></h4>
             <div class="col-md-12" style="border: 1px dotted black">
                 <div class="row" style="padding:5px !important;">
                 <h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name"></h4>    
@@ -163,7 +163,7 @@
                 </div>
             </div>
          <div class="col-md-12">
-         <h4>Bolsa acumulada hasta el momento: <span class="total_initial_balance" style="color:#E4007D; font-size:120%;"></span> </h4> <small>* El valor de la bolsa que ves es el actual, este podra conservarse igual o aumentar segun la demanda de boletos.</small>
+         <h4><%= t('estimate_jackpot') %>: <span class="total_initial_balance" style="color:#E4007D; font-size:120%;"></span> </h4> <small>* <%= t('bag_polity') %>.</small>
          </div>
         </div>
     </div>
