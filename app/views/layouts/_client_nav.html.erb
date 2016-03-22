@@ -68,10 +68,10 @@
    
       <ul id="menu" class="nav navbar-nav metismenu">
         
-         <li><a href="/users/tickets_history"> Ver historial de boletos comprados </a></li>
-         <li><a href="/games/games_by_category"> Loterias por categoria </a> </li>
-         <li><a> Ver lista de Juegos Programados </a> </li>
-         <li><a> Comprar Credito </a> </li>
+         <li><a href="/users/tickets_history"> <%= t('purchased_ticket_history') %> </a></li>
+         <li><a href="/games/games_by_category"> <%= t('category_lotteries') %> </a> </li>
+         <li><a> <%= t('program_games') %> </a> </li>
+          <li><a> <%= t('buy_credit') %> </a> </li>
         
          
       </ul>
@@ -80,7 +80,7 @@
            <li>
                    <% if signed_in? %>
           <%= link_to destroy_user_session_path, :method => :delete do %>
-            <i class="fa fa-sign-out"></i>Cerrar sesión
+            <i class="fa fa-sign-out"></i><%= t('logout') %>
           <% end %>
                <% end %>
         </li>
