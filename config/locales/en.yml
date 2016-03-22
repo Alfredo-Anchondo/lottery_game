@@ -19,8 +19,131 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+es:
+  helpers:
+     select:
+       prompt: Please Select
+  date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Thu
+    - Wed
+    - Tue
+    - Fri
+    - Sat
+    abbr_month_names:
+    -
+    - Jan
+    - feb
+    - mar
+    - apr
+    - may
+    - jun
+    - jul
+    - aug
+    - sep
+    - oct
+    - nov
+    - dic
+    day_names:
+    - Sunday
+    - Monday
+    - Thursday
+    - Wednesday
+    - Tuesday
+    - friday
+    - Saturday
+    formats:
+      default: ! "%d/%m/%Y"
+      long: ! "%A %d de %B de %Y"
+      long_no_time: ! "%A %d de %B de %Y"      
+      short: ! "%d de %b"
+      month_and_year: ! '%B de %Y'
+      day_and_number: ! "%A %d"
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - Dicember
+    order:
+    - :day
+    - :month
+    - :year
+
+  actions:
+    new_title_male: "New %{model}"
+    new_title_female: "New %{model}"
+    delete: "Delete"
+    show: "Show"
+    edit: "Edit"
+    saving: "Saving"
+    save: "Save"
+    new: "New"
+    back: "Back"
+  "true": "True"
+  "false": "False"
+  winner_number: "winner_number"
+  day: "Days"
+  hours: "Hours"
+  warning: "Warning: Check the info"
+  select_numer: 'You must select a number to participate in the lottery before proceeding with the purchase.'
+  purchase_number: "Purchase Number"
+  ticket: "Ticket"
+  score: "Score"
+  acumulate_balance: "Accumulate Balance:"
+  lottery_id: "Lottery Name"
+  login_with: "Login with"
+  lottery_id_id: "Lottery Number"
+  close_lottery: "Close Lottery"
+  update_score: "Update Score"
+  close_lottery_message: "This lottery is already closed , and users was notified about the winning number."
+  instruction_close_games: "Select Update to update the scoreboard. Select the option to close lottery to choose the winning number and notify all users which was the winning number."
+  user_id: "User ID"
+  total_win: "Amount Won"
+  today_games: "Today Games"
+  games_today: "Games that are scheduled for this day"
+  name: "Name"
+  last_name: "Last Name"
+  close: "Close"
+  buy: "Buy"
+  process: "Process"
+  winners_history: "History Winners"
+  welcome: "Welcome"
+  current_user_balance: "Current Balance"
+  lottery_rules: "Lottery Rules"
+  lottery_price: "Lottery price"
+  purchase_confirmation: "Purchase Confirmation"
+  success_update: "User updated successfully"
+  success_update_cattegory: "Category updated successfully"
+  success_update_team: "Team updated successfully"
+  success_update_game: "Game updated successfully"
+  success_update_lottery: "Lottery updated successfully"
+  success_update_role: "Role updated successfully"
+  success_update_sport: "Sport updated successfully
+  success_update_sport_category: "Sport-Category updated successfully"
+  success_update_user_lotteries: "User-Lottery updated successfully"
+  details_of: "Details of %{model}"
+  are_you_sure?: "Are you sure to delete the record ?"   
+  already_acount: "Do you already have an account? Just Login "
+  log_in: "Login"
+  not_account: "You do not have an account with us?"
+  just_click: "Just click down here and sign up is quick and simple"
+  make_acount: "Create account"
+  log_in: "Login"
+  remember_me: "Remember me"
+  sign_up: "Sign Up "
+  sign_up_now: "Sign up Now"
+  hello: "Hello"
   users: "Users" 
   role: "Roles"
   sports: "Sports"
@@ -28,13 +151,116 @@ en:
   teams: "Teams"
   games: "Games"
   lotteries: "Lotteries"
-  sportcategories: "Sport Categories"
-  userlotteries: "User Lotteries"
+  sportcategories: "Sport-Categories"
+  userlotteries: "User-Lotteries"
   login: "Login"
   signup: "Sign Up"
   created_lotteries: "Created Lotteries"
   viewdetails: "View Details"
-  registeredusers: "Registered Users"
-  registeredteams: "Registered Teams"
-  ticketpurchased: "Purchased Ticket"
- 
+  registeredusers: "Users"
+  registeredteams: "Teams"
+  ticketpurchased: "Purchased Tickets"
+  
+  activerecord:
+    models:
+        categories: "Categories"
+        category: "Categorie"
+        users: "Users"
+        user: "User"
+        roles: "Roles"
+        role: "Role"
+        user_lotteries: "Lotteries purchased by user"
+        user_lottery: "Lottery purchased by user"
+        sports: "Sports"
+        sport: "Sport"
+        sport_categories: "Sport-Categories"
+        sport_category: "Sport-Category"
+        teams: "Teams"
+        team: "Team"
+        games: "Games"
+        game: "Game"
+        lotteries: "Lotteries"
+        lottery: "Lottery"
+    attributes:
+        role:
+            created_at: "Created at"
+            name: "Name"
+            description: "Description"
+            is_admin: "Is admin?"
+            is_client: "Is client?"
+        user:
+            name: "Name"
+            photo: "Photo"
+            last_name: "Last Name"
+            address_1: "Address"
+            address_2: "Address 2"
+            zip_code: "Zip code"
+            age: "Age"
+            email: "Email"
+            phone: "Phone"
+            cellphone: "Cellphone"
+            balance: "Balance"
+            role_id : "Role"
+            role: "Role"
+            country: "Country"
+            state: "State"
+            city: "City"
+            int_number: "Int Number"
+            ext_number: "Ext Number"
+            username: "Username"
+            password: "Password"
+            password_confirmation: "Password Confirmation"
+            created_at: "Created at"
+        sport:
+            name: "Name"
+            description: "Description"
+            logo: "Logo"
+            created_at: "Created at"
+        category:
+            name: "Name"
+            description: "Description"
+            logo: "Logo"
+            created_at: "Created at"
+        sport_category:
+            sport_id: "Sport"
+            category_id: "Category"
+            sport: "Sport"
+            category: "Category"
+            created_at: "Created at"
+        team:
+            name: "Name"
+            logo: "Logo"
+            created_at: "Created at"
+            description: "Description"
+            sport_category_id: "Sport-Category"
+            sport_category: "Sport-Category"
+            
+        game:
+            team_id: "Local Team"
+            team: "Local Team"
+            game_date: "Game date"
+            description: "Description"
+            local_score: "Local score"
+            visit_score: "Visit score"
+            team2_id: "Visit team"
+            created_at: "Created at"
+        lottery:
+            initial_balance: "Initial Balance"
+            created_at: "Created at"
+            rules: "Rules"
+            description: "Description"
+            game: "Game"
+            lottery_game_id: "Game"
+            winner_number: "Winner number"
+            initial_number: "Initial number"
+            final_number: "Final number"
+            price: "Price"
+        user_lottery:
+            user: "User"
+            created_at: "Created at"
+            lottery: "Lottery"
+            status: "Status"
+            ticket_number: "Ticket number"
+            purchase_date: "Purchase date"
+            
+            

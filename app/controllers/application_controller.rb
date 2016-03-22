@@ -18,6 +18,13 @@ class ApplicationController < ActionController::Base
     )
   }
 end
+    
+    def i18n
+    return if params[:locale].blank?
+    I18n.locale = params[:locale]
+    redirect_to :back
+  end
+    
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
