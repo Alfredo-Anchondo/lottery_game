@@ -93,6 +93,8 @@ en:
   "true": "True"
   "false": "False"
   winner_number: "winner_number"
+  language_es: "Español"
+  language_en: "English"
   day: "Days"
   hours: "Hours"
   warning: "Warning: Check the info"
