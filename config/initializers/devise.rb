@@ -240,6 +240,8 @@ silence_warnings do
 end
 
     config.omniauth :facebook, "810845932381003", "58ced0568b16643d8bce33866174930f", callback_url: "http://donbillete.com/users/auth/facebook/callback", scope: 'email', info_fields: 'email, first_name, last_name'
+
+    config.omniauth :twitter, "1F5rFDREEwZkyFvGNPLDGNXOb", "lxG8IK1LJ5kW8BTOq1xRcFAme47A5oMhTVY2NKaAlD3YBEEe8G", callback_url: "http://donbillete.com/users/auth/twitter/callback", scope: 'email', info_fields: 'email, first_name, last_name'
     
     
 
