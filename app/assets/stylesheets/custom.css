@@ -719,6 +719,12 @@
         margin-bottom: 10px;
 }
 
+#twitter{
+    background-color: #1da1f2;
+    color: white;
+    margin-bottom: 10px;
+}
+
 #login-container{
     border:1px solid #AB015C;
 }
