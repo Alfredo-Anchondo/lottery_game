@@ -1,0 +1,242 @@
+/*CUSTOM STYLE*/
+/* line 4, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.submit {
+  margin-top: 30px;
+}
+
+/* line 8, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.panel-header h3 {
+  margin-bottom: 30px;
+}
+
+/*.label_with_error {
+    border-bottom: 1px solid #e44424;
+}*/
+/* line 16, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+input[type='text'].field_with_error, input[type='password'].field_with_error, input[type='file'].field_with_error, textarea.field_with_error, select.field_with_error {
+  border: 1px solid #e44424;
+}
+
+/* line 20, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+input[type='radio'].field_with_error, input[type='checkbox'].field_with_error {
+  outline: 1px solid #e44424;
+}
+
+/* line 24, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+#error_explanation {
+  border: 2px solid #e44424;
+  padding: 10px 20px;
+  margin-bottom: 30px;
+  background-color: #f0f0f0;
+}
+
+/* line 31, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+#error_explanation ul {
+  list-style-type: square;
+}
+
+/* line 35, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+#error_explanation ul li {
+  color: #333;
+}
+
+/* line 39, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.ui-autocomplete {
+  max-height: 300px;
+  overflow-y: auto;
+  /* prevent horizontal scrollbar */
+  overflow-x: hidden;
+}
+
+/* IE 6 doesn't support max-height
+ * we use height instead, but this forces the menu to always be this tall
+ */
+/* line 48, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+* html .ui-autocomplete {
+  height: 300px;
+}
+
+/* line 52, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.ui-menu .ui-menu-item a {
+  cursor: pointer;
+}
+
+/* line 56, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.datepicker {
+  z-index: 1151 !important;
+}
+
+/* line 60, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.input-group-addon {
+  cursor: pointer;
+}
+
+/* line 64, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.pagination a, .pagination em, .pagination span {
+  padding: 8px 10px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1px solid #838383;
+  color: #838383;
+}
+
+/* line 74, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.pagination em {
+  font-weight: 600;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  background-color: #ffc52d;
+  color: #fff;
+}
+
+/* line 81, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.pagination a:hover {
+  background-color: #ffc52d;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* line 87, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.pagination span {
+  border: none;
+}
+
+/* line 91, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.bold-span {
+  margin: 0px 10px;
+  font-weight: bold;
+}
+
+/* line 96, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.fixed-header > thead, .fixed-header > tbody {
+  display: block;
+}
+
+/* line 100, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.fixed-header > tbody {
+  height: 500px;
+  overflow-y: auto;
+}
+
+/* line 105, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+#invalid-day {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #e44424;
+  color: #fff;
+  padding: 3px 5px;
+  display: inline-block;
+  margin-top: 3px;
+}
+
+/* line 116, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.preloader {
+  display: none;
+  margin: 10px 0px 0px 0px;
+}
+
+/* line 121, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.slider-label {
+  border: 1px solid #a2a2a2;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: block;
+  height: 20px;
+  overflow: hidden;
+  position: absolute;
+  width: 50px;
+}
+
+/* line 134, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.slider-label input {
+  display: none;
+}
+
+/* line 137, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.slider-label input:checked + .slider {
+  left: 0px;
+}
+
+/* line 141, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.slider {
+  left: -50px;
+  position: absolute;
+  top: 0px;
+  -moz-transition: left .25s ease-out;
+  -webkit-transition: left .25s ease-out;
+  -o-transition: left .25s ease-out;
+  transition: left .25s ease-out;
+}
+
+/* line 151, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.slider-yes, .slider-block, .slider-no {
+  display: block;
+  font-family: arial, verdana, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 0px;
+}
+
+/* line 163, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.slider-yes {
+  background: #32aa69;
+  background: -moz-linear-gradient(top, #32aa69 0%, #82f4b3 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #32aa69), color-stop(100%, #82f4b3));
+  background: -webkit-linear-gradient(top, #32aa69 0%, #82f4b3 100%);
+  background: -o-linear-gradient(top, #32aa69 0%, #82f4b3 100%);
+  background: -ms-linear-gradient(top, #32aa69 0%, #82f4b3 100%);
+  background: linear-gradient(top, #32aa69 0%, #82f4b3 100%);
+  color: white;
+  left: 0px;
+  width: 27px;
+}
+
+/* line 176, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.slider-block {
+  background: #d9d9d8;
+  background: -moz-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d9d9d8), color-stop(100%, #fcfcfc));
+  background: -webkit-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+  background: -o-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+  background: -ms-linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+  background: linear-gradient(top, #d9d9d8 0%, #fcfcfc 100%);
+  border: 1px solid #a2a2a2;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  height: 20px;
+  left: 25px;
+  width: 25px;
+}
+
+/* line 193, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.slider-no {
+  background: #aa6932;
+  background: -moz-linear-gradient(top, #aa6932 0%, #f4b382 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #aa6932), color-stop(100%, #f4b382));
+  background: -webkit-linear-gradient(top, #aa6932 0%, #f4b382 100%);
+  background: -o-linear-gradient(top, #aa6932 0%, #f4b382 100%);
+  background: -ms-linear-gradient(top, #aa6932 0%, #f4b382 100%);
+  background: linear-gradient(top, #aa6932 0%, #f4b382 100%);
+  color: white;
+  left: 48px;
+  width: 27px;
+}
+
+/* line 206, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.unseen-notification {
+  background-color: #ffd56b;
+}
+
+/* line 210, C:/Users/alfre/documents/Lottery_Game/app/assets/stylesheets/base/custom.scss */
+.connectedSortable > tr:not(:first-child) {
+  cursor: move;
+}

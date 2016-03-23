@@ -1,0 +1,77 @@
+/* line 3, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/badgets_labels.scss */
+.label {
+  background-color: #d1dade;
+  color: #5e5e5e;
+  font-family: "Open Sans";
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  text-shadow: none;
+}
+
+/* line 13, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/badgets_labels.scss */
+.badge {
+  background-color: #d1dade;
+  color: #5e5e5e;
+  font-family: "Open Sans";
+  font-size: 11px;
+  font-weight: 600;
+  padding-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+  text-shadow: none;
+}
+
+/* line 25, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/badgets_labels.scss */
+.label-primary, .badge-primary {
+  background-color: #e4007d;
+  color: white;
+}
+
+/* line 30, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/badgets_labels.scss */
+.label-success, .badge-success {
+  background-color: #1c84c6;
+  color: white;
+}
+
+/* line 35, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/badgets_labels.scss */
+.label-warning, .badge-warning {
+  background-color: #f8ac59;
+  color: white;
+}
+
+/* line 40, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/badgets_labels.scss */
+.label-warning-light, .badge-warning-light {
+  background-color: #f8ac59;
+  color: white;
+}
+
+/* line 45, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/badgets_labels.scss */
+.label-danger, .badge-danger {
+  background-color: #ed5565;
+  color: white;
+}
+
+/* line 50, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/badgets_labels.scss */
+.label-info, .badge-info {
+  background-color: #23c6c8;
+  color: white;
+}
+
+/* line 55, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/badgets_labels.scss */
+.label-inverse, .badge-inverse {
+  background-color: #262626;
+  color: white;
+}
+
+/* line 60, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/badgets_labels.scss */
+.label-white, .badge-white {
+  background-color: white;
+  color: #5e5e5e;
+}
+
+/* line 65, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/badgets_labels.scss */
+.label-white, .badge-disable {
+  background-color: #2a2e36;
+  color: #8b91a0;
+}
