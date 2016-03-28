@@ -26,6 +26,7 @@
 //= require moment-with-locales
 //= require datetimepicker
 //= require cycle
+//= require tile-effect
 
 $(document).ready(function(){
     
