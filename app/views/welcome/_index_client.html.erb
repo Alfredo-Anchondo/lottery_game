@@ -449,8 +449,8 @@
               current_balance = <%= current_user.balance %>;
             if( current_balance >= $('#lottery_price').val()){
              $('#confirm_buy').modal('hide');    
-             buy_ticket();
              update_balance();
+             buy_ticket();
                  
                  
             }else{
@@ -507,7 +507,6 @@
                     }).done(function( data) {
                      $('#success-content').empty();
                      $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_balance')%></h3>');
-                     $('#success-modal').modal('show');
                      });
         
           $.ajax({
@@ -517,7 +516,6 @@
                       data: { lottery: {initial_balance: current_bag} }
                     }).done(function( data) {
                      $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_buy')%></h3>');
-                     $('#success-modal').modal('show');
                      });
     }  
             
