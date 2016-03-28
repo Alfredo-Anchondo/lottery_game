@@ -98,6 +98,8 @@ en:
   language_en: "English"
   next_lottery: "Next Lottery"
   total_lotteries: "Total Lotteries"
+  our_winners: 'Our Winners'
+  last_winners: "Recent Winners"
   lotteries_with_winners: "Lotteries with Winners"
   lotteries_without_winners: "Lotteries without Winners"
   lotteries_winners: "Lotteries with Winners"

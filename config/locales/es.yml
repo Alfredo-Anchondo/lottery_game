@@ -121,6 +121,8 @@ es:
   buy_credit: "Comprar Credito"
   program_games: "Lista de Juegos Programados"
   logout: "Cerrar sesión"
+  our_winners: 'Nuestros Ganadores'
+  last_winners: "Ganadores recientes"
   acumulate_balance: "Valor de la bolsa acumulada:"
   lottery_id: "Nombre de la Loteria"
   login_with: "Iniciar Sesión con"
