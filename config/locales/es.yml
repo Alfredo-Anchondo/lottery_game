@@ -94,6 +94,7 @@ es:
   "false": "No"
   winner_number: "Numero Ganador"
   day: "Dias"
+  winner: "Ganador"
   language_es: "Español"
   language_en: "Ingles"
   next_lottery: "Proxima Loteria"

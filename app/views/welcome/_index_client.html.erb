@@ -135,7 +135,8 @@
                         </div>
 
                         <div class="ibox-content" id="finish_lotteries">
-        <div class="cycle-slideshow1" data-cycle-fx="scrollHorz" data-cycle-pause-on-hover="true" data-cycle-speed="200">
+        <div class="cycle-slideshow1" data-cycle-fx="scrollHorz" data-cycle-pause-on-hover="true" data-cycle-speed="200" data-cycle-caption="#adv-custom-caption" data-cycle-caption-template="<%= t('winner') %> {{slideNum}}: {{cycleTitle}}">
+            <div class="cycle-caption"></div>
             </div>
         </div>
             </div>
@@ -652,7 +653,7 @@
                var src = '/system/users/photos/000/000/0'+data.user_lotteries[i].user.id+'/original/'+data.user_lotteries[i].user.photo_file_name
             }
       
-              $('.cycle-slideshow1').append('<img width="100%" height="400px" src='+src+'>');
+              $('.cycle-slideshow1').append('<img width="100%" height="400px" src='+src+'> data-cycle-title="'+data.user_lotteries[i].user.username +'"');
            
           
            }
