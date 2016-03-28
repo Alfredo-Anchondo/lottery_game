@@ -523,6 +523,21 @@
                      });
     }  
             
+       function buy_ticket_modal(){
+               user_id = <%= current_user.id %>;
+                purchase_date = new Date();
+                ticket_number = $('#lottery_number_in_modal').val();
+                     $.ajax({
+                      method: "POST",
+                      url: "/user_lotteries",
+                      dataType: "json",     
+                      data: { user_lottery: {user_id: user_id, lottery_id: $('#lottery_id_modal').val(), ticket_number: ticket_number ,purchase_date: purchase_date, status: "Comprado"}  }
+                    }).done(function( data) {
+                     $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_buy')%></h3>');
+                     $('#success-modal').modal('show');
+                     });
+            }                       
+                            
     function update_balance_modal(){
                  user_id = <%= current_user.id %>;
                  lottery_id = $('#lottery_id_modal').val();
@@ -629,8 +644,9 @@
                           $('#alert-content').append('<br><h3 style="text-align:center"><%=t('insuficient_balance')%></h3>');
                           $('#alert-modal').modal('show');
                    }else{
-               buy_ticket_modal();
+              
                update_balance_modal();
+               buy_ticket_modal();
                $('#buy_ticket_modal').modal('hide');
                    }
                      }
