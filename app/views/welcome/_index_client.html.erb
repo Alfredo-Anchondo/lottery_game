@@ -222,6 +222,24 @@
 </div>
     
 <!-------------------------------------------FIN DE MODAL DE ALERTAS ------------------------------->    
+    <div class="modal fade" id="success-modal" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" id="success-display-modal">
+    <div class="modal-content" >
+         <div class="modal-header" style="background-color:#E4007D; color:white;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:white" aria-hidden="true">&times;</span></button>
+             <h4 class="modal-title"><%= t('success') %></h4>
+      </div>
+      <div class="modal-body" >
+          <div class="row">
+          <div class="col-md-3">
+          <h4 style="text-align:center"><i style="color:red" class="fa fa-check fa-5x"></i></h4>
+          </div>
+          <div class="col-md-9" id="success-content"></div>
+              </div>
+        </div>
+    </div>
+  </div>
+</div>
     
 
 
@@ -434,6 +452,7 @@
              buy_ticket();
              update_balance();
                  
+                 
             }else{
                 alert('saldo insuficiente,compra saldo para continuar'); 
                 $( "#image-paypal" ).trigger( "click" );
@@ -465,7 +484,9 @@
                       dataType: "json",     
                       data: { user_lottery: {user_id: user_id, lottery_id: lottery_id, ticket_number: ticket_number ,purchase_date: purchase_date, status: "Comprado"}  }
                     }).done(function( data) {
-                         alert('Se completo la compra');
+                     $('#success-content').empty();
+                         $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_buy')%></h3>');
+                     $('#success-modal').modal('show');
                      });
             }
              

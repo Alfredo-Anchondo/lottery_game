@@ -101,6 +101,8 @@ es:
   next_lottery: "Proxima Loteria"
   hours: "Horas"
   warning: "Cuidado: Revisa tus datos"
+  success: "La operación se realizo con exito"
+  success_buy: "La compra fue realizada con exito"
   select_numer: 'Debes de seleccionar un número para participar en la loteria antes de continuar con la compra.'
   purchase_number: "Número comprado"
   ticket: "Billete"

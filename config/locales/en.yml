@@ -98,6 +98,8 @@ en:
   language_en: "English"
   winner: "Winner"
   lottery_win: "Lottery"
+  success: "Operation Was Successful"
+  success_buy: "The purchase was made successfully"
   next_lottery: "Next Lottery"
   total_lotteries: "Total Lotteries"
   our_winners: 'Our Winners'
