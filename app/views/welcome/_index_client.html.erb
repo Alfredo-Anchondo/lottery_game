@@ -642,7 +642,9 @@
                         if(balance < $('#total_price_modal').text()){
                            $('#alert-content').empty();
                           $('#alert-content').append('<br><h3 style="text-align:center"><%=t('insuficient_balance')%></h3>');
+                          $('#buy_ticket_modal').modal('hide');
                           $('#alert-modal').modal('show');
+                        
                    }else{
               
                update_balance_modal();
