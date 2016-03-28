@@ -105,6 +105,8 @@ es:
   success_buy: "- La compra fue realizada con exito"
   success_balance: "- Tu saldo se a actualizado con exito"
   success_bag: "- La bolsa se a actualizado con exito"
+  select_correct_number: "Debes seleccionar todos los digitos necesarios para participar"
+  insuficient_balance: "No tienes el saldo suficiente para realizar la compra"
   select_numer: 'Debes de seleccionar un número para participar en la loteria antes de continuar con la compra.'
   purchase_number: "Número comprado"
   ticket: "Billete"

@@ -422,7 +422,9 @@
                       var f = $('.ticket_number').val();
                       f = f.length;
                      if(f < ticket_length){
-                         alert('Te faltan mas digitos en el boleto');
+                          $('#alert-content').empty();
+                          $('#alert-content').append('<br><h3 style="text-align:center"><%=t('select_correct_number')%></h3>');
+                          $('#alert-modal').modal('show');
                      }else{
                          $('#confirm_buy').modal('show');
                      }
@@ -454,7 +456,9 @@
                  
                  
             }else{
-                alert('saldo insuficiente,compra saldo para continuar'); 
+                  $('#alert-content').empty();
+                  $('#alert-content').append('<br><h3 style="text-align:center"><%=t('insuficient_balance')%></h3>');
+                  $('#alert-modal').modal('show');
                 $( "#image-paypal" ).trigger( "click" );
             }
             
