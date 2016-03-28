@@ -99,7 +99,9 @@ en:
   winner: "Winner"
   lottery_win: "Lottery"
   success: "Operation Was Successful"
-  success_buy: "The purchase was made successfully"
+  success_buy: "- The purchase was made successfully"
+  success_balance: "- Your balance was successfully updated"
+  success_bag: "- The jackpot was successfully updated"
   next_lottery: "Next Lottery"
   total_lotteries: "Total Lotteries"
   our_winners: 'Our Winners'

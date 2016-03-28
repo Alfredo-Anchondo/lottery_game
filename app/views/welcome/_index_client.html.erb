@@ -484,8 +484,7 @@
                       dataType: "json",     
                       data: { user_lottery: {user_id: user_id, lottery_id: lottery_id, ticket_number: ticket_number ,purchase_date: purchase_date, status: "Comprado"}  }
                     }).done(function( data) {
-                     $('#success-content').empty();
-                         $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_buy')%></h3>');
+                     $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_buy')%></h3>');
                      $('#success-modal').modal('show');
                      });
             }
@@ -506,7 +505,9 @@
                       dataType: "json",     
                       data: { user: {balance: total_balance_update} }
                     }).done(function( data) {
-                         alert('Se actualizo tu saldo');
+                     $('#success-content').empty();
+                     $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_balance')%></h3>');
+                     $('#success-modal').modal('show');
                      });
         
           $.ajax({
@@ -515,7 +516,8 @@
                       dataType: "json",     
                       data: { lottery: {initial_balance: current_bag} }
                     }).done(function( data) {
-                         alert('Se actualizo la bolsa');
+                     $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_buy')%></h3>');
+                     $('#success-modal').modal('show');
                      });
     }  
             
