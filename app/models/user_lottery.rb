@@ -9,7 +9,7 @@ class UserLottery < ActiveRecord::Base
  
 
     def self.winners
-        where('status >= ?', 'Ganador').order(:lottery_id)
+        where('status >= ?', 'Ganador').order(lottery_id: :desc)
     end
     
     def self.winners_total
