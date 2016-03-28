@@ -529,7 +529,7 @@
                  user_id = <%= current_user.id %>;
                  current_balance = <%= current_user.balance %>;
                  lottery_price = $('#total_price_modal').text();
-                 var current_bag = parseInt($('#initial_balance').text()) + (lottery_price * .8);
+                 var current_bag = parseInt($('#total_modal_initial_balance').text()) + (lottery_price * .8);
         var total_balance_update = current_balance - lottery_price;
             $.ajax({
                       method: "PUT",
@@ -537,7 +537,8 @@
                       dataType: "json",     
                       data: { user: {balance: total_balance_update} }
                     }).done(function( data) {
-                         alert('Se actualizo tu saldo');
+                     $('#success-content').empty();
+                     $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_balance')%></h3>');
                      });
         
            $.ajax({
@@ -546,7 +547,7 @@
                       dataType: "json",     
                       data: { lottery: {initial_balance: current_bag} }
                     }).done(function( data) {
-                         alert('Se actualizo la bolsa');
+                         $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_bag')%></h3>');
                      });
     }        
           
@@ -619,12 +620,16 @@
                    var f = $('#lottery_number_in_modal').val();
                       f = f.length;
                      if(f < ticket_length_modal){
-                         alert('Te faltan mas digitos en el boleto');
+                          $('#alert-content').empty();
+                          $('#alert-content').append('<br><h3 style="text-align:center"><%=t('select_correct_number')%></h3>');
+                          $('#alert-modal').modal('show');
                      }else{
                         if(balance < $('#total_price_modal').text()){
-                      alert('No tienes saldo suficiente'); 
+                           $('#alert-content').empty();
+                          $('#alert-content').append('<br><h3 style="text-align:center"><%=t('insuficient_balance')%></h3>');
+                          $('#alert-modal').modal('show');
                    }else{
-                         buy_ticket_modal();
+               buy_ticket_modal();
                update_balance_modal();
                $('#buy_ticket_modal').modal('hide');
                    }
