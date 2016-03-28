@@ -630,8 +630,9 @@
         })
           .done(function(data) {
                 
-           for(var i in data){
-             if(data[i].user.id < 10){
+           for(var i in data.user_lotteries){
+               
+             if( data.user_lotteries[i].user.id < 10){
                    var src = '/system/users/photos/000/000/00'+data[i].user.id+'/original/'+data[i].user.photo_file_name } 
            else{
                var src = '/system/users/photos/000/000/0'+data[i].user.id+'/original/'+data[i].user.photo_file_name
