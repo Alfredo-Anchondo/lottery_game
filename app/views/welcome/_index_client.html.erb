@@ -121,6 +121,13 @@
                 </div>
 
 </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+        <div class="cycle-slideshow">
+            </div>
+        </div>
+    </div>
 
 
 
@@ -622,8 +629,18 @@
           dataSrc: 'user_lotteries',
           format: "json"
         })
-          .done(function( data) {
-            
+          .done(function(data) {
+             if(data.user.id < 10){
+                   var src = '/system/users/photos/000/000/00'+data.user.id+'/original/'+data.user.photo_file_name } 
+           else{
+               var src = '/system/users/photos/000/000/0'+data.user.id+'/original/'+data.user.photo_file_name
+            }
+           
+           for(var i in data){
+              $('.cycle-slideshow').append('<img src='+src+'>');
+           }
+          
+             
            
        });
              

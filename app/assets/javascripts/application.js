@@ -25,6 +25,7 @@
 //= require countdown
 //= require moment-with-locales
 //= require datetimepicker
+//= require cycle
 
 $(document).ready(function(){
     
