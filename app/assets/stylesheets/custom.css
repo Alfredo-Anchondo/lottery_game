@@ -736,3 +736,8 @@
     position: relative;
     padding-top: 30px;
 }
+
+#adv-custom-caption{
+    background-color: deeppink;
+    color:white;
+}
