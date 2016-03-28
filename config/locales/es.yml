@@ -95,6 +95,7 @@ es:
   winner_number: "Numero Ganador"
   day: "Dias"
   winner: "Ganador"
+  lottery_win: "Loteria Ganada"
   language_es: "Español"
   language_en: "Ingles"
   next_lottery: "Proxima Loteria"

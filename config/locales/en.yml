@@ -97,6 +97,7 @@ en:
   language_es: "Spanish"
   language_en: "English"
   winner: "Winner"
+  lottery_win: "Lottery"
   next_lottery: "Next Lottery"
   total_lotteries: "Total Lotteries"
   our_winners: 'Our Winners'
