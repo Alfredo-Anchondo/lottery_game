@@ -61,7 +61,7 @@
         { data: 'user_id' },
         { data: 'user.username' },
         { data:  function ( row, type, val, meta ) {
-            return  "# " +row.lottery.id + row.lottery.team.name + " vs " + row.lottery.team2.name 
+            return  "#" +row.lottery.id + " " + row.lottery.team.name + " vs " + row.lottery.team2.name 
         } },
         { data: 'lottery.winner_number' },
         { data: 'lottery.price' },
