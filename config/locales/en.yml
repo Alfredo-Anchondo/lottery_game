@@ -95,6 +95,8 @@ en:
   winner_number: "Winner Number"
   day: "Days"
   welcome_intro: "Welcome to DonBillete we wish you the best of luck to participate in our lottery."
+  user_intro: "User Information"
+  user_text: "Here user information is displayed as your username and total balance . By clicking on this box the user's personal information is shown , with the possibility of editing, you should access to this section and complete their personal data as well as add a profile photo to personalize your account."
   language_es: "Spanish"
   language_en: "English"
   winner: "Winner"

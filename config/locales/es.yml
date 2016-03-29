@@ -94,6 +94,8 @@ es:
   "false": "No"
   welcome_don: "Bienvenido a DonBillete"
   welcome_intro: "Bienvenido a DonBillete te deseamos la mejor de la suerte al participar en nuestras loterias."
+  user_intro: "Información del Usuario"
+  user_text: "Aqui se muestra la información del usuario como su nombre de usuario y el total del saldo. Al dar clic sobre este recuadro se muestra la información personal del usuario, con la posibilidad de editarla, es recomendable acceder a esta seccion y completar sus datos personales asi como agregar una foto de perfil para personalizar su cuenta."
   winner_number: "Numero Ganador"
   day: "Dias"
   winner: "Ganador"
