@@ -94,6 +94,7 @@ en:
   "false": "False"  
   winner_number: "Winner Number"
   day: "Days"
+  welcome_intro: "Welcome to DonBillete we wish you the best of luck to participate in our lottery."
   language_es: "Spanish"
   language_en: "English"
   winner: "Winner"
@@ -105,6 +106,7 @@ en:
   select_correct_number: "You must select all the necessary digits to participate"
   insuficient_balance: "You do not have enough balance to make the purchase"
   next_lottery: "Next Lottery"
+  welcome_don: "Welcome to DonBillete"
   total_lotteries: "Total Lotteries"
   our_winners: 'Our Winners'
   last_winners: "Recent Winners"

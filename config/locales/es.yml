@@ -92,6 +92,8 @@ es:
     back: "Volver"
   "true": "Si"
   "false": "No"
+  welcome_don: "Bienvenido a DonBillete"
+  welcome_intro: "Bienvenido a DonBillete te deseamos la mejor de la suerte al participar en nuestras loterias."
   winner_number: "Numero Ganador"
   day: "Dias"
   winner: "Ganador"
