@@ -28,7 +28,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
- gem 'unicorn'
+# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -46,3 +46,4 @@ gem "paperclip", "~> 4.2"
 gem 'active_model_serializers'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'openpay'
