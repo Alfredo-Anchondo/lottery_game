@@ -27,6 +27,7 @@
 //= require datetimepicker
 //= require cycle
 //= require tile-effect
+//= require bootstrap-tour.min
 
 $(document).ready(function(){
     
