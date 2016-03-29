@@ -98,6 +98,8 @@ es:
   user_text: "Aqui se muestra la información del usuario como su nombre de usuario y el total del saldo. Al dar clic sobre este recuadro se muestra la información personal del usuario, con la posibilidad de editarla, es recomendable acceder a esta seccion y completar sus datos personales asi como agregar una foto de perfil para personalizar su cuenta."
   main_menu: "Pantalla Principal"
   main_text: "Al dar clic sobre esta pestaña nos mandara a la ventana principal"
+  language_intro: "Cambia el Lenguaje"
+  language_text: "Puedes seleccionar el idioma que sea de tu preferencia en este boton. Los idiomas disponibles son Ingles y Español"
   winner_number: "Numero Ganador"
   day: "Dias"
   winner: "Ganador"
