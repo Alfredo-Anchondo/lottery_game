@@ -37,12 +37,7 @@
 <style>
 @charset "US-ASCII";
 @import "http://fonts.googleapis.com/css?family=Lato:300,400,700";
-* {
-    color: #444;
-    font-family: Lato;
-    font-size: 16px;
-    font-weight: 300;
-}
+
 ::-webkit-input-placeholder {
    font-style: italic;
 }
@@ -298,6 +293,8 @@ a.button.disabled {
         <div class="pymnts">
             <form action="#" method="POST" id="payment-form">
                 <input type="hidden" name="token_id" id="token_id">
+                <input type="hidden" name="user" id="user" value="<%= current_user.name %>">
+                <input type="hidden" name="user_lastname" id="user_lastname" value="<%= current_user.last_name %>">
                 <div class="pymnt-itm card active">
                     <h2>Tarjeta de crédito o débito</h2>
                     <div class="pymnt-cntnt">

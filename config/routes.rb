@@ -14,8 +14,12 @@ Rails.application.routes.draw do
         end
     end
         
-    
-
+    resources :partials  do
+        collection do
+            match "/credit_card_form" => "partials#credit_card_pay", :via => :post
+        end
+    end
+  
   resources :teams
 
   resources :sport_categories
