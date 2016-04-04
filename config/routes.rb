@@ -17,6 +17,11 @@ Rails.application.routes.draw do
     resources :partials  do
         collection do
             match "/credit_card_form" => "partials#credit_card_pay", :via => :post
+            get "/partials/:user", to: "partials#get_customer_credit_cars"
+            get "complete_buy"
+            get "buy_error"
+            get "/history", to: "partials#history"
+            get "checkout"
         end
     end
   

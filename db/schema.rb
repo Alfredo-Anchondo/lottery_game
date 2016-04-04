@@ -113,31 +113,31 @@ ActiveRecord::Schema.define(version: 20160317223744) do
   add_index "user_lotteries", ["user_id"], name: "index_user_lotteries_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "name",                                null: false
-    t.string   "last_name",                           null: false
-    t.string   "address_1",                           null: false
-    t.string   "address_2",                           null: false
-    t.string   "zip_code",                            null: false
+    t.string   "name",                                 null: false
+    t.string   "last_name",                            null: false
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "zip_code"
     t.integer  "age"
-    t.string   "email",                               null: false
+    t.string   "email",                                null: false
     t.string   "phone"
-    t.string   "cellphone",                           null: false
-    t.float    "balance"
-    t.integer  "role_id",                             null: false
-    t.string   "country",                             null: false
+    t.string   "cellphone"
+    t.float    "balance",                default: 0.0
+    t.integer  "role_id",                              null: false
+    t.string   "country"
     t.string   "state"
     t.string   "city"
     t.integer  "int_number"
     t.integer  "ext_number"
-    t.string   "username",                            null: false
+    t.string   "username",                             null: false
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "encrypted_password",     default: "",  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,   null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -149,6 +149,8 @@ ActiveRecord::Schema.define(version: 20160317223744) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

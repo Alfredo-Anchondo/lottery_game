@@ -20,6 +20,9 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :ext_number
       t.string :username, :null => false
       t.string :password
+      t.string :favorite_team    
+      t.date :birthday
+      t.string :openpay_id    
 
       t.timestamps
     end

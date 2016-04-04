@@ -1,0 +1,84 @@
+
+<% if @user_charges != [] %>
+<table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th><%= t('type_transaccion') %></th>
+                <th><%= t('card_brand') %></th>
+                <th><%= t('card_number') %></th>
+                <th><%= t('transaction_description') %></th>
+                <th><%= t('transaction_status') %></th>
+                <th><%= t('transaction_error') %></th>
+                <th> <%= t('transaction_date') %></th>
+            </tr>
+        </thead>
+      
+        <tbody>
+    <% @user_charges.each do |charges| %>
+            <tr>
+                <% case charges['method'] %>
+                <% when "card" %>
+                <td><%= t('card') %></td>
+                <% when "bank" %>
+                <td><%= t('bank') %></td>
+                <% end %>
+                <td><%= charges['card']['brand'] %></td>
+                <td><%= charges['card']['card_number'] %></td>
+                <td><%= charges['description'] %></td>
+                 <% case charges['status'] %>
+                <% when "completed" %>
+                <td><%= t('complete') %></td>
+                <% when "failed" %>
+                <td><%= t('failed') %></td>
+                <% end %>
+                 <% case charges['error_message'] %>
+<% when "The card doesn't have sufficient funds" %>
+<td><%= t('nofounds') %></td>
+<% when "The card has been rejected." %>
+<td><%= t('cardrejected') %></td>
+<% when "The card is not supported on online transactions" %>
+<td><%= t('nosupportedonline') %></td>
+<% when "The card was declined" %>
+<td><%= t('cardrejected') %></td>
+<% when "The card has expired" %>
+<td><%= t('cardexpired') %></td>
+<% when "The card was reported as stolen" %>
+<td><%= t('cardstolen') %></td>
+<% when "The card has been identified as fraudulent" %>
+<td><%= t('cardfraudulent') %></td>
+<% when "The card was declined (k)" %>
+<td><%= t('cardrejected') %></td>
+<% when nil %>
+<td>  </td>                
+  <% end %>
+              <td><%= charges['creation_date'] %></td>
+            </tr>
+  
+              <% end %>
+            </tbody>
+    </table>
+        <% else %>
+            <br>
+            <h3 style="text-align:center">No tienes registrada ninguna transacción en nuestra pagina.</h3>
+<% end %>
+
+<script>
+$(document).ready(function() {
+      var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+    
+    
+    $('#example').DataTable({
+         responsive: true,
+     "language": {
+            "url": languaje
+        }
+    });
+} );
+</script>

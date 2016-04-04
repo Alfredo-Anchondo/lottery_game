@@ -1,0 +1,20 @@
+<h1>Hubo un problema al procesar la transacción</h1>
+<h2>El mensaje devuelto por el sistema es el siguiente:</h2>
+  <% case @e.description %>
+<% when "The card doesn't have sufficient funds" %>
+<h2><%= t('nofounds') %></h2>
+<% when "The card has been rejected." %>
+<h2><%= t('cardrejected') %></h2>
+<% when "The card is not supported on online transactions" %>
+<h2><%= t('nosupportedonline') %></h2>
+<% when "The card was declined" %>
+<h2><%= t('cardrejected') %></h2>
+<% when "The card has expired" %>
+<h2><%= t('cardexpired') %></h2>
+<% when "The card was reported as stolen" %>
+<h2><%= t('cardstolen') %></h2>
+<% when "The card has been identified as fraudulent" %>
+<h2><%= t('cardfraudulent') %></h2>
+<% when "The card was declined (k)" %>
+<h2><%= t('cardrejected') %></h2>
+  <% end %>

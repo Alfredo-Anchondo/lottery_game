@@ -4,7 +4,7 @@ def stablich_connection
   @cards = @openpay.create(:cards)
   @bank_accounts = @openpay.create(:bankaccounts)
   @charges = @openpay.create(:charges)
-  @customers = @openpay.create(:customers)
+
   @payouts = @openpay.create(:payouts)
 rescue OpenpayTransactionException => error
   error_details(error)
