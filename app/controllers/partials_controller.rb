@@ -166,10 +166,12 @@ end
     def history
   @openpay=OpenpayApi.new("m8dvprmyk9adbcmhonod","sk_22a93d1817864bebbf99ca009358e48b")
   @customers = @openpay.create(:customers)
+        if current_user.openpay_id
   customer = @customers.get(current_user.openpay_id) 
   @charges=@openpay.create(:charges)
   @user_charges = @charges.all(customer["id"])    
-  logger.info @user_charges        
+  logger.info @user_charges       
+        end
         
     end    
     
