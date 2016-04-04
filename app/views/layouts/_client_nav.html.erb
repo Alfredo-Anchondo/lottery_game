@@ -1,6 +1,6 @@
-<div class="row" id="banner">
- <div style="margin-left:10%; margin-right:10%; height:80px;">
-    <div class="col-md-6 col-xs-12"> <img id="logo-image" src="/assets/logo_donbillete.png"></div>
+<div class="row" id="banner" >
+ <div style="margin-left:10%; height:80px;">
+    <div class="col-md-6 col-xs-12"> <a href="/"><img id="logo-image" src="/assets/logo_donbillete.png"></a></div>
     <div class="col-md-6" id="responsive-cellphone" style="margin-top:1%">
            <% if signed_in? %>
              <%=link_to current_user do %>
@@ -9,7 +9,7 @@
         <div class="col-md-8 col-xs-12 hide-phone">
             <% if current_user.photo.present? %>
             <div class="col-md-2">
-                     <h4><img id="user_image" class="pull-right" width="80px" height="80px" style="border-radius:150px; border:2px solid #E4007D" src="<%= current_user.photo %>"></h4>
+               <h4><img id="user_image" class="pull-right" width="80px" height="80px" style="border-radius:150px; border:2px solid #E4007D" src="<%= current_user.photo %>"></h4>
             </div>
             <% end %>
             <div class="col-md-10" style="margin-top:5%;background-color: rgb(171, 0, 92); color: white;">
@@ -21,7 +21,48 @@
              <% end %> 
         <% else %>
         <div class="row">
+                        <%= form_for(resource, as: resource_name, url: session_path(resource_name), :class => "form-inline") do |f| %>
+            <div class="col-md-4">
+             <div class="field form-group">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, :style => "color:black", :class => "form-control", autofocus: true %>
+                 <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+        <%= f.label t('remember_me') %>
+    </div>
+  <% end -%>
+              </div>
+            </div>
             
+            <div class="col-md-4">
+            <div class="field form-group">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, :style => "color:black",  :class => "form-control",  autocomplete: "off" %>
+                 <div class="actions" style="color:black">
+      <%= f.submit t('log_in'), :class => "form-group btn", :style => "background-color:#ab005c; margin-top:2%; width:100%; color: white;
+    font-weight: 900;" %> <br>
+        
+      <div id="status">
+</div>
+  </div>
+  </div>
+            </div>
+            
+            <div class="col-md-4">
+               <%= render "devise/shared/links" %>
+            </div>
+ 
+
+       
+  
+       
+
+
+       
+       
+  
+<% end %>
         </div>
         <% end %>
         
@@ -64,7 +105,7 @@
       <button  type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
        <i style="margin-left:3px;" class="fa fa-bars"></i> 
       </button>
-      <a class="navbar-brand" href="/">DonBillete</a>
+     
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
          <% if signed_in? %>
@@ -82,20 +123,22 @@
       </ul>
         <% else %>
          <!-- START Language list-->
+       
                         <div class="pull-right">
+                            
                             <div class="btn-group i18n">
                                 <button type="button" data-toggle="dropdown" class="btn btn-primary">
-                                    <%= image_tag "#{I18n.locale}-icon.png" ,:style => "width:30px" %> <%= t("language_#{I18n.locale}") %>
+                                    <%= image_tag "#{I18n.locale}-icon.png" ,:style => "width:30px" %> 
                                 </button>
                                 <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
                                     <li>
                                         <%= link_to "/language/i18n/es", :style => "color:black" do %>
-                                        <%= image_tag "es-icon.png", :style => "width:30px" %> <%= t("language_es") %>
+                                        <%= image_tag "es-icon.png", :style => "width:20px" %> 
                                         <% end %>
                                     </li>
                                     <li>
                                         <%= link_to "/language/i18n/en", :style => "color:black" do %>
-                                          <%= image_tag "en-icon.png", :style => "width:30px" %> <%= t("language_en") %>
+                                          <%= image_tag "en-icon.png", :style => "width:20px" %> 
                                         <% end %>
                                     </li>
                                 </ul>

@@ -127,6 +127,42 @@ end
         check_if_customer_exists_global(current_user) 
     end
     
+    def dispersion
+        @openpay=OpenpayApi.new("m8dvprmyk9adbcmhonod","sk_22a93d1817864bebbf99ca009358e48b")
+        @payouts=@openpay.create(:payouts)
+        bank_account_hash={
+            "holder_name" => params[:owner_name],
+            "clabe" => params[:clabe],
+            "currency" => "USD"
+           }
+        
+         amount = Integer(params[:quantity]) * Float(params[:conversion]);
+        request_hash={
+             "method" => "bank_account",
+             "bank_account" => bank_account_hash,
+            "amount" =>  amount.round(2),
+             "description" => "Pago a tercero"
+           }
+        logger.info "/$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$$?"
+         @response_hash=@payouts.create(request_hash.to_hash)
+        logger.info @response_hash['currency']
+        current_user.update_attribute(:balance,(current_user.balance - Integer(params[:quantity])))
+        render :template => 'welcome/index'
+        
+        rescue OpenpayTransactionException => error
+        @e = error
+        logger.info error.description
+         render 'buy_error'
+        
+        
+           rescue OpenpayException => error
+        @e = error
+        logger.info error.description
+        render 'buy_error'
+    end
+    
+    
+    
     def history
   @openpay=OpenpayApi.new("m8dvprmyk9adbcmhonod","sk_22a93d1817864bebbf99ca009358e48b")
   @customers = @openpay.create(:customers)

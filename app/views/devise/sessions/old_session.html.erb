@@ -1,0 +1,61 @@
+<div class="loginColumns animated fadeInDown">
+<div class="row" id="login-container">
+
+            <div class="col-md-6" style="background-color:#ab005c">
+                <h2 style="font-weight:700; font-size:40px; text-align:center; color:#E91F7F;">DON<span style="color:black;">BILLETE</span> </h2>
+                <h4 style="text-align:center"><img width="40%" src="/assets/DonBillete.png" ></h4>
+                <p style="text-align:center; color:white;">Registrate en DonBillete para seguir de cerca tus deportes favoritos y poder ganar dinero con tu predicción sobre el partido.</p>
+                <p style="text-align:center;  color:white;">Puedes registrarte manualmente con nosotros o registrarte con tu cuenta de facebook o twitter en cuestion de segundos. Recuerda que no obtenemos datos como tu contraseña, solo tu nombre de usuario y correo.</p>
+                <p style="text-align:center;  color:white">!No esperes mas! Registra tu cuenta con nosotros y empieza a jugar, ganar dinero y disfrutar de nuestras loterias.  </p>
+                
+            </div>
+            <div class="col-md-6">
+                <div class="ibox-content">
+                    <h3 style="font-weight:700; text-align:center"><%= t('log_in') %></h3>
+                    
+                   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, :style => "color:black", :class => "form-control", autofocus: true %>
+  </div>
+<br>
+       
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, :style => "color:black",  :class => "form-control",  autocomplete: "off" %>
+  </div>
+       
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+        <%= f.label t('remember_me') %>
+    </div>
+  <% end -%>
+       
+       
+  <div class="actions" style="color:black">
+      <%= f.submit t('log_in'), :class => "form-group btn", :style => "background-color:#ab005c; width:100%; color: white;
+    font-weight: 900;" %> <br>
+        
+      <div id="status">
+</div>
+  </div>
+<% end %>
+<br>
+<%= render "devise/shared/links" %>
+                   
+                </div>
+            </div>
+        </div>
+    <div class="row">
+     <p class="m-t">
+                        <small>DonBillete © PubliWi 2016 Todos los derechos reservados</small>
+                    </p>
+    </div>
+
+</div>
+
+
+
+
