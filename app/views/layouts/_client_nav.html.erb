@@ -166,11 +166,10 @@ setInterval(update, 1000);
 <script>
     $.ajax({
   method: "get",
-  url: "https://apilayer.net/api/live?access_key=ec4d4fe5d97e8baf416731ef671d0692"
+  url: "https://www.google.com/finance/converter?a=1&from=USD&to=MXN&meta=ei%3DjjgEV5H9GoSu2AbVjZLABw"
 })
   .done(function( msg ) {
-        $('#conversion').val(msg.quotes.USDMXN);
-        $('#change_type').text(msg.quotes.USDMXN);
+     
   });
 
 </script>
