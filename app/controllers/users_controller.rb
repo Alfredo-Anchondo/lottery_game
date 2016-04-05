@@ -15,9 +15,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
   end
     
-    def get_time
-        return Time.now
-    end    
+   
        
     
     def lotteries

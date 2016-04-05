@@ -62,12 +62,16 @@ end
         Team.count
     end
     
+    def get_time
+        Time.now
+    end    
+    
     def user_lotteries_count
         UserLottery.count 
     end
     
     
-      def select_display
+    def select_display
         name + " " + last_name
     end
     
