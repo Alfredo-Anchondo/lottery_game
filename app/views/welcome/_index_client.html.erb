@@ -54,7 +54,7 @@
                             <h3 style="text-align:center; font-size:30px;" id="team2_name"></h3>
                              <h2 style="text-align:center"><img id="team2" width="50%" height="150px" src=""></h2>
                             <h2 style="text-align:center">
-                                <select style="width:30px"  class="form-control m-b" name="team2">
+                                <select  style="width:30px"  class="form-control team2_score m-b" name="team2">
                                         <option>0</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -66,7 +66,7 @@
                                         <option>8</option>
                                         <option>9</option>
                                     </select>
-                                <input min="0" max="9" type="hidden" id="team2_score"  class="label-primary" style="text-align:center; font-size:40px; font-weight:800;"></h2>
+                                </h2>
                        </div>
                             
                         </div>
@@ -396,7 +396,7 @@
                                  $(".ticket_number").val(select_number);
            })
            
-            $('#team2_score').change(function(){
+            $('.team2_score').change(function(){
                  var select_number = String($("#team_score").val() % 10) + String($('#team2_score').val() % 10);   
                 
                                  $(".ticket_number").val(select_number);
