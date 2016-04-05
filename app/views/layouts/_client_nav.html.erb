@@ -167,7 +167,7 @@ setInterval(update, 1000);
     $.ajax({
   method: "get",
   url: "https://finance.yahoo.com/currency-converter/#from=USD;to=MXN;amt=1",
-  dataType: "json"
+  dataType: "jsonp"
 })
   .done(function( msg ) {
      
