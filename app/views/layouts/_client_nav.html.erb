@@ -1,11 +1,9 @@
 <div class="row" id="banner" >
- <div style="margin-left:10%; height:80px;">
+ <div style="margin-left:6%; height:80px;">
     <div class="col-md-6 col-xs-12"> <a href="/"><img id="logo-image" src="/assets/logo_donbillete.png"></a></div>
     <div class="col-md-6" id="responsive-cellphone" style="margin-top:1%">
            <% if signed_in? %>
              <%=link_to current_user do %>
-        <div class="col-md-2">
-        </div>
         <div class="col-md-8 col-xs-12 hide-phone">
             <% if current_user.photo.present? %>
             <div class="col-md-2">
