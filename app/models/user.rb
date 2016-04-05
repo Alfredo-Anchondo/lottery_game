@@ -63,7 +63,7 @@ end
     end
     
     def get_time
-        Time.now.strftime("%d/%m/%Y %H:%M %p")
+        Time.now.strftime("%d/%m/%Y %l:%M %p")
     end    
     
     def user_lotteries_count

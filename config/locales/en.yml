@@ -180,7 +180,7 @@ en:
   register_cards: "Register Cards"
   clabe: "Clabe bank number"
   total_quantity: "Total amount to withdraw"
-  actual_date: "Current Datetime:"
+  current_date: "Current Datetime:"
   transfer_amount: "Transfer balance to my bank account"
   checkout_text: "Transfer balance to your bank account "
   card: "Card"

@@ -140,7 +140,7 @@ es:
   winner_number: "Numero Ganador"
   day: "Dias"
   winner: "Ganador"
-  actual_date: "Fecha y hora actual:"
+  current_date: "Fecha y hora actual:"
   lottery_win: "Loteria Ganada"
   language_es: "Español"
   language_en: "Ingles"
