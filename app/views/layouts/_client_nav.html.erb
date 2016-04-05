@@ -15,7 +15,7 @@
                  <span style="margin-left:5%;" id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;">$<%= current_user.balance %></span></span>  
                 </h4>
                     
-                <h4><%= t('current_date') %><%= current_user.get_time %></h4>
+                <h4 style="color:white"><%= t('current_date') %> <%= current_user.get_time %></h4>
                 
                    <% if signed_in? %>
                 <%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
