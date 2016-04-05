@@ -15,8 +15,8 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
   end
     
-    def time
-        Time.now
+    def get time
+        return Time.now
     end    
        
     
