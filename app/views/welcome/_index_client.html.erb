@@ -34,7 +34,7 @@
                            <h3 style="text-align:center;font-size:30px;" id="team_name"></h3>
                             <h2 style="text-align:center; "><img width="50%" height="150px" id="team1" src=""></h2>
                             <h2 style="text-align:center">
-                                <select id="team_score" class="form-control m-b" name="team_score">
+                                <select class="form-control team_score m-b" name="team_score">
                                         <option>0</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -391,7 +391,7 @@
     }  
    
              
-           $('#team_score').change(function(){
+           $('.team_score').change(function(){
                  var select_number = String($("#team_score").val() % 10) + String($('#team2_score').val() % 10);   
                                  $(".ticket_number").val(select_number);
            })
