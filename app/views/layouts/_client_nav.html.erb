@@ -14,10 +14,11 @@
                      <h4> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> </h4>
             <h4 id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;">$<%= current_user.balance %></span></h4>  
                 
-                 <% if signed_in? %>
+                   <% if signed_in? %>
           <%= link_to destroy_user_session_path, :method => :delete do %>
             <i class="fa fa-sign-out"></i><%= t('logout') %>
           <% end %>
+               <% end %>
             </div>
    
         </div>
@@ -153,8 +154,7 @@
                                 </ul>
                             </div>
                         </div>
-                  
-               <% end %>
+                
         </li>
       </ul>
     </div>
