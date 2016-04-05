@@ -152,8 +152,10 @@
    
 $( document ).ready(function() {
 
+     var current_language = $("#current_language").val();
+    
 function update() {
-  $('#clock').html(moment().format('D. MMMM YYYY H:mm:ss'));
+  $('#clock').html(moment('','',current_language).format('D. MMMM YYYY H:mm:ss'));
 }
 
 setInterval(update, 1000);
