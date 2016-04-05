@@ -16,7 +16,7 @@
                 </h4>
                     
                 <h4 style="color:white"><%= t('current_date') %> 
-                <span id="clock"></span></h4>
+                    <span id="clock"></span> <span style="margin-left:5%"> <%= t('change_type') %> <span id="change_type"></span>  </span> </h4>
                 
                    <% if signed_in? %>
                 <%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
