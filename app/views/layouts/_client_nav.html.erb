@@ -17,7 +17,7 @@
            
                 
                    <% if signed_in? %>
-          <%= link_to destroy_user_session_path, :method => :delete do %>
+                <%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
             <i class="fa fa-sign-out"></i><%= t('logout') %>
           <% end %>
                <% end %>
