@@ -8,7 +8,7 @@
                             <h4 id="header-loterry" style="text-align:left; color:white;"><%= t('next_lottery') %>: #<span id="lottery_id_type"> </span> <span class="pull-right" style="color:white" id="getting-started"></span></h4>
                        </div>
                     </div>
-                    <div class="ibox-content" style="display: block; background-image: url'/assets/background2.png'">
+                    <div class="ibox-content" style="display: block; background-image: url('/assets/background2.png');background-size: cover; background-origin: border-box; background-clip: content-box;">
                         <div class="row">
                             <div class="row">
                             <div class="col-md-3"></div>
@@ -28,7 +28,16 @@
                         <div class="col-md-4 col-xs-12">
                            <h3 style="text-align:center;font-size:30px;" id="team_name"></h3>
                             <h2 style="text-align:center; "><img width="50%" height="150px" id="team1" src=""></h2>
-                            <h2 style="text-align:center"><input min="0" type="number" max="9" id="team_score" class="label-primary" style="text-align:center; font-size:40px; font-weight:800;"></h2>
+                            <h2 style="text-align:center"><div class="btn-group">
+                            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" aria-expanded="false">Action <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#" class="font-bold">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </div><input min="0" type="hidden" max="9" id="team_score" class="label-primary" style="text-align:center; font-size:40px; font-weight:800;"></h2>
                         </div>
                         <div class="col-md-1 col-xs-12" style="">
                             <h1 id="vs" style="text-align:center; color:red; font-weight:800; font-size:50px; margin-top:30%;">VS</h1>
@@ -36,7 +45,7 @@
                         <div class="col-md-4 col-xs-12">
                             <h3 style="text-align:center; font-size:30px;" id="team2_name"></h3>
                              <h2 style="text-align:center"><img id="team2" width="50%" height="150px" src=""></h2>
-                            <h2 style="text-align:center"><input min="0" max="9" type="number" id="team2_score" class="label-primary" style="text-align:center; font-size:40px; font-weight:800;"></h2>
+                            <h2 style="text-align:center"><input min="0" max="9" type="hidden" id="team2_score" class="label-primary" style="text-align:center; font-size:40px; font-weight:800;"></h2>
                        </div>
                             
                         </div>
