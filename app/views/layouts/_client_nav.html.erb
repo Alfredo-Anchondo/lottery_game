@@ -166,8 +166,7 @@ setInterval(update, 1000);
 <script>
     $.ajax({
   method: "get",
-  url: "http://apilayer.net/api/live?access_key=ec4d4fe5d97e8baf416731ef671d0692",
-  data: { name: "John", location: "Boston" }
+  url: "http://apilayer.net/api/live?access_key=ec4d4fe5d97e8baf416731ef671d0692"
 })
   .done(function( msg ) {
         $('#conversion').val(msg.quotes.USDMXN);
