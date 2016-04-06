@@ -98,6 +98,7 @@ es:
   type_transaccion: "Tipo de Transacción"
   transaction_description: "Descripción"
   card_brand: "Tipo de tarjeta"
+  forget_password: "¿Olvidaste tu contraseña?"
   card_number: "Numero de tarjeta"
   expiration_date: "Fecha de expiración"
   security_code: "Código de seguridad"
