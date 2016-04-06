@@ -334,6 +334,10 @@
       #login_form_responsive2{
           display:block !important;
       }
+      
+       #log_out_mov{
+        display:block !important;
+    }
 
 }
 
@@ -451,6 +455,10 @@
     #login_form_responsive2{
           display:block !important;
       }
+    
+    #log_out_mov{
+        display:block !important;
+    }
 }
 
 .row{
