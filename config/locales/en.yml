@@ -121,6 +121,8 @@ en:
   lottery_win: "Lottery"
   language_intro: "Change the language"
   language_text: "You can select the language that is your preference on this button . Available languages ​​are English and Spanish"
+  local: "Local"
+  visit: "Visit"
   success: "Operation Was Successful"
   success_buy: "- The purchase was made successfully"
   success_balance: "- Your balance was successfully updated"

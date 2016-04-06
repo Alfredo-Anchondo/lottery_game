@@ -230,6 +230,8 @@ es:
   sign_up: "Crear Cuenta Nueva "
   sign_up_now: "Registrar Cuenta"
   hello: "Hola"
+  local: "Local"
+  visit: "Visitante"
   reset_text_1: "Alguien solicito un vinculo para el cambio de contraseña. Puedes hacer este cambio solo dando clic en el enlace que aparece abajo."
   reset_text_2: "Si tu no solicitaste el cambio de contraseña solo ignora este correo."
   reset_text_3: "Tu password no sera modificado hasta que crees uno nuevo en la liga anterior."
