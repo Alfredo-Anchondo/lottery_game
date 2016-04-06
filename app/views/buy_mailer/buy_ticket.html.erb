@@ -24,18 +24,18 @@
   <body>
       <div class="panel">
         <div class="panel-header">
-            <h4 style="text-align:center"> <img width="60%" src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xlp1/v/t1.0-9/12938199_117866865279976_3191603506313976256_n.jpg?_nc_eui=ARiSGYX4nUDsUWOIv5qiqVZjDWgustApjTnJtbkle2Yl4f_34ML18w&oh=b08490ebce294e1f7545c822307c72b6&oe=578C4109"></h4>
+            <h4 style="text-align:center"> <img width="80%" src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xlp1/v/t1.0-9/12938199_117866865279976_3191603506313976256_n.jpg?_nc_eui=ARiSGYX4nUDsUWOIv5qiqVZjDWgustApjTnJtbkle2Yl4f_34ML18w&oh=b08490ebce294e1f7545c822307c72b6&oe=578C4109"></h4>
            <h1 class="welcome">Gracias por participar.</h1>
            <h2 class="welcome">!Te deseamos suerte!</h2>      
           </div>
       
       </div>
       <div class="panel-body">
-          <h4>La fecha del partido es el dia: <%= @lottery.game.game_date %> </h4>
+          <h4>Fecha del partido: <%= @lottery.game.game_date %> </h4>
           <div class="margin-center row">
           <div class="col-md-12 " style="border: 1px dotted black;">
                 <div class="row" style="padding:0px">
-                <h4 style="margin-left:30%; margin:0px; color:black" id="ticket_name_modal"><%= @lottery.game.team.name + ' vs ' + @lottery.game.team2.name %> </h4>    
+                <h4 style="margin-left:30%; margin:0px; color:black" id="ticket_name_modal"><%= @lottery.game.team.name + '   vs   ' + @lottery.game.team2.name %> </h4>    
                 </div>
                 <div class="row" style="padding:0px;  border-top: 1px solid #009688; border-bottom:1px solid #009688;">
                 <div class="col-md-4 col-xs-4" style="float:left">
