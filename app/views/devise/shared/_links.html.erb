@@ -1,7 +1,7 @@
-<!--<#%- if controller_name != 'sessions' %>
-<p style="text-align:center"> <#%= t('already_acount') %></p>
-  <#%= link_to t('log_in'), new_session_path(resource_name) ,:class => "button btn", :style =>"background-color:#ab005c; width:100%; color:white; font-weight:900;" %><br />
-<#% end -%>-->
+<%- if controller_name != 'sessions' %>
+<p style="text-align:center"> <%= t('already_acount') %></p>
+  <%= link_to t('log_in'), new_session_path(resource_name) ,:class => "button btn", :style =>"background-color:#ab005c; width:100%; color:white; font-weight:900;" %><br />
+<% end -%>
 
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
@@ -18,6 +18,11 @@
 <%= link_to "#{provider.to_s.titleize} ",  omniauth_authorize_path(resource_name, provider), :id => provider, :class => 'btn', :style => 'width:49%; font-weight:900; margin-bottom:3px; margin-top:6px;' %>
    
   <% end -%>
+<% end -%>
+
+<%- if controller_name != 'sessions' %>
+<!--p style="text-align:center"> <%= t('already_acount') %></p> --->
+  <%= link_to t('log_in'), new_session_path(resource_name) ,:class => "button btn", :style =>"background-color:#ab005c; width:100%; color:white; font-weight:900;" %><br />
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
