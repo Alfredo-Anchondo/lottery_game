@@ -100,6 +100,7 @@ es:
   card_brand: "Tipo de tarjeta"
   forget_password: "¿Olvidaste tu contraseña?"
   send_instruction: "Enviar correo con instrucciones"
+  mail_instruction: "Escribe tu correo y nosotros te enviaremos instrucciones para cambiar tu contraseña"
   card_number: "Numero de tarjeta"
   expiration_date: "Fecha de expiración"
   security_code: "Código de seguridad"

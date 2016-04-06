@@ -103,6 +103,7 @@ en:
   checkout: "Checkout"
   welcome_intro: "Welcome to DonBillete we wish you the best of luck to participate in our lottery."
   user_intro: "User Information"
+  mail_instruction: "We need only your mail, and your receive instructions to recover your password"
   user_text: "Here user information is displayed as your username and total balance. By clicking on this box the user's personal information is shown , with the possibility of editing, you should access to this section and complete their personal data as well as add a profile photo to personalize your account."
   main_text: "Clicking on this tab we send to the main window"
   main_menu: "Main Window"
