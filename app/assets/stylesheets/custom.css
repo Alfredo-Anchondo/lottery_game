@@ -216,6 +216,9 @@
          margin:70px 0px 0px 20px !important;
     }
       
+      #login_form_responsive{
+          margin-top: 30% !important;
+      }  
 }
 
 @media screen 
@@ -323,6 +326,10 @@
     .sctn-row2{
          margin:70px 0px 0px 20px !important;
     }
+      
+        #login_form_responsive{
+          margin-top: 30% !important;
+      }  
 
 }
 
@@ -432,6 +439,10 @@
      .sctn-col{
     margin-top:20px !important;      
       }
+    
+      #login_form_responsive{
+          margin-top: 30% !important;
+      }  
 }
 
 .row{
