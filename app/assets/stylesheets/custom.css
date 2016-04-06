@@ -217,7 +217,7 @@
     }
       
       #login_form_responsive{
-          margin-top: 30% !important;
+          display: none;
       }  
 }
 
@@ -328,7 +328,7 @@
     }
       
         #login_form_responsive{
-          margin-top: 30% !important;
+          display:none;
       }  
 
 }
@@ -441,7 +441,7 @@
       }
     
       #login_form_responsive{
-          margin-top: 30% !important;
+          display: none;
       }  
 }
 
