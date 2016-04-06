@@ -22,10 +22,7 @@
 en:
   helpers:
      select:
-       prompt: Please Select
-  time:
-    formats:
-      default: "%d/%m/%Y %H:%M"          
+       prompt: Please Select         
   date:
     abbr_day_names:
     - sun
