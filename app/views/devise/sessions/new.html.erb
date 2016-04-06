@@ -1,15 +1,10 @@
 <div id="login_form_responsive2" style="display:none;" class="row">
+    <h4 style="text-align:center"><%= t('login') %></h4>
                         <%= form_for(resource, as: resource_name, url: session_path(resource_name), :class => "form-inline") do |f| %>
             <div class="col-md-4">
              <div class="field form-group">
                  <%= f.label :email, :style => 'color:black' %><br />
                   <%= f.email_field :email, :style => "color:black", :class => "form-control", autofocus: true %>
-                 <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-        <%= f.label t('remember_me') , :style => 'color:black' %>
-    </div>
-  <% end -%>
               </div>
             </div>
             
@@ -18,6 +13,12 @@
     <%= f.label :password, :style => 'color:black' %><br />
     <%= f.password_field :password, :style => "color:black",  :class => "form-control",  autocomplete: "off" %>
                  <div class="actions" style="color:black">
+                        <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+        <%= f.label t('remember_me') , :style => 'color:black' %>
+    </div>
+  <% end -%>
       <%= f.submit t('log_in'), :class => "form-group btn", :style => "background-color:#ab005c; margin-top:2%; width:100%; color: white;
     font-weight: 900;" %> <br>
         
