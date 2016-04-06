@@ -330,6 +330,10 @@
         #login_form_responsive{
           display:none;
       }  
+      
+      #login_form_responsive2{
+          display:block !important;
+      }
 
 }
 
@@ -443,6 +447,10 @@
       #login_form_responsive{
           display: none;
       }  
+    
+    #login_form_responsive2{
+          display:block !important;
+      }
 }
 
 .row{
