@@ -16,7 +16,7 @@
     .col-md-12{width:100%;}      
     .col-md-6{width:50%;}     
     #ticket_name_modal{margin-left:20%;}   
-    .margin-center{padding-left:25%}   
+    .margin-center{}   
     .panel-footer{ width:100%;}
 </style>
       
@@ -55,15 +55,15 @@
                     </div>
                 </div>
                 <div class="row" style="padding:0px">
-                <h5 style="text-align:right; padding-right:25px; margin-right:8%; color:white;">Total: $ <span id="total_price_modal"><%= @lottery.price %> </span> </h5>
+                <h5 style="text-align:right; padding-right:25px; margin-right:8%; color:black;">Total: $ <span id="total_price_modal"><%= @lottery.price %> </span> </h5>
                 </div>
             </div>
           </div>
           <br>
       </div>
     <div class="panel-footer">
-        <h4 style="color:black;">El total de la bolsa es de: $<%= @lottery.initial_balance %> USD</h4>
-        <h4 style="text-align:center"><a style="text-align:center; color:#2EFF9F; padding-left:33%; font-size:25px;" href="http://donbillete.com">Entra a nuestro sitio para seguir jugando</a> </h4> <br>
+        <h4 style="color:black;">La bolsa es de: $<%= @lottery.initial_balance %> USD</h4>
+        <h4 style="text-align:center"><a style="text-align:center; color:#E81F7F; font-size:25px;" href="http://donbillete.com">Entra a nuestro sitio para seguir jugando</a> </h4> <br>
         <small style="color:black;">*El valor de la bolsa puede cambiar sin previo aviso segun la demanda boletos comprados. El valor mostrado es el valor de la bolsa en el momento de comprar el boleto.</small>
       </div>
   </body>
