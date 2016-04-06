@@ -111,6 +111,8 @@ en:
   send_instruction: "Send me reset password instructions"
   language_es: "Spanish"
   language_en: "English"
+  change_your_password: "Change your password"
+  change_pass: "Change my password"
   winner: "Winner"
   lottery_win: "Lottery"
   language_intro: "Change the language"
