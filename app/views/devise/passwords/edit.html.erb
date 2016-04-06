@@ -1,11 +1,12 @@
 <h2 style="text-align:center"><%= t('change_your_password') %></h2>
+<br>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
   <div class="field">
-      <h4 style="text-align:center"><%= f.label t('activerecord.attributes.user.password'), "New password" %></h4>
+      <h4 style="text-align:center"><%= f.label :password, t('activerecord.attributes.user.password') %></h4>
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em><br />
     <% end %>
@@ -13,12 +14,12 @@
   </div>
 
   <div class="field">
-    <h4 style="text-align:center"> <%= f.label :password_confirmation, "Confirm new password" %></h4>
+      <h4 style="text-align:center"> <%= f.label :password_confirmation,t('confirm_password') %></h4>
       <%= f.password_field :password_confirmation, autocomplete: "off", :class => 'form-control', :style => "width:50%; margin-left:25%;" %>
   </div>
 
   <div class="actions">
-    <%= f.submit t('change_pass'), :class => "btn btn-primary" %>
+    <h4 style="text-align:center"> <%= f.submit t('change_pass'), :class => "btn btn-primary" %></h4>
   </div>
 <% end %>
 

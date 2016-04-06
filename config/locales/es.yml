@@ -144,6 +144,7 @@ es:
   nofounds: "La tarjeta no cuenta con los fondos suficientes para realizar la transacción"
   winner_number: "Numero Ganador"
   day: "Dias"
+  confirm_password: "Confirmar la nueva contraseña"
   winner: "Ganador"
   change_type: "USD a MXN: "
   current_date: "Fecha y hora actual:"

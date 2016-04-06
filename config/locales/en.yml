@@ -113,6 +113,7 @@ en:
   language_en: "English"
   change_your_password: "Change your password"
   change_pass: "Change my password"
+  confirm_password: "Confirm new password"
   winner: "Winner"
   lottery_win: "Lottery"
   language_intro: "Change the language"
