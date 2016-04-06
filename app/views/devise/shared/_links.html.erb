@@ -1,7 +1,7 @@
-<%- if controller_name != 'sessions' %>
-<p style="text-align:center"> <%= t('already_acount') %></p>
-  <%= link_to t('log_in'), new_session_path(resource_name) ,:class => "button btn", :style =>"background-color:#ab005c; width:100%; color:white; font-weight:900;" %><br />
-<% end -%>
+<!--<#%- if controller_name != 'sessions' %>
+<p style="text-align:center"> <#%= t('already_acount') %></p>
+  <#%= link_to t('log_in'), new_session_path(resource_name) ,:class => "button btn", :style =>"background-color:#ab005c; width:100%; color:white; font-weight:900;" %><br />
+<#% end -%>-->
 
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
