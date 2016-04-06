@@ -99,6 +99,7 @@ es:
   transaction_description: "Descripción"
   card_brand: "Tipo de tarjeta"
   forget_password: "¿Olvidaste tu contraseña?"
+  send_instruction: "Enviar correo con instrucciones"
   card_number: "Numero de tarjeta"
   expiration_date: "Fecha de expiración"
   security_code: "Código de seguridad"

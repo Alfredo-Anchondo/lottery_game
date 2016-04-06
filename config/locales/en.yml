@@ -107,6 +107,7 @@ en:
   main_text: "Clicking on this tab we send to the main window"
   main_menu: "Main Window"
   forget_password: "Forgot your password?"
+  send_instruction: "Send me reset password instructions"
   language_es: "Spanish"
   language_en: "English"
   winner: "Winner"
