@@ -109,6 +109,9 @@
          <li><a href="/partials/credit_card_form"> <%= t('buy_credit') %> </a> </li>
           <li><a href="/partials/history"> <%= t('history') %> </a> </li>
           <li><a href="/partials/checkout"> <%= t('checkout') %> </a> </li>
+          <li><%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
+           <h4 style="padding-left:15px"> <i class="fa fa-sign-out"></i><%= t('logout') %> </h4>
+          <% end %></li>
          
         
          
