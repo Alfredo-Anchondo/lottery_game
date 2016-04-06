@@ -11,12 +11,21 @@
             </div>
             <% end %>
             <div class="col-md-10" style="margin-top:3%;background-color: rgb(162, 160, 160); color: white;">
-                     <h4 style="color:white"> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span>
-                 <span style="margin-left:5%;" id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;">$<%= current_user.balance %></span></span>  
+                <div class="col-md-5">
+                    <h4 style="color:white"> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> </h4>
+                     <h4> <span style="margin-left:5%;" id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;">$<%= current_user.balance %></span></span>  
                 </h4>
+                </div>
+                
+                <div class="col-md-7">
+                   <h4 style="color:white"><%= t('current_date') %> 
+                       <span id="clock"></span> </h4>
+                    <h4> <span style="margin-left:5%"> <%= t('change_type') %> <span id="change_type"></span>  </span> </h4>
+                </div>
                     
-                <h4 style="color:white"><%= t('current_date') %> 
-                    <span id="clock"></span> <span style="margin-left:5%"> <%= t('change_type') %> <span id="change_type"></span>  </span> </h4>
+               
+                    
+              
                 
                    <% if signed_in? %>
                 <%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
@@ -156,7 +165,7 @@ $( document ).ready(function() {
     
 function update() {
     var date = new Date();
-  $('#clock').html(moment(date,'',current_language).format('D. MMMM YYYY h:mm:ss a'));
+  $('#clock').html(moment(date,'',current_language).format('D MMMM YYYY h:mm:ss a'));
 }
 
 setInterval(update, 1000);
