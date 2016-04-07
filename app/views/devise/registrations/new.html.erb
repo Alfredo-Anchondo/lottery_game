@@ -59,7 +59,7 @@
         <br><br>
          <div class="actions">
              <br>
-             <button id="validate" onclick="validate_date()" style="width:100%;" class="btn btn-primary"> <%= t('sign_up_now') %> </button>
+             <button id="validate" onclick="validate_date(event)" style="width:100%;" class="btn btn-primary"> <%= t('sign_up_now') %> </button>
             
         </div>
         <% end %>
@@ -72,7 +72,7 @@
 
 
 <script>
-    function validate_date(){
+    function validate_date(event){
         var my_date = new Date($('#user_birthday').val());
     var day = my_date.getDate();
     var month = my_date.getMonth();
@@ -89,7 +89,7 @@
         $('#new_user').submit();
     }else{
     alert("Debes ser mayor de 18 años para registrate en la pagina");
-        return false
+        event.preventDefault();
     }
     }
 </script>
