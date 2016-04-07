@@ -71,9 +71,9 @@
 
 <script>
     function validate_date(){
-     var day = $('#user_birthday').getDate();
-    var month = $('#user_birthday').getMonth();
-    var year = $('#user_birthday').getFullYear();
+     var day = $('#user_birthday').value().getDate();
+    var month = $('#user_birthday').value().getMonth();
+    var year = $('#user_birthday').value().getFullYear();
         alert(day + " " + month + " " + year);
     var age = 18;
     var mydate = new Date();
