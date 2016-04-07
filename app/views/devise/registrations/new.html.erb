@@ -74,22 +74,22 @@
 <script>
     function validate_date(event){
         var my_date = new Date($('#user_birthday').val());
-    var day = my_date.getDate();
-    var month = my_date.getMonth();
-    var year = my_date.getFullYear();
-    var age = 18;
-    var mydate = new Date();
-    mydate.setFullYear(year, month-1, day);
+        var day = my_date.getDate();
+        var month = my_date.getMonth();
+        var year = my_date.getFullYear();
+        var age = 18;
+        var mydate = new Date();
+        mydate.setFullYear(year, month-1, day);
 
-    var currdate = new Date();
-   var setDate = new Date();        
-   setDate.setFullYear(mydate.getFullYear() + age,month, day);
+        var currdate = new Date();
+        var setDate = new Date();        
+        setDate.setFullYear(mydate.getFullYear() + age,month, day);
 
-    if ((currdate - setDate) > 0){ 
+        if ((currdate - setDate) > 0){ 
         
-    }else{
-    alert("Debes ser mayor de 18 años para registrate en la pagina");
-        event.preventDefault();
-    }
+        }else{
+            alert("Debes ser mayor de 18 años para registrate en la pagina");
+            event.preventDefault();
+        }
     }
 </script>
