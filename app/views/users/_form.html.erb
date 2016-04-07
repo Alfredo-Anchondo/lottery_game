@@ -140,6 +140,20 @@
         </div>
     
      <div class="form-group">
+         <%= f.label :favorite_team, :class => "col-md-3" %>
+          <div class="col-md-9">
+              <%= f.text_field :favorite_team, :class => "form-control" %>
+          </div>
+        </div>
+    
+     <div class="form-group">
+         <%= f.label :birthday, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :birthday, :class => "form-control" %>
+          </div>
+        </div>
+    
+     <div class="form-group">
           <%= f.label :password_confirmation, :class => "col-md-3" %>
           <div class="col-md-9">
               <%= f.password_field :password_confirmation, :class => "form-control" %>

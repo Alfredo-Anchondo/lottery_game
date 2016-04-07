@@ -299,6 +299,8 @@ en:
             country: "Country"
             state: "State"
             city: "City"
+            birthday: "Birthday date"
+            favorite_team: "Favorite Team"
             int_number: "Int. Number"
             ext_number: "Ext. Number"
             username: "Username"

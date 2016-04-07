@@ -26,6 +26,7 @@
 //= require moment-with-locales
 //= require datetimepicker
 //= require cycle
+//= require jquery.bxslider
 //= require tile-effect
 //= require bootstrap-tour.min
 

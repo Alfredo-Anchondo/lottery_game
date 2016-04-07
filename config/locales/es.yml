@@ -294,6 +294,8 @@ es:
             phone: "Telefono"
             cellphone: "Celular"
             balance: "Saldo"
+            birthday: "Fecha de cumpleaños"
+            favorite_team: "Equipo Favorito"
             role_id : "Rol"
             role: "Rol"
             country: "Pais"

@@ -17,6 +17,7 @@
  *= require custom
  *= require animate/animate.css
  *= require style
+ *= require jquery.bxslider
  *= require datetimepicker
  *= require bootstrap-tour.min
  */
