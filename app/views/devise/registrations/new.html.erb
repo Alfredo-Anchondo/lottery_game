@@ -58,6 +58,7 @@
         </div>
         <br><br>
          <div class="actions">
+             <br>
              <button id="validate" onclick="validate_date()" style="width:100%;" class="btn btn-primary"> <%= t('sign_up_now') %> </button>
             
         </div>
@@ -73,7 +74,6 @@
 <script>
     function validate_date(){
         var my_date = new Date($('#user_birthday').val());
-        alert(my_date);
     var day = my_date.getDate();
     var month = my_date.getMonth();
     var year = my_date.getFullYear();
