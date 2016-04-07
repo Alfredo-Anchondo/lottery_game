@@ -14,7 +14,7 @@
 
  <div class="field">
      <%= f.label :birthday, :style => 'color:#E4007D' %><br />
-     <%= f.date_field :birthday, class: "form-control", style: "color:black", autofocus: true, required: true, onchange: 'validate_date()' %>
+     <%= f.date_field :birthday, class: "form-control", style: "color:black", autofocus: true, required: true %>
   </div> <br>            
             
 <div class="field">
@@ -58,7 +58,8 @@
         </div>
         <br><br>
          <div class="actions">
-             <%= f.submit t('sign_up_now') ,class: " btn", style: "color:white; margin-top:3%; width:100%; background-color:#E4007D;" %>
+             <button id="validate" onclick="validate_date()" style="width:100%;" class="btn btn-primary"> <%= t('sign_up_now') %> </button>
+            
         </div>
         <% end %>
         <br> <br>
@@ -76,7 +77,6 @@
     var day = my_date.getDate();
     var month = my_date.getMonth();
     var year = my_date.getFullYear();
-    alert(day + " " + month + " " + year);
     var age = 18;
     var mydate = new Date();
     mydate.setFullYear(year, month-1, day);
@@ -85,11 +85,10 @@
    var setDate = new Date();        
    setDate.setFullYear(mydate.getFullYear() + age,month, day);
 
-         if ((currdate - setDate) > 0){
-    // you are above 18
-        alert("above 18");
+    if ((currdate - setDate) > 0){ 
+        $('#new_user').submit();
     }else{
-    alert("below 18");
+    alert("Debes ser mayor de 18 años para registrate en la pagina");
     }
     }
 </script>
