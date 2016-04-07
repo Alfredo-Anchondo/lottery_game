@@ -2,7 +2,7 @@
     <br>
     <div class="col-md-3"></div>
     <div class="col-md-6" style="border:1px solid black; background-color:white; color:white; text-align:center">
-         <h2 style="color:black; font-weigth:900;"><%= t('make_account') %></h2> <br>
+         <h2 style="color:black; font-weight:900;"><%= t('make_account') %></h2> <br>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
         <div class="col-md-6">
@@ -14,30 +14,29 @@
             
 <div class="field">
     <%= f.label :email, :style => 'color:#E4007D' %><br />
-    <%= f.email_field :email, class: "form-control", style: "color:black", autofocus: false %>
+    <%= f.email_field :email, class: "form-control", style: "color:black", autofocus: false, required: true %>
   </div> <br>
-
   <div class="field">
     <%= f.label :password, :style => 'color:#E4007D' %><br />
-    <%= f.password_field :password, class: "form-control",style: "color:black", autocomplete: "off" %>
+    <%= f.password_field :password, class: "form-control",style: "color:black", autocomplete: "off", required: true %>
   </div>
 
         </div>
         <div class="col-md-6">
             <div class="field">
     <%= f.label :name, :style => 'color:#E4007D' %><br />
-    <%= f.text_field :name, class: "form-control", style: "color:black", autofocus: false %>
+    <%= f.text_field :name, class: "form-control", style: "color:black", autofocus: false, required: true %>
   </div> <br>
 
 <div class="field">
     <%= f.label :last_name, :style => 'color:#E4007D' %><br />
     <%= f.text_field :last_name, class: "form-control", style: "color:black", autofocus: false %>
-    <%= f.hidden_field :balance, class: "form-control", style: "color:black", value: 0 , autofocus: false %>
+    <%= f.hidden_field :balance, class: "form-control", style: "color:black", value: 0 , autofocus: false, required: true %>
   </div> <br>
             
        <div class="field">
     <%= f.label :password_confirmation, :style => 'color:#E4007D' %><br />
-    <%= f.password_field :password_confirmation, class: "form-control", style: "color:black", autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, class: "form-control", style: "color:black", autocomplete: "off", required: true %>
   </div>
 
 
