@@ -123,6 +123,7 @@ es:
   creditcard: "Tarjetas de credito"
   debitcard: "Tarjetas de debito"
   register: "Registrar"
+  make_account: "Crear cuenta en DonBillete"
   owner_name: "Nombre del titular"
   openpay_transaction: "Transacciones realizadas vía"
   openpay_shield: "Tus pagos se realizan de forma segura con encriptación de 256 bits"
