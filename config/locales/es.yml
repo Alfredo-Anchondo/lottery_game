@@ -296,6 +296,7 @@ es:
             balance: "Saldo"
             birthday: "Fecha de cumpleaños"
             favorite_team: "Equipo Favorito"
+            gender: "Genero"
             role_id : "Rol"
             role: "Rol"
             country: "Pais"

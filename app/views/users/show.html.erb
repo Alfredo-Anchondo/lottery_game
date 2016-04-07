@@ -112,6 +112,21 @@
                 </div>
 
             </div>
+            
+             <div class="row">
+                  <div class="col-md-3">
+                      <h4 class="property-show">  <%= t("activerecord.attributes.user.gender") %>: </h4> <br />
+                      <h5 class="property-text"><%= @user.gender %></h5> <hr>
+                </div>
+                  <div class="col-md-3">
+                      <h4 class="property-show">    <%= t("activerecord.attributes.user.birthday") %>:</h4> <br />
+                      <h5 class="property-text"><%= @user.birthday %></h5> <hr>
+                </div>
+                  <div class="col-md-3">
+                      <h4 class="property-show"> <%= t("activerecord.attributes.user.favorite_team") %>: </h4> <br />
+                      <h5 class="property-text"><%= @user.favorite_team %></h5><hr>
+                </div>
+            </div>
          
         </div>
       </div>

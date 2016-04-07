@@ -301,6 +301,7 @@ en:
             city: "City"
             birthday: "Birthday date"
             favorite_team: "Favorite Team"
+            gender: "Gender"
             int_number: "Int. Number"
             ext_number: "Ext. Number"
             username: "Username"
