@@ -1,3 +1,17 @@
+<style>
+    .slide{
+        background-image:url('/assets/basketball.jpg');
+        background-position-y: -250px;
+        padding-top:50px;
+        padding-bottom:50px;
+    }
+    
+    .bx-viewport{
+        left:0px !important;
+        border:0px !important;
+    }
+</style>
+
 <div id="login_form_responsive2" style="display:none;" class="row">
     <h4 style="text-align:center"><%= t('login') %></h4>
                         <%= form_for(resource, as: resource_name, url: session_path(resource_name), :class => "form-inline") do |f| %>
@@ -36,21 +50,61 @@
         </div>
 
 <div class="row" style="margin-top: -20px !important;">
-        <div class="cycle-slideshow">
-            <img width="101%" src="/assets/background1.png">
-        </div>
+<div id="slider1">
 </div>
+</div>    
+
+
 
 
 <script>
+    var current_language = $("#current_language").val();
       $.ajax({
             method: "GET",
             url: "/games/future_games",
             format: "json"
                }).done(function(data) {
-             
+                                for(var i in data.games){
+                                  
+                         if (data.games[i].team.id < 10){
+         var image_url = '/system/teams/logos/000/000/00'+data.games[i].team.id+'/original/'+data.games[i].team.logo_file_name;
+    }   else{
+    var image_url = '/system/teams/logos/000/000/0'+data.games[i].team.id+'/original/'+data.games[i].team.logo_file_name;
+    }  
+                           if (data.games[i].team2.id < 10){
+         var image_url2 = '/system/teams/logos/000/000/00'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
+    }   else{
+    var image_url2 = '/system/teams/logos/000/000/0'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
+    }  
+
+                       if(data.games[i].category.id < 10){
+                           var url = "/system/categories/logos/000/000/00"+ data.games[i].category.id+"/original/"+data.games[i].category.logo_file_name+"" ;
+                       }else{
+                            var url = "/system/categories/logos/000/000/0"+ data.games[i].category.id+"/original/"+data.games[i].category.logo_file_name+"";
+                       }
+                       
+                       $("#slider1").append('<div class="slide"><div class="row"><div class="col-md-3"><h2 style="text-align:center; font-weight:500; color:white">Participa puedes ganar mas de:</h2><h1 style="text-align:center; font-weight:900; font-size:50px; color:#E4007D">$'+data.games[i].lotteries[0].initial_balance+' USD</h1></div><div class="col-md-9"> <h2 style="text-align:center; font-weight:900; color:#E4007D;">Conoce nuestras loterias y participa por increibles premios</h2> <h1 style="text-align:center; color:white; ">Fecha del partido '+moment(data.games[i].game_date ,"", current_language ).format("MMMM D YYYY, h:mm a")+'  </h1> </div> </div> <br> <div class="row"><div  class="col-xs-1 col-md-3 "><h2 style="text-align:center; font-weight:900; color:#E4007D;"></h2> <img style="width: 50% !important;margin-left: 25%;" class="category_logo" src=" '+url+' " ><h5 style="text-align:center"><span style="font-weight:900; color:white; text-transform:uppercase;">No esperes mas registrate y compra tu billete. No dejes pasar mas tiempo y prueba tu suerte. </span></h5></div><div class="col-xs-11 col-md-9"><a data-lotteryid="'+data.games[i].lotteries[0].id+'" data-lotteryprice="'+data.games[i].lotteries[0].price+'" data-lotterybalance="'+data.games[i].lotteries[0].initial_balance+'" data-lotteryfinal="'+data.games[i].lotteries[0].final_number+'" data-lotteryrules="'+data.games[i].lotteries[0].rules+'" data-teamname="'+data.games[i].team.name+'" data-team2name="'+data.games[i].team2.name+'"  class="display_modal"><h2 style="text-align:center; color:white; font-weight:700"> '+ data.games[i].team.name + ' VS ' + data.games[i].team2.name + ' </h2><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"><img height="250px" class="logo_lotteries" style="margin-left:20%" src="'+image_url+'"> </h4></div><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"> <img height="250px" class="logo_lotteries" style="margin-left:20%"  src="'+image_url2+'"> </h4> </div></a></div></div></div>');
+          
+                                    
+         
+                                }
+            $(document).ready(function(){
+                         $('#slider1').bxSlider({
+                            minSlides: 1,
+                            maxSlides: 10,
+                            slideMargin: 10
+                          });
+          
+                        });
+      
       });
+    
+   
 </script>
+
+
+
+
 
 
 
