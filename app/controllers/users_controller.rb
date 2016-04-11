@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   respond_to :html, :json
 
+    
+    
+    I18n.locale = current_user.language;
+    
   # GET /users
   # GET /users.json
   def index
