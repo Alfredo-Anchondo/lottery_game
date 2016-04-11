@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   respond_to :html, :json
 
     
-    
-    I18n.locale = current_user.language;
+    @user = User.find(params[:id])
+    I18n.locale = @user.language
     
   # GET /users
   # GET /users.json
