@@ -23,7 +23,7 @@ end
     
     
     def change_language
-        if current_user.language
+        if current_user
         I18n.locale = current_user.language
         end
     end
