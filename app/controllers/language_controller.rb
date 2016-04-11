@@ -1,9 +1,21 @@
 class LanguageController < ApplicationController 
 
-def i18n
+    before_action :authenticate_user!
+    
+  def i18n
     return if params[:locale].blank?
-    I18n.locale = params[:locale]
+    I18n.locale = search_profile
     redirect_to :back
   end
+    
+
+    private def search_profile
+        @user = current_user
+        if @user.language
+            return @user.language
+        else    
+            return params[:locale]
+        end    
+    end
     
 end

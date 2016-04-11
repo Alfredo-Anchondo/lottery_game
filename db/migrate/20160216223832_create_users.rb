@@ -23,7 +23,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :favorite_team    
       t.date :birthday
       t.string :openpay_id    
-      t.string :gender    
+      t.string :gender  
+      t.string :language    
 
       t.timestamps
     end

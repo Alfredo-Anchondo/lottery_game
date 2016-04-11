@@ -131,12 +131,12 @@
                                     <%= image_tag "#{I18n.locale}-icon.png" ,:style => "width:30px" %>
                                 </button>
                                 <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
-                                    <li>
+                                    <li id="es">
                                         <%= link_to "/language/i18n/es", :style => 'color:black' do %>
                                         <%= image_tag "es-icon.png", :style => "width:30px" %> <%= t('language_es') %>
                                         <% end %>
                                     </li>
-                                    <li>
+                                    <li id="en">
                                         <%= link_to "/language/i18n/en", :style => 'color:black' do %>
                                           <%= image_tag "en-icon.png", :style => "width:30px" %>  <%= t('language_en') %>
                                         <% end %>
@@ -208,3 +208,28 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+
+<script>
+    $("#es").click(function(){
+        $.ajax({
+          method: "Put",
+            dataType: "json",
+            url: "/users/"+<%= current_user.id %>+"",
+           data: { user: {language: "es"} }
+        })
+          .done(function( msg ) {
+            alert( "<%= current_user.language %>");
+         });
+    })
+        
+          $("#en").click(function(){
+        $.ajax({
+          method: "Put",
+            dataType: "json",
+            url: "/users/"+<%= current_user.id %>+"",
+           data: { user: {language: "en"} }
+        })
+          .done(function( msg ) {
+         });
+    })
+</script>
