@@ -1,6 +1,5 @@
 class LanguageController < ApplicationController 
 
-    before_action :authenticate_user!
     
   def i18n
     I18n.locale = search_profile
