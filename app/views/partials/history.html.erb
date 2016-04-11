@@ -8,6 +8,7 @@
                 <th><%= t('card_number') %></th>
                 <th><%= t('transaction_description') %></th>
                 <th><%= t('transaction_status') %></th>
+                <th><%= t('amount') %></th>
                 <th><%= t('transaction_error') %></th>
                 <th> <%= t('transaction_date') %></th>
             </tr>
@@ -32,6 +33,7 @@
                 <% when "failed" %>
                 <td><%= t('failed') %></td>
                 <% end %>
+                <td>$<%= charges['amount'] %> USD</td>
                  <% case charges['error_message'] %>
 <% when "The card doesn't have sufficient funds" %>
 <td><%= t('nofounds') %></td>
