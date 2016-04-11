@@ -18,7 +18,7 @@ class LanguageController < ApplicationController
             return @user.language
         else    
             logger.info "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Agarro default %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-            return (params[:locale] = @user.language)
+            return params[:locale] 
         end    
     end
     
