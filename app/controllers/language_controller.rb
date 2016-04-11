@@ -9,7 +9,7 @@ class LanguageController < ApplicationController
   end
     
 
-    private def search_profile
+     def search_profile
         @user = current_user
         if @user
             if @user.language != "" || nil
