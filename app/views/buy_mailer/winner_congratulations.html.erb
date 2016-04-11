@@ -10,7 +10,7 @@
     h4{font-size:20px}
     h5{font-size:16px}      
     .welcome{color:white;}
-    .panel-header{background-color:#E4007D; width:100%;}    
+    .panel-header{ width:100%;}    
     .panel{width:100%;}      
     .row {width:100%; display:block;}   
     .col-md-4 {width:33.33%; float: left; display:table-cell;}      
@@ -18,15 +18,15 @@
     .col-md-6{width:50%;}     
     #ticket_name_modal{margin-left:20%;}   
     .margin-center{padding-left:25%}   
-    .panel-footer{background-color:#727272; width:100%;}
+    .panel-footer{ width:100%;}
 </style>
       
   </head>
   <body>
       <div class="panel">
         <div class="panel-header">
-            <h1 class="welcome">DonBillete</h1>
-            <h2 class="welcome">Muchas Felicidades Tu boleto resulto ganador</h2>
+              <h4 style="text-align:center"> <img width="80%" src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xlp1/v/t1.0-9/12938199_117866865279976_3191603506313976256_n.jpg?_nc_eui=ARiSGYX4nUDsUWOIv5qiqVZjDWgustApjTnJtbkle2Yl4f_34ML18w&oh=b08490ebce294e1f7545c822307c72b6&oe=578C4109"></h4>
+            <h2 class="welcome">Muchas Felicidades Tu billete resulto ganador</h2>
           </div>
       
       </div>
@@ -35,6 +35,9 @@
 <h2>Gracias por participar en la loteria  <%= @lottery_name %></h2>
 <h1>Nos alegra decirte que fuiste seleccionado Ganador:</h1>
 <h1>Con el boleto numero: <%= @winner_number %></h1>
+          <% if @num_winners != 1 %>
+<h2>Lamentablemente no fuiste el unico que selecciono este numero, por lo tanto el total de la bolsa se divira entre <%= @num_winners%> participantes que seleccionaron el mismo numero:</h2>
+          <% end %>
 <h1>El monto total ganado es de: $<%= @total_update %> USD</h1>          
 <h2>Felicidades esperamos que sigas participando con nosotros.</h2>
 <h2>Entra a tu perfil para ver tu Saldo actual</h2>

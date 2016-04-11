@@ -92,7 +92,7 @@ end
              user_winner =  users[0].id
              logger.info winner
              logger.info user_winner
-                BuyMailer.winner_congratulations(winner, winner_number, lottery_name, initial_balance).deliver
+             BuyMailer.winner_congratulations(winner, winner_number, lottery_name, initial_balance, 1).deliver
              User.find_by_id(user_winner).update(:balance => (users[0].balance + initial_balance)) 
              update_winner = UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param, :user_id => user_winner).pluck(:id)
              UserLottery.find_by_id(update_winner).update(:status => "Ganador") 
@@ -108,8 +108,8 @@ end
             logger.info variable.email 
             winner = variable.email
             user_winner =  variable.id
-            BuyMailer.winner_congratulations(winner, winner_number, lottery_name, total_update).deliver
-                User.find_by_id(user_winner).update(:balance => (variable.balance + total_update)) 
+            BuyMailer.winner_congratulations(winner, winner_number, lottery_name, total_update, count).deliver
+            User.find_by_id(user_winner).update(:balance => (variable.balance + total_update)) 
              update_winner = UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => winner_number_param, :user_id => user_winner).pluck(:id)
              UserLottery.find_by_id(update_winner).update(:status => "Ganador") 
             end
