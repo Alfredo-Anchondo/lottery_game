@@ -60,7 +60,7 @@ end
             "method" => "card",
             "source_id" =>  params[:token_id],
             "currency" => "USD",
-            "amount" => Integer(params[:amount]) + .15 ,
+            "amount" => Integer(params[:amount]) + 0.15 ,
             "description" => 'Compra de saldo en DONBILLETE',
             'device_session_id' => params[:deviceIdHiddenFieldName]
           }
