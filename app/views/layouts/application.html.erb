@@ -22,8 +22,12 @@
 
   
 </head>
-<body>
-  <input id="current_language" type="hidden" value="<%= I18n.locale %>" >
+<body style="background-color:#C7C7C7">
+       <% if signed_in? %>
+    <input id="current_language" type="hidden" value="<%= current_user.language %>" >
+      <% else %>
+     <  input id="current_language" type="hidden" value="<%= I18n.locale %>" >
+      <% end %>
     
        <% if signed_in? %>
     <% if current_user.role.is_admin? %>

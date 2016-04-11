@@ -13,13 +13,12 @@ class LanguageController < ApplicationController
 
     private def search_profile
         @user = current_user
-        logger.info @user.language
         if @user.language != "" || nil
             logger.info "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&Si entro $$$$$$$$$$$$$$$$$$$$$$$"
             return @user.language
         else    
             logger.info "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Agarro default %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-            return params[:locale]
+            return (params[:locale] = @user.language)
         end    
     end
     

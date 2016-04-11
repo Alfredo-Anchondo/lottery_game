@@ -132,7 +132,7 @@
                                 </button>
                                 <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
                                     <li id="es">
-                                        <%= link_to "/language/i18n/es", :style => 'color:black' do %>
+                                    <%= link_to "/language/i18n/es", :style => 'color:black' do %>
                                         <%= image_tag "es-icon.png", :style => "width:30px" %> <%= t('language_es') %>
                                         <% end %>
                                     </li>
@@ -220,7 +220,6 @@ s0.parentNode.insertBefore(s1,s0);
            data: { user: {language: "es"} }
         })
           .done(function( msg ) {
-            alert( "<%= current_user.language %>");
          });
     })
         
