@@ -60,7 +60,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'welcome/index_client'  
   get 'language/i18n/:locale' => 'language#i18n'
-    get 'partials/credit_card_form' 
+  get 'partials/credit_card_form' 
 
 
   # The priority is based upon order of creation: first created -> highest priority.
