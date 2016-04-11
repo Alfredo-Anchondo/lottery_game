@@ -209,6 +209,8 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 <!--End of Tawk.to Script-->
 
+ <% if signed_in? %>
+
 <script>
     $("#es").click(function(){
         $.ajax({
@@ -233,3 +235,5 @@ s0.parentNode.insertBefore(s1,s0);
          });
     })
 </script>
+
+<% end %>
