@@ -822,6 +822,17 @@
     
     <script>
     $(document).ready(function(){
+        
+        $.ajax({
+          method: "GET",
+          url: " /games/finish_games",
+          dataType: "json"     
+        })
+          .done(function( msg ) {
+            alert( "Data Saved: " + msg );
+          });
+       
+        
         $('.slider8').bxSlider({
             mode: 'vertical',
             minSlides: 5,
