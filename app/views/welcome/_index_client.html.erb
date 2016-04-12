@@ -190,6 +190,7 @@
        <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
            <h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t('purchase_confirmation') %></h4>
+           <h4 id="date_modal"></h4>
       </div>
     <div class="modal-content">
      <div class="row" style="padding:5px !important;"> 
@@ -511,6 +512,7 @@
              function get_ticket_info(){
                  $('#ticket_numer_lottery').text($('.ticket_number').val());
                  $('#total_price').text($('#lottery_price').val());
+                 $('#date_modal').text($('#game_date').text());
                  
              }
              
