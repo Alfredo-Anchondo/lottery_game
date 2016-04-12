@@ -5,7 +5,7 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+set :output, "/log/crons.log"
 #
 every 1.minutes do
   runner "Game.close_lottery_buy"
