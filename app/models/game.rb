@@ -5,12 +5,17 @@ class Game < ActiveRecord::Base
     has_one :sport_category, through: :team
     has_one :category, through: :sport_category
     
-      def select_display
+    def select_display
          team.name + " vs " + team2.name
     end
     
     def format_date
         game_date.strftime("%e-%m-%Y %l:%M %p")
+    end
+    
+    def close_lottery_buy
+      where('game_date = ?', DateTime.now).order(:game_date).all
+        logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$"
     end
     
     
