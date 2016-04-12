@@ -14,7 +14,6 @@ class Game < ActiveRecord::Base
     end
     
     def close_lottery_buy
-      where('game_date = ?', DateTime.now).order(:game_date).all
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$"
     end
     
