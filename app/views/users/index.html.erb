@@ -91,3 +91,23 @@
   <!-- end col-12 -->
 </div>
 <!-- end row -->
+
+
+<script>
+       var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+    
+$('#data-table').DataTable({
+    responsive: true,
+    order: [1,"desc"],
+     "language": {
+            "url": languaje
+        }
+});
+</script>
