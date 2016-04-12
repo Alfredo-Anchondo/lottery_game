@@ -546,7 +546,7 @@
                       data: { user: {balance: total_balance_update} }
                     }).done(function( data) {
                      $('#success-content').empty();
-                     $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_bag')%></h3>');
+                     $('#success-content').append('<br><h2 style="text-align:center; color:#E81F7F; font-weight:800;>DON<span style=" color:black; font-weight:800;>BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
                     
                      });
         
@@ -556,7 +556,7 @@
                       dataType: "json",     
                       data: { lottery: {initial_balance: current_bag} }
                     }).done(function( data) {
-                   $('#success-content').append('<br><h1 style="text-align:center; font-weight:900;">'+ number_of_ticket +'</h1>');
+                   $('#success-content').append('<h1 style="text-align:center; font-weight:900;">'+ number_of_ticket +'</h1>');
                      });
     }  
             
