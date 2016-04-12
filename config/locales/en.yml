@@ -130,7 +130,7 @@ en:
   success: "Operation Was Successful"
   success_buy: "- The purchase was made successfully"
   success_balance: "- Your balance was successfully updated"
-  success_bag: "- The jackpot was successfully updated"
+  success_bag: "Good luck!"
   select_correct_number: "You must select all the necessary digits to participate"
   insuficient_balance: "You do not have enough balance to make the purchase"
   next_lottery: "Next Lottery"

@@ -546,7 +546,8 @@
                       data: { user: {balance: total_balance_update} }
                     }).done(function( data) {
                      $('#success-content').empty();
-                     $('#success-content').append('<br><h3 style="text-align:center">'+ number_of_ticket +'</h3>');
+                     $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_bag')%></h3>');
+                    
                      });
         
           $.ajax({
@@ -555,7 +556,7 @@
                       dataType: "json",     
                       data: { lottery: {initial_balance: current_bag} }
                     }).done(function( data) {
-                     $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_bag')%></h3>');
+                   $('#success-content').append('<br><h1 style="text-align:center; font-weight:900;">'+ number_of_ticket +'</h1>');
                      });
     }  
             
@@ -569,7 +570,7 @@
                       dataType: "json",     
                       data: { user_lottery: {user_id: user_id, lottery_id: $('#lottery_id_modal').val(), ticket_number: ticket_number ,purchase_date: purchase_date, status: "Comprado"}  }
                     }).done(function( data) {
-                     $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_buy')%></h3>');
+                     $('#success-content').append('<br><h1 style="text-align:center; font-weight:700;"><%=t('success_buy')%></h1>');
                      $('#success-modal').modal('show');
                      });
             }                       
