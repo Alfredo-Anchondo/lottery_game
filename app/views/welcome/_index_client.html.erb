@@ -262,7 +262,7 @@
     <div class="modal-content" >
          <div class="modal-header" style="background-color:#E4007D; color:white;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:white" aria-hidden="true">&times;</span></button>
-             <h4 class="modal-title"><%= t('success_buy') %></h4>
+             <h4 class="modal-title"><%= t('success_buy') %>  <span style="margin-left:29%;" id="date_modal1"></span></h4>
       </div>
       <div class="modal-body" >
           <div class="row">
@@ -513,6 +513,7 @@
                  $('#ticket_numer_lottery').text($('.ticket_number').val());
                  $('#total_price').text($('#lottery_price').val());
                  $('#date_modal').text($('#game_date').text());
+                 $('#date_modal1').text($('#game_date').text());
                  
              }
              
