@@ -6,10 +6,11 @@
 # Example:
 #
 set :output, "log/crons.log"
+env :PATH, '/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin'
 #
 every 1.minutes do
   runner "Game.close_lottery_buy"
- end
+end
 #
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
