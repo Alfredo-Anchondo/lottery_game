@@ -832,14 +832,14 @@
     }   else{
     var image_url2 = '/system/teams/logos/000/000/0'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
     }  
-                if (data.games[i].lotteries[0].initial_balance != null){
-                    var lottery_balance = data.games[i].lotteries[0].initial_balance
+                if (data.games[i].lotteries[0].winner_number != null){
+                    var lottery_winner = data.games[i].lotteries[0].winner_number
                 }else{
-                    var lottery_balance = "Sin ganador"
+                    var lottery_winner = "Sin ganador"
                 }
                
                 
-         $('.slider8').append('<div class="slide"><div class="row"> <div class="col-md-3"> <h4 style="text-align:center"> Numero Ganador </h4> <h1 style="font-weight:900; text-align:center"> '+data.games[i].lotteries[0].winner_number+' </h1> </div> <div class="col-md-3"> <h4 style="text-align:center"> Bolsa Acumulada </h4> <h2 style="font-weight:900; text-align:center"> $'+lottery_balance+' USD </h2> </div> <div class="col-md-6"> <div class="row"> <div class="col-md-4"> <h4 style="text-align:center"> <img width="100%" src="'+image_url+'"> </h4> </div> <div class="col-md-2"><br> <br> <h2 style="text-align:center; font-weight:800;"> '+data.games[i].local_score+'  </h2> </div> <div class="col-md-2"> <br> <br> <h2 style="text-align:center; font-weight:800;">'+data.games[i].visit_score+'</h2> </div> <div class="col-md-4">  <h4 style="text-align:center"> <img width="100%" src="'+image_url2+'"> </h4> </div> </div> </div>  </div> <hr> </div> ');
+         $('.slider8').append('<div class="slide"><div class="row"> <div class="col-md-3"> <h4 style="text-align:center"> Numero Ganador </h4> <h1 style="font-weight:900; text-align:center"> '+lottery_winner+' </h1> </div> <div class="col-md-3"> <h4 style="text-align:center"> Bolsa Acumulada </h4> <h2 style="font-weight:900; text-align:center"> $'+data.games[i].lotteries[0].initial_balance+' USD </h2> </div> <div class="col-md-6"> <div class="row"> <div class="col-md-4"> <h4 style="text-align:center"> <img width="100%" src="'+image_url+'"> </h4> </div> <div class="col-md-2"><br> <br> <h2 style="text-align:center; font-weight:800;"> '+data.games[i].local_score+'  </h2> </div> <div class="col-md-2"> <br> <br> <h2 style="text-align:center; font-weight:800;">'+data.games[i].visit_score+'</h2> </div> <div class="col-md-4">  <h4 style="text-align:center"> <img width="100%" src="'+image_url2+'"> </h4> </div> </div> </div>  </div> <hr> </div> ');
             }
             
                 $('.slider8').bxSlider({
