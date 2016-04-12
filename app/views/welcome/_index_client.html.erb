@@ -834,16 +834,19 @@
     }  
                
                 
-                $('.slider8').append('<div class="slide"><div class="row"> <div class="col-md-3"> <h4 style="text-align:center"> Numero Ganador </h4> <h1 style="font-weight:900"> '+data.games[i].lotteries[0].winner_number+' </h1> </div> </div></div>');
+         $('.slider8').append('<div class="slide"><div class="row"> <div class="col-md-3"> <h4 style="text-align:center"> Numero Ganador </h4> <h1 style="font-weight:900"> '+data.games[i].lotteries[0].winner_number+' </h1> </div> </div></div>');
             }
-          });
-       
-        
-        $('.slider8').bxSlider({
+            
+                $('.slider8').bxSlider({
             mode: 'vertical',
             minSlides: 5,
             slideMargin: 5
           });
+            
+          });
+       
+        
+    
     });
     </script>
     
