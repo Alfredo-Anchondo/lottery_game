@@ -41,6 +41,7 @@
     
   var table = $('#history-table').DataTable( {
        responsive: true,
+       order: [ 4, 'desc' ],
     ajax: {
         url: "/users/lotteries/"+ <%= current_user.id %>+".json",
         dataSrc: 'users'
