@@ -159,8 +159,17 @@
 
     
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4"></div> 
+        
+        <div class="col-md-6">
+            <div class="slider8">
+                <div class="slide"><img src="http://placehold.it/300x100&text=FooBar1"></div>
+                 <div class="slide"><img src="http://placehold.it/300x100&text=FooBar1"></div>
+                 <div class="slide"><img src="http://placehold.it/300x100&text=FooBar1"></div>
+                 <div class="slide"><img src="http://placehold.it/300x100&text=FooBar1"></div>
+                 <div class="slide"><img src="http://placehold.it/300x100&text=FooBar1"></div>
+            </div>
+        </div>
+        
         <div class="col-md-4">
               <div class="ibox float-e-margins">
                         <div class="ibox-title">
@@ -796,6 +805,17 @@
         // Start the tour
       //  tour.start(true); 
           });
+    </script>
+    
+    <script>
+    $(document).ready(function(){
+        $('.slider8').bxSlider({
+            mode: 'vertical',
+            slideWidth: 300,
+            minSlides: 2,
+            slideMargin: 10
+          });
+    });
     </script>
     
     
