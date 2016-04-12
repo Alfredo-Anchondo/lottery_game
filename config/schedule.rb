@@ -7,7 +7,7 @@
 #
 # set :output, "/path/to/my/cron_log.log"
 #
-every 1.minutes do
+ every :minute  do
   runner "Game.close_lottery_buy"
  end
 #
