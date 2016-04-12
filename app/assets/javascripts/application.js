@@ -45,14 +45,5 @@ $(document).ready(function(){
 });
       
     
-    var current_language = $("#current_language").val();
-       var languaje;
-    
-    if(current_language == "en"){
-    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
-}else{
-    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-}
-    
     
 });
