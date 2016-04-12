@@ -828,8 +828,22 @@
           url: " /games/finish_games",
           dataType: "json"     
         })
-          .done(function( msg ) {
-            alert( "Data Saved: " + msg );
+          .done(function( data ) {
+            for(var i in data.games){
+                    if (data.games[i].team.id < 10){
+         var image_url = '/system/teams/logos/000/000/00'+data.games[i].team.id+'/original/'+data.games[i].team.logo_file_name;
+    }   else{
+    var image_url = '/system/teams/logos/000/000/0'+data.games[i].team.id+'/original/'+data.games[i].team.logo_file_name;
+    }  
+                           if (data.games[i].team2.id < 10){
+         var image_url2 = '/system/teams/logos/000/000/00'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
+    }   else{
+    var image_url2 = '/system/teams/logos/000/000/0'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
+    }  
+               
+                
+                $('.slider8').append('<div class="slide"><div class="row"> <div class="col-md-3"> <h4 style="text-align:center"> Numero Ganador </h4> <h1 style="font-weight:900"> '+data.games[i].lotteries[0].winner_number+' </h1> </div> </div></div>');
+            }
           });
        
         
