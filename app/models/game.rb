@@ -19,7 +19,7 @@ class Game < ActiveRecord::Base
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
         
         if x
-            logger.info x
+            logger.info String(x)
             logger.info "hay algo en x"
         end    
         
