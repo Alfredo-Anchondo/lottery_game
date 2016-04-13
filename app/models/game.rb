@@ -25,7 +25,7 @@ class Game < ActiveRecord::Base
         if y != nil
               logger.info y
         end
-        z = UserLottery.where('lottery_id = ?', y).pluck(:user_id)
+        z = UserLottery.where('lottery_id = ?', y).pluck(:user_id).pluck(:email)
         
         if z != nil
             logger.info z
