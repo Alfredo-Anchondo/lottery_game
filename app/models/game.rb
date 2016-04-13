@@ -17,15 +17,16 @@ class Game < ActiveRecord::Base
      #   x = where(game_date: (DateTime.now.change(:sec => 0) + 2.hours - 59.seconds).to_formatted_s(:db).. ((DateTime.now.change(:sec => 0) + 2.hours + 59.seconds).to_formatted_s(:db))).pluck(:id) 
         
         x = where('game_date = ?', DateTime.now.change(:sec => 0)).pluck(:id).first 
-      
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
-        
         if x != nil
             logger.info x
         end    
         
-        logger.info (DateTime.now.change(:sec => 0) + 2.hours - 59.seconds).to_formatted_s(:db)
-        logger.info (DateTime.now.change(:sec => 0) + 2.hours + 59.seconds).to_formatted_s(:db)
+        y = Lottery.where('game_id = ?', x).pluck(:id).first
+        
+        if y != nil
+              logger.info y
+        end
         
     end
     
