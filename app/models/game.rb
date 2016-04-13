@@ -19,8 +19,7 @@ class Game < ActiveRecord::Base
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
         
         if x
-            logger.info String(x)
-            logger.info "hay algo en x"
+            logger.info x.team.name
         end    
         
         logger.info (DateTime.now.change(:sec => 0) + 2.hours - 59.seconds).to_formatted_s(:db)
