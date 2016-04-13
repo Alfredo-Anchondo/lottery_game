@@ -16,7 +16,7 @@ class Game < ActiveRecord::Base
     def self.close_lottery_buy
      #   x = where(game_date: (DateTime.now.change(:sec => 0) + 2.hours - 59.seconds).to_formatted_s(:db).. ((DateTime.now.change(:sec => 0) + 2.hours + 59.seconds).to_formatted_s(:db))).pluck(:id) 
         
-        x = where('game_date = ?', DateTime.now.change(:sec => 0).to_formatted_s(:db)).pluck(:id).first 
+        x = where('game_date = ?', DateTime.now.change(:sec => 0)).pluck(:id).first 
       
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
         
