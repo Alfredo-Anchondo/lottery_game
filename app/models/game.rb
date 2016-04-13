@@ -17,7 +17,12 @@ class Game < ActiveRecord::Base
         x = where(game_date: ((DateTime.now.change(:sec => 0) + 2.hours).to_formatted_s(:db) .. ((DateTime.now.change(:sec => 0) + 2.hours + 59.seconds).to_formatted_s(:db)))).order(:game_date).first  
       
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
-        logger.info x
+        
+        if x
+            logger.info x
+            logger.info "hay algo en x"
+        end    
+        
         logger.info (DateTime.now.change(:sec => 0) + 2.hours).to_formatted_s(:db) 
     end
     
