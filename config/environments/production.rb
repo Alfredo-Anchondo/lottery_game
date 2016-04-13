@@ -1,5 +1,3 @@
-set :whenever_environment, 'production'
-
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
     
@@ -96,3 +94,5 @@ Rails.application.configure do
 end
 
 Rails.application.routes.default_url_options[:host] = 'donbillete.com'
+
+
