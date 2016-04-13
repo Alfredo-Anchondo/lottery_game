@@ -23,7 +23,7 @@ class Game < ActiveRecord::Base
             logger.info "hay algo en x"
         end    
         
-        logger.info (DateTime.now.change(:sec => 0) + 2.hours).to_formatted_s(:db)
+        logger.info (DateTime.now.change(:sec => 0) + 2.hours - 59.seconds).to_formatted_s(:db)
         logger.info (DateTime.now.change(:sec => 0) + 2.hours + 59.seconds).to_formatted_s(:db)
         
     end
