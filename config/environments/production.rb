@@ -1,4 +1,4 @@
-set :whenever_environment, defer { stage }
+
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
