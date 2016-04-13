@@ -124,43 +124,7 @@
                     </div>
                 </div>
     
-    <div class="col-md-6 col-xs-12" style="padding-left:7px; padding-right:0px;">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5><%= t('result_lotteries') %></h5>
-                            <span class="label label-primary"><%= t('last_results') %></span>
-                        </div>
-
-                        <div class="ibox-content" id="finish_lotteries">
-                            <div class="table-responsive">
-          <table id="close_games_table"  class=" table responsive table-bordered table-hover table-striped nowrap" width="100%">
-            <thead style="background-color:#727272; color:white;">
-              <tr>
-                      <th>#</th>
-                      <th><%= t('local') %> </th>
-                      <th><%= t("visit") %></th>
-                      <th><%= t("score") %></th>
-                      <th><%= t("winner_number") %></th>
-              </tr>
-            </thead>
-
-            <tbody>
-                
-            </tbody>
-                                </table>
-      </div>
-                        </div>
-                    </div>
-                </div>
-
-    </div>
-    
-    <div class="clearfix"></div>
-
-    
-    <div class="row">
-        
-        <div class="col-md-6">
+      <div class="col-md-6">
               <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5><%= t('result_lotteries') %></h5>
@@ -174,6 +138,17 @@
                   </div>
             </div>
         </div>
+    
+   
+
+    </div>
+    
+    <div class="clearfix"></div>
+
+    
+    <div class="row">
+        
+      
         
         <div class="col-md-4">
               <div class="ibox float-e-margins">
@@ -725,32 +700,7 @@
            })
            
             var count = 0;
-            
-     
-    
-  var table = $('#close_games_table').DataTable( {
-       responsive: true,
-    ajax: {
-        url: "/games/finish_games",
-        dataSrc: 'games'
-    },
-            "language": {
-            "url": languaje
-        },
-    columns: [
-        { data: 'lotteries[0].id'},
-        { data: 'team.name'},
-        { data: 'team2.name'},
-        { data: function(row, type, val, meta){
-            return row.local_score +" - "+ row.visit_score
-        }},
-           { data: 'lotteries[0].winner_number'}
-    ],
-       columnDefs: [
-        { responsivePriority: 1, targets: [0,4] }
-    ]
-} );
-             
+                   
             
        $.ajax({
           method: "GET",
@@ -867,10 +817,63 @@
     <script>
          $.ajax({
   method: "GET", 
-  url: "https://api.performfeeds.com/basketballdata/match/10q19hfn5lego16erqtal3z8xi?tmcl=8znop8ppwnewt536p1zda3pbd"
+  url: "https://api.performfeeds.com/basketballdata/match/10q19hfn5lego16erqtal3z8xi?tmcl=8znop8ppwnewt536p1zda3pbd",
+  datatype: "json"             
 })
   .done(function( data) {
          });
     </script>
     
     
+ <!--<div class="col-md-6 col-xs-12" style="padding-left:7px; padding-right:0px;">
+         <script>
+          var table = $('#close_games_table').DataTable( {
+       responsive: true,
+    ajax: {
+        url: "/games/finish_games",
+        dataSrc: 'games'
+    },
+            "language": {
+            "url": languaje
+        },
+    columns: [
+        { data: 'lotteries[0].id'},
+        { data: 'team.name'},
+        { data: 'team2.name'},
+        { data: function(row, type, val, meta){
+            return row.local_score +" - "+ row.visit_score
+        }},
+           { data: 'lotteries[0].winner_number'}
+    ],
+       columnDefs: [
+        { responsivePriority: 1, targets: [0,4] }
+    ]
+} );
+        </script>
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5><%= t('result_lotteries') %></h5>
+                            <span class="label label-primary"><%= t('last_results') %></span>
+                        </div>
+
+                        <div class="ibox-content" id="finish_lotteries">
+                            <div class="table-responsive">
+          <table id="close_games_table"  class=" table responsive table-bordered table-hover table-striped nowrap" width="100%">
+            <thead style="background-color:#727272; color:white;">
+              <tr>
+                      <th>#</th>
+                      <th><%= t('local') %> </th>
+                      <th><%= t("visit") %></th>
+                      <th><%= t("score") %></th>
+                      <th><%= t("winner_number") %></th>
+              </tr>
+            </thead>
+
+            <tbody>
+                
+            </tbody>
+                                </table>
+      </div>
+                        </div>
+                    </div>
+                </div> -->
