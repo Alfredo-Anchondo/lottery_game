@@ -20,7 +20,7 @@ class Game < ActiveRecord::Base
       
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
         
-        if x
+        if x != nil
             logger.info x
         end    
         
