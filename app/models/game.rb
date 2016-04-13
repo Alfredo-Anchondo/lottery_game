@@ -20,12 +20,15 @@ class Game < ActiveRecord::Base
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
         if x != nil
             logger.info x
-        end    
-        
+        end          
         y = Lottery.where('game_id = ?', x).pluck(:id).first
-        
         if y != nil
               logger.info y
+        end
+        z = UserLottery.where('lottery_id = ?', y).pluck(:user_id)
+        
+        if z != nil
+            logger.info z
         end
         
     end
