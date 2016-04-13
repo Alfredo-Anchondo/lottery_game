@@ -13,7 +13,7 @@ class Game < ActiveRecord::Base
         game_date.strftime("%e-%m-%Y %l:%M %p")
     end
     
-    def  close_lottery_buy
+    def self.close_lottery_buy
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$"
     end
     
