@@ -18,7 +18,7 @@ class Game < ActiveRecord::Base
       
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
         logger.info x
-        logger.info DateTime.now.change(:sec => 0).to_formatted_s(:db) + 2.hours
+        logger.info (DateTime.now.change(:sec => 0) + 2.hours).to_formatted_s(:db) 
     end
     
     
