@@ -14,7 +14,7 @@ class Game < ActiveRecord::Base
     end
     
     def self.close_lottery_buy
-      x = where('game_date >= ?', DateTime.now.to_formatted_s(:long_ordinal)).order(:game_date).first  
+        x = where('game_date >= ?', DateTime.now.to_formatted_s(:db)).order(:game_date).first  
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" + x
     end
     
