@@ -14,13 +14,15 @@ class Game < ActiveRecord::Base
     end
     
     def self.close_lottery_buy
-        x = where(game_date: (DateTime.now.change(:sec => 0))..(DateTime.now.change(:sec => 0) + 59.seconds)).order(:game_date).first  
+          def self.close_lottery_buy
+        x = where(game_date: (DateTime.now.change(:sec => 0).to_formatted_s(:db))..(DateTime.now.change(:sec => 0) + 59.seconds).to_formatted_s(:db)).order(:game_date).first  
         
         Client.where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight)
         
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
         logger.info x
-        logger.info DateTime.now.change(:sec => 0)
+        logger.info DateTime.now.change(:sec => 0).to_formatted_s(:db)
+    end
     end
     
     
