@@ -6,7 +6,7 @@
 # Example:
 #
 set :output, "log/crons.log"
-env :PATH, '/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin'
+env :PATH,'/home/donbillete/.rbenv/shims:/home/donbillete/.rbenv/bin:/home/donbillete/.rbenv/bin:/usr/local/jdk/bin:/home/donbillete/perl5/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11R6/bin:/home/donbillete/bin'
 every 1.minutes do
   runner "Game.close_lottery_buy"
 end
