@@ -22,7 +22,6 @@ class Game < ActiveRecord::Base
         logger.info x
         logger.info DateTime.now.change(:sec => 0).to_formatted_s(:db)
     end
-    end
     
     
     def self.next_game
