@@ -14,12 +14,12 @@ class Game < ActiveRecord::Base
     end
     
     def self.close_lottery_buy
-        x = where(game_date: (DateTime.now.change(:sec => 0) + 2.hours - 59.seconds).to_formatted_s(:db).. ((DateTime.now.change(:sec => 0) + 2.hours + 59.seconds).to_formatted_s(:db))) 
+        x = where(game_date: (DateTime.now.change(:sec => 0) + 2.hours - 59.seconds).to_formatted_s(:db).. ((DateTime.now.change(:sec => 0) + 2.hours + 59.seconds).to_formatted_s(:db))).pluck(:id) 
       
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
         
         if x
-            logger.info x.team.name
+            logger.info x
         end    
         
         logger.info (DateTime.now.change(:sec => 0) + 2.hours - 59.seconds).to_formatted_s(:db)
