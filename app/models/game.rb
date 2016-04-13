@@ -17,7 +17,7 @@ class Game < ActiveRecord::Base
         x = where('game_date = ?', DateTime.now.change(:sec => 0)).order(:game_date).first  
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
         logger.info x
-        logger.info DateTime.now.change(:sec => 0).to_formatted_s(:db)
+        logger.info DateTime.now.change(:sec => 0)
     end
     
     
