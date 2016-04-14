@@ -24,13 +24,15 @@ class Game < ActiveRecord::Base
         if y != nil
             logger.info y.id
         end
-        z = User.where(:id => UserLottery.where('lottery_id = ?', y.id).pluck(:user_id).uniq).pluck(:email)
+        z = User.where(:id => UserLottery.where('lottery_id = ?', y.id).pluck(:user_id).uniq).pluck(:email, :id)
+        
+        
         
         if z != nil
             logger.info z
         end
         
-        BuyMailer.close_lottery(x,y,z).deliver
+        #BuyMailer.close_lottery(x,y,z).deliver
         
         
     end

@@ -34,9 +34,9 @@
           <h4>El partido a comenzado: <%= @game.format_date %> </h4>
            <h4 style="margin-left:30%; margin:0px; font-weight:900; color:black" id="ticket_name_modal"><%= @game.team.name + '   vs   ' + @game.team2.name %> </h4>  
           <div class="margin-center row">
-          <div class="col-md-12 " style="border: 1px dotted black;">
+          <div class="col-md-12 " style="">
                 <div class="row" style="padding:0px">
-                    <h4 style="color:black;">El valor de la bolsa quedo en: $<%= @lottery.initial_balance %> USD</h4>
+                    <h2 style="color:black;">El valor de la bolsa quedo en: $<%= @lottery.initial_balance %> USD</h2>
                 </div>
             </div>
           </div>
