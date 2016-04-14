@@ -26,12 +26,6 @@ class Game < ActiveRecord::Base
         end
         
         z = User.where(:id => UserLottery.where('lottery_id = ?', y.id).pluck(:user_id).uniq).pluck(:email, :id)
-        
-        z.each do |count|
-            numbers_array.push(UserLottery.where('user_id = ?', z[count].id).pluck(:user_id, :ticket_number))
-        end
-        
-        logger.info numbers_array
        
         
         
@@ -39,7 +33,7 @@ class Game < ActiveRecord::Base
             logger.info z
         end
         
-        #BuyMailer.close_lottery(x,y,z).deliver
+        BuyMailer.close_lottery(x,y,z).deliver
         
         
     end
