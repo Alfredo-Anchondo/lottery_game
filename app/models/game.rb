@@ -14,22 +14,24 @@ class Game < ActiveRecord::Base
     end
     
     def self.close_lottery_buy
-     #   x = where(game_date: (DateTime.now.change(:sec => 0) + 2.hours - 59.seconds).to_formatted_s(:db).. ((DateTime.now.change(:sec => 0) + 2.hours + 59.seconds).to_formatted_s(:db))).pluck(:id) 
         
-        x = where('game_date = ?', DateTime.now.change(:sec => 0)).pluck(:id).first 
+        x = where('game_date = ?', DateTime.now.change(:sec => 0)).first 
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
         if x != nil
             logger.info x
         end          
-        y = Lottery.where('game_id = ?', x).pluck(:id).first
+        y = Lottery.where('game_id = ?', x.id).first
         if y != nil
-              logger.info y
+            logger.info y.id
         end
-        z = User.where(:id => UserLottery.where('lottery_id = ?', y).pluck(:user_id).uniq).pluck(:email)
+        z = User.where(:id => UserLottery.where('lottery_id = ?', y.id).pluck(:user_id).uniq).pluck(:email)
         
         if z != nil
             logger.info z
         end
+        
+        BuyMailer.close_lottery(x,y,z).deliver
+        
         
     end
     

@@ -33,4 +33,11 @@ class BuyMailer < ActionMailer::Base
           mail(to: @winner, subject: '[DonBillete] Felicidades eres el Ganador de la Loteria')
   end
     
+    def close_lottery(game, lottery, mail)
+        @game = game
+        @mail = mail
+        @lottery = lottery
+        mail(to: @mail, subject: '[DonBillete] La loteria se a cerrado')
+    end    
+    
 end
