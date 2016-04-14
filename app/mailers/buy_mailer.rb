@@ -38,7 +38,7 @@ class BuyMailer < ActionMailer::Base
         @mail = mail
         @lottery = lottery
         @mail.each do |variable|
-        @tickets = UserLottery.where('user_id = ?', variable[1]).pluck(:ticket_number)
+            @tickets = UserLottery.where('user_id = ? AND lottery_id = ?' ,variable[1], @lottery.id).pluck(:ticket_number)
         mail(to: variable[0], subject: '[DonBillete] La loteria se a cerrado')
         end
         
