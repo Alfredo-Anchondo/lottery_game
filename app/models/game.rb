@@ -14,7 +14,7 @@ class Game < ActiveRecord::Base
     end
     
     def self.close_lottery_buy
-        
+         numbers_array = []
         x = where('game_date = ?', DateTime.now.change(:sec => 0)).first 
         logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
         if x != nil
@@ -24,8 +24,15 @@ class Game < ActiveRecord::Base
         if y != nil
             logger.info y.id
         end
+        
         z = User.where(:id => UserLottery.where('lottery_id = ?', y.id).pluck(:user_id).uniq).pluck(:email, :id)
         
+        z.each do |count|
+            numbers_array.push(UserLottery.where('user_id = ?', z[count].id).pluck(:user_id, :ticket_number))
+        end
+        
+        logger.info numbers_array
+       
         
         
         if z != nil
