@@ -33,21 +33,13 @@ class BuyMailer < ActionMailer::Base
           mail(to: @winner, subject: '[DonBillete] Felicidades eres el Ganador de la Loteria')
   end
     
-    def close_lottery(game, lottery, mail)
+    def close_lottery(game, lottery, mail,tickets,repeat,correct_mail)
         @game = game
-        @mail = mail
+        @mail = correct_mail
         @lottery = lottery
-        @mail.each do |variable|
-            @repeat_number = []
-        @tickets = UserLottery.where('user_id = ? AND lottery_id = ?' ,variable[1], @lottery.id).pluck(:ticket_number)
-            @tickets.each do |ticket|
-               repeat = UserLottery.where('ticket_number = ? AND lottery_id = ?' ,ticket, @lottery.id).count
-               @repeat_number.push(repeat);
-            end    
-        mail(to: variable[0], subject: '[DonBillete] La loteria se a cerrado')
-        end
-        
-       
+        @tickets = tickets
+        @repeat_number = repeat
+        mail(to: @mail, subject: '[DonBillete] La loteria se a cerrado')
     end    
     
 end

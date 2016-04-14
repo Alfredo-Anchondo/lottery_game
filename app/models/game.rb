@@ -27,13 +27,21 @@ class Game < ActiveRecord::Base
         
         z = User.where(:id => UserLottery.where('lottery_id = ?', y.id).pluck(:user_id).uniq).pluck(:email, :id)
        
-        
-        
         if z != nil
             logger.info z
         end
         
-        BuyMailer.close_lottery(x,y,z).deliver
+         z.each do |variable|
+            @repeat_number = []
+        @tickets = UserLottery.where('user_id = ? AND lottery_id = ?' ,variable[1], y.id).pluck(:ticket_number)
+            @tickets.each do |ticket|
+               repeat = UserLottery.where('ticket_number = ? AND lottery_id = ?' ,ticket, @lottery.id).count
+               @repeat_number.push(repeat);
+            end    
+             BuyMailer.close_lottery(x,y,z,@tickets,@repeat_number,variable[0]).deliver
+        end
+        
+       
         
         
     end
