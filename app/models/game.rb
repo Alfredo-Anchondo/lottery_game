@@ -35,7 +35,7 @@ class Game < ActiveRecord::Base
             @repeat_number = []
         @tickets = UserLottery.where('user_id = ? AND lottery_id = ?' ,variable[1], y.id).pluck(:ticket_number)
             @tickets.each do |ticket|
-               repeat = UserLottery.where('ticket_number = ? AND lottery_id = ?' ,ticket, @lottery.id).count
+               repeat = UserLottery.where('ticket_number = ? AND lottery_id = ?' ,ticket, y.id).count
                @repeat_number.push(repeat);
             end    
              BuyMailer.close_lottery(x,y,z,@tickets,@repeat_number,variable[0]).deliver
