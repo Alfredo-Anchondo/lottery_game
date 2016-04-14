@@ -16,21 +16,9 @@ class Game < ActiveRecord::Base
     def self.close_lottery_buy
          numbers_array = []
         x = where('game_date = ?', DateTime.now.change(:sec => 0)).first 
-        logger.info "%$#%$##%$#%$#%$ Ya corrio el proceso $@$@#!@$" 
-        if x != nil
-            logger.info x
-        end          
+        if x   
         y = Lottery.where('game_id = ?', x.id).first
-        if y != nil
-            logger.info y.id
-        end
-        
         z = User.where(:id => UserLottery.where('lottery_id = ?', y.id).pluck(:user_id).uniq).pluck(:email, :id)
-       
-        if z != nil
-            logger.info z
-        end
-        
          z.each do |variable|
             @repeat_number = []
         @tickets = UserLottery.where('user_id = ? AND lottery_id = ?' ,variable[1], y.id).pluck(:ticket_number)
@@ -40,7 +28,8 @@ class Game < ActiveRecord::Base
             end    
              BuyMailer.close_lottery(x,y,z,@tickets,@repeat_number,variable[0]).deliver
         end
-        
+       
+        end
        
         
         
