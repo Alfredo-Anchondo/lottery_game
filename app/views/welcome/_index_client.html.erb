@@ -949,7 +949,11 @@
          var lottery_price = $('#lotteries_random option:selected').data('price');
          var current_bag = $('#lotteries_random option:selected').data('balance');
          var total_balance_update = current_balance - (lottery_price * quantity_sale);
-            for(var i in number_array){
+         
+         if(current_balance < lottery_price){
+             alert('No tienes saldo suficiente para realizar la transaccion');
+         }else{
+             for(var i in number_array){
     
                     $.ajax({
                       method: "PUT",
@@ -989,6 +993,10 @@
                      });
                               $('#success-modal').modal('show');
                  //setTimeout(function(){ location.reload(); }, 2000);  
+         }
+         
+         
+            
      })
      
     </script>
