@@ -1,6 +1,7 @@
 <% if current_user.address_1 == nil || current_user.address_2 == nil || current_user.ext_number == nil || current_user.int_number ==nil || current_user.state == nil || current_user.city == nil || current_user.zip_code == nil %>
 <script>
-    location.replace("/users/"+ <%= current_user.id %> +"");
+    alert('Para poder realizar la compra debes de completar todos tus datos del registro.');
+    location.replace("/users/"+ <%= current_user.id %> +"/edit");
 </script>
     
 <% end %>
