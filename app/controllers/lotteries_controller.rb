@@ -10,7 +10,11 @@ class LotteriesController < ApplicationController
     respond_with(@lotteries)
   end
     
-    
+    def team_logos
+        @lottery = Lottery.find(params[:id])
+        respond_with(:team1 => @lottery.game.team, :team2 => @lottery.game.team2)
+    end
+
 
   def show
     respond_with(@lottery)
