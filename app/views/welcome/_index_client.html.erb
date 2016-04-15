@@ -134,31 +134,7 @@
                     </div>
                 </div>
     
-      <div class="col-md-7 col-xs-12">
-              <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5><%= t('result_lotteries') %></h5>
-                            <span class="label label-primary"><%= t('last_results') %></span>
-                        </div>
-
-                        <div class="ibox-content" id="finish_lotteries">
-            <div class="slider8">
-               
-            </div>
-                  </div>
-            </div>
-        </div>
-    
-   
-
-    </div>
-    
-    <div class="clearfix"></div>
-
-    
-    <div class="row">
-        
-        <div class="col-md-5 col-xs-12">
+    <div class="col-md-7 col-xs-12">
              <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>Comprar billetes aleatoriamente</h5>
@@ -215,22 +191,30 @@
                  </div>
             </div>
         </div>
-        
-        <div class="col-md-4 col-xs-12">
+    
+    </div>
+    
+    <div class="clearfix"></div>
+
+    
+    <div class="row">
+         <div class="col-md-7 col-xs-12">
               <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5><%= t('our_winners') %></h5>
-                            <span class="label label-primary"><%= t('last_winners') %></span>
+                            <h5><%= t('result_lotteries') %></h5>
+                            <span class="label label-primary"><%= t('last_results') %></span>
                         </div>
 
                         <div class="ibox-content" id="finish_lotteries">
-        <div class="cycle-slideshow1" data-cycle-fx="tileBlind" data-cycle-pause-on-hover="true" data-cycle-speed="200" data-cycle-caption="#adv-custom-caption" data-cycle-caption-template="<%= t('winner') %> {{slideNum}}: {{cycleTitle}}">
-          
+            <div class="slider8">
+               
             </div>
-           <div id="adv-custom-caption" class="center"></div>
-        </div>
+                  </div>
             </div>
         </div>
+        
+        
+     
         <opta widget="scoreboard" sport="basketballsd" competition="e2w9iicoifx689pzi5jqw7j4a" season="8znop8ppwnewt536p1zda3pbd" live="false" ></opta>
     </div>
     
@@ -773,29 +757,7 @@
             var count = 0;
                    
             
-       $.ajax({
-          method: "GET",
-          url: "/user_lotteries/winners",
-          format: "json"
-        })
-          .done(function(data) {
-                
-           for(var i in data.user_lotteries){
-               
-             if( data.user_lotteries[i].user.id < 10){
-                   var src = '/system/users/photos/000/000/00'+data.user_lotteries[i].user.id+'/original/'+data.user_lotteries[i].user.photo_file_name } 
-           else{
-               var src = '/system/users/photos/000/000/0'+data.user_lotteries[i].user.id+'/original/'+data.user_lotteries[i].user.photo_file_name
-            }
-      
-              $('.cycle-slideshow1').append('<img width="100%" height="400px" src='+src+' data-cycle-title="'+data.user_lotteries[i].user.username +'\n <br> <%= t('lottery_win') %>: #' +data.user_lotteries[i].lottery.id+ " " +data.user_lotteries[i].lottery.team.name + " vs " + data.user_lotteries[i].lottery.team2.name + ' ">');
-           
-          
-           }
-           
-           $( '.cycle-slideshow1' ).cycle();
-           
-       });
+  
              
          });
     
@@ -1002,7 +964,48 @@
     </script>
     
     
- <!--<div class="col-md-6 col-xs-12" style="padding-left:7px; padding-right:0px;">
+ <!--
+<script>      $.ajax({
+          method: "GET",
+          url: "/user_lotteries/winners",
+          format: "json"
+        })
+          .done(function(data) {
+                
+           for(var i in data.user_lotteries){
+               
+             if( data.user_lotteries[i].user.id < 10){
+                   var src = '/system/users/photos/000/000/00'+data.user_lotteries[i].user.id+'/original/'+data.user_lotteries[i].user.photo_file_name } 
+           else{
+               var src = '/system/users/photos/000/000/0'+data.user_lotteries[i].user.id+'/original/'+data.user_lotteries[i].user.photo_file_name
+            }
+      
+              $('.cycle-slideshow1').append('<img width="100%" height="400px" src='+src+' data-cycle-title="'+data.user_lotteries[i].user.username +'\n <br> <%= t('lottery_win') %>: #' +data.user_lotteries[i].lottery.id+ " " +data.user_lotteries[i].lottery.team.name + " vs " + data.user_lotteries[i].lottery.team2.name + ' ">');
+           
+          
+           }
+           
+           $( '.cycle-slideshow1' ).cycle();
+           
+       }); </script>
+   <div class="col-md-4 col-xs-12">
+              <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5><%= t('our_winners') %></h5>
+                            <span class="label label-primary"><%= t('last_winners') %></span>
+                        </div>
+
+                        <div class="ibox-content" id="finish_lotteries">
+        <div class="cycle-slideshow1" data-cycle-fx="tileBlind" data-cycle-pause-on-hover="true" data-cycle-speed="200" data-cycle-caption="#adv-custom-caption" data-cycle-caption-template="<%= t('winner') %> {{slideNum}}: {{cycleTitle}}">
+          
+            </div>
+           <div id="adv-custom-caption" class="center"></div>
+        </div>
+            </div>
+        </div>
+
+
+<div class="col-md-6 col-xs-12" style="padding-left:7px; padding-right:0px;">
          <script>
           var table = $('#close_games_table').DataTable( {
        responsive: true,
