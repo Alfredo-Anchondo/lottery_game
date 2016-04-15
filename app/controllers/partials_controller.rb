@@ -8,8 +8,7 @@ class PartialsController < ApplicationController
   end
     
 def create_customer()
-    @openpay=OpenpayApi.new("m8dvprmyk9adbcmhonod","sk_22a93d1817864bebbf99ca009358e48b")
-    @customers = @openpay.create(:customers)
+    stablich_connection
     user_address_hash = {
       line1: "#{current_user.address_1} #{current_user.ext_number}", line2: current_user.address_2, line3: current_user.int_number, state: current_user.state,
       city: current_user.city, postal_code: current_user.zip_code, country_code: 'MX'
@@ -54,8 +53,7 @@ rescue OpenpayTransactionException => error
 end    
     
     def charge_with_credit_card(customer)
-         @openpay=OpenpayApi.new("m8dvprmyk9adbcmhonod","sk_22a93d1817864bebbf99ca009358e48b")
-        @charges=@openpay.create(:charges)
+        stablich_connection
         request_hash={
             "method" => "card",
             "source_id" =>  params[:token_id],
@@ -82,8 +80,7 @@ end
 end
     
 def get_customer(customer_id)
-  @openpay=OpenpayApi.new("m8dvprmyk9adbcmhonod","sk_22a93d1817864bebbf99ca009358e48b")
-  @customers = @openpay.create(:customers)
+  stablich_connection
   customer = @customers.get(customer_id) 
     
     if params[:only_register]
@@ -129,8 +126,7 @@ end
     end
     
     def dispersion
-        @openpay=OpenpayApi.new("m8dvprmyk9adbcmhonod","sk_22a93d1817864bebbf99ca009358e48b")
-        @payouts=@openpay.create(:payouts)
+       stablich_connection
         bank_account_hash={
             "holder_name" => params[:owner_name],
             "clabe" => params[:clabe],
@@ -165,11 +161,9 @@ end
     
     
     def history
-  @openpay=OpenpayApi.new("m8dvprmyk9adbcmhonod","sk_22a93d1817864bebbf99ca009358e48b")
-  @customers = @openpay.create(:customers)
+        stablich_connection
         if current_user.openpay_id
   customer = @customers.get(current_user.openpay_id) 
-  @charges=@openpay.create(:charges)
   @user_charges = @charges.all(customer["id"])    
   logger.info @user_charges       
         end
