@@ -22,7 +22,6 @@ Rails.application.routes.draw do
             get "buy_error"
             get "/history", to: "partials#history"
             get "checkout"
-            post "return_card_id/:card", to: 'partials#return_card_id'
             match "/checkout" => "partials#dispersion", :via => :post
         end
     end

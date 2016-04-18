@@ -170,10 +170,7 @@ end
         
     end
     
-    def return_card_id
-        @card = params['card']
-    end
-    
+    @card;
     
     private
     def delete_card(card, customer)
