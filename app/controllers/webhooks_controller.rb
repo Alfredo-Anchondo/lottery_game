@@ -1,7 +1,7 @@
 class WebhooksController < ApplicationController
     
     def create
-      render nothing: true
+        logger.info "entre"
         
     end
     
