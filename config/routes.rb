@@ -64,6 +64,8 @@ Rails.application.routes.draw do
   get 'welcome/index_client'  
   get 'language/i18n/:locale' => 'language#i18n'
   get 'partials/credit_card_form' 
+    match '/webhooks/op/create', to: 'webhooks#create', via: :post
+    
 
 
   # The priority is based upon order of creation: first created -> highest priority.
