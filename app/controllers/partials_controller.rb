@@ -168,8 +168,15 @@ end
   logger.info @user_charges       
         end
         
-    end    
+    end   
     
+    private
+    def delete_card(card, customer)
+        stablich_connection
+        @cards.delete(card_id, customer_id)
+    end
+    
+    helper_method :delete_card
         
     
 end
