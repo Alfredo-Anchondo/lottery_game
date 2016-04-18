@@ -921,7 +921,7 @@
          var current_bag = $('#lotteries_random option:selected').data('balance');
          var total_balance_update = current_balance - (lottery_price * quantity_sale);
          
-         if(current_balance < lottery_price){
+         if(current_balance < (lottery_price * quantity_sale){
              alert('No tienes saldo suficiente para realizar la transaccion');
          }else{
              for(var i in number_array){
