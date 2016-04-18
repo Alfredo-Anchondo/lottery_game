@@ -364,7 +364,7 @@ a.button.disabled {
             <% if @get_cards != [] %>
              <% @get_cards.each do |card| %>
                 <div class="radio">
-                    <label style="margin-left:30px; font-weight:900;" ><img width="50px"src="/assets/<%= card['brand'] %>.ico"><input style="margin-top:18px; margin-left:-70px;" type="radio" value="<%= card['id'] %>" name="optradio"><span style="color:#E4007D; padding-left:10px;"><%= t('card') %>: </span> <%= card['card_number'] %><i style="color:red; margin-left: 10px; font-size: 22px;" class="fa fa-times-circle"></i></label>
+                    <label style="margin-left:30px; font-weight:900;" ><img width="50px"src="/assets/<%= card['brand'] %>.ico"><input style="margin-top:18px; margin-left:-70px;" type="radio" value="<%= card['id'] %>" name="optradio"><span style="color:#E4007D; padding-left:10px;"><%= t('card') %>: </span> <%= card['card_number'] %><i id="delete_card" style="color:red; margin-left: 10px; font-size: 22px;" class="fa fa-times-circle"></i></label>
                 </div>
               <% end %>
     <a style="color:white;" class="button rght" id="pay-button-used"><%= t('buy') %></a>
@@ -421,3 +421,11 @@ a.button.disabled {
     </div>
     </div>
 </div>
+
+<script>
+
+$('#delete_card').click(function(e){
+                        e.preventDefault();
+    alert("sure");
+                        })
+</script>
