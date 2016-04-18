@@ -168,7 +168,12 @@ end
   logger.info @user_charges       
         end
         
-    end   
+    end
+    
+    def return_card_id
+        return params['card']
+    end
+    
     
     private
     def delete_card(card, customer)
