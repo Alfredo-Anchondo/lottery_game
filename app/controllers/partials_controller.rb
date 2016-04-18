@@ -175,11 +175,12 @@ end
     def delete_card
         stablich_connection
         @cards.delete(params['card'], params['customer'])
+          redirect_to :back
           rescue OpenpayException => error
         @e = error
         logger.info "#&&&&&&&&&&&&&&&&&&&&& Se Llamo &&&&&&&&&&&&&&&&&"
         logger.info error.description
-        redirect_to :back
+      
     end
         
     
