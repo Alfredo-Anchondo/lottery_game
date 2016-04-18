@@ -425,8 +425,9 @@ a.button.disabled {
 <script>
 
 $('.delete_card').click(function(e){
+    e.preventDefault();
     var card_id = $(this).data("card");
-                        e.preventDefault();
+                        
    var confirm = confirm("¿Estas seguro que deseas eliminar esta tarjeta de credito?");
         if(confirm){
             
