@@ -110,6 +110,10 @@
     width: 50% !important;
     height: 140px !important;
 }
+      #pay-button-used{
+          font-size:15px;
+          margin-bottom: 5px;
+      }
       
 }
 
@@ -230,6 +234,10 @@
     width: 50% !important;
     height: 140px !important;
 }
+          #pay-button-used{
+          font-size:15px;
+          margin-bottom: 5px;
+      }
       
 }
 
@@ -355,6 +363,10 @@
     width: 50% !important;
     height: 140px !important;
 }
+          #pay-button-used{
+          font-size:15px;
+          margin-bottom: 5px;
+      }
 }
 
 @media screen and (max-width: 480px) {
@@ -480,6 +492,10 @@
     width: 50% !important;
     height: 140px !important;
 }
+        #pay-button-used{
+          font-size:15px;
+          margin-bottom: 5px;
+      }
     
 }
 
