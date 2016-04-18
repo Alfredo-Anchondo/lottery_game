@@ -364,7 +364,7 @@ a.button.disabled {
             <% if @get_cards != [] %>
              <% @get_cards.each do |card| %>
                 <div class="radio">
-                    <label style="margin-left:30px; font-weight:900;" ><img width="50px"src="/assets/<%= card['brand'] %>.ico"><input style="margin-top:18px; margin-left:-70px;" type="radio" value="<%= card['id'] %>" name="optradio"><span style="color:#E4007D; padding-left:10px;"><%= t('card') %>: </span> <%= card['card_number'] %><i class="fa fa-alert"></i></label>
+                    <label style="margin-left:30px; font-weight:900;" ><img width="50px"src="/assets/<%= card['brand'] %>.ico"><input style="margin-top:18px; margin-left:-70px;" type="radio" value="<%= card['id'] %>" name="optradio"><span style="color:#E4007D; padding-left:10px;"><%= t('card') %>: </span> <%= card['card_number'] %><i class="fa fa-check"></i></label>
                 </div>
               <% end %>
     <a style="color:white;" class="button rght" id="pay-button-used"><%= t('buy') %></a>
