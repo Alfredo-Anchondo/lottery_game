@@ -433,7 +433,7 @@ $('.delete_card').click(function(e){
                 
                 $.ajax({
                   method: "POST",
-                    url: "/partials/credit_card_form/delete_card/"+card_id+"/"+<%= current_user.openpay_id %>+""
+                    url: "/partials/credit_card_form/delete_card/"+card_id+"/<%= current_user.openpay_id %>"
                 })
                   .done(function( msg ) {
                     alert( "Data Saved: " + msg );
