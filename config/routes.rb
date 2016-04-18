@@ -23,6 +23,7 @@ Rails.application.routes.draw do
             get "/history", to: "partials#history"
             get "checkout"
             match "/checkout" => "partials#dispersion", :via => :post
+            match "/credit_card_form/delete_card/:card/:customer" => "partials#delete_card", :via => :post
         end
     end
   

@@ -172,17 +172,14 @@ end
     
     @card;
     
-    private
-    def delete_card(card, customer)
+    def delete_card
         stablich_connection
-        @cards.delete(card, customer)
+        @cards.delete(params['card'], params['customer'])
           rescue OpenpayException => error
         @e = error
         logger.info "#&&&&&&&&&&&&&&&&&&&&& Se Llamo &&&&&&&&&&&&&&&&&"
         logger.info error.description
     end
-    
-    helper_method :delete_card
         
     
 end
