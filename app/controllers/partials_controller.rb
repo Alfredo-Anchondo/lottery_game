@@ -182,7 +182,6 @@ end
           rescue OpenpayException => error
         @e = error
         logger.info error.description
-        render 'buy_error'
     end
     
     helper_method :delete_card
