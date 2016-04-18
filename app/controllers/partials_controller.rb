@@ -178,7 +178,7 @@ end
     private
     def delete_card(card, customer)
         stablich_connection
-        @cards.delete(card, customer_id)
+        @cards.delete(card, customer)
     end
     
     helper_method :delete_card
