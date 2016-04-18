@@ -430,7 +430,17 @@ $('.delete_card').click(function(e){
                         
    var confirm = confirm("¿Estas seguro que deseas eliminar esta tarjeta de credito?");
         if(confirm){
-            <%= delete_card(card_id, current_user.openpay_id) %>
+                        $.ajax({
+              method: "POST",
+              url: "/partials/return_card_id",
+              data: { card: card_id }
+            })
+              .done(function( msg ) {
+                alert( "Data Saved: " + msg );
+                            <%= delete_card(@card, current_user.openpay_id) %>
+              });
+            
+           
         }
                             })
 </script>

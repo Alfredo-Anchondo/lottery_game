@@ -171,7 +171,7 @@ end
     end
     
     def return_card_id
-        return params['card']
+        @card = params['card']
     end
     
     
