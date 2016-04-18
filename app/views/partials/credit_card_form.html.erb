@@ -429,7 +429,7 @@ $('.delete_card').click(function(e){
     var card_id = $(this).data("card");
                         
    var confirm1 = confirm("¿Estas seguro que deseas eliminar esta tarjeta de credito?");
-        if(confirm1){
+        if(confirm1 == true){
                 
                 $.ajax({
                   method: "POST",
