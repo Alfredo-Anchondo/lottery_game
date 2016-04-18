@@ -179,6 +179,7 @@ end
         @e = error
         logger.info "#&&&&&&&&&&&&&&&&&&&&& Se Llamo &&&&&&&&&&&&&&&&&"
         logger.info error.description
+        redirect_to :back
     end
         
     
