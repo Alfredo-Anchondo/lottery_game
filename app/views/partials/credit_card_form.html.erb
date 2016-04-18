@@ -428,8 +428,8 @@ $('.delete_card').click(function(e){
     e.preventDefault();
     var card_id = $(this).data("card");
                         
-   var confirm = confirm("¿Estas seguro que deseas eliminar esta tarjeta de credito?");
-        if(confirm){
+   var confirm1 = confirm("¿Estas seguro que deseas eliminar esta tarjeta de credito?");
+        if(confirm1){
                         $.ajax({
               method: "POST",
               url: "/partials/return_card_id",
