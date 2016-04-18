@@ -14,6 +14,11 @@ Rails.application.routes.draw do
         end
     end
         
+    
+    resources :webhooks do
+        match '/webhooks', to: 'webhooks#create', via: :post
+    end
+    
     resources :partials  do
         collection do
             match "/credit_card_form" => "partials#credit_card_pay", :via => :post
@@ -64,7 +69,7 @@ Rails.application.routes.draw do
   get 'welcome/index_client'  
   get 'language/i18n/:locale' => 'language#i18n'
   get 'partials/credit_card_form' 
-  match '/webhooks', to: 'webhooks#create', via: :post
+  
     
 
 
