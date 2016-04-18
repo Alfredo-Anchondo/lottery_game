@@ -430,7 +430,7 @@ $('.delete_card').click(function(e){
                         
    var confirm = confirm("¿Estas seguro que deseas eliminar esta tarjeta de credito?");
         if(confirm){
-            
+            card_id = "236521730";
             <% delete_card(card_id, current_user.openpay_id) %>
         }
                             })
