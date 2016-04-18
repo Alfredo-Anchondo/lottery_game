@@ -178,6 +178,7 @@ end
         @cards.delete(card, customer)
           rescue OpenpayException => error
         @e = error
+        logger.info "#&&&&&&&&&&&&&&&&&&&&& Se Llamo &&&&&&&&&&&&&&&&&"
         logger.info error.description
     end
     
