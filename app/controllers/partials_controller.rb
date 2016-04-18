@@ -41,7 +41,7 @@ end
     device_session_id: params[:deviceIdHiddenFieldName]
   }
   @response_hash = @cards.create(card_hash.to_hash, customer['id'])
-     render :back
+     redirect_to :back
      
  rescue OpenpayException => e
      @e = e
