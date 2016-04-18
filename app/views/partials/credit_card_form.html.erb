@@ -432,7 +432,7 @@ $('.delete_card').click(function(e){
         if(confirm1){
                         $.ajax({
               method: "POST",
-              url: "/partials/return_card_id",
+              url: "/partials/return_card_id/"+card_id+"",
               data: { card: card_id }
             })
               .done(function( msg ) {
