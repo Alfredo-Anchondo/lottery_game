@@ -145,7 +145,7 @@ end
          @response_hash=@payouts.create(request_hash.to_hash)
         logger.info @response_hash['currency']
         current_user.update_attribute(:balance,(current_user.balance - Integer(params[:quantity])))
-        render :template => 'welcome/index'
+		redirect_to :root
         
         rescue OpenpayTransactionException => error
         @e = error
