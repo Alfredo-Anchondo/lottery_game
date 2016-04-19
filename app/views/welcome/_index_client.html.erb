@@ -32,11 +32,11 @@
                            
                         <div class="col-md-3 col-xs-12">
                             <h4 style="text-align:center; color:white;"><span id='first_balance'><%= t('estimate_jackpot') %>:</span> </h4>
-                            <h4 id="initial_balance2" style="text-align:center;font-size: 40px; color: #E4007D;">$<span id="initial_balance"></span> USD</h4>
+                            <h4 id="initial_balance2" style="text-align:center;font-size: 40px; color: #E4007D;"><span id="initial_balance"></span> DB</h4>
                             <hr>
                             <input style="display:none" id="lottery_price" value="">
                             <h4 style="text-align:center; color:white;"> <%= t('lottery_price') %> </h4>
-                            <h2 style="text-align:center; color:#AB005C; font-weight:800" ><span id="lottery_display_price"></span> <span> USD</span></h2> <hr>
+                            <h2 style="text-align:center; color:#AB005C; font-weight:800" ><span id="lottery_display_price"></span> <span> DB</span></h2> <hr>
                             </div>
                         <div class="col-md-4 col-xs-12">
                            <h3 style="text-align:center;font-size:30px; color:white;" id="team_name"></h3>
@@ -380,7 +380,7 @@
                 </div>
             </div>
          <div class="col-md-12">
-          <h4><%= t('estimate_jackpot') %>: <span  style="color:#E4007D; font-size:120%;">$<span class="total_modal_initial_balance" style="color:#E4007D; font-size:120%;"></span> USD </span> </h4> <small>* <%= t('bag_polity') %>.</small>
+          <h4><%= t('estimate_jackpot') %>: <span  style="color:#E4007D; font-size:120%;"><span class="total_modal_initial_balance" style="color:#E4007D; font-size:120%;"></span> DB </span> </h4> <small>* <%= t('bag_polity') %>.</small>
          </div>
         </div>
     </div>
@@ -462,7 +462,7 @@
              
      $('#team_score').text(data.game.local_score);
      $('#initial_balance').text(data.game.lotteries[0].initial_balance);   
-     $(".total_initial_balance").text("$"+data.game.lotteries[0].initial_balance+ " USD");         
+     $(".total_initial_balance").text(""+data.game.lotteries[0].initial_balance+ " DB");         
      $('#team_name').text(data.game.team.name);
      $('#team2_name').text(data.game.team2.name);
      $('#team2_score').text(data.game.visit_score);
@@ -840,7 +840,7 @@
                 }
                
                 
-         $('.slider8').append('<div class="slide"><div class="row"> <h4 style="text-align:center; font-weight:800; color:black;"> Fecha del partido:  ' +moment(data.games[i].game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h4> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Numero Ganador </h4> <h1 style="font-weight:900; text-align:center; color:#e4007d;"> '+lottery_winner+' </h1> </div> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Bolsa Acumulada </h4> <h2 style="font-weight:900; color:#e4007d; text-align:center"> $'+data.games[i].lotteries[0].initial_balance+' USD </h2> </div> <div class="col-md-6 col-xs-12"> <div class="row"> <div class="col-md-4 col-xs-4"> <h4 style="text-align:center"> <img width="100%" src="'+image_url+'"> </h4> </div> <div class="col-md-2 col-xs-2"><br> <br> <h2 style="text-align:center; color:black; font-weight:800;"> '+data.games[i].local_score+'  </h2> </div> <div class="col-md-2 col-xs-2"> <br> <br> <h2 style="text-align:center; font-weight:800; color:black;"">'+data.games[i].visit_score+'</h2> </div> <div class="col-md-4 col-xs-4">  <h4 style="text-align:center"> <img width="100%" src="'+image_url2+'"> </h4> </div> </div> </div>  </div> <hr> </div> ');
+         $('.slider8').append('<div class="slide"><div class="row"> <h4 style="text-align:center; font-weight:800; color:black;"> Fecha del partido:  ' +moment(data.games[i].game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h4> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Numero Ganador </h4> <h1 style="font-weight:900; text-align:center; color:#e4007d;"> '+lottery_winner+' </h1> </div> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Bolsa Acumulada </h4> <h2 style="font-weight:900; color:#e4007d; text-align:center"> '+data.games[i].lotteries[0].initial_balance+' DB </h2> </div> <div class="col-md-6 col-xs-12"> <div class="row"> <div class="col-md-4 col-xs-4"> <h4 style="text-align:center"> <img width="100%" src="'+image_url+'"> </h4> </div> <div class="col-md-2 col-xs-2"><br> <br> <h2 style="text-align:center; color:black; font-weight:800;"> '+data.games[i].local_score+'  </h2> </div> <div class="col-md-2 col-xs-2"> <br> <br> <h2 style="text-align:center; font-weight:800; color:black;"">'+data.games[i].visit_score+'</h2> </div> <div class="col-md-4 col-xs-4">  <h4 style="text-align:center"> <img width="100%" src="'+image_url2+'"> </h4> </div> </div> </div>  </div> <hr> </div> ');
             }
             
                 $('.slider8').bxSlider({
