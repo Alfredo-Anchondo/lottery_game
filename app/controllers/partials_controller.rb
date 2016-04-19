@@ -128,7 +128,7 @@ end
     
     def dispersion
 		amount = params[:quantity];
-		if amount > current_user.balance
+		if Integer(amount) > current_user.balance
 			return 'False'
 		end
 			
