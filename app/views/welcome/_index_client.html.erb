@@ -132,7 +132,7 @@
                             <div class="row" style="text-align:center" id="random_lotteries_div">
                             <h3>Te sientes con suerte, no sabes que numeros elegir</h3>
                             <h4>No te preocupes nosotros nos encargamos, prueba nuestro generador de numeros aleatorios.</h4> <br>
-                                <label>Loteria: </label> <select style="text-align:center" class="form-control" id="lotteries_random"><option>Selecciona una loteria</option></select> <br><br>
+                                <label>Loteria: </label> <select style="text-align:center" class="form-control" id="lotteries_random"><option value="0">Selecciona una loteria</option></select> <br><br>
                                 
                                 <div class="row">
                                 <div class="col-md-5 col-xs-5">
@@ -923,7 +923,9 @@
          
          if(current_balance < (lottery_price * quantity_sale)){
              alert('No tienes saldo suficiente para realizar la transaccion');
-         }else{
+         }else if(lottery_id == 0){
+			  alert('Debes seleccionar una loteria para comprar el billete');
+		 }else{
              for(var i in number_array){
     
                     $.ajax({
