@@ -72,7 +72,7 @@
     <div class="" style="margin-top:0%; width:100%"  id="main-con"><%= yield %></div>
     <% end %>
        
-    
+           <% if signed_in? %>
    <div class="clearfix"></div>
  <div class="footer" style="text-align:center;">
 	 <div class="pull-left" style="color:black">
@@ -80,6 +80,7 @@
 	 </div>
          <a href="/welcome/about" style="margin-right:3%; display:inline;">Quienes Somos</a> <a href="/welcome/terms" style="margin-right:3%; display:inline;">Terminos y Condiciones</a> <a href="/welcome/contact" style="margin-right:3%; display:inline;">Contactanos</a> <a href="/welcome/privacy" style="margin-right:3%; display:inline;">Privacidad y Seguridad</a> 
         </div>
+	<% end %>
    
 </body>
 </html>
