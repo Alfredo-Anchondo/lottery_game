@@ -1,3 +1,9 @@
+<style>
+	.footer{
+		position:fixed;
+	}
+</style>
+
 <div class="row">
     <br>
     <div class="col-md-3"></div>
@@ -59,6 +65,11 @@
      
         </div>
         <br><br>
+		
+<div class="field" style="display:none">
+	<%= f.check_box , value:2, class: "form-group",style: "color:black",autofocus: false, required %>
+  </div> 
+		
          <div class="actions">
              
              <button id="validate" onclick="validate_date(event)" style="width:100%; margin-top:3%;" class="btn btn-primary"> <%= t('sign_up_now') %> </button>
