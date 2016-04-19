@@ -20,7 +20,7 @@
                 </div>
                 
                 <div class="col-md-5">
-                   <h4 style="color:white"> <span id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;">$<%= current_user.balance.round(2) %></span></span>  
+                   <h4 style="color:white"> <span id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;"><%= current_user.balance.round(2) %> DB</span></span>  
                   <h4 style="color:white"> <span> <%= t('change_type') %> <span id="change_type"></span>  </span> </h4>
                 </div>
                     
@@ -92,7 +92,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
          <% if signed_in? %>
-        <span id="user_name" style="display:none"> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> <br> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;">$<%= current_user.balance %>  </span> </span> 
+        <span id="user_name" style="display:none"> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> <br> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;"><%= current_user.balance %> DB </span> </span> 
         <% end %>
       <button  type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
        <i style="margin-left:3px;" class="fa fa-bars"></i> 
