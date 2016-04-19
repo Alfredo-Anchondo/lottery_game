@@ -127,6 +127,11 @@ end
     end
     
     def dispersion
+		amount = params[:quantity];
+		if amount > current_user.balance
+			return 'False'
+		end
+			
        stablich_connection
         bank_account_hash={
             "holder_name" => params[:owner_name],
@@ -134,7 +139,6 @@ end
             "currency" => "MXN"
            }
         
-         amount = params[:quantity];
         request_hash={
              "method" => "bank_account",
              "bank_account" => bank_account_hash,
