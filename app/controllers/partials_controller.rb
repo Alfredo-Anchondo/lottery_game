@@ -58,8 +58,8 @@ end
         request_hash={
             "method" => "card",
             "source_id" =>  params[:token_id],
-            "currency" => "USD",
-            "amount" => Integer(params[:amount]) + 0.15 ,
+            "currency" => "MXN",
+            "amount" => Integer(params[:amount]) + 2.5 ,
             "description" => 'Compra de saldo en DONBILLETE',
             'device_session_id' => params[:deviceIdHiddenFieldName]
           }
@@ -131,14 +131,14 @@ end
         bank_account_hash={
             "holder_name" => params[:owner_name],
             "clabe" => params[:clabe],
-            "currency" => "USD"
+            "currency" => "MXN"
            }
         
          amount = Integer(params[:quantity]) * Float(params[:conversion]);
         request_hash={
              "method" => "bank_account",
              "bank_account" => bank_account_hash,
-            "amount" =>  amount.round(2),
+             "amount" =>  amount.round(2),
              "description" => "Pago a tercero"
            }
         logger.info "/$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$$?"

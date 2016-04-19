@@ -69,6 +69,10 @@ Rails.application.routes.draw do
   get 'welcome/index_client'  
   get 'language/i18n/:locale' => 'language#i18n'
   get 'partials/credit_card_form' 
+  get 'welcome/terms'
+  get 'welcome/about'	
+  get 'welcome/contact'
+  get 'welcome/privacy'
   
     
 
