@@ -134,7 +134,7 @@ end
             "currency" => "MXN"
            }
         
-         amount = Integer(params[:quantity]) * Float(params[:conversion]);
+         amount = Integer(params[:quantity]));
         request_hash={
              "method" => "bank_account",
              "bank_account" => bank_account_hash,
