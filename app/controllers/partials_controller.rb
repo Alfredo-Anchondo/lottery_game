@@ -134,11 +134,11 @@ end
             "currency" => "MXN"
            }
         
-         amount = Integer(params[:quantity]));
+         amount = params[:quantity];
         request_hash={
              "method" => "bank_account",
              "bank_account" => bank_account_hash,
-             "amount" =>  amount.round(2),
+             "amount" =>  amount,
              "description" => "Pago a tercero"
            }
         logger.info "/$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$?$$?"
