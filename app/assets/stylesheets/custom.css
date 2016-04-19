@@ -114,6 +114,10 @@
           font-size:15px;
           margin-bottom: 5px;
       }
+	  
+	  .footer{
+		  position:relative !important;
+	  }
       
 }
 
@@ -238,6 +242,10 @@
           font-size:15px;
           margin-bottom: 5px;
       }
+	  
+	   .footer{
+		  position:relative !important;
+	  }
       
 }
 
@@ -367,6 +375,10 @@
           font-size:15px;
           margin-bottom: 5px;
       }
+	  
+	   .footer{
+		  position:relative !important;
+	  }
 }
 
 @media screen and (max-width: 480px) {
@@ -496,6 +508,9 @@
           font-size:15px;
           margin-bottom: 5px;
       }
+	 .footer{
+		  position:relative !important;
+	  }
     
 }
 
@@ -632,3 +647,7 @@ body{
 #logo_lotteries1{
     width: 250px;
 }
+
+ .footer{
+		  position:fixed !important;
+	  }
