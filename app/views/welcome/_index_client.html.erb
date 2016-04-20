@@ -230,7 +230,41 @@
             </div>
         </div>
     
-    
+		 <div class="col-md-4 col-xs-12">
+              <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5><%= t('our_winners') %></h5>
+                            <span class="label label-primary"><%= t('last_winners') %></span>
+                        </div>
+
+                        <div class="ibox-content" id="finish_lotteries">
+        <div class="cycle-slideshow1" data-cycle-fx="tileBlind" data-cycle-pause-on-hover="true" data-cycle-speed="200" data-cycle-caption="#adv-custom-caption" data-cycle-caption-template="<%= t('winner') %> {{slideNum}}: {{cycleTitle}}">
+          
+            </div>
+           <div id="adv-custom-caption" class="center"></div>
+        </div>
+            </div>
+        </div>
+		
+    <script> 
+		$.ajax({
+          method: "GET",
+          url: "/user_lotteries/winners",
+          format: "json"
+        })
+          .done(function(data) {
+                
+           for(var i in data.user_lotteries){
+               
+              $('.cycle-slideshow1').append('<h1 style="text-align:center">' +data.user_lotteries[i].user.name + ' ' +     data.user_lotteries[i].user.last_name + '</h1> <h2 style="text-align:center">Monto de:  ' +data.user_lotteries[i].lottery.initial_balance + ' DB </h2> ');
+           
+          
+           }
+           
+           $( '.cycle-slideshow1' ).cycle();
+           
+       }); </script>
+  
    
     
     

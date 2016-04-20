@@ -14,64 +14,73 @@
 </div>
 <% end %>
 
+
+<style>
+	.requi:before{
+		content: "*";
+		color:red;
+	}
+</style>
+
+
 <!-- begin col-md-6 -->
 <div class="col-md-6">
               <div class="form-group">
-          <%= f.label :name, :class => "col-md-3" %>
+				  <%= f.label :name, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-            <%= f.text_field :name, :class => "form-control" %>
+			  <%= f.text_field :name, :class => "form-control", :required => "required" %>
           </div>
         </div>
                   <div class="form-group">
-          <%= f.label :last_name, :class => "col-md-3" %>
+          <%= f.label :last_name, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-            <%= f.text_field :last_name, :class => "form-control" %>
+            <%= f.text_field :last_name, :class => "form-control" ,:required => "required"%>
           </div>
         </div>
                   <div class="form-group">
-          <%= f.label :address_1, :class => "col-md-3" %>
+          <%= f.label :address_1, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-            <%= f.text_field :address_1, :class => "form-control" %>
+            <%= f.text_field :address_1, :class => "form-control " ,:required => "required" %>
           </div>
         </div>
                   <div class="form-group">
-          <%= f.label :address_2, :class => "col-md-3" %>
+          <%= f.label :address_2, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-            <%= f.text_field :address_2, :class => "form-control" %>
+            <%= f.text_field :address_2, :class => "form-control" ,:required => "required"%>
           </div>
         </div>
                   <div class="form-group">
-          <%= f.label :zip_code, :class => "col-md-3" %>
+          <%= f.label :zip_code, :class => "col-md-3 requi" %>
           <div class="col-md-9">
             <%= f.text_field :zip_code, :class => "form-control" %>
-              <%= f.hidden_field :balance,  :class => "form-control" %>  
+              <%= f.hidden_field :balance,  :class => "form-control" ,:required => "required" %>  
           </div>
         </div>
                  
                   <div class="form-group">
-          <%= f.label :email, :class => "col-md-3" %>
+          <%= f.label :email, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-            <%= f.text_field :email, :class => "form-control" %>
+            <%= f.text_field :email, :class => "form-control" ,:required => "required" %>
           </div>
         </div>
                 
     <div class="form-group">
           <%= f.label :photo, :class => "col-md-3" %>
           <div class="col-md-9">
-              <%= f.file_field :photo, :class => "form-control" %>
+              <%= f.file_field :photo, :class => "form-control"  %>
           </div>
         </div>
     
      <div class="form-group">
-          <%= f.label :username, :class => "col-md-3" %>
+          <%= f.label :username, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-            <%= f.text_field :username, :class => "form-control" %>
+            <%= f.text_field :username, :class => "form-control" ,:required => "required" %>
           </div>
         </div>
                   <div class="form-group">
           <%= f.label :password, :class => "col-md-3" %>
           <div class="col-md-9">
-              <%= f.password_field :password, :class => "form-control" %>
+              <%= f.password_field :password, :class => "form-control"  %>
           </div>
         </div>
 	
@@ -86,9 +95,9 @@
 
 <div class="col-md-6">
       <div class="form-group">
-          <%= f.label :phone, :class => "col-md-3" %>
+          <%= f.label :phone, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-            <%= f.text_field :phone, :class => "form-control" %>
+            <%= f.text_field :phone, :class => "form-control" ,:required => "required" %>
           </div>
         </div>
                   <div class="form-group">
@@ -111,33 +120,33 @@
               <% end %>
     
                   <div class="form-group">
-          <%= f.label :country, :class => "col-md-3" %>
+          <%= f.label :country, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-            <%= f.text_field :country, :class => "form-control" %>
+            <%= f.text_field :country, :class => "form-control" ,:required => "required" %>
           </div>
         </div>
                   <div class="form-group">
-          <%= f.label :state, :class => "col-md-3" %>
+          <%= f.label :state, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-            <%= f.text_field :state, :class => "form-control" %>
+            <%= f.text_field :state, :class => "form-control" ,:required => "required" %>
           </div>
         </div>
                   <div class="form-group">
-          <%= f.label :city, :class => "col-md-3" %>
+          <%= f.label :city, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-            <%= f.text_field :city, :class => "form-control" %>
+            <%= f.text_field :city, :class => "form-control" ,:required => "required" %>
           </div>
         </div>
                   <div class="form-group">
-          <%= f.label :int_number, :class => "col-md-3" %>
+          <%= f.label :int_number, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-            <%= f.text_field :int_number, :class => "form-control" %>
+            <%= f.text_field :int_number, :class => "form-control" ,:required => "required" %>
           </div>
         </div>
                   <div class="form-group">
-          <%= f.label :ext_number, :class => "col-md-3" %>
+          <%= f.label :ext_number, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-            <%= f.text_field :ext_number, :class => "form-control" %>
+            <%= f.text_field :ext_number, :class => "form-control" ,:required => "required" %>
           </div>
         </div>
     
@@ -149,16 +158,16 @@
         </div>
     
      <div class="form-group">
-         <%= f.label :birthday, :class => "col-md-3" %>
+          <%= f.label :birthday, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-              <%= f.date_field :birthday, :class => "form-control" %>
+              <%= f.date_field :birthday, :class => "form-control" ,:required => "required" %>
           </div>
         </div>
     
      <div class="form-group">
-         <%= f.label :gender, :class => "col-md-3" %>
+         <%= f.label :gender, :class => "col-md-3 requi" %>
           <div class="col-md-9">
-			  <select class="form-group" name="user[gender]" id="user_gender">
+			  <select class="form-group" name="user[gender]" id="user_gender" required>
 				<option>Selecciona por favor</option>
 			  	<option value="Masculino">Masculino</option>
 				<option value="Femenino">Femenino</option>
@@ -166,8 +175,13 @@
           </div>
         </div>
     
-   
+
                  
+</div>
+<div class="clearfix"></div>
+<br>
+<div class="row">
+ <span style="color:red;">* <span> Campos obligatorios </span></span>
 </div>
 
 
