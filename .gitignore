@@ -15,4 +15,6 @@
 /log/*.log
 /tmp
 
+#ignore secrets
+/config/secrets.yml
 
