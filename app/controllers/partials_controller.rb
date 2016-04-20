@@ -41,7 +41,7 @@ end
     device_session_id: params[:deviceIdHiddenFieldName]
   }
   @response_hash = @cards.create(card_hash.to_hash, customer['id'])
-     redirect_to :back
+     
      
  rescue OpenpayException => e
      @e = e
@@ -86,7 +86,8 @@ def get_customer(customer_id)
     
     if params[:only_register]
      create_credit_debit_card(customer)
-     logger.info "SOLO SE REGISTRO LA TARJETA"    
+     logger.info "SOLO SE REGISTRO LA TARJETA"  
+	 redirect_to :back	
     else
      create_credit_debit_card(customer)
      charge_with_credit_card(customer)    
