@@ -366,7 +366,7 @@ a.button.disabled {
 <div class="col-md-3">
     <h2 style="background-color:#E4007D; color:white; font-size: 24px; line-height: 24px; margin: 0; padding: 28px 0 28px 20px; width: 100%;"><%= t('register_cards') %></h2>
             <div class="row" style="background-color:white;">
-            <% if @get_cards != [] %>
+            <% if @get_cards != [] && @get_cards != nil  %>
              <% @get_cards.each do |card| %>
                 <div class="radio">
                     <label style="margin-left:30px; font-weight:900;" ><img width="50px"src="/assets/<%= card['brand'] %>.ico"><input style="margin-top:18px; margin-left:-70px;" type="radio" value="<%= card['id'] %>" name="optradio"><span style="color:#E4007D; padding-left:10px;"><%= t('card') %>: </span> <%= card['card_number'] %><i data-card="<%= card['id'] %>" style="color:red; margin-left: 10px; font-size: 22px;" class="fa fa-times-circle delete_card"></i></label>
