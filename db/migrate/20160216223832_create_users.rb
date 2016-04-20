@@ -24,7 +24,8 @@ class CreateUsers < ActiveRecord::Migration
       t.date :birthday
       t.string :openpay_id    
       t.string :gender  
-      t.string :language    
+      t.string :language
+	  t.string :friend_reference	
 
       t.timestamps
     end

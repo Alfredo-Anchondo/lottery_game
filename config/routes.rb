@@ -25,6 +25,7 @@ Rails.application.routes.draw do
             get "/partials/:user", to: "partials#get_customer_credit_cars"
             get "complete_buy"
             get "buy_error"
+			get "invite"
             get "/history", to: "partials#history"
             get "checkout"
             match "/checkout" => "partials#dispersion", :via => :post

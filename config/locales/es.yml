@@ -1,4 +1,4 @@
-# Files in the config/locales directory are used for internationalization
+﻿# Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
 #
@@ -116,6 +116,7 @@ es:
   card: "Tarjeta"
   bank: "Banco"
   amount: "Monto"
+  make_account: "Crear cuenta en DonBillete"
   card: "Tarjeta"
   participate: "Participa puedes ganar mas de"
   participate_1: "Conoce nuestras loterias y participa por increibles premios"
@@ -128,7 +129,6 @@ es:
   creditcard: "Tarjetas de credito"
   debitcard: "Tarjetas de debito"
   register: "Registrar"
-  make_account: "Crear cuenta en DonBillete"
   owner_name: "Nombre del titular"
   openpay_transaction: "Transacciones realizadas vía"
   openpay_shield: "Tus pagos se realizan de forma segura con encriptación de 256 bits"
@@ -288,9 +288,21 @@ es:
             description: "Descripción"
             is_admin: "Es administrador?"
             is_client: "Es Cliente?"
-        user:
+        user: 
+            role_id: "Rol"
+            role: "Rol"
+            country: "Pais"
+            state: "Estado"
+            city: "Ciudad"
             name: "Nombre"
-            photo: "Imagen de Perfil"
+            photo: "Imagen de perfil"
+            friend_reference: "Codigo de Referencia"
+            int_number: "Número Interior"
+            ext_number: "Número Exterior"
+            username: "Nombre de Usuario"
+            password: "Contraseña"
+            password_confirmation: "Confirmación de Contraseña"
+            created_at: "Fecha de Creación"
             last_name: "Apellidos"
             address_1: "Calle"
             address_2: "Colonia"
@@ -303,17 +315,6 @@ es:
             birthday: "Fecha de nacimiento"
             favorite_team: "Equipo Favorito"
             gender: "Genero"
-            role_id : "Rol"
-            role: "Rol"
-            country: "Pais"
-            state: "Estado"
-            city: "Ciudad"
-            int_number: "Número Interior"
-            ext_number: "Número Exterior"
-            username: "Nombre de Usuario"
-            password: "Contraseña"
-            password_confirmation: "Confirmación de Contraseña"
-            created_at: "Fecha de Creación"
         sport:
             name: "Nombre"
             description: "Descripción"
