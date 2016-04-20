@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+      
+      <style>
+    h1{font-size:40px; text-align:center;}
+    h2, h3, h4, h5{text-align:center;}
+    h4{font-size:20px;}
+    h5{font-size:16px;}      
+    .welcome{color:black;}
+    .panel-header{width:100%;}    
+    .panel{width:100%;}      
+    .row {width:100%; display:block;}   
+    .col-md-4 {width:33.33%; float: left; display:table-cell;}      
+    .col-md-12{width:100%;}      
+    .col-md-6{width:50%;}     
+    #ticket_name_modal{margin-left:20%;}   
+    .margin-center{}   
+    .panel-footer{ width:100%;}
+</style>
+      
+  </head>
+  <body>
+      <div class="panel">
+        <div class="panel-header">
+            <h4 style="text-align:center"> <img width="80%" src="https://scontent-atl3-1.xx.fbcdn.net/t31.0-8/s2048x2048/12977229_219938181709742_1313388571286838903_o.png"></h4>
+           <h1 class="welcome">Gracias por comprar saldo.</h1>
+           <h2 class="welcome">!Te deseamos suerte!</h2>      
+          </div>
+      
+      </div>
+      <div class="panel-body">
+          <div class="margin-center row">
+          <div class="col-md-12 " style="border: 1px dotted black;">
+			  <h3>Gracias por comprar saldo <%= @user.name %></h3>
+			  <h3>El total de la compra es de <%= @saldo %></h3>
+            </div>
+          </div>
+          <br>
+      </div>
+    <div class="panel-footer">
+        <h4 style="text-align:center"><a style="text-align:center; color:#E81F7F; font-size:25px;" href="http://donbillete.com">Entra a nuestro sitio para seguir jugando</a> </h4> <br>
+         <h4>Siguenos en:  <a href="https://www.facebook.com/profile.php?id=100011699889308"><img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xft1/v/t1.0-9/12924533_216008632102697_6569374066802473538_n.png?_nc_eui=ARgvbFZs7y5Iq1FvtrgQEHdq7cJHQzYWWFh4NMDHrdGToc9H2j1tGA&oh=a06d9609adcc4ecce4132ce1e2be38c4&oe=578D01AA" width="50px"></a> <a href="https://twitter.com/7DONBILLETE"><img width="50px" src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xtp1/v/t1.0-9/12417900_216008615436032_1537948209837185904_n.png?_nc_eui=ARiUxbBXmdA8nCxKnkE9LGmNrwbzAfGT6byEr7pgq-PdgCBFNW5iEw&oh=a38990118122134469933f22d8d6e0d2&oe=57B859C9"></a>  </h4>
+      
+      </div>
+  </body>
+</html>

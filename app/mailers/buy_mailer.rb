@@ -1,6 +1,11 @@
 class BuyMailer < ActionMailer::Base
     default from: "no-reply@donbillete.com"
 
+	def buy_saldo(user,saldo)
+		@user = user
+		@saldo = saldo
+		mail(to: @user.email, subject: '[DonBillete] Compa de Saldo DonBillete')
+	end
     
   def buy_ticket(user, lottery, lottery_user)
     @user = user
