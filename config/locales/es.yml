@@ -81,6 +81,8 @@ es:
     - :year
 
   actions:
+    edit_title_female: "Editar %{model}"
+    edit_title_male: "Editar %{model}"
     new_title_male: "Nuevo %{model}"
     new_title_female: "Nueva %{model}"
     delete: "Borrar"
