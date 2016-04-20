@@ -112,8 +112,8 @@ def get_customer_credit_cars(user)
 end    
     
 def stablich_connection
-  @openpay = OpenpayApi.new('m8dvprmyk9adbcmhonod', "sk_22a93d1817864bebbf99ca009358e48b") if Rails.env.development?
-  @openpay = OpenpayApi.new('m8dvprmyk9adbcmhonod', "sk_22a93d1817864bebbf99ca009358e48b", ENV['OPENPAY_PRODUCTION']) if Rails.env.production?
+  @openpay = OpenpayApi.new('ml8ii2xvkgmpoxjl0aib', "sk_183c43416f464e33b5e0330cfb0e5c47") if Rails.env.development?
+	@openpay = OpenpayApi.new('ml8ii2xvkgmpoxjl0aib', "sk_183c43416f464e33b5e0330cfb0e5c47", true) if Rails.env.production?
   @cards = @openpay.create(:cards)
   @bank_accounts = @openpay.create(:bankaccounts)
   @charges = @openpay.create(:charges)
