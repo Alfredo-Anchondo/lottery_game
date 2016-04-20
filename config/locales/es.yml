@@ -181,9 +181,9 @@ es:
   no_lotteries_programed: "No hay loterias programadas actualmente."
   no_available_lotteries: "Lo sentimos pero actualmente no hay loterias disponibles."
   warning_lotteries: "Te sugerimos esperar que se programen nuevas loterias para participar en ellas."
-  purchased_ticket_history: "Historial de boletos comprados"
+  purchased_ticket_history: "Historial de boletos"
   category_lotteries: "Loterias por categoria"
-  buy_credit: "Comprar Credito"
+  buy_credit: "Cargar Credito"
   program_games: "Lista de Juegos Programados"
   logout: "Cerrar sesión"
   our_winners: 'Nuestros Ganadores'
