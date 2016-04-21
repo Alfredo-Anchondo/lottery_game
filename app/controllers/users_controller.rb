@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :data, only: [:index, :new, :create, :edit, :update]
-  before_action :authenticate_user!
-  respond_to :html, :json
+	before_action :authenticate_user!, except: 'search_reference'
+ 
 
     
     
@@ -17,6 +17,10 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
   end
     
+	def search_reference
+		reference = params[:reference]
+		render :json => User.search_reference1(reference)
+	end
    
        
     
@@ -38,6 +42,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+	  
     @user = User.new(user_params)
     @user.save
     respond_with(@user)
@@ -80,7 +85,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :last_name, :address_1, :address_2, :zip_code, :age, :email, :phone, :cellphone, :balance, :role_id, :country, :state, :city, :int_number, :photo, :ext_number, :username, :password, :openpay_id, :favorite_team, :birthday, :gender, :language, :friend_reference)
+      params.require(:user).permit(:name, :last_name, :address_1, :address_2, :zip_code, :age, :email, :phone, :cellphone, :balance, :role_id, :country, :state, :city, :int_number, :photo, :ext_number, :username, :password, :openpay_id, :favorite_team, :birthday, :gender, :language, :friend_reference, :gift_credit, :reference_by_friend)
     end
       
    

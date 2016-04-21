@@ -6,6 +6,13 @@ class BuyMailer < ActionMailer::Base
 		@saldo = saldo
 		mail(to: @user.email, subject: '[DonBillete] Compa de Saldo DonBillete')
 	end
+	
+	def invite(mails,reference,user)
+		@mails = mails
+		@reference = reference
+		@user = user
+		mail(to: @mails, subject: '[DonBillete] Un amigo te invita a registrarte')
+	end
     
   def buy_ticket(user, lottery, lottery_user)
     @user = user

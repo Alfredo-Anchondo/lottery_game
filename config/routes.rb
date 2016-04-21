@@ -34,15 +34,19 @@ Rails.application.routes.draw do
     end
   
   resources :teams
-
   resources :sport_categories
 
-    resources :categories 
+	resources :categories do
+		collection do
+			match "/invite" => "categories#invite", :via => :post
+		end
+	end
 
   resources :users do
       collection do
           get "/lotteries/:id", to: "users#lotteries"
           get "tickets_history"
+		  match "/update_reference" => "users#search_reference", :via => :post
       end
   end
 
@@ -75,9 +79,12 @@ Rails.application.routes.draw do
   get 'welcome/contact'
   get 'welcome/privacy'
   get 'welcome/faq'	
-
   
-    
+  
+
+	
+	
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

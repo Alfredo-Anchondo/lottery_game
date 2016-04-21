@@ -4,4 +4,62 @@
 	}
 	</style>
 
-<h4 style="text-align:center"> <%= current_user.friend_reference %></h4>
+<div class="row">
+<div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <h3 style="margin-left:15px">Invitar amigos a DONBILLETE </h3>
+        </div>
+      </div>
+      <div class="panel-body">
+		  <h3 style="text-align:center">Invita a tus amigos a participar con nosotros y recibe una recompensa.</h3>
+		  <h4 style="text-align:center">Solo escribe el correo de las personas que deseas invitar y comparte tu codigo de referencia:</h4>
+		  <h4 style="text-align:center"> Tu codigo: <span style="color:red" id="reference"><%= current_user.friend_reference %> </span></h4>
+		  <hr>
+		  
+		  <div class="col-md-6" >
+		  	<h3 style="text-align:center">Agrega el correo electronico de tus amigos que deseas invitar.</h3>
+			  <input type="email" class="form-control" id="invitation_mail">
+			  <br>
+			 <h5 style="text-align:center"> <button id="add_mail" class="btn btn-primary" >Agregar Correo</button></h5>
+		  </div>
+		  <div class="col-md-6" style="border-left:1px solid #e4007d">
+		  	<h3 style="text-align:center">Lista de direcciones para invitar</h3>
+			  <ul id="email_list">
+			  
+			  </ul>
+			  <button class="btn btn-primary" id="send_emails"> Enviar correo </button>
+		  </div>
+	</div>
+	</div>
+</div>
+
+<script>
+	var emails = [];
+	var reference = $('#reference').text();
+	$('#add_mail').click(function(){
+		var mail = $('#invitation_mail').val();
+		var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+		if (regex.test(mail.trim())){
+			$('#email_list').append('<li style="font-size:16px;"> '+ mail +' </li>');
+			$('#invitation_mail').val('');
+			emails.push(mail);
+		}else
+		{ alert('Este no es un correo valido')}
+	})
+	
+	$('#send_emails').click(function(){
+			$.ajax({
+				  url: "/categories/invite/",
+				  method: "POST",
+                  data: { mails: emails, reference: reference }
+				
+					})
+				  .done(function( msg ) {
+					alert('Se realizo');
+				  });
+			})
+	
+
+	
+</script>

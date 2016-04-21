@@ -15,18 +15,20 @@ class User < ActiveRecord::Base
     validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   
 def self.from_omniauth(auth)
+	r = rand(0...10000)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email
     user.password = Devise.friendly_token[0,20]
     user.name = auth.info.first_name  # assuming the user model has a name
     user.username = auth.info.name
     user.last_name =  auth.info.last_name
-	user.friend_reference = "DB"+auth.info.name.strip.upcase+"REF"   
+	user.friend_reference = "DB"+auth.info.name.strip.upcase+r+"REF"   
     user.role_id = '2'  
   end
 end
     
     def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
+	r = rand(0...10000)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     if user
       return user
@@ -42,7 +44,7 @@ end
                             uid:auth.uid,
                             email:auth.uid+"@twitter.com",
                             role_id: 2,
-							friend_reference: "DB"+auth.info.nickname.strip.upcase+"REF",
+							friend_reference: "DB"+auth.info.nickname.strip.upcase+r+"REF",
                             last_name: auth.extra.raw_info.name,
                             password:Devise.friendly_token[0,20],
                           )
@@ -50,7 +52,6 @@ end
 
     end
   end
-    
     
     def lottery_count
         Lottery.count
@@ -71,6 +72,10 @@ end
     def user_lotteries_count
         UserLottery.count 
     end
+	
+	def self.search_reference1(reference)
+		where('friend_reference = ?', reference).pluck(:id)
+	end
     
     
     def select_display

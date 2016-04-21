@@ -26,6 +26,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :gender  
       t.string :language
 	  t.string :friend_reference	
+	  t.string :gift_credit	
+	  t.string :reference_by_friend	
 
       t.timestamps
     end

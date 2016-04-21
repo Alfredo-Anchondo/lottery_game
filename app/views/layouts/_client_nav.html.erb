@@ -15,12 +15,18 @@
                     <h4 style="color:white"> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> </h4>
                      <h4 style="color:white"> 
                        <span id="clock"></span> </h4>
+					    <% if signed_in? %>
+                <%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
+           <h4 style="padding-left:15px"> <i class="fa fa-sign-out"></i><%= t('logout') %> </h4>
+          <% end %>
+               <% end %>
                       
                 </h4>
                 </div>
                 
                 <div class="col-md-5">
                    <h4 style="color:white"> <span id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;"><%= number_with_precision(current_user.balance, :precision => 2)  %> DB</span></span>  
+					     <h4 style="color:white"> <span id="current_bal"> Saldo de Regalo: <span style="text-transform: uppercase;"><%= number_with_precision(current_user.gift_credit, :precision => 2)  %> DB</span></span>     
                   <h4 style="color:white"> <span> 1 DB = $1.00 MXN </span> </h4>
                 </div>
                     
@@ -28,11 +34,7 @@
                     
               
                 
-                   <% if signed_in? %>
-                <%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
-           <h4 style="padding-left:15px"> <i class="fa fa-sign-out"></i><%= t('logout') %> </h4>
-          <% end %>
-               <% end %>
+               
                 
                 
             </div>

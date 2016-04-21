@@ -88,9 +88,17 @@
         <br><br> <br>
 		
 <div class="field" >
-	<%= f.label :friend_reference, :style => 'color:#E4007D; margin-top:3%;' %><br />
-	<%= f.text_field :friend_reference, class: "form-control",style: "color:black; text-align:center; margin-bottom:3%;",autofocus: false, disabled: true %>
-  </div> 		
+	<%= f.hidden_field :friend_reference, class: "form-control",style: "color:black; text-align:center; margin-bottom:3%;",autofocus: false, disabled: true %>
+  </div> 
+		
+		<div class="field" >
+	<%= f.hidden_field :friend_reference, class: "form-control",style: "color:black; text-align:center; margin-bottom:3%;",autofocus: false, disabled: true %>
+  </div> 	
+		
+		<div class="field">
+			<%= f.label "Recomendado por:", :style => "color:#E4007D; margin-top:3%" %><br />
+	   <input id="user_reference_by_friend" name="user[reference_by_friend]" value="" placeholder="Codigo de referencia" class="form-control" style="margin-bottom:3%; color:black; text-align:center;">
+  </div> 
 		
 <div class="field">
 	<input  type="checkbox" required> <label style="color:BLACK">He leido y acepto los <a data-toggle="modal" data-target="#myModal">Terminos y condiciones</a></label>
@@ -210,8 +218,12 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 
 <script>
 	
+
+	
+	var random = Math.round(Math.random() * (10000 - 1) + 1);
+	
 	$('#user_username').change(function(){
-		$('#user_friend_reference').val("DB" + $('#user_username').val().toUpperCase() + "REF");
+		$('#user_friend_reference').val("DB"+$('#user_username').val().toUpperCase()+random+"REF");
 	})
 	
 	
@@ -229,10 +241,30 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
         setDate.setFullYear(mydate.getFullYear() + age,month, day);
 
         if ((currdate - setDate) > 0){ 
-        
-        }else{
+			event.preventDefault();
+			$('#new_user').submit(add_gift);
+		  }
+         else{
             alert("Debes ser mayor de 18 años para registrate en la pagina");
             event.preventDefault();
         }
-    }
+	}
+	
+	function add_gift(){
+		reference_friend = $('#reference_friend_code').val();
+          if(reference_friend){
+			  	$.ajax({
+				  url: "/users/update_reference/",
+				  method: "POST",
+				  dataType: "json",
+                  data: {reference: reference_friend}
+				
+					})
+				  .done(function( msg ) {
+						if(msg != '' && msg != null){
+							alert(msg);
+					}
+				  });
+	}
+	
 </script>
