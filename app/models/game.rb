@@ -16,7 +16,7 @@ class Game < ActiveRecord::Base
     def self.close_lottery_buy
          numbers_array = []
         x = where('game_date = ?', DateTime.now.change(:sec => 0)).first 
-        if x   
+        if x != nil && x != '' && x != []  
         y = Lottery.where('game_id = ?', x.id).first
         z = User.where(:id => UserLottery.where('lottery_id = ?', y.id).pluck(:user_id).uniq).pluck(:email, :id)
          z.each do |variable|
