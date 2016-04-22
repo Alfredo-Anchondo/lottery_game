@@ -255,8 +255,19 @@
           .done(function(data) {
                 
            for(var i in data.user_lotteries){
-               
-              $('.cycle-slideshow1').append('<h1 style="text-align:center; color:#E4007D; font-weight:900;">' +data.user_lotteries[i].user.name + ' ' +     data.user_lotteries[i].user.last_name + '</h1> <h2 style="text-align:center; color:#E4007D; font-weight:900;"> '+ data.user_lotteries[i].lottery.team.name + ' vs ' +data.user_lotteries[i].lottery.team2.name + ' </h2> <h2 style="text-align:center; color:#E4007D; font-weight:900;"> '+ data.user_lotteries[i].ticket_number +' </h2> <h2 style="text-align:center; color:#E4007D; font-weight:900;">Monto de:  ' +data.user_lotteries[i].lottery.initial_balance + ' DB </h2> ');
+                        if (data.user_lotteries[i].lottery.team.id < 10){
+         var image_url = '/system/teams/logos/000/000/00'+data.user_lotteries[i].lottery.team.id+'/original/'+data.user_lotteries[i].lottery.logo_file_name;
+    }   else{
+    var image_url = '/system/teams/logos/000/000/0'+data.user_lotteries[i].lottery.team.id+'/original/'+data.user_lotteries[i].lottery.team.logo_file_name;
+    }  
+                           if (data.user_lotteries[i].lottery.team2.id < 10){
+         var image_url2 = '/system/teams/logos/000/000/00'+data.user_lotteries[i].lottery.team2.id+'/original/'+data.user_lotteries[i].lottery.team2.logo_file_name;
+    }   else{
+    var image_url2 = '/system/teams/logos/000/000/0'+data.user_lotteries[i].lottery.team2.id+'/original/'+data.user_lotteries[i].lottery.team2.logo_file_name;
+    }  
+			   
+			   
+              $('.cycle-slideshow1').append('<h1 style="text-align:center; color:#E4007D; font-weight:900;">' +data.user_lotteries[i].user.name + ' ' +     data.user_lotteries[i].user.last_name + '</h1> <div class="col-md-6"> <h4 style="text-align:center"> <img width="50%" src="'+ image_url +'"> </h4> </div> <div class="col-md-6"> <h4 style="text-align:center"> <img width="50%" src="'+ image_url2 +'"> </h4> </div> <h2 style="text-align:center; color:#E4007D; font-weight:900;"> '+ data.user_lotteries[i].ticket_number +' </h2> <h2 style="text-align:center; color:#E4007D; font-weight:900;">Monto de:  ' +data.user_lotteries[i].lottery.initial_balance + ' DB </h2> ');
            
           
            }
