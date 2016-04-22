@@ -28,11 +28,10 @@ class Game < ActiveRecord::Base
             end    
            
         end
-         BuyMailer.close_lottery(x,y,z,@tickets,@repeat_number,variable[0]).deliver
         end
-       
-        
-        
+		if z != nil && z != '' && z != []
+   			BuyMailer.close_lottery(x,y,z,@tickets,@repeat_number,variable[0]).deliver
+		end
     end
     
     
