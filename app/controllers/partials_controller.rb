@@ -170,11 +170,10 @@ end
     def history
         stablich_connection
         if current_user.openpay_id
-  customer = @customers.get(current_user.openpay_id) 
-			@user_charges = @charges.all(Integer(customer["id"]))    
-  logger.info @user_charges       
-        end
-        
+			customer = @customers.get(current_user.openpay_id) 
+			@user_charges = @charges.all(customer['id'])    
+  			logger.info @user_charges       
+        end   
     end
     
     @card;
