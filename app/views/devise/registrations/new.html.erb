@@ -38,7 +38,7 @@
      <%= f.label :birthday, :style => 'color:#E4007D' %><br />
      <%= f.date_field :birthday, class: "form-control", style: "color:black", autofocus: true, required: true %>
 	 <script>
-	 	$('#user_birthday').datepicker(); 
+	 	$('#user_birthday').datepicker({changeYear: true} ); 
 	 </script>
   </div> <br>            
             
