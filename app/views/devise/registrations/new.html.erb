@@ -3,6 +3,14 @@
 		position:fixed;
 	}
 	
+	.ui-datepicker-month{
+		color:black;
+	}
+	
+	ui-datepicker-year{
+		color:black;
+	}
+	
 	.dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus{
 		background-color: #E4007D;
 	}
@@ -38,7 +46,17 @@
      <%= f.label :birthday, :style => 'color:#E4007D' %><br />
      <%= f.date_field :birthday, class: "form-control", style: "color:black", autofocus: true, required: true %>
 	 <script>
-	 	$('#user_birthday').datepicker({changeYear: true, changeMonth: true} ); 
+		 
+   (function() {
+      var elem = document.createElement('input');
+      elem.setAttribute('type', 'date');
+ 
+      if ( elem.type === 'text' ) {
+        	$('#user_birthday').datepicker({changeYear: true, changeMonth: true} ); 
+      }
+   })();
+ 
+	 
 	 </script>
   </div> <br>            
             
