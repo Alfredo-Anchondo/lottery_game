@@ -189,7 +189,5 @@ end
         logger.info error.description
       
     end
-        
-	
-	
+      
 end

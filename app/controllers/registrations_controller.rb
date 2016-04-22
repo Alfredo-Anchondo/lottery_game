@@ -1,32 +1,51 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def create
-	super
-	  if @user.reference_by_friend != nil
+	  build_resource(sign_up_params)
+
+    resource.save
+    yield resource if block_given?
+    if resource.persisted?
+		 if @user.reference_by_friend != nil
 		  logger.info "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NO maaaaa %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 		  x = User.search_reference1(@user.reference_by_friend)
+		    logger.info x
 		  if @user.gift_credit == nil
 			  last = 0
 		  else
 			  last = Integer(@user.gift_credit)
 		  end
-		 
-		  @user.update( :gift_credit =>  last + 10)
 		    @user1 = User.find(x)
-		  logger.info @user1[0].gift_credit
+		 
 		  if @user1[0].gift_credit == nil
 			  last1 = 0
 		  else
 				last1 = Integer(@user1[0].gift_credit)
 		  end
 		  @user1[0].update( :gift_credit => last1 +10)
-		   
-		  logger.info x
+		   @user.update( :gift_credit =>  last + 10) 
 		  logger.info @user1
 		  logger.info @user.gift_credit
+		  logger.info @user1[0].gift_credit
 		  
 	  end
     BuyMailer.welcome_user(@user).deliver
+      if resource.active_for_authentication?
+        set_flash_message! :notice, :signed_up
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end
+	  
+	 
   end
 	
 	protected
