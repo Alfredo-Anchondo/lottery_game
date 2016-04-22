@@ -256,7 +256,7 @@
                 
            for(var i in data.user_lotteries){
                
-              $('.cycle-slideshow1').append('<h1 style="text-align:center; color:#E4007D; font-weight:900;">' +data.user_lotteries[i].user.name + ' ' +     data.user_lotteries[i].user.last_name + '</h1> <h2> '+ data.user_lotteries[i].lottery.game.team.name + ' vs ' +data.user_lotteries[i].lottery.game.team2.name + ' </h2> <h2 style="text-align:center; color:#E4007D; font-weight:900;">Monto de:  ' +data.user_lotteries[i].lottery.initial_balance + ' DB </h2> ');
+              $('.cycle-slideshow1').append('<h1 style="text-align:center; color:#E4007D; font-weight:900;">' +data.user_lotteries[i].user.name + ' ' +     data.user_lotteries[i].user.last_name + '</h1> <h2> '+ data.user_lotteries[i].game.team.name + ' vs ' +data.user_lotteries[i].game.team2.name + ' </h2> <h2 style="text-align:center; color:#E4007D; font-weight:900;">Monto de:  ' +data.user_lotteries[i].lottery.initial_balance + ' DB </h2> ');
            
           
            }
