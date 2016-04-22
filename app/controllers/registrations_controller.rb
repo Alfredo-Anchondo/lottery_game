@@ -15,6 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
 		  else
 			  last = Integer(@user.gift_credit)
 		  end
+			 
 		    @user1 = User.find(x)
 		 
 		  if @user1[0].gift_credit == nil
@@ -26,9 +27,8 @@ class RegistrationsController < Devise::RegistrationsController
 		   @user.update( :gift_credit =>  last + 10) 
 		  logger.info @user1
 		  logger.info @user.gift_credit
-		  logger.info @user1[0].gift_credit
-		  
-	  end
+		  logger.info @user1[0].gift_credit 
+	  end  
     BuyMailer.welcome_user(@user).deliver
       if resource.active_for_authentication?
         sign_up(resource_name, resource)
