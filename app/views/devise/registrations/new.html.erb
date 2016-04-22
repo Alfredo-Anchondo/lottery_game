@@ -37,6 +37,9 @@
  <div class="field">
      <%= f.label :birthday, :style => 'color:#E4007D' %><br />
      <%= f.date_field :birthday, class: "form-control", style: "color:black", autofocus: true, required: true %>
+	 <script>
+	 	$('#user_birthday').datepicker(); 
+	 </script>
   </div> <br>            
             
 <div class="field">
@@ -217,11 +220,7 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 </div>
 
 <script>
-	
-	$('#user_birthday').datepicker(); 
-		alert('entre');
-	
-	
+
 	var random = Math.round(Math.random() * (10000 - 1) + 1);
 	
 	$('#user_username').change(function(){
