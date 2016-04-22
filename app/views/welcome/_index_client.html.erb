@@ -585,7 +585,13 @@
                  lottery_id = $('#lottery_id').val();
                  purchase_date = new Date();
                  lottery_price = $('#lottery_price').val();
-              current_balance = <%= current_user.balance %>;
+			if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= $('#lottery_price').val()){
+				current_balance = <%= current_user.gift_credit %>;
+			}else{
+				  current_balance = <%= current_user.balance %>;
+			}
+               
+			  
             if( current_balance >= $('#lottery_price').val()){
              $('#confirm_buy').modal('hide');    
              update_balance();
@@ -639,8 +645,33 @@
                  lottery_id = $('#lottery_id').val();
                  purchase_date = new Date();
                 number_of_ticket = $('.ticket_number').val();
-                 current_balance = <%= current_user.balance %>;
-                 lottery_price = $('#lottery_price').val();
+		if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= $('#lottery_price').val()){
+				current_balance = <%= current_user.gift_credit %>;
+				  lottery_price = $('#lottery_price').val();
+        var current_bag = parseInt($('#initial_balance').text());
+        var total_balance_update = current_balance - lottery_price;
+            $.ajax({
+                      method: "PUT",
+                      url: "/users/"+user_id+"",
+                      dataType: "json",     
+                      data: { user: {gift_credit: total_balance_update} }
+                    }).done(function( data) {
+                     $('#success-content').empty();
+                     $('#success-content').append('<h2 style="text-align:center; color:#E81F7F; font-weight:900;">DON<span style="color:black; font-weight:900;">BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
+                    
+                     });
+        
+          $.ajax({
+                      method: "PUT",
+                      url: "/lotteries/"+lottery_id+"",
+                      dataType: "json",     
+                      data: { lottery: {initial_balance: current_bag} }
+                    }).done(function( data) {
+                   $('#success-content').append('<h1 style="text-align:center; font-weight:900;">'+ number_of_ticket +'</h1>');
+                     });
+			}else{
+				  current_balance = <%= current_user.balance %>;
+							  lottery_price = $('#lottery_price').val();
         var current_bag = parseInt($('#initial_balance').text());
         var total_balance_update = current_balance - lottery_price;
             $.ajax({
@@ -662,6 +693,8 @@
                     }).done(function( data) {
                    $('#success-content').append('<h1 style="text-align:center; font-weight:900;">'+ number_of_ticket +'</h1>');
                      });
+			}
+               
     }  
             
        function buy_ticket_modal(){
@@ -682,11 +715,32 @@
     function update_balance_modal(){
                  user_id = <%= current_user.id %>;
                  lottery_id = $('#lottery_id_modal').val();
-                 current_balance = <%= current_user.balance %>;
                  lottery_price = $('#total_price_modal').text();
                  var current_bag = parseInt($('.total_modal_initial_balance').text());
                  var total_balance_update = current_balance - lottery_price;
-            $.ajax({
+		if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= $('#lottery_price').val()){
+				current_balance = <%= current_user.gift_credit %>;
+				  $.ajax({
+                      method: "PUT",
+                      url: "/users/"+user_id+"",
+                      dataType: "json",     
+                      data: { user: {gift_credit: total_balance_update} }
+                    }).done(function( data) {
+                     $('#success-content').empty();
+                     $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_balance')%></h3>');
+                     });
+        
+           $.ajax({
+                      method: "PUT",
+                      url: "/lotteries/"+lottery_id+"",
+                      dataType: "json",     
+                      data: { lottery: {initial_balance: current_bag} }
+                    }).done(function( data) {
+                         $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_bag')%></h3>');
+                     });
+			}else{
+				  current_balance = <%= current_user.balance %>;
+							  $.ajax({
                       method: "PUT",
                       url: "/users/"+user_id+"",
                       dataType: "json",     
@@ -704,6 +758,9 @@
                     }).done(function( data) {
                          $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_bag')%></h3>');
                      });
+			}
+		
+          
     }        
           
              
@@ -774,8 +831,11 @@
                });
              
            $('#confirm-buy-modal').click(function(){
-               var balance = <%= current_user.balance %> ;
-               
+			   if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= $('#lottery_price').val()){
+				var balance = <%= current_user.gift_credit %>;
+			}else{
+				 var balance = <%= current_user.balance %>;
+			}
                
                if($("#lottery_number_in_modal").val() != ''){
                    var f = $('#lottery_number_in_modal').val();
