@@ -29,6 +29,7 @@
 //= require jquery.bxslider
 //= require tile-effect
 //= require bootstrap-tour.min
+//= require jquery-ui
 
 $(document).ready(function(){
     
