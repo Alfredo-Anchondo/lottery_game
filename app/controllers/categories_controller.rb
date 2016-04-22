@@ -14,6 +14,7 @@ class CategoriesController < ApplicationController
 		logger.info @mails
 		logger.info @reference
 		BuyMailer.invite(@mails,@reference,@user).deliver
+		render nothing: true
 	end
     
   # GET /categories/1
