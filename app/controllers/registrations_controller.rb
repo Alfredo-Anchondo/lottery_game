@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
     resource.save
     yield resource if block_given?
     if resource.persisted?
-		 if @user.reference_by_friend != 0 
+		 if @user.reference_by_friend != nil && @user.reference_by_friend != ""
 		  logger.info "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NO maaaaa %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 		  x = User.search_reference1(@user.reference_by_friend)
 		    logger.info x
