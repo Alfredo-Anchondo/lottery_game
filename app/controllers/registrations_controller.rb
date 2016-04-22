@@ -6,29 +6,30 @@ class RegistrationsController < Devise::RegistrationsController
     resource.save
     yield resource if block_given?
     if resource.persisted?
-		 if @user.reference_by_friend != nil
+		 if @user.reference_by_friend != 0 
 		  logger.info "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NO maaaaa %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 		  x = User.search_reference1(@user.reference_by_friend)
 		    logger.info x
-		  if @user.gift_credit == nil
-			  last = 0
-		  else
-			  last = Integer(@user.gift_credit)
-		  end
+		  	if @user.gift_credit == nil
+				last = 0
+		  	else
+				last = Integer(@user.gift_credit)
+		  	end
 			 
 		    @user1 = User.find(x)
 		 
-		  if @user1[0].gift_credit == nil
-			  last1 = 0
-		  else
+		  	if @user1[0].gift_credit == nil
+				last1 = 0
+		  	else
 				last1 = Integer(@user1[0].gift_credit)
-		  end
+		  	end
 		  @user1[0].update( :gift_credit => last1 +10)
 		   @user.update( :gift_credit =>  last + 10) 
 		  logger.info @user1
 		  logger.info @user.gift_credit
 		  logger.info @user1[0].gift_credit 
-	  end  
+	  end
+		
     BuyMailer.welcome_user(@user).deliver
       if resource.active_for_authentication?
         sign_up(resource_name, resource)
@@ -42,8 +43,6 @@ class RegistrationsController < Devise::RegistrationsController
       set_minimum_password_length
       respond_with resource
     end
-	  
-	 
   end
 	
 	protected
