@@ -22,4 +22,5 @@
  *= require datetimepicker
  *= require bootstrap-tour.min
  *= require jquery-ui
+ *= require chosen.min
  */

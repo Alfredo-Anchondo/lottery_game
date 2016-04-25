@@ -30,6 +30,7 @@
 //= require tile-effect
 //= require bootstrap-tour.min
 //= require jquery-ui
+//= require chosen.jquery.min
 
 $(document).ready(function(){
     

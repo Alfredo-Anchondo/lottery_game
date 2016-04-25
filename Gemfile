@@ -49,3 +49,5 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'openpay'
 gem 'whenever'
+
+
