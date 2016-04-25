@@ -130,8 +130,8 @@
 
                         <div class="ibox-content" id="random_lotteries">
                             <div class="row" style="text-align:center" id="random_lotteries_div">
-                            <h3>Te sientes con suerte, no sabes que numeros elegir</h3>
-                            <h4>No te preocupes nosotros nos encargamos, prueba nuestro generador de numeros aleatorios.</h4> <br>
+                            <h3>¿Te sientes con suerte y no sabes qué números elegir?</h3>
+                            <h4>¡No te preocupes! Nosotros te ayudamos con el generador de números al azar.</h4> <br>
                                 <label>Loteria: </label> <select style="text-align:center" class="form-control" id="lotteries_random"><option value="0">Selecciona una loteria</option></select> <br><br>
                                 
                                 <div class="row">
@@ -167,12 +167,12 @@
                                 <option value="15">15</option>
                             </select> </span>    <br> <hr>
                                 
-                                <h3>Numeros Generados: </h3> 
+                                <h3>Números Generados: </h3> 
                                 <h2 style="font-weight:900; word-spacing:10px;" id="generate_numbers_div"></h2>
                                 <hr>
                                 
-                                <button class="btn btn-primary" id="generate_numbers">Generar Numeros</button>
-                                <button style="display:none" class="btn btn-primary" id="buy_numbers">Comprar Numeros</button>
+                                <button class="btn btn-primary" id="generate_numbers">Generar Números</button>
+                                <button style="display:none" class="btn btn-primary" id="buy_numbers">Comprar Números</button>
                                 
                             </div>
                  </div>
@@ -224,7 +224,7 @@
             <div class="ibox float-e-margins">
              <div class="ibox-title">
                     <h5>Partidos</h5>
-                    <span class="label label-primary">Conoce resultado de partidos</span>
+                    <span class="label label-primary">Conoce el resultado de los partidos</span>
              </div>
                 <div class="ibox-content" id="finish_lotteries"> <opta widget="scoreboard" sport="basketballsd" competition="e2w9iicoifx689pzi5jqw7j4a" season="8znop8ppwnewt536p1zda3pbd" live="false"  status="all" show_date_picker="true" start_current_matchday="true" show_grouping="false" show_sub_grouping="false" order_by="date_asc" pre_match="false" away_team_first="true" show_date="true" show_time="true" show_venue="true" show_crest="true" team_name="full" time_format="HH:mm" date_picker_format="ddd dd MMM" template="grid" narrow_limit="400"></opta></div> 
             </div>
@@ -267,7 +267,7 @@
     }  
 			   
 			   
-              $('.cycle-slideshow1').append('<h1 style="text-align:center; color:#E4007D; font-weight:900;">' +data.user_lotteries[i].user.name + ' ' + data.user_lotteries[i].user.last_name + '</h1> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" src="'+ image_url +'"> </h4> </div> <div class="col-md-2 col-xs-2"> <h1 style="text-align:center; margin-top:80%; color:red; font-weight:900;"> VS </h1> </div> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" src="'+ image_url2 +'"> </h4> </div> <h2 style="text-align:center; color:#E4007D; font-weight:900;"> Numero Ganador: '+ data.user_lotteries[i].ticket_number +' </h2> <h2 style="text-align:center; color:#E4007D; font-weight:900;">Monto de:  ' +data.user_lotteries[i].lottery.initial_balance + ' DB </h2> ');
+              $('.cycle-slideshow1').append('<h1 style="text-align:center; color:#E4007D; font-weight:900;">' +data.user_lotteries[i].user.name + ' ' + data.user_lotteries[i].user.last_name + '</h1> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" src="'+ image_url +'"> </h4> </div> <div class="col-md-2 col-xs-2"> <h1 style="text-align:center; margin-top:80%; color:red; font-weight:900;"> VS </h1> </div> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" src="'+ image_url2 +'"> </h4> </div> <h2 style="text-align:center; color:#E4007D; font-weight:900;"> Número Ganador: '+ data.user_lotteries[i].ticket_number +' </h2> <h2 style="text-align:center; color:#E4007D; font-weight:900;">Monto de:  ' +data.user_lotteries[i].lottery.initial_balance + ' DB </h2> ');
            
           
            }
@@ -717,9 +717,10 @@
                  lottery_id = $('#lottery_id_modal').val();
                  lottery_price = $('#total_price_modal').text();
                  var current_bag = parseInt($('.total_modal_initial_balance').text());
-                 var total_balance_update = current_balance - lottery_price;
+               
 		if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= $('#lottery_price').val()){
 				current_balance = <%= current_user.gift_credit %>;
+				  var total_balance_update = current_balance - lottery_price;
 				  $.ajax({
                       method: "PUT",
                       url: "/users/"+user_id+"",
@@ -740,6 +741,7 @@
                      });
 			}else{
 				  current_balance = <%= current_user.balance %>;
+				  var total_balance_update = current_balance - lottery_price;
 							  $.ajax({
                       method: "PUT",
                       url: "/users/"+user_id+"",
@@ -945,7 +947,7 @@
                 }
                
                 
-         $('.slider8').append('<div class="slide"><div class="row"> <h4 style="text-align:center; font-weight:800; color:black;"> Fecha del partido:  ' +moment(data.games[i].game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h4> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Numero Ganador </h4> <h1 style="font-weight:900; text-align:center; color:#e4007d;"> '+lottery_winner+' </h1> </div> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Bolsa Acumulada </h4> <h2 style="font-weight:900; color:#e4007d; text-align:center"> '+data.games[i].lotteries[0].initial_balance+' DB </h2> </div> <div class="col-md-6 col-xs-12"> <div class="row"> <div class="col-md-4 col-xs-4"> <h4 style="text-align:center"> <img width="100%" src="'+image_url+'"> </h4> </div> <div class="col-md-2 col-xs-2"><br> <br> <h2 style="text-align:center; color:black; font-weight:800;"> '+data.games[i].local_score+'  </h2> </div> <div class="col-md-2 col-xs-2"> <br> <br> <h2 style="text-align:center; font-weight:800; color:black;"">'+data.games[i].visit_score+'</h2> </div> <div class="col-md-4 col-xs-4">  <h4 style="text-align:center"> <img width="100%" src="'+image_url2+'"> </h4> </div> </div> </div>  </div> <hr> </div> ');
+         $('.slider8').append('<div class="slide"><div class="row"> <h4 style="text-align:center; font-weight:800; color:black;"> Fecha del partido:  ' +moment(data.games[i].game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h4> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Número Ganador </h4> <h1 style="font-weight:900; text-align:center; color:#e4007d;"> '+lottery_winner+' </h1> </div> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Bolsa Acumulada </h4> <h2 style="font-weight:900; color:#e4007d; text-align:center"> '+data.games[i].lotteries[0].initial_balance+' DB </h2> </div> <div class="col-md-6 col-xs-12"> <div class="row"> <div class="col-md-4 col-xs-4"> <h4 style="text-align:center"> <img width="100%" src="'+image_url+'"> </h4> </div> <div class="col-md-2 col-xs-2"><br> <br> <h2 style="text-align:center; color:black; font-weight:800;"> '+data.games[i].local_score+'  </h2> </div> <div class="col-md-2 col-xs-2"> <br> <br> <h2 style="text-align:center; font-weight:800; color:black;"">'+data.games[i].visit_score+'</h2> </div> <div class="col-md-4 col-xs-4">  <h4 style="text-align:center"> <img width="100%" src="'+image_url2+'"> </h4> </div> </div> </div>  </div> <hr> </div> ');
             }
             
                 $('.slider8').bxSlider({
