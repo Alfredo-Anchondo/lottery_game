@@ -96,7 +96,7 @@
                         </div>
                             <div class="col-md-4 col-xs-12">
                                 <h4 class="center-text" style="text-align:center" > <%= t('select_participe_number')%>:<input style="display:none" id="lottery_id" value="">  </h4> <br>
-								  <input style="color:black" value="00" disabled class="ticket_number form-control" type="text" > 
+								  <input style="color:black; text-align:center" value="00" disabled class="ticket_number form-control" type="text" > 
                             </div>
                           <div class="col-md-4  col-xs-12" id="move-top">
                             <h4 style="text-align:center">  <span class="center-text" ><%= t('no_balance_money') %></span></h4>  <h4 style="text-align:center"><button style="margin-top:3%;"  id="buy-ticket-button" class="btn btn-primary center-text"><%= t('buy_ticket') %></button></h4>
@@ -1063,7 +1063,6 @@
               
          });   
       })  
-	  
 	        $('#lotteries_random2').change(function(){
                 $.ajax({
   method: "GET", 
@@ -1088,8 +1087,7 @@
               
          });   
       })  
-    
-        
+       
     $('#generate_numbers').click(function(){
      number_array = [];
         $('#generate_numbers_div').empty();
