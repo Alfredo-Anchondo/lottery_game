@@ -22,7 +22,7 @@ def self.from_omniauth(auth)
     user.name = auth.info.first_name  # assuming the user model has a name
     user.username = auth.info.name
     user.last_name =  auth.info.last_name
-	user.friend_reference = "DB"+auth.info.name.strip.upcase+String(r)+"REF"   
+	user.friend_reference = "DB"+auth.info.name.gsub(/\s+/, “”).upcase+String(r)+"REF"   
     user.role_id = '2'  
   end
 end
@@ -44,7 +44,7 @@ end
                             uid:auth.uid,
                             email:auth.uid+"@twitter.com",
                             role_id: 2,
-							friend_reference: "DB"+auth.info.nickname.strip.upcase+String(r)+"REF",
+							friend_reference: "DB"+auth.info.nickname.gsub(/\s+/, “”).upcase+String(r)+"REF",
                             last_name: auth.extra.raw_info.name,
                             password:Devise.friendly_token[0,20],
                           )
