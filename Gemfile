@@ -49,5 +49,5 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'openpay'
 gem 'whenever'
-
+gem 'rack-cors', :require => 'rack/cors'
 
