@@ -1,3 +1,12 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.6&appId=1549272788683515";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div class="row" id="banner" >
  <div style="margin-left:6%; height:80px;">
     <div class="col-md-5 col-xs-12"> <a href="/"><img id="logo-image" src="/assets/logo_donbillete.png"></a></div>
@@ -28,16 +37,11 @@
                    <h4 style="color:white"> <span id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;"><%= number_with_precision(current_user.balance, :precision => 2)  %> DB</span></span>  
 					     <h4 style="color:white"> <span id="current_bal"> Saldo de Regalo: <span style="text-transform: uppercase;"><%= number_with_precision(current_user.gift_credit, :precision => 2)  %> DB</span></span>     
                   <h4 style="color:white"> <span> 1 DB = $1.00 MXN </span> </h4>
-                </div>
-                    
-               
-                    
-              
-                
-               
-                
-                
+                </div>   
             </div>
+					<div class="col-md-12">
+					<div class="fb-like" data-href="https://www.facebook.com/7donbillete/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+					</div>
    
         </div>
              <% end %> 
