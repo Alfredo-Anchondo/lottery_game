@@ -127,8 +127,71 @@
 </div>
 
 <div class="row">
+	
+	<div class="col-md-5 col-xs-12" style="padding-left:0px; ">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5><%= t('lotteries') %></h5>
+                            <span class="label label-primary"><%= t('all_lotteries') %></span>
+                           
+                        </div>
+
+                        <div class="ibox-content inspinia-timeline" id="future_lotteries">
+
+                        </div>
+                    </div>
+                </div>
+	
+	
+	<div class="col-md-3 col-xs-12">
+		 <div class="ibox float-e-margins">
+             <div class="ibox-title">
+                    <h5>Comprar Serie de Números</h5>
+                    <span class="label label-primary">Selecciona tus numeros</span>
+             </div>
+                <div class="ibox-content" id="serie_lotteries">
+					<div class="row" id="random_lotteries_div2">
+					<h3 style="text-align:center; font-weight:900">¿Tienes tu propia serie de numeros ganadores?</h3>
+					<h4 style="text-align:center">Selecciona todos esos numeros en un solo paso</h4> <br>
+					    <label style="margin-left:15%">Loteria: </label> <select style="text-align:center" class="form-control" id="lotteries_random2"><option value="0">Selecciona una loteria</option></select> <br><br>
+                                
+                                <div class="row">
+                                <div class="col-md-5 col-xs-5">
+                                    <h4 style="text-align:center" id="local_team_random2"></h4>
+                                    </div> 
+                                    <div class="col-md-2 col-xs-2">
+                                        <br>
+                                        <br>
+                                        <br>
+                                    <h2 style="text-align:center; font-weight:900; font-size:40px; color:black;">VS</h2>
+                                    </div>
+                                <div class="col-md-5 col-xs-5">
+                                     <h4 style="text-align:center" id="visit_team_random2"></h4>
+                                    </div>
+                                </div>
+						
+						<div class="row">
+							<h4 style="text-align:center">Selecciona el inicio y el final de tu serie de billetes</h4>
+							<div class="col-md-5">
+								<h4 style="text-align:center"><input id="initial_serie" class="form-control" placeholder="Inicio" max="99" type="number"></h4>
+							</div>
+							<div class="col-md-5">
+								<h4 style="text-align:center"><input id="final_serie" class="form-control" placeholder="Final"  type="number" max="99"></h4>
+							</div>
+							<div class="col-md-2"> <button id="generate_serie" class="btn btn-primary" style="margin-top:4px"> Generar</button></div>
+						</div>
+						<div class="row" id="purchase_serie" style="display:none">
+							<h3 style="text-align:center; font-weight:900">Numeros Generados</h3>
+							<h2 id="generate_serie_numbers" style="word-spacing:5px; font-weight:900; text-align:center;"></h2>
+							<h4 style="text-align:center"> <button class="btn btn-primary" id="btn_buy_serie">Comprar Billetes</button></h4>
+						</div>
+					
+			 </div>
+			</div>
+		</div>
+		</div>
     
-    <div class="col-md-5 col-xs-12">
+    <div class="col-md-4 col-xs-12">
              <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>Comprar billetes aleatoriamente</h5>
@@ -186,19 +249,7 @@
             </div>
         </div>
     
-<div class="col-md-7 col-xs-12" style="padding-left:0px; ">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5><%= t('lotteries') %></h5>
-                            <span class="label label-primary"><%= t('all_lotteries') %></span>
-                           
-                        </div>
 
-                        <div class="ibox-content inspinia-timeline" id="future_lotteries">
-
-                        </div>
-                    </div>
-                </div>
     
     
     
@@ -227,7 +278,7 @@
 
     
                                                
-        <div class="col-md-5">  
+        <div class="col-md-5 col-xs-12">  
             <div class="ibox float-e-margins">
              <div class="ibox-title">
                     <h5>Partidos</h5>
@@ -284,53 +335,7 @@
        }); </script>
   
    
-    <div class="col-md-5">
-		 <div class="ibox float-e-margins">
-             <div class="ibox-title">
-                    <h5>Comprar Serie de Números</h5>
-                    <span class="label label-primary">Selecciona tus numeros</span>
-             </div>
-                <div class="ibox-content" id="serie_lotteries">
-					<div class="row" id="random_lotteries_div2">
-					<h3 style="text-align:center; font-weight:900">¿Tienes tu propia serie de numeros ganadores?</h3>
-					<h4 style="text-align:center">Selecciona todos esos numeros en un solo paso</h4> <br>
-					    <label style="margin-left:15%">Loteria: </label> <select style="text-align:center" class="form-control" id="lotteries_random2"><option value="0">Selecciona una loteria</option></select> <br><br>
-                                
-                                <div class="row">
-                                <div class="col-md-5 col-xs-5">
-                                    <h4 style="text-align:center" id="local_team_random2"></h4>
-                                    </div> 
-                                    <div class="col-md-2 col-xs-2">
-                                        <br>
-                                        <br>
-                                        <br>
-                                    <h2 style="text-align:center; font-weight:900; font-size:40px; color:black;">VS</h2>
-                                    </div>
-                                <div class="col-md-5 col-xs-5">
-                                     <h4 style="text-align:center" id="visit_team_random2"></h4>
-                                    </div>
-                                </div>
-						
-						<div class="row">
-							<h4 style="text-align:center">Selecciona el inicio y el final de tu serie de billetes</h4>
-							<div class="col-md-5">
-								<h4 style="text-align:center"><input id="initial_serie" class="form-control" placeholder="Inicio" max="99" type="number"></h4>
-							</div>
-							<div class="col-md-5">
-								<h4 style="text-align:center"><input id="final_serie" class="form-control" placeholder="Final"  type="number" max="99"></h4>
-							</div>
-							<div class="col-md-2"> <button id="generate_serie" class="btn btn-primary" style="margin-top:4px"> Generar</button></div>
-						</div>
-						<div class="row" id="purchase_serie" style="display:none">
-							<h3 style="text-align:center; font-weight:900">Numeros Generados</h3>
-							<h2 id="generate_serie_numbers" style="word-spacing:5px; font-weight:900; text-align:center;"></h2>
-							<h4 style="text-align:center"> <button class="btn btn-primary" id="btn_buy_serie">Comprar Billetes</button></h4>
-						</div>
-					
-			 </div>
-			</div>
-		</div>
-		</div>
+    
 		
 		<script>
 			var value;
