@@ -44,7 +44,7 @@ end
                             uid:auth.uid,
                             email:auth.uid+"@twitter.com",
                             role_id: 2,
-							friend_reference: "DB"+auth.info.nickname.strip.upcase+r+"REF",
+							friend_reference: "DB"+auth.info.nickname.strip.upcase+String(r)+"REF",
                             last_name: auth.extra.raw_info.name,
                             password:Devise.friendly_token[0,20],
                           )
