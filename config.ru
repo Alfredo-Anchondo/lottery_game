@@ -9,7 +9,7 @@ use Rack::Cors do
     resource '/file/list_all/', :headers => :any
     resource '/file/at/*',
         :methods => [:get, :post, :delete, :put, :patch, :options, :head],
-        :headers => 'origin',
+        :headers => :any,
         :expose  => ['Some-Custom-Response-Header'],
         :max_age => 600
         # headers to expose
