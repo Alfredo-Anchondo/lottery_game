@@ -6,7 +6,7 @@ use Rack::Cors do
 	  origins 'https://donbillete.com', 'https://www.donbillete.com','localhost:3000', '127.0.0.1:3000'
             # regular expressions can be used here
 
-    resource '/file/list_all/', :headers => 'x-domain-token', 'origin'
+    resource '/file/list_all/', :headers => :any
     resource '/file/at/*',
         :methods => [:get, :post, :delete, :put, :patch, :options, :head],
         :headers => 'x-domain-token',
