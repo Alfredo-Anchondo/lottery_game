@@ -120,11 +120,11 @@
 	  }
 	  
 	  #team1{
-	width: 100%;
+	width: 100% !important;
 }
 
 #team2{
-	width: 100%;
+	width: 100% !important;
 }
       
 }
@@ -256,11 +256,11 @@
 	  }
 	  
 	    #team1{
-	width: 100%;
+	width: 100% !important;
 }
 
 #team2{
-	width: 100%;
+	width: 100% !important;
 }
       
 }
@@ -397,11 +397,11 @@
 	  }
 	  
 	    #team1{
-	width: 100%;
+	width: 100% !important;
 }
 
 #team2{
-	width: 100%;
+	width: 100% !important;
 }
 }
 
@@ -537,11 +537,11 @@
 	  }
 	
 	  #team1{
-	width: 100%;
+	width: 100% !important;
 }
 
 #team2{
-	width: 100%;
+	width: 100% !important;
 }
     
 }
