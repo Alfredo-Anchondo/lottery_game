@@ -118,6 +118,14 @@
 	  .footer{
 		  position:relative !important;
 	  }
+	  
+	  #team1{
+	width: 100%;
+}
+
+#team2{
+	width: 100%;
+}
       
 }
 
@@ -246,6 +254,14 @@
 	   .footer{
 		  position:relative !important;
 	  }
+	  
+	    #team1{
+	width: 100%;
+}
+
+#team2{
+	width: 100%;
+}
       
 }
 
@@ -379,6 +395,14 @@
 	   .footer{
 		  position:relative !important;
 	  }
+	  
+	    #team1{
+	width: 100%;
+}
+
+#team2{
+	width: 100%;
+}
 }
 
 @media screen and (max-width: 480px) {
@@ -511,6 +535,14 @@
 	 .footer{
 		  position:relative !important;
 	  }
+	
+	  #team1{
+	width: 100%;
+}
+
+#team2{
+	width: 100%;
+}
     
 }
 
@@ -648,3 +680,10 @@ body{
     width: 250px;
 }
 
+#team1{
+	width: 50%;
+}
+
+#team2{
+	width: 50%;
+}
