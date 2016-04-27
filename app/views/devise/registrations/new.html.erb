@@ -264,7 +264,7 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 				event.preventDefault();
 			$('#new_user').submit(add_gift);
 			}else{
-				$('#new_user').submit();
+				$('#new_user').submit(); 
 			}
 			
 		  }
@@ -276,7 +276,7 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 	
 	function add_gift(){
 		reference_friend = $('#reference_friend_code').val();
-          if(reference_friend){
+          if(reference_friend != null || reference_friend != ""){
 			  	$.ajax({
 				  url: "/users/update_reference/",
 				  method: "POST",
