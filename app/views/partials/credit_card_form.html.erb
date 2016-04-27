@@ -73,7 +73,7 @@
 
 <div class="row">
 
-<div class="col-md-2">
+<div class="col-md-2 col-xs-12">
      <h2 style="background-color:#E4007D;  color:white; font-size: 24px; line-height: 24px; margin: 0; padding: 28px 0 28px 20px; width: 100%;"><%= t('amount') %> <br> <span style=" font-size:14px; font-weight:900;">* 1 DB = $1.00 MXN </span> </h2>
 	
     <div class="row" style="background-color:white;">
@@ -87,7 +87,7 @@
         </div>
     </div>
     </div>
-<div class="col-md-3">
+<div class="col-md-3 col-xs-12">
     <h2 style="background-color:#E4007D; color:white; font-size: 24px; line-height: 24px; margin: 0; padding: 28px 0 28px 20px; width: 100%;"><%= t('register_cards') %></h2>
             <div class="row" style="background-color:white;">
             <% if @get_cards != [] && @get_cards != nil  %>
@@ -106,7 +106,7 @@
      
     </div>
 	
-	<div class="col-md-7">
+	<div class="col-md-7 col-xs-12">
 		<form style="width:100%" action="#" method="POST" id="payment-form">
 			<h2 style="background-color:#E4007D; color:white; padding:28px 0 28px 20px; margin:0px;"><%= t('registeredmon') %></h2>
 			<div class="row" style="background-color:white;">
@@ -156,12 +156,12 @@
 				<div class="row">
 				    <div class="col-md-3 col-xs-6">
 						<br>
-					<label><%= t('openpay_transaction') %></label>
+					<h4 style="text-align:center"><label><%= t('openpay_transaction') %></label></h4>
 						<h4 style="text-align:center"><img src="/assets/openpay.png"></h4>
 					</div>
 					<div class="col-md-4 col-xs-6" >
 						<h4 style="text-align:center"><img src="/assets/security.png"></h4>
-					<label><%= t('openpay_shield') %></label>
+						<h4 style="text-align:center"><label><%= t('openpay_shield') %></label></h4>
 						
 					</div>
 					<div class="col-md-5 col-xs-12">
