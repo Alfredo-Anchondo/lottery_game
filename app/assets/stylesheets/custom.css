@@ -106,7 +106,7 @@
     margin-top:10px !important;      
       }
       
-      #logo_lotteries1{
+      .logo_lotteries1{
     width: 50% !important;
     height: 140px !important;
 }
@@ -246,7 +246,7 @@
           display: none;
       }  
       
-       #logo_lotteries1{
+       .logo_lotteries1{
     width: 50% !important;
     height: 140px !important;
 }
@@ -390,7 +390,7 @@
         display:block !important;
     }
 
-       #logo_lotteries1{
+       .logo_lotteries1{
     width: 50% !important;
     height: 140px !important;
 }
@@ -535,7 +535,7 @@
         display:block !important;
     }
     
-     #logo_lotteries1{
+     .logo_lotteries1{
     width: 50% !important;
     height: 140px !important;
 }
@@ -689,8 +689,9 @@ body{
     background-color:#c7c7c7 !important;
 }
 
-#logo_lotteries1{
+.logo_lotteries1{
     width: 250px;
+	height:250px;
 }
 
 #team1{
