@@ -260,8 +260,13 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
         setDate.setFullYear(mydate.getFullYear() + age,month, day);
 
         if ((currdate - setDate) > 0){ 
-			event.preventDefault();
+			if($('#reference_friend_code').val() != null || $('#reference_friend_code').val() != ""){
+				event.preventDefault();
 			$('#new_user').submit(add_gift);
+			}else{
+				
+			}
+			
 		  }
          else{
             alert("Debes ser mayor de 18 años para registrate en la pagina");
