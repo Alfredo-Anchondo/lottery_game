@@ -320,3 +320,47 @@ a.button.disabled {
         </div>
     </div>
     </div>
+
+
+
+	 if(normal_buy){
+				 $.ajax({
+                      method: "PUT",
+                      url: "/users/"+user_id+"",
+                      dataType: "json",     
+                      data: { user: {balance: total_balance_update} }
+                    }).done(function(data) {
+                     
+                     });
+			 }else{
+				 $.ajax({
+                      method: "PUT",
+                      url: "/users/"+user_id+"",
+                      dataType: "json",     
+                      data: { user: {gift_credit: total_balance_update} }
+                    }).done(function(data) {
+                     
+                     });
+			 }
+			 
+       
+			 
+                    $.ajax({
+                      method: "PUT",
+                      url: "/lotteries/"+lottery_id+"",
+                      dataType: "json",     
+                      data: { lottery: {initial_balance: current_bag} }
+                    }).done(function( data) {
+                 
+                     });
+                
+                
+                
+                $.ajax({
+                      method: "POST",
+                      url: "/user_lotteries",
+                      dataType: "json",     
+                      data: { user_lottery: {user_id: user_id, lottery_id: lottery_id, ticket_number: array_values[i] ,purchase_date: purchase_date, status: "Comprado"}  }
+                    }).done(function(data) {
+                    
+                     });

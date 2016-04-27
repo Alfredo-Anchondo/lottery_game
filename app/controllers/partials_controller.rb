@@ -190,5 +190,26 @@ end
         logger.info error.description
       
     end
+	
+	def buy_much_tickets		
+		logger.info "entramos"
+		logger.info params
+		render nothing: true
+		@lottery = Lottery.find(params[:lottery_id])
+		@lottery_price = params[:lottery_price]
+		@lottery_price = Integer(@lottery_price) * Integer(params[:quantity_sale])
+		@user_id = User.find(params[:user_id])
+		@array_values = params[:array_values]
+		logger.info @array_values
+		if params[:normal_buy] != 'true'
+			@user_id.update( {gift_credit: Integer(current_user.gift_credit) - @lottery_price})
+		else
+			@user_id.update( {balance: current_user.balance - @lottery_price})
+		end
+		@array_values.each_with_index do |_, i|
+		UserLottery.create({user_id: @user_id.id, lottery_id: params[:lottery_id], status: 'Comprado', ticket_number: @array_values[Integer(i)], purchase_date: DateTime.now})
+		end
+		BuyMailer.buy_many_tickets(@user_id, @array_values, @lottery).deliver
+	end
       
 end

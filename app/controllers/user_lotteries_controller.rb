@@ -21,11 +21,24 @@ class UserLotteriesController < ApplicationController
         render :json => UserLottery.winners_total
     end
     
+	def buy_much_tickets		
+		logger.info "entramos"
+		logger.info params
+		render nothing: true
+		@user_id = User.find(params[:user_id])
+		@array_values = params[:array_values]
+		
+		@array_values.each do |variable|
+			logger.info @user_id.id
+			create_cycle(@user_id.id, params[:lottery_id], 'Comprado',@array_values[Integer(variable)], DateTime.now )
+		end
+		
+	end
     
   # GET /user_lotteries/1/edit
   def edit
   end
-
+	
   # POST /user_lotteries
   # POST /user_lotteries.json
   def create

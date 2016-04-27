@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 		render :json => User.search_reference1(reference)
 	end
    
+	
        
     
     def lotteries
