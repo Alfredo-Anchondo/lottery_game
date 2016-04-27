@@ -130,18 +130,19 @@
 						</div>
 				<br>
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-6 col-xs-12">
+						<label><%= t('expiration_date') %></label>
 					<div class="col-md-6 col-xs-6" style="padding:0px;">
-						  <label><%= t('expiration_date') %></label>
+						  
                                   <input class="form-control" type="text" placeholder="Mes" data-openpay-card="expiration_month">
                                     
 						</div>
 						<div class="col-md-6 col-xs-6">
 							<br>
-						<input style="margin-top:3%;" class="form-control" type="text" placeholder="Año" data-openpay-card="expiration_year">
+						<input  class="form-control" type="text" placeholder="Año" data-openpay-card="expiration_year">
 						</div>
-					</div> <br>
-					<div class="col-md-6">
+					</div> 
+					<div class="col-md-6 col-xs-12">
 						<div class="col-md-6" style="padding:0px;">
 						<label><%= t('security_code') %></label>
                                     <input style="width:70%; margin:0px;" type="text" placeholder="3 dígitos" autocomplete="off" data-openpay-card="cvv2" class="form-control">
