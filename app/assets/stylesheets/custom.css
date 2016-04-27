@@ -108,7 +108,7 @@
       
       .logo_lotteries1{
     width: 100% !important;
-    height: 140px !important;
+    height: auto !important;
 }
       #pay-button-used{
           font-size:15px;
@@ -248,7 +248,7 @@
       
        .logo_lotteries1{
     width: 100% !important;
-    height: 140px !important;
+    height: auto !important;
 }
           #pay-button-used{
           font-size:15px;
@@ -392,7 +392,7 @@
 
        .logo_lotteries1{
     width: 100% !important;
-    height: 140px !important;
+    height: auto !important;
 }
           #pay-button-used{
           font-size:15px;
@@ -537,7 +537,7 @@
     
      .logo_lotteries1{
     width: 100% !important;
-    height: 140px !important;
+    height: auto !important;
 }
         #pay-button-used{
           font-size:15px;
