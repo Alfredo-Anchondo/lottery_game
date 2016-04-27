@@ -108,6 +108,12 @@
         </div>
                   <% if signed_in? %>
                   <% if current_user.role.is_admin? %>
+	<div class="form-group">
+		<%= f.label :gift_credit, :class => "col-md-3" %>
+          <div class="col-md-9">
+			  <%= f.text_field :gift_credit, :class => "form-control" %>
+          </div>
+        </div>
                   <div class="form-group">
 		  <%= f.label :friend_reference, :class => "col-md-3" %>
           <div class="col-md-9">
