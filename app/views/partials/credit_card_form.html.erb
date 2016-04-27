@@ -122,10 +122,10 @@
 					</div>
 				<br><br>
 					<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6 col-xs-12">
 				  <label><%= t('owner_name') %></label><input type="text" class="form-control" placeholder="Como aparece en la tarjeta" autocomplete="off" data-openpay-card="holder_name">
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6 col-xs-12">
 				 <label><%= t('card_number') %></label><input class="form-control" type="text" autocomplete="off" data-openpay-card="card_number"></div>
 						</div>
 				<br>
@@ -142,8 +142,8 @@
 						</div>
 					</div> 
 					<div class="col-md-6 col-xs-12">
+						 <h4><label><%= t('security_code') %></label></h4>
 						<div class="col-md-6" style="padding:0px;">
-						<label><%= t('security_code') %></label>
                                     <input style="width:70%; margin:0px;" type="text" placeholder="3 dígitos" autocomplete="off" data-openpay-card="cvv2" class="form-control">
 						</div>
 						<div class="col-md-6">
@@ -155,17 +155,17 @@
 					</div>
 				</div> <br> <br>
 				<div class="row">
-				    <div class="col-md-3">
+				    <div class="col-md-3 col-xs-6">
 						<br>
 					<label><%= t('openpay_transaction') %></label>
 						<h4 style="text-align:center"><img src="/assets/openpay.png"></h4>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4" col-xs-6>
 						<h4 style="text-align:center"><img src="/assets/security.png"></h4>
 					<label><%= t('openpay_shield') %></label>
 						
 					</div>
-					<div class="col-md-5">
+					<div class="col-md-5 col-xs-12">
 						<br><br><br>
 						 <h4 style="text-align:center"> <a class="btn btn-danger" id="pay-button"><%= t('buy') %></a>
                            
