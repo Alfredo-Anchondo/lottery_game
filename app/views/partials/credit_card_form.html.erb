@@ -96,7 +96,7 @@
                     <label style="margin-left:30px; font-weight:900;" ><img width="50px"src="/assets/<%= card['brand'] %>.ico"><input style="margin-top:18px; margin-left:-70px;" type="radio" value="<%= card['id'] %>" name="optradio"><span style="color:#E4007D; padding-left:10px;"><%= t('card') %>: </span> <%= card['card_number'] %><i data-card="<%= card['id'] %>" style="color:red; margin-left: 10px; font-size: 22px;" class="fa fa-times-circle delete_card"></i></label>
                 </div>
               <% end %>
-    <a style="color:white;" class="button rght" id="pay-button-used"><%= t('buy') %></a>
+    <h4 style="text-align:center"><a style="color:white;" class="btn btn-danger" id="pay-button-used"><%= t('buy') %></a></h4>
         <% else %>
             <br>
     <h3 style="text-align:center"><%= t('noregistercards') %></h3>
