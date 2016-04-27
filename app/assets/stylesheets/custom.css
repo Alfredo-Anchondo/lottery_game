@@ -126,6 +126,10 @@
 #team2{
 	width: 100% !important;
 }
+	  
+	  .margin-cellphone{
+		  margin-top:5%;
+	  }
       
 }
 
@@ -262,6 +266,9 @@
 #team2{
 	width: 100% !important;
 }
+	    .margin-cellphone{
+		  margin-top:5%;
+	  }
       
 }
 
@@ -403,6 +410,10 @@
 #team2{
 	width: 100% !important;
 }
+	  
+	    .margin-cellphone{
+		  margin-top:5%;
+	  }
 }
 
 @media screen and (max-width: 480px) {
@@ -543,7 +554,9 @@
 #team2{
 	width: 100% !important;
 }
-    
+     .margin-cellphone{
+		  margin-top:5%;
+	  } 
 }
 
 .row{

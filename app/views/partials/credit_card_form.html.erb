@@ -125,7 +125,7 @@
 				<div class="col-md-6 col-xs-12">
 				  <label><%= t('owner_name') %></label><input type="text" class="form-control" placeholder="Como aparece en la tarjeta" autocomplete="off" data-openpay-card="holder_name">
 				</div>
-				<div class="col-md-6 col-xs-12">
+				<div class="col-md-6 col-xs-12 margin-cellphone">
 				 <label><%= t('card_number') %></label><input class="form-control" type="text" autocomplete="off" data-openpay-card="card_number"></div>
 						</div>
 				<br>
@@ -141,12 +141,12 @@
 						<input  class="form-control" type="text" placeholder="Año" data-openpay-card="expiration_year">
 						</div>
 					</div> 
-					<div class="col-md-6 col-xs-12">
+					<div class="col-md-6 col-xs-12 margin-cellphone">
 						 <h4><label><%= t('security_code') %></label></h4>
 						<div class="col-md-6" style="padding:0px;">
                                     <input style="width:70%; margin:0px;" type="text" placeholder="3 dígitos" autocomplete="off" data-openpay-card="cvv2" class="form-control">
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-6" margin-cellphone>
 						  <img src="/assets/cvv.png">
 						</div>
 					
