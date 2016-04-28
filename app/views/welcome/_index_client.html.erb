@@ -166,7 +166,7 @@
 						<div class="row">
 							<h4 style="text-align:center">Selecciona el inicio y el final de tu serie de billetes</h4>
 							<div class="col-md-4">
-								<h4 style="text-align:center"><input id="initial_serie" class="form-control" placeholder="Inicio" max="99" type="number"></h4>
+								<h4 style="text-align:center"><input id="initial_serie" class="form-control" placeholder="Inicio" max="99" min="0" type="number"></h4>
 							</div>
 							<div class="col-md-4">
 								<h4 style="text-align:center"><input id="final_serie" class="form-control" placeholder="Final"  type="number" max="99"></h4>
@@ -1255,6 +1255,9 @@
 			var max_value;
 			var array_values = [];
 		
+			$('#initial_serie').change(function(){
+				$('#final_serie').attr( 'max', $('#initial_serie').val());
+			});
 			
 			$('#generate_serie').click(function(){
 				 value = parseInt($('#initial_serie').val());
