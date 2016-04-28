@@ -4,7 +4,7 @@ class BuyMailer < ActionMailer::Base
 	def buy_saldo(user,saldo)
 		@user = user
 		@saldo = saldo
-		mail(to: @user.email, subject: '[DonBillete] Compa de Saldo DonBillete')
+		mail(to: @user.email, subject: '[DonBillete] Compra de Saldo DonBillete')
 	end
 	
 	def invite(mails,reference,user)

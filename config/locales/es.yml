@@ -267,7 +267,7 @@ es:
         category: "Categoria"
         users: "Usuarios"
         user: "Usuario"
-        roles: "Roles"
+        roles: "Roles" 
         role: "Rol"
         user_lotteries: "Loterías compradas por usuario"
         user_lottery: "Lotería comprada por usuario"
