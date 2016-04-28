@@ -21,33 +21,39 @@
     .panel-footer{ width:100%;}
 </style>
       
+
+
+
+
+
+
+
   </head>
   <body>
       <div class="panel">
         <div class="panel-header">
               <h4 style="text-align:center"> <img width="80%" src="https://scontent-atl3-1.xx.fbcdn.net/t31.0-8/s2048x2048/12977229_219938181709742_1313388571286838903_o.png"></h4>
-            <h2 class="welcome">Muchas Felicidades Tu billete resulto ganador</h2>
+            <h1 class="welcome">¡Felicidades!</h1>
           </div>
       
       </div>
       <div class="panel-body">
-         <h1>!Felicidades!</h1>
-<h2>Gracias por participar en la loteria  <%= @lottery_name %></h2>
-<h1>Nos alegra decirte que fuiste seleccionado Ganador:</h1>
-<h1>Con el boleto número: <%= @winner_number %></h1>
-          <% if @num_winners != 1 %>
-<h2>Lamentablemente no fuiste el unico que selecciono este número, por lo tanto el total de la bolsa se divira entre <%= @num_winners%> participantes que seleccionaron el mismo número:</h2>
-          <% end %>
-<h1>El monto total ganado es de: $<%= @total_update %> DB</h1>          
-<h2>Felicidades esperamos que sigas participando con nosotros.</h2>
-<h2>Entra a tu perfil para ver tu Saldo actual</h2>
-<h2>Atentamente: DonBillete</h2>
+		  <% if @num_winners != 1 %>
+		  <h2>Eres uno de los afortunados ganadores de la lotería <%= @lottery_name %></h2>
+		  <% else %>
+		  <h2>Eres el ganador de la lotería <%= @lottery_name %></h2>
+		  <% end %>
+		  <h2>Con el boleto número: <%= @winner_number %></h2>
+       
+<h3>En unos momentos verás reflejado en tu saldo la cantidad de: <%= @total_update %> DB</h3>          
+<h3>Sigue participando para ganar más y mejores premios.</h3>
+<h3>Invita a tus amigos para que las bolsas sean cada vez mayores. <a href="https://donbillete.com/partials/invite" style="color:#E81F7F">Invitar</a></h3>
 <br>
       </div>
     <div class="panel-footer">
         <h4 style="color:white;">Sigue participando con nostros en Donbillete.</h4>
         <h4 style="color:white"> Te deseamos la mejor de la suerte </h4>
-       <h4 style="text-align:center"> <a style="text-align:center; color:#2EFF9F; padding-left:38%; font-size:25px;" href="http://donbillete.com"> </h4>Accede a Donbillete</a> <br>
+       <h4 style="text-align:center"> <a style="text-align:center; color:#E81F7FF; padding-left:38%; font-size:25px;" href="http://donbillete.com"> </h4>Accede a Donbillete</a> <br>
          <h4>Siguenos en:  <a href="https://www.facebook.com/7donbillete/"><img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xft1/v/t1.0-9/12924533_216008632102697_6569374066802473538_n.png?_nc_eui=ARgvbFZs7y5Iq1FvtrgQEHdq7cJHQzYWWFh4NMDHrdGToc9H2j1tGA&oh=a06d9609adcc4ecce4132ce1e2be38c4&oe=578D01AA" width="50px"></a> <a href="https://twitter.com/7DONBILLETE"><img width="50px" src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xtp1/v/t1.0-9/12417900_216008615436032_1537948209837185904_n.png?_nc_eui=ARiUxbBXmdA8nCxKnkE9LGmNrwbzAfGT6byEr7pgq-PdgCBFNW5iEw&oh=a38990118122134469933f22d8d6e0d2&oe=57B859C9"></a>  </h4>
       </div>
   </body>

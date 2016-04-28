@@ -142,26 +142,39 @@
 		 <div class="ibox float-e-margins">
              <div class="ibox-title">
                     <h5>Comprar Serie de Números</h5>
-                    <span class="label label-primary">Selecciona tus numeros</span>
+                    <span class="label label-primary">Selecciona</span>
              </div>
                 <div class="ibox-content" id="serie_lotteries">
 					<div class="row" id="random_lotteries_div2">
 					<h3 style="text-align:center; font-weight:900">¿Tienes tu propia serie de numeros ganadores?</h3>
 					<h4 style="text-align:center">Selecciona todos esos numeros en un solo paso</h4> <br>
 					    <label style="margin-left:15%">Loteria: </label> <select style="text-align:center" class="form-control" id="lotteries_random2"><option value="0">Selecciona una loteria</option></select> <br><br>
-                                
+                                <hr>
                                 <div class="row">
                                 <div class="col-md-5 col-xs-5">
                                     <h4 style="text-align:center" id="local_team_random2"></h4>
                                     </div> 
                                     <div class="col-md-2 col-xs-2">
-                                        <br>
                                     <h2 style="text-align:center; font-weight:900; font-size:40px; color:black;">VS</h2>
                                     </div>
                                 <div class="col-md-5 col-xs-5">
                                      <h4 style="text-align:center" id="visit_team_random2"></h4>
                                     </div>
                                 </div>
+						<hr>
+						
+						<div class="row" id="serie-caracteristics" style="display:none">
+							<div class="col-md-6">
+								<h4 style="text-align:center; color:black;">Bolsa acumulada: </h4>
+								<h3  style="text-align:center;font-weight:900; color:#e4007d" id="serie-balance"></h3>
+							</div>
+							<div class="col-md-6">
+								<h4 style="text-align:center; color:black;">Precio del billete:</h4>
+								<h3 style="text-align:center; font-weight:900; color:#e4007d;" id="serie_price"></h3>
+							</div>
+
+						</div>
+						<hr>
 						
 						<div class="row">
 							<h4 style="text-align:center">Selecciona el inicio y el final de tu serie de billetes</h4>
@@ -177,6 +190,8 @@
 							<h3 style="text-align:center; font-weight:900">Numeros Generados</h3>
 							<h2 id="generate_serie_numbers" style="word-spacing:5px; font-weight:900; text-align:center;"></h2>
 							<h4 style="text-align:center"> <button class="btn btn-primary" id="btn_buy_serie">Comprar Billetes</button></h4>
+							
+							<h5 style=" text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:black" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5>
 						</div>
 					
 			 </div>
@@ -204,14 +219,26 @@
                                     <div class="col-md-2 col-xs-2">
                                         <br>
                                         <br>
-                                        <br>
+                                      
                                     <h2 style="text-align:center; font-weight:900; font-size:40px; color:black;">VS</h2>
                                     </div>
                                 <div class="col-md-5 col-xs-5">
                                      <h4 style="text-align:center" id="visit_team_random"></h4>
                                     </div>
                                 </div>
-                                
+                                <hr>
+								<div class="row" id="random-caracteristics" style="display:none">
+							<div class="col-md-6">
+								<h4 style="text-align:center; color:black;">Bolsa acumulada: </h4>
+								<h3  style="text-align:center;font-weight:900; color:#e4007d" id="random-balance"></h3>
+							</div>
+							<div class="col-md-6">
+								<h4 style="text-align:center; color:black;">Precio del billete:</h4>
+								<h3 style="text-align:center; font-weight:900; color:#e4007d;" id="random_price"></h3>
+							</div>
+
+						</div>
+								<hr>
                             <span id="quantity_tickets_ran"><label>Cantidad de boletos: </label><select class="form-control" id="number_quantity">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -236,6 +263,8 @@
                                 
                                 <button class="btn btn-primary" id="generate_numbers">Generar Números</button>
                                 <button style="display:none" class="btn btn-primary" id="buy_numbers">Comprar Números</button>
+								
+								<h5 style=" text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:black" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5>
                                 
                             </div>
                  </div>
@@ -373,7 +402,7 @@
                     </div>
                 </div>
                 <div class="row" style="padding:0px">
-                <h4 style="text-align:right; margin-right:8%;">Total: <span id="total_price"> DB </span> </h4>
+                <h4 style="text-align:right; margin-right:8%;">Total: <span id="total_price">  </span> DB </h4>
                 </div>
             </div>
          <div class="col-md-12">
@@ -382,8 +411,9 @@
         </div>
     </div>
        <div class="modal-footer">
-           <button type="button" class="btn btn-default" style="background-color:#727272" data-dismiss="modal"><%= t('close') %></button>
-        <button type="button" id="confirm-buy" style="background-color:#ab005c" class="btn btn-primary"><%= t('buy') %></button>
+         <h4 style="text-align:center">  <button type="button" class="btn btn-default" style="background-color:#727272" data-dismiss="modal"><%= t('close') %></button>
+        <button type="button" id="confirm-buy" style="background-color:#ab005c" class="btn btn-primary"><%= t('buy') %></button></h4>
+		   <h5 style="color:white; text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:#d1d1d1" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5>
       </div>
   </div>
 </div>
@@ -475,7 +505,7 @@
                     </div>
                 </div>
                 <div class="row" style="padding:0px">
-                <h4 style="text-align:right; margin-right:8%;">Total: <span id="total_price_modal"> DB </span> </h4>
+                <h4 style="text-align:right; margin-right:8%;">Total: <span id="total_price_modal"> </span> DB  </h4>
                 </div>
             </div>
          <div class="col-md-12">
@@ -484,8 +514,10 @@
         </div>
     </div>
        <div class="modal-footer">
-           <button type="button" style="background-color:gray; border-color:727272;" class="btn btn-default" data-dismiss="modal"><%= t('close') %></button>
-           <button type="button" id="confirm-buy-modal" style="background-color:#ab005c" class="btn btn-primary"><%= t('buy') %></button>
+          <h4 style="text-align:center"> <button type="button" style="background-color:gray; border-color:727272;" class="btn btn-default" data-dismiss="modal"><%= t('close') %></button>
+           <button type="button" id="confirm-buy-modal" style="background-color:#ab005c" class="btn btn-primary"><%= t('buy') %></button></h4>
+		   
+		   <h5 style="color:white; text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:#d1d1d1" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5>
       </div>
   </div>
 </div>
@@ -841,9 +873,9 @@
     var image_url2 = '/system/teams/logos/000/000/0'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
     }  
 
-                         $('#lotteries_random').append('<option data-price="'+data.games[i].lotteries[0].price+'" data-balance ="'+ data.games[i].lotteries[0].initial_balance +'" value="'+ data.games[i].lotteries[0].id +'">'+data.games[i].team.name+ ' vs ' + data.games[i].team2.name + '</option>');
+                         $('#lotteries_random').append('<option data-max-number = "'+ data.games[i].lotteries[0].final_number +'" data-price="'+data.games[i].lotteries[0].price+'" data-balance ="'+ data.games[i].lotteries[0].initial_balance +'" value="'+ data.games[i].lotteries[0].id +'">'+data.games[i].team.name+ ' vs ' + data.games[i].team2.name + '</option>');
 					   
-					   $('#lotteries_random2').append('<option data-price="'+data.games[i].lotteries[0].price+'" data-balance ="'+ data.games[i].lotteries[0].initial_balance +'" value="'+ data.games[i].lotteries[0].id +'">'+data.games[i].team.name+ ' vs ' + data.games[i].team2.name + '</option>');
+					   $('#lotteries_random2').append('<option data-max-number = "'+ data.games[i].lotteries[0].final_number +'" data-price="'+data.games[i].lotteries[0].price+'" data-balance ="'+ data.games[i].lotteries[0].initial_balance +'" value="'+ data.games[i].lotteries[0].id +'">'+data.games[i].team.name+ ' vs ' + data.games[i].team2.name + '</option>');
      
                        
                        if(data.games[i].category.id < 10){
@@ -1056,6 +1088,11 @@
         $("#local_team_random").empty();            
         $("#visit_team_random").append('<img width="70%" src="'+image_url2+'">'); 
         $("#local_team_random").append('<img width="70%" src="'+image_url+'">');  
+		 $('#random_price').text( ""+$('#lotteries_random option:selected').data('price') + " DB");
+         $('#random-balance').text(""+$('#lotteries_random option:selected').data('balance') + " DB");		
+					  i
+		$('#random-caracteristics').show();
+              			
               
          });   
       })  
@@ -1080,6 +1117,22 @@
         $("#local_team_random2").empty();            
         $("#visit_team_random2").append('<img width="70%" src="'+image_url2+'">'); 
         $("#local_team_random2").append('<img width="70%" src="'+image_url+'">');  
+		 $('#serie_price').text( ""+$('#lotteries_random2 option:selected').data('price') + " DB");
+         $('#serie-balance').text(""+$('#lotteries_random2 option:selected').data('balance') + " DB");		
+					  if(parseInt($('#lotteries_random2 option:selected').data('max-number')) < 100){
+            $('#initial_serie').mask('00', {placeholder: "00", reverse: false});
+			$('#final_serie').mask('00', {placeholder: "00", reverse: false});
+                 ticket_length = 2;
+             } else if(data.game.lotteries[0].final_number < 1000){
+                 $('#initial_serie').mask('000', {placeholder: "000", reverse: false});
+				  $('#final_serie').mask('000', {placeholder: "000", reverse: false});
+                  ticket_length = 3;
+             } else {
+                  $('#initial_serie').mask('0000', {placeholder: "0000", reverse: false});
+				  $('#final_serie').mask('0000', {placeholder: "0000", reverse: false});
+                  ticket_length = 4;
+             }
+		$('#serie-caracteristics').show();
               
          });   
       })  
@@ -1271,6 +1324,9 @@
 				array_values = [];
 					if(value != null && max_value != null){		
 						for(value; max_value >= value; value ++){
+							if(value < 10){
+								value = "0" + value + ""
+							}
 							array_values.push(value);
 							$('#generate_serie_numbers').append(" " + value + " ");
 						}

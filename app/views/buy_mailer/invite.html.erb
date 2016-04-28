@@ -19,24 +19,26 @@
     .margin-center{}   
     .panel-footer{ width:100%;}
 </style>
-      
+     
+
   </head>
   <body>
       <div class="panel">
         <div class="panel-header">
             <h4 style="text-align:center"> <img width="80%" src="https://scontent-atl3-1.xx.fbcdn.net/t31.0-8/s2048x2048/12977229_219938181709742_1313388571286838903_o.png"></h4>
-           <h1 class="welcome">Tu amigo te invita a participar en nuestras loterías.</h1>
-           <h2 class="welcome">!Registrate y recibe tu recompensa!</h2>      
+           <h1 class="welcome">Tu amigo <span style="color:#E81F7F"> <%= @user.name + " " + @user.last_name %> </span>  te ha invitado a participar en nuestras loterías.</h1>
+           <h2 class="welcome">¡Regístrate con el siguiente código y recibe tu recompensa!</h2>      
           </div>
       
       </div>
       <div class="panel-body">
           <div class="margin-center row">
           <div class="col-md-12 " style="border: 1px dotted black;">
-			  <h3> Tu amigo: <%= @user.name + " " + @user.last_name %> te envia su codigo </h3>
-			  <h3>Codigo: <%= @reference %></h3>
-			  <h3>Si Utilizas el codigo de referencia tu y tu amigo recibiran 10 DB de saldo</h3>
-			  <h3>Este saldo de regalo lo podras utilizar para comprar billetes de loteria</h3>
+			
+			  <h3>Codigo:</h3>
+			  <h2> <%= @reference %></h2>
+			  <h3>Al utilizarlo tanto tú como <span style="color:#E81F7F"><%= @user.name + " " + @user.last_name %> </span> recibirán <b> 10 DB </b> de saldo. Este saldo podrás utilizarlo para participar en nuestras loterías.</h3>
+			  
 			  <h3>* 1 DB = $1.00 MXN</h3>
 			 
             </div>

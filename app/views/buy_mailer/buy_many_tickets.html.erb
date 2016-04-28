@@ -19,26 +19,34 @@
     .margin-center{}   
     .panel-footer{ width:100%;}
 </style>
-      
+
+
+
+
   </head>
   <body>
       <div class="panel">
         <div class="panel-header">
             <h4 style="text-align:center"> <img width="80%" src="https://scontent-atl3-1.xx.fbcdn.net/t31.0-8/s2048x2048/12977229_219938181709742_1313388571286838903_o.png"></h4>
-           <h1 class="welcome">Gracias por tu compra.</h1>
-           <h2 class="welcome">!Te deseamos suerte!</h2>      
+           <h1 class="welcome">Gracias por participar en nuestra lotería.</h1>
+		   <h3 style="margin-left:30%; margin:0px; font-weight:900; color:black" id="ticket_name_modal"><%= @game.team.name + '   vs   ' + @game.team2.name %> </h3>  
+                
           </div>
       
       </div>
       <div class="panel-body">
          
-           <h3 style="margin-left:30%; margin:0px; font-weight:900; color:black" id="ticket_name_modal"><%= @game.team.name + '   vs   ' + @game.team2.name %> </h3>  
+
           <div class="margin-center row">
           <div class="col-md-12 " style="">
                 <div class="row" style="padding:0px">
                   
-                    <h2 style="color:black; font-weight:800;">Te deseamos mucho suerte, tus billetes participantes son:</h2>
-                    <h1 style="color:black; font-weight:900;"> Billete: <%= @array %> </h1>
+                    <h2 style="color:black; font-weight:800;">Tus números participantes son:</h2>
+                    <h2 style="color:black; font-weight:900;"> Billete: <%= @array %> </h2>
+					
+					<h3>¡No olvides sintonizar el juego para duplicar la emoción!</h3>
+					<h3>¡Mucha Suerte!</h3>
+					
                 </div>
             </div>
           </div>
