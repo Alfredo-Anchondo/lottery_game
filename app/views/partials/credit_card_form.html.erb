@@ -133,11 +133,11 @@
 						<h4><label><%= t('expiration_date') %></label></h4>
 					<div class="col-md-6 col-xs-6" style="padding:0px;">
 						  
-                                  <input class="form-control" type="text" placeholder="Mes" data-openpay-card="expiration_month">
+                                  <input  class="form-control two_digits_month" type="text" placeholder="Mes" data-openpay-card="expiration_month">
                                     
 						</div>
 						<div class="col-md-6 col-xs-6">
-						<input  class="form-control" type="text" placeholder="Año" data-openpay-card="expiration_year">
+						<input  class="form-control two_digits_year" type="text" placeholder="Año" data-openpay-card="expiration_year">
 						</div>
 					</div> 
 					<div class="col-md-6 col-xs-12 margin-cellphone">
@@ -179,7 +179,10 @@
 <br>
 
 <script>
-
+ $('.two_digits_month').mask('00', {placeholder: "Mes 2 dígitos", reverse: false});
+	 $('.two_digits_year').mask('00', {placeholder: "Año 2 dígitos", reverse: false});
+	
+	
 $('.delete_card').click(function(e){
     e.preventDefault();
     var card_id = $(this).data("card");
