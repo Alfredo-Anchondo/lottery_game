@@ -10,7 +10,7 @@ class PartialsController < ApplicationController
 def create_customer()
     stablich_connection
     user_address_hash = {
-      line1: "#{current_user.address_1} #{current_user.ext_number}", line2: current_user.address_2, line3: current_user.int_number, state: current_user.state,
+      line1: current_user.address_1, line2: current_user.address_2, line3: current_user.ext_number, state: current_user.state,
       city: current_user.city, postal_code: current_user.zip_code, country_code: 'MX'
     }  
     customer_hash = {name: current_user.name, last_name: current_user.last_name, email: current_user.email, requires_account: false, phone_number: current_user.phone, external_id: current_user.id , address: user_address_hash}    
