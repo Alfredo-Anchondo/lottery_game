@@ -1283,24 +1283,20 @@
 			var value;
 			var max_value;
 			var array_values = [];
-			$('#initial_serie').change(function(){
-				 value = $('#initial_serie').val();
-				$('#final_serie').attr({"min" : value })
-				
-			});
+		
 			
 			$('#generate_serie').click(function(){
-				 value = $('#initial_serie').val();
-				max_value = $('#final_serie').val();
+				 value = parseInt($('#initial_serie').val());
+				max_value = parseInt($('#final_serie').val());
+		
 				$('#generate_serie_numbers').empty();
 				if($('#lotteries_random2').val() == 0 ){
 					alert('Selecciona por favor una loteria para participar');
 				}else{
 				
 				array_values = [];
-					if($('#initial_serie').val() != '' && $('#final_serie').val() != ''){
-						
-						for(value; value <= max_value; value ++){
+					if(value != null && max_value != null){		
+						for(value; max_value >= value; value ++){
 							array_values.push(value);
 							$('#generate_serie_numbers').append(" " + value + " ");
 						}
