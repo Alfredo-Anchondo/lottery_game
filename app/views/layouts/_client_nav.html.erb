@@ -34,11 +34,11 @@
            
             <div class="col-md-2">
 				 <% if current_user.photo.present? %>
-               <h4><img id="user_image" class="pull-right" width="100px" height="100px" style="border-radius:150px; border:1px solid #E4007D; margin-top:15%;" src="<%= current_user.photo %>"></h4>
+               <h4><img id="user_image" class="pull-right" width="100px" height="100px" style="border-radius:150px; border:1px solid #E4007D; margin-top:10%;" src="<%= current_user.photo %>"></h4>
 				   <% end %>
             </div>
          
-            <div class="col-md-10" style="margin-top:2%; background-color: rgb(255, 255, 255); color: black;">
+            <div class="col-md-10" style="background-color: rgb(255, 255, 255); color: black;">
                 <div class="col-md-7">
                     <h4 style="color:#E4007D"> <%= t('welcome') %>: <span style="text-transform: uppercase; color:black"><%= current_user.username %></span> </h4>
                      <h4 style="color:black"> 
