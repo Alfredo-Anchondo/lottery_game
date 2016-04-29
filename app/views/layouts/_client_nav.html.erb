@@ -38,30 +38,31 @@
 				   <% end %>
             </div>
          
-            <div class="col-md-10" style="margin-top:2%; background-color: rgb(162, 160, 160); color: white;">
+            <div class="col-md-10" style="margin-top:2%; background-color: rgb(255, 255, 255); color: black;">
                 <div class="col-md-7">
-                    <h4 style="color:white"> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> </h4>
-                     <h4 style="color:white"> 
+                    <h4 style="color:#E4007D"> <%= t('welcome') %>: <span style="text-transform: uppercase; color:black"><%= current_user.username %></span> </h4>
+                     <h4 style="color:black"> 
                        <span id="clock"></span> </h4>
 					    <% if signed_in? %>
-                <%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
+                <%= link_to destroy_user_session_path, :method => :delete, :style => "color:black" do %>
            <h4> <i class="fa fa-sign-out"></i><%= t('logout') %> </h4>
           <% end %>
                <% end %>
                       
-                </h4>
-                </div>
+                <h4><div class="fb-like" data-href="https://www.facebook.com/7donbillete/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div> </div> </h4>
+                
                 
                 <div class="col-md-5">
-                   <h4 style="color:white"> <span id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;"><%= number_with_precision(current_user.balance, :precision => 2)  %> DB</span></span>  
-					     <h4 style="color:white"> <span id="current_bal"> Saldo de Regalo: <span style="text-transform: uppercase;"><%= number_with_precision(current_user.gift_credit, :precision => 2)  %> DB</span></span>     
-                  <h4 style="color:white"> <span> 1 DB = $1.00 MXN </span> </h4>
+                   <h4 style="color:#E4007D"> <span id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase; color:black "><%= number_with_precision(current_user.balance, :precision => 2)  %> DB</span></span>  
+					     <h4 style="color:#E4007D"> <span id="current_bal"> Saldo de Regalo: <span style="color:black;text-transform: uppercase;"><%= number_with_precision(current_user.gift_credit, :precision => 2)  %> DB</span></span>     
+                  <h4 style="color:#E4007D"> 1 DB =<span style="color:black">  $1.00 MXN </span> </h4>
+							 <h4><a style="margin-top:1%;" class="twitter-follow-button" href="https://twitter.com/7DONBILLETE" data-show-count="false">
+							Follow @TwitterDev</a></h4>
                 </div>   
             </div>
 					<div class="col-md-12">
-						<div class="col-md-5"> <div class="pull-right" style="margin-right:15%;">	<div class="fb-like" data-href="https://www.facebook.com/7donbillete/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div></div></div>
-						<div class="col-md-3" style="margin-left: -7%;"><a class="twitter-follow-button" href="https://twitter.com/7DONBILLETE" data-show-count="false">
-							Follow @TwitterDev</a></div>
+						<div class="col-md-5"> <div class="pull-right" style="margin-right:-6%;">	</div></div>
+						<div class="col-md-3" style=""></div>
 					
 					</div>
    
