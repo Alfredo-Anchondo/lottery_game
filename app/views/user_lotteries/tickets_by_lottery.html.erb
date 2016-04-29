@@ -1,0 +1,90 @@
+<div class="row">
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <h3 style="margin-left:15px">Cantidad de Billetes por loteria</h3>
+        </div>
+      </div>
+      <div class="panel-body">
+		  <div class="row">
+		  <div class="col-md-4">
+			  <label style="margin-right:5%;">Selecciona una loteria</label><select id="select_lotteries"> <option value="0">Selecciona una loteria</option> </select>
+			  </div>
+		  <div class="col-md-4">
+			    <h3>Total de boletos comprados: <span id="total_tickets"></span> </h3>
+			  </div>
+		  <div class="col-md-4">
+			  <h3>Total recaudado en ventas: <span id="total_sales"></span> DB </h3>
+			  </div>
+		  </div>
+		  <br> <br>
+		<div class="row" id="numbers">
+		 
+		  </div>
+		  
+		
+		  
+		</div>
+	  </div>
+	</div>
+</div>
+
+<script>
+	for (var t = 0; t < 100; t ++){
+	$('#numbers').append('<div class="col-md-1 '+ t +'"> <a style="color:black" id="mod'+t+'"> <h4 style="text-align:center"> '+ t+' </h4> </a> </div>');
+	}
+
+</script>
+
+
+<script>
+$.ajax({
+  method: "GET",
+  url: "/lotteries/",
+  dataType: 'json'
+})
+  .done(function( data ) {
+	for( var i in data){
+		$('#select_lotteries').append('<option value="'+ data[i].id +'"> '+ data[i].team.name +' VS ' + data[i].team2.name + '  </option>');
+	}
+    
+  });
+</script>
+
+<script>
+	$('#select_lotteries').change(function(){
+		$.ajax({
+  method: "GET",
+  url: "/user_lotteries/tickets",
+  data: {id: $('#select_lotteries option:selected').val()}
+})
+  .done(function( data ) {
+			$(".col-md-1").css('background-color', 'white');
+	var total_tickets = 0;
+	if (data.user_lotteries != []){
+			for(var i in data.user_lotteries){
+					if($( '.modal-body' ).hasClass("modal-cont-"+ data.user_lotteries[i].ticket_number +"")){
+						$('.'+data.user_lotteries[i].ticket_number+'').css('background-color', "green");
+						$('.modal-cont-'+data.user_lotteries[i].ticket_number+'').append('<h4> '+ data.user_lotteries[i].user.name + ' ' +data.user_lotteries[i].user.last_name+' </h4>');		
+				total_tickets ++;
+					
+					}else{
+				$('.'+data.user_lotteries[i].ticket_number+'').css('background-color', "red");
+				$('#mod'+data.user_lotteries[i].ticket_number+'').attr('data-toggle',"modal");
+				$('#mod'+data.user_lotteries[i].ticket_number+'').attr('data-target',"#" + data.user_lotteries[i].ticket_number + "");
+				$('body').append('<div class="modal fade" id="'+ data.user_lotteries[i].ticket_number +'" tabindex="-1" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">Usuarios que compraron billetes</h4></div><div class="modal-body modal-cont-'+ data.user_lotteries[i].ticket_number +'"></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div>');
+				$('.modal-cont-'+data.user_lotteries[i].ticket_number+'').append('<h4> '+ data.user_lotteries[i].user.name + ' ' +data.user_lotteries[i].user.last_name+' </h4>');		
+				total_tickets ++;
+					}
+			}
+			
+    $('#total_tickets').text(total_tickets);
+	$('#total_sales').text(parseInt(data.user_lotteries[1].lottery.price) * total_tickets);	
+	}
+  });
+	})
+
+</script>

@@ -3,6 +3,13 @@ class UserLotteriesController < ApplicationController
   before_action :data, only: [:index, :new, :create, :edit, :update]
   # GET /user_lotteries
   # GET /user_lotteries.json
+  respond_to :html
+  respond_to :json
+	
+  def search_ticket_by_lottery
+	 render :json => UserLottery.search_ticket_by_lottery(params[:id])
+  end
+	
   def index
     @user_lotteries = UserLottery.all
   end
@@ -34,6 +41,9 @@ class UserLotteriesController < ApplicationController
 		end
 		
 	end
+	
+	
+
     
   # GET /user_lotteries/1/edit
   def edit

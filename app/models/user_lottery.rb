@@ -14,4 +14,8 @@ class UserLottery < ActiveRecord::Base
         where('status >= ?', 'Ganador').pluck(:lottery_id).uniq.count 
     end
 	
+	def self.search_ticket_by_lottery(id)
+		where('lottery_id = ?', id).all
+	end
+	
 end

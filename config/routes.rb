@@ -56,6 +56,8 @@ Rails.application.routes.draw do
         get 'winners'
         get 'winners_total'
         get 'winners_view'
+		get "tickets_by_lottery"
+		get "/tickets", to: "user_lotteries#search_ticket_by_lottery"
     end
   end
         
