@@ -36,19 +36,17 @@
 	for (var t = 0; t < 100; t ++){
 	$('#numbers').append('<div class="col-md-1 col-xs-3 '+ t +'"> <a style="color:black" id="mod'+t+'"> <h4 style="text-align:center"> '+ t+' </h4> </a> </div>');
 	}
-
 </script>
-
 
 <script>
 $.ajax({
   method: "GET",
-  url: "/lotteries/",
+  url: "/lotteries",
   dataType: 'json'
 })
   .done(function( data ) {
 	for( var i in data){
-		$('#select_lotteries').append('<option value="'+ data[i].id +'"> '+ data[i].team.name +' VS ' + data[i].team2.name + '  </option>');
+		$('#select_lotteries').append('<option value="'+ data[i].id +'"> '+ data[i].team.name +' VS ' + data[i].team2.name + ' ' + moment(data[i].game.game_date).format('DD-MM-YYYY') +' </option>');
 	}
     
   });
@@ -86,5 +84,4 @@ $.ajax({
 	}
   });
 	})
-
 </script>

@@ -4,7 +4,7 @@ class LotteriesController < ApplicationController
 
   respond_to :html
   respond_to :json
-
+	
   def index
     @lotteries = Lottery.all
     respond_with(@lotteries)

@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   resources :lotteries do
         collection do
             get "/team_logos/:id", to: "lotteries#team_logos"
+			get "/all_lotteries", to: "lotteries#all_lotteries"
       end
     end
     

@@ -37,7 +37,7 @@
                   <div class="form-group">
           <%= f.label :game_id, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.collection_select(:game_id, @games_select, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+			  <%= f.collection_select(:game_id, @games_select.order('id DESC'), :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
           </div>
         </div>
 

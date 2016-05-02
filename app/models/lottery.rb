@@ -4,8 +4,7 @@ class Lottery < ActiveRecord::Base
   has_many :user_lotteries 
   has_one :team, :through => :game
   has_one :team2, :through => :game
-    
-    
+	
     def update_winner
         lottery_name = game.team.name + " vs " + game.team2.name
         User.email_in_lottery(id, winner_number, lottery_name)
@@ -14,6 +13,5 @@ class Lottery < ActiveRecord::Base
     
       def select_display
           game.team.name + " vs " + game.team2.name
-      end
-    
+      end 
 end
