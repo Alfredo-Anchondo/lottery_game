@@ -1088,6 +1088,8 @@
          $.ajax({
   method: "GET", 
   origin: "https://donbillete.com",
+  beforeSend: function (request) {
+  request.setRequestHeader("Authorization", "Negotiate");},		 
   contentType: "application/json",
   crossDomain: true,
   url: "https://api.performfeeds.com/basketballdata/match/10q19hfn5lego16erqtal3z8xi?tmcl=e2w9iicoifx689pzi5jqw7j4a",
