@@ -10,6 +10,7 @@ class CreateLotteries < ActiveRecord::Migration
       t.integer :initial_number, :null => false
       t.integer :final_number, :null => false
       t.float :price, :null => false
+	  t.text :purchase_gift_tickets	
 
 
       t.timestamps

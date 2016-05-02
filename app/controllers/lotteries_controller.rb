@@ -64,6 +64,6 @@ class LotteriesController < ApplicationController
     end
 
     def lottery_params
-      params.require(:lottery).permit(:initial_balance, :rules, :description, :game_id, :winner_number, :initial_number, :final_number, :price)
+      params.require(:lottery).permit(:initial_balance, :rules, :description, :game_id, :winner_number, :initial_number, :final_number, :price, :purchase_gift_tickets)
     end
 end

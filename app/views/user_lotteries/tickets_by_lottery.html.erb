@@ -10,14 +10,20 @@
       </div>
       <div class="panel-body">
 		  <div class="row">
-		  <div class="col-md-4">
-			  <label style="margin-right:5%;">Selecciona una loteria</label><select id="select_lotteries"> <option value="0">Selecciona una loteria</option> </select>
+		  <div class="col-md-3">
+			  <label style="margin-right:5%;">Selecciona:</label><select id="select_lotteries"> <option value="0">Selecciona una loteria</option> </select>
 			  </div>
-		  <div class="col-md-4">
-			    <h3>Total de boletos comprados: <span id="total_tickets"></span> </h3>
+		  <div class="col-md-2">
+			    <h3>Total billetes comprados: <span style="color:#e4007d" id="total_tickets"></span> </h3>
 			  </div>
-		  <div class="col-md-4">
-			  <h3>Total recaudado en ventas: <span id="total_sales"></span> DB </h3>
+			  <div class="col-md-2">
+			   <h3>Tickets: <span style="color:#e4007d" id="normal_tickets"> </span></h3>
+			  </div>
+			  <div class="col-md-2">
+			  <h3>Tickets de Regalo: <span style="color:#e4007d" id="gift_tickets"> </span></h3>
+			  </div>
+		  <div class="col-md-3">
+			  <h3>Total recaudado: <span style="color:#e4007d" id="total_sales"></span> DB </h3>
 			  </div>
 		  </div>
 		  <br> <br>
@@ -80,7 +86,9 @@ $.ajax({
 			}
 			
     $('#total_tickets').text(total_tickets);
-	$('#total_sales').text(parseInt(data.user_lotteries[1].lottery.price) * total_tickets);	
+	$('#total_sales').text(parseInt(data.user_lotteries[1].lottery.price) * (total_tickets - parseInt(data.user_lotteries[i].lottery.purchase_gift_tickets)));	
+	$('#gift_tickets').text(data.user_lotteries[i].lottery.purchase_gift_tickets);	
+	$('#normal_tickets').text((total_tickets - parseInt(data.user_lotteries[i].lottery.purchase_gift_tickets)));	
 	}
   });
 	})

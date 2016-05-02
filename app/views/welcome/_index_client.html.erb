@@ -479,6 +479,7 @@
         <div class="row" style="padding:5px !important; ">
         <h4 style="text-align:center"><%= t('lottery_rules') %></h4>
             <h5 id="rules_modal"></h5>
+			<input type="hidden" id="gift_modal">
         </div>
      <div class="row" style="padding:5px !important;"> 
          <h4><%= t('select_number') %>:</h4>
@@ -543,6 +544,7 @@
 
 
 <script>
+	    var is_gift_purchase;
         var ticket_length;
         var ticket_length_modal;
         var user_id;
@@ -551,6 +553,7 @@
         var purchase_date;
         var current_balance;
         var lottery_price;
+	    var ticket_gift;
     
       var current_language = $("#current_language").val();
        var languaje;
@@ -595,6 +598,7 @@
            })
              
      $('#team_score').text(data.game.local_score);
+     ticket_gift = data.game.lotteries[0].purchase_gift_tickets;
      $('#initial_balance').text(data.game.lotteries[0].initial_balance);   
      $(".total_initial_balance").text(""+data.game.lotteries[0].initial_balance+ " DB");         
      $('#team_name').text(data.game.team.name);
@@ -670,14 +674,16 @@
              
              
         $('#confirm-buy').click(function(){
-                      user_id = <%= current_user.id %>;
+                 user_id = <%= current_user.id %>;
                  lottery_id = $('#lottery_id').val();
                  purchase_date = new Date();
                  lottery_price = $('#lottery_price').val();
 			if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= $('#lottery_price').val()){
 				current_balance = <%= current_user.gift_credit %>;
+				is_gift_purchase = true;
 			}else{
 				  current_balance = <%= current_user.balance %>;
+				  is_gift_purchase = false;
 			}
                
 			  
@@ -725,6 +731,17 @@
                      $('#success-modal').modal('show');
                      setTimeout(function(){ location.reload(); }, 2000);     
                      });
+				 
+				 if(is_gift_purchase == true){
+					   $.ajax({
+                      method: "PUT",
+                      url: "/lotteries/"+lottery_id+"",
+                      dataType: "json",     
+                      data: { lottery: {purchase_gift_tickets: parseInt(ticket_gift) + 1 }}
+                    }).done(function( data) {
+                    	
+                     });
+				 }
             }
              
           
@@ -804,12 +821,23 @@
     function update_balance_modal(){
                  user_id = <%= current_user.id %>;
                  lottery_id = $('#lottery_id_modal').val();
+				  var gift_tickets = $('#gift_modal').val();  
                  lottery_price = $('#total_price_modal').text();
                  var current_bag = parseInt($('.total_modal_initial_balance').text());
                
 		if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= $('#lottery_price').val()){
 				current_balance = <%= current_user.gift_credit %>;
 				  var total_balance_update = current_balance - lottery_price;
+			
+			  $.ajax({
+                      method: "PUT",
+                      url: "/lotteries/"+lottery_id+"",
+                      dataType: "json",     
+                      data: { lottery: {purchase_gift_tickets: parseInt(gift_tickets) + 1 }}
+                    }).done(function( data) {
+                    	
+                     });
+			
 				  $.ajax({
                       method: "PUT",
                       url: "/users/"+user_id+"",
@@ -887,7 +915,7 @@
                             var url = "/system/categories/logos/000/000/0"+ data.games[i].category.id+"/original/"+data.games[i].category.logo_file_name+"";
                        }
                        
-                       $("#future_lotteries").append('<div class="timeline-item"><div class="row"><div style="width:20%; padding-top:5px" class="col-xs-4 col-md-4 date"><img  class="category_logo" src=" '+url+' " ><span style="font-weight: 900;">'+moment(data.games[i].game_date ,"", current_language ).format("MMMM D YYYY, h:mm:ss a")+'</span></div><div class="col-xs-9 col-md-9 content no-top-border"><a data-lotteryid="'+data.games[i].lotteries[0].id+'" data-lotteryprice="'+data.games[i].lotteries[0].price+'" data-lotterybalance="'+data.games[i].lotteries[0].initial_balance+'" data-lotteryfinal="'+data.games[i].lotteries[0].final_number+'" data-lotteryrules="'+data.games[i].lotteries[0].rules+'" data-teamname="'+data.games[i].team.name+'" data-team2name="'+data.games[i].team2.name+'"  class="display_modal"><h3 style="text-align:center"> '+ data.games[i].team.name + ' VS ' + data.games[i].team2.name + ' </h3><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"><img height="80px" class="logo_lotteries" src="'+image_url+'"> </h4></div><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"> <img height="80px" class="logo_lotteries"  src="'+image_url2+'"> </h4> </div></a></div></div></div> <hr>');
+                       $("#future_lotteries").append('<div class="timeline-item"><div class="row"><div style="width:20%; padding-top:5px" class="col-xs-4 col-md-4 date"><img  class="category_logo" src=" '+url+' " ><span style="font-weight: 900;">'+moment(data.games[i].game_date ,"", current_language ).format("MMMM D YYYY, h:mm:ss a")+'</span></div><div class="col-xs-9 col-md-9 content no-top-border"><a data-lotteryid="'+data.games[i].lotteries[0].id+'" data-lotteryprice="'+data.games[i].lotteries[0].price+'" data-lotterygift="'+data.games[i].lotteries[0].purchase_gift_tickets+'" data-lotterybalance="'+data.games[i].lotteries[0].initial_balance+'" data-lotteryfinal="'+data.games[i].lotteries[0].final_number+'" data-lotteryrules="'+data.games[i].lotteries[0].rules+'" data-teamname="'+data.games[i].team.name+'" data-team2name="'+data.games[i].team2.name+'"  class="display_modal"><h3 style="text-align:center"> '+ data.games[i].team.name + ' VS ' + data.games[i].team2.name + ' </h3><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"><img height="80px" class="logo_lotteries" src="'+image_url+'"> </h4></div><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"> <img height="80px" class="logo_lotteries"  src="'+image_url2+'"> </h4> </div></a></div></div></div> <hr>');
                        
                           $('.display_modal').click(function(){
                               $('#lottery_number_in_modal').unmask();
@@ -896,6 +924,7 @@
                               $('.total_modal_initial_balance').text($(this).data("lotterybalance"));
                               $('#lottery_id_modal').val($(this).data("lotteryid"));
                               $('#rules_modal').text($(this).data("lotteryrules"));
+							  $('#gift_modal').val($(this).data("lotterygift"));
                               $('#total_price_modal').text($(this).data("lotteryprice"));
                               $("#ticket_name_modal").text($(this).data("teamname") + " Vs " + $(this).data("team2name"));
                               $('#buy_ticket_modal').modal('show');

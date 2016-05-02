@@ -203,6 +203,7 @@ end
 		logger.info @array_values
 		if params[:normal_buy] != 'true'
 			@user_id.update( {gift_credit: Integer(current_user.gift_credit) - @lottery_price})
+			@lottery.update( {purchase_gift_tickets: Integer(@lottery.purchase_gift_tickets) + @array_values.length})
 		else
 			@user_id.update( {balance: current_user.balance - @lottery_price})
 		end
