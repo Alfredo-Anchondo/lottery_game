@@ -17,8 +17,8 @@ class Game < ActiveRecord::Base
          numbers_array = []
         x = where('game_date = ?', DateTime.now.change(:sec => 0)).first 
         if x != nil && x != '' && x != []  
-        y = Lottery.where('game_id = ?', x.id).first
-        z = User.where(:id => UserLottery.where('lottery_id = ?', y.id).pluck(:user_id).uniq).pluck(:email, :id)
+        y = Lottery.where('game_id = ?', x.id).first	
+        z = User.where(:id => UserLottery.where('lottery_id = ?', y.id).pluck(:user_id).uniq).pluck(:email, :id)	
          z.each do |variable|
             @repeat_number = []
         @tickets = UserLottery.where('user_id = ? AND lottery_id = ?' ,variable[1], y.id).pluck(:ticket_number)
@@ -29,6 +29,21 @@ class Game < ActiveRecord::Base
            if z != nil && z != '' && z != []
    			BuyMailer.close_lottery(x,y,z,@tickets,@repeat_number,variable[0]).deliver
 		end
+			 
+	     q = Quiniela.where('game_id = ?', x.id).first
+		 q_mails = User.where(:id => QuinielaUser.where('quiniela_id = ?', q.id).pluck(:user_id).uniq).pluck(:email, :id) 
+		 	 q_mails.each do |variable|
+				 @repeat_number_quiniela = []
+				 @tickets = QuinielaUser.where('user_id = ? AND lottery_id = ?' ,variable[1], q.id).pluck(:ticket_number)
+            @tickets.each do |ticket|
+				 repeat = QuinielaUser.where('ticket_number = ? AND lottery_id = ?' ,ticket, q.id).count
+				 @repeat_number_quiniela.push(repeat);
+            end   
+		 end
+			  if z != nil && z != '' && z != []
+				  BuyMailer.close_lottery_quiniela(x,y,z,@tickets,@repeat_number,variable[0]).deliver
+		      end
+			 
         end
         end
 		
