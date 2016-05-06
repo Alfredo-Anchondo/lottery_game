@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 		collection do
 			get 'get_quinielas', to: "quinielas#get_quinielas"
 			get 'close_quiniela'
+			get 'get_quinielas_no_winner', to: "quinielas#get_quinielas_no_winner"
 		end
 	end
 

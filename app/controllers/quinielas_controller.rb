@@ -6,8 +6,11 @@ class QuinielasController < ApplicationController
 
 	def get_quinielas
 		@quinielas = Quiniela.all
-		render :json => @quinielas
-		
+		render :json => @quinielas		
+	end
+	
+	def get_quinielas_no_winner	
+		render :json => Quiniela.find_no_winners 		
 	end
 	
 	

@@ -7,6 +7,10 @@ class Quiniela < ActiveRecord::Base
 	accepts_nested_attributes_for :quiniela_questions, allow_destroy: true, reject_if: proc{ |attributes| attributes['question_id'].blank? }
 		
 	
+		def self.find_no_winners
+			where('winner_number IS ?', nil) 
+		end
+		
 	def update_winner
 		quiniela_name = game.team.name + " vs " + game.team2.name
 		User.email_in_quiniela(id, winner_number, quiniela_name)
