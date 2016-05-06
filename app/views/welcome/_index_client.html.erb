@@ -1089,7 +1089,7 @@
     }   else{
     var image_url2 = '/system/teams/logos/000/000/0'+data.games[i].team2.id+'/original/'+data.games[i].team2.logo_file_name;
     }  
-				if(data.game[i].lotteries){
+				if(data.game[i].lotteries[0]){
                 if (data.games[i].lotteries[0].winner_number != null){
                     var lottery_winner = data.games[i].lotteries[0].winner_number
                 }else{
