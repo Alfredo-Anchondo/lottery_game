@@ -8,7 +8,7 @@ class Quiniela < ActiveRecord::Base
 		
 	
 		def self.find_no_winners
-			where('winner_number IS NOT DISTINCT FROM NULL') 
+			where('winner_number IS DISTINCT FROM NULL') 
 		end
 		
 	def update_winner
