@@ -1,0 +1,85 @@
+<!-- begin row -->
+<div class="row">
+  <!-- begin col-md-12 -->
+  <div class="col-md-12">
+    <div class="invoice">
+      <div class="invoice-content">
+       <div class="row">
+		   <div class="col-md-6">
+			   <h3 style="text-align:center"> Caracteristicas de la quiniela </h3>
+			   <hr>
+			   <div class="row">
+		  <div class="col-md-4">
+			 <h4> <%= t("activerecord.attributes.quiniela.initial_balance") %>:</h4>
+			  <h5><%= @quiniela.initial_balance %></h5>
+		   </div>
+		  <div class="col-md-4">
+			 <h4> <%= t("activerecord.attributes.quiniela.price") %>: </h4>
+			  <h5><%= @quiniela.price %></h5>
+		   </div>
+		  <div class="col-md-4">
+			 <h4> <%= t("activerecord.attributes.quiniela.description") %>: </h4>
+			  <h5><%= @quiniela.description %></h5>
+		   </div>
+				   </div>
+			   <hr>
+		  
+          <div class="row">
+			  <div class="col-md-4">
+				 <h4> <%= t("activerecord.attributes.quiniela.game") %>:</h4>
+				  <h5><%= @quiniela.game.team.name + ' vs ' + @quiniela.game.team2.name %></h5>
+			  </div>
+		  <div class="col-md-4">
+			   <h4> <%= t("activerecord.attributes.quiniela.created_at") %>: </h4>
+                  <h5><%= @quiniela.created_at %> </h5>
+			  </div>
+			  <div class="col-md-4">
+				  <h4> <%= t("activerecord.attributes.quiniela.winner_number") %>: </h4>
+				  <h5><%= @quiniela.winner_number %> </h5>
+			  </div>
+			  </div>
+		  </div>
+               <div class="col-md-6">
+		   			<h3 style="text-align:center"> Preguntas de la quiniela</h3>
+				   <hr>
+				   <% if @quiniela.quiniela_questions.any? %>
+				   <% @quiniela.quiniela_questions.each do |question| %>
+				   <h4 style="text-align:center"> <%= question.question_id %>- <%= question.question.title %> </h4>
+				   <% end %>
+				   <% end %>
+		   	   </div>   
+         
+        
+      </div>
+      <div class="invoice-footer text-muted"></div>
+    </div>
+  </div>
+  <!-- end col-md-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :edit, @quiniela %>
+      <%= link_to edit_quiniela_path(@quiniela), :class => "btn btn-default" do %>
+        <i class="icon-pencil"></i>
+        <%= t("actions.edit") %>
+      <% end %>
+    <% end %>
+    <% if can? :delete, @quiniela %>
+      <%= link_to @quiniela, method: :delete, data: { confirm: t("are_you_sure?", model: t("activerecord.models.quiniela").downcase) }, :class => "btn btn-danger" do %>
+        <i class="icon-trash"></i>
+        <%= t("actions.delete") %>
+      <% end %>
+    <% end %>
+    <% if can? :index, Quiniela  %>
+      <%= link_to quinielas_path, :class => "btn btn-default" do %>
+        <i class="icon-chevron-left"></i>
+        <%= t("actions.back") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->

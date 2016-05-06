@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
           :rememberable, :trackable, :timeoutable, :validatable,:recoverable, :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
       #Associations
-     belongs_to :role
+    belongs_to :role
     has_many :user_lotteries
     has_attached_file :photo,
     :styles => { :medium => "x300",
@@ -90,6 +90,15 @@ end
 			 BuyMailer.winner_number(emails, winner_number, lottery_name).deliver
 		end
     end  
+	
+	 
+	def self.email_in_quiniela(quiniela_id_param, winner_number, quiniela_name)
+		emails = where(:id => QuinielaUser.where(:quiniela_id => quiniela_id_param).pluck(:user_id).uniq).pluck(:email)
+        logger.info emails
+		if emails != nil && emails != '' && emails != []
+			BuyMailer.winner_number_quiniela(emails, winner_number, quiniela_name).deliver
+		end
+    end  
     
     
     def self.winner_user(lottery_id_param, winner_number, lottery_name, winner_number_param, initial_balance)
@@ -121,6 +130,42 @@ end
             User.find_by_id(user_winner).update(:balance => (variable.balance + total_update)) 
              update_winner = UserLottery.where(:lottery_id => lottery_id_param, :ticket_number => String(winner_number_param), :user_id => user_winner).pluck(:id)
              UserLottery.find_by_id(update_winner).update(:status => "Ganador") 
+            end
+        
+        end 
+    
+    
+    end   
+	
+	def self.winner_quiniela_user(quiniela_id_param, winner_number, quiniela_name, winner_number_param, initial_balance)
+		users = where(:id => QuinielaUser.where(:quiniela_id => quiniela_id_param, :ticket_number => String(winner_number_param)).pluck(:user_id).uniq).all
+        
+        if users.count <= 1 
+            if users.present?
+             winner = users[0].email
+             user_winner =  users[0].id
+             logger.info winner
+             logger.info user_winner
+			 BuyMailer.winner_congratulations_quiniela(winner, winner_number, quiniela_name, initial_balance, 1).deliver
+             User.find_by_id(user_winner).update(:balance => (users[0].balance + initial_balance.to_f)) 
+				update_winner = QuinielaUser.where(:quiniela_id => quiniela_id_param, :ticket_number => String(winner_number_param), :user_id => user_winner).pluck(:id)
+				QuinielaUser.find_by_id(update_winner).update(:status => "Ganador") 
+            end    
+        else
+            count = users.count
+            total_update = initial_balance.to_f / count
+            logger.info count 
+            logger.info initial_balance
+            logger.info total_update
+            
+            users.each do |variable|
+            logger.info variable.email 
+            winner = variable.email
+            user_winner =  variable.id
+			BuyMailer.winner_congratulations(winner, winner_number, quiniela_name, total_update, count).deliver
+            User.find_by_id(user_winner).update(:balance => (variable.balance + total_update)) 
+			update_winner = QuinielaUser.where(:quiniela_id => quiniela_id_param, :ticket_number => String(winner_number_param), :user_id => user_winner).pluck(:id)
+			QuinielaUser.find_by_id(update_winner).update(:status => "Ganador") 
             end
         
         end 

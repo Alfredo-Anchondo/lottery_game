@@ -1,0 +1,66 @@
+<div class="row" id="info_customer">
+<div class="col-md-4">
+	 <h2 style="text-align:center; color:black;">Nombre Usuario: <%= @user.name %> </h2> 
+	</div>
+	<div class="col-md-4">
+	<h2 style="text-align:center ; color:black;">Saldo en DBS: <%= @user.balance %> </h2>
+	</div>
+	<div class="col-md-4">
+	<h2 style="text-align:center; color:black;">Saldo de regalo: <%= @user.gift_credit %></h2>
+	</div>
+	<div class="clearfix"></div>
+	<hr>
+	<div class="col-md-4">
+	<h2 style="text-align:center; color:black;"> Personas recomendadas <%= @recomend.length %> </h2>
+	<div>
+	<% @recomend.each do |recome| %>
+		<h4 style="text-align:center; color:black;"> Nombre:	<%= recome.name + " " + recome.last_name %></h4>
+	<% end %>
+	</div>
+	</div>
+	<div class="col-md-4">
+		<h2 style="text-align:center; color:black"> Recomendado por: <%= @user.reference_by_friend ? @user.reference_by_friend : 'No tiene codigo'  %> </h2>
+	</div>
+	<div class="col-md-4">
+		
+	<h2 style="text-align:center; color:black;"> Cantidad de tickets comprados: <%= @tickets.length	 %></h2>
+	
+	<% lottery_id = 0 %>
+		 <div class="panel-body">
+                                <div class="panel-group" id="accordion">
+                                
+	<% @tickets.each do |status| %>
+		
+		<% if lottery_id != status.lottery.id %>
+		       <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= status.lottery.id %>" aria-expanded="false" class="collapsed"><h5 style="text-align:center; color:red;"> <%= status.lottery.game.team.name + ' vs ' + status.lottery.game.team2.name %> <span style="color:black;"><%= status.lottery.game.game_date.strftime('%F') %></span></h5></a>
+                           </h5>
+                        </div>
+                       <div id="collapse<%= status.lottery.id %>" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                       <div class="panel-body">
+                          <div class="col-md-12 loteria<%= status.lottery.id %>">
+							
+							<div class="col-md-2">
+									<h5>Billete: <%= status.ticket_number %> </h5>
+							</div>
+	
+						  </div>           
+                       </div>
+                       </div>
+                </div>
+	
+		<% else %>
+		<script>
+		$('.loteria<%= status.lottery.id %>').append("<div class='col-md-2'><h5>Billete: <span><%= status.ticket_number %> </span></h5></div>");
+		</script>
+		<% end %>
+		<% lottery_id = status.lottery.id %>
+	<% end %>
+			 </div>
+		</div>
+	</div>
+	
+
+</div>

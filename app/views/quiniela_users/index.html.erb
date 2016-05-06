@@ -1,0 +1,99 @@
+<div class="row">
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <h3 style="margin-left:15px"><%= t("activerecord.models.quiniela_users") %></h3>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
+            <thead>
+              <tr>
+				  <th><%= t("activerecord.attributes.quiniela_user.user") %></th>
+				  <th><%= t("activerecord.attributes.quiniela_user.quiniela") %></th>
+				  <th><%= t("activerecord.attributes.quiniela_user.ticket_number") %></th>
+				  <th><%= t("activerecord.attributes.quiniela_user.status") %></th>
+				  <th><%= t("activerecord.attributes.quiniela_user.purchase_date") %></th>
+				  <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @quiniela_users.each do |quiniela_user| %>
+              <tr>
+				  <td> <%= quiniela_user.user.select_display %> </td>
+				  <td> <%= quiniela_user.quiniela.description %> </td>
+				  <td> <%= quiniela_user.ticket_number %> </td>
+				  <td> <%= quiniela_user.status %> </td>
+				  <td> <%= quiniela_user.purchase_date %> </td>
+                                <td class="action-link">
+                  <% if can? :show,quiniela_user %>
+                    <%= link_to quiniela_user, :class => "btn btn-default", :title => t("actions.show") do %>
+                      <i class="fa fa-eye"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :edit, quiniela_user %>
+                    <%= link_to edit_quiniela_user_path(quiniela_user), :class => "btn btn-info", :title => t("actions.edit") do %>
+                      <i class="fa fa-pencil"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :delete, quiniela_user %>
+                    <%= link_to quiniela_user, :method => :delete, :data => { :confirm => t("are_you_sure?", model: t("activerecord.models.quiniela_user").downcase) }, :class => "btn btn-danger", :title => t("actions.delete") do %>
+                      <i class="fa fa-trash"></i>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center">
+      
+        </div>
+      </div>
+      <!-- end panel-body -->
+    </div>
+    <!-- end panel -->
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :new, QuinielaUser  %>
+      <%= link_to new_quiniela_user_path, :class => "btn btn-default" do %>
+        <i class="icon-plus-sign-alt"></i>
+        <%= t("actions.new") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+
+<script>
+       var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+    
+$('#data-table').DataTable({
+    responsive: true,
+    order: [1,"desc"],
+     "language": {
+            "url": languaje
+        }
+});
+</script>

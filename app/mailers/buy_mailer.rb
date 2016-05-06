@@ -44,6 +44,22 @@ class BuyMailer < ActionMailer::Base
       @num_winners = num_winners    
           mail(to: @winner, subject: '[DonBillete] Felicidades eres el Ganador de la Loteria')
   end
+	
+	def winner_number_quiniela(emails, winner_number, lottery_name)
+      @emails = emails 
+      @winner_number  = winner_number
+      @lottery_name = lottery_name   
+      mail(to: @emails, subject: '[DonBillete] Loteria Terminada - Número ganador de Loteria')
+  end
+    
+	def winner_congratulations_quiniela(winner, winner_number, lottery_name, total_update, num_winners)
+      @winner = winner 
+      @winner_number  = winner_number
+      @lottery_name = lottery_name   
+      @total_update = total_update  
+      @num_winners = num_winners    
+          mail(to: @winner, subject: '[DonBillete] Felicidades eres el Ganador de la Loteria')
+  end
     
     def close_lottery(game, lottery, mail,tickets,repeat,correct_mail)
         @game = game

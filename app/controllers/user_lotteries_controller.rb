@@ -57,7 +57,7 @@ class UserLotteriesController < ApplicationController
 
     respond_to do |format|
       if @user_lottery.save
-        BuyMailer.buy_ticket(@user_lottery.user, @user_lottery.lottery, @user_lottery).deliver
+        #BuyMailer.buy_ticket(@user_lottery.user, @user_lottery.lottery, @user_lottery).deliver
         format.html { redirect_to @user_lottery, notice: 'User lottery was successfully created.' }
         format.json { render :show, status: :created, location: @user_lottery } 
       else

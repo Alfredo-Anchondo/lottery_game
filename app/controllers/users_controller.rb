@@ -24,7 +24,12 @@ class UsersController < ApplicationController
 		render :json => User.search_reference1(reference)
 	end
    
-	
+	def client_details
+		@user = User.find(params[:id_client])
+		@tickets = UserLottery.where(user_id: params[:id_client]).order(lottery_id: :desc);
+		@recomend = User.where(reference_by_friend: @user.friend_reference)
+		respond_with(@user)
+	end
        
     
     def lotteries

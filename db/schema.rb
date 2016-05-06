@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317223744) do
+ActiveRecord::Schema.define(version: 20160503184726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,19 +41,62 @@ ActiveRecord::Schema.define(version: 20160317223744) do
   add_index "games", ["team_id"], name: "index_games_on_team_id", using: :btree
 
   create_table "lotteries", force: true do |t|
-    t.float    "initial_balance", null: false
-    t.text     "rules",           null: false
+    t.float    "initial_balance",                     null: false
+    t.text     "rules",                               null: false
     t.text     "description"
-    t.integer  "game_id",         null: false
+    t.integer  "game_id",                             null: false
     t.integer  "winner_number"
-    t.integer  "initial_number",  null: false
-    t.integer  "final_number",    null: false
-    t.float    "price",           null: false
+    t.integer  "initial_number",                      null: false
+    t.integer  "final_number",                        null: false
+    t.float    "price",                               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "purchase_gift_tickets", default: "0"
+  end
+
+  add_index "lotteries", ["game_id"], name: "index_lotteries_on_game_id", using: :btree
+
+  create_table "questions", force: true do |t|
+    t.string   "title",       null: false
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "lotteries", ["game_id"], name: "index_lotteries_on_game_id", using: :btree
+  create_table "quiniela_questions", force: true do |t|
+    t.integer  "question_id", null: false
+    t.integer  "quiniela_id", null: false
+    t.text     "value",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "quiniela_questions", ["question_id"], name: "index_quiniela_questions_on_question_id", using: :btree
+  add_index "quiniela_questions", ["quiniela_id"], name: "index_quiniela_questions_on_quiniela_id", using: :btree
+
+  create_table "quiniela_users", force: true do |t|
+    t.integer  "user_id",       null: false
+    t.integer  "quiniela_id",   null: false
+    t.text     "ticket_number", null: false
+    t.text     "status"
+    t.datetime "purchase_date", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "quiniela_users", ["quiniela_id"], name: "index_quiniela_users_on_quiniela_id", using: :btree
+  add_index "quiniela_users", ["user_id"], name: "index_quiniela_users_on_user_id", using: :btree
+
+  create_table "quinielas", force: true do |t|
+    t.text     "initial_balance", null: false
+    t.text     "price"
+    t.text     "description"
+    t.integer  "game_id",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "quinielas", ["game_id"], name: "index_quinielas_on_game_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name",        null: false
@@ -113,31 +156,31 @@ ActiveRecord::Schema.define(version: 20160317223744) do
   add_index "user_lotteries", ["user_id"], name: "index_user_lotteries_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "name",                                 null: false
-    t.string   "last_name",                            null: false
+    t.string   "name",                                            null: false
+    t.string   "last_name",                                       null: false
     t.string   "address_1"
     t.string   "address_2"
     t.string   "zip_code"
     t.integer  "age"
-    t.string   "email",                                null: false
+    t.string   "email",                                           null: false
     t.string   "phone"
     t.string   "cellphone"
-    t.float    "balance",                default: 0.0
-    t.integer  "role_id",                              null: false
+    t.float    "balance",                           default: 0.0
+    t.integer  "role_id",                                         null: false
     t.string   "country"
     t.string   "state"
     t.string   "city"
     t.integer  "int_number"
     t.integer  "ext_number"
-    t.string   "username",                             null: false
+    t.string   "username",                                        null: false
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encrypted_password",     default: "",  null: false
+    t.string   "encrypted_password",                default: "",  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,   null: false
+    t.integer  "sign_in_count",                     default: 0,   null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -151,6 +194,14 @@ ActiveRecord::Schema.define(version: 20160317223744) do
     t.datetime "confirmation_sent_at"
     t.string   "provider"
     t.string   "uid"
+    t.string   "favorite_team",          limit: 30
+    t.date     "birthday"
+    t.string   "openpay_id"
+    t.string   "gender"
+    t.string   "language",               limit: 30
+    t.string   "friend_reference"
+    t.string   "gift_credit",                       default: "0"
+    t.string   "reference_by_friend"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
@@ -161,6 +212,14 @@ ActiveRecord::Schema.define(version: 20160317223744) do
   add_foreign_key "games", "teams", name: "games_team_id_fk"
 
   add_foreign_key "lotteries", "games", name: "lotteries_game_id_fk"
+
+  add_foreign_key "quiniela_questions", "questions", name: "quiniela_questions_question_id_fk"
+  add_foreign_key "quiniela_questions", "quinielas", name: "quiniela_questions_quiniela_id_fk"
+
+  add_foreign_key "quiniela_users", "quinielas", name: "quiniela_users_quiniela_id_fk"
+  add_foreign_key "quiniela_users", "users", name: "quiniela_users_user_id_fk"
+
+  add_foreign_key "quinielas", "games", name: "quinielas_game_id_fk"
 
   add_foreign_key "sport_categories", "categories", name: "sport_categories_category_id_fk"
   add_foreign_key "sport_categories", "sports", name: "sport_categories_sport_id_fk"

@@ -13,6 +13,11 @@ class GamesController < ApplicationController
   def show
   
   end
+	
+	def select_display
+		  team.name + " vs " + team2.name
+	end
+	
 
   # GET /games/new
   def new

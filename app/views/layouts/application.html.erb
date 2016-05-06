@@ -77,17 +77,20 @@
     <div class="" style="margin-top:0%; width:100%"  id="main-con"><%= yield %></div>
     <% end %>
        
-           <% if signed_in? %>
+</body>
+	 <% if signed_in? %>
    <div class="clearfix"></div>
  <div class="footer" style="text-align:center;">
-	 <div class="pull-left" style="color:black">
-	 DONBILLETE 2016 Todos los derechos reservados.
+	 <div style="border-bottom:1px solid gray"> <div class="pull-left"> <img src="/assets/openpay.png"> </div> <img src="/assets/cards1.png" > <img src="/assets/cards2.png"> <div class="pull-right"><img src="/assets/security.png" height="30px;"></div> </div>
+	
+	 <div class="pull-left" style="color:black; margin-left:-7%;">
+	 <h5 style="text-align:left; font-weight:900; margin-top:6px;">DONBILLETE 2016 Todos los derechos reservados.</h5>
 	 </div>
-         <a href="/welcome/about" style="margin-right:3%; display:inline;">Quienes Somos</a> <a href="/welcome/terms" style="margin-right:3%; display:inline;">Terminos y Condiciones</a> <a href="/welcome/contact" style="margin-right:3%; display:inline;">Contactanos</a> <a href="/welcome/privacy" style="margin-right:3%; display:inline;">Privacidad y Seguridad</a>  <a href="/welcome/faq" style="margin-right:3%; display:inline;">FAQ</a> 
-        </div>
+	 <div style="margin-top:4px; padding-right:12%;">
+         <a href="/welcome/about" style="margin-right:3%; margin-top:1%; font-weight:800; display:inline;">Quiénes Somos</a><a href="/welcome/terms" style="margin-right:3%; font-weight:800; display:inline;">Términos y Condiciones</a> <a href="/welcome/contact" style="margin-right:3%; font-weight:800; display:inline;">Contáctanos</a> <a href="/welcome/privacy" style="margin-right:3%; font-weight:800; display:inline;">Privacidad y Seguridad</a>  <a href="/welcome/faq" style="margin-right:3%; font-weight:800; display:inline;">FAQ</a> 
+        </div></div>
 	<% end %>
    
-</body>
 	<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

@@ -30,12 +30,27 @@
             </li>
           <li  class="<%= 'active' if controller_name == 'user_lotteries' %>"><a href="/user_lotteries"> <span class="nav-label"><%= t('userlotteries') %></span>  </a>
             </li>
+		            <li class="dropdown">
+                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Quiniela<span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+                             <li  class="<%= 'active' if controller_name == 'questions' %>"><a href="/questions"> <span class="nav-label">Preguntas</span>  </a>
+							 </li>
+							<li  class="<%= 'active' if controller_name == 'quiniela' %>"><a href="/quinielas"> <span class="nav-label">Quiniela</span>  </a>
+							</li>
+							<li  class="<%= 'active' if controller_name == 'quiniela_questions' %>"><a href="/quiniela_questions"> <span class="nav-label">Preguntas por quiniela</span>  </a>
+            				</li>
+							<li  class="<%= 'active' if controller_name == 'quiniela_users' %>"><a href="/quiniela_users"> <span class="nav-label">Usuarios por quiniela</span>  </a>
+            				</li>
+							 <li><a href="/quinielas/close_quiniela">Cerrar Quiniela</a></li>
+                        </ul>
+                    </li>
           <li class="dropdown">
                         <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> <%= t('process') %> <span class="caret"></span></a>
                         <ul role="menu" class="dropdown-menu">
                             <li><a href="/user_lotteries/winners_view"><%= t('winners_history') %></a></li>
                             <li><a href="/games/today_games_view"><%= t('today_games') %></a></li>
 							<li><a href="/user_lotteries/tickets_by_lottery">Tickets vendidos por loteria</a></li>
+							
                         </ul>
                     </li>
          

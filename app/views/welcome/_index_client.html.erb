@@ -39,13 +39,14 @@
                            
                         <div class="col-md-3 col-xs-12">
                             <h4 style="text-align:center; color:white;"><span id='first_balance'><%= t('estimate_jackpot') %>:</span> </h4>
-                            <h4 id="initial_balance2" style="text-align:center;font-size: 40px; color: #E4007D;"><span id="initial_balance"></span> DB</h4>
+                            <h4 id="initial_balance2" style="text-align:center;font-size: 60px; color: #E4007D;"><span id="initial_balance"></span> DB</h4>
                             <hr>
                             <input style="display:none" id="lottery_price" value="">
                             <h4 style="text-align:center; color:white;"> <%= t('lottery_price') %> </h4>
-                            <h2 style="text-align:center; color:#AB005C; font-weight:800" ><span id="lottery_display_price"></span> <span> DB</span></h2> <hr>
+                            <h2 style="text-align:center; color:#AB005C; font-weight:800; font-size:40px" ><span id="lottery_display_price"></span> <span> DB</span></h2> <hr>
                             </div>
                         <div class="col-md-4 col-xs-5">
+							<h4 style="text-align:center; color:white;">Equipo Local</h4>
                            <h3 style="text-align:center;font-size:30px; color:white;" id="team_name"></h3>
                             <h2 style="text-align:center; "><img height="auto" id="team1" src=""></h2>
 							<h5 style="text-align:center; color:white;">Selecciona el primer digito:</h5>
@@ -64,9 +65,10 @@
                                     </select></h2>
                         </div>
                         <div class="col-md-1 col-xs-2" style="">
-                            <h1 id="vs" style="text-align:center; color:red; font-weight:800; font-size:50px; margin-top:30%;">VS</h1>
+                            <h1 id="vs" style="text-align:center; color:white; font-weight:800; font-size:50px; margin-top:130%;">VS</h1>
                         </div>
                         <div class="col-md-4 col-xs-5">
+							<h4 style="text-align:center; color:white;">Equipo Visitante</h4>
                             <h3 style="text-align:center; font-size:30px; color:white;" id="team2_name"></h3>
                              <h2 style="text-align:center"><img id="team2"  height="auto" src=""></h2>
 								<h5 style="text-align:center; color:white;">Selecciona el segundo digito:</h5>
@@ -94,11 +96,11 @@
                              <h3 style="text-align:center; font-weight:900; color:#FD83C6"> <%= t('lottery_rules') %>: <pre style="font-size:84%; font-weight:600; background-color:transparent; color:white; overflow:hidden; padding:0px; font-family: inherit; border: 0px;" id="lottery_rules"></pre>  </h3>
                         </div>
                             <div class="col-md-4 col-xs-12">
-                                <h4 class="center-text" style="text-align:center" > <%= t('select_participe_number')%>:<input style="display:none" id="lottery_id" value="">  </h4> <br>
+                                <h4 class="center-text" style="text-align:center; font-size:18px;" > <%= t('select_participe_number')%>:<input style="display:none" id="lottery_id" value="">  </h4> <br>
 								  <input style="color:black; text-align:center" value="00" disabled class="ticket_number form-control" type="text" > 
                             </div>
                           <div class="col-md-4  col-xs-12" id="move-top">
-                            <h4 style="text-align:center">  <span class="center-text" ><%= t('no_balance_money') %></span></h4>  <h4 style="text-align:center"><button style="margin-top:3%;"  id="buy-ticket-button" class="btn btn-primary center-text"><%= t('buy_ticket') %></button></h4>
+                            <h4 style="text-align:center; font-size:18px;">  <span class="center-text" ><%= t('no_balance_money') %></span></h4>  <h4 style="text-align:center"><button style="margin-top:3%;"  id="buy-ticket-button" class="btn btn-primary center-text"><%= t('buy_ticket') %></button></h4>
                               
                             </div>
                             </div>
@@ -192,6 +194,9 @@
 						<div class="row" id="purchase_serie" style="display:none">
 							<h3 style="text-align:center; font-weight:900">Numeros Generados</h3>
 							<h2 id="generate_serie_numbers" style="word-spacing:5px; font-weight:900; text-align:center;"></h2>
+							<hr>
+							<h3 style="text-align:center; font-weight:800;">Total a pagar: <span id="serie_total_buy"></span></h3>
+							<hr>
 							<h4 style="text-align:center"> <button class="btn btn-primary" id="btn_buy_serie">Comprar Billetes</button></h4>
 							
 							<h5 style=" text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:black" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5>
@@ -262,6 +267,8 @@
                                 
                                 <h3>Números Generados: </h3> 
                                 <h2 style="font-weight:900; word-spacing:10px;" id="generate_numbers_div"></h2>
+								<hr>
+								<h3 style="font-weight:800">Total a pagar: <span style="font-size:120%" id="total_pay_ran"></span></h3>
                                 <hr>
                                 
                                 <button class="btn btn-primary" id="generate_numbers">Generar Números</button>
@@ -364,7 +371,22 @@
    
     
 		
-		
+		<div class="row">
+		<div class="col-md-8">
+			 <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Quinielas</h5>
+                            <span class="label label-primary">Nuevo juego</span>
+                        </div>
+
+                        <div class="ibox-content" id="quinielas">
+							 <div class="cycle-slideshow2" data-cycle-fx="tileBlind" data-cycle-pause-on-hover="true" data-cycle-speed="200">
+          
+            </div>
+				 </div>
+			</div>
+			</div>
+		</div> 
 
 
 
@@ -1122,7 +1144,6 @@
         $("#local_team_random").append('<img width="70%" src="'+image_url+'">');  
 		 $('#random_price').text( ""+$('#lotteries_random option:selected').data('price') + " DB");
          $('#random-balance').text(""+$('#lotteries_random option:selected').data('balance') + " DB");		
-					  i
 		$('#random-caracteristics').show();
               			
               
@@ -1185,6 +1206,7 @@
             number_array.push(number);
         }
         $('#buy_numbers').show();
+		$('#total_pay_ran').text(parseInt($('#random_price').text()) * quantity + ' DB');	
     })
     
      $('#buy_numbers').click(function(){
@@ -1347,6 +1369,7 @@
 			$('#generate_serie').click(function(){
 				 value = parseInt($('#initial_serie').val());
 				max_value = parseInt($('#final_serie').val());
+				quantity = max_value - value ;
 		
 				$('#generate_serie_numbers').empty();
 				if($('#lotteries_random2').val() == 0 ){
@@ -1365,7 +1388,8 @@
 						$('#purchase_serie').show();
 					}else{
 						alert('Selecciona el numero inicial y final de tu serie');
-					}	
+					}
+					$('#serie_total_buy').text(parseInt($('#serie_price').text()) * quantity + ' DB');
 				}
 			 })
 		
@@ -1403,22 +1427,140 @@
                     }).always(function( data) {
                  		$('#success-content').empty();
                          $('#success-content').append('<h2 style="text-align:center; color:#E81F7F; font-weight:900;">DON<span style="color:black; font-weight:900;">BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
-             			  $('#success-modal').modal('show');  
+             			 $('#success-modal').modal('show');  
 				  		 setTimeout(function(){ location.reload(); }, 2000);     
                      });
-                
-
      }
-                             
-                             
-                 //setTimeout(function(){ location.reload(); }, 2000);  
-         
-         
-         
-            
+                 //setTimeout(function(){ location.reload(); }, 2000);       
      })
+		</script>
+		
+		<script>
+			var current_view;
+			var result;		
+			function generate_ticket(){
+				    result = '';	
+				   for (var i=0; i < 15; i++){
+					  if($('.value_result').hasClass(''+current_view+''+i+'')){
+						  if($('.'+current_view+''+i+'').val()){
+							 result = result + '' + $('.'+current_view+''+i+'').val();
+						  }else{
+							 alert('Debes de seleccionar todas las opciones');
+							return  false; 
+						  }
+					  }
+				   }
+				$('.ticket_value_'+current_view+'').val(result);
+				$('.buy_quiniela_btn'+current_view+'').show();
+				}	
 			
 			
+			
+			$.ajax({
+          method: "GET",
+          url: "/quinielas/get_quinielas",
+          format: "json"
+        })
+          .done(function(data) {
+				for(var i in data.quinielas){
+					
+					 if (data.quinielas[i].game.team.id < 10){
+         var image_url = '/system/teams/logos/000/000/00'+data.quinielas[i].game.team.id+'/original/'+data.quinielas[i].game.team.logo_file_name;
+    }   else{
+    var image_url = '/system/teams/logos/000/000/0'+data.quinielas[i].game.team.id+'/original/'+data.quinielas[i].game.team.logo_file_name;
+    }  
+                           if (data.quinielas[i].game.team2.id < 10){
+         var image_url2 = '/system/teams/logos/000/000/00'+data.quinielas[i].game.team2.id+'/original/'+data.quinielas[i].game.team2.logo_file_name;
+    }   else{
+    var image_url2 = '/system/teams/logos/000/000/0'+data.quinielas[i].game.team2.id+'/original/'+data.quinielas[i].game.team2.logo_file_name;
+    }  
+					
+					$('.cycle-slideshow2').append('<div class="slide'+i+'"><h2 style="text-align:center; font-weight:800">Participa en la Quiniela Deportiva</h2><hr> <h3 style="text-align:center; color:#e4007d"> Que tanto conoces a tus equipos favoritos, demuestralo en esta quiniela y recibe increibles premios. </h3> <h4 style="text-align:center">Es sencillo participar solo contesta estas sencillas preguntas con un si y un no, despues genera tu codigo en base a tus respuestas, si acertaste en todas las preguntas recibes el premio indicado. Recuerda contestar todas las preguntas.</h4><hr> <h3 style="text-align:center; color:#E4007D; font-weight:800;">'+data.quinielas[i].description+'</h3> <div class="row"> <div class="col-md-4"> <div class="row"> <div class="col-md-5"> <img src="'+image_url+'"> </div> <div class="col-md-2"> <h1 style="text-align:center; margin-top:120%; font-weight: 900;color: #E4007D;"> VS </h1> </div> <div class="col-md-5"> <img src="'+image_url2+'"> </div> </div> <hr>  <h3 style="text-align:center; font-weight:700">Bolsa acumulada</h3> <h2 id="initial_balance'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].initial_balance +' <span>DB</span> </h2> <hr> <h3 style="text-align:center; font-weight:700"> Precio de la Quiniela </h3> <h2 id="price'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].price +' <span>DB</span> </h2>  </div> <div class="col-md-8 slide2'+i+'"> </div> </div> </div>');	
+					
+					for(var e in data.quinielas[i].quiniela_questions){
+					$('.slide2'+i+'').append(' <div class="col-md-7"><h4 style="text-align:left">'+ data.quinielas[i].quiniela_questions[e].question.title +'</h4></div> <div class="col-md-3"> <div class="radio radio-inline radio-danger"><input class="answers_select" data-id="'+i+'" type="radio" name="answer'+i+e+'" value="1"><label style="text-align: left !important;" for="answer'+i+e+'" class="">Si</label></div><div class="radio radio-inline radio-danger"><input data-id="'+i+'" type="radio" class="answers_select" name="answer'+i+e+'" value="0"> <label for="answer'+i+e+'" style="text-align: left !important;" class="">No</label></div> </div> <div class="col-md-2"> <input  type="text" disabled class="form-control value_result '+i+e+'"> </div>');
+						}
+					
+					$('.slide'+i+'').append('<hr><div class="row"><div class="col-md-3"> <h4 style="text-align:center"> <button class="btn btn-primary generate_ticket" onclick="generate_ticket()">Generar Numero </button> </h4> </div><div class="col-md-6"> <input type="text" style="margin-top:6px;" class="form-control ticket_value_'+i+'"> </div> <div class="col-md-3"><h4 style="text-align:center"><button style="display:none;" class="btn buy_quiniela buy_quiniela_btn'+i+' btn-primary" data-quinielaid="'+data.quinielas[i].id+'" > Comprar ticket </button> </h4 </div></div>');
+					
+				}
+				$('input[type=radio][class=answers_select]').change(function(){
+					var xz = $(this).val();
+					current_view = $(this).data('id');
+					var change = $(this).parents().next().find('.value_result').first();
+					$(change).val(xz);
+				})
+				
+				$('.buy_quiniela').click(function(){
+					var user_id = <%= current_user.id %>;
+					var quiniela_id = $(this).data('quinielaid');
+					var ticket_number = $('.ticket_value_'+current_view+'').val();
+					var date = new Date();
+					var quiniela_price = parseInt($('#price'+current_view+'').text());
+					var balance;
+					var flag_balance;
+					
+					if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= quiniela_price){
+						balance = <%= current_user.gift_credit %>;
+						flag_balance = false;
+					}else{
+						balance = <%= current_user.balance %>;
+						flag_balance = true;
+					}
+					
+					if (balance >= quiniela_price){
+						 $.ajax({
+                      method: "POST",
+                      url: "/quiniela_users",
+                      dataType: "json",     
+                      data: { quiniela_user: {user_id: user_id, quiniela_id: quiniela_id, ticket_number: ticket_number ,purchase_date: date, status: "Comprado"}  }
+                    }).done(function( data) {
+       				
+                     }); 
+						
+						if(flag_balance){
+							var total_balance_update = balance - quiniela_price;
+							  $.ajax({
+                      method: "PUT",
+                      url: "/users/"+user_id+"",
+                      dataType: "json",     
+                      data: { user: {balance: total_balance_update} }
+                    }).done(function( data) {
+								  $('#success-content').empty();
+                     $('#success-content').append('<h2 style="text-align:center; color:#E81F7F; font-weight:900;">DON<span style="color:black; font-weight:900;">BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
+                       $("#success-modal").modal('show');
+								    setTimeout(function(){ location.reload(); }, 2000);     
+							  })
+						}else{
+							var total_balance_update = balance - quiniela_price;
+							  $.ajax({
+                      method: "PUT",
+                      url: "/users/"+user_id+"",
+                      dataType: "json",     
+                      data: { user: {gift_credit: total_balance_update} }
+                    }).done(function( data) {
+								 $('#success-content').empty();
+                     $('#success-content').append('<h2 style="text-align:center; color:#E81F7F; font-weight:900;">DON<span style="color:black; font-weight:900;">BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
+                       $("#success-modal").modal('show');
+								    setTimeout(function(){ location.reload(); }, 2000);     
+							  })
+						}
+					
+					}else{
+						alert('No tienes saldo suficiente para realizar la compra');
+					}
+					
+
+				})
+				
+				
+		  $('.cycle-slideshow2').bxSlider({
+			infiniteLoop: false,
+            minSlides: 1,
+			maxSlides:1, 
+            slideMargin: 13
+          });
+			});
 			
 		</script>
     

@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+	
+  resources :questions
+
+  resources :quiniela_users
+
+  resources :quiniela_questions
+
+	resources :quinielas do
+		collection do
+			get 'get_quinielas', to: "quinielas#get_quinielas"
+			get 'close_quiniela'
+		end
+	end
+
     devise_for :users,  controllers: { registrations: "registrations" , omniauth_callbacks: 'omniauth_callbacks' }
   
     
@@ -48,7 +62,7 @@ Rails.application.routes.draw do
           get "/lotteries/:id", to: "users#lotteries"
           get "tickets_history"
 		  match "/update_reference" => "users#search_reference", :via => :post
-		  get "client_datails/:id", to: "users#client_datails"
+		  get "/client_details/:id_client", to: "users#client_details"
       end
   end
 

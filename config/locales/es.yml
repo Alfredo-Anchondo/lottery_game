@@ -1,4 +1,4 @@
-# Files in the config/locales directory are used for internationalization
+﻿# Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
 #
@@ -264,6 +264,14 @@ es:
   activerecord:
     models:
         categories: "Categorias"
+        question: "Pregunta"
+        questions: "Preguntas"
+        quiniela: "Quiniela"
+        quinielas: "Quinielas"
+        quiniela_user: "Usuario por Quiniela"
+        quiniela_users: "Usuarios por Quiniela"
+        quiniela_question: "Pregunta por Quiniela"
+        quiniela_questions: "Preguntas por Quiniela"
         category: "Categoria"
         users: "Usuarios"
         user: "Usuario"
@@ -315,6 +323,25 @@ es:
             birthday: "Fecha de nacimiento"
             favorite_team: "Equipo Favorito"
             gender: "Genero"
+        question:
+            title: "Titulo"
+            description: "Descripción"
+        quiniela:
+            initial_balance: "Bolsa Inicial"
+            price: "Precio"
+            description: "Descripción"
+            game: "Juego"
+            winner_number: "Numero Ganador"
+        quiniela_question:
+            question: "Pregunta"
+            quiniela: "Quiniela"
+            value: "Valor"
+        quiniela_user:
+            user: "Usuario"
+            quiniela: "Quiniela"
+            ticket_number: "Numero de Billete"
+            status: "Estatus"
+            purchase_date: "Fecha de Compra"
         sport:
             name: "Nombre"
             description: "Descripción"

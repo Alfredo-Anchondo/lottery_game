@@ -1,0 +1,62 @@
+<%= form_for(@quiniela_user, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @quiniela_user.errors.any? %>
+<div id="error_explanation">
+  <% if @quiniela_user.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.quiniela_user")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.quiniela_user"), :count => @quiniela_user.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @quiniela_user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+	  <div class="form-group">
+		  <%= f.label :user, :class => "col-md-3 requi" %>
+          <div class="col-md-9">
+			  <%= collection_select(:quiniela_user, :user_id, User.all, :id, :select_display) %>
+          </div>
+        </div>
+	  <div class="form-group">
+		  <%= f.label :quiniela, :class => "col-md-3 requi" %>
+          <div class="col-md-9">
+			  <%= collection_select(:quiniela_user, :quiniela_id, Quiniela.all, :id, :description) %>
+          </div>
+        </div>
+	<div class="form-group">
+		<%= f.label :ticket_number, :class => "col-md-3 requi" %>
+          <div class="col-md-9">
+			  <%= f.text_field :ticket_number, :class => "form-control" ,:required => "required"%>
+          </div>
+        </div>
+	<div class="form-group">
+		  <%= f.label :status, :class => "col-md-3 requi" %>
+          <div class="col-md-9">
+			  <%= f.text_field :status, :class => "form-control" ,:required => "required"%>
+          </div>
+        </div>
+	<div class="form-group">
+		<%= f.label :purchase_date, :class => "col-md-3 requi" %>
+          <div class="col-md-9">
+			  <%= f.date_field :purchase_date, :class => "form-control" ,:required => "required"%>
+          </div>
+        </div>
+  </div>
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

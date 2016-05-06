@@ -1,3 +1,4 @@
+
 <% if current_user.address_1 == nil || current_user.address_2 == nil || current_user.ext_number == nil || current_user.state == nil || current_user.city == nil || current_user.zip_code == nil %>
 <script>
     alert('Para poder realizar la compra debes de completar todos tus datos del registro.');
@@ -168,6 +169,7 @@
 						 <h4 style="text-align:center"> <a class="btn btn-danger" id="pay-button"><%= t('buy') %></a>
                            
                           <a  class="btn btn-danger" id="register-button"><%= t('register') %></a></h4>
+						<h5 style="text-align:center">*Se te cobrara $2.50 MXN de comisión por cada transacción.</h5>
 					</div>
 				</div>
 			</div>

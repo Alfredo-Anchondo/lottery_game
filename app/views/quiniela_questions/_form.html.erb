@@ -1,0 +1,50 @@
+<%= form_for(@quiniela_question, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @quiniela_question.errors.any? %>
+<div id="error_explanation">
+  <% if @quiniela_question.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.quiniela_question")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.quiniela_question"), :count => @quiniela_question.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @quiniela_question.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+	<div class="form-group">
+		<%= f.label :quiniela, :class => "col-md-3 requi" %>
+          <div class="col-md-9">
+			  <%= collection_select(:quiniela_question, :quiniela_id, Quiniela.all, :id, :description) %>
+          </div>
+        </div>
+	<div class="form-group">
+		<%= f.label :question, :class => "col-md-3 requi" %>
+          <div class="col-md-9">
+			  <%= collection_select(:quiniela_question, :question_id, Question.all, :id, :title) %>
+          </div>
+        </div>
+	<div class="form-group">
+		<%= f.label :value, :class => "col-md-3 requi" %>
+          <div class="col-md-9">
+			  <%= f.text_field :value, :class => "form-control" ,:required => "required"%>
+          </div>
+        </div>
+  </div>
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

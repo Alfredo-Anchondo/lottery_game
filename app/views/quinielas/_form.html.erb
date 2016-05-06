@@ -1,0 +1,93 @@
+<%= form_for(@quiniela, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @quiniela.errors.any? %>
+<div id="error_explanation">
+  <% if @quiniela.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.quiniela")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.quiniela"), :count => @quiniela.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @quiniela.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+	  <div class="form-group">
+		  <%= f.label :initial_balance, :class => "col-md-3 requi" %>
+          <div class="col-md-9">
+		  <%= f.text_field :initial_balance, :class => "form-control" ,:required => "required"%>
+          </div>
+        </div>
+	  <div class="form-group">
+		  <%= f.label :price, :class => "col-md-3 requi" %>
+          <div class="col-md-9">
+			  <%= f.text_field :price, :class => "form-control" ,:required => "required"%>
+          </div>
+        </div>
+		  <div class="form-group">
+			  <%= f.label :description, :class => "col-md-3" %>
+          <div class="col-md-9">
+			  <%= f.text_field :description, :class => "form-control"%>
+          </div>
+        </div>
+	<div class="form-group">
+		<%= f.label :game, :class => "col-md-3" %>
+          <div class="col-md-9">
+			  <%= collection_select(:quiniela, :game_id, Game.all, :id, :select_display) %>
+          </div>
+        </div>
+	<div class="form-group">
+		<%= f.label :winner_number, :class => "col-md-3" %>
+          <div class="col-md-9">
+			  <%= f.text_field :winner_number, :class => "form-control"%>
+          </div>
+        </div>
+  </div>
+<div class="col-md-6">
+	<h4 style="text-align:center">Preguntas de la Quiniela</h4>
+	<div class="form-group">
+	<%= f.fields_for :quiniela_questions do |question| %>
+	
+		<div class="row">
+			<div class="col-md-1"></div>
+			<%= question.label :question, :class => "col-md-2" %>
+			<div class="col-md-2">
+				<%= question.text_field :question_id, :class => "form-control value_field"%></div>
+			<div class="col-md-6">
+				<%= collection_select(:quiniela, :description, Question.all, :id, :title) %>
+			</div>
+			<div class="col-md-1">
+				<%= question.check_box :_destroy %>
+				<%= question.label :_destroy, 'Elimninar' %>
+			</div>
+		</div> <br>
+	<% end %>
+	</div>
+</div>
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<script>
+	$('Select#quiniela_description').change(function(){
+		var x = $(this).parents().prev().find('.value_field').val($(this).val());
+	});
+	
+	$('.submit').hover(function(){
+	$('Select#quiniela_description').attr( "disabled", true );
+	})	
+</script>
