@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   resources :users do
       collection do
           get "/lotteries/:id", to: "users#lotteries"
+		  get "/quinielas/:id", to: "users#quinielas"
           get "tickets_history"
 		  match "/update_reference" => "users#search_reference", :via => :post
 		  get "/client_details/:id_client", to: "users#client_details"

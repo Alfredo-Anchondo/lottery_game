@@ -36,6 +36,11 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       respond_with(@user.user_lotteries)
     end
+	
+	def quinielas
+      @user = User.find(params[:id])
+	  respond_with(@user.quiniela_users)
+    end
 
   # GET /users/new
   def new

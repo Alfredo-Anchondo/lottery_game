@@ -343,6 +343,7 @@
           format: "json"
         })
           .done(function(data) {
+			
                 
            for(var i in data.user_lotteries){
                         if (data.user_lotteries[i].lottery.team.id < 10){
@@ -375,7 +376,7 @@
 		<div class="col-md-8">
 			 <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Quinielas</h5>
+                            <h5>Tiras</h5>
                             <span class="label label-primary">Nuevo juego</span>
                         </div>
 
@@ -598,7 +599,7 @@
   format: "json"
 })
   .done(function( data) {
-      
+      if(data){
 			 if (data.game.lotteries[0]){
 				 
 			 }else{
@@ -665,6 +666,7 @@
           
   $('#getting-started').countdown(countdown1, function(event) {
       $(this).html(event.strftime('<%= t('lottery_finish') %>:  %d <%= t('day') %> %H:%M:%S <%= t('hours') %>'));
+								  
   });
              
                  user_id = <%= current_user.id %>;
@@ -735,8 +737,11 @@
                  $('#no-lotteries').show();
              }
              
-
-             
+	  }
+              else{
+				 $('#no-lotteries').show();
+				 $('#coming-lotteries').hide();		  
+								  }
        
                });
             
@@ -1470,7 +1475,7 @@
 			
 			$.ajax({
           method: "GET",
-          url: "/quinielas/get_quinielas",
+          url: "/quinielas/get_quinielas_no_winner",
           format: "json"
         })
           .done(function(data) {
@@ -1487,7 +1492,7 @@
     var image_url2 = '/system/teams/logos/000/000/0'+data.quinielas[i].game.team2.id+'/original/'+data.quinielas[i].game.team2.logo_file_name;
     }  
 					
-					$('.cycle-slideshow2').append('<div class="slide'+i+'"><h2 style="text-align:center; font-weight:800">Participa en la Quiniela Deportiva</h2><hr> <h3 style="text-align:center; color:#e4007d"> Que tanto conoces a tus equipos favoritos, demuestralo en esta quiniela y recibe increibles premios. </h3> <h4 style="text-align:center">Es sencillo participar solo contesta estas sencillas preguntas con un si y un no, despues genera tu codigo en base a tus respuestas, si acertaste en todas las preguntas recibes el premio indicado. Recuerda contestar todas las preguntas.</h4><hr> <h3 style="text-align:center; color:#E4007D; font-weight:800;">'+data.quinielas[i].description+'</h3> <div class="row"> <div class="col-md-4"> <div class="row"> <div class="col-md-5"> <img src="'+image_url+'"> </div> <div class="col-md-2"> <h1 style="text-align:center; margin-top:120%; font-weight: 900;color: #E4007D;"> VS </h1> </div> <div class="col-md-5"> <img src="'+image_url2+'"> </div> </div> <hr>  <h3 style="text-align:center; font-weight:700">Bolsa acumulada</h3> <h2 id="initial_balance'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].initial_balance +' <span>DB</span> </h2> <hr> <h3 style="text-align:center; font-weight:700"> Precio de la Quiniela </h3> <h2 id="price'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].price +' <span>DB</span> </h2>  </div> <div class="col-md-8 slide2'+i+'"> </div> </div> </div>');	
+					$('.cycle-slideshow2').append('<div class="slide'+i+'"><h2 style="text-align:center; font-weight:800">Participa en la Tira Deportiva</h2><hr> <h3 style="text-align:center; color:#e4007d"> Que tanto conoces a tus equipos favoritos, demuestralo en esta tira y recibe increibles premios. </h3> <h4 style="text-align:center">Es sencillo participar solo contesta estas sencillas preguntas con un si y un no, despues genera tu codigo en base a tus respuestas, si acertaste en todas las preguntas recibes el premio indicado. Recuerda contestar todas las preguntas.</h4><hr> <h3 style="text-align:center; color:#E4007D; font-weight:800;">'+data.quinielas[i].description+'</h3> <div class="row"> <div class="col-md-4"> <div class="row"> <div class="col-md-5"> <img src="'+image_url+'"> </div> <div class="col-md-2"> <h1 style="text-align:center; margin-top:120%; font-weight: 900;color: #E4007D;"> VS </h1> </div> <div class="col-md-5"> <img src="'+image_url2+'"> </div> </div> <hr>  <h3 style="text-align:center; font-weight:700">Bolsa acumulada</h3> <h2 id="initial_balance'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].initial_balance +' <span>DB</span> </h2> <hr> <h3 style="text-align:center; font-weight:700"> Precio de la Tira </h3> <h2 id="price'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].price +' <span>DB</span> </h2>  </div> <div class="col-md-8 slide2'+i+'"> </div> </div> </div>');	
 					
 					for(var e in data.quinielas[i].quiniela_questions){
 					$('.slide2'+i+'').append(' <div class="col-md-7"><h4 style="text-align:left">'+ data.quinielas[i].quiniela_questions[e].question.title +'</h4></div> <div class="col-md-3"> <div class="radio radio-inline radio-danger"><input class="answers_select" data-id="'+i+'" type="radio" name="answer'+i+e+'" value="1"><label style="text-align: left !important;" for="answer'+i+e+'" class="">Si</label></div><div class="radio radio-inline radio-danger"><input data-id="'+i+'" type="radio" class="answers_select" name="answer'+i+e+'" value="0"> <label for="answer'+i+e+'" style="text-align: left !important;" class="">No</label></div> </div> <div class="col-md-2"> <input  type="text" disabled class="form-control value_result '+i+e+'"> </div>');

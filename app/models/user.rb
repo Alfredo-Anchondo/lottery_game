@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
       #Associations
     belongs_to :role
     has_many :user_lotteries
+	has_many :quiniela_users
     has_attached_file :photo,
     :styles => { :medium => "x300",
     :mobile => "x240" }

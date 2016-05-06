@@ -4,6 +4,7 @@
 	}
 </style>
 <div class="row" id="coming-lotteries">
+	<input type="hidden" id="quiniela_name">
     <input type="hidden" id="lottery_name">
     <div class="ibox float-e-margins">
                     <div class="ibox-title">
@@ -12,7 +13,11 @@
                        </div>
                     </div>
                     <div class="ibox-content" style="display: block;">
-                        <div class="table-responsive">
+						<div class="row">
+						<div class="col-md-12">
+						
+                       
+							<h3 style="text-align:center">Historial de boletos de Loteria y de Tira</h3>
           <table id="history-table"  class=" table responsive table-bordered table-hover table-striped nowrap" width="100%">
             <thead style="background-color:#727272; color:white;">
               <tr>
@@ -27,11 +32,36 @@
             <tbody>
                 
             </tbody>
-      </div>
+     
+							</div>
+							<div class="col-md-12">
+							
+								
+          <table id="history-table-quiniela"  class=" table responsive table-bordered table-hover table-striped nowrap" width="100%">
+            <thead style="background-color:#727272; color:white;">
+              <tr>
+				  				  <th>Tira</th>
+                                  <th><%= t('purchase_number') %> </th>
+				  				  <th><%= t("activerecord.attributes.quiniela.winner_number") %></th>
+				  				  <th><%= t("activerecord.attributes.quiniela.price") %></th>
+				  				  <th><%= t("activerecord.attributes.quiniela_user.purchase_date") %></th>
+              </tr>
+            </thead>
+
+            <tbody>
+                
+            </tbody>
+  
+							</div>
+							
                     </div>
                 </div>
+							</div>
 </div>
-	<div class="clearfix"></div>
+	
+	
+
+
 
 <script>
     
@@ -70,3 +100,47 @@
       
   
       </script>
+	
+<!------------------------------------------------------------------------------------------------------------>	
+
+
+<script>
+    
+      var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+    
+  var table = $('#history-table-quiniela').DataTable( {
+       responsive: true,
+       order: [ 4, 'desc' ],
+    ajax: {
+        url: "/users/quinielas/"+<%= current_user.id %>+".json",
+        dataSrc: 'users'
+    },
+            "language": {
+            "url": languaje
+        },
+    columns: [
+  
+        { data: function ( row, type, val, meta ) {
+           return row.quiniela.team.name + " vs " + row.quiniela.team2.name
+        }},
+        { data: 'ticket_number' },
+        { data: 'quiniela.winner_number' },
+        { data: 'quiniela.price' },
+        { data: function ( row, type, val, meta ) {
+            return moment(row.purchase_date ,'' ,'es').format('MM/DD/YYYY HH:mm');
+        }  }
+    ],
+} );
+      
+  
+      </script>
+	
+	
+	

@@ -1,4 +1,4 @@
-﻿# Files in the config/locales directory are used for internationalization
+# Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
 #
@@ -96,7 +96,7 @@ es:
   "false": "No"
   welcome_don: "Bienvenido a DonBillete"
   checkout: "Retirar Saldo"
-  history: "Historial"
+  history: "Estado de Cuenta"
   type_transaccion: "Tipo de Transacción"
   transaction_description: "Descripción"
   card_brand: "Tipo de tarjeta"
@@ -266,12 +266,12 @@ es:
         categories: "Categorias"
         question: "Pregunta"
         questions: "Preguntas"
-        quiniela: "Quiniela"
-        quinielas: "Quinielas"
-        quiniela_user: "Usuario por Quiniela"
-        quiniela_users: "Usuarios por Quiniela"
-        quiniela_question: "Pregunta por Quiniela"
-        quiniela_questions: "Preguntas por Quiniela"
+        quiniela: "Tira"
+        quinielas: "Tiras"
+        quiniela_user: "Usuario por Tira"
+        quiniela_users: "Usuarios por Tira"
+        quiniela_question: "Pregunta por Tira"
+        quiniela_questions: "Preguntas por Tira"
         category: "Categoria"
         users: "Usuarios"
         user: "Usuario"
@@ -334,11 +334,11 @@ es:
             winner_number: "Numero Ganador"
         quiniela_question:
             question: "Pregunta"
-            quiniela: "Quiniela"
+            quiniela: "Tira"
             value: "Valor"
         quiniela_user:
             user: "Usuario"
-            quiniela: "Quiniela"
+            quiniela: "Tira"
             ticket_number: "Numero de Billete"
             status: "Estatus"
             purchase_date: "Fecha de Compra"
