@@ -8,7 +8,7 @@ class Quiniela < ActiveRecord::Base
 		
 	
 		def self.find_no_winners
-			where.('winner_number' => nil)
+			where('winner_number' => nil)
 		end
 		
 	def update_winner
