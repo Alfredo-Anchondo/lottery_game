@@ -599,14 +599,14 @@
 })
   .done(function( data) {
       
-			 if (data.game.lotterries[0]){
+			 if (data.game.lotteries[0]){
 				 
 			 }else{
 				 $('#no-lotteries').show();
 				 $('#coming-lotteries').hide();
 			 }
       
-             if(data.game.lotterries[0]){
+             if(data.game.lotteries[0]){
                                if (data.game.team.id < 10){
         $('#team1').attr('src','/system/teams/logos/000/000/00'+data.game.team.id+'/original/'+data.game.team.logo_file_name);
     }   else{
