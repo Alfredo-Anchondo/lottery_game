@@ -1,4 +1,7 @@
 <style>
+	#slider1{
+		width:100% !important;
+	}
     .slide{
         background-image:url('/assets/basketball.jpg');
         background-position-y: -250px;
@@ -51,7 +54,7 @@
         </div>
 
 <div class="row" style="margin-top: -20px !important;">
-<div id="slider1">
+<div id="slider1" style="width:100% !important; ">
 </div>
 </div>    
 
@@ -89,15 +92,7 @@
                                     
          
                                 }
-            $(document).ready(function(){
-                         $('#slider1').bxSlider({
-                            minSlides: 1,
-                            maxSlides: 10,
-                            slideMargin: 10,
-                            infiniteLoop: false
-                          });
-          
-                        });
+     
       
       });
     
@@ -120,10 +115,19 @@
     }   else{
     var image_url2 = '/system/teams/logos/000/000/0'+data.quinielas[i].game.team2.id+'/original/'+data.quinielas[i].game.team2.logo_file_name;
     }  
+					
+					 $("#slider1").append('<div class="slide"><div class="row"><div class="col-md-3"><h2 style="text-align:center; font-weight:500; color:white"><%= t('participate') %>:</h2><h1 style="text-align:center; font-weight:900; font-size:50px; color:#E4007D">'+data.quinielas[i].initial_balance+' DB</h1></div><div class="col-md-9"> <h2 style="text-align:center; font-weight:900; color:#E4007D;"><%= t('participate_1')%></h2> <h1 style="text-align:center; color:white; "><%= t('activerecord.attributes.game.game_date') %> '+moment(data.quinielas[i].game.game_date ,"", current_language ).format("MMMM D YYYY, h:mm a")+'  </h1> </div> </div> <br> <div class="row"><div  class="col-xs-1 col-md-3 hide-phone "><h2 style="text-align:center; font-weight:900; color:#E4007D;"></h2> <img style="width: 50% !important;margin-left: 25%;" class="category_logo" ><h5 style="text-align:center"><span style="font-weight:900; color:white; text-transform:uppercase;"><%= t('participate_2') %>. </span></h5></div><div class="col-xs-11 col-md-9"><a data-lotteryid="'+data.quinielas[i].id+'" data-lotteryprice="'+data.quinielas[i].price+'" data-lotterybalance="'+data.quinielas[i].initial_balance+'" data-teamname="'+data.quinielas[i].game.team.name+'" data-team2name="'+data.quinielas[i].game.team2.name+'"  class="display_modal"><h2 style="text-align:center; color:white; font-weight:700"> '+ data.quinielas[i].game.team.name + ' VS ' + data.quinielas[i].team2.name + ' </h2><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"><img  class="logo_lotteries1" style="margin-left:20%" src="'+image_url+'"> </h4></div><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"> <img  class="logo_lotteries1" style="margin-left:20%"  src="'+image_url2+'"> </h4> </div></a></div></div>');
+					
 				}
-		  });
-		  
-   
+		  }
+    });
+	    $('#slider1').bxSlider({
+                            minSlides: 1,
+                            maxSlides: 10,
+                            slideMargin: 10,
+                            infiniteLoop: false
+                          });	  
+      
 </script>
 
 
