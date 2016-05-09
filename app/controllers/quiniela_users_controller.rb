@@ -4,6 +4,10 @@ class QuinielaUsersController < ApplicationController
   respond_to :html
   respond_to :json	
 
+	def winners
+		render :json => (QuinielaUser.winners)
+	end
+	
   def index
     @quiniela_users = QuinielaUser.all
     respond_with(@quiniela_users)

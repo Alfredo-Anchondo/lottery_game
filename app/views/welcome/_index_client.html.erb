@@ -17,10 +17,30 @@
         width: 60% !important;
         text-align:center;
     }
+	
+	#tira .bx-wrapper .bx-viewport{
+			 background-color:transparent;
+			 border: none;	
+			}
     
   
 </style>
 
+  <div class="row">
+  	 <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <div class="row" style="margin:0px; padding:0px;">
+                            <h4 style="text-align:left; color:white;">Participa en las Tiras</h4>
+                       </div>
+                    </div> 
+                    <div class="ibox-content" id="tira" style="display: block; background-position-y: -117px; background-image: url('/assets/background2.png');background-size: cover; background-origin: border-box;">
+                      <div class="cycle-tira" data-cycle-fx="tileBlind" data-cycle-pause-on-hover="true" data-cycle-speed="200">
+          
+            </div>
+		 </div>
+	  </div>
+  </div>
+   
     <div class="row" id="coming-lotteries">
     <div class="ibox float-e-margins">
                     <div class="ibox-title">
@@ -358,7 +378,31 @@
     }  
 			   
 			   
-              $('.cycle-slideshow1').append('<div class="slide"><h1 style="text-align:center; color:#E4007D; font-weight:900;">' +data.user_lotteries[i].user.username + '</h1> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" src="'+ image_url +'"> </h4> </div> <div class="col-md-2 col-xs-2"> <h1 style="text-align:center; margin-top:80%; color:red; font-weight:900;"> VS </h1> </div> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" src="'+ image_url2 +'"> </h4> </div> <h2 style="text-align:center; color:#E4007D; font-weight:900;"> Número Ganador: '+ data.user_lotteries[i].ticket_number +' </h2> <h2 style="text-align:center; color:#E4007D; font-weight:900;">Monto de:  ' +data.user_lotteries[i].lottery.initial_balance + ' DB </h2> </div> ');
+              $('.cycle-slideshow1').append('<div class="slide"><h3 style="text-align:center; color:black;">Ganadores de Loterias	</h3><h1 style="text-align:center; color:#E4007D; font-weight:900;">' +data.user_lotteries[i].user.username + '</h1> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img style="margin-left: 30%;" width="60%" src="'+ image_url +'"> </h4> </div> <div class="col-md-2 col-xs-2"> <h1 style="text-align:center; margin-top:80%; color:red; font-weight:900;"> VS </h1> </div> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" style="margin-left: 15%;" src="'+ image_url2 +'"> </h4> </div> <h2 style="text-align:center; color:#E4007D; font-weight:900;"> Número Ganador: '+ data.user_lotteries[i].ticket_number +' </h2> <h2 style="text-align:center; color:#E4007D; font-weight:900;">Monto de:  ' +data.user_lotteries[i].lottery.initial_balance + ' DB </h2> </div> ');
+           }
+                   
+       });
+		
+		$.ajax({
+          method: "GET",
+          url: "/quiniela_users/winners",
+          format: "json"
+        })
+          .done(function(data) {
+			        for(var i in data.quiniela_users){
+                        if (data.quiniela_users[i].quiniela.game.team.id < 10){
+         var image_url = '/system/teams/logos/000/000/00'+data.quiniela_users[i].quiniela.game.team.id+'/original/'+data.quiniela_users[i].quiniela.game.team.logo_file_name;
+    }   else{
+    var image_url = '/system/teams/logos/000/000/0'+data.quiniela_users[i].quiniela.game.team.id+'/original/'+data.quiniela_users[i].quiniela.game.team.logo_file_name;
+    }  
+                           if (data.quiniela_users[i].quiniela.game.team2.id < 10){
+         var image_url2 = '/system/teams/logos/000/000/00'+data.quiniela_users[i].quiniela.game.team2.id+'/original/'+data.quiniela_users[i].quiniela.game.team2.logo_file_name;
+    }   else{
+    var image_url2 = '/system/teams/logos/000/000/0'+data.quiniela_users[i].quiniela.game.team2.id+'/original/'+data.quiniela_users[i].quiniela.game.team2.logo_file_name;
+    }  
+			   
+			   
+              $('.cycle-slideshow1').append('<div class="slide"><h3 style="color:black; text-align:center">Ganadores de Quinielas</h3><h1 style="text-align:center; color:#E4007D; font-weight:900;">' +data.quiniela_users[i].user.username + '</h1> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" style="margin-left:30%" src="'+ image_url +'"> </h4> </div> <div class="col-md-2 col-xs-2"> <h1 style="text-align:center; margin-top:80%; color:red; font-weight:900;"> VS </h1> </div> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" style="margin-left:15%" src="'+ image_url2 +'"> </h4> </div> <h2 style="text-align:center; color:#E4007D; font-weight:900;"> Número Ganador: '+ data.quiniela_users[i].ticket_number +' </h2> <h2 style="text-align:center; color:#E4007D; font-weight:900;">Monto de:  ' +data.quiniela_users[i].quiniela.initial_balance + ' DB </h2> </div> ');
            }
            
           $('.cycle-slideshow1').bxSlider({
@@ -366,34 +410,8 @@
 			maxSlides:1, 
             slideMargin: 13
           });
-           
-       }); </script>
-  
-   
-    
-		
-		<div class="row">
-		<div class="col-md-8">
-			 <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Tiras</h5>
-                            <span class="label label-primary">Nuevo juego</span>
-                        </div>
-
-                        <div class="ibox-content" id="quinielas">
-							 <div class="cycle-slideshow2" data-cycle-fx="tileBlind" data-cycle-pause-on-hover="true" data-cycle-speed="200">
-          
-            </div>
-				 </div>
-			</div>
-			</div>
-		</div> 
-
-
-
-
-
-
+		});
+		</script>
 <!--------------------- MODAL DE CONFIRMACION --------------------------->
 
 <div class="modal fade bs-example-modal-sm" id="confirm_buy" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -1123,7 +1141,7 @@
     });
     </script>
     
-    <script> 
+    <!--script> 
          $.ajax({
   method: "GET", 
   origin: "https://donbillete.com", 
@@ -1134,7 +1152,7 @@
 })
   .done(function( data) {
          });
-    </script> 
+    </script--> 
     
     <script>
         var number_array = [];
@@ -1492,14 +1510,14 @@
     var image_url2 = '/system/teams/logos/000/000/0'+data.quinielas[i].game.team2.id+'/original/'+data.quinielas[i].game.team2.logo_file_name;
     }  
 					
-					$('.cycle-slideshow2').append('<div class="slide'+i+'"><h2 style="text-align:center; font-weight:800">Participa en la Tira Deportiva</h2><hr> <h3 style="text-align:center; color:#e4007d"> Que tanto conoces a tus equipos favoritos, demuestralo en esta tira y recibe increibles premios. </h3> <h4 style="text-align:center">Es sencillo participar solo contesta estas sencillas preguntas con un si y un no, despues genera tu codigo en base a tus respuestas, si acertaste en todas las preguntas recibes el premio indicado. Recuerda contestar todas las preguntas.</h4><hr> <h3 style="text-align:center; color:#E4007D; font-weight:800;">'+data.quinielas[i].description+'</h3> <div class="row"> <div class="col-md-4"> <div class="row"> <div class="col-md-5 col-xs-5"> <img src="'+image_url+'"> </div> <div class="col-md-2 col-xs-2"> <h1 style="text-align:center; margin-top:120%; font-weight: 900;color: #E4007D;"> VS </h1> </div> <div class="col-md-5 col-xs-5"> <img src="'+image_url2+'"> </div> </div> <hr>  <h3 style="text-align:center; font-weight:700">Bolsa acumulada</h3> <h2 id="initial_balance'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].initial_balance +' <span>DB</span> </h2> <hr> <h3 style="text-align:center; font-weight:700"> Precio de la Tira </h3> <h2 id="price'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].price +' <span>DB</span> </h2>  </div> <div class="col-md-8 slide2'+i+'"> </div> </div> </div>');	
+					$('.cycle-tira').append('<div class="row"><h2 style="text-align:center; color:white; font-weight:800;"> '+data.quinielas[i].description+' </h2> <div class="col-md-3">  <hr> <h3 style="text-align:center; color:white;">Bolsa Acumulada</h3> <h1 style="text-align:center; color:#e4007d; font-weight:800; font-size:60px;"> <span>'+ data.quinielas[i].initial_balance +' </span> DB </h1> <hr> <h3 style="text-align:center; color:white;"> Precio de la Tira </h3> <h1 style="text-align:center; font-size:40px; color:#e4007d; font-weight:800"> <span> '+ data.quinielas[i].price +'</span> DB </h1><hr></div><div class="col-md-6"> <div class="row"> <div class=col-md-4> <img src="'+image_url+'"> </div> <div class="col-md-4"> <h1 style="text-align:center; font-weight:900; color:white; margin-top:45%; font-size:300%;"> VS </h1> </div> <div class="col-md-4"> <img src="'+image_url2+'"> </div> </div> </div> <div class="col-md-3">  <h2 style="text-align:center; color:white; font-weight:800">Participa en la Tira Deportiva</h2><hr> <h4 style="text-align:center; color:#e4007d"> Que tanto conoces a tus equipos favoritos, demuestralo en esta tira y recibe increibles premios. </h4> <h4 style="text-align:center; color:white;">Es sencillo participar solo contesta estas sencillas preguntas con un si y un no, despues genera tu codigo en base a tus respuestas, si acertaste en todas las preguntas recibes el premio indicado. Recuerda contestar todas las preguntas.</h4> <hr> <h4 style="text-align:center"><button data-toggle="modal" data-target="#slide'+i+'" class="btn btn-primary" > Comprar Tira </button></h4> </div>');
+					
+					$('body').append('<div id="slide'+i+'" class="modal fade slide'+i+'" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Tira '+data.quinielas[i].description+'</h4></div><div class="modal-body"> <div class="row">  <div class="col-md-6 col-xs-6"><h3 style="text-align:center; font-weight:700">Bolsa acumulada</h3> <h2 id="initial_balance'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].initial_balance +' <span>DB</span> </h2> </div> <div class="col-md-6 col-xs-6"> <h3 style="text-align:center; font-weight:700"> Precio de la Tira </h3> <h2 id="price'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].price +' <span>DB</span> </h2> </div> </div>  <hr>  <div class="row slide2'+i+'"> <h3 style="text-align:center; color:black; font-weight:900;"> Preguntas de la Tira </h3> <br> </div> <hr><div class="row"><div class="col-md-3 col-xs-6"> <h4 style="text-align:center"> <button class="btn btn-primary generate_ticket" onclick="generate_ticket()">Generar Numero </button> </h4> </div><div class="col-md-6 col-xs-6"> <input type="text" style="margin-top:6px;" class="form-control ticket_value_'+i+'"> </div> <div class="col-md-3 col-xs-12"><h4 style="text-align:center"><button disabled class="btn buy_quiniela buy_quiniela_btn'+i+' btn-primary" data-quinielaid="'+data.quinielas[i].id+'" > Comprar billete </button> </h4 </div></div> </div></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+					
 					
 					for(var e in data.quinielas[i].quiniela_questions){
 					$('.slide2'+i+'').append(' <div class="col-md-7 col-xs-12"><h4 style="text-align:left">'+ data.quinielas[i].quiniela_questions[e].question.title +'</h4></div> <div class="col-md-4 col-xs-6"> <div class="radio radio-inline radio-danger"><input class="answers_select" data-id="'+i+'" type="radio" name="answer'+i+e+'" value="1"><label style="text-align: left !important;" for="answer'+i+e+'" class="">Si</label></div><div class="radio radio-inline radio-danger"><input data-id="'+i+'" type="radio" class="answers_select" name="answer'+i+e+'" value="0"> <label for="answer'+i+e+'" style="text-align: left !important;" class="">No</label></div> </div> <div class="col-md-1 col-xs-6"> <input style="text-align:left; width:35px;"  type="text" disabled class="form-control value_result '+i+e+'"> </div>');
 						}
-					
-					$('.slide'+i+'').append('<hr><div class="row"><div class="col-md-3 col-xs-6"> <h4 style="text-align:center"> <button class="btn btn-primary generate_ticket" onclick="generate_ticket()">Generar Numero </button> </h4> </div><div class="col-md-6 col-xs-6"> <input type="text" style="margin-top:6px;" class="form-control ticket_value_'+i+'"> </div> <div class="col-md-3 col-xs-12"><h4 style="text-align:center"><button disabled class="btn buy_quiniela buy_quiniela_btn'+i+' btn-primary" data-quinielaid="'+data.quinielas[i].id+'" > Comprar billete </button> </h4 </div></div>');
-					
 				}
 				$('input[type=radio][class=answers_select]').change(function(){
 					var xz = $(this).val();
@@ -1545,8 +1563,9 @@
                     }).done(function( data) {
 								  $('#success-content').empty();
                      $('#success-content').append('<h2 style="text-align:center; color:#E81F7F; font-weight:900;">DON<span style="color:black; font-weight:900;">BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
+						$('.modal').modal('hide');						  
                        $("#success-modal").modal('show');
-								    setTimeout(function(){ location.reload(); }, 2000);     
+						setTimeout(function(){ location.reload(); }, 2000);     
 							  })
 						}else{
 							var total_balance_update = balance - quiniela_price;
@@ -1558,7 +1577,8 @@
                     }).done(function( data) {
 								 $('#success-content').empty();
                      $('#success-content').append('<h2 style="text-align:center; color:#E81F7F; font-weight:900;">DON<span style="color:black; font-weight:900;">BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
-                       $("#success-modal").modal('show');
+								    $('.modal').modal('hide');		
+								    $("#success-modal").modal('show');
 								    setTimeout(function(){ location.reload(); }, 2000);     
 							  })
 						}
@@ -1570,8 +1590,7 @@
 
 				})
 				
-				
-		  $('.cycle-slideshow2').bxSlider({
+				  $('.cycle-tira').bxSlider({
 			infiniteLoop: false,
             minSlides: 1,
 			maxSlides:1, 
@@ -1580,4 +1599,4 @@
 			});
 			
 		</script>
-    
+   

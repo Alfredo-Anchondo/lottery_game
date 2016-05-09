@@ -2,7 +2,13 @@ Rails.application.routes.draw do
 	
   resources :questions
 
-  resources :quiniela_users
+  resources :quiniela_users do
+	collection do
+		get 'winners'
+	end
+  end
+	
+
 
   resources :quiniela_questions
 
