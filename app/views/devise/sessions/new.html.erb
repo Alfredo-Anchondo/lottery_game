@@ -101,6 +101,28 @@
       
       });
     
+		  $.ajax({
+          method: "GET",
+          url: "/quinielas/get_quinielas_no_winner",
+          format: "json"
+        })
+          .done(function(data) {if (data.quinielas[0]){
+					
+				for(var i in data.quinielas){
+					
+					 if (data.quinielas[i].game.team.id < 10){
+         var image_url = '/system/teams/logos/000/000/00'+data.quinielas[i].game.team.id+'/original/'+data.quinielas[i].game.team.logo_file_name;
+    }   else{
+    var image_url = '/system/teams/logos/000/000/0'+data.quinielas[i].game.team.id+'/original/'+data.quinielas[i].game.team.logo_file_name;
+    }  
+                           if (data.quinielas[i].game.team2.id < 10){
+         var image_url2 = '/system/teams/logos/000/000/00'+data.quinielas[i].game.team2.id+'/original/'+data.quinielas[i].game.team2.logo_file_name;
+    }   else{
+    var image_url2 = '/system/teams/logos/000/000/0'+data.quinielas[i].game.team2.id+'/original/'+data.quinielas[i].game.team2.logo_file_name;
+    }  
+				}
+		  });
+		  
    
 </script>
 
