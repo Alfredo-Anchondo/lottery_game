@@ -26,7 +26,7 @@
   
 </style>
 
-  <div class="row">
+  <div class="row" id="tiras_div">
   	 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <div class="row" style="margin:0px; padding:0px;">
@@ -1496,7 +1496,9 @@
           url: "/quinielas/get_quinielas_no_winner",
           format: "json"
         })
-          .done(function(data) {
+          .done(function(data) {if (data.quinielas){
+				
+				
 				for(var i in data.quinielas){
 					
 					 if (data.quinielas[i].game.team.id < 10){
@@ -1596,6 +1598,9 @@
 			maxSlides:1, 
             slideMargin: 13
           });
+			}else{
+				$('#tiras_div').hide();
+			}
 			});
 			
 		</script>

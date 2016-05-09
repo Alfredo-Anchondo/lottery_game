@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
-	
+    devise_for :users,  controllers: { registrations: "registrations" , omniauth_callbacks: 'omniauth_callbacks' }
+  
   resources :questions
 
   resources :quiniela_users do
 	collection do
 		get 'winners'
 	end
-  end
-	
-
+   end
 
   resources :quiniela_questions
-
 	resources :quinielas do
 		collection do
 			get 'get_quinielas', to: "quinielas#get_quinielas"
@@ -19,9 +17,6 @@ Rails.application.routes.draw do
 			get 'get_quinielas_no_winner', to: "quinielas#get_quinielas_no_winner"
 		end
 	end
-
-    devise_for :users,  controllers: { registrations: "registrations" , omniauth_callbacks: 'omniauth_callbacks' }
-  
     
     resources :games do
         collection do
