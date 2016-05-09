@@ -37,7 +37,7 @@
 	<div class="form-group">
 		<%= f.label :game, :class => "col-md-3" %>
           <div class="col-md-9">
-			  <%= collection_select(:quiniela, :game_id, Game.all, :id, :select_display) %>
+			  <%= collection_select(:quiniela, :game_id, Game.all.order('id DESC'), :id, :select_display) %>
           </div>
         </div>
 	<div class="form-group">
