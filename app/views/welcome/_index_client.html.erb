@@ -1229,7 +1229,6 @@
      number_array = [];
         $('#generate_numbers_div').empty();
          var quantity = $('#number_quantity').val();
-        
         for(var i=0; i < quantity; i++){
             var number = Math.floor(Math.random()*(99-0+1)+0);
             if(number < 10){
@@ -1279,119 +1278,11 @@
              			  $('#success-modal').modal('show');
 					  	setTimeout(function(){ location.reload(); }, 2000);     
                      });
-           
-           
-                          
-                     
-
-		 }
-                           
-                             
-                 //setTimeout(function(){ location.reload(); }, 2000);  
-         
-         
-         
-            
+		 }        
      })
      
     </script>
     
-    
- <!--
-<script>      $.ajax({
-          method: "GET",
-          url: "/user_lotteries/winners",
-          format: "json"
-        })
-          .done(function(data) {
-                
-           for(var i in data.user_lotteries){
-               
-             if( data.user_lotteries[i].user.id < 10){
-                   var src = '/system/users/photos/000/000/00'+data.user_lotteries[i].user.id+'/original/'+data.user_lotteries[i].user.photo_file_name } 
-           else{
-               var src = '/system/users/photos/000/000/0'+data.user_lotteries[i].user.id+'/original/'+data.user_lotteries[i].user.photo_file_name
-            }
-      
-              $('.cycle-slideshow1').append('<img width="100%" height="400px" src='+src+' data-cycle-title="'+data.user_lotteries[i].user.username +'\n <br> <%= t('lottery_win') %>: #' +data.user_lotteries[i].lottery.id+ " " +data.user_lotteries[i].lottery.team.name + " vs " + data.user_lotteries[i].lottery.team2.name + ' ">');
-           
-          
-           }
-           
-           $( '.cycle-slideshow1' ).cycle();
-           
-       }); </script>
-   <div class="col-md-4 col-xs-12">
-              <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5><%= t('our_winners') %></h5>
-                            <span class="label label-primary"><%= t('last_winners') %></span>
-                        </div>
-
-                        <div class="ibox-content" id="finish_lotteries">
-        <div class="cycle-slideshow1" data-cycle-fx="tileBlind" data-cycle-pause-on-hover="true" data-cycle-speed="200" data-cycle-caption="#adv-custom-caption" data-cycle-caption-template="<%= t('winner') %> {{slideNum}}: {{cycleTitle}}">
-          
-            </div>
-           <div id="adv-custom-caption" class="center"></div>
-        </div>
-            </div>
-        </div>
-
-
-<div class="col-md-6 col-xs-12" style="padding-left:7px; padding-right:0px;">
-         <script>
-          var table = $('#close_games_table').DataTable( {
-       responsive: true,
-    ajax: {
-        url: "/games/finish_games",
-        dataSrc: 'games'
-    },
-            "language": {
-            "url": languaje
-        },
-    columns: [
-        { data: 'lotteries[0].id'},
-        { data: 'team.name'},
-        { data: 'team2.name'},
-        { data: function(row, type, val, meta){
-            return row.local_score +" - "+ row.visit_score
-        }},
-           { data: 'lotteries[0].winner_number'}
-    ],
-       columnDefs: [
-        { responsivePriority: 1, targets: [0,4] }
-    ]
-} );
-        </script>
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5><%= t('result_lotteries') %></h5>
-                            <span class="label label-primary"><%= t('last_results') %></span>
-                        </div>
-
-                        <div class="ibox-content" id="finish_lotteries">
-                            <div class="table-responsive">
-          <table id="close_games_table"  class=" table responsive table-bordered table-hover table-striped nowrap" width="100%">
-            <thead style="background-color:#727272; color:white;">
-              <tr>
-                      <th>#</th>
-                      <th><%= t('local') %> </th>
-                      <th><%= t("visit") %></th>
-                      <th><%= t("score") %></th>
-                      <th><%= t("winner_number") %></th>
-              </tr>
-            </thead>
-
-            <tbody>
-                
-            </tbody>
-                                </table>
-      </div>
-                        </div>
-                    </div>
-                </div> -->
-		
-		
 		<script>
 			var value;
 			var max_value;
@@ -1497,8 +1388,7 @@
           format: "json"
         })
           .done(function(data) {if (data.quinielas[0]){
-				
-				
+					
 				for(var i in data.quinielas){
 					
 					 if (data.quinielas[i].game.team.id < 10){
