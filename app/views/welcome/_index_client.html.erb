@@ -1496,7 +1496,7 @@
           url: "/quinielas/get_quinielas_no_winner",
           format: "json"
         })
-          .done(function(data) {if (data.quinielas){
+          .done(function(data) {if (data.quinielas[0]){
 				
 				
 				for(var i in data.quinielas){
