@@ -1446,6 +1446,7 @@
                      }); 
 						
 						if(flag_balance){
+							$('.buy_quiniela').prop( "disabled", true );
 							var total_balance_update = balance - quiniela_price;
 							  $.ajax({
                       method: "PUT",
@@ -1460,6 +1461,7 @@
 						setTimeout(function(){ location.reload(); }, 2000);     
 							  })
 						}else{
+							$('.buy_quiniela').prop( "disabled", true );
 							var total_balance_update = balance - quiniela_price;
 							  $.ajax({
                       method: "PUT",
