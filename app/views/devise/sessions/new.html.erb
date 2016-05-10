@@ -109,20 +109,21 @@
                        }
                        
                        $("#slider1").append('<div class="slide"><div class="row"><div class="col-md-3"><h2 style="text-align:center; font-weight:500; color:white"><%= t('participate') %>:</h2><h1 style="text-align:center; font-weight:900; font-size:50px; color:#E4007D">'+data.games[i].lotteries[0].initial_balance+' DB</h1></div><div class="col-md-9"> <h2 style="text-align:center; font-weight:900; color:#E4007D;"><%= t('participate_1')%></h2> <h1 style="text-align:center; color:white; "><%= t('activerecord.attributes.game.game_date') %> '+moment(data.games[i].game_date ,"", current_language ).format("MMMM D YYYY, h:mm a")+'  </h1> </div> </div> <br> <div class="row"><div  class="col-xs-1 col-md-3 hide-phone "><h2 style="text-align:center; font-weight:900; color:#E4007D;"></h2> <img style="width: 50% !important;margin-left: 25%;" class="category_logo" src=" '+url+' " ><h5 style="text-align:center"><span style="font-weight:900; color:white; text-transform:uppercase;"><%= t('participate_2') %>. </span></h5></div><div class="col-xs-11 col-md-9"><a data-lotteryid="'+data.games[i].lotteries[0].id+'" data-lotteryprice="'+data.games[i].lotteries[0].price+'" data-lotterybalance="'+data.games[i].lotteries[0].initial_balance+'" data-lotteryfinal="'+data.games[i].lotteries[0].final_number+'" data-lotteryrules="'+data.games[i].lotteries[0].rules+'" data-teamname="'+data.games[i].team.name+'" data-team2name="'+data.games[i].team2.name+'"  class="display_modal"><h2 style="text-align:center; color:white; font-weight:700"> '+ data.games[i].team.name + ' VS ' + data.games[i].team2.name + ' </h2><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"><img  class="logo_lotteries1" style="margin-left:20%" src="'+image_url+'"> </h4></div><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"> <img  class="logo_lotteries1" style="margin-left:20%"  src="'+image_url2+'"> </h4> </div></a></div></div></div>');
-          
-                                    }else{
-											$('#slider1').hide();
-											}
-         
-                                }
-            $(document).ready(function(){
-                         $('#slider1').bxSlider({
+          							
+						$('#slider1').bxSlider({
                             minSlides: 1,
                             maxSlides: 10,
                             slideMargin: 10,
                             infiniteLoop: false
                           });
 						   
+                                    }else{
+											$('#slider1').hide();
+											}
+         
+                                }
+            $(document).ready(function(){
+                       
 						   $('#Instructions').modal('show');
           
                         });
