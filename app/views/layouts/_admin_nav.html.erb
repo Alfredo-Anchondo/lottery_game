@@ -26,10 +26,7 @@
             </li>
           <li  class="<%= 'active' if controller_name == 'games' %>"><a href="/games"> <span class="nav-label"><%= t('games') %></span>  </a>
             </li>
-          <li  class="<%= 'active' if controller_name == 'lotteries' %>"><a href="/lotteries"> <span class="nav-label"><%= t('lotteries') %></span>  </a>
-            </li>
-          <li  class="<%= 'active' if controller_name == 'user_lotteries' %>"><a href="/user_lotteries"> <span class="nav-label"><%= t('userlotteries') %></span>  </a>
-            </li>
+       
 		            <li class="dropdown">
                         <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Quiniela<span class="caret"></span></a>
                         <ul role="menu" class="dropdown-menu">
@@ -45,11 +42,15 @@
                         </ul>
                     </li>
           <li class="dropdown">
-                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> <%= t('process') %> <span class="caret"></span></a>
+                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Loterias <span class="caret"></span></a>
                         <ul role="menu" class="dropdown-menu">
                             <li><a href="/user_lotteries/winners_view"><%= t('winners_history') %></a></li>
                             <li><a href="/games/today_games_view"><%= t('today_games') %></a></li>
 							<li><a href="/user_lotteries/tickets_by_lottery">Tickets vendidos por loteria</a></li>
+							   <li  class="<%= 'active' if controller_name == 'lotteries' %>"><a href="/lotteries"> <span class="nav-label"><%= t('lotteries') %></span>  </a>
+            </li>
+          <li  class="<%= 'active' if controller_name == 'user_lotteries' %>"><a href="/user_lotteries"> <span class="nav-label"><%= t('userlotteries') %></span>  </a>
+            </li>
 							
                         </ul>
                     </li>
