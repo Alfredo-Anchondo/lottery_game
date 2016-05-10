@@ -46,9 +46,10 @@ class Game < ActiveRecord::Base
 				 repeat = QuinielaUser.where('ticket_number = ? AND quiniela_id = ?' ,ticket, q.id).count
 				 @repeat_number_quiniela.push(repeat);
             end   
+			 BuyMailer.close_lottery_quiniela(x,q,q_mails,@tickets,@repeat_number,variable[0]).deliver
 		 end
 			  
-				  BuyMailer.close_lottery_quiniela(x,y,z,@tickets,@repeat_number,variable[0]).deliver
+				 
 		      end
 			 
         end
