@@ -62,13 +62,24 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 style="text-align:center; font-size:47px;" class="modal-title">Bienvenido a <img width="400px;" src="/assets/logo_donbillete.png">  </h4>
+        <h4 style="text-align:center; font-size:47px; color:black;" class="modal-title">Bienvenido a <img width="400px;" src="/assets/logo_donbillete.png">  </h4>
       </div>
       <div class="modal-body">
+      	<div class="row" id="slider-instructions">
+      		<div class="slide">
+      			<h4>1</h4>
+      		</div>
+      		<div class="slide">
+      		 <h4>2</h4>
+      		</div>
+			<div class="slide">
+				<h4>3</h4>
+			</div>
+      	</div>
        	
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
 
@@ -125,6 +136,12 @@
             $(document).ready(function(){
                        
 						   $('#Instructions').modal('show');
+				$('#slider-instructions').bxSlider({
+                            minSlides: 1s,
+                            maxSlides: 10,
+                            slideMargin: 10,
+                            infiniteLoop: false
+                          });
           
                         });
       
