@@ -19,10 +19,10 @@ class Game < ActiveRecord::Base
         if x != nil && x != '' && x != []  
 			
         y = Lottery.where('game_id = ?', x.id).first	
-			if y
+			if y != nil && y != '' && y != []
         z = User.where(:id => UserLottery.where('lottery_id = ?', y.id).pluck(:user_id).uniq).pluck(:email, :id)	
 			end
-			if z != nil && z != '' && z != []
+			if z 
          z.each do |variable|
             @repeat_number = []
         @tickets = UserLottery.where('user_id = ? AND lottery_id = ?' ,variable[1], y.id).pluck(:ticket_number)
@@ -33,12 +33,13 @@ class Game < ActiveRecord::Base
            
    			BuyMailer.close_lottery(x,y,z,@tickets,@repeat_number,variable[0]).deliver
 		end
+	end
 			 
 	     q = Quiniela.where('game_id = ?', x.id).first
-		if q
+		if q != nil && q != '' && q != []
 		 q_mails = User.where(:id => QuinielaUser.where('quiniela_id = ?', q.id).pluck(:user_id).uniq).pluck(:email, :id) 
 		end
-		if q_mails != nil && q_mails != '' && q_mails != []
+		if q_mails 
 		 	 q_mails.each do |variable|
 				 @repeat_number_quiniela = []
 				 @tickets = QuinielaUser.where('user_id = ? AND quiniela_id = ?' ,variable[1], q.id).pluck(:ticket_number)
