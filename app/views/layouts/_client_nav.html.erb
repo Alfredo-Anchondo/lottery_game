@@ -121,7 +121,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
          <% if signed_in? %>
-        <span id="user_name" style="display:none"> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> <br> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;"><%= current_user.balance %> DB </span> <br> Saldo de regalo: <span style="text-transform: uppercase;"> <%= current_user.gift_credit %> DB</span> </span> 
+        <span id="user_name" style="display:none"> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> <br> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;"><%= number_with_precision(current_user.balance, :precision => 2)  %> DB </span> <br> Saldo de regalo: <span style="text-transform: uppercase;"> <%= number_with_precision(current_user.gift_credit, :precision => 2)  %> DB</span> </span> 
         <% end %>
       <button  type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
        <i style="margin-left:3px;" class="fa fa-bars"></i> 
