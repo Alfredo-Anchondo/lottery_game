@@ -67,7 +67,7 @@ class BuyMailer < ActionMailer::Base
         @lottery = lottery
         @tickets = tickets
         @repeat_number = repeat
-        mail(to: @mail, subject: '[DonBillete] La loteria se a cerrado')
+        mail(to: @mail, subject: '[DonBillete] La loteria se ha cerrado')
     end    
 	
 	def close_lottery_quiniela(game, lottery, mail,tickets,repeat,correct_mail)
@@ -76,7 +76,7 @@ class BuyMailer < ActionMailer::Base
         @lottery = lottery
         @tickets = tickets
         @repeat_number = repeat
-        mail(to: @mail, subject: '[DonBillete] La loteria se a cerrado')
+        mail(to: @mail, subject: '[DonBillete] La loteria se ha cerrado')
     end    
 	
 	def buy_many_tickets(user, array, lottery)
