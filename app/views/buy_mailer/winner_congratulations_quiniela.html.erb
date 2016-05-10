@@ -39,13 +39,13 @@
       </div>
       <div class="panel-body">
 		  <% if @num_winners != 1 %>
-		  <h2>Eres uno de los afortunados ganadores de la quiniela <%= @lottery_name %></h2>
+		  <h2>Eres uno de los afortunados ganadores de la Tira <%= @lottery_name %></h2>
 		  <% else %>
-		  <h2>Eres el ganador de la quiniela <%= @lottery_name %></h2>
+		  <h2>Eres el ganador de la Tira <%= @lottery_name %></h2>
 		  <% end %>
 		  <h2>Con el boleto número: <%= @winner_number %></h2>
        
-<h3>En unos momentos verás reflejado en tu saldo la cantidad de: <%= @total_update %> DB</h3>          
+<h3>En unos momentos verás reflejado en tu saldo la cantidad de: <%= @total_update.round(2) %> DB</h3>          
 <h3>Sigue participando para ganar más y mejores premios.</h3>
 <h3>Invita a tus amigos para que las bolsas sean cada vez mayores. <a href="https://donbillete.com/partials/invite" style="color:#E81F7F">Invitar</a></h3>
 <br>
