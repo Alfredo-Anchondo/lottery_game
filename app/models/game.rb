@@ -41,9 +41,9 @@ class Game < ActiveRecord::Base
 		if q_mails != nil && q_mails != '' && q_mails != []
 		 	 q_mails.each do |variable|
 				 @repeat_number_quiniela = []
-				 @tickets = QuinielaUser.where('user_id = ? AND lottery_id = ?' ,variable[1], q.id).pluck(:ticket_number)
+				 @tickets = QuinielaUser.where('user_id = ? AND quiniela_id = ?' ,variable[1], q.id).pluck(:ticket_number)
             @tickets.each do |ticket|
-				 repeat = QuinielaUser.where('ticket_number = ? AND lottery_id = ?' ,ticket, q.id).count
+				 repeat = QuinielaUser.where('ticket_number = ? AND quiniela_id = ?' ,ticket, q.id).count
 				 @repeat_number_quiniela.push(repeat);
             end   
 		 end
