@@ -45,17 +45,19 @@
     <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <div class="row" style="margin:0px; padding:0px;">
-                            <h4 id="header-loterry" style="text-align:left; color:white;"><%= t('next_lottery') %>: #<span id="lottery_id_type"> </span> <span class="pull-right" style="color:white" id="getting-started"></span></h4>
+                            <h4 id="header-loterry" style="text-align:left;  color:white;"><%= t('next_lottery') %>: #<span id="lottery_id_type"> </span> <span class="pull-right" style="color:white" id="getting-started"></span></h4>
                        </div>
                     </div> 
-                    <div class="ibox-content" style="display: block; background-position-y: -117px; background-image: url('/assets/Basketball2.jpg');background-size: cover; background-origin: border-box;">
+                    <div class="ibox-content" style="display: block; background-position-y: 2px; background-image: url('/assets/Basketball2.jpg');background-size: cover; background-origin: border-box;">
                         <div class="row">
                                                     
-                                <h4 style="text-align:center; font-size:18px; color:white;"><%= t('activerecord.attributes.game.game_date') %>: <span style="font-size:18px; color:#E4007D" id="game_date"></span></h4>
+                                <h4 style="text-align:center;  text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D; font-size:30px; color:white;"><%= t('activerecord.attributes.game.game_date') %>: <span style="font-size:30px; color:white" id="game_date"></span></h4>
+                                <br>
                                 
                             </div>
                            <div class="row">
                         <div class="col-md-3 col-xs-12">
+                           <hr>
                             <h4 style="text-align:center; color:white;"><span id='first_balance'><%= t('estimate_jackpot') %>:</span> </h4>
                             <h4 id="initial_balance2" style="text-align:center;font-size: 60px; color: #E4007D;"><span id="initial_balance"></span> DB</h4>
                             <hr>
@@ -65,8 +67,8 @@
                             </div>
                             <div class="col-md-6">
                         <div class="col-md-4 col-xs-5">
-							<h4 style="text-align:center; color:white;">Equipo Local</h4>
-                           <h3 style="text-align:center;font-size:30px; color:white;" id="team_name"></h3>
+							<h4 style="text-align:center; color:white;  text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D;">Equipo Local</h4>
+                           <h3 style="text-align:center;font-size:30px; color:white;  text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D;" id="team_name"></h3>
                             <h2 style="text-align:center; "><img height="auto" id="team1" src=""></h2>
 							<h5 style="text-align:center; color:white;">Selecciona el primer digito:</h5>
                             <h2 style="text-align:center">
@@ -84,11 +86,11 @@
                                     </select></h2>
                         </div>
                         <div class="col-md-4 col-xs-2" style="">
-                            <h1 id="vs" style="text-align:center; color:white; font-weight:800; font-size:50px; margin-top:130%;">VS</h1>
+                            <h1 id="vs" style="text-align:center;  text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D; color:white; font-weight:800; font-size:50px; margin-top:130%;">VS</h1>
                         </div>
                         <div class="col-md-4 col-xs-5">
-							<h4 style="text-align:center; color:white;">Equipo Visitante</h4>
-                            <h3 style="text-align:center; font-size:30px; color:white;" id="team2_name"></h3>
+							<h4 style="text-align:center; color:white;  text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D;">Equipo Visitante</h4>
+                            <h3 style="text-align:center; font-size:30px;  text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D; color:white;" id="team2_name"></h3>
                              <h2 style="text-align:center"><img id="team2"  height="auto" src=""></h2>
 								<h5 style="text-align:center; color:white;">Selecciona el segundo digito:</h5>
                             <h2 style="text-align:center">
@@ -108,7 +110,10 @@
                                 </h2>
                        </div>
                        </div>
-                       <div class="col-md-3"></div>
+                       <div class="col-md-3">
+                       	<hr>
+                       	<h3 style="color:white; text-align:center">Participa en nuestras loterias</h3>
+                       </div>
                        </div>
                         </div>
                     <div class="ibox-footer" style="background-color:#727272; padding:0px; color:white;">
