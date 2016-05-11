@@ -943,7 +943,9 @@
             format: "json"
                }).done(function(data) {
                    for(var i in data.games){
-                       
+					   
+					   if (data.games[i].lotteries != '' && data.games[i].lotteries != null && data.games[i].lotteries != [])
+                       {
                      
                        
                          if (data.games[i].team.id < 10){
@@ -1004,6 +1006,9 @@
                $('#lotteries_random').selectpicker('render');
 			   $('#lotteries_random2').selectpicker('render');
 
+				   }else{
+					   
+				   }
                });
              
            $('#confirm-buy-modal').click(function(){
@@ -1390,10 +1395,9 @@
           url: "/quinielas/get_quinielas_no_winner",
           format: "json"
         })
-          .done(function(data) {
-				if (data.quinielas[0].lotteries != null && data.quinielas[0].lotteries != '' && data.quinielas[0].lotteries != []){
+          .done(function(data) {if (data.quinielas[0]){
 					
-				for(var i in data.quinielas){
+				for(var i in data.quinielas[0]){
 					
 					
 					 if (data.quinielas[i].game.team.id < 10){
@@ -1496,7 +1500,7 @@
             slideMargin: 13
           });
 			}else{
-				
+				$('#tiras_div').hide();
 			}
 			});
 			
