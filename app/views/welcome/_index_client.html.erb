@@ -1006,9 +1006,6 @@
                $('#lotteries_random').selectpicker('render');
 			   $('#lotteries_random2').selectpicker('render');
 
-				   }else{
-					   
-				   }
                });
              
            $('#confirm-buy-modal').click(function(){
@@ -1053,7 +1050,9 @@
                    
             
   
-             
+		   }else{
+					   
+					   }
          });
     
 
@@ -1395,7 +1394,7 @@
           url: "/quinielas/get_quinielas_no_winner",
           format: "json"
         })
-          .done(function(data) {if (data.quinielas[0]){
+          .done(function(data) {if (data.quinielas){
 					
 				for(var i in data.quinielas[0]){
 					
