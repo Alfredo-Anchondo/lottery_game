@@ -131,6 +131,13 @@
 	  .margin-cellphone{
 		  margin-top:5%;
 	  }
+	  #cards_responsive{
+		  width: 100%;
+	  }
+	  
+	  #rexponsive-text-mark{
+		  margin-left:20px;
+	  }
       
 }
 
@@ -270,6 +277,13 @@
 }
 	    .margin-cellphone{
 		  margin-top:5%;
+	  }
+	   #cards_responsive{
+		  width: 100%;
+	  }
+	  
+	    #rexponsive-text-mark{
+		  margin-left:20px;
 	  }
       
 }
@@ -417,6 +431,14 @@
 	    .margin-cellphone{
 		  margin-top:5%;
 	  }
+	  
+	   #cards_responsive{
+		  width: 100%;
+	  }
+	  
+	    #rexponsive-text-mark{
+		  margin-left:20px;
+	  }
 }
 
 @media screen and (max-width: 480px) {
@@ -561,6 +583,13 @@
      .margin-cellphone{
 		  margin-top:5%;
 	  } 
+	 #cards_responsive{
+		  width: 100%;
+	  }
+	
+	  #rexponsive-text-mark{
+		  margin-left:20px;
+	  }
 }
 
 .row{

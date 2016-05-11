@@ -65,16 +65,33 @@
         <h4 style="text-align:center; font-size:47px; color:black;" class="modal-title">Bienvenido a <img width="400px;" src="/assets/logo_donbillete.png">  </h4>
       </div>
       <div class="modal-body">
-      	<div id="slider-instructions">
-      		<div class="slide1">
+      	<div class="row">
+      		<div class="introduction">
       			<h4 style="text-align:center">1</h4>
+      			<div class="col-md-4">
+      				<img width="100%" src="/assets/crearcuenta1.PNG">
+      			</div>
+      			
+      			<button class="btn btn-primary pull-right" id="change_two">Continuar</button>
       		</div>
-      		<div class="slide1">
-      		 <h4 style="text-align:center">2</h4>
+      		
+      		<div class="second-div" style="display:none;">
+      			<h4 style="text-align:center">2</h4>
+      			<div class="col-md-12">
+      				<img width="100%" src="/assets/crearcuenta2.PNG">
+      			</div>
+      			<button class="btn btn-primary pull-right" id="change_three">Continuar</button>
       		</div>
-			<div class="slide1">
-				<h4 style="text-align:center">3</h4>
-			</div>
+      		
+      			<div class="third-div" style="display:none;">
+      			<h4 style="text-align:center">3</h4>
+      			<div class="col-md-12">
+      				<img width="100%" src="/assets/crearcuenta3.PNG">
+      			</div>
+      			<button class="btn btn-primary pull-right" id="back_first">Continuar</button>
+      		</div>
+      		
+      		
       	</div>
        	
       </div>
@@ -134,14 +151,19 @@
          
                                 }
             $(document).ready(function(){
-                       
-						   $('#Instructions').modal('show');
-				$('#slider-instructions').bxSlider({
-                            minSlides: 1,
-                            maxSlides: 10,
-                            slideMargin: 10,
-                            infiniteLoop: false
-                          });
+				$('#Instructions').modal('show');
+				$('#change_two').click(function(){
+					$('.introduction').fadeOut();
+					$('.second-div').fadeIn();
+				})
+					$('#change_three').click(function(){
+					$('.second-div').fadeOut();
+					$('.third-div').fadeIn();
+				})
+						$('#back_first').click(function(){
+					$('.third-div').fadeOut();
+					$('.introduction').fadeIn();
+				})
           
                         });
       
@@ -149,14 +171,3 @@
     
    
 </script>
-
-
-
-
-
-
-
-
-
-
-
