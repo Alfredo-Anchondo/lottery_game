@@ -1,4 +1,4 @@
-# Files in the config/locales directory are used for internationalization
+﻿# Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
 #
@@ -263,6 +263,8 @@ es:
   
   activerecord:
     models:
+        error_reports: "Reporte de Errores"
+        error_report: "Reporte de Error"
         categories: "Categorias"
         question: "Pregunta"
         questions: "Preguntas"
@@ -393,5 +395,16 @@ es:
             status: "Estatus"
             ticket_number: "Número de Boleto"
             purchase_date: "Fecha de Compra"
+        error_report:
+            user: "Usuario"
+            controller_name: "Nombre del controlador"
+            action_name: "Nombre de la accion"
+            line_number: "Número de Linea"
+            referrer_url: "Link de referencia"
+            original_path: "Url de Origen"
+            enviroment: "Ambiente"
+            description: "Descripcion"
+            backtrace: "Ruta del error"
+            error_time: "Hora del error"  
             
             

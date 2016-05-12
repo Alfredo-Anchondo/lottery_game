@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503184726) do
+ActiveRecord::Schema.define(version: 20160512154007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,23 @@ ActiveRecord::Schema.define(version: 20160503184726) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
   end
+
+  create_table "error_reports", force: true do |t|
+    t.integer  "user_id"
+    t.string   "controller_name"
+    t.string   "action_name"
+    t.string   "line_number"
+    t.string   "referrer_url"
+    t.string   "original_path"
+    t.string   "enviroment"
+    t.text     "description"
+    t.text     "backtrace"
+    t.datetime "error_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "error_reports", ["user_id"], name: "index_error_reports_on_user_id", using: :btree
 
   create_table "games", force: true do |t|
     t.integer  "team_id"
@@ -66,7 +83,7 @@ ActiveRecord::Schema.define(version: 20160503184726) do
   create_table "quiniela_questions", force: true do |t|
     t.integer  "question_id", null: false
     t.integer  "quiniela_id", null: false
-    t.text     "value",       null: false
+    t.text     "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -94,6 +111,7 @@ ActiveRecord::Schema.define(version: 20160503184726) do
     t.integer  "game_id",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "winner_number"
   end
 
   add_index "quinielas", ["game_id"], name: "index_quinielas_on_game_id", using: :btree

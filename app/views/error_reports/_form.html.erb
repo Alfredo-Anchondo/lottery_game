@@ -1,0 +1,92 @@
+<%= form_for(@error_report, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @error_report.errors.any? %>
+<div id="error_explanation">
+  <% if @error_report.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.error_report")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.error_report"), :count => @error_report.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @error_report.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+              <div class="form-group">
+          <%= f.label :user_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:user_id, @users_select, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :controller_name, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :controller_name, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :action_name, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :action_name, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :line_number, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :line_number, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :referrer_url, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :referrer_url, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :original_path, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :original_path, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :enviroment, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :enviroment, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :description, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_area :description, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :backtrace, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_area :backtrace, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :error_time, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.datetime_select :error_time, :class => "form-control" %>
+          </div>
+        </div>
+      </div>
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

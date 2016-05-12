@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :error_reports
+
     devise_for :users,  controllers: { registrations: "registrations" , omniauth_callbacks: 'omniauth_callbacks' }
   
   resources :questions

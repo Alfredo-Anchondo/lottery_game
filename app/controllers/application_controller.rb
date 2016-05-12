@@ -3,6 +3,62 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
     before_action :change_language    
     
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
+ 
+
+	if Rails.env == 'production' || Rails.env == 'development' 
+    rescue_from StandardError do |exception|
+      process_exception(exception)
+      redirect_to (request.referer || :root), :flash => { :error => t('something_went_wrong') }
+    end
+
+    rescue_from ActiveRecord::DeleteRestrictionError do |exception|
+      process_exception(exception)
+      redirect_to (request.referer || :root), :flash => { :error => t('delete_restriction_error') }
+    end
+
+    rescue_from ActiveRecord::RecordNotFound do |exception|
+      process_exception(exception)
+      redirect_to (request.referer || :root), :flash => { :error => t('record_not_found') }
+    end
+
+    rescue_from CanCan::AccessDenied do |exception|
+      process_exception(exception)
+      redirect_to (request.referer || :root), :flash => { :error => t('access_denied') }
+    end
+  end
+
+  protected
+
+  def layout_by_resource
+    if devise_controller?
+      "devise"
+    else
+      "application"
+    end
+  end
+
+  private
+
+  def process_exception(exception)
+    user_id = current_user.id if signed_in?
+    line_number = exception.backtrace.to_s.split(':in').first.gsub('["', '')
+
+	  ErrorReport.create(
+	  :user_id => user_id,
+      :controller_name => controller_name,
+      :action_name => action_name,
+      :description => exception.to_s,
+      :referrer_url => request.referer,
+      :original_path => request.original_url,
+      :enviroment => Rails.env,
+      :error_time => Time.current,
+      :line_number => line_number,
+      :backtrace => exception.backtrace.to_s
+    )
+  end
     
   protected
     

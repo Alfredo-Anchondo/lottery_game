@@ -1,0 +1,110 @@
+<div class="row">
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <h3 style="margin-left:15px"><%= t("activerecord.models.error_reports") %></h3>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
+            <thead>
+              <tr>
+                                  <th><%= t("activerecord.attributes.error_report.user") %></th>
+                                  <th><%= t("activerecord.attributes.error_report.controller_name") %></th>
+                                  <th><%= t("activerecord.attributes.error_report.action_name") %></th>
+                                  <th><%= t("activerecord.attributes.error_report.line_number") %></th>
+                                  <th><%= t("activerecord.attributes.error_report.referrer_url") %></th>
+                                  <th><%= t("activerecord.attributes.error_report.original_path") %></th>
+                                  <th><%= t("activerecord.attributes.error_report.enviroment") %></th>
+                                  <th><%= t("activerecord.attributes.error_report.description") %></th>
+                                  <th><%= t("activerecord.attributes.error_report.backtrace") %></th>
+                                  <th><%= t("activerecord.attributes.error_report.error_time") %></th>
+                                  <th style="width: 155px"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @error_reports.each do |error_report| %>
+              <tr>
+				  <td><%=  error_report.user.name + '' + error_report.user.last_name %></td>
+                                  <td><%= error_report.controller_name %></td>
+                                  <td><%= error_report.action_name %></td>
+                                  <td><%= error_report.line_number %></td>
+                                  <td><%= error_report.referrer_url %></td>
+                                  <td><%= error_report.original_path %></td>
+                                  <td><%= error_report.enviroment %></td>
+                                  <td><%= error_report.description %></td>
+                                  <td><%= error_report.backtrace %></td>
+                                  <td><%= error_report.error_time %></td>
+                                <td class="action-link">
+                  <% if can? :show,error_report %>
+                    <%= link_to error_report, :class => "btn btn-default", :title => t("actions.show") do %>
+                      <i class="fa fa-eye"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :edit, error_report %>
+                    <%= link_to edit_error_report_path(error_report), :class => "btn btn-info", :title => t("actions.edit") do %>
+                      <i class="fa fa-pencil"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :delete, error_report %>
+                    <%= link_to error_report, :method => :delete, :data => { :confirm => t("are_you_sure?", model: t("activerecord.models.error_report").downcase) }, :class => "btn btn-danger", :title => t("actions.delete") do %>
+                      <i class="fa fa-trash"></i>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center">
+        
+        </div>
+      </div>
+      <!-- end panel-body -->
+    </div>
+    <!-- end panel -->
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :new, ErrorReport  %>
+      <%= link_to new_error_report_path, :class => "btn btn-default" do %>
+        <i class="icon-plus-sign-alt"></i>
+        <%= t("actions.new") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+
+
+<script>
+       var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+    
+$('#data-table').DataTable({
+    responsive: true,
+    order: [1,"desc"],
+     "language": {
+            "url": languaje
+        }
+});
+</script>
