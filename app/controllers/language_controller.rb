@@ -5,7 +5,6 @@ class LanguageController < ApplicationController
      redirect_to :back
       rescue ActionController::RedirectBackError
       redirect_to :root
-      
   end
     
 
@@ -13,10 +12,8 @@ class LanguageController < ApplicationController
         @user = current_user
         if @user
             if @user.language != "" || nil
-                logger.info "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&Si entro $$$$$$$$$$$$$$$$$$$$$$$"
                 return @user.language
             else    
-                logger.info "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Agarro default %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
                 return params[:locale] 
             end  
         else

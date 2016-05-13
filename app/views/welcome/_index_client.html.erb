@@ -57,7 +57,10 @@
                             </div>
                            <div class="row">
                         <div class="col-md-3 col-xs-12">
+                          
                            <hr>
+                           <h3 style="color:white; text-align:center">Participa en nuestras loterias</h3>
+                       	<hr>	
                             <h4 style="text-align:center; color:white;"><span id='first_balance'><%= t('estimate_jackpot') %>:</span> </h4>
                             <h4 id="initial_balance2" style="text-align:center;font-size: 60px; color: #E4007D;"><span id="initial_balance"></span> DB</h4>
                             <hr>
@@ -112,21 +115,27 @@
                        </div>
                        <div class="col-md-3">
                        	<hr>
-                       	<h3 style="color:white; text-align:center">Participa en nuestras loterias</h3>
+                       	
+                       	    <h3 style="text-align:center; font-weight:900; color:#FD83C6"> <%= t('lottery_rules') %>: <pre style="font-size:84%; font-weight:600; background-color:transparent; color:white; overflow:hidden; padding:0px; font-family: inherit; border: 0px;" id="lottery_rules"></pre>  </h3>
+                       	    <hr>
+                       	    <h4 class="center-text" style="text-align:center; color:white; font-size:18px;" > <%= t('select_participe_number')%>:<input style="display:none" id="lottery_id" value="">  </h4> <br>
+                       	      <input style="color:black; text-align:center" value="00" disabled class="ticket_number form-control" type="text" > 
+                       	      <hr>
+                       	       <h4 style="text-align:center"><button style="margin-top:3%;"  id="buy-ticket-button" class="btn btn-primary center-text"><%= t('buy_ticket') %></button></h4>
                        </div>
                        </div>
                         </div>
                     <div class="ibox-footer" style="background-color:#727272; padding:0px; color:white;">
                         <div class="row">
                         <div class="col-md-4 col-xs-12">
-                             <h3 style="text-align:center; font-weight:900; color:#FD83C6"> <%= t('lottery_rules') %>: <pre style="font-size:84%; font-weight:600; background-color:transparent; color:white; overflow:hidden; padding:0px; font-family: inherit; border: 0px;" id="lottery_rules"></pre>  </h3>
+                          
                         </div>
                             <div class="col-md-4 col-xs-12">
-                                <h4 class="center-text" style="text-align:center; font-size:18px;" > <%= t('select_participe_number')%>:<input style="display:none" id="lottery_id" value="">  </h4> <br>
-								  <input style="color:black; text-align:center" value="00" disabled class="ticket_number form-control" type="text" > 
+                                
+								
                             </div>
                           <div class="col-md-4  col-xs-12" id="move-top">
-                            <h4 style="text-align:center; font-size:18px;">  <span class="center-text" ><%= t('no_balance_money') %></span></h4>  <h4 style="text-align:center"><button style="margin-top:3%;"  id="buy-ticket-button" class="btn btn-primary center-text"><%= t('buy_ticket') %></button></h4>
+                           
                               
                             </div>
                             </div>
@@ -601,6 +610,7 @@
         var current_balance;
         var lottery_price;
 	    var ticket_gift;
+		var nothing = false;
     
       var current_language = $("#current_language").val();
        var languaje;
@@ -624,18 +634,18 @@
 })
   .done(function( data) {
       if(data){
-			 if (data.game.lotteries[0]){
+		  for(var o in data.games){
+			 if (data.games[o].lotteries[0]){
 				 
 			 }else{
-				 $('#no-lotteries').show();
-				 $('#coming-lotteries').hide();
+				
 			 }
       
-             if(data.game.lotteries[0]){
-                               if (data.game.team.id < 10){
-        $('#team1').attr('src','/system/teams/logos/000/000/00'+data.game.team.id+'/original/'+data.game.team.logo_file_name);
+             if(data.games[o].lotteries[0]){
+                               if (data.games[o].team.id < 10){
+        $('#team1').attr('src','/system/teams/logos/000/000/00'+data.games[o].team.id+'/original/'+data.games[o].team.logo_file_name);
     }   else{
-       $('#team1').attr('src','/system/teams/logos/000/000/0'+data.game.team.id+'/original/'+data.game.team.logo_file_name);
+       $('#team1').attr('src','/system/teams/logos/000/000/0'+data.games[o].team.id+'/original/'+data.games[o].team.logo_file_name);
     }  
    
              
@@ -650,40 +660,40 @@
                                  $(".ticket_number").val(select_number);
            })
              
-     $('#team_score').text(data.game.local_score);
-     ticket_gift = data.game.lotteries[0].purchase_gift_tickets;
-     $('#initial_balance').text(data.game.lotteries[0].initial_balance);   
-     $(".total_initial_balance").text(""+data.game.lotteries[0].initial_balance+ " DB");         
-     $('#team_name').text(data.game.team.name);
-     $('#team2_name').text(data.game.team2.name);
-     $('#team2_score').text(data.game.visit_score);
-     $('#game_date').text(moment(data.game.game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a'));             
-     $('#ticket_name').text(data.game.team.name + " vs " + data.game.team2.name);         
-             if(data.game.lotteries[0].final_number < 100){
+     $('#team_score').text(data.games[o].local_score);
+     ticket_gift = data.games[o].lotteries[0].purchase_gift_tickets;
+     $('#initial_balance').text(data.games[o].lotteries[0].initial_balance);   
+     $(".total_initial_balance").text(""+data.games[o].lotteries[0].initial_balance+ " DB");         
+     $('#team_name').text(data.games[o].team.name);
+     $('#team2_name').text(data.games[o].team2.name);
+     $('#team2_score').text(data.games[o].visit_score);
+     $('#game_date').text(moment(data.games[o].game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a'));             
+     $('#ticket_name').text(data.games[o].team.name + " vs " + data.games[o].team2.name);         
+             if(data.games[o].lotteries[0].final_number < 100){
             $('.ticket_number').mask('00', {placeholder: "00", reverse: false});
                  ticket_length = 2;
-             } else if(data.game.lotteries[0].final_number < 1000){
+             } else if(data.games[o].lotteries[0].final_number < 1000){
                  $('.ticket_number').mask('000', {placeholder: "000", reverse: false});
                   ticket_length = 3;
              } else {
                   $('.ticket_number').mask('0000', {placeholder: "0000", reverse: false});
                   ticket_length = 4;
              }
-     $('.ticket_number').attr('max',data.game.lotteries[0].final_number);
-     $('#lottery_rules').text(data.game.lotteries[0].rules); 
-    if (data.game.team2.id < 10){
-         $('#team2').attr('src','/system/teams/logos/000/000/00'+data.game.team2.id+'/original/'+data.game.team2.logo_file_name)
+     $('.ticket_number').attr('max',data.games[o].lotteries[0].final_number);
+     $('#lottery_rules').text(data.games[o].lotteries[0].rules); 
+    if (data.games[o].team2.id < 10){
+         $('#team2').attr('src','/system/teams/logos/000/000/00'+data.games[o].team2.id+'/original/'+data.games[o].team2.logo_file_name)
     }   else{
-        $('#team2').attr('src','/system/teams/logos/000/000/0'+data.game.team2.id+'/original/'+data.game.team2.logo_file_name)
+        $('#team2').attr('src','/system/teams/logos/000/000/0'+data.games[o].team2.id+'/original/'+data.games[o].team2.logo_file_name)
     }      
    
   
-    $('#lottery_id').val(data.game.lotteries[0].id);
-    $('#lottery_id_type').text(data.game.lotteries[0].id);
-    $('#lottery_price').val(data.game.lotteries[0].price); 
-    $('#lottery_display_price').text(""+data.game.lotteries[0].price); 
+    $('#lottery_id').val(data.games[o].lotteries[0].id);
+    $('#lottery_id_type').text(data.games[o].lotteries[0].id);
+    $('#lottery_price').val(data.games[o].lotteries[0].price); 
+    $('#lottery_display_price').text(""+data.games[o].lotteries[0].price); 
              
-        var countdown = data.game.game_date;
+        var countdown = data.games[o].game_date;
         var countdown1 = moment(countdown).format('MM/DD/YYYY HH:mm');   
              
              
@@ -756,16 +766,20 @@
             
            
         });
+	  		return
              }else{
-                 $('#coming-lotteries').hide();
-                 $('#no-lotteries').show();
+                nothing = true;
              }
+		  }
              
 	  }
               else{
-				 $('#no-lotteries').show();
-				 $('#coming-lotteries').hide();		  
-								  }
+				  nothing = true;
+								}
+				if(nothing){
+	  	 		 $('#no-lotteries').show();
+				 $('#coming-lotteries').hide();		
+  					}				  
        
                });
             

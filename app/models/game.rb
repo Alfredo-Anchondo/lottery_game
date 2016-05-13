@@ -58,7 +58,7 @@ class Game < ActiveRecord::Base
     
     
     def self.next_game
-        where('game_date >= ?', DateTime.now).order(:game_date).first 
+        where('game_date >= ?', DateTime.now).order(:game_date).limit(5)
     end
     
     
