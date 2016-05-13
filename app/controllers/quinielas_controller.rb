@@ -13,6 +13,10 @@ class QuinielasController < ApplicationController
 		render :json => Quiniela.find_no_winners 		
 	end
 	
+	def toclose
+		render :json => Quiniela.toclose
+	end
+	
 	
   def index
     @quinielas = Quiniela.all

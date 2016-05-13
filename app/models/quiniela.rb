@@ -7,9 +7,20 @@ class Quiniela < ActiveRecord::Base
 	accepts_nested_attributes_for :quiniela_questions, allow_destroy: true, reject_if: proc{ |attributes| attributes['question_id'].blank? }
 		
 	
-		def self.find_no_winners
-			where('winner_number' => '')
+	def self.find_no_winners
+		ids = Array.new
+		games_ids = Game.where('game_date >= ?', DateTime.now).pluck(:id)
+		games_ids.each do |variable|
+			ids.push(variable)
 		end
+		logger.info ids
+		where(:game_id => ids )
+	end
+		
+		def self.toclose
+			where(:winner_number => '')
+		end
+		
 		
 	def update_winner
 		quiniela_name = game.team.name + " vs " + game.team2.name

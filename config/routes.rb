@@ -12,10 +12,12 @@ Rails.application.routes.draw do
    end
 
   resources :quiniela_questions
+	
 	resources :quinielas do
 		collection do
 			get 'get_quinielas', to: "quinielas#get_quinielas"
 			get 'close_quiniela'
+			get 'toclose', to: "quinielas#toclose"
 			get 'get_quinielas_no_winner', to: "quinielas#get_quinielas_no_winner"
 		end
 	end
