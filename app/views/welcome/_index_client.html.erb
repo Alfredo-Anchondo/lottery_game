@@ -633,7 +633,7 @@
   format: "json"
 })
   .done(function( data) {
-      if(data){
+      if(data.games != null && data.games != '' && data.games != []){
 		  for(var o in data.games){
 			 if (data.games[o].lotteries[0]){
 				 
