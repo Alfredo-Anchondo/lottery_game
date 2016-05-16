@@ -1,3 +1,8 @@
+<style>
+	.footer{
+		position: fixed;
+	}
+</style>
 
 <h1>Hubo un problema al procesar la transacción</h1>
 <h2>El mensaje devuelto por el sistema es el siguiente:</h2>
@@ -20,4 +25,6 @@
 <h2><%= t('cardrejected') %></h2>
 <% when "There are not enough funds in the openpay account" %>
 <h2><%= t('nofunds_openpay') %></h2>
+<% else %>
+ <h2>Hubo un error al momento de realizar la transacción, verifica los datos para asegurarte de que los datos de tu tarjeta de credito o debito son validos y vuelve a intentar.</h2>
   <% end %>

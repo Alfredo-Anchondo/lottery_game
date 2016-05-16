@@ -4,6 +4,35 @@ class QuinielasController < ApplicationController
   respond_to :html
   respond_to :json	
 
+	
+	def buy_random_quinielas
+		@numbers = params[:numbers]
+		@price = params[:price]
+		@balance = params[:balance]
+		@user = current_user
+		@tira = params[:tira_id]
+		@normal_buy = params[:normal_buy]
+		@total_balance_update = params[:total_balance_update]
+		
+		render nothing: true
+		
+	
+
+		if params[:normal_buy] != 'true'
+			@user.update( {gift_credit: @total_balance_update})
+		else
+			@user.update( {balance: @total_balance_update})
+		end
+		
+		@numbers.each_with_index do |_, i|
+			QuinielaUser.create({user_id: @user.id, quiniela_id: @tira, status: 'Comprado', ticket_number: @numbers[Integer(i)], purchase_date: DateTime.now})
+		end
+		#BuyMailer.buy_many_tickets(@user_id, @array_values, @lottery).deliver
+	
+      
+		
+	end
+	
 	def get_quinielas
 		@quinielas = Quiniela.all
 		render :json => @quinielas		
