@@ -53,6 +53,7 @@ end
 
     end
   end
+
     
     def lottery_count
         Lottery.count
