@@ -597,7 +597,7 @@
 }
 
 .navbar-teal {
-    background-color: #E4007D;
+    background-color: #2D68AC;
     color:white;
 }
 
@@ -628,12 +628,12 @@
 }
 
 #myNavbar .navbar-nav li a:hover{
-    background-color: #ff1e98;
+    background-color:  #4286ff;
     color:white;
 }
 
 #data-table thead {
-    background-color:#727272;
+    background-color:#171616;
     color:white;
 }
 
@@ -647,18 +647,18 @@
 }
 
  .alert-success{
-         background-color: #ab005c !important;
+         background-color: #003f89 !important;
     }
 
 .header-show{
-    background-color:#ab005c;
+    background-color:#003f89;
     color:white;
     margin-top:0px;
     padding: 15px;
 }
 
 .property-show{
-    background-color: #727272;
+    background-color: #171616;
     color:white;
     padding: 15px;
 }

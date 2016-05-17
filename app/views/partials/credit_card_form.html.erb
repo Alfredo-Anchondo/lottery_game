@@ -72,26 +72,26 @@
 <div class="row">
 
 <div class="col-md-2 col-xs-12">
-     <h2 style="background-color:#E4007D;  color:white; font-size: 24px; line-height: 24px; margin: 0; padding: 28px 0 28px 20px; width: 100%;"><%= t('amount') %> <br> <span style=" font-size:14px; font-weight:900;">* 1 DB = $1.00 MXN </span> </h2>
+     <h2 style="background-color:#720062;  color:white; font-size: 24px; line-height: 24px; margin: 0; padding: 28px 0 28px 20px; width: 100%;"><%= t('amount') %> <br> <span style=" font-size:14px; font-weight:900;">* 1 DB = $1.00 MXN </span> </h2>
 	
     <div class="row" style="background-color:white;">
          <div class="radio">
-            <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input checked style="" type="radio" value="20" name="amountradio"><span style="color:#E4007D; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 20 DB </span> </label>
-              <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="40" name="amountradio"><span style="color:#E4007D; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 40 DB </span> </label>
-              <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="100" name="amountradio"><span style="color:#E4007D; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 100 DB </span> </label>
-               <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="200" name="amountradio"><span style="color:#E4007D; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 200 DB </span> </label>
-               <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="500" name="amountradio"><span style="color:#E4007D; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 500 DB </span> </label>
-               <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="1000" name="amountradio"><span style="color:#E4007D; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 1000 DB </span> </label>
+            <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input checked style="" type="radio" value="20" name="amountradio"><span style="color:#720062; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 20 DB </span> </label>
+              <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="40" name="amountradio"><span style="color:#720062; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 40 DB </span> </label>
+              <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="100" name="amountradio"><span style="color:#720062; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 100 DB </span> </label>
+               <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="200" name="amountradio"><span style="color:#720062; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 200 DB </span> </label>
+               <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="500" name="amountradio"><span style="color:#720062; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 500 DB </span> </label>
+               <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="1000" name="amountradio"><span style="color:#720062; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 1000 DB </span> </label>
         </div>
     </div>
     </div>
 <div class="col-md-3 col-xs-12">
-    <h2 style="background-color:#E4007D; color:white; font-size: 24px; line-height: 24px; margin: 0; padding: 28px 0 28px 20px; width: 100%;"><%= t('register_cards') %></h2>
+    <h2 style="background-color:#720062; color:white; font-size: 24px; line-height: 24px; margin: 0; padding: 28px 0 28px 20px; width: 100%;"><%= t('register_cards') %></h2>
             <div class="row" style="background-color:white;">
             <% if @get_cards != [] && @get_cards != nil  %>
              <% @get_cards.each do |card| %>
                 <div class="radio">
-                    <label style="margin-left:30px; font-weight:900;" ><img width="50px"src="/assets/<%= card['brand'] %>.ico"><input style="margin-top:18px; margin-left:-70px;" type="radio" value="<%= card['id'] %>" name="optradio"><span style="color:#E4007D; padding-left:10px;"><%= t('card') %>: </span> <%= card['card_number'] %><i data-card="<%= card['id'] %>" style="color:red; margin-left: 10px; font-size: 22px;" class="fa fa-times-circle delete_card"></i></label>
+                    <label style="margin-left:30px; font-weight:900;" ><img width="50px"src="/assets/<%= card['brand'] %>.ico"><input style="margin-top:18px; margin-left:-70px;" type="radio" value="<%= card['id'] %>" name="optradio"><span style="color:#720062; padding-left:10px;"><%= t('card') %>: </span> <%= card['card_number'] %><i data-card="<%= card['id'] %>" style="color:red; margin-left: 10px; font-size: 22px;" class="fa fa-times-circle delete_card"></i></label>
                 </div>
               <% end %>
     <h4 style="text-align:center"><a style="color:white;" class="btn btn-danger" id="pay-button-used"><%= t('buy') %></a></h4>
@@ -108,7 +108,7 @@
 		<form style="width:100%" action="#" method="POST" id="payment-form">
 			    <input type="hidden" name="token_id" id="token_id">
                 <input type="hidden" name="amount" id="amount" value="20">
-			<h2 style="background-color:#E4007D; color:white; padding:28px 0 28px 20px; margin:0px;"><%= t('registeredmon') %></h2>
+			<h2 style="background-color:#720062; color:white; padding:28px 0 28px 20px; margin:0px;"><%= t('registeredmon') %></h2>
 			<div class="row" style="background-color:white;">
 				<div class="row">
 			<div class="col-md-4" >

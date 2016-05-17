@@ -51,7 +51,7 @@
                     <div class="ibox-content" style="display: block; background-position-y: 2px; background-image: url('/assets/Basketball2.jpg');background-size: cover; background-origin: border-box;">
                         <div class="row">
                                                     
-                                <h4 style="text-align:center;  text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D; font-size:30px; color:white;"> <span style="font-size:30px; color:white" id="game_date"></span></h4>
+                                <h4 style="text-align:center; text-transform: capitalize;  text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; font-size:30px; color:white;"> <span style="font-size:30px; color:white" id="game_date"></span></h4>
                                 <br>
                                 
                             </div>
@@ -59,19 +59,19 @@
                         <div class="col-md-3 col-xs-12">
                           
                            <hr>
-                           <h3 style="color:white; text-align:center">Participa en nuestras loterias</h3>
+                           <h3 style="color:white; text-align:center">Participa en nuestras loterías</h3>
                        	<hr>	
                             <h4 style="text-align:center; color:white;"><span id='first_balance'><%= t('estimate_jackpot') %>:</span> </h4>
-                            <h4 id="initial_balance2" style="text-align:center;font-size: 60px; color: #E4007D;"><span id="initial_balance"></span> DB</h4>
+                            <h4 id="initial_balance2" style="text-align:center;font-size:60px;  text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color: #720062;"><span id="initial_balance"></span> DB</h4>
                             <hr>
                             <input style="display:none" id="lottery_price" value="">
                             <h4 style="text-align:center; color:white;"> <%= t('lottery_price') %> </h4>
-                            <h2 style="text-align:center; color:#AB005C; font-weight:800; font-size:40px" ><span id="lottery_display_price"></span> <span> DB</span></h2> <hr>
+                            <h2 style="text-align:center; color:#720062; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; font-weight:800; font-size:40px" ><span id="lottery_display_price"></span> <span> DB</span></h2> <hr>
                             </div>
                             <div class="col-md-6">
                         <div class="col-md-4 col-xs-5">
-							<h4 style="text-align:center; color:white;  text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D;">Equipo Local</h4>
-                           <h3 style="text-align:center;font-size:30px; color:white;  text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D;" id="team_name"></h3>
+							<h4 style="text-align:center; color:white;  text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062;">Equipo Local</h4>
+                           <h3 style="text-align:center;font-size:30px; color:white;  text-shadow: -1px 0 #720062D, 0 1px #720062, 1px 0 #720062, 0 -1px #720062;" id="team_name"></h3>
                             <h2 style="text-align:center; "><img height="auto" id="team1" src=""></h2>
 							<h5 style="text-align:center; color:white;">Selecciona el primer digito:</h5>
                             <h2 style="text-align:center">
@@ -89,11 +89,11 @@
                                     </select></h2>
                         </div>
                         <div class="col-md-4 col-xs-2" style="">
-                            <h1 id="vs" style="text-align:center;  text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D; color:white; font-weight:800; font-size:50px; margin-top:130%;">VS</h1>
+                            <h1 id="vs" style="text-align:center;  text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062 0 -1px #720062; color:white; font-weight:800; font-size:50px; margin-top:130%;">VS</h1>
                         </div>
                         <div class="col-md-4 col-xs-5">
-							<h4 style="text-align:center; color:white;  text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D;">Equipo Visitante</h4>
-                            <h3 style="text-align:center; font-size:30px;  text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D; color:white;" id="team2_name"></h3>
+							<h4 style="text-align:center; color:white;  text-shadow: -1px 0 #720062D, 0 1px #720062, 1px 0 #720062, 0 -1px #720062;">Equipo Visitante</h4>
+                            <h3 style="text-align:center; font-size:30px;  text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; color:white;" id="team2_name"></h3>
                              <h2 style="text-align:center"><img id="team2"  height="auto" src=""></h2>
 								<h5 style="text-align:center; color:white;">Selecciona el segundo digito:</h5>
                             <h2 style="text-align:center">
@@ -116,7 +116,7 @@
                        <div class="col-md-3">
                        	<hr>
                        	
-                       	    <h3 style="text-align:center; font-weight:900; color:#FD83C6"> <%= t('lottery_rules') %>: <pre style="font-size:84%; font-weight:600; background-color:transparent; color:white; overflow:hidden; padding:0px; font-family: inherit; border: 0px;" id="lottery_rules"></pre>  </h3>
+                       	    <h3 style="text-align:center; font-weight:900;  color:#720062;"> <span style="text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF;"><%= t('lottery_rules') %>: </span> <pre style="font-size:84%; font-weight:600; background-color:transparent; color:white; overflow:hidden; padding:0px; font-family: inherit; border: 0px;" id="lottery_rules"></pre>  </h3>
                        	    <hr>
                        	    <h4 class="center-text" style="text-align:center; color:white; font-size:18px;" > <%= t('select_participe_number')%>:<input style="display:none" id="lottery_id" value="">  </h4> <br>
                        	      <input style="color:black; text-align:center" value="00" disabled class="ticket_number form-control" type="text" > 
@@ -125,7 +125,7 @@
                        </div>
                        </div>
                         </div>
-                    <div class="ibox-footer" style="background-color:#727272; padding:0px; color:white;">
+                    <div class="ibox-footer" style="background-color:#2D68AC; padding:0px; color:white;">
                         <div class="row">
                         <div class="col-md-4 col-xs-12">
                           
@@ -186,9 +186,9 @@
              </div>
                 <div class="ibox-content" id="serie_lotteries">
 					<div class="row" id="random_lotteries_div2">
-					<h3 style="text-align:center; font-weight:900">¿Tienes tu propia serie de numeros ganadores?</h3>
-					<h4 style="text-align:center">Selecciona todos esos numeros en un solo paso</h4> <br>
-					    <label style="margin-left:15%">Loteria: </label> <select style="text-align:center" class="form-control" id="lotteries_random2"><option value="0">Selecciona una loteria</option></select> <br><br>
+					<h3 style="text-align:center; font-weight:900">¿Tienes tu propia serie de números ganadores?</h3>
+					<h4 style="text-align:center">Selecciona todos esos números en un solo paso</h4> <br>
+					    <label style="margin-left:15%">Lotería: </label> <select style="text-align:center" class="form-control" id="lotteries_random2"><option value="0">Selecciona una lotería</option></select> <br><br>
                                 <hr>
                                 <div class="row">
                                 <div class="col-md-5 col-xs-5">
@@ -206,11 +206,11 @@
 						<div class="row" id="serie-caracteristics" style="display:none">
 							<div class="col-md-6">
 								<h4 style="text-align:center; color:black;">Bolsa acumulada: </h4>
-								<h3  style="text-align:center;font-weight:900; color:#e4007d" id="serie-balance"></h3>
+								<h3  style="text-align:center;font-weight:900; color:#720062" id="serie-balance"></h3>
 							</div>
 							<div class="col-md-6">
 								<h4 style="text-align:center; color:black;">Precio del billete:</h4>
-								<h3 style="text-align:center; font-weight:900; color:#e4007d;" id="serie_price"></h3>
+								<h3 style="text-align:center; font-weight:900; color:#720062;" id="serie_price"></h3>
 							</div>
 
 						</div>
@@ -227,10 +227,10 @@
 							<div class="col-md-4"> <button id="generate_serie" class="btn btn-primary" style="margin-top:4px"> Generar</button></div>
 						</div>
 						<div class="row" id="purchase_serie" style="display:none">
-							<h3 style="text-align:center; font-weight:900">Numeros Generados</h3>
-							<h2 id="generate_serie_numbers" style="word-spacing:5px; font-weight:900; text-align:center;"></h2>
+							<h3 style="text-align:center; font-weight:900">Números Generados</h3>
+							<h2 id="generate_serie_numbers" style="word-spacing:5px; color:#720062; font-weight:900; text-align:center;"></h2>
 							<hr>
-							<h3 style="text-align:center; font-weight:800;">Total a pagar: <span id="serie_total_buy"></span></h3>
+							<h3 style="text-align:center; font-weight:800;">Total a pagar: <span id="serie_total_buy" style="color:#720062;"></span></h3>
 							<hr>
 							<h4 style="text-align:center"> <button class="btn btn-primary" id="btn_buy_serie">Comprar Billetes</button></h4>
 							
@@ -253,7 +253,7 @@
                             <div class="row" style="text-align:center" id="random_lotteries_div">
                             <h3>¿Te sientes con suerte y no sabes qué números elegir?</h3>
                             <h4>¡No te preocupes! Nosotros te ayudamos con el generador de números al azar.</h4> <br>
-                                <label>Loteria: </label> <select style="text-align:center" class="form-control" id="lotteries_random"><option value="0">Selecciona una loteria</option></select> <br><br>
+                                <label>Lotería: </label> <select style="text-align:center" class="form-control" id="lotteries_random"><option value="0">Selecciona una lotería</option></select> <br><br>
                                 
                                 <div class="row">
                                 <div class="col-md-5 col-xs-5">
@@ -273,11 +273,11 @@
 								<div class="row" id="random-caracteristics" style="display:none">
 							<div class="col-md-6">
 								<h4 style="text-align:center; color:black;">Bolsa acumulada: </h4>
-								<h3  style="text-align:center;font-weight:900; color:#e4007d" id="random-balance"></h3>
+								<h3  style="text-align:center;font-weight:900;  color:#720062" id="random-balance"></h3>
 							</div>
 							<div class="col-md-6">
 								<h4 style="text-align:center; color:black;">Precio del billete:</h4>
-								<h3 style="text-align:center; font-weight:900; color:#e4007d;" id="random_price"></h3>
+								<h3 style="text-align:center; font-weight:900; color:#720062;" id="random_price"></h3>
 							</div>
 
 						</div>
@@ -301,9 +301,9 @@
                             </select> </span>    <br> <hr>
                                 
                                 <h3>Números Generados: </h3> 
-                                <h2 style="font-weight:900; word-spacing:10px;" id="generate_numbers_div"></h2>
+                                <h2 style="font-weight:900; color:#720062; word-spacing:10px;" id="generate_numbers_div"></h2>
 								<hr>
-								<h3 style="font-weight:800">Total a pagar: <span style="font-size:120%" id="total_pay_ran"></span></h3>
+								<h3 style="font-weight:800">Total a pagar: <span style="font-size:120%; color:#720062" id="total_pay_ran"></span></h3>
                                 <hr>
                                 
                                 <button class="btn btn-primary" id="generate_numbers">Generar Números</button>
@@ -375,7 +375,7 @@
               <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>Tira aleatoria</h5>
-                            <span class="label label-primary">Generar numeros</span>
+                            <span class="label label-primary">Generar números</span>
                         </div>
 
                         <div class="ibox-content" id="random_tira">
@@ -402,11 +402,11 @@
 								<div class="row" id="random_caracteristics_tira" style="display:none">
 							<div class="col-md-6">
 								<h4 style="text-align:center; color:black;">Bolsa acumulada: </h4>
-								<h3  style="text-align:center;font-weight:900; color:#e4007d" id="random_balance_tira"></h3>
+								<h3  style="text-align:center; font-weight:900; color:#720062" id="random_balance_tira"></h3>
 							</div>
 							<div class="col-md-6">
 								<h4 style="text-align:center; color:black;">Precio del billete:</h4>
-								<h3 style="text-align:center; font-weight:900; color:#e4007d;" id="random_price_tira"></h3>
+								<h3 style="text-align:center; font-weight:900; color:#720062;" id="random_price_tira"></h3>
 							</div>
 
 						</div>
@@ -425,9 +425,9 @@
                             </select> </span>    <br> <hr>
                                 
                                 <h3>Números Generados: </h3> 
-                                <h2 style="font-weight:900; word-spacing:10px;" id="generate_numbers_div_tira"></h2>
+                                <h2 style="font-weight:900; word-spacing:10px; color:#720062;" id="generate_numbers_div_tira"></h2>
 								<hr>
-								<h3 style="font-weight:800">Total a pagar: <span style="font-size:120%; color:#e4007d" id="total_pay_ran_tira"></span></h3>
+								<h3 style="font-weight:800">Total a pagar: <span style="font-size:120%; color:#720062" id="total_pay_ran_tira"></span></h3>
                                 <hr>
                                 
                                 <button class="btn btn-primary" id="generate_numbers_tira">Generar Números</button>
@@ -463,7 +463,7 @@
     }  
 			   
 			   
-              $('.cycle-slideshow1').append('<div class="slide"><h3 style="text-align:center; color:black;">Ganadores de Loterias	</h3><h1 style="text-align:center; color:#E4007D; font-weight:900;">' +data.user_lotteries[i].user.username + '</h1> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img style="margin-left: 30%;" width="60%" src="'+ image_url +'"> </h4> </div> <div class="col-md-2 col-xs-2"> <h1 style="text-align:center; margin-top:80%; color:red; font-weight:900;"> VS </h1> </div> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" style="margin-left: 15%;" src="'+ image_url2 +'"> </h4> </div> <h2 style="text-align:center; color:#E4007D; font-weight:900;"> Número Ganador: '+ data.user_lotteries[i].ticket_number +' </h2> <h2 style="text-align:center; color:#E4007D; font-weight:900;">Monto de:  ' +data.user_lotteries[i].lottery.initial_balance + ' DB </h2> </div> ');
+              $('.cycle-slideshow1').append('<div class="slide"><h3 style="text-align:center; color:black;">Ganadores de Loterías	</h3><h1 style="text-align:center; color:#720062; font-weight:900;">' +data.user_lotteries[i].user.username + '</h1> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img style="margin-left: 30%;" width="60%" src="'+ image_url +'"> </h4> </div> <div class="col-md-2 col-xs-2"> <h1 style="text-align:center; margin-top:80%; color:red; font-weight:900;"> VS </h1> </div> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" style="margin-left: 15%;" src="'+ image_url2 +'"> </h4> </div> <h2 style="text-align:center; color:#720062; font-weight:900;"> Número Ganador: '+ data.user_lotteries[i].ticket_number +' </h2> <h2 style="text-align:center; color:#720062; font-weight:900;">Monto de:  ' +data.user_lotteries[i].lottery.initial_balance + ' DB </h2> </div> ');
            }
                    
        });
@@ -487,7 +487,7 @@
     }  
 			   
 			   
-              $('.cycle-slideshow1').append('<div class="slide"><h3 style="color:black; text-align:center">Ganadores de Quinielas</h3><h1 style="text-align:center; color:#E4007D; font-weight:900;">' +data.quiniela_users[i].user.username + '</h1> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" style="margin-left:30%" src="'+ image_url +'"> </h4> </div> <div class="col-md-2 col-xs-2"> <h1 style="text-align:center; margin-top:80%; color:red; font-weight:900;"> VS </h1> </div> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" style="margin-left:15%" src="'+ image_url2 +'"> </h4> </div> <h2 style="text-align:center; color:#E4007D; font-weight:900;"> Número Ganador: '+ data.quiniela_users[i].ticket_number +' </h2> <h2 style="text-align:center; color:#E4007D; font-weight:900;">Monto de:  ' +data.quiniela_users[i].quiniela.initial_balance + ' DB </h2> </div> ');
+              $('.cycle-slideshow1').append('<div class="slide"><h3 style="color:black; text-align:center">Ganadores de Quinielas</h3><h1 style="text-align:center; color:#720062; font-weight:900;">' +data.quiniela_users[i].user.username + '</h1> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" style="margin-left:30%" src="'+ image_url +'"> </h4> </div> <div class="col-md-2 col-xs-2"> <h1 style="text-align:center; margin-top:80%; color:red; font-weight:900;"> VS </h1> </div> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" style="margin-left:15%" src="'+ image_url2 +'"> </h4> </div> <h2 style="text-align:center; color:#720062; font-weight:900;"> Número Ganador: '+ data.quiniela_users[i].ticket_number +' </h2> <h2 style="text-align:center; color:#720062; font-weight:900;">Monto de:  ' +data.quiniela_users[i].quiniela.initial_balance + ' DB </h2> </div> ');
            }
            
           $('.cycle-slideshow1').bxSlider({
@@ -500,7 +500,7 @@
 <!--------------------- MODAL DE CONFIRMACION --------------------------->
 
 <div class="modal fade bs-example-modal-sm" id="confirm_buy" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div style="background-color:#E4007D"  class="modal-dialog modal-md confirm_buy_modal">
+  <div style="background-color:#2D68AC"  class="modal-dialog modal-md confirm_buy_modal">
        <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
            <h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t('purchase_confirmation') %> <span style="margin-left:29%;" id="date_modal"></span></h4>
@@ -535,13 +535,13 @@
                 </div>
             </div>
          <div class="col-md-12">
-         <h4><%= t('estimate_jackpot') %>: <span class="total_initial_balance" style="color:#E4007D; font-size:120%;"></span> </h4> <small>* <%= t('bag_polity') %>.</small>
+         <h4><%= t('estimate_jackpot') %>: <span class="total_initial_balance" style="color:#720062; font-size:120%;"></span> </h4> <small>* <%= t('bag_polity') %>.</small>
          </div>
         </div>
     </div>
        <div class="modal-footer">
-         <h4 style="text-align:center">  <button type="button" class="btn btn-default" style="background-color:#727272" data-dismiss="modal"><%= t('close') %></button>
-        <button type="button" id="confirm-buy" style="background-color:#ab005c" class="btn btn-primary"><%= t('buy') %></button></h4>
+         <h4 style="text-align:center">  <button type="button" class="btn btn-default"  data-dismiss="modal"><%= t('close') %></button>
+        <button type="button" id="confirm-buy" style="background-color:#034898" class="btn btn-primary"><%= t('buy') %></button></h4>
 		   <h5 style="color:white; text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:#d1d1d1" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5>
       </div>
   </div>
@@ -555,7 +555,7 @@
 <div class="modal fade" id="alert-modal" tabindex="-1" role="dialog" >
   <div class="modal-dialog" id="alert-display-modal">
     <div class="modal-content" >
-         <div class="modal-header" style="background-color:#E4007D; color:white;">
+         <div class="modal-header" style="background-color:#2D68AC; color:white;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:white" aria-hidden="true">&times;</span></button>
         <h4 class="modal-title"><%= t('warning') %></h4>
       </div>
@@ -575,7 +575,7 @@
     <div class="modal fade" id="success-modal" tabindex="-1" role="dialog" >
   <div class="modal-dialog" id="success-display-modal">
     <div class="modal-content" >
-         <div class="modal-header" style="background-color:#E4007D; color:white;">
+         <div class="modal-header" style="background-color:#2D68AC; color:white;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color:white" aria-hidden="true">&times;</span></button>
              <h4 class="modal-title"><%= t('success_buy') %>  <span style="margin-left:17%;" id="date_modal1"></span></h4>
       </div>
@@ -596,7 +596,7 @@
 <!--------------------- MODAL DE COMPRA --------------------------->
 
 <div class="modal fade bs-example-modal-sm" id="buy_ticket_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div style="background-color:#E4007D" class="modal-dialog modal-md confirm_buy_modal">
+  <div style="background-color:#2D68AC" class="modal-dialog modal-md confirm_buy_modal">
        <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
            <h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t('purchase_confirmation') %></h4>
@@ -639,13 +639,13 @@
                 </div>
             </div>
          <div class="col-md-12">
-          <h4><%= t('estimate_jackpot') %>: <span  style="color:#E4007D; font-size:120%;"><span class="total_modal_initial_balance" style="color:#E4007D; font-size:120%;"></span> DB </span> </h4> <small>* <%= t('bag_polity') %>.</small>
+          <h4><%= t('estimate_jackpot') %>: <span  style="color:#720062; font-size:120%;"><span class="total_modal_initial_balance" style="color:#720062; font-size:120%;"></span> DB </span> </h4> <small>* <%= t('bag_polity') %>.</small>
          </div>
         </div>
     </div>
        <div class="modal-footer">
           <h4 style="text-align:center"> <button type="button" style="background-color:gray; border-color:727272;" class="btn btn-default" data-dismiss="modal"><%= t('close') %></button>
-           <button type="button" id="confirm-buy-modal" style="background-color:#ab005c" class="btn btn-primary"><%= t('buy') %></button></h4>
+           <button type="button" id="confirm-buy-modal" style="background-color:#277ee3" class="btn btn-primary"><%= t('buy') %></button></h4>
 		   
 		   <h5 style="color:white; text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:#d1d1d1" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5>
       </div>
@@ -1215,7 +1215,7 @@
 					
 				}
             if(data.games[i].lotteries[0]){    
-         $('.slider8').append('<div class="slide"><div class="row"> <h4 style="text-align:center; font-weight:800; color:black;"> Fecha del partido:  ' +moment(data.games[i].game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h4> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Número Ganador </h4> <h1 style="font-weight:900; text-align:center; color:#e4007d;"> '+lottery_winner+' </h1> </div> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Bolsa Acumulada </h4> <h2 style="font-weight:900; color:#e4007d; text-align:center"> '+data.games[i].lotteries[0].initial_balance+' DB </h2> </div> <div class="col-md-6 col-xs-12"> <div class="row"> <div class="col-md-4 col-xs-4"> <h4 style="text-align:center"> <img width="100%" src="'+image_url+'"> </h4> </div> <div class="col-md-2 col-xs-2"><br> <br> <h2 style="text-align:center; color:black; font-weight:800;"> '+data.games[i].local_score+'  </h2> </div> <div class="col-md-2 col-xs-2"> <br> <br> <h2 style="text-align:center; font-weight:800; color:black;"">'+data.games[i].visit_score+'</h2> </div> <div class="col-md-4 col-xs-4">  <h4 style="text-align:center"> <img width="100%" src="'+image_url2+'"> </h4> </div> </div> </div>  </div> <hr> </div> ');
+         $('.slider8').append('<div class="slide"><div class="row"> <h4 style="text-align:center; font-weight:800; color:black;"> Fecha del partido:  ' +moment(data.games[i].game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h4> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Número Ganador </h4> <h1 style="font-weight:900; text-align:center; color:#720062;"> '+lottery_winner+' </h1> </div> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Bolsa Acumulada </h4> <h2 style="font-weight:900; color:#720062; text-align:center"> '+data.games[i].lotteries[0].initial_balance+' DB </h2> </div> <div class="col-md-6 col-xs-12"> <div class="row"> <div class="col-md-4 col-xs-4"> <h4 style="text-align:center"> <img width="100%" src="'+image_url+'"> </h4> </div> <div class="col-md-2 col-xs-2"><br> <br> <h2 style="text-align:center; color:black; font-weight:800;"> '+data.games[i].local_score+'  </h2> </div> <div class="col-md-2 col-xs-2"> <br> <br> <h2 style="text-align:center; font-weight:800; color:black;"">'+data.games[i].visit_score+'</h2> </div> <div class="col-md-4 col-xs-4">  <h4 style="text-align:center"> <img width="100%" src="'+image_url2+'"> </h4> </div> </div> </div>  </div> <hr> </div> ');
 			}else{
             }
 				
@@ -1358,7 +1358,7 @@
              alert('No tienes saldo suficiente para realizar la transaccion');
 			  
          }else if(lottery_id == 0){
-			  alert('Debes seleccionar una loteria para comprar el billete');
+			  alert('Debes seleccionar una lotería para comprar el billete');
 		 }else{
 			 
 			 	 $.ajax({
@@ -1392,7 +1392,7 @@
 		
 				$('#generate_serie_numbers').empty();
 				if($('#lotteries_random2').val() == 0 ){
-					alert('Selecciona por favor una loteria para participar');
+					alert('Selecciona por favor una lotería para participar');
 				}else{
 				
 				array_values = [];
@@ -1406,7 +1406,7 @@
 						}
 						$('#purchase_serie').show();
 					}else{
-						alert('Selecciona el numero inicial y final de tu serie');
+						alert('Selecciona el número inicial y final de tu serie');
 					}
 					$('#serie_total_buy').text(parseInt($('#serie_price').text()) * quantity + ' DB');
 				}
@@ -1435,7 +1435,7 @@
              alert('No tienes saldo suficiente para realizar la transaccion');
 			  
          }else if(lottery_id == 0){
-			  alert('Debes seleccionar una loteria para comprar el billete');
+			  alert('Debes seleccionar una lotería para comprar el billete');
 		 }else{
           
 			 $.ajax({
@@ -1499,9 +1499,9 @@
 					
 					$('#tiras_random').append('<option value="'+data.quinielas[i].id+'" data-price="'+data.quinielas[i].price+'" data-local="'+image_url+'" data-visit="'+image_url2+'" data-balance= "'+data.quinielas[i].initial_balance+'" data-quantity="'+data.quinielas[i].quiniela_questions.length+'">'+data.quinielas[i].description+'</option>');
 					
-					$('.cycle-tira').append('<div class="row"><h2 style="text-align:center; text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D; color:white; font-size:40px; font-weight:800;"> '+data.quinielas[i].description+' </h2> <h2 style="text-align:center; color:white; text-shadow: -1px 0 #E4007D, 0 1px #E4007D, 1px 0 #E4007D, 0 -1px #E4007D; font-weight:800;"> '+moment(data.quinielas[i].game.game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h2>  <div class="col-md-3">  <hr> <h3 style="text-align:center; color:white;">Bolsa Acumulada</h3> <h1 style="text-align:center; color:#e4007d; font-weight:800; font-size:60px;"> <span>'+ data.quinielas[i].initial_balance +' </span> DB </h1> <hr> <h3 style="text-align:center; color:white;"> Precio de la Tira </h3> <h1 style="text-align:center; font-size:40px; color:#e4007d; font-weight:800"> <span> '+ data.quinielas[i].price +'</span> DB </h1><hr></div><div class="col-md-6"> <div class="row"> <div class="col-md-4 col-xs-4"> <img src="'+image_url+'"> </div> <div class="col-md-4 col-xs-4"> <h1 style="text-align:center; font-weight:900; color:white; margin-top:45%; font-size:300%;">  </h1> </div> <div class="col-md-4 col-xs-4"> <img src="'+image_url2+'"> </div> </div> </div> <div class="col-md-3">  <h2 style="text-align:center; color:white; font-weight:800">Participa en la Tira Deportiva</h2><hr> <h4 style="text-align:center; color:white"> Que tanto conoces a tus equipos favoritos, demuestralo en esta tira y recibe increibles premios. </h4> <h4 style="text-align:center; color:white;">Es sencillo participar solo contesta estas sencillas preguntas con un si y un no, despues genera tu codigo en base a tus respuestas, si acertaste en todas las preguntas recibes el premio indicado. Recuerda contestar todas las preguntas.</h4> <hr> <h4 style="text-align:center"><button data-toggle="modal" data-target="#slide'+i+'" class="btn btn-primary" > Comprar Tira </button></h4> </div>');
+					$('.cycle-tira').append('<div class="row"><h2 style="text-align:center; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; color:white; font-size:40px; font-weight:800;"> '+data.quinielas[i].description+' </h2> <h2 style="text-align:center; text-transform: capitalize; color:white; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; font-weight:800;"> '+moment(data.quinielas[i].game.game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h2>  <div class="col-md-3">  <hr> <h3 style="text-align:center; color:white;">Bolsa Acumulada</h3> <h1 style="text-align:center;  text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#720062; font-weight:800; font-size:60px;"> <span>'+ data.quinielas[i].initial_balance +' </span> DB </h1> <hr> <h3 style="text-align:center; color:white;"> Precio de la Tira </h3> <h1 style="text-align:center; font-size:40px; color:#720062;  text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; font-weight:800"> <span> '+ data.quinielas[i].price +'</span> DB </h1><hr></div><div class="col-md-6"> <div class="row"> <div class="col-md-4 col-xs-4"> <img src="'+image_url+'"> </div> <div class="col-md-4 col-xs-4"> <h1 style="text-align:center; font-weight:900; color:white; margin-top:45%; font-size:300%;">  </h1> </div> <div class="col-md-4 col-xs-4"> <img src="'+image_url2+'"> </div> </div> </div> <div class="col-md-3">  <h2 style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#720062; font-weight:800">Participa en la Tira Deportiva</h2><hr> <h4 style="text-align:center; color:white"> ¿Qué tanto conoces a tus equipos favoritos? ¡Demuéstralo en esta tira y recibe increíbles premios! </h4> <h4 style="text-align:center; color:white;">Participar es muy fácil, solo contesta estas sencillas preguntas con lo cual se generará un código basado en tus respuestas. Si acertaste a todas, ¡ya ganaste el premio indicado! Recuerda contestar todas las preguntas.</h4> <hr> <h4 style="text-align:center"><button data-toggle="modal" data-target="#slide'+i+'" class="btn btn-primary" > Comprar Tira </button></h4> </div>');
 					
-					$('body').append('<div id="slide'+i+'" class="modal fade slide'+i+'" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="background-color:#E4007D; color:white;"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title"> '+data.quinielas[i].description+'</h4></div><div class="modal-body"> <div class="row">  <div class="col-md-6 col-xs-6"><h3 style="text-align:center; font-weight:700">Bolsa acumulada</h3> <h2 id="initial_balance'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].initial_balance +' <span>DB</span> </h2> </div> <div class="col-md-6 col-xs-6"> <h3 style="text-align:center; font-weight:700"> Precio de la Tira </h3> <h2 id="price'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].price +' <span>DB</span> </h2> </div> </div>  <hr>  <div class="row slide2'+i+'"> <h3 style="text-align:center; color:black; font-weight:900;"> Preguntas de la Tira </h3> <br> </div> <hr><div class="row"><div class="col-md-3 col-xs-6"> <h4 style="text-align:center"> <button class="btn btn-primary generate_ticket" onclick="generate_ticket()">Generar Numero </button> </h4> </div><div class="col-md-6 col-xs-6"> <input type="text" disabled style="margin-top:6px;" class="form-control ticket_value_'+i+'"> </div> <div class="col-md-3 col-xs-12"><h4 style="text-align:center"><button disabled class="btn buy_quiniela buy_quiniela_btn'+i+' btn-primary" data-quinielaid="'+data.quinielas[i].id+'" > Comprar billete </button> </h4 </div></div> </div></div><div class="modal-footer" style="background-color:#E4007D; "><button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+					$('body').append('<div id="slide'+i+'" class="modal fade slide'+i+'" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="background-color:#2D68AC; color:white;"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title"> '+data.quinielas[i].description+'</h4></div><div class="modal-body"> <div class="row">  <div class="col-md-6 col-xs-6"><h3 style="text-align:center; font-weight:700">Bolsa acumulada</h3> <h2 id="initial_balance'+i+'" style="text-align:center; color:#720062; font-weight:900"> '+ data.quinielas[i].initial_balance +' <span>DB</span> </h2> </div> <div class="col-md-6 col-xs-6"> <h3 style="text-align:center; font-weight:700"> Precio de la Tira </h3> <h2 id="price'+i+'" style="text-align:center; color:#720062; font-weight:900"> '+ data.quinielas[i].price +' <span>DB</span> </h2> </div> </div>  <hr>  <div class="row slide2'+i+'"> <h3 style="text-align:center; color:black; font-weight:900;"> Preguntas de la Tira </h3> <br> </div> <hr><div class="row"><div class="col-md-3 col-xs-6"> <h4 style="text-align:center"> <button class="btn btn-primary generate_ticket" onclick="generate_ticket()">Generar Número </button> </h4> </div><div class="col-md-6 col-xs-6"> <input type="text" disabled style="margin-top:6px;" class="form-control ticket_value_'+i+'"> </div> <div class="col-md-3 col-xs-12"><h4 style="text-align:center"><button disabled class="btn buy_quiniela buy_quiniela_btn'+i+' btn-primary" data-quinielaid="'+data.quinielas[i].id+'" > Comprar billete </button> </h4 </div></div> </div></div><div class="modal-footer" style="background-color:#2D68AC; "><h4 style="text-align:center"><button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> </h4> <h5 style="text-align:center; color:white;">*Nota: Para el resultado de todas las preguntas se considerará el partido completo, incluyendo tiempos extra y penaltis en caso de que así se dé. </h5></div></div></div></div>');
 					
 					
 					for(var e in data.quinielas[i].quiniela_questions){
@@ -1635,7 +1635,7 @@
 						result = result.concat(String(Math.round(r)));
 					}
 					generate_numbers.push(result);
-					$('#generate_numbers_div_tira').append('<h4> '+result+' </h4>');
+					$('#generate_numbers_div_tira').append('<h3 style="font-weight:800"> '+result+' </h3>');
 				}	
 				$('#buy_numbers_tira').show();
 			})

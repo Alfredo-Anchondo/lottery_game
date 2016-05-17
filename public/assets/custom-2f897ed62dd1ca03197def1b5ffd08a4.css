@@ -661,7 +661,7 @@
 }
 
 #data-table thead {
-    background-color:#727272;
+    background-color:sad;
     color:white;
 }
 
@@ -686,7 +686,7 @@
 }
 
 .property-show{
-    background-color: #727272;
+    background-color: sad;
     color:white;
     padding: 15px;
 }

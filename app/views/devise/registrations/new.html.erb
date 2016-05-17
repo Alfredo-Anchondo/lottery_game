@@ -12,7 +12,7 @@
 	}
 	
 	.dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus{
-		background-color: #E4007D;
+		background-color: #720062;
 	}
 	
 	.btn-default {
@@ -23,7 +23,7 @@
 	
 	.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{
     background-color: white;
-    border-color: #E4007D;
+    border-color: #720062;
     color: black;
 	}
 </style>
@@ -38,12 +38,12 @@
         <div class="col-md-6">
                
   <div class="field">
-      <%= f.label :username, :style => 'color:#E4007D' %><br />
+      <%= f.label :username, :style => 'color:#720062' %><br />
       <%= f.text_field :username, class: "form-control", style: "color:black", autofocus: true, required: true %>
   </div> <br>
 
  <div class="field">
-     <%= f.label :birthday, :style => 'color:#E4007D' %><br />
+     <%= f.label :birthday, :style => 'color:#720062' %><br />
      <%= f.date_field :birthday, class: "form-control", style: "color:black", autofocus: true, required: true %>
 	 <script>
 		 
@@ -61,29 +61,29 @@
   </div> <br>            
             
 <div class="field">
-    <%= f.label :email, :style => 'color:#E4007D' %><br />
+    <%= f.label :email, :style => 'color:#720062' %><br />
     <%= f.email_field :email, class: "form-control", style: "color:black", autofocus: false, required: true %>
   </div> <br>
   <div class="field">
-    <%= f.label :password, :style => 'color:#E4007D' %><br />
+    <%= f.label :password, :style => 'color:#720062' %><br />
     <%= f.password_field :password, class: "form-control",style: "color:black", autocomplete: "off", required: true %>
   </div>
 
         </div>
         <div class="col-md-6">
             <div class="field">
-    <%= f.label :name, :style => 'color:#E4007D' %><br />
+    <%= f.label :name, :style => 'color:#720062' %><br />
     <%= f.text_field :name, class: "form-control", style: "color:black", autofocus: false, required: true %>
   </div> <br>
             
   <div class="field">
-    <%= f.label :last_name, :style => 'color:#E4007D' %><br />
+    <%= f.label :last_name, :style => 'color:#720062' %><br />
     <%= f.text_field :last_name, class: "form-control", style: "color:black", autofocus: false %>
     <%= f.hidden_field :balance, class: "form-control", style: "color:black", value: 0 , autofocus: false, required: true %>
   </div> <br>
 
 <div class="field">
-         <%= f.label :gender, :class => "", :style => 'color:#E4007D' %>
+         <%= f.label :gender, :class => "", :style => 'color:#720062' %>
          
 			  <select class="form-control" name="user[gender]" id="user_gender" required>
 			  	<option style="color:black" value="Masculino">Masculino</option>
@@ -95,7 +95,7 @@
 
             
        <div class="field">
-    <%= f.label :password_confirmation, :style => 'color:#E4007D' %><br />
+    <%= f.label :password_confirmation, :style => 'color:#720062' %><br />
     <%= f.password_field :password_confirmation, class: "form-control", style: "color:black", autocomplete: "off", required: true %>
   </div>
 
@@ -117,7 +117,7 @@
   </div> 	
 		
 		<div class="field">
-			<%= f.label "Recomendado por:", :style => "color:#E4007D; margin-top:3%" %><br />
+			<%= f.label "Recomendado por:", :style => "color:#720062; margin-top:3%" %><br />
 	   <input required id="user_reference_by_friend" name="user[reference_by_friend]" value="" placeholder="Codigo de referencia" class="form-control" style="margin-bottom:3%; color:black; text-align:center;">
   </div> 
 		

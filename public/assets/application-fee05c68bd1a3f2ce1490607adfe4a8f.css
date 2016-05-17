@@ -8059,7 +8059,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 }
 
 #data-table thead {
-    background-color:#727272;
+    background-color:sad;
     color:white;
 }
 
@@ -8084,7 +8084,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 }
 
 .property-show{
-    background-color: #727272;
+    background-color: sad;
     color:white;
     padding: 15px;
 }
@@ -21481,7 +21481,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 
 /* line 106, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/buttons.scss */
 .btn-default {
-  background-color: #727272;
+  background-color: sad;
   border-color: #222222;
   color: white;
 }
@@ -24924,7 +24924,7 @@ body.body-small .footer.fixed {
 
 /* line 292, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/base.scss */
 .table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
-  background-color: #727272;
+  background-color: sad;
   border-bottom-width: 1px;
 }
 
@@ -25158,7 +25158,7 @@ code {
 
 /* line 494, C:/Users/alfre/documents/github/lottery_game/app/assets/stylesheets/base/base.scss */
 .ibox {
-  border: 1px solid #727272;
+  border: 1px solid sad;
   clear: both;
   margin-bottom: 25px;
   margin-top: 0;
@@ -25191,8 +25191,8 @@ code {
   -moz-border-left-colors: none;
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
-  background-color: #727272;
-  border-color: #727272;
+  background-color: sad;
+  border-color: sad;
   border-image: none;
   border-style: solid solid none;
   border-width: 4px 0px 0;
