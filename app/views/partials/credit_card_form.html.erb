@@ -94,7 +94,7 @@
                     <label style="margin-left:30px; font-weight:900;" ><img width="50px"src="/assets/<%= card['brand'] %>.ico"><input style="margin-top:18px; margin-left:-70px;" type="radio" value="<%= card['id'] %>" name="optradio"><span style="color:#720062; padding-left:10px;"><%= t('card') %>: </span> <%= card['card_number'] %><i data-card="<%= card['id'] %>" style="color:red; margin-left: 10px; font-size: 22px;" class="fa fa-times-circle delete_card"></i></label>
                 </div>
               <% end %>
-    <h4 style="text-align:center"><a style="color:white;" class="btn btn-danger" id="pay-button-used"><%= t('buy') %></a></h4>
+    <h4 style="text-align:center"><a style="color:white; background-color:#720062; border-color:#720062;" class="btn btn-danger" id="pay-button-used"><%= t('buy') %></a></h4>
         <% else %>
             <br>
     <h3 style="text-align:center"><%= t('noregistercards') %></h3>
@@ -166,9 +166,9 @@
 					</div>
 					<div class="col-md-5 col-xs-12">
 						<br><br>
-						 <h4 style="text-align:center"> <a class="btn btn-danger" id="pay-button"><%= t('buy') %></a>
+						 <h4 style="text-align:center"> <a class="btn btn-danger" style="background-color:#720062; border-color:#720062;" id="pay-button"><%= t('buy') %></a>
                            
-                          <a  class="btn btn-danger" id="register-button"><%= t('register') %></a></h4>
+                          <a  class="btn btn-danger" style="background-color:#720062; border-color:#720062;" id="register-button"><%= t('register') %></a></h4>
 						<h5 style="text-align:center">*Se te cobrara $2.50 MXN de comisión por cada transacción.</h5>
 					</div>
 				</div>
