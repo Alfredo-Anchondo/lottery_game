@@ -36,7 +36,7 @@
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
         <div class="field" >
-			<%= f.text_field :friend_reference, class: "form-control",style: "color:black; background-color:white; text-align:center; margin-bottom:3%; border-color:white; color:white;",autofocus: false, disabled: true %>
+			<%= f.text_field :friend_reference, class: "form-control",style: "color:black; background-color:white; text-align:center; margin-bottom:3%; border-color:white; color:white;",autofocus: false %>
   </div> 
         <div class="col-md-6">
                
@@ -256,9 +256,9 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
         setDate.setFullYear(mydate.getFullYear() + age,month, day);
 
         if ((currdate - setDate) > 0){ 
-			if($('#reference_friend_code').val() != null || $('#reference_friend_code').val() != ""){
+			if($('#user_friend_reference').val() != null || $('#user_friend_reference').val() != ""){
 				event.preventDefault();
-			$('#new_user').submit(add_gift);
+			$('#new_user').submit();
 			}else{
 				$('#new_user').submit(); 
 			}
@@ -294,29 +294,7 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 	}
 	}
 	
-		function add_gift2(){
-		reference_friend = $('#user_friend_reference').val();
-          if(reference_friend != null || reference_friend != ""){
-			  	$.ajax({
-				  url: "/users/update_reference/",
-				  method: "POST",
-				  dataType: "json",
-                  data: {reference: reference_friend}
-				
-					})
-				  .done(function( msg ) {
-						if(msg.users != '' && msg.users != null && msg.users != []){
-							alert('El codigo de invitación es correcto, puedes continuar con tu registro');
-					}else{
-						$('#user_reference_by_friend').val("");
-						alert('El código de referencia no existe, porfavor introduce un código existente.');
-						
-					}
-				  });
-	}else{
-		
-	}
-	}
+	
 	
 	
 	
