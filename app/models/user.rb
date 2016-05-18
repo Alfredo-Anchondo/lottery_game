@@ -77,7 +77,7 @@ end
 	
 	def self.search_reference1(reference)
 		where('friend_reference = ?', reference).pluck(:id)
-	end
+	end	
     
     
     def select_display

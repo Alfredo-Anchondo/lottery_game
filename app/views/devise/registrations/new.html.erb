@@ -28,13 +28,16 @@
 	}
 </style>
 
-<div class="row">
+<div class="row">		
     <br>
     <div class="col-md-3"></div>
     <div class="col-md-6" style="border:1px solid black; background-color:white; color:white; text-align:center">
          <h2 style="color:black; font-weight:900;"><%= t('make_account') %></h2> <br>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
+        <div class="field" >
+			<%= f.text_field :friend_reference, class: "form-control",style: "color:black; background-color:white; text-align:center; margin-bottom:3%; border-color:white; color:white;",autofocus: false, disabled: true %>
+  </div> 
         <div class="col-md-6">
                
   <div class="field">
@@ -108,13 +111,7 @@
      
         </div>
         <br><br> <br>
-		
-<div class="field" >
-	<%= f.hidden_field :friend_reference, class: "form-control",style: "color:black; text-align:center; margin-bottom:3%;",autofocus: false, disabled: true %>
-  </div> 
-		
-		
-		
+				
 		<div class="field">
 			<%= f.label "Recomendado por:", :style => "color:#720062; margin-top:3%" %><br />
 	   <input required id="user_reference_by_friend" name="user[reference_by_friend]" value="" placeholder="Codigo de referencia" class="form-control" style="margin-bottom:3%; color:black; text-align:center;">
@@ -296,6 +293,32 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 		
 	}
 	}
+	
+		function add_gift2(){
+		reference_friend = $('#user_friend_reference').val();
+          if(reference_friend != null || reference_friend != ""){
+			  	$.ajax({
+				  url: "/users/update_reference/",
+				  method: "POST",
+				  dataType: "json",
+                  data: {reference: reference_friend}
+				
+					})
+				  .done(function( msg ) {
+						if(msg.users != '' && msg.users != null && msg.users != []){
+							alert('El codigo de invitación es correcto, puedes continuar con tu registro');
+					}else{
+						$('#user_reference_by_friend').val("");
+						alert('El código de referencia no existe, porfavor introduce un código existente.');
+						
+					}
+				  });
+	}else{
+		
+	}
+	}
+	
+	
 	
 	$('#user_reference_by_friend').change(function(){
 		add_gift()
