@@ -1,4 +1,4 @@
-﻿# Files in the config/locales directory are used for internationalization
+# Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
 #
@@ -123,7 +123,7 @@ es:
   participate_2: "No esperes mas registrate y compra tu billete. No dejes pasar mas tiempo y prueba tu suerte"
   clabe: "Número Clabe de cuenta bancaria"
   total_quantity: "Cantidad total a retirar"
-  transfer_amount: "Transferir saldo a mi cuenta bancaria"
+  transfer_amount: "Transferir saldo a mi cuenta"
   checkout_text: "Retirar saldo a mi cuenta bancaria"
   nofunds_openpay: "No hay fondos suficientes en la cuenta de openpay para realizar la transacción"
   creditcard: "Tarjetas de crédito"

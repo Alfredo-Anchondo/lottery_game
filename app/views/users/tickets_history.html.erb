@@ -1,24 +1,14 @@
 <style>
-	.footer{
-		position:fixed;
-	}
+	.footer {
+  position: relative
+}
 </style>
-<div class="row" id="coming-lotteries">
-	<input type="hidden" id="quiniela_name">
-    <input type="hidden" id="lottery_name">
-    <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <div class="row" style="margin:0px; padding:0px;">
-                           <h4 id="header-loterry" style="text-align:left; color:white;"><%= t('purchased_ticket_history') %></h4>
-                       </div>
-                    </div>
-                    <div class="ibox-content" style="display: block;">
-						<div class="row">
-						<div class="col-md-12">
-						
-                       
-							<h3 style="text-align:center">Historial de boletos de Loteria y de Tira</h3>
-          <table id="history-table"  class=" table responsive table-bordered table-hover table-striped nowrap" width="100%">
+
+  <div class="row">
+	<input type="hidden" id="quiniela_name"/> 
+    <input type="hidden" id="lottery_name"/>
+		  <h3 style="text-align:center">Historial de boletos de Loteria</h3>
+          <table id="history-table"  class=" table responsive table-bordered table-striped" >
             <thead style="background-color:#171616; color:white;">
               <tr>
                                   <th><%= t("lottery_id") %></th>
@@ -30,42 +20,27 @@
             </thead>
 
             <tbody>
-                
+           
+	
             </tbody>
+	  </table>
+						
+		
+	</div>
+                           
+                           <hr>
+                            
+                      
+                    
+   <div class="wrapper"><h3 style="text-align:center">Historial de Tiras</h3><table id="history-table-quiniela"  class="table responsive table-bordered table-hover table-striped " ><thead style="background-color:#171616; color:white;"><tr><th>Tira</th><th><%= t('purchase_number') %> </th><th><%= t("activerecord.attributes.quiniela.winner_number") %></th><th><%= t("activerecord.attributes.quiniela.price") %></th><th><%= t("activerecord.attributes.quiniela_user.purchase_date") %></th></tr></thead><tbody></tbody>
+	   </table>
      
-							</div>
-							<div class="col-md-12">
-							
-								
-          <table id="history-table-quiniela"  class=" table responsive table-bordered table-hover table-striped nowrap" width="100%">
-            <thead style="background-color:#171616; color:white;">
-              <tr>
-				  				  <th>Tira</th>
-                                  <th><%= t('purchase_number') %> </th>
-				  				  <th><%= t("activerecord.attributes.quiniela.winner_number") %></th>
-				  				  <th><%= t("activerecord.attributes.quiniela.price") %></th>
-				  				  <th><%= t("activerecord.attributes.quiniela_user.purchase_date") %></th>
-              </tr>
-            </thead>
-
-            <tbody>
-                
-            </tbody>
+    <script>
   
-							</div>
-							
-                    </div>
-                </div>
-							</div>
-</div>
-	
-	
-
-
-
-<script>
     
-      var current_language = $("#current_language").val();
+		
+					
+	   var current_language = $("#current_language").val();
        var languaje;
     
     if(current_language == "en"){
@@ -74,7 +49,7 @@
     languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 }
     
-  var table = $('#history-table').DataTable( {
+  var table2 = $('#history-table-quiniela').DataTable( {
        responsive: true,
        order: [ 4, 'desc' ],
     ajax: {
@@ -97,15 +72,26 @@
         }  }
     ],
 } );
-      
-  
+										
       </script>
-	
+   </div>
+   
+
+	                             
+                            
+                            
+                                
+                         
+                        
+
+
+              
+
 <!------------------------------------------------------------------------------------------------------------>	
 
 
 <script>
-    
+     
       var current_language = $("#current_language").val();
        var languaje;
     
@@ -115,7 +101,7 @@
     languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 }
     
-  var table = $('#history-table-quiniela').DataTable( {
+  var table = $('#history-table').DataTable( {
        responsive: true,
        order: [ 4, 'desc' ],
     ajax: {
@@ -139,8 +125,8 @@
     ],
 } );
       
-  
+	  
       </script>
 	
 	
-	
+	  
