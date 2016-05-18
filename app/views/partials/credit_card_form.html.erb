@@ -75,7 +75,7 @@
      <h2 style="background-color:#720062;  color:white; font-size: 24px; line-height: 24px; margin: 0; padding: 28px 0 28px 20px; width: 100%;"><%= t('amount') %> <br> <span style=" font-size:14px; font-weight:900;">* 1 DB = $1.00 MXN </span> </h2>
 	
     <div class="row" style="background-color:white;">
-         <div class="radio">
+         <div class="radiox">
             <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input checked style="" type="radio" value="20" name="amountradio"><span style="color:#720062; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 20 DB </span> </label>
               <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="40" name="amountradio"><span style="color:#720062; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 40 DB </span> </label>
               <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="100" name="amountradio"><span style="color:#720062; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 100 DB </span> </label>
@@ -90,7 +90,7 @@
             <div class="row" style="background-color:white;">
             <% if @get_cards != [] && @get_cards != nil  %>
              <% @get_cards.each do |card| %>
-                <div class="radio">
+                <div class="radiox">
                     <label style="margin-left:30px; font-weight:900;" ><img width="50px"src="/assets/<%= card['brand'] %>.ico"><input style="margin-top:18px; margin-left:-70px;" type="radio" value="<%= card['id'] %>" name="optradio"><span style="color:#720062; padding-left:10px;"><%= t('card') %>: </span> <%= card['card_number'] %><i data-card="<%= card['id'] %>" style="color:red; margin-left: 10px; font-size: 22px;" class="fa fa-times-circle delete_card"></i></label>
                 </div>
               <% end %>
