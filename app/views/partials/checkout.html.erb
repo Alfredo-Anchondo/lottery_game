@@ -21,7 +21,7 @@
                             <div class="form-group"><label><%= t('owner_name') %></label> <input id="owner_name" name="owner_name" type="text"  class="form-control"></div>
                            </div>
                            <div class="col-md-6">
-                           <div class="form-group"><label><%= t('total_quantity') %></label> <input id="quantity" name="quantity" min="0" type="number" value="<%= current_user.balance %>" max="<%= current_user.balance %>"  class="form-control"></div>
+                           <div class="form-group"><label><%= t('total_quantity') %></label> <input id="quantity" name="quantity" min="0" type="number" value="<%= current_user.balance.round(0) %>" max="<%= current_user.balance %>"  class="form-control"></div>
                            </div>
                             <div class="col-md-12">
                             <div class="form-group"><label><%= t('clabe') %></label> <input type="text" id="clabe" name="clabe"  class="form-control"></div>
