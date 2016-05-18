@@ -79,7 +79,7 @@
             
   <div class="field">
     <%= f.label :last_name, :style => 'color:#720062' %><br />
-    <%= f.text_field :last_name, class: "form-control", style: "color:black", autofocus: false %>
+	  <%= f.text_field :last_name, class: "form-control", style: "color:black", autofocus: false, required:true %>
     <%= f.hidden_field :balance, class: "form-control", style: "color:black", value: 0 , autofocus: false, required: true %>
   </div> <br>
 
@@ -113,9 +113,7 @@
 	<%= f.hidden_field :friend_reference, class: "form-control",style: "color:black; text-align:center; margin-bottom:3%;",autofocus: false, disabled: true %>
   </div> 
 		
-		<div class="field" >
-	<%= f.hidden_field :friend_reference, class: "form-control",style: "color:black; text-align:center; margin-bottom:3%;",autofocus: false, disabled: true %>
-  </div> 	
+		
 		
 		<div class="field">
 			<%= f.label "Recomendado por:", :style => "color:#720062; margin-top:3%" %><br />
