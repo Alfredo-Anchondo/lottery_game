@@ -138,6 +138,10 @@
 	  #rexponsive-text-mark{
 		  margin-left:20px;
 	  }
+	  
+	  #user_acount{
+		  display:block !important;
+	  }
       
 }
 
@@ -284,6 +288,10 @@
 	  
 	    #rexponsive-text-mark{
 		  margin-left:20px;
+	  }
+	  
+	    #user_acount{
+		  display:block !important;
 	  }
       
 }
@@ -439,6 +447,9 @@
 	    #rexponsive-text-mark{
 		  margin-left:20px;
 	  }
+	    #user_acount{
+		  display:block !important;
+	  }
 }
 
 @media screen and (max-width: 480px) {
@@ -589,6 +600,10 @@
 	
 	  #rexponsive-text-mark{
 		  margin-left:20px;
+	  }
+	
+	  #user_acount{
+		  display:block !important;
 	  }
 }
 
