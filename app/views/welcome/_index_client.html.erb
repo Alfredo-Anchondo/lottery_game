@@ -1525,7 +1525,7 @@
 					
 					
 					 $('#getting'+i+'').countdown( moment(data.quinielas[i].game.game_date).format('MM/DD/YYYY HH:mm'), function(event) {
-      $(this).html(event.strftime('La tira se cierra en:  %d <%= t('day') %> %H:%M:%S <%= t('hours') %>'));
+      $(this).html(event.strftime('La tira se cierra en:  %D <%= t('day') %> %H:%M:%S <%= t('hours') %>'));
 								  
   });
 					
