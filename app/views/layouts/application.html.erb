@@ -58,13 +58,19 @@
     <% end %>
     
     
-
-        
-    <% if notice || alert %>
-    <p style="text-align:center; margin-bottom:70px; color:white" class="notice alert alert-success alert">
-         <%= notice %> <%= alert %>
+ 	 <% if notice  %>
+    <p style="text-align:center; margin-bottom:70px; color:white" class="notice alert-success ">
+         <%= notice %> 
     </p>
     <% end %>
+    
+        
+    <% if alert %>
+    <p style="text-align:center; background-color:red; margin-bottom:70px; color:white" class="alert">
+         <%= alert %>
+    </p>
+    <% end %>
+    
     
  
        <% if signed_in? %>
