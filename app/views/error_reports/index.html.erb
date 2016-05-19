@@ -16,13 +16,15 @@
                                   <th><%= t("activerecord.attributes.error_report.user") %></th>
                                   <th><%= t("activerecord.attributes.error_report.controller_name") %></th>
                                   <th><%= t("activerecord.attributes.error_report.action_name") %></th>
+                                  <th><%= t("activerecord.attributes.error_report.error_time") %></th>
+                                  <th><%= t("activerecord.attributes.error_report.description") %></th>
                                   <th><%= t("activerecord.attributes.error_report.line_number") %></th>
                                   <th><%= t("activerecord.attributes.error_report.referrer_url") %></th>
                                   <th><%= t("activerecord.attributes.error_report.original_path") %></th>
                                   <th><%= t("activerecord.attributes.error_report.enviroment") %></th>
-                                  <th><%= t("activerecord.attributes.error_report.description") %></th>
+                               
                                   <th><%= t("activerecord.attributes.error_report.backtrace") %></th>
-                                  <th><%= t("activerecord.attributes.error_report.error_time") %></th>
+                                
                                   <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -34,12 +36,14 @@
                                   <td><%= error_report.controller_name %></td>
                                   <td><%= error_report.action_name %></td>
                                   <td><%= error_report.line_number %></td>
+                                   <td><%= error_report.error_time %></td>
+                                   <td><%= error_report.description %></td>
                                   <td><%= error_report.referrer_url %></td>
                                   <td><%= error_report.original_path %></td>
                                   <td><%= error_report.enviroment %></td>
-                                  <td><%= error_report.description %></td>
+                                  
                                   <td><%= error_report.backtrace %></td>
-                                  <td><%= error_report.error_time %></td>
+                                 
                                 <td class="action-link">
                   <% if can? :show,error_report %>
                     <%= link_to error_report, :class => "btn btn-default", :title => t("actions.show") do %>
