@@ -35,7 +35,7 @@
 				  <td><%= error_report.user ? (error_report.user.name + " " + error_report.user.last_name) : "usuario no logeado" %></td>
                                   <td><%= error_report.controller_name %></td>
                                   <td><%= error_report.action_name %></td>
-				  <td><%= error_report.error_time.strftime('%d %m %Y %T') %></td>
+				  <td><%= error_report.error_time.strftime('%d-%m-%Y %T') %></td>
                                    <td><%= error_report.description %></td>
                                   <td><%= error_report.line_number %></td>     
                                   <td><%= error_report.referrer_url %></td>
