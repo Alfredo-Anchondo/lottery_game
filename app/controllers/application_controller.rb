@@ -10,21 +10,26 @@ class ApplicationController < ActionController::Base
 
 	if Rails.env == 'production' || Rails.env == 'development' 
     rescue_from StandardError do |exception|
+		
+		logger.info exception
       process_exception(exception)
       redirect_to (request.referer || :root) 
     end
 
     rescue_from ActiveRecord::DeleteRestrictionError do |exception|
+		logger.info exception
       process_exception(exception)
       redirect_to (request.referer || :root) 
     end
 
     rescue_from ActiveRecord::RecordNotFound do |exception|
+		logger.info exception
       process_exception(exception)
       redirect_to (request.referer || :root) 
     end
 
     rescue_from CanCan::AccessDenied do |exception|
+		logger.info exception
       process_exception(exception)
       redirect_to (request.referer || :root) 
     end
