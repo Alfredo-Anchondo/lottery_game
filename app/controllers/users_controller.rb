@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 	def client_details
 		@user = User.find(params[:id_client])
 		@tickets = UserLottery.where(user_id: params[:id_client]).order(lottery_id: :desc);
+		@tira = QuinielaUser.where(user_id: params[:id_client]).order(quiniela_id: :desc);
 		@recomend = User.where(reference_by_friend: @user.friend_reference)
 		respond_with(@user)
 	end

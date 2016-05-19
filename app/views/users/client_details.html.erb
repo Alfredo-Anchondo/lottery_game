@@ -1,4 +1,6 @@
 <div class="row" id="info_customer">
+<h1 style="text-align:center; background-color:#ab005c; color:white; "> Detalles del usuario </h1>
+<hr>
 <div class="col-md-4">
 	 <h2 style="text-align:center; color:black;">Nombre Usuario: <%= @user.name %> </h2> 
 	</div>
@@ -61,6 +63,49 @@
 			 </div>
 		</div>
 	</div>
+	
+	
+	<div class="col-md-4">
+		
+	<h2 style="text-align:center; color:black;"> Cantidad de boletos de tira comprados: <%= @tira.length %></h2>
+	
+		<% quiniela_id = 0 %>
+		 <div class="panel-body">
+                                <div class="panel-group" id="accordion">
+                                
+	<% @tira.each do |status| %>
+		
+			<% if quiniela_id != status.quiniela.id %>
+		       <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= status.quiniela.id %>" aria-expanded="false" class="collapsed"><h5 style="text-align:center; color:red;"> <%= status.quiniela.game.team.name + ' vs ' + status.quiniela.game.team2.name %> <span style="color:black;"><%= status.quiniela.game.game_date.strftime('%F') %></span></h5></a>
+                           </h5>
+                        </div>
+				   <div id="collapse<%= status.quiniela.id %>" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                       <div class="panel-body">
+						   <div class="col-md-12 quiniela<%= status.quiniela.id %>">
+							
+							<div class="col-md-3">
+									<h5>Billete: <%= status.ticket_number %> </h5>
+							</div>
+	
+						  </div>           
+                       </div>
+                       </div>
+                </div>
+	
+		<% else %>
+		<script>
+			$('.quiniela<%= status.quiniela.id %>').append("<div class='col-md-3'><h5>Billete: <span><%= status.ticket_number %> </span></h5></div>");
+		</script>
+		<% end %>
+		<% quiniela_id = status.quiniela.id %>
+	<% end %>
+			 </div>
+		</div>
+	</div>
+	
 	
 
 </div>

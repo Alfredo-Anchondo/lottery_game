@@ -6,6 +6,9 @@ class Quiniela < ActiveRecord::Base
     has_one :team2, :through => :game
 	accepts_nested_attributes_for :quiniela_questions, allow_destroy: true, reject_if: proc{ |attributes| attributes['question_id'].blank? }
 		
+	def total_sales
+		QuinielaUser.where('quiniela_id = ?', id).length
+	end	
 	
 	def self.find_no_winners
 		ids = Array.new

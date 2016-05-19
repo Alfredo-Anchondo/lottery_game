@@ -14,5 +14,9 @@ class Lottery < ActiveRecord::Base
       def select_display
           game.team.name + " vs " + game.team2.name
       end 
+	
+	def total_sales
+		UserLottery.where('lottery_id = ?', id).length
+	end
 end
 

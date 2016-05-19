@@ -13,13 +13,18 @@ class QuinielasController < ApplicationController
 		@tira = params[:tira_id]
 		@normal_buy = params[:normal_buy]
 		@total_balance_update = params[:total_balance_update]
+		@quiniela = Quiniela.find(params[:tira_id]);
+		@purchase_gift = @quiniela.purchase_gift_tickets
+		if @purchase_gift == '' || @purchase_gift == "NaN" || @purchase_gift == nil
+			@purchase_gift = 0
+		end
 		
 		render nothing: true
-		
-	
 
 		if params[:normal_buy] != 'true'
 			@user.update( {gift_credit: @total_balance_update})
+			logger.info "saldo de regaliux"+ String(@purchase_gift)
+			@quiniela.update({purchase_gift_tickets: (Integer(@purchase_gift) + @numbers.length) })
 		else
 			@user.update( {balance: @total_balance_update})
 		end
@@ -97,7 +102,7 @@ class QuinielasController < ApplicationController
     end
 
     def quiniela_params
-		params.require(:quiniela).permit(:initial_balance, :price, :game_id, :description, :winner_number, quiniela_questions_attributes: [:id, :question_id, :_destroy])
+		params.require(:quiniela).permit(:initial_balance, :price, :game_id, :description, :purchase_gift_tickets, :winner_number, quiniela_questions_attributes: [:id, :question_id, :_destroy])
     end
 	
       

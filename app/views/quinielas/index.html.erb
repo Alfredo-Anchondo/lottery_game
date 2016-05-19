@@ -18,6 +18,8 @@
 				  <th><%= t("activerecord.attributes.quiniela.description") %></th>
 				  <th><%= t("activerecord.attributes.quiniela.game") %></th>
 				  <th><%= t("activerecord.attributes.quiniela.winner_number") %></th>
+				  <th>Comprados de regalo</th>
+				  <th>Compras Totales</th>
 				  <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -30,6 +32,8 @@
 				  <td><%= quiniela.description %></td>
 				  <td><%= quiniela.game_id %></td>
 				  <td><%= quiniela.winner_number %></td>
+				  <td><%= quiniela.purchase_gift_tickets %></td>
+				  <td><%= quiniela.total_sales %></td>
 				  
                                 <td class="action-link">
                   <% if can? :show,quiniela %>
