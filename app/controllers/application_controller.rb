@@ -13,25 +13,25 @@ class ApplicationController < ActionController::Base
 		
 		logger.info exception
       process_exception(exception)
-      redirect_to (request.referer || :root) 
+      redirect_to {(request.referer || :root) ,notice: 'Ocurrio un error inesperado.'}
     end
 
     rescue_from ActiveRecord::DeleteRestrictionError do |exception|
 		logger.info exception
       process_exception(exception)
-      redirect_to (request.referer || :root) 
+		redirect_to {(request.referer || :root) ,notice: 'Ocurrio un error inesperado.'}
     end
 
     rescue_from ActiveRecord::RecordNotFound do |exception|
 		logger.info exception
       process_exception(exception)
-      redirect_to (request.referer || :root) 
+      redirect_to {(request.referer || :root) ,notice: 'Ocurrio un error inesperado.'}
     end
 
     rescue_from CanCan::AccessDenied do |exception|
 		logger.info exception
       process_exception(exception)
-      redirect_to (request.referer || :root) 
+      redirect_to {(request.referer || :root) ,notice: 'Ocurrio un error inesperado.'}
     end
   end
 
