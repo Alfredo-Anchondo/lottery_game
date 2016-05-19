@@ -30,7 +30,7 @@
             <tbody>
               <% @error_reports.each do |error_report| %>
               <tr>
-				  <td><%=  error_report.user.id %></td>
+				  <td><%= error_report.user ? (error_report.user.name + " " + error_report.user.last_name) : "usuario no logeado" %></td>
                                   <td><%= error_report.controller_name %></td>
                                   <td><%= error_report.action_name %></td>
                                   <td><%= error_report.line_number %></td>
