@@ -43,6 +43,7 @@
                                   <td><%= user.username %></td>
                            
                                 <td class="action-link">
+				 <a href="/users/client_details/<%=user.id%>" class="btn btn-primary">Detalles del Usuario</a>
                   <% if can? :show,user %>
                     <%= link_to user, :class => "btn btn-default", :title => t("actions.show") do %>
                       <i class="fa fa-eye"></i>
