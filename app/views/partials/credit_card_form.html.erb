@@ -91,7 +91,7 @@
             <% if @get_cards != [] && @get_cards != nil  %>
              <% @get_cards.each do |card| %>
                 <div class="radiox">
-                    <label style="margin-left:30px; font-weight:900;" ><img width="50px"src="/assets/<%= card['brand'] %>.ico"><input style="margin-top:18px; margin-left:-70px;" type="radio" value="<%= card['id'] %>" name="optradio"><span style="color:#720062; padding-left:10px;"><%= t('card') %>: </span> <%= card['card_number'] %><i data-card="<%= card['id'] %>" style="color:red; margin-left: 10px; font-size: 22px;" class="fa fa-times-circle delete_card"></i></label>
+                    <label style="margin-left:30px; font-weight:900;" ><img width="50px"src="/assets/<%= card['brand'] %>.ico"><input style="margin-top:18px; margin-left:-70px;" type="radio" value="<%= card['id'] %>" name="optradio"><span style="color:#720062; margin-left:50px; padding-left:10px;"><%= t('card') %>: </span> <%= card['card_number'] %><i data-card="<%= card['id'] %>" style="color:red; margin-left: 10px; font-size: 22px;" class="fa fa-times-circle delete_card"></i></label>
                 </div>
               <% end %>
     <h4 style="text-align:center"><a style="color:white; background-color:#720062; border-color:#720062;" class="btn btn-danger" id="pay-button-used"><%= t('buy') %></a></h4>
