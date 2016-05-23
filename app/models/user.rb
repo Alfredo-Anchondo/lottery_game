@@ -75,6 +75,30 @@ end
         UserLottery.count 
     end
 	
+	def total_balances
+		@users = User.all
+		logger.info @users
+		@balance = 0
+		@users.each do |balance|
+			if balance.balance
+			@balance = @balance + Integer(balance.balance)
+			end
+		end
+		return @balance
+    end
+	
+	def total_gift_balances
+		@users = User.all
+		logger.info @users
+		@balance = 0
+		@users.each do |balance|
+			if balance.gift_credit
+				@balance = @balance + Integer(balance.gift_credit)
+			end
+		end
+		return @balance
+    end
+	
 	def tickets_tiras_count
 		QuinielaUser.count 
     end

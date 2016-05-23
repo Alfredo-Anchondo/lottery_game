@@ -1,31 +1,47 @@
+<style>
+	.footer{
+		position:fixed;
+	}
+</style>
+
+
 <div class="row" id="info_customer">
-<h1 style="text-align:center; background-color:#ab005c; color:white; "> Detalles del usuario </h1>
-<hr>
+<div class="col-md-12">
+<div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-12">
+                                 <h1 style="text-align:center; margin:0px; color:white; "> Detalles del usuario </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+
 <div class="col-md-4">
-	 <h2 style="text-align:center; color:black;">Nombre Usuario: <%= @user.name %> </h2> 
+	 <h2 style="text-align:center; font-weight:800; color:black;">Nombre Usuario: <span style="color:#2d68ac;"><%= @user.name %> </span> </h2> 
 	</div>
 	<div class="col-md-4">
-	<h2 style="text-align:center ; color:black;">Saldo en DBS: <%= @user.balance %> </h2>
+	<h2 style="text-align:center ;  font-weight:800; color:black;">Saldo en DBS: <span style="color:#2d68ac;"> <%= @user.balance %> </span> </h2>
 	</div>
 	<div class="col-md-4">
-	<h2 style="text-align:center; color:black;">Saldo de regalo: <%= @user.gift_credit %></h2>
+	<h2 style="text-align:center;  font-weight:800; color:black;">Saldo de regalo: <span style="color:#2d68ac;"> <%= @user.gift_credit %> </span></h2>
 	</div>
 	<div class="clearfix"></div>
 	<hr>
 	<div class="col-md-4">
-	<h2 style="text-align:center; color:black;"> Personas recomendadas <%= @recomend.length %> </h2>
+	<h2 style="text-align:center;  font-weight:800; color:black;"> Personas recomendadas: <span style="color:#2d68ac;">  <%= @recomend.length %> </span> </h2>
 	<div>
 	<% @recomend.each do |recome| %>
-		<h4 style="text-align:center; color:black;"> Nombre:	<%= recome.name + " " + recome.last_name %></h4>
+		<h4 style="text-align:center;  font-weight:800; color:black;"> Nombre: <span style="color:#2d68ac;">	<%= recome.name + " " + recome.last_name %></span> </h4>
 	<% end %>
 	</div>
 	</div>
 	<div class="col-md-4">
-		<h2 style="text-align:center; color:black"> Recomendado por: <%= @user.reference_by_friend ? @user.reference_by_friend : 'No tiene codigo'  %> </h2>
+		<h2 style="text-align:center;  font-weight:800; color:black"> Recomendado por: <span style="color:#2d68ac;"> <%= @user.reference_by_friend ? @user.reference_by_friend : 'No tiene codigo'  %> </span> </h2>
 	</div>
 	<div class="col-md-4">
 		
-	<h2 style="text-align:center; color:black;"> Cantidad de tickets comprados: <%= @tickets.length	 %></h2>
+	<h2 style="text-align:center;  font-weight:800; color:black;"> Cantidad de boletos loteria comprados: <span style="color:#2d68ac;"> <%= @tickets.length	 %></span></h2>
 	
 	<% lottery_id = 0 %>
 		 <div class="panel-body">
@@ -67,7 +83,7 @@
 	
 	<div class="col-md-4">
 		
-	<h2 style="text-align:center; color:black;"> Cantidad de boletos de tira comprados: <%= @tira.length %></h2>
+	<h2 style="text-align:center; color:black; font-weight:800;"> Cantidad de boletos de tira comprados: <span style="color:#2d68ac;" > <%= @tira.length %></span></h2>
 	
 		<% quiniela_id = 0 %>
 		 <div class="panel-body">
@@ -106,6 +122,7 @@
 		</div>
 	</div>
 	
-	
-
+	</div>
+	</div>
+</div>
 </div>
