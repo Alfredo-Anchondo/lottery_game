@@ -107,6 +107,7 @@ Rails.application.routes.draw do
   get 'welcome/contact'
   get 'welcome/privacy'
   get 'welcome/faq'	
+ 
   
   
 
