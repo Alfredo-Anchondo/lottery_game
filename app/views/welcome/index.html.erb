@@ -5,8 +5,8 @@
    <% else %>
 
  <div class="row">
-     <div class="col-md-1">
-      <!-- START Language list-->
+   <!--   <div class="col-md-1">
+
                         <div class="" style="margin-left:5%">
                             <div class="btn-group i18n">
                                 <button type="button" data-toggle="dropdown" class="btn btn-primary">
@@ -17,18 +17,18 @@
                                         <%= link_to "/language/i18n/es" do %>
                                         <%= image_tag "es-icon.png", :style => "width:30px" %> <%= t("language_es") %>
                                         <% end %>
-                                    </li>
+                                    </li> 
                                     <!--<li>
                                         <#%= link_to "/language/i18n/en" do %>
                                           <#%= image_tag "en-icon.png", :style => "width:30px" %> <#%= t("language_en") %>
                                         <#% end %>
-                                    </li> -->
+                                    </li> 
                                 </ul>
                             </div>
                         </div>
-                        <!-- END Language list    -->
-     </div>
-     <div class="col-md-11">
+                 
+     </div>  -->
+     <div class="col-md-12">
                 <div class="col-lg-3 col-md-6 col-xs-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -51,51 +51,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-6 col-md-3">
-                                    <i class="fa fa-users fa-5x"></i>
-                                </div>
-                                <div class="col-xs-6 col-md-9 text-right text-indicators">
-                                    <div class="huge"><%= current_user.users_count %></div>
-                                    <div><%= t('registeredusers') %></div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/users">
-                            <div class="panel-footer">
-                                <span class="pull-left"><%= t('viewdetails') %></span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-6 col-md-3">
-                                    <i class="fa fa-futbol-o fa-5x"></i>
-                                </div>
-                                <div class="col-xs-6 col-md-9 text-right text-indicators">
-                                    <div class="huge"><%= current_user.teams_count %></div>
-                                    <div><%= t('registeredteams') %></div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/teams">
-                            <div class="panel-footer">
-                                <span class="pull-left"><%= t('viewdetails') %></span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
+                 <div class="col-lg-3 col-md-6 col-xs-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
@@ -117,7 +73,146 @@
                         </a>
                     </div>
                 </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6 col-md-3">
+                                    <i class="fa fa-users fa-5x"></i>
+                                </div>
+                                <div class="col-xs-6 col-md-9 text-right text-indicators">
+                                    <div class="huge"><%= current_user.users_count %></div>
+                                    <div><%= t('registeredusers') %></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/users">
+                            <div class="panel-footer">
+                                <span class="pull-left"><%= t('viewdetails') %></span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6 col-md-3">
+                                    <i class="fa fa-futbol-o fa-5x"></i>
+                                </div>
+                                <div class="col-xs-6 col-md-9 text-right text-indicators">
+                                    <div class="huge"><%= current_user.teams_count %></div>
+                                    <div><%= t('registeredteams') %></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/teams">
+                            <div class="panel-footer">
+                                <span class="pull-left"><%= t('viewdetails') %></span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+               
              </div>
+            </div>
+            
+            <div class="row">
+            	<div class="col-md-12">
+            		  
+                 <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6 col-md-3">
+                                    <i class="fa fa-list-ol fa-5x "></i>
+                                </div>
+                                <div class="col-xs-6 col-md-9 text-right text-indicators">
+                                    <div class="huge"><%= current_user.user_tiras_count %></div>
+                                    <div>Tiras</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/quinielas">
+                            <div class="panel-footer">
+                                <span class="pull-left"><%= t('viewdetails') %></span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div> 
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6 col-md-3">
+                                    <i class="fa fa-ticket fa-5x "></i>
+                                </div>
+                                <div class="col-xs-6 col-md-9 text-right text-indicators">
+                                    <div class="huge"><%= current_user.tickets_tiras_count %></div>
+                                    <div>Boletos Tiras</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/quiniela_users">
+                            <div class="panel-footer">
+                                <span class="pull-left"><%= t('viewdetails') %></span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                	 </a>
+                    </div>
+                </div>
+                   <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6 col-md-3">
+                                 <img width="65px" height="65px" src="/assets/games.png">
+                                </div>
+                                <div class="col-xs-6 col-md-9 text-right text-indicators">
+									<div class="huge"><%= current_user.games_count %></div>
+                                    <div>Juegos</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/games">
+                            <div class="panel-footer">
+                                <span class="pull-left"><%= t('viewdetails') %></span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                	 </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6 col-md-3">
+                                   <img width="130px" height="65px" src="/assets/sports.png">
+                                </div>
+                                <div class="col-xs-6 col-md-9 text-right text-indicators">
+									<div class="huge"><%= current_user.sports_count %></div>
+                                    <div>Deportes</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/sports">
+                            <div class="panel-footer">
+                                <span class="pull-left"><%= t('viewdetails') %></span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                	 </a>
+                    </div>
+                </div>                
+            	</div>
             </div>
 
 <div class="row"> 

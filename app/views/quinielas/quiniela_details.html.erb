@@ -1,0 +1,44 @@
+<div class="col-md-12">
+  <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-12">
+                                   <h2 style="text-align:left; font-weight:800;"> <span> # <%= @quiniela.id %> </span> <%= @quiniela.description %></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                        <div class="row">
+                        <h3 style="text-align:center; color:#2d68ac; font-weight:800; font-size:20px;">Detalles de la Tira</h3> <hr>
+                        	<div class="col-md-12">
+                        		<div class="col-md-4">
+									<h3 style="text-align:center">Precio de la Tira: <span style="color:#2d68ac;"> <%= @quiniela.price %> DB</span></h3>
+                        		</div>
+                        		<div class="col-md-4">
+									<h3 style="text-align:center"> Bolsa Acumulada: <span style="color:#2d68ac;"> <%= @quiniela.initial_balance %> DB</span></h3>
+                        		</div>
+                        		<div class="col-md-4">
+                        			<h3 style="text-align:center;"> Cantidad de boletos comprados: <span style="color:#2d68ac;"><%=
+	@quiniela_users.length%></span> </h3>
+                        		</div>
+                        	</div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                        	<% count = 0 %>
+                        	<% @quiniela_users.each do |ticket| %>
+                        	  <% if count/10 %>
+                       			<h2> <%= ticket.id %> </h2>
+							<% end %>	
+                        </div>
+                        
+							
+                        </div>
+                        <a href="/quiniela_users">
+                            <div class="panel-footer">
+                             
+                            </div>
+                	 </a>
+                    </div>
+</div>
+

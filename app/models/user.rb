@@ -75,6 +75,22 @@ end
         UserLottery.count 
     end
 	
+	def tickets_tiras_count
+		QuinielaUser.count 
+    end
+	
+	def games_count
+		Game.count 
+    end
+	
+	def sports_count
+		Sport.count 
+    end
+	
+	  def user_tiras_count
+		  Quiniela.count 
+      end
+	
 	def self.search_reference1(reference)
 		where('friend_reference = ?', reference).pluck(:id)
 	end	

@@ -259,7 +259,7 @@ es:
   viewdetails: "Ver Detalles"
   registeredusers: "Usuarios"
   registeredteams: "Equipos"
-  ticketpurchased: "Billetes"
+  ticketpurchased: "Boletos Lotería"
   
   activerecord:
     models:

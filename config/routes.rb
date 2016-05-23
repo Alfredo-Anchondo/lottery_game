@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 			get 'toclose', to: "quinielas#toclose"
 			get 'get_quinielas_no_winner', to: "quinielas#get_quinielas_no_winner"
 			post 'buy_random_quinielas', to: "quinielas#buy_random_quinielas"
+			get "/quiniela_details/:quiniela_id", to: "quinielas#quiniela_details"
 		end
 	end
     

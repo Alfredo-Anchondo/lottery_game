@@ -5,6 +5,11 @@ class QuinielasController < ApplicationController
   respond_to :json	
 
 	
+	def quiniela_details
+		@quiniela = Quiniela.find(params[:quiniela_id])
+		@quiniela_users = QuinielaUser.where('quiniela_id = ?', params[:quiniela_id])
+	end
+	
 	def buy_random_quinielas
 		@numbers = params[:numbers]
 		@price = params[:price]
