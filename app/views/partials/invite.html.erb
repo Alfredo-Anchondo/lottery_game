@@ -39,7 +39,7 @@
 			  <ul id="email_list">
 			  
 			  </ul>
-			 <h4 style="text-align:center"> <button class="btn btn-primary" id="send_emails"> Enviar correo </button> </h4>
+			 <h4 style="text-align:center"> <button disabled class="btn btn-primary" id="send_emails"> Enviar correo </button> </h4>
 		  </div>
 		<div class="pull-right">
 		  <div class="fb-share-button" data-href="https://donbillete.com/users/sign_up" data-layout="box_count" data-mobile-iframe="true"></div>
@@ -58,6 +58,7 @@
 			$('#email_list').append('<li style="font-size:16px;"> '+ mail +' </li>');
 			$('#invitation_mail').val('');
 			emails.push(mail);
+			$('#send_emails').prop( "disabled", false );
 		}else
 		{ alert('Este no es un correo valido')}
 	})
