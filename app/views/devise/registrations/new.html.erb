@@ -93,7 +93,7 @@
          
         </div>    <br>       
              <div class="field">
-    <%= f.label :password, :style => 'color:#720062' %><br />
+				 <%= f.label :password,:minlength => 8, :style => 'color:#720062' %><label style="color:purple; margin-left:4px;"> (Minimo 8 Caracteres)</label><br />
     <%= f.password_field :password, class: "form-control",style: "color:black", autocomplete: "off", required: true %>
   </div> <br>
 
@@ -254,10 +254,15 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
         var currdate = new Date();
         var setDate = new Date();        
         setDate.setFullYear(mydate.getFullYear() + age,month, day);
-
-        if ((currdate - setDate) > 0){ 
+		
+		if($('#user_password').length < 8){
+			event.preventDefault();
+			alert('La contraseña debe de contener 8 o mas digitos');
+		}
+		else {
+			   if ((currdate - setDate) > 0){ 
 			if($('#user_friend_reference').val() != null || $('#user_friend_reference').val() != ""){
-				event.preventDefault();
+			event.preventDefault();
 			$('#new_user').submit();
 			}else{
 				$('#new_user').submit(); 
@@ -268,6 +273,10 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
             alert("Debes ser mayor de 18 años para registrate en la pagina");
             event.preventDefault();
         }
+		}
+		
+     
+		
 	}
 	
 	function add_gift(){
