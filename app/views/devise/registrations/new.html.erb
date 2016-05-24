@@ -234,6 +234,12 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 </div>
 
 <script>
+	
+	var pas = '';
+	
+	$('input#user_password').change(function(){
+		pas = $(this).val();
+	})
 
 	var random = Math.round(Math.random() * (10000 - 1) + 1);
 	
@@ -256,7 +262,7 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
         setDate.setFullYear(mydate.getFullYear() + age,month, day);
 
         if ((currdate - setDate) > 0){ 
-			if($('#user_password').value.length < 8){
+			if(pas.length < 8){
 				event.preventDefault();
 				alert('La contraseña debe ser mayor a 8 digitos');
 			}else{
@@ -306,14 +312,14 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 	$('#user_reference_by_friend').change(function(){
 		add_gift()
 	})
+
 	
 	$('#user_password_confirmation').change(function(){
-		alert($('#user_password_confirmation').val())
-		alert($('#user_password').val())
-		if($('#user_password_confirmation').val() == $('#user_password').val()){
-			alert('Es igual');
+		if($('#user_password_confirmation').val() == pas){
+			
 		}else{
-			alert('no son iguales');
+			alert('La contraseña y la confirmacion no coinciden');
+			$('#user_password_confirmation').val('');
 		}
 	})
 	
