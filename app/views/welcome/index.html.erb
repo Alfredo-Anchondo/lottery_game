@@ -470,7 +470,7 @@ $(document).ready(function(){
                       dataType: "json",     
                     }).done(function( data) {
 				for(var i in data.quinielas){
-					if (data.quinielas[i].purchase_gift_tickets != null && data.quinielas[i].purchase_gift_tickets != '' ){
+					if (data.quinielas[i].purchase_gift_tickets != null || data.quinielas[i].purchase_gift_tickets != '' ){
 						labels.push(data.quinielas[i].description)
 						var x = (data.quinielas[i].total_sales -parseInt(data.quinielas[i].purchase_gift_tickets));
 						values.push(x)
@@ -532,13 +532,13 @@ $(document).ready(function(){
                       dataType: "json",     
                     }).done(function( data) {
 				for(var i in data.lotteries){
-					if(data.lotteries[i].purchase_gift_tickets != null && data.lotteries[i].purchase_gift_tickets != ''){
-					labels2.push(data.lotteries[i].team.name + ' ' + data.lotteries[i].team2.name)
+					if(data.lotteries[i].purchase_gift_tickets != null || data.lotteries[i].purchase_gift_tickets != ''){
+					labels2.push(''+data.lotteries[i].team.name + ' ' + data.lotteries[i].team2.name+ '')
 					var y = (parseInt(data.lotteries[i].total_sales) - parseInt(data.lotteries[i].purchase_gift_tickets))
 					values2.push(y)
 					gift2.push(data.lotteries[i].purchase_gift_tickets)
 					}else{
-					labels2.push(data.lotteries[i].team.name + ' ' + data.lotteries[i].team2.name)
+					labels2.push(''+data.lotteries[i].team.name + ' ' + data.lotteries[i].team2.name+'')
 					values2.push(data.lotteries[i].total_sales)
 					gift2.push(data.lotteries[i].purchase_gift_tickets)
 					}
@@ -566,6 +566,7 @@ $(document).ready(function(){
         }
     ]
 };
+			alert(values2);
 	  var ctz = document.getElementById("myChart3").getContext("2d");
 	   
 	   
