@@ -534,7 +534,7 @@ $(document).ready(function(){
 				for(var o in data.lotteries){
 					
 		      		if(data.lotteries[o].purchase_gift_tickets != null || data.lotteries[o].purchase_gift_tickets != '' || data.lotteries[o].purchase_gift_tickets != '0'){
-					labels2.push(''+data.lotteries[o].team.name + ' ' + data.lotteries[o].team2.name+ '')
+					labels2.push(''+data.lotteries[o].team.name + ' ' + data.lotteries[o].team2.name+ '');
 					var y = (parseInt(data.lotteries[o].total_sales) - parseInt(data.lotteries[o].purchase_gift_tickets));
 					values2.push(y);
 					gift2.push(data.lotteries[o].purchase_gift_tickets);
@@ -544,7 +544,7 @@ $(document).ready(function(){
 					gift2.push(data.lotteries[o].purchase_gift_tickets);
 					}
 				}
-			   var data3 = {
+	var data3 = {
     labels: labels2,
     datasets: [
         {
