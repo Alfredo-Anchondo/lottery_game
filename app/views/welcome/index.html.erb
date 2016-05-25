@@ -512,8 +512,8 @@ $(document).ready(function(){
                       dataType: "json",     
                     }).done(function( data) {
 				for(var i in data.lotteries){
-					labels.push(data.lotteries[i].team.name + ' ' + data.lotteries[i].team2.name)
-					values.push(data.lotteries[i].total_sales)
+					labels2.push(data.lotteries[i].team.name + ' ' + data.lotteries[i].team2.name)
+					values2.push(data.lotteries[i].total_sales)
 				}
 			   var data3 = {
     labels: labels2,
