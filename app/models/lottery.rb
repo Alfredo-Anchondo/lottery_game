@@ -12,7 +12,7 @@ class Lottery < ActiveRecord::Base
     end    
 	
 	def self.last_lotteries
-		return Lottery.limit(10).order(:id)
+		return Lottery.limit(10).order(id: :desc)
 			
 		end
     

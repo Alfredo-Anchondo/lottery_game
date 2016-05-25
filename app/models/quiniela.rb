@@ -13,7 +13,7 @@ class Quiniela < ActiveRecord::Base
 		def self.last_quinielas
 		
 	
-			return  Quiniela.limit(10).order(:id)
+			return  Quiniela.limit(10).order(id: :desc)
 			
 		end
 	
