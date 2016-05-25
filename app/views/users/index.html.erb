@@ -15,14 +15,13 @@
               <tr>
                                   <th><%= t("activerecord.attributes.user.name") %></th>
                                   <th><%= t("activerecord.attributes.user.last_name") %></th>
-				  				  <th><%= t("activerecord.attributes.user.address_1") %></th>
+                                   <th><%= t("activerecord.attributes.user.username") %></th>
                                   <th><%= t("activerecord.attributes.user.email") %></th>
-                                  <th><%= t("activerecord.attributes.user.phone") %></th>
-                                  <th><%= t("activerecord.attributes.user.cellphone") %></th>
                                   <th><%= t("activerecord.attributes.user.balance") %></th>
 				 				  <th><%= t("activerecord.attributes.user.gift_credit") %></th>
+				  <th><%= t("activerecord.attributes.user.created_at") %></th>
                                   <th><%= t("activerecord.attributes.user.country") %></th>
-                                  <th><%= t("activerecord.attributes.user.username") %></th>
+                                 
                      
                                 <th style="width: 155px"></th>
               </tr>
@@ -33,15 +32,13 @@
               <tr>
                                   <td><%= user.name %></td>
                                   <td><%= user.last_name %></td>
-                                  <td><%= user.address_1 %></td>
+                                  <td><%= user.username %></td>
                                   <td><%= user.email %></td>
-                                  <td><%= user.phone %></td>
-                                  <td><%= user.cellphone %></td>
                                   <td><%= user.balance %></td>
 				  				  <td><%= user.gift_credit %></td>
-                                 
+				  				  <td><%= user.created_at.strftime('%d-%m-%Y %H:%M') %></td>
                                   <td><%= user.country %></td>
-                                  <td><%= user.username %></td>
+                                
                            
                                 <td class="action-link">
 				 <a href="/users/client_details/<%=user.id%>" class="btn btn-primary">Detalles del Usuario</a>
