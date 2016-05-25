@@ -10,6 +10,13 @@ class Quiniela < ActiveRecord::Base
 		QuinielaUser.where('quiniela_id = ?', id).length
 	end	
 	
+		def self.last_quinielas
+		
+	
+			return  Quiniela.limit(10).order(:id)
+			
+		end
+	
 	def self.find_no_winners
 		ids = Array.new
 		games_ids = Game.where('game_date >= ?', DateTime.now).pluck(:id)

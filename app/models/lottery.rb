@@ -10,6 +10,16 @@ class Lottery < ActiveRecord::Base
         User.email_in_lottery(id, winner_number, lottery_name)
         User.winner_user(id, winner_number, lottery_name, winner_number, initial_balance)
     end    
+	
+	def self.last_lotteries
+		games = Game.limit(10).order(:game_date).pluck(:id)
+		ar = []	
+			games.each do |game|
+				ar.push(game)
+			end
+			return where(id: ar)
+			
+		end
     
       def select_display
           game.team.name + " vs " + game.team2.name

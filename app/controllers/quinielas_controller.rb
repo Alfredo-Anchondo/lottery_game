@@ -10,6 +10,10 @@ class QuinielasController < ApplicationController
 		@quiniela_users = QuinielaUser.where('quiniela_id = ?', params[:quiniela_id])
 	end
 	
+	def last_quinielas
+		render :json => Quiniela.last_quinielas
+	end
+	
 	def buy_random_quinielas
 		@numbers = params[:numbers]
 		@price = params[:price]

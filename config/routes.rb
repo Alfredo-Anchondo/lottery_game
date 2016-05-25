@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 	
 	resources :quinielas do
 		collection do
+			get 'last_quinielas', to: "quinielas#last_quinielas"
 			get 'get_quinielas', to: "quinielas#get_quinielas"
 			get 'close_quiniela'
 			get 'toclose', to: "quinielas#toclose"
@@ -90,6 +91,7 @@ Rails.application.routes.draw do
         collection do
             get "/team_logos/:id", to: "lotteries#team_logos"
 			get "/all_lotteries", to: "lotteries#all_lotteries"
+			get 'last_lotteries', to: "lotteries#last_lotteries"
       end
     end
     

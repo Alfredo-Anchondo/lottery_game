@@ -352,6 +352,32 @@
 </div>
 
 </div>
+
+
+<div class="col-md-6 col-xs-12">
+   <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Ventas de Ultimas 10 Quinielas<small style="color:#F7CEE4" class="m-l-sm">Quinielas</small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                 
+                        
+                        <div class="col-md-12">
+                           <canvas id="myChart2" style="width:100%"  height="190"></canvas>
+                        </div>
+                         
+                        </div>
+                    </div>
+                    
+                </div>
+</div>
+
 	
 	
 <% content_for :javascript_includes do %>
@@ -368,24 +394,32 @@ $(document).ready(function(){
        
             $('#win_lotteries').append(data);
             $('#no_winners').append(( <%= current_user.lottery_count %> - data));
-            
-    var data2 = [
+            var data2 = {
+    labels: [
+        "<%= t('lotteries_without_winners') %>",
+        "<%= t('lotteries_with_winners') %>"
+    ],
+    datasets: [
         {
-        value: parseInt($('#no_winners').text()),
-        color:"#4d46f7",
-        highlight: "#4431d6",
-        label: "<%= t('lotteries_without_winners') %>"
-    },
-    {
-        value: parseInt($('#win_lotteries').text()),
-        color: "#46BFBD",
-        highlight: "#5AD3D1",
-        label: "<%= t('lotteries_with_winners') %>"
-    }
+            data: [parseInt($('#no_winners').text()), parseInt($('#win_lotteries').text())],
+            backgroundColor: [
+                "#23c6c8",
+                "#1c84c6"
+            ],
+            hoverBackgroundColor: [
+                "#15a0a2",
+                "#36A2EB"
+                
+            ]
+        }]
+};
    
-];
+			
     var ctx = document.getElementById("myChart").getContext("2d");
-    var myPieChart = new Chart(ctx).Pie(data2);
+    var myPieChart = new Chart(ctx,{
+    type: 'pie',
+    data: data2
+});
             
                      });
     
@@ -397,6 +431,48 @@ $(document).ready(function(){
 });
 
 
+</script>
+   
+   <script>
+	var labels = []; 
+	var values = [];
+	   
+	    $.ajax({
+                      method: "GET",
+                      url: "/quinielas/last_quinielas",
+                      dataType: "json",     
+                    }).done(function( data) {
+				for(var i in data.quinielas){
+					labels.push(data.quinielas[i].description)
+					values.push(data.quinielas[i].total_sales)
+				}
+			   var data = {
+    labels: labels,
+    datasets: [
+        {
+            label: "Billetes Vendidos",
+            backgroundColor: "rgba(100, 31, 255, 0.2)",
+            borderColor: "rgb(98, 5, 167)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(167, 20, 173, 0.4)",
+            hoverBorderColor: "rgb(113, 9, 178)",
+            data: values,
+        }
+    ]
+};
+	  var ctw = document.getElementById("myChart2").getContext("2d");
+	   
+	   
+	    var myBarChart = new Chart(ctw, {
+    type: 'bar',
+    data: data
+	   });
+			
+		});
+	   
+	  
+	   
+	
 </script>
 
    
