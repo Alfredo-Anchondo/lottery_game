@@ -470,7 +470,7 @@ $(document).ready(function(){
                       dataType: "json",     
                     }).done(function( data) {
 				for(var i in data.quinielas){
-					if (data.quinielas[i].purchase_gift_ticket != null && data.quinielas[i].purchase_gift_ticket != '' ){
+					if (data.quinielas[i].purchase_gift_tickets != null && data.quinielas[i].purchase_gift_tickets != '' ){
 						labels.push(data.quinielas[i].description)
 						var x = (data.quinielas[i].total_sales -parseInt(data.quinielas[i].purchase_gift_tickets));
 						values.push(x)
