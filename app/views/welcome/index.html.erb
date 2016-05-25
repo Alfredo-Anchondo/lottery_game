@@ -512,7 +512,7 @@ $(document).ready(function(){
                       dataType: "json",     
                     }).done(function( data) {
 				for(var i in data.lotteries){
-					labels2.push(data.lotteries[i].team.name + ' ' + data.lotteries[i].team2.name)
+					labels2.push(''+data.lotteries[i].team.name + ' ' + data.lotteries[i].team2.name+ '')
 					values2.push(data.lotteries[i].total_sales)
 				}
 			   var data3 = {
@@ -520,11 +520,11 @@ $(document).ready(function(){
     datasets: [
         {
             label: "Billetes Vendidos",
-            backgroundColor: "rgba(100, 31, 255, 0.2)",
-            borderColor: "rgb(98, 5, 167)",
+            backgroundColor: "rgba(0, 137, 255, 0.2)",
+            borderColor: "rgb(5, 61, 167)",
             borderWidth: 1,
-            hoverBackgroundColor: "rgba(167, 20, 173, 0.4)",
-            hoverBorderColor: "rgb(113, 9, 178)",
+            hoverBackgroundColor: "rgba(5, 52, 211, 0.4)",
+            hoverBorderColor: "rgb(0, 104, 193)",
             data: values2,
         }
     ]
