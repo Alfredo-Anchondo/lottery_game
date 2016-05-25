@@ -491,7 +491,17 @@ $(document).ready(function(){
 	   
 	    var myBarChart = new Chart(ctw, {
     type: 'bar',
-    data: data
+    data: data,
+			options: {
+        scales: {
+                xAxes: [{
+                        stacked: true
+                }],
+                yAxes: [{
+                        stacked: true
+                }]
+            }
+        }
 	   });
 			
 		});
@@ -534,9 +544,19 @@ $(document).ready(function(){
 	   
 	    var myBarChart = new Chart(ctz, {
     type: 'bar',
-    data: data3
+    data: data3,
+			options: {
+        scales: {
+                xAxes: [{
+                        stacked: true
+                }],
+                yAxes: [{
+                        stacked: true
+                }]
+            }
+        }
 	   });
-			
+		
 		});
 	   
 	  
