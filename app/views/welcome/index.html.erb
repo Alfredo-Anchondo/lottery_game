@@ -536,7 +536,6 @@ $(document).ready(function(){
 		      		if(data.lotteries[o].purchase_gift_tickets != null ){
 					labels2.push(''+data.lotteries[o].team.name + ' ' + data.lotteries[o].team2.name+ '');
 					var y = data.lotteries[o].total_sales - parseInt(data.lotteries[o].purchase_gift_tickets);
-						alert(y);
 					values2.push(y);
 					gift2.push(data.lotteries[o].purchase_gift_tickets);
 					}else{
@@ -568,8 +567,7 @@ $(document).ready(function(){
         }
     ]
 };
-			alert(labels2);
-			alert(values2);
+		
 	  var ctz = document.getElementById("myChart3").getContext("2d");
 	   
 	   
