@@ -533,7 +533,7 @@ $(document).ready(function(){
                     }).done(function( data) {
 				for(var i in data.lotteries){
 					if(data.lotteries[i].purchase_gift_tickets != null && data.lotteries[i].purchase_gift_tickets != ''){
-					labels2.push(data.lotteries[i].team.name + '' + daa.lotteries[i].team2.name)
+					labels2.push(data.lotteries[i].team.name + '' + data.lotteries[i].team2.name)
 					var x = (parseInt(data.lotteries[i].total_sales) - parseInt(data.lotteries[i].purchase_gift_tickets))
 					values2.push(x)
 					gift2.push(data.lotteries[i].purchase_gift_tickets)
