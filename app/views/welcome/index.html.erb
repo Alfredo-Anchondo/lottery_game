@@ -462,6 +462,7 @@ $(document).ready(function(){
    <script>
 	var labels = []; 
 	var values = [];
+	var gift = [];    
 	   
 	    $.ajax({
                       method: "GET",
@@ -469,20 +470,37 @@ $(document).ready(function(){
                       dataType: "json",     
                     }).done(function( data) {
 				for(var i in data.quinielas){
+					if (data.quinielas[i].purchase_gift_ticket != null && data.quinielas[i].purchase_gift_ticket != '' ){
+						labels.push(data.quinielas[i].description)
+						var x = data.quinielas[i].total_sales -parseInt(data.quinielas[i].purchase_gift_ticket);
+						values.push(x)
+						gift.push(data.quinielas[i].purchase_gift_tickets)
+					}else{
 					labels.push(data.quinielas[i].description)
-					values.push(data.quinielas[i].total_sales)
+					values.push(data.quinielas[i].total_sales )
+					gift.push(data.quinielas[i].purchase_gift_tickets)
+					}
 				}
 			   var data = {
     labels: labels,
     datasets: [
         {
-            label: "Billetes Vendidos",
+            label: "Billetes Normales Vendidos",
             backgroundColor: "rgba(100, 31, 255, 0.2)",
             borderColor: "rgb(98, 5, 167)",
             borderWidth: 1,
             hoverBackgroundColor: "rgba(167, 20, 173, 0.4)",
             hoverBorderColor: "rgb(113, 9, 178)",
             data: values,
+        },
+		        {
+            label: "Billetes de Regalo Vendidos",
+            backgroundColor: "rgba(255, 31, 246, 0.2)",
+            borderColor: "rgb(167, 5, 167)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(173, 20, 132, 0.4)",
+            hoverBorderColor: "rgb(178, 9, 113)",
+            data: gift,
         }
     ]
 };
@@ -515,6 +533,7 @@ $(document).ready(function(){
 	
 	   var labels2 = [];
 	   var values2 = [];
+	   var gift2 = [];
 	   
 	    $.ajax({
                       method: "GET",
@@ -522,20 +541,37 @@ $(document).ready(function(){
                       dataType: "json",     
                     }).done(function( data) {
 				for(var i in data.lotteries){
+					if(data.lotteries[i].purchase_gift_tickets != null && data.lotteries[i].purchase_gift_tickets != ''){
+					labels2.push(''+data.lotteries[i].team.name + ' ' + data.lotteries[i].team2.name+ '')
+					var x = data.lotteries[i].total_sales - parseInt(data.lotteries[i].purchase_gift_tickets)
+					values2.push(x)
+					gift2.push(data.lotteries[i].purchase_gift_tickets)
+					}else{
 					labels2.push(''+data.lotteries[i].team.name + ' ' + data.lotteries[i].team2.name+ '')
 					values2.push(data.lotteries[i].total_sales)
+					gift2.push(data.lotteries[i].purchase_gift_tickets)
+					}
 				}
 			   var data3 = {
     labels: labels2,
     datasets: [
         {
-            label: "Billetes Vendidos",
+            label: "Billetes Normales Vendidos",
             backgroundColor: "rgba(0, 137, 255, 0.2)",
             borderColor: "rgb(5, 61, 167)",
             borderWidth: 1,
             hoverBackgroundColor: "rgba(5, 52, 211, 0.4)",
             hoverBorderColor: "rgb(0, 104, 193)",
             data: values2,
+        },
+		{
+            label: "Billetes de Regalo Vendidos",
+            backgroundColor: "rgba(0, 255, 69, 0.2)",
+            borderColor: "rgb(5, 167, 55)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(5, 211, 60, 0.4)",
+            hoverBorderColor: "rgb(0, 193, 30)",
+            data: gift2,
         }
     ]
 };
