@@ -29,7 +29,7 @@
 				  <td> <%= quiniela_user.quiniela.description %> </td>
 				  <td> <%= quiniela_user.ticket_number %> </td>
 				  <td> <%= quiniela_user.status %> </td>
-				  <td> <%= quiniela_user.purchase_date %> </td>
+				  <td> <%= quiniela_user.purchase_date.strftime('%d-%m-%Y %H:%M') %> </td>
                                 <td class="action-link">
                   <% if can? :show,quiniela_user %>
                     <%= link_to quiniela_user, :class => "btn btn-default", :title => t("actions.show") do %>
