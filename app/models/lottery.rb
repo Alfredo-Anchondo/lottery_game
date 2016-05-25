@@ -12,12 +12,7 @@ class Lottery < ActiveRecord::Base
     end    
 	
 	def self.last_lotteries
-		games = Game.limit(10).order(:game_date).pluck(:id)
-		ar = []	
-			games.each do |game|
-				ar.push(game)
-			end
-			return where(id: ar)
+		return Lottery.limit(10).order(:id)
 			
 		end
     
