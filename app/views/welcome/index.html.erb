@@ -470,7 +470,7 @@ $(document).ready(function(){
                       dataType: "json",     
                     }).done(function( data) {
 				for(var i in data.quinielas){
-					if (data.quinielas[i].purchase_gift_tickets != null || data.quinielas[i].purchase_gift_tickets != '' ){
+					if (data.quinielas[i].purchase_gift_tickets != null ){
 						labels.push(data.quinielas[i].description)
 						var x = (data.quinielas[i].total_sales -parseInt(data.quinielas[i].purchase_gift_tickets));
 						values.push(x)
@@ -533,9 +533,10 @@ $(document).ready(function(){
                     }).done(function( data) {
 				for(var o in data.lotteries){
 					
-		      		if(data.lotteries[o].purchase_gift_tickets != null || data.lotteries[o].purchase_gift_tickets != '' || data.lotteries[o].purchase_gift_tickets != '0'){
+		      		if(data.lotteries[o].purchase_gift_tickets != null ){
 					labels2.push(''+data.lotteries[o].team.name + ' ' + data.lotteries[o].team2.name+ '');
 					var y = data.lotteries[o].total_sales - parseInt(data.lotteries[o].purchase_gift_tickets);
+						alert(y);
 					values2.push(y);
 					gift2.push(data.lotteries[o].purchase_gift_tickets);
 					}else{
