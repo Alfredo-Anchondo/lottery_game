@@ -1671,12 +1671,13 @@
 				$('#generate_numbers_div_tira').empty();
 				quantity = $('#number_quantity_tira').val();
 			    total_price = price * quantity;
-				$('#total_pay_ran_tira').text(total_price + ' DB');
-				
 				if(tira_id == 0 || tira_id == '' || tira_id == null){
+				
+				
+				
 					alert('Selecciona una Tira');
 				}else{
-				
+				$('#total_pay_ran_tira').text(total_price + ' DB');
 				for(var i = 0; i < quantity; i++ ){
 					var result = "";
 					for(var o = 0; o < number_questions; o++){	
