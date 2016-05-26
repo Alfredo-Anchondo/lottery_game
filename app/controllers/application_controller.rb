@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-    include ApplicationHelper   
-  before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_action :change_language    
+     include ApplicationHelper   
+	 before_filter :configure_permitted_parameters, if: :devise_controller?
+	 before_action :change_language    
 	 respond_to :html
   	 respond_to :json
     

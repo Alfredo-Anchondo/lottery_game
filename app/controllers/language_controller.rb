@@ -14,10 +14,12 @@ class LanguageController < ApplicationController
             if @user.language != "" || nil
                 return @user.language
             else    
-                return params[:locale] 
+                #return params[:locale] 
+				return 'es'
             end  
         else
-            return params[:locale] 
+            #return params[:locale] 
+			return 'es'
         end
     end
     
