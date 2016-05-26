@@ -1673,7 +1673,7 @@
 			    total_price = price * quantity;
 				$('#total_pay_ran_tira').text(total_price + ' DB');
 				
-				if(tira_id == 0){
+				if(tira_id == 0 || tira_id == '' || tira_id == null){
 					alert('Selecciona una Tira');
 				}else{
 				
