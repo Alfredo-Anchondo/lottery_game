@@ -1673,6 +1673,10 @@
 			    total_price = price * quantity;
 				$('#total_pay_ran_tira').text(total_price + ' DB');
 				
+				if(tira_id == 0){
+					alert('Selecciona una Tira');
+				}else{
+				
 				for(var i = 0; i < quantity; i++ ){
 					var result = "";
 					for(var o = 0; o < number_questions; o++){	
@@ -1683,6 +1687,7 @@
 					$('#generate_numbers_div_tira').append('<h3 style="font-weight:800"> '+result+' </h3>');
 				}	
 				$('#buy_numbers_tira').show();
+				}
 			})
 			
 			$('#buy_numbers_tira').click(function(){
