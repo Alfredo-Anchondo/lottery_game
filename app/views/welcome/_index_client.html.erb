@@ -1230,6 +1230,8 @@
 				if(data.games[i].lotteries[0]){
                 if (data.games[i].lotteries[0].winner_number != null){
                     var lottery_winner = data.games[i].lotteries[0].winner_number
+					if (lottery_winner < 10){
+						lottery_winner = "0"+lottery_winner+""}
                 }else{
                     var lottery_winner = "En Juego"
                 }
