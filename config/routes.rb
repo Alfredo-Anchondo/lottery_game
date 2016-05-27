@@ -75,6 +75,7 @@ Rails.application.routes.draw do
           get "tickets_history"
 		  match "/update_reference" => "users#search_reference", :via => :post
 		  get "/client_details/:id_client", to: "users#client_details"
+		  post "/send_mails_all", to: "users#send_mails_all" 
       end
   end
 

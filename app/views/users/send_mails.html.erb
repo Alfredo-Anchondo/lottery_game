@@ -2,6 +2,9 @@
 	.footer{
 		position:fixed;
 	}
+	.note-style{
+		margin-left:30% !important;
+	}
 </style>
 
 <div class="row">
@@ -12,12 +15,22 @@
                             <span class="label label-primary">Enviar</span>
                            
                         </div>
-
+						
+                     	<h2 style="text-align:center; font-weight:800;">Asunto del Correo</h2>
+                     	
+                     	<input type="text" id="subject" class="form-control">
+                     	
+                     	<hr>
+                     	
+                      	<h2 style="text-align:center; font-weight:800;">Cuerpo del Correo</h2>
+                       
                         <div class="ibox-content inspinia-timeline" >
 							<div id="summernote"></div>
-							<h1 id="text"></h1>
-							<button id="get" onclick="get_text()"> obtener codigo </button>
-
+						
+							<br>
+							<h4 style="text-align:center"><button class="btn btn-primary" id="get" onclick="send_text()"> Enviar Correo </button></h4>
+								<br>
+							<br><br><br>
 
                         </div>
                     </div>
@@ -29,8 +42,25 @@ $(document).ready(function() {
   $('#summernote').summernote();
 });
 	
-	function get_text(){
-		var markupStr = $('#summernote').summernote('code');
-		$('#text').text(markupStr)
+	function send_text(){
+		var content = $('#summernote').summernote('code');
+		var subject = $('#subject').val();
+		
+		if(subject == '' || subject == null){
+			alert('Agrega un asunto');
+		}else if (content == '' || content == null){
+			alert('Agrega contenido al correo');
+		}else{
+			$.ajax({
+          method: "POST",
+          url: "/users/send_mails_all",
+		  data: {content: content, subject: subject},
+          format: "json"
+        })
+          .done(function(data) {
+				alert(Los correos se enviaron con exito);
+			})
+		}
+		
 	}
 	</script>

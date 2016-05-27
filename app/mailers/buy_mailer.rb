@@ -86,5 +86,10 @@ class BuyMailer < ActionMailer::Base
 		@lottery = lottery
 		mail(to: @user.email, subject: '[DonBillete] Comprobante de compra de billetes')
 	end
+	
+	def send_mails_all(mails, subject, content)
+		mail(to: mails, subject: subject,  body: content,
+         content_type: "text/html", )
+	end
     
 end

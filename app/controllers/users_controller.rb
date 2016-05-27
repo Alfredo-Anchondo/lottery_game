@@ -19,6 +19,20 @@ class UsersController < ApplicationController
   def show
       @user = User.find(params[:id])
   end
+	
+	def send_mails_all
+		@email = []
+		@users = User.all.pluck(:email)
+		@content = params[:content].html_safe
+		@subject = params[:subject]
+		logger.info @content
+		logger.info @subject
+		@users.each do |email|
+			BuyMailer.send_mails_all(email, @subject, @content).deliver
+		end
+		
+		
+	end
     
 	def search_reference
 		reference = params[:reference]
