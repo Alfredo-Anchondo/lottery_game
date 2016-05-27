@@ -65,7 +65,8 @@ Rails.application.routes.draw do
 			match "/invite" => "categories#invite", :via => :post
 		end
 	end
-
+	
+	
   resources :users do
       collection do
           get "/lotteries/:id", to: "users#lotteries"
@@ -76,6 +77,7 @@ Rails.application.routes.draw do
 		  get "/client_details/:id_client", to: "users#client_details"
       end
   end
+
 
   resources :user_lotteries do
     collection do
