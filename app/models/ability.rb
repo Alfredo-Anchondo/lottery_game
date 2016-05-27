@@ -13,7 +13,7 @@ class Ability
         cannot [:new, :create, :edit, :update, :delete, :destroy], Team
         cannot [:new, :create, :edit, :update, :delete, :destroy], Category
         cannot [:new, :create, :edit, :update, :delete, :destroy], Sport
-        cannot [:new, :create, :delete, :destroy], User
+		cannot [:new, :index, :create, :delete, :destroy], User
         cannot [:new, :create, :edit, :update, :delete, :destroy], SportCategory
         cannot [:new, :create, :edit, :update, :delete, :destroy], Lottery
         cannot [:edit, :update, :delete, :destroy], UserLottery
