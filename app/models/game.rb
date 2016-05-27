@@ -72,9 +72,7 @@ class Game < ActiveRecord::Base
     end
  
     def self.today_games
-		no_winners = Lottery.where(:winner_number => nil).pluck(:id)
-		logger.info no_winners
-		return  Game.find(no_winners)
+		return  where('local_score = ? AND visit_score = ?',0,0 )
     end
     
 end
