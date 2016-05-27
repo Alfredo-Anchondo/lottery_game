@@ -51,6 +51,7 @@ $(document).ready(function() {
 		}else if (content == '' || content == null){
 			alert('Agrega contenido al correo');
 		}else{
+			alert('Los correos se estan enviando ten paciencia, puedes cerrar este cuadro de dialogo es seguro, espera la confirmacion de envio exitoso antes de salir de la pagina.');
 			$.ajax({
           method: "POST",
           url: "/users/send_mails_all",
