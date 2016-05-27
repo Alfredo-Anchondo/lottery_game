@@ -31,6 +31,7 @@
 //= require bootstrap-tour.min
 //= require jquery-ui
 //= require chosen.jquery.min
+//= require summernote.min
 
 $(document).ready(function(){
 	

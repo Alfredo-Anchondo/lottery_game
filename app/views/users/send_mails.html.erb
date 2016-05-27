@@ -1,0 +1,36 @@
+<style>
+	.footer{
+		position:fixed;
+	}
+</style>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Envio de correos masivos</h5>
+                            <span class="label label-primary">Enviar</span>
+                           
+                        </div>
+
+                        <div class="ibox-content inspinia-timeline" >
+							<div id="summernote"></div>
+							<h1 id="text"></h1>
+							<button id="get" onclick="get_text()"> obtener codigo </button>
+
+
+                        </div>
+                    </div>
+	</div>
+</div>
+
+<script>
+$(document).ready(function() {
+  $('#summernote').summernote();
+});
+	
+	function get_text(){
+		var markupStr = $('#summernote').summernote('code');
+		$('#text').text(markupStr)
+	}
+	</script>
