@@ -70,9 +70,9 @@ class Game < ActiveRecord::Base
       def self.finish_games
           where('game_date <= ?', DateTime.now).order(game_date: :desc).all
     end
-    
+ 
     def self.today_games
-		no_winners = Lottery.where('winner_number IS NULL').pluck(:id)
+		no_winners = Lottery.where("winner_number  <> ''").pluck(:id)
 		
 		return  Game.find(no_winners)
     end
