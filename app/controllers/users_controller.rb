@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :data, only: [:index, :new, :create, :edit, :update]
 	before_action :authenticate_user!, except: 'search_reference'
