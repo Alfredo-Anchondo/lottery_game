@@ -72,7 +72,7 @@ class Game < ActiveRecord::Base
     end
  
     def self.today_games
-		no_winners = Lottery.where('winner_number ISNULL').pluck(:id)
+		no_winners = Lottery.where('winner_number IS NOT DISTINCT FROM NULL').pluck(:id)
 		
 		return  Game.find(no_winners)
     end
