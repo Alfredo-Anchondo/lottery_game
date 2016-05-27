@@ -11,10 +11,7 @@ class Quiniela < ActiveRecord::Base
 	end	
 	
 		def self.last_quinielas
-		
-	
 			return  Quiniela.limit(10).order(id: :desc)
-			
 		end
 	
 	def self.find_no_winners
