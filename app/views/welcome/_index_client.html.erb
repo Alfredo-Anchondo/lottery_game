@@ -512,8 +512,12 @@
     var image_url2 = '/system/teams/logos/000/000/0'+data.quiniela_users[i].quiniela.game.team2.id+'/original/'+data.quiniela_users[i].quiniela.game.team2.logo_file_name;
     }  
 			   
-			   
-              $('.cycle-slideshow1').append('<div class="slide"><h3 style="color:black; text-align:center">Ganadores de Quinielas</h3><h1 style="text-align:center; color:#720062; font-weight:900;">' +data.quiniela_users[i].user.username + '</h1> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" style="margin-left:30%" src="'+ image_url +'"> </h4> </div> <div class="col-md-2 col-xs-2"> <h1 style="text-align:center; margin-top:80%; color:red; font-weight:900;"> VS </h1> </div> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" style="margin-left:15%" src="'+ image_url2 +'"> </h4> </div> <h2 style="text-align:center; color:#720062; font-weight:900;"> Número Ganador: '+ data.quiniela_users[i].ticket_number +' </h2> <h2 style="text-align:center; color:#720062; font-weight:900;">Monto:  ' +data.quiniela_users[i].quiniela.initial_balance + ' DB </h2> </div> ');
+			   var balancep = data.user_lotteries[i].lottery.initial_balance;
+			   if (parseInt(balancep) == 20000){
+				   balancep = '10,000.00'
+			   }
+						
+              $('.cycle-slideshow1').append('<div class="slide"><h3 style="color:black; text-align:center">Ganadores de Quinielas</h3><h1 style="text-align:center; color:#720062; font-weight:900;">' +data.quiniela_users[i].user.username + '</h1> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" style="margin-left:30%" src="'+ image_url +'"> </h4> </div> <div class="col-md-2 col-xs-2"> <h1 style="text-align:center; margin-top:80%; color:red; font-weight:900;"> VS </h1> </div> <div class="col-md-5 col-xs-5"> <h4 style="text-align:center"> <img width="60%" style="margin-left:15%" src="'+ image_url2 +'"> </h4> </div> <h2 style="text-align:center; color:#720062; font-weight:900;"> Número Ganador: '+ data.quiniela_users[i].ticket_number +' </h2> <h2 style="text-align:center; color:#720062; font-weight:900;">Monto:  ' +balancep + ' DB </h2> </div> ');
            }
            
           $('.cycle-slideshow1').bxSlider({
