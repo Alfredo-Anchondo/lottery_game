@@ -13,6 +13,10 @@
 				 </div>
 			</div>
 			</div>
+			<div class="col-md-4">
+				<button class="btn btn-primary" onclick="save_picture()">Guardar captura</button>
+				<div id="content"></div>
+			</div>
 		</div> 
 	<script>
 			var current_view;
@@ -93,5 +97,14 @@
             slideMargin: 13
           });
 			});
+		
+		function save_picture(){
+			html2canvas($('#quinielas'), {
+				onrendered: function(canvas){
+					$('#content').append(canvas);
+					alert('se guardo');
+				}
+			})
+		}
 			
 		</script>

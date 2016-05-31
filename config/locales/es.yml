@@ -1,4 +1,4 @@
-# Files in the config/locales directory are used for internationalization
+﻿# Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
 #
@@ -330,6 +330,8 @@ es:
             description: "Descripción"
         quiniela:
             initial_balance: "Bolsa Inicial"
+            last_questions: "Respuestas de la ultima pregunta"
+            last_questions_text: "Texto de cada respuesta"
             price: "Precio"
             description: "Descripción"
             game: "Juego"

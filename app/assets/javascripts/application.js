@@ -32,6 +32,7 @@
 //= require jquery-ui
 //= require chosen.jquery.min
 //= require summernote.min
+//= require html2canvas
 
 $(document).ready(function(){
 	

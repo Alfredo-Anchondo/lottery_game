@@ -74,7 +74,7 @@ class Game < ActiveRecord::Base
     def self.today_games
 		loterias = Lottery.all.pluck(:game_id)
 		logger.info loterias
-		games = where('local_score = ? AND visit_score = ? AND id IN (?) ',0,0,loterias )
+		games = where('winner_number = ?  AND id IN (?) ',0,loterias )
 		
 		return games	
     end
