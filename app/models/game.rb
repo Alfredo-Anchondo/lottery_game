@@ -72,9 +72,9 @@ class Game < ActiveRecord::Base
     end
  
     def self.today_games
-		loterias = Lottery.all.pluck(:game_id)
+		loterias = Lottery.where('winner_number IS NULL').pluck(:game_id)
 		logger.info loterias
-		games = where('winner_number = ?  AND id IN (?) ',0,loterias )
+		games = Game.find(loterias)
 		
 		return games	
     end
