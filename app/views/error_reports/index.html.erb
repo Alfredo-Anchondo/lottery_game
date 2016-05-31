@@ -13,17 +13,16 @@
           <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
             <thead>
               <tr>
+				  				  <th><%= t("activerecord.attributes.error_report.id") %></th>
                                   <th><%= t("activerecord.attributes.error_report.user") %></th>
                                   <th><%= t("activerecord.attributes.error_report.controller_name") %></th>
                                   <th><%= t("activerecord.attributes.error_report.action_name") %></th>
                                   <th><%= t("activerecord.attributes.error_report.error_time") %></th>
                                   <th><%= t("activerecord.attributes.error_report.description") %></th>
-                                  <th><%= t("activerecord.attributes.error_report.line_number") %></th>
+                                  
                                   <th><%= t("activerecord.attributes.error_report.referrer_url") %></th>
                                   <th><%= t("activerecord.attributes.error_report.original_path") %></th>
                                   <th><%= t("activerecord.attributes.error_report.enviroment") %></th>
-                               
-                                  <th><%= t("activerecord.attributes.error_report.backtrace") %></th>
                                 
                                   <th style="width: 155px"></th>
               </tr>
@@ -32,17 +31,18 @@
             <tbody>
               <% @error_reports.each do |error_report| %>
               <tr>
+				  <td><%= error_report.id %></td>
 				  <td><%= error_report.user ? (error_report.user.name + " " + error_report.user.last_name) : "usuario no logeado" %></td>
                                   <td><%= error_report.controller_name %></td>
                                   <td><%= error_report.action_name %></td>
 				  <td><%= error_report.error_time.strftime('%d-%m-%Y %T') %></td>
                                    <td><%= error_report.description %></td>
-                                  <td><%= error_report.line_number %></td>     
+                             
                                   <td><%= error_report.referrer_url %></td>
                                   <td><%= error_report.original_path %></td>
                                   <td><%= error_report.enviroment %></td>
                                   
-                                  <td><%= error_report.backtrace %></td>
+                                
                                  
                                 <td class="action-link">
                   <% if can? :show,error_report %>
