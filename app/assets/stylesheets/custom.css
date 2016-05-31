@@ -762,3 +762,12 @@ body{
     padding-left: 4px;
     font-size: 20px;
 }
+
+.categoria1{
+	background-position-y: 20%;
+}
+
+.categoria5{
+	background-position-y: 40%;
+	background-position-x: -25px;
+}
