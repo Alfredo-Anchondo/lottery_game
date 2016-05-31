@@ -13,6 +13,7 @@
           <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
             <thead>
               <tr>
+				  <th><%= t("activerecord.attributes.question.id") %></th>
 				  <th><%= t("activerecord.attributes.question.title") %></th>
 				  <th><%= t("activerecord.attributes.question.description") %></th>
                   <th style="width: 155px"></th>
@@ -22,6 +23,7 @@
             <tbody>
               <% @questions.each do |question| %>
               <tr>
+				  <td><%= question.id %></td>
 				  <td><%= question.title %></td>
 				  <td><%= question.description %></td>
                                 <td class="action-link">
