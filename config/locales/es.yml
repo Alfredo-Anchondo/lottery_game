@@ -330,7 +330,7 @@ es:
             description: "Descripción"
         quiniela:
             initial_balance: "Bolsa Inicial"
-            last_questions: "Respuestas de la ultima pregunta"
+            last_questions: "Cantidad de respuestas de la ultima pregunta"
             last_questions_text: "Texto de cada respuesta"
             price: "Precio"
             description: "Descripción"
