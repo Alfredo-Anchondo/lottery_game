@@ -58,9 +58,28 @@
 					
 					$('.cycle-slideshow2').append('<div class="slide'+i+'"><h2 style="text-align:center; font-weight:800">Cerrar quiniela</h2><hr> <h3 style="text-align:center; color:#e4007d"> Selecciona el numero ganador de las quinielas participantes. </h3> <h4 style="text-align:center">En esta ventana se mostraran las quinielas que no tengan numero ganador programado, asegurate de poner los datos correctos antes de cerrar una quiniela ya que al cerrarla se noticara a los ganadores.</h4><hr> <h3 style="text-align:center; color:#E4007D; font-weight:800;">'+data.quinielas[i].description+'</h3> <div class="row"> <div class="col-md-4"> <div class="row"> <div class="col-md-5"> <img src="'+image_url+'"> </div> <div class="col-md-2"> <h1 style="text-align:center; margin-top:120%; font-weight: 900;color: #E4007D;"> VS </h1> </div> <div class="col-md-5"> <img src="'+image_url2+'"> </div> </div> <hr>  <h3 style="text-align:center; font-weight:700">Bolsa acumulada</h3> <h2 id="initial_balance'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].initial_balance +' <span>DB</span> </h2> <hr> <h3 style="text-align:center; font-weight:700"> Precio de la Quiniela </h3> <h2 id="price'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].price +' <span>DB</span> </h2>  </div> <div class="col-md-8 slide2'+i+'"> </div> </div> </div>');	
 					
-					for(var e in data.quinielas[i].quiniela_questions){
-					$('.slide2'+i+'').append(' <div class="col-md-7"><h4 style="text-align:left">'+ data.quinielas[i].quiniela_questions[e].question.title +'</h4></div> <div class="col-md-3"> <div class="radio radio-inline radio-danger"><input class="answers_select" data-id="'+i+'" type="radio" name="answer'+i+e+'" value="1"><label style="text-align: left !important;" for="answer'+i+e+'" class="">Si</label></div><div class="radio radio-inline radio-danger"><input data-id="'+i+'" type="radio" class="answers_select" name="answer'+i+e+'" value="0"> <label for="answer'+i+e+'" style="text-align: left !important;" class="">No</label></div> </div> <div class="col-md-2"> <input  type="text" disabled class="form-control value_result '+i+e+'"> </div>');
+					if(data.quinielas[i].last_questions != null && data.quinielas[i].last_questions != '' ){
+						var total_questions = data.quinielas[i].quiniela_questions.length;
+						var quantity_response = data.quinielas[i].last_questions;
+						var text_responses = data.quinielas[i].last_questions_text;
+						var radio_buttons="";
+						
+						for(var o = 0; o < total_questions-1 ;o++){
+					$('.slide2'+i+'').append(' <div class="col-md-7 col-xs-12"><h4 style="text-align:left">'+ data.quinielas[i].quiniela_questions[o].question.title +'</h4></div> <div class="col-md-4 col-xs-6"> <div class="radio radio-inline radio-danger"><input class="answers_select" data-id="'+i+'" type="radio" name="answer'+i+o+'" value="1"><label style="text-align: left !important;" for="answer'+i+o+'" class="">Si</label></div><div class="radio radio-inline radio-danger"><input data-id="'+i+'" type="radio" class="answers_select" name="answer'+i+o+'" value="0"> <label for="answer'+i+o+'" style="text-align: left !important;" class="">No</label></div> </div> <div class="col-md-1 col-xs-6"> <input style="text-align:left; width:35px;"  type="text" disabled class="form-control value_result '+i+o+'"> </div>');
 						}
+						total_questions = total_questions-1
+						var texts = text_responses.split(',');
+						for (var cantidad=0; cantidad < quantity_response ;cantidad++){
+							radio_buttons=radio_buttons + '<div class="radio radio-inline radio-danger"><input class="answers_select" data-id="'+i+'" type="radio" name="answer'+i+total_questions+'" value="'+cantidad+'"><label style="text-align: left !important;" for="answer'+i+total_questions+'" class="">'+texts[cantidad]+'</label></div>'
+						}
+						$('.slide2'+i+'').append(' <div class="col-md-12 col-xs-12"><h4 style="text-align:left">'+ data.quinielas[i].quiniela_questions[total_questions].question.title +'</h4></div> <div class="col-md-11 col-xs-6"> '+radio_buttons+'  </div> <div class="col-md-1 col-xs-6"> <input style="text-align:left; width:35px;"  type="text" disabled class="form-control value_result '+i+total_questions+'"> </div>');
+						
+					}else{
+						 
+					for(var e in data.quinielas[i].quiniela_questions){
+					$('.slide2'+i+'').append(' <div class="col-md-7 col-xs-12"><h4 style="text-align:left">'+ data.quinielas[i].quiniela_questions[e].question.title +'</h4></div> <div class="col-md-4 col-xs-6"> <div class="radio radio-inline radio-danger"><input class="answers_select" data-id="'+i+'" type="radio" name="answer'+i+e+'" value="1"><label style="text-align: left !important;" for="answer'+i+e+'" class="">Si</label></div><div class="radio radio-inline radio-danger"><input data-id="'+i+'" type="radio" class="answers_select" name="answer'+i+e+'" value="0"> <label for="answer'+i+e+'" style="text-align: left !important;" class="">No</label></div> </div> <div class="col-md-1 col-xs-6"> <input style="text-align:left; width:35px;"  type="text" disabled class="form-control value_result '+i+e+'"> </div>');
+						}
+					}
 					
 					$('.slide'+i+'').append('<hr><div class="row"><div class="col-md-3"> <h4 style="text-align:center"> <button class="btn btn-primary generate_ticket" onclick="generate_ticket()">Generar Numero </button> </h4> </div><div class="col-md-6"> <input type="text" style="margin-top:6px;" class="form-control ticket_value_'+i+'"> </div> <div class="col-md-3"><h4 style="text-align:center"><button style="display:none;" class="btn close_quiniela buy_quiniela_btn'+i+' btn-primary" data-quinielaid="'+data.quinielas[i].id+'" > Cerrar loteria </button> </h4 </div></div>');
 					

@@ -75,7 +75,6 @@ class Game < ActiveRecord::Base
 		loterias = Lottery.where('winner_number IS NULL').pluck(:game_id)
 		logger.info loterias
 		games = Game.find(loterias)
-		
 		return games	
     end
     
