@@ -13,6 +13,7 @@
           <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
             <thead>
               <tr>
+				  <th><%= t("activerecord.attributes.quiniela.id") %></th>
 				  <th><%= t("activerecord.attributes.quiniela.initial_balance") %></th>
 				  <th><%= t("activerecord.attributes.quiniela.price") %></th>
 				  <th><%= t("activerecord.attributes.quiniela.description") %></th>
@@ -27,6 +28,7 @@
             <tbody>
               <% @quinielas.each do |quiniela| %>
               <tr>
+				  <td><%= quiniela.id %></td>
 				  <td><%= quiniela.initial_balance %></td>
 				  <td><%= quiniela.price %></td>
 				  <td><%= quiniela.description %></td>
