@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512154007) do
+ActiveRecord::Schema.define(version: 20160531173840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: true do |t|
-    t.string   "name",              null: false
+    t.string   "name",                    null: false
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20160512154007) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
   end
 
   create_table "error_reports", force: true do |t|
@@ -105,13 +109,16 @@ ActiveRecord::Schema.define(version: 20160512154007) do
   add_index "quiniela_users", ["user_id"], name: "index_quiniela_users_on_user_id", using: :btree
 
   create_table "quinielas", force: true do |t|
-    t.text     "initial_balance", null: false
+    t.text     "initial_balance",                     null: false
     t.text     "price"
     t.text     "description"
-    t.integer  "game_id",         null: false
+    t.integer  "game_id",                             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "winner_number"
+    t.string   "purchase_gift_tickets", default: "0"
+    t.string   "last_questions"
+    t.string   "last_questions_text"
   end
 
   add_index "quinielas", ["game_id"], name: "index_quinielas_on_game_id", using: :btree
