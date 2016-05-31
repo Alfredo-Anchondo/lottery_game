@@ -764,7 +764,8 @@ body{
 }
 
 .categoria1{
-	background-position-y: 20%;
+	    background-size: initial !important;
+    background-position-x: -68px;
 }
 
 .categoria5{
