@@ -5,10 +5,7 @@ class UsersController < ApplicationController
 	 before_action :authenticate_user!, except: 'search_reference'
 	 respond_to :html
   	 respond_to :json
- 
-
-    
-    
+ 	 
   # GET /users
   # GET /users.json
   def index
