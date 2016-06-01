@@ -94,6 +94,18 @@ class QuinielasController < ApplicationController
     @quiniela.save
     respond_with(@quiniela)
   end
+	
+	def save_result
+		@quiniela = Quiniela.find(params[:id])
+		@result = params[:canvas]
+
+    image = Paperclip.io_adapters.for(params[:canvas])
+		image.original_filename = "result_quiniela.png"
+
+		@quiniela.cap_result = image
+
+		@quiniela.save
+	end
 
   def update
     @quiniela.update(quiniela_params)
@@ -111,7 +123,7 @@ class QuinielasController < ApplicationController
     end
 
     def quiniela_params
-		params.require(:quiniela).permit(:initial_balance, :price, :game_id, :description, :purchase_gift_tickets, :winner_number, :last_questions, :last_questions_text, quiniela_questions_attributes: [:id, :question_id, :_destroy])
+		params.require(:quiniela).permit(:initial_balance, :price, :game_id, :description, :purchase_gift_tickets, :winner_number, :cap_result, :last_questions, :last_questions_text, quiniela_questions_attributes: [:id, :question_id, :_destroy])
     end
 	
       

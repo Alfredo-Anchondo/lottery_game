@@ -4,6 +4,11 @@ class Quiniela < ActiveRecord::Base
 	has_many :quiniela_questions
     has_one :team, :through => :game
     has_one :team2, :through => :game
+	has_attached_file :cap_result
+    
+    #Validations
+	validates_attachment_content_type :cap_result, :content_type => /\Aimage\/.*\Z/
+    
 	accepts_nested_attributes_for :quiniela_questions, allow_destroy: true, reject_if: proc{ |attributes| attributes['question_id'].blank? }
 		
 	def total_sales

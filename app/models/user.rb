@@ -129,7 +129,10 @@ end
         emails = where(:id => UserLottery.where(:lottery_id => lottery_id_param).pluck(:user_id).uniq).pluck(:email)
         logger.info emails
 		if emails != nil && emails != '' && emails != []
-			 BuyMailer.winner_number(emails, winner_number, lottery_name).deliver
+			emails.each do|mail|
+				 BuyMailer.winner_number(mail, winner_number, lottery_name).deliver
+			end
+			
 		end
     end  
 	
@@ -138,7 +141,9 @@ end
 		emails = where(:id => QuinielaUser.where(:quiniela_id => quiniela_id_param).pluck(:user_id).uniq).pluck(:email)
         logger.info emails
 		if emails != nil && emails != '' && emails != []
-			BuyMailer.winner_number_quiniela(emails, winner_number, quiniela_name).deliver
+			emails.each do |mail|
+				BuyMailer.winner_number_quiniela(mail, winner_number, quiniela_name).deliver
+			end			
 		end
     end  
     

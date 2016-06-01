@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531173840) do
+ActiveRecord::Schema.define(version: 20160601153444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,16 +109,20 @@ ActiveRecord::Schema.define(version: 20160531173840) do
   add_index "quiniela_users", ["user_id"], name: "index_quiniela_users_on_user_id", using: :btree
 
   create_table "quinielas", force: true do |t|
-    t.text     "initial_balance",                     null: false
+    t.text     "initial_balance",                       null: false
     t.text     "price"
     t.text     "description"
-    t.integer  "game_id",                             null: false
+    t.integer  "game_id",                               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "winner_number"
-    t.string   "purchase_gift_tickets", default: "0"
+    t.string   "purchase_gift_tickets",   default: "0"
     t.string   "last_questions"
     t.string   "last_questions_text"
+    t.string   "cap_result_file_name"
+    t.string   "cap_result_content_type"
+    t.integer  "cap_result_file_size"
+    t.datetime "cap_result_updated_at"
   end
 
   add_index "quinielas", ["game_id"], name: "index_quinielas_on_game_id", using: :btree

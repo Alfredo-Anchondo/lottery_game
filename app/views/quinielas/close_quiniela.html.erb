@@ -14,11 +14,37 @@
 			</div>
 			</div>
 			<div class="col-md-4">
-				<button class="btn btn-primary" onclick="save_picture()">Guardar captura</button>
-				<div id="content"></div>
+				<h4 style="text-align:center">Captura foto de el resultado para almacenarlo en la base de datos</h4>
+				<h4 style="text-align:center"><button class="btn btn-primary" onclick="save_picture()">Guardar captura</button> </h4>
+				
 			</div>
 		</div> 
+		
+		<!-- Modal -->
+<div id="preview" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width:72%">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Vista previa de la imagen a guardar</h4>
+      </div>
+      <div class="modal-body">
+       <div class="row" id="content"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+		
+		
+		
 	<script>
+		    var count_current = 0;
 			var current_view;
 			var result;		
 			function generate_ticket(){
@@ -56,7 +82,7 @@
     var image_url2 = '/system/teams/logos/000/000/0'+data.quinielas[i].game.team2.id+'/original/'+data.quinielas[i].game.team2.logo_file_name;
     }  
 					
-					$('.cycle-slideshow2').append('<div class="slide'+i+'"><h2 style="text-align:center; font-weight:800">Cerrar quiniela</h2><hr> <h3 style="text-align:center; color:#e4007d"> Selecciona el numero ganador de las quinielas participantes. </h3> <h4 style="text-align:center">En esta ventana se mostraran las quinielas que no tengan numero ganador programado, asegurate de poner los datos correctos antes de cerrar una quiniela ya que al cerrarla se noticara a los ganadores.</h4><hr> <h3 style="text-align:center; color:#E4007D; font-weight:800;">'+data.quinielas[i].description+'</h3> <div class="row"> <div class="col-md-4"> <div class="row"> <div class="col-md-5"> <img src="'+image_url+'"> </div> <div class="col-md-2"> <h1 style="text-align:center; margin-top:120%; font-weight: 900;color: #E4007D;"> VS </h1> </div> <div class="col-md-5"> <img src="'+image_url2+'"> </div> </div> <hr>  <h3 style="text-align:center; font-weight:700">Bolsa acumulada</h3> <h2 id="initial_balance'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].initial_balance +' <span>DB</span> </h2> <hr> <h3 style="text-align:center; font-weight:700"> Precio de la Quiniela </h3> <h2 id="price'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].price +' <span>DB</span> </h2>  </div> <div class="col-md-8 slide2'+i+'"> </div> </div> </div>');	
+					$('.cycle-slideshow2').append('<div class="slide'+i+'" data-id="'+data.quinielas[i].id+'"><h2 style="text-align:center; font-weight:800">Cerrar quiniela</h2><hr> <h3 style="text-align:center; color:#e4007d"> Selecciona el numero ganador de las quinielas participantes. </h3> <h4 style="text-align:center">En esta ventana se mostraran las quinielas que no tengan numero ganador programado, asegurate de poner los datos correctos antes de cerrar una quiniela ya que al cerrarla se noticara a los ganadores.</h4><hr> <h3 style="text-align:center; color:#E4007D; font-weight:800;">'+data.quinielas[i].description+'</h3> <div class="row"> <div class="col-md-4"> <div class="row"> <div class="col-md-5"> <img src="'+image_url+'"> </div> <div class="col-md-2"> <h1 style="text-align:center; margin-top:120%; font-weight: 900;color: #E4007D;"> VS </h1> </div> <div class="col-md-5"> <img src="'+image_url2+'"> </div> </div> <hr>  <h3 style="text-align:center; font-weight:700">Bolsa acumulada</h3> <h2 id="initial_balance'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].initial_balance +' <span>DB</span> </h2> <hr> <h3 style="text-align:center; font-weight:700"> Precio de la Quiniela </h3> <h2 id="price'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].price +' <span>DB</span> </h2>  </div> <div class="col-md-8 slide2'+i+'"> </div> </div> </div>');	
 					
 					if(data.quinielas[i].last_questions != null && data.quinielas[i].last_questions != '' ){
 						var total_questions = data.quinielas[i].quiniela_questions.length;
@@ -113,17 +139,44 @@
 			infiniteLoop: false,
             minSlides: 1,
 			maxSlides:1, 
+			pager: false,
             slideMargin: 13
           });
+				
+					$('.bx-next').click(function(){
+			count_current++;
+		})
+							$('.bx-prev').click(function(){
+			count_current--;
+		})
+				
 			});
 		
 		function save_picture(){
-			html2canvas($('#quinielas'), {
+			html2canvas($('.slide'+count_current+''), {
 				onrendered: function(canvas){
+				
 					$('#content').append(canvas);
-					alert('se guardo');
+					$('#preview').modal('show');
+				var quin_id =$('.slide'+count_current+'').data('id');
+					alert(quin_id);
+					 var base64Data = canvas.toDataURL()
+					$.ajax({
+          method: "POST",
+          url: "/quinielas/save_result",
+          format: "json",
+		  data:	{ id: quin_id, canvas: base64Data}		
+        })
+          .done(function(data) {
+				alert('La imagen se guardo correctamente');		
+					})
+					
 				}
 			})
 		}
+		
+	
 			
+		
+		
 		</script>
