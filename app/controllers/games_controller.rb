@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+	 load_and_authorize_resource
+  before_action :authenticate_user!
   before_action :set_game, only: [:show, :edit, :update, :destroy]
   before_action :data, only: [:index, :new, :create, :edit, :update]
   respond_to :html, :json

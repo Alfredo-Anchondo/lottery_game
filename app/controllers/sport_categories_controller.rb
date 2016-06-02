@@ -1,4 +1,7 @@
+
 class SportCategoriesController < ApplicationController
+	 load_and_authorize_resource
+  before_action :authenticate_user!
   before_action :set_sport_category, only: [:show, :edit, :update, :destroy]
    before_action :data, only: [:index, :new, :create, :edit, :update]
   # GET /sport_categories

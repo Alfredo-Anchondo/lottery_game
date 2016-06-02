@@ -45,10 +45,20 @@ Rails.application.routes.draw do
     
     resources :partials  do
         collection do
+			get 'next_game'
+			get 'finish_games'
+			get 'future_games'
+			get "/team_logos/:id", to: "partials#team_logos"
+			post 'buy_random_quinielas', to: "partials#buy_random_quinielas"
+			get 'get_quinielas_no_winner', to: "partials#get_quinielas_no_winner"
             match "/credit_card_form" => "partials#credit_card_pay", :via => :post
             get "/partials/:user", to: "partials#get_customer_credit_cars"
             get "complete_buy"
             get "buy_error"
+			get "tickets_history"
+			get "client_details"
+		    get "/lotteries/:id", to: "partials#lotteries"
+		    get "/quinielas/:id", to: "partials#quinielas"
 			get "invite"
             get "/history", to: "partials#history"
             get "checkout"
@@ -94,7 +104,7 @@ Rails.application.routes.draw do
 
   resources :lotteries do
         collection do
-            get "/team_logos/:id", to: "lotteries#team_logos"
+           get "/team_logos/:id", to: "lotteries#team_logos"
 			get "/all_lotteries", to: "lotteries#all_lotteries"
 			get 'last_lotteries', to: "lotteries#last_lotteries"
       end

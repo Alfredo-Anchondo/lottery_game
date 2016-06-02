@@ -29,7 +29,7 @@
     <div class="col-md-5 col-xs-12"> <a href="/"><img id="logo-image" src="/assets/logo_donbillete.png"></a></div>
     <div class="col-md-7" id="responsive-cellphone" style="margin-top:1%">
            <% if signed_in? %>
-             <%=link_to current_user do %>
+            <a href="/partials/client_details">
         <div class="col-md-12 col-xs-12 hide-phone">
            
             <div class="col-md-2">
@@ -47,7 +47,7 @@
                 <%= link_to destroy_user_session_path, :method => :delete, :style => "color:black" do %>
            <h4> <i class="fa fa-sign-out"></i><%= t('logout') %> </h4>
           <% end %>
-               <% end %>
+             </a>
                       
                 <h4><div class="fb-like" data-href="https://www.facebook.com/7donbillete/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div> </div> </h4>
                 
@@ -132,8 +132,8 @@
          <% if signed_in? %>
    
       <ul id="menu" class="nav navbar-nav metismenu">
-		  <li id="user_acount" style="display:none"><a href="/users/<%= current_user.id %>"> Ver perfil </a></li>
-         <li><a href="/users/tickets_history"> <%= t('purchased_ticket_history') %> </a></li>
+		  <li id="user_acount" style="display:none"><a href="/partials/client_details>"> Ver perfil </a></li>
+         <li><a href="/partials/tickets_history"> <%= t('purchased_ticket_history') %> </a></li>
          <!--<li><a href="/games/games_by_category"> <%= t('category_lotteries') %> </a> </li> -->
           <li><a href="/partials/credit_card_form"> <%= t('buy_credit') %> </a> </li>
           <li><a href="/partials/history"> <%= t('history') %> </a> </li>

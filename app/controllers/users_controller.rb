@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	  load_and_authorize_resource
 
      before_action :set_user, only: [:show, :edit, :update, :destroy]
      before_action :data, only: [:index, :new, :create, :edit, :update]
@@ -83,8 +84,8 @@ class UsersController < ApplicationController
         sign_in(@user, :bypass => true)
         else
         if @user.update(user_params)
-        format.html { redirect_to @user, notice: t('success_update') }
-        format.json { render :show, status: :ok, location: @user }
+        format.html { redirect_to "/", notice: t('success_update') }
+        format.json { render :show, status: :ok, location: "/" }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -113,8 +114,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :last_name, :address_1, :address_2, :zip_code, :age, :email, :phone, :cellphone, :balance, :role_id, :country, :state, :city, :int_number, :photo, :ext_number, :username, :password, :openpay_id, :favorite_team, :birthday, :gender, :language, :friend_reference, :gift_credit, :reference_by_friend)
     end
-      
-   
-    
-      
 end

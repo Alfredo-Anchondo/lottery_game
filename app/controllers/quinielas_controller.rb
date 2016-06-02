@@ -1,6 +1,7 @@
 class QuinielasController < ApplicationController
+  load_and_authorize_resource except: [:update]
+  before_action :authenticate_user!
   before_action :set_quiniela, only: [:show, :edit, :update, :destroy]
-
   respond_to :html
   respond_to :json	
 
@@ -42,9 +43,7 @@ class QuinielasController < ApplicationController
 			QuinielaUser.create({user_id: @user.id, quiniela_id: @tira, status: 'Comprado', ticket_number: @numbers[Integer(i)], purchase_date: DateTime.now})
 		end
 		#BuyMailer.buy_many_tickets(@user_id, @array_values, @lottery).deliver
-	
-      
-		
+
 	end
 	
 	def get_quinielas

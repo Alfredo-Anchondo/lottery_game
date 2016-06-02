@@ -1,11 +1,23 @@
 class QuinielaUsersController < ApplicationController
-  before_action :set_quiniela_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+   before_action :set_quiniela_user, only: [:show, :edit, :update, :destroy]	
+	before_action "administartor"
+ 
 
   respond_to :html
   respond_to :json	
 
 	def winners
 		render :json => (QuinielaUser.winners)
+	end
+	
+	def administartor
+		logger.info current_user.role.id
+		if current_user.role.id == 1
+			logger.info 'hi'
+		else
+			render root_path
+		end
 	end
 	
   def index
