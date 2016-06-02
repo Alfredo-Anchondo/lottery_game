@@ -30,7 +30,7 @@ end
     rescue_from ActiveRecord::DeleteRestrictionError do |exception|
       process_exception(exception)
 		respond_to do |format|
-			format.html { redirect_to (request.referer || :root), alert: 'Ocurrio un error, se a reportado al administrador de la pagina.' }
+			format.html { redirect_to (request.referer || :root), alert: 'Ocurrio un error al intentar eliminar un registro. ' }
       format.json { head :no_content }
     end
     end
@@ -38,7 +38,7 @@ end
     rescue_from ActiveRecord::RecordNotFound do |exception|
       process_exception(exception)
 		respond_to do |format|
-			format.html { redirect_to (request.referer || :root), alert: 'Ocurrio un error, se a reportado al administrador de la pagina.' }
+			format.html { redirect_to (request.referer || :root), alert: 'No se encontro el archivo solicitado.' }
       format.json { head :no_content }
     end
     end
@@ -46,7 +46,7 @@ end
     rescue_from CanCan::AccessDenied do |exception|
       process_exception(exception)
 	respond_to do |format|
-		format.html { redirect_to (request.referer || :root), alert: 'Ocurrio un error, se a reportado al administrador de la pagina.' }
+		format.html { redirect_to (request.referer || :root), alert: 'No tienes permisos para acceder a esta pagina.' }
       format.json { head :no_content }
     end
     end
