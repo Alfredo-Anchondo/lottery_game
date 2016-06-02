@@ -1,0 +1,102 @@
+
+<style>
+	.footer{
+		position:fixed;
+	}
+</style>
+
+<!-- begin row -->
+<div class="row">
+  <!-- begin col-md-12 -->
+  <div class="col-md-12">
+    <div class="invoice">
+      <div class="invoice-content">
+        <div class="table-responsive">
+             <h3 class="header-show"><%= t("details_of", model: t("activerecord.models.user").downcase) %></h3>
+            <div class="row">
+                 <div class="col-md-3">
+                  <h4 class="property-show"> <%= t("activerecord.attributes.user.photo") %>: </h4> <br />
+                    <h5 class="property-text" style="text-align:center"><img width="70%" src="<%= @user.photo %>"></h5> <hr>
+                </div>
+                
+                <div class="col-md-6">
+                 <h4 class="property-show"> Información del Usuario: </h4> 
+                <div class="col-md-6">
+                	<h4 style="color:#2D68AC">Nombre de Usuario: <span style="color:Black"> <%= @user.username %></span></h4>
+					<h4 style="color:#2D68AC">Fecha de Creación: <span style="color:Black"><%= @user.created_at.strftime('%F  %T') %></span></h4>
+                	   <h4 style="color:#2D68AC">Ubicacion: <span style="color:Black"> <%= @user.country + ", " + @user.state + ", " + @user.city %></span> </h4>
+                	   <h4 style="color:#2D68AC">Correo: <span style="color:Black"><%= @user.email %></span></h4>
+                	   <h4 style="color:#2D68AC">Telefono: <span style="color:Black"><%=  @user.phone %></span></h4>
+                	   	<h4 style="color:#2D68AC">Saldo: <span style="color:Black"><%= @user.balance %> DB</span></h4>
+                	   	<h4 style="color:#2D68AC">Equipo Favorito: <span style="color:Black"><%= @user.favorite_team %></span></h4>	
+                </div>
+                 <div class="col-md-6">
+                 	<h4 style="color:#2D68AC">Nombre: <span style="color:Black"> <%= @user.name + " " + @user.last_name  %></span></h4>
+                 	<h4 style="color:#2D68AC">Fecha Nacimiento: <span style="color:Black"> <%= @user.birthday %></span></h4>
+                 	<h4 style="color:#2D68AC">Direccion: <span style="color:Black"> <%= @user.address_1 + " " +  @user.address_2 + " # "+ String(@user.ext_number) +  " CP:" + @user.zip_code %> </span> </h4>
+                 	<h4 style="color:#2D68AC">Genero: <span style="color:Black"> <%= @user.gender %></span></h4>
+                 	<h4 style="color:#2D68AC">Celular: <span style="color:Black"> <%= @user.cellphone  %></span></h4>
+                 		
+                 			<h4 style="color:#2D68AC">Saldo de Regalo: <span style="color:Black"> <%= @user.gift_credit %> DB </span></h4>
+                 </div>
+                
+                    
+                 
+                	
+                	
+                	
+					
+					
+                	
+					
+               	
+				
+               	
+                </div>
+                      
+                      <div class="col-md-3">
+                      	<!-- begin row -->
+<div class="row">
+     <h4 class="property-show">Acciones: </h4> 
+  <div class="col-md-12">
+    <% if can? :edit, @user %>
+      <%= link_to edit_user_path(@user), :class => "btn btn-default" do %>
+        <i class="icon-pencil"></i>
+        <%= t("actions.edit") %>
+      <% end %>
+    <% end %>
+    <% if can? :delete, @user %>
+      <%= link_to @user, method: :delete, data: { confirm: t("are_you_sure?", model: t("activerecord.models.user").downcase) }, :class => "btn btn-danger" do %>
+        <i class="icon-trash"></i>
+        <%= t("actions.delete") %>
+      <% end %>
+    <% end %>
+    <% if can? :index, User  %>
+      <%= link_to users_path, :class => "btn btn-default" do %>
+        <i class="icon-chevron-left"></i>
+        <%= t("actions.back") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
+                      	
+                      </div>
+                       
+            </div>
+                
+              
+
+           
+        
+         
+        </div>
+      </div>
+      <div class="invoice-footer text-muted"></div>
+    </div>
+  </div>
+  <!-- end col-md-12 -->
+</div>
+<!-- end row -->
+

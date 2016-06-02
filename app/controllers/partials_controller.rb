@@ -1,6 +1,7 @@
 class PartialsController < ApplicationController
     skip_before_filter :verify_authenticity_token  
-    before_action :authenticate_user!
+	before_action :authenticate_user!, except: ['future_games', 'get_quinielas_no_winner']
+	before_action "get_user"
      respond_to :html
   	 respond_to :json
     
@@ -8,6 +9,62 @@ class PartialsController < ApplicationController
      get_customer_credit_cars(current_user)  
      render "credit_card_form"     
   end
+	
+	def buy_random_quinielas
+		@numbers = params[:numbers]
+		@price = params[:price]
+		@balance = params[:balance]
+		@user = current_user
+		@tira = params[:tira_id]
+		@normal_buy = params[:normal_buy]
+		@total_balance_update = params[:total_balance_update]
+		@quiniela = Quiniela.find(params[:tira_id]);
+		@purchase_gift = @quiniela.purchase_gift_tickets
+		if @purchase_gift == '' || @purchase_gift == "NaN" || @purchase_gift == nil
+			@purchase_gift = 0
+		end
+		
+		render nothing: true
+
+		if params[:normal_buy] != 'true'
+			@user.update( {gift_credit: @total_balance_update})
+			logger.info "saldo de regaliux"+ String(@purchase_gift)
+			@quiniela.update({purchase_gift_tickets: (Integer(@purchase_gift) + @numbers.length) })
+		else
+			@user.update( {balance: @total_balance_update})
+		end
+		
+		@numbers.each_with_index do |_, i|
+			QuinielaUser.create({user_id: @user.id, quiniela_id: @tira, status: 'Comprado', ticket_number: @numbers[Integer(i)], purchase_date: DateTime.now})
+		end
+		#BuyMailer.buy_many_tickets(@user_id, @array_values, @lottery).deliver
+
+	end
+	
+	  def team_logos
+        @lottery = Lottery.find(params[:id])
+        respond_with(:team1 => @lottery.game.team, :team2 => @lottery.game.team2)
+    end
+	
+	def next_game
+        render :json => Game.next_game 
+    end
+	
+	def future_games
+        render :json => Game.future_games
+    end
+	
+	def get_quinielas_no_winner	
+		render :json => Quiniela.find_no_winners 		
+	end
+	
+	 def finish_games
+        render :json => Game.finish_games
+    end
+	
+	def get_user
+		@user = current_user
+	end
     
 def create_customer()
     stablich_connection
@@ -169,7 +226,7 @@ end
         render 'buy_error'
     end
     
-    
+
     
     def history
         stablich_connection
@@ -178,6 +235,16 @@ end
 			@user_charges = @charges.all(customer['id'])    
   			logger.info @user_charges       
         end   
+    end
+	
+	def lotteries
+      @user = User.find(params[:id])
+      respond_with(@user.user_lotteries)
+    end
+	
+	def quinielas
+      @user = User.find(params[:id])
+	  respond_with(@user.quiniela_users)
     end
     
     @card;

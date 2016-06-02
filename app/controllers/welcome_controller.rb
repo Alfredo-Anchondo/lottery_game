@@ -4,8 +4,5 @@ class WelcomeController < ApplicationController
   def index
   end
 	
-	def verification_page
-		render 'welcome/$MISCKEY'
-	end	
 	
 end

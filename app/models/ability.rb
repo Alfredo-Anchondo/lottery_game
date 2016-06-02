@@ -7,8 +7,13 @@ class Ability
       can :manage, :all
  
     elsif user.role.is_client?
-        can [:edit, :update], User
+		can [:edit, :update], User do |u|
+			user.id == u.id
+		end
         cannot [:new, :create, :edit, :update, :delete, :destroy], Game
+		cannot [:new, :create, :edit, :update, :delete, :destroy], Quiniela
+		cannot [:new, :create, :edit, :update, :delete, :destroy], QuinielaUser
+		cannot [:new, :create, :edit, :update, :delete, :destroy], QuinielaQuestion
         cannot [:new, :create, :edit, :update, :delete, :destroy], Role
         cannot [:new, :create, :edit, :update, :delete, :destroy], Team
         cannot [:new, :create, :edit, :update, :delete, :destroy], Category
