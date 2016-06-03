@@ -31,7 +31,7 @@ class Game < ActiveRecord::Base
                @repeat_number.push(repeat);
             end    
            
-   			BuyMailer.close_lottery(x,y,z,@tickets,@repeat_number,variable[0]).deliver
+   		BuyMailer.close_lottery(x,y,z,@tickets,@repeat_number,variable[0]).deliver
 		end
 	end
 			 
