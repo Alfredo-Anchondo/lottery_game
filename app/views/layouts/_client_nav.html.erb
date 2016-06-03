@@ -15,12 +15,12 @@
   js.id = id;
   js.src = "https://platform.twitter.com/widgets.js";
   fjs.parentNode.insertBefore(js, fjs);
- 
+
   t._e = [];
   t.ready = function(f) {
     t._e.push(f);
   };
- 
+
   return t;
 }(document, "script", "twitter-wjs"));</script>
 
@@ -31,43 +31,43 @@
            <% if signed_in? %>
             <a href="/partials/client_details">
         <div class="col-md-12 col-xs-12 hide-phone">
-           
+
             <div class="col-md-2">
 				 <% if current_user.photo.present? %>
                <h4><img id="user_image" class="pull-right" width="100px" height="100px" style="border-radius:150px; border:1px solid #720062;" src="<%= current_user.photo %>"></h4>
 				   <% end %>
             </div>
-         
+
             <div class="col-md-10" style="background-color: rgb(255, 255, 255); color: black;">
                 <div class="col-md-7">
                     <h4 style="color:#720062"> <%= t('welcome') %>: <span style="text-transform: uppercase; color:black"><%= current_user.username %></span> </h4>
-                     <h4 style="color:black"> 
+                     <h4 style="color:black">
                        <span id="clock"></span> </h4>
 					    <% if signed_in? %>
                 <%= link_to destroy_user_session_path, :method => :delete, :style => "color:black" do %>
            <h4> <i class="fa fa-sign-out"></i><%= t('logout') %> </h4>
           <% end %>
              </a>
-                      
+
                 <h4><div class="fb-like" data-href="https://www.facebook.com/7donbillete/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div> </div> </h4>
-                
-                
+
+
                 <div class="col-md-5">
-                   <h4 style="color:#720062"> <span id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase; color:black "><%= number_with_precision(current_user.balance, :precision => 2)  %> DB</span></span>  
-					     <h4 style="color:#720062"> <span id="current_bal"> Saldo de Regalo: <span style="color:black;text-transform: uppercase;"><%= number_with_precision(current_user.gift_credit, :precision => 2)  %> DB</span></span>     
+                   <h4 style="color:#720062"> <span id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase; color:black "><%= number_with_precision(current_user.balance, :precision => 2)  %> DB</span></span>
+					     <h4 style="color:#720062"> <span id="current_bal"> Saldo de Regalo: <span style="color:black;text-transform: uppercase;"><%= number_with_precision(current_user.gift_credit, :precision => 2)  %> DB</span></span>
                   <h4 style="color:#720062"> 1 DB =<span style="color:black">  $1.00 MXN </span> </h4>
 							 <h4><a style="margin-top:1%;" class="twitter-follow-button" href="https://twitter.com/7DONBILLETE" data-show-count="false">
 							Follow @TwitterDev</a></h4>
-                </div>   
+                </div>
             </div>
 					<div class="col-md-12">
 						<div class="col-md-5"> <div class="pull-right" style="margin-right:-6%;">	</div></div>
 						<div class="col-md-3" style=""></div>
-					
+
 					</div>
-   
+
         </div>
-             <% end %> 
+             <% end %>
         <% else %>
         <div id="login_form_responsive" class="row">
                         <%= form_for(resource, as: resource_name, url: session_path(resource_name), :class => "form-inline") do |f| %>
@@ -83,7 +83,7 @@
   <% end -%>
               </div>
             </div>
-            
+
             <div class="col-md-4">
             <div class="field form-group">
     <%= f.label :password, :style => 'color:black' %><br />
@@ -91,29 +91,29 @@
                  <div class="actions" style="color:black">
       <%= f.submit t('log_in'), :class => "form-group btn", :style => "background-color:#720062; margin-top:2%; width:100%; color: white;
     font-weight: 900;" %> <br>
-        
+
       <div id="status">
 </div>
   </div>
   </div>
             </div>
-            
+
             <div class="col-md-4">
                <%= render "devise/shared/links" %>
             </div>
 <% end %>
         </div>
         <% end %>
-        
+
         <% if signed_in? %>
         <div class="col-md-2">
         <!-- START Language list-->
-                      
+
                         <!-- END Language list    -->
             <% end %>
         </div>
-        
-     </div> 
+
+     </div>
     </div>
 </div>
 
@@ -121,16 +121,16 @@
   <div class="container-fluid">
     <div class="navbar-header">
          <% if signed_in? %>
-        <span id="user_name" style="display:none"> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> <br> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;"><%= number_with_precision(current_user.balance, :precision => 2)  %> DB </span> <br> Saldo de regalo: <span style="text-transform: uppercase;"> <%= number_with_precision(current_user.gift_credit, :precision => 2)  %> DB</span> </span> 
+        <span id="user_name" style="display:none"> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> <br> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;"><%= number_with_precision(current_user.balance, :precision => 2)  %> DB </span> <br> Saldo de regalo: <span style="text-transform: uppercase;"> <%= number_with_precision(current_user.gift_credit, :precision => 2)  %> DB</span> </span>
         <% end %>
       <button  type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-       <i style="margin-left:3px;" class="fa fa-bars"></i> 
+       <i style="margin-left:3px;" class="fa fa-bars"></i>
       </button>
-     
+
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
          <% if signed_in? %>
-   
+
       <ul id="menu" class="nav navbar-nav metismenu">
 		  <li id="user_acount" style="display:none"><a href="/partials/client_details>"> Ver perfil </a></li>
          <li><a href="/partials/tickets_history"> <%= t('purchased_ticket_history') %> </a></li>
@@ -142,18 +142,18 @@
           <li id="log_out_mov" style="display:none;"><%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
            <h4> <i class="fa fa-sign-out"></i><%= t('logout') %> </h4>
           <% end %></li>
-         
-        
-         
+
+
+
       </ul>
         <% else %>
          <!-- START Language list-->
-       
-                       
+
+
                         <!-- END Language list    -->
         <% end %>
-        
-      <ul class="nav navbar-nav navbar-right">
+
+      <!-- <ul class="nav navbar-nav navbar-right">
            <li>
                  <div class="" >
                             <div class="btn-group i18n">
@@ -166,34 +166,34 @@
                                         <%= image_tag "es-icon.png", :style => "width:30px" %> <%= t('language_es') %>
                                         <% end %>
                                     </li>
-                                    <!--<li id="en">
+                                    <li id="en">
                                         <#%= link_to "/language/i18n/en", :style => 'color:black' do %>
                                           <#%= image_tag "en-icon.png", :style => "width:30px" %>  <#%= t('language_en') %>
                                         <#% end %>
-                                    </li> -->
+                                    </li>
                                 </ul>
                             </div>
                         </div>
-                
+
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </nav>
 
 <script>
-   
+
 $( document ).ready(function() {
 
      var current_language = $("#current_language").val();
-    
+
 function update() {
     var date = new Date();
   $('#clock').html(moment(date,'',current_language).format('D MMMM YYYY h:mm:ss a'));
 }
 
 setInterval(update, 1000);
-    
+
 });
 </script>
 
@@ -224,7 +224,7 @@ s0.parentNode.insertBefore(s1,s0);
           .done(function( msg ) {
          });
     })
-        
+
           $("#en").click(function(){
         $.ajax({
           method: "Put",
