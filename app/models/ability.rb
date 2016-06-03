@@ -12,6 +12,7 @@ class Ability
 		end
         cannot [:new, :create, :edit, :update, :delete, :destroy], Game
 		cannot [:new, :create, :edit, :update, :delete, :destroy], Quiniela
+		cannot [:new, :create, :edit, :update, :delete, :destroy], QuinielaUser
 		cannot [:new, :create, :edit, :update, :delete, :destroy], QuinielaQuestion
         cannot [:new, :create, :edit, :update, :delete, :destroy], Role
         cannot [:new, :create, :edit, :update, :delete, :destroy], Team
@@ -20,6 +21,7 @@ class Ability
 		cannot [:new, :index, :create, :delete, :destroy], User
         cannot [:new, :create, :edit, :update, :delete, :destroy], SportCategory
         cannot [:new, :create, :edit, :update, :delete, :destroy], Lottery
+        cannot [:edit, :update, :delete, :destroy], UserLottery
     end
 
   end

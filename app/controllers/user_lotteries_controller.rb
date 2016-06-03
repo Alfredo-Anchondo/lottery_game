@@ -1,4 +1,5 @@
 class UserLotteriesController < ApplicationController
+		load_and_authorize_resource except: [:create]
   before_action :authenticate_user!
   before_action :set_user_lottery, only: [:show, :edit, :update, :destroy]
   before_action :data, only: [:index, :new, :create, :edit, :update]
