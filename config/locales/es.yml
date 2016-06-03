@@ -22,7 +22,7 @@
 es:
   helpers:
      select:
-       prompt: Por favor Selecciona    
+       prompt: Por favor Selecciona
   date:
     abbr_day_names:
     - dom
@@ -57,7 +57,7 @@ es:
     formats:
       default: ! "%d/%m/%Y"
       long: ! "%A %d de %B de %Y"
-      long_no_time: ! "%A %d de %B de %Y"      
+      long_no_time: ! "%A %d de %B de %Y"
       short: ! "%d de %b"
       month_and_year: ! '%B de %Y'
       day_and_number: ! "%A %d"
@@ -225,7 +225,7 @@ es:
   success_update_sport_category: "La categoria del deporte se a actualizado con exito"
   success_update_user_lotteries: "La lotería del usuario se a actualizado con exito"
   details_of: "Detalles de %{model}"
-  are_you_sure?: "Estas Seguro que deseas eliminar el registro?"   
+  are_you_sure?: "Estas Seguro que deseas eliminar el registro?"
   already_acount: "¿Ya tienes una cuenta?  Solo tienes que Iniciar Sesión"
   log_in: "Inicio de Sesión"
   not_account: "Registrar cuenta:"
@@ -241,7 +241,7 @@ es:
   reset_text_1: "Alguien solicito un vinculo para el cambio de contraseña. Puedes hacer este cambio solo dando clic en el enlace que aparece abajo."
   reset_text_2: "Si tu no solicitaste el cambio de contraseña solo ignora este correo."
   reset_text_3: "Tu password no sera modificado hasta que crees uno nuevo en la liga anterior."
-  users: "Usuarios" 
+  users: "Usuarios"
   role: "Roles"
   sports: "Deportes"
   categories: "Categorias"
@@ -260,8 +260,14 @@ es:
   registeredusers: "Usuarios"
   registeredteams: "Equipos"
   ticketpurchased: "Boletos Lotería"
-  
+
   activerecord:
+    errors:
+      models:
+        category:
+          attributes:
+            name:
+              taken: Ya esta en uso"
     models:
         error_reports: "Reporte de Errores"
         error_report: "Reporte de Error"
@@ -277,7 +283,7 @@ es:
         category: "Categoria"
         users: "Usuarios"
         user: "Usuario"
-        roles: "Roles" 
+        roles: "Roles"
         role: "Rol"
         user_lotteries: "Loterías compradas por usuario"
         user_lottery: "Lotería comprada por usuario"
@@ -298,7 +304,7 @@ es:
             description: "Descripción"
             is_admin: "Es administrador?"
             is_client: "Es Cliente?"
-        user: 
+        user:
             role_id: "Rol"
             role: "Rol"
             country: "Pais"
@@ -369,7 +375,7 @@ es:
             description: "Descripción"
             sport_category_id: "Deporte por Categoria"
             sport_category: "Deporte por Categoria"
-            
+
         game:
             team_id: "Equipo Local"
             team: "Equipo Local"
@@ -407,6 +413,4 @@ es:
             enviroment: "Ambiente"
             description: "Descripcion"
             backtrace: "Ruta del error"
-            error_time: "Hora del error"  
-            
-            
+            error_time: "Hora del error"

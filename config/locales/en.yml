@@ -22,7 +22,7 @@
 en:
   helpers:
      select:
-       prompt: Please Select         
+       prompt: Please Select
   date:
     abbr_day_names:
     - sun
@@ -57,7 +57,7 @@ en:
     formats:
       default: ! "%d/%m/%Y"
       long: ! "%A %d de %B de %Y"
-      long_no_time: ! "%A %d de %B de %Y"      
+      long_no_time: ! "%A %d de %B de %Y"
       short: ! "%d de %b"
       month_and_year: ! '%B de %Y'
       day_and_number: ! "%A %d"
@@ -91,7 +91,7 @@ en:
     new: "New"
     back: "Back"
   "true": "True"
-  "false": "False"  
+  "false": "False"
   winner_number: "Winner Number"
   day: "Days"
   nofounds: "The card doesn't have sufficient funds"
@@ -208,7 +208,7 @@ en:
   close: "Close"
   buy: "Buy"
   register: "Register"
-  openpay_transaction: "Transactions made by" 
+  openpay_transaction: "Transactions made by"
   openpay_shield: "Your payments are made securely with 256-bit encryption"
   noregistercards: "There no register cards"
   registeredmon: 'Buy and register a new card'
@@ -231,7 +231,7 @@ en:
   success_update_sport_category: "Sport-Category updated successfully"
   success_update_user_lotteries: "User-Lotteries updated successfully"
   details_of: "Details of %{model}"
-  are_you_sure?: "Are you sure you want to delete the record?"   
+  are_you_sure?: "Are you sure you want to delete the record?"
   already_acount: "Do you already have an account? Just Login"
   log_in: "Login"
   not_account: "You do not have an account with us ?"
@@ -242,7 +242,7 @@ en:
   sign_up: "Sign Up"
   sign_up_now: "Sig Up Now"
   hello: "Hello"
-  users: "Users" 
+  users: "Users"
   role: "Roles"
   sports: "Sports"
   categories: "Categories"
@@ -258,8 +258,14 @@ en:
   registeredusers: "Users"
   registeredteams: "Teams"
   ticketpurchased: "Tickets"
-  
+
   activerecord:
+    errors:
+      models:
+        category:
+          attributes:
+            name:
+              taken: "Already in use"
     models:
         categories: "Categories"
         category: "Category"
@@ -335,7 +341,7 @@ en:
             description: "Description"
             sport_category_id: "Sport-Category"
             sport_category: "Sport-Category"
-            
+
         game:
             team_id: "Local Team"
             team: "Local Team"
@@ -363,5 +369,3 @@ en:
             status: "Status"
             ticket_number: "Ticket Number"
             purchase_date: "Purchase Date"
-            
-            

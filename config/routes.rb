@@ -12,7 +12,7 @@ Rails.application.routes.draw do
    end
 
   resources :quiniela_questions
-	
+
 	resources :quinielas do
 		collection do
 			get 'last_quinielas', to: "quinielas#last_quinielas"
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 			post "save_result", to: "quinielas#save_result"
 		end
 	end
-    
+
     resources :games do
         collection do
             get 'next_game'
@@ -37,12 +37,12 @@ Rails.application.routes.draw do
             get 'games_by_category'
         end
     end
-        
-    
+
+
     resources :webhooks do
         match '/webhooks', to: 'webhooks#receive', via: :post
     end
-    
+
     resources :partials  do
         collection do
 			get 'next_game'
@@ -65,9 +65,10 @@ Rails.application.routes.draw do
             match "/checkout" => "partials#dispersion", :via => :post
             match "/credit_card_form/delete_card/:card/:customer" => "partials#delete_card", :via => :post
 			post 'buy_much_tickets', to: "partials#buy_much_tickets"
+      get ":name", to: "partials#show_category"
         end
     end
-  
+
   resources :teams
   resources :sport_categories
 
@@ -76,8 +77,8 @@ Rails.application.routes.draw do
 			match "/invite" => "categories#invite", :via => :post
 		end
 	end
-	
-	
+
+
   resources :users do
       collection do
           get "/lotteries/:id", to: "users#lotteries"
@@ -86,7 +87,7 @@ Rails.application.routes.draw do
           get "tickets_history"
 		  match "/update_reference" => "users#search_reference", :via => :post
 		  get "/client_details/:id_client", to: "users#client_details"
-		  post "/send_mails_all", to: "users#send_mails_all" 
+		  post "/send_mails_all", to: "users#send_mails_all"
       end
   end
 
@@ -100,7 +101,7 @@ Rails.application.routes.draw do
 		get "/tickets", to: "user_lotteries#search_ticket_by_lottery"
     end
   end
-        
+
 
   resources :lotteries do
         collection do
@@ -109,27 +110,27 @@ Rails.application.routes.draw do
 			get 'last_lotteries', to: "lotteries#last_lotteries"
       end
     end
-    
+
 
   resources :sports
 
   resources :roles
 
   get 'welcome/index'
-  get 'welcome/index_client'  
+  get 'welcome/index_client'
   get 'language/i18n/:locale' => 'language#i18n'
-  get 'partials/credit_card_form' 
+  get 'partials/credit_card_form'
   get 'welcome/terms'
-  get 'welcome/about'	
+  get 'welcome/about'
   get 'welcome/contact'
   get 'welcome/privacy'
-  get 'welcome/faq'	
-  
-  
-  
+  get 'welcome/faq'
 
-	
-	
+
+
+
+
+
 
 
 
@@ -139,7 +140,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'welcome#index'
 
-    
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

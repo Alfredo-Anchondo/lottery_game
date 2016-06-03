@@ -1,0 +1,45 @@
+<!-- begin row -->
+<div class="row">
+  <!-- begin col-md-12 -->
+  <div class="col-md-12">
+    <div class="invoice">
+      <div class="invoice-content">
+        <div class="table-responsive">
+              <h3 class="header-show"><%= t("details_of", model: t("activerecord.models.category").downcase) %></h3>
+            <br>
+            <div class="row">
+            <div class="col-md-3">
+                 <h4 class="property-show"><%= t("activerecord.attributes.category.name") %>:</h4> <br />
+                    <h5 class="property-text"><%= @category.name %></h5> <hr>
+                </div>
+            <div class="col-md-3">
+                <h4 class="property-show">     <%= t("activerecord.attributes.category.description") %>: </h4> <br />
+                    <h5 class="property-text"><%= @category.description %></h5> <hr>
+                </div>
+            <div class="col-md-3">
+                        <h4 class="property-show">   <%= t("activerecord.attributes.category.logo") %>:</h4> <br />
+                    <h5 class="property-text" style="text-align:center"> <img width="200px" src="<%= @category.logo %> "></h5> <hr>
+                </div>
+            <div class="col-md-3">
+                        <h4 class="property-show"><%= t("activerecord.attributes.category.created_at") %>: </h4> <br />
+                    <h5 class="property-text"><%= @category.created_at %></h5> <hr>
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col-md-6">
+					<h4 class="property-show">   <%= t("activerecord.attributes.category.background") %>:</h4> <br />
+                    <h5 class="property-text" style="text-align:center"> <img width="200px" src="<%= @category.background %> "></h5> <hr>
+            	</div>
+            </div>
+
+
+        </div>
+      </div>
+      <div class="invoice-footer text-muted"></div>
+    </div>
+  </div>
+  <!-- end col-md-12 -->
+</div>
+<!-- end row -->
+</div>
+<!-- end row -->
