@@ -2,7 +2,7 @@ class QuinielaUsersController < ApplicationController
 	load_and_authorize_resource except: [:new,:create]
     before_action :authenticate_user!
     before_action :set_quiniela_user, only: [:show, :edit, :update, :destroy]	
-	before_action "administartor" except:[:new, :create]
+	before_action "administartor", except:[:new, :create]
  
 
   respond_to :html
