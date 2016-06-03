@@ -5,6 +5,10 @@
 	.note-style{
 		margin-left:30% !important;
 	}
+	
+	.bootstrap-select{
+		width:80% !important;
+	}
 </style>
 
 <div class="row">
@@ -18,7 +22,7 @@
                         
                         <h2>Personas</h2>
                         
-			<%= select_tag "access", options_from_collection_for_select(User.all, "email", "username"), multiple: true, class: 'form_input', id: 'unique_id' %>
+			<%= select_tag "access", options_from_collection_for_select(User.all, "email", "select_display"), multiple: true, class: 'form_input', id: 'unique_id' %>
 						
                      	<h2 style="text-align:center; font-weight:800;">Asunto del Correo</h2>
                      	

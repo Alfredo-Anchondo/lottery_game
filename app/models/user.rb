@@ -121,7 +121,7 @@ end
     
     
     def select_display
-        name + " " + last_name
+		name + " " + last_name + " |username: " + username + ""
     end
     
     
