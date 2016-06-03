@@ -142,6 +142,11 @@
 	  #user_acount{
 		  display:block !important;
 	  }
+	  
+	  .margin-div{
+	margin-left:0% !important;
+	margin-right:0% !important;
+}
       
 }
 
@@ -293,6 +298,11 @@
 	    #user_acount{
 		  display:block !important;
 	  }
+	  
+	  .margin-div{
+	margin-left:0% !important;
+	margin-right:0% !important;
+}
       
 }
 
@@ -450,6 +460,12 @@
 	    #user_acount{
 		  display:block !important;
 	  }
+	  
+	  .margin-div{
+	margin-left:0% !important;
+	margin-right:0% !important;
+}
+	  
 }
 
 @media screen and (max-width: 480px) {
@@ -605,6 +621,11 @@
 	  #user_acount{
 		  display:block !important;
 	  }
+	
+	.margin-div{
+	margin-left:0% !important;
+	margin-right:0% !important;
+}
 }
 
 .row{
@@ -771,4 +792,9 @@ body{
 .categoria5{
 	background-position-y: 40%;
 	background-position-x: -25px;
+}
+
+.margin-div{
+	margin-left:7% !important;
+	margin-right:7% !important;
 }
