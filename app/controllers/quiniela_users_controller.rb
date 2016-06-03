@@ -40,6 +40,8 @@ class QuinielaUsersController < ApplicationController
   def create
     @quiniela_user = QuinielaUser.new(quiniela_user_params)
     @quiniela_user.save
+	  logger.info "---------------------------------------------------"
+	logger.info @quiniela_user 
     respond_with(@quiniela_user)
   end
 
