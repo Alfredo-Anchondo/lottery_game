@@ -2,7 +2,7 @@ class QuinielaUsersController < ApplicationController
 	load_and_authorize_resource except: [:new,:create]
     before_action :authenticate_user!
     before_action :set_quiniela_user, only: [:show, :edit, :update, :destroy]	
-	before_action "administartor", except:[:new, :create]
+	
  
 
   respond_to :html
@@ -12,14 +12,7 @@ class QuinielaUsersController < ApplicationController
 		render :json => (QuinielaUser.winners)
 	end
 	
-	def administartor
-		logger.info current_user.role.id
-		if current_user.role.id == 1
-			logger.info 'hi'
-		else
-			render root_path
-		end
-	end
+
 	
   def index
     @quiniela_users = QuinielaUser.all
