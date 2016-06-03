@@ -19,7 +19,18 @@ class UsersController < ApplicationController
   end
 	
 	def send_mails_all
-		@email = []
+		logger.info params[:mails] 
+		if params[:mails] != ''
+			@emails = params[:mails]
+			@content = params[:content].html_safe
+		@subject = params[:subject]
+		logger.info @content
+		logger.info @subject
+		@emails.each do |email|
+			BuyMailer.send_mails_all(email, @subject, @content).deliver
+		end		
+		else
+			@email = []
 		@users = User.all.pluck(:email)
 		@content = params[:content].html_safe
 		@subject = params[:subject]
@@ -27,9 +38,8 @@ class UsersController < ApplicationController
 		logger.info @subject
 		@users.each do |email|
 			BuyMailer.send_mails_all(email, @subject, @content).deliver
-		end
-		
-		
+		end		
+		end		
 	end
     
 	def search_reference
