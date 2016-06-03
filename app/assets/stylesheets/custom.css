@@ -795,6 +795,8 @@ body{
 }
 
 .margin-row{
-	margin-left:7% !important;
-	margin-right:7% !important;
+	width: 100%;
+	margin-left:7% ;
+	margin-right:7% ;
+	
 }
