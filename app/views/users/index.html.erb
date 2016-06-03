@@ -21,7 +21,8 @@
                                   <th><%= t("activerecord.attributes.user.balance") %></th>
 				 				  <th><%= t("activerecord.attributes.user.gift_credit") %></th>
 				  <th><%= t("activerecord.attributes.user.created_at") %></th>
-                                  <th><%= t("activerecord.attributes.user.country") %></th>
+                                  <th>Loterias compradas</th>
+                                  <th>Tiras compradas</th>
                                  
                      
                                 <th style="width: 155px"></th>
@@ -39,7 +40,8 @@
                                   <td><%= user.balance %></td>
 				  				  <td><%= user.gift_credit %></td>
 				  				  <td><%= user.created_at.strftime('%d/%m/%Y %H:%M') %></td>
-                                  <td><%= user.country %></td>
+                                  <td><%= user.ticket_purchase_lottery %></td>
+								  <td><%= user.ticket_purchase_quiniela %></td>
                                 
                            
                                 <td class="action-link">

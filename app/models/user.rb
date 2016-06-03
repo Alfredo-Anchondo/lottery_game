@@ -115,6 +115,14 @@ end
 		  Quiniela.count 
       end
 	
+	def ticket_purchase_lottery
+		UserLottery.where('user_id = ?', id).count
+	end
+	
+	def ticket_purchase_quiniela
+		QuinielaUser.where('user_id = ?', id).count
+	end
+	
 	def self.search_reference1(reference)
 		where('friend_reference = ?', reference).pluck(:id)
 	end	
