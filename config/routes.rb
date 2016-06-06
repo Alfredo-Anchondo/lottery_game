@@ -65,7 +65,7 @@ Rails.application.routes.draw do
             match "/checkout" => "partials#dispersion", :via => :post
             match "/credit_card_form/delete_card/:card/:customer" => "partials#delete_card", :via => :post
 			post 'buy_much_tickets', to: "partials#buy_much_tickets"
-     # get ":name", to: "partials#show_category"
+      get ":name", to: "partials#show_category"
         end
     end
 

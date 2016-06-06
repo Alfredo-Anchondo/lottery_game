@@ -133,18 +133,18 @@
 
       <ul id="menu" class="nav navbar-nav metismenu">
 		  <li id="user_acount" style="display:none"><a href="/partials/client_details>"> Ver perfil </a></li>
-        <!-- <li class="dropdown">
+        <li class="dropdown">
              <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Ligas<span class="caret"></span></a>
              <ul role="menu" class="dropdown-menu">
-             <#% Category.all.each do |category| %>
-                 <li  class="<#%= 'active' if controller_name == 'partials' && @category.try(:id) == category.id %>"><a href="/partials/<#%= category.friendly_name %>"> <span class="nav-label"><#%= category.name %></span>  </a>
+             <% Category.all.each do |category| %>
+                 <li  class="<%= 'active' if controller_name == 'partials' && @category.try(:id) == category.id %>"><a href="/partials/<%= category.friendly_name %>"> <span class="nav-label"><%= category.name %></span>  </a>
                  </li>
-             <#% end %>
+             <% end %>
              </ul>
-         </li> --->
+         </li>
          <li><a href="/partials/tickets_history"> <%= t('purchased_ticket_history') %> </a></li>
          <!--<li><a href="/games/games_by_category"> <%= t('category_lotteries') %> </a> </li> -->
-          <li><a href="/partials/credit_card_form"> <%= t('buy_credit') %> </a> </li>
+          <li><%= link_to t('buy_credit'), credit_card_form_partials_path(:id => current_user.id), :method => :post %></li>
           <li><a href="/partials/history"> <%= t('history') %> </a> </li>
           <li><a href="/partials/checkout"> <%= t('checkout') %> </a> </li>
 		  <li><a href="/partials/invite">Invitar Amigos</a>  </li>
