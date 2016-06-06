@@ -139,7 +139,7 @@
              <#% Category.all.each do |category| %>
                  <li  class="<#%= 'active' if controller_name == 'partials' && @category.try(:id) == category.id %>"><a href="/partials/<#%= category.friendly_name %>"> <span class="nav-label"><#%= category.name %></span>  </a>
                  </li>
-             <% end %>
+             <#% end %>
              </ul>
          </li> -->
          <li><a href="/partials/tickets_history"> <%= t('purchased_ticket_history') %> </a></li>
