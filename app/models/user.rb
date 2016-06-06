@@ -209,6 +209,8 @@ end
         else
             count = users.count
             total_update = initial_balance.to_f / count
+			logger.info '///////////////////////////////////////'
+			logger.info total_update
             logger.info count 
             logger.info initial_balance
             logger.info total_update
