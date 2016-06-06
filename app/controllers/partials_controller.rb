@@ -283,6 +283,6 @@ end
 	end
 
  def show_category
-    @category = Category.find_by_friendly_name(params[:name])
+   @category = Category.find_by_friendly_name(params[:name])
   end
 end
