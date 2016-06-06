@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 			get "/team_logos/:id", to: "partials#team_logos"
 			post 'buy_random_quinielas', to: "partials#buy_random_quinielas"
 			get 'get_quinielas_no_winner', to: "partials#get_quinielas_no_winner"
-            match "/credit_card_form" => "partials#credit_card_pay", :via => :post
+            post "credit_card_form", to: "partials#credit_card_pay"
             get "/partials/:user", to: "partials#get_customer_credit_cars"
             get "complete_buy"
             get "buy_error"
@@ -65,10 +65,11 @@ Rails.application.routes.draw do
             match "/checkout" => "partials#dispersion", :via => :post
             match "/credit_card_form/delete_card/:card/:customer" => "partials#delete_card", :via => :post
 			post 'buy_much_tickets', to: "partials#buy_much_tickets"
-     # get ":name", to: "partials#show_category"
+			get ":name", to: "partials#show_category"
         end
     end
 
+	
   resources :teams
   resources :sport_categories
 

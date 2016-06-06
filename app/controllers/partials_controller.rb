@@ -282,7 +282,7 @@ end
 		#BuyMailer.buy_many_tickets(@user_id, @array_values, @lottery).deliver
 	end
 
- # def show_category
-  #  @category = Category.find_by_friendly_name(params[:name])
-  #end
+ def show_category
+    @category = Category.find_by_friendly_name(params[:name])
+  end
 end
