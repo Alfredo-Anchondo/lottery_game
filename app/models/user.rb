@@ -208,7 +208,7 @@ end
             end    
         else
             count = users.count
-			total_update = parseString(initial_balance) / count
+			total_update = Float(initial_balance)/count
             logger.info count 
             logger.info initial_balance
             logger.info total_update
