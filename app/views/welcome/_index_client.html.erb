@@ -129,10 +129,10 @@
 </div>
   	
   	
-  	<div class="row" style="margin-top: -20px !important;">
+  	<!--<div class="row" style="margin-top: -20px !important;">
 <div id="slider1">
 </div>
-</div>   
+</div>   -->
 
    
     <div class="row" id="coming-lotteries">
@@ -730,7 +730,17 @@
     
         $(document).ready(function(){
             
-     
+           
+          $('.team_score').change(function(){   
+                 var select_number = String($('.team_score option:selected').val() % 10) + String($('.team2_score option:selected').val() % 10);   
+                $(".ticket_number").val(select_number);
+           })
+            $('.team2_score').change(function(){ 
+			
+                 var select_number = String($('.team_score option:selected').val() % 10) + String($('.team2_score option:selected').val() % 10);  	   
+                 $(".ticket_number").val(select_number);
+           })
+             
             
                  
          $.ajax({
@@ -748,8 +758,7 @@
        $('#team1').attr('src','/system/teams/logos/000/000/0'+data.partials[o].team.id+'/original/'+data.partials[o].team.logo_file_name);
     }  
    
-             
-         
+       
 			
 			
 				if(data.partials[o].category.id == 5){
@@ -801,7 +810,8 @@
              
         var countdown = data.partials[o].game_date;
         var countdown1 = moment(countdown).format('MM/DD/YYYY HH:mm');   
-             
+				 
+				
              
           
   $('#getting-started').countdown(countdown1, function(event) {
@@ -1769,14 +1779,16 @@
 	
 
 
-<script>
+<!--script>
     var current_language = $("#current_language").val();
+	var tiras_count=0;
       $.ajax({
             method: "GET",
             url: "/partials/future_games",
             format: "json"
                }).done(function(data) {
                                 for(var i in data.partials){
+									tiras_count++;
 									
 									if(data.partials[i].lotteries != [] && data.partials[i].lotteries != null && data.partials[i].lotteries != '') {									
                                   
@@ -1807,19 +1819,8 @@
 					
 					var background2 = '/system/categories/backgrounds/000/000/00'+data.partials[i].category.id+'/original/'+data.partials[i].category.background_file_name;		
 										
-					   $('#slider1').append('<div class="row '+ clase2+ '" style="background-size: cover; background-image: url('+background2+')"><h2 style="text-align:center; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; color:white; font-size:40px; font-weight:800;"> '+ data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + ' </h2> <h2 style="text-align:center; text-transform: capitalize; color:white; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; font-weight:800;"> '+moment(data.partials[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h2>  <div class="col-md-3"> <hr> <h3 style="text-align:center; color:white; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062;">Bolsa Acumulada</h3> <h1 style="text-align:center;  text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#720062; font-weight:800; font-size:3.5em;"> <span>'+ data.partials[i].lotteries[0].initial_balance +' </span> DB </h1> <hr> <h3 style="text-align:center; color:white; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062;"> Precio de la Tira </h3> <h1 style="text-align:center; font-size:40px; color:#720062;  text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; font-weight:800"> <span> '+ data.partials[i].lotteries[0].price +'</span> DB </h1><hr> <h3 style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; font-size:28px; color:#720062; font-weight:800" >1 DB = 1.00 MXN</h3> <hr> </div><div class="col-md-6"> <div class="row"> <div class="col-md-4 col-xs-4"> <img src="'+image_url+'"> <h5 style="text-align:center; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; color:white;">Selecciona el primer digito:</h5><h2 style="text-align:center"><select data-count="'+i+'" class="form-control team_score'+i+' m-b" name="team_score"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></h2> </div> <div class="col-md-4 col-xs-4"> <h1 style="text-align:center; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; font-weight:900; color:white; margin-top:45%; font-size:300%;">  </h1> </div> <div class="col-md-4 col-xs-4"> <img src="'+image_url2+'"> <h5 style="text-align:center; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; color:white;">Selecciona el primer digito:</h5><h2 style="text-align:center"><select class="form-control team2_score'+i+' m-b" name="team2_score" data-count="'+i+'"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></h2> </div> </div> </div> <div class="col-md-3">  <h3 style="color:white; font-size:1em; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; text-align:center;" id="getting'+i+'"> </h3> <hr>  <h2 style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#720062; font-size:1.5em; font-weight:800">Participa en las loterias</h2><hr> <h4 style="text-align:center; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; font-size:1em; color:white"> Reglas de la Loteria </h4> <h4 style="font-size:1em; text-align:center; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; color:white;"> '+ data.partials[i].lotteries[0].rules +'</h4> <hr> <h4 class="center-text" style="text-align:center; color:white; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; font-size:18px;" > <%= t('select_participe_number')%>:<input style="display:none" id="lottery_id" value="">  </h4> <br><input style="color:black; text-align:center" value="00" disabled id="ticket_number" class="form-control" type="text" >  <h4 style="text-align:center"><button data-toggle="modal" data-target="#slide'+i+'" class="btn btn-primary" > Comprar Tira </button><button style="margin-left:2%" type="button" class="btn btn-primary " data-toggle="modal" data-target="#random_tira_modal">Comprar en Aleatorio</button></h4> </div>')					
-											$('.team_score'+i+'').change(function(){
-						   alert('entre');
-                 var select_number = String($(".team_score"+i+" option:selected").val() % 10) + String($('.team2_score option:selected').val() % 10);   
-				var count = $(this).data('count');		   
-                $("#ticket_number").val(select_number);
-           })
-            $('.team2_score'+i+'').change(function(){
-                 var select_number = String($(".team_score"+i+" option:selected").val() % 10) + String($('.team2_score option:selected').val() % 10);   
-                var count = $(this).data('count');		   
-                                 $("#ticket_number").val(select_number);
-           })		
-													
+					   $('#slider1').append('<div class="row '+ clase2+ '" style="background-size: cover; background-image: url('+background2+')"><h2 style="text-align:center; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; color:white; font-size:40px; font-weight:800;"> '+ data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + ' </h2> <h2 style="text-align:center; text-transform: capitalize; color:white; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; font-weight:800;"> '+moment(data.partials[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h2>  <div class="col-md-3"> <hr> <h3 style="text-align:center; color:white; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062;">Bolsa Acumulada</h3> <h1 style="text-align:center;  text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#720062; font-weight:800; font-size:3.5em;"> <span>'+ data.partials[i].lotteries[0].initial_balance +' </span> DB </h1> <hr> <h3 style="text-align:center; color:white; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062;"> Precio de la Tira </h3> <h1 style="text-align:center; font-size:40px; color:#720062;  text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; font-weight:800"> <span> '+ data.partials[i].lotteries[0].price +'</span> DB </h1><hr> <h3 style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; font-size:28px; color:#720062; font-weight:800" >1 DB = 1.00 MXN</h3> <hr> </div><div class="col-md-6"> <div class="row"> <div class="col-md-4 col-xs-4"> <img src="'+image_url+'"> <h5 style="text-align:center; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; color:white;">Selecciona el primer digito:</h5><h2 style="text-align:center"><select data-selected=".team_score'+i+'  option:selected" data-selected2=".team2_score'+i+'  option:selected" data-count="'+i+'" class="form-control team_score'+i+' m-b" name="team_score"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></h2> </div> <div class="col-md-4 col-xs-4"> <h1 style="text-align:center; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; font-weight:900; color:white; margin-top:45%; font-size:300%;">  </h1> </div> <div class="col-md-4 col-xs-4"> <img src="'+image_url2+'"> <h5 style="text-align:center; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; color:white;">Selecciona el primer digito:</h5><h2 style="text-align:center"><select data-selected2=".team_score'+i+'  option:selected" data-selected=".team2_score'+i+'  option:selected" class="form-control team2_score'+i+' m-b" name="team2_score" data-count="'+i+'"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></h2> </div> </div> </div> <div class="col-md-3">  <h3 style="color:white; font-size:1em; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; text-align:center;" id="getting'+i+'"> </h3> <hr>  <h2 style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#720062; font-size:1.5em; font-weight:800">Participa en las loterias</h2><hr> <h4 style="text-align:center; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; font-size:1em; color:white"> Reglas de la Loteria </h4> <h4 style="font-size:1em; text-align:center; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; color:white;"> '+ data.partials[i].lotteries[0].rules +'</h4> <hr> <h4 class="center-text" style="text-align:center; color:white; text-shadow: -1px 0 #720062, 0 1px #720062, 1px 0 #720062, 0 -1px #720062; font-size:18px;" > <%= t('select_participe_number')%>:<input style="display:none" id="lottery_id" value="">  </h4> <br><input style="color:black; text-align:center" value="00" disabled id="ticket_number'+i+'" class="form-control" type="text" >  <h4 style="text-align:center"><button data-toggle="modal" data-target="#slide'+i+'" class="btn btn-primary" > Comprar Loteria </button></h4> </div>')					
+															
 						$('#slider1').bxSlider({
                             minSlides: 1,
                             maxSlides: 10,
@@ -1828,11 +1829,31 @@
                           });
 						   
                                     }else{
-											
+											  
 											}
 			
-         
+          
                                 }
+		   
+		  for (var count_number=0; count_number <= tiras_count; count_number++){ 
+			   	$('.team_score'+count_number+'').change(function(){   
+					var selected = $(this).data('selected');
+						var selected2 = $(this).data('selected2');
+                 var select_number = String($(''+selected+'').val() % 10) + String($(''+selected2+'').val() % 10);   
+				var count = $(this).data('count');		   
+                $("#ticket_number"+count+"").val(select_number);
+           })
+            $('.team2_score'+count_number+'').change(function(){ 
+				var selected = $(this).data('selected');
+					var selected2 = $(this).data('selected2');
+                 var select_number = String($("" +selected2+"").val() % 10) + String($(''+selected+'').val() % 10);  
+                var count = $(this).data('count');		   
+                                 $("#ticket_number"+count+"").val(select_number);
+           })
+		  }
+		 		
+				
+		  
             $(document).ready(function(){
 				//$('#Instructions').modal('show');
 				$('#change_two').click(function(){
@@ -1859,4 +1880,4 @@
 	
     
    
-</script>
+</script -->
