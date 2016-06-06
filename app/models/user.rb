@@ -208,7 +208,7 @@ end
             end    
         else
             count = users.count
-			total_update = Float(initial_balance)/count
+			total_update = (initial_balance.to_f/count)
             logger.info count 
             logger.info initial_balance
             logger.info total_update
