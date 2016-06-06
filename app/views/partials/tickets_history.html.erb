@@ -64,8 +64,15 @@
         { data: function ( row, type, val, meta ) {
            return row.lottery.team.name + " vs " + row.lottery.team2.name
         }},
-        { data: 'ticket_number' },
-        { data: 'lottery.winner_number' },
+        { data: function ( row, type, val, meta ) {
+				return (row.ticket_number < 10 ? '0' : '') + row.ticket_number;
+        }  },
+        { data: function ( row, type, val, meta ) {
+			if (row.lottery.winner_number != null){
+				return (row.lottery.winner_number < 10 ? '0' : '') + row.lottery.winner_number;
+			}
+             return 'Resultado pendiente';
+        }  },
         { data: 'lottery.price' },
         { data: function ( row, type, val, meta ) {
             return moment(row.purchase_date ,'' ,'es').format('MM/DD/YYYY HH:mm');
