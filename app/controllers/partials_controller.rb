@@ -2,8 +2,8 @@ class PartialsController < ApplicationController
     skip_before_filter :verify_authenticity_token
 	before_action :authenticate_user!, except: ['future_games', 'get_quinielas_no_winner']
 	before_action "get_user"
-     respond_to :html
-  	 respond_to :json
+    respond_to :html
+  	respond_to :json
 
   def show
      get_customer_credit_cars(current_user)
