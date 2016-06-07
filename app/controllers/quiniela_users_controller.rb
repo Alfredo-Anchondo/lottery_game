@@ -2,17 +2,16 @@ class QuinielaUsersController < ApplicationController
 	load_and_authorize_resource except: [:new,:create]
     before_action :authenticate_user!
     before_action :set_quiniela_user, only: [:show, :edit, :update, :destroy]	
-	
- 
-
-  respond_to :html
-  respond_to :json	
+	respond_to :html
+	respond_to :json	
 
 	def winners
 		render :json => (QuinielaUser.winners)
 	end
 	
-
+	def today_sales
+		render :json => QuinielaUser.today_sales(params[:date1], params[:date2])
+	end
 	
   def index
     @quiniela_users = QuinielaUser.all

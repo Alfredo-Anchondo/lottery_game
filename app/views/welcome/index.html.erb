@@ -1,6 +1,5 @@
       <% if signed_in? %>
     <% if current_user.role.is_client? %>
-
     <%= render 'welcome/index_client' %>
    <% else %>
 
@@ -402,8 +401,52 @@
 
 </div>
 
+<div class="row">
+	<h4><input style="width:48%" type="date" id="date1">
+	<input style="width:48%; margin-left:2%;" type="date" id="date2"></h4>
+	<h4 style="text-align:center"><button id="search" class="btn btn-primary">Consultar</button></h4>
+	<div class="row">
+		<div class="col-md-3">
+			<h4 style="text-align:center">Boletos de Loteria Vendidos</h4>
+			<h5 style="text-align:center" id="sell_lottery"></h5>
+		</div>
+		<div class="col-md-3">
+			<h4 style="text-align:center">Boletos de Tira Vendidos</h4>
+			<h5 style="text-align:center" id="sell_tira"></h5>
+		</div>
+		<div class="col-md-3">
+			<h4 style="text-align:center">$ de Loteria Vendidos</h4>
+			<h5 style="text-align:center" id="money_lottery"></h5>
+		</div>
+		<div class="col-md-3">
+			<h4 style="text-align:center">$ de Tira Vendidos</h4>
+			<h5 style="text-align:center" id="money_tira"></h5>
+		</div>
+	</div>
+</div>
 
 
+<script>
+	$('#search').click(function(){
+		$.ajax({
+                      method: "GET",
+                      url: "/user_lotteries/today_sales",
+                      dataType: "json",
+					  data:{date1: $('#date1').val(), date2: $('#date2').val()},     
+                    }).done(function( data) {	
+						$('#sell_lottery').text(data);
+		})
+		
+			$.ajax({
+                      method: "GET",
+                      url: "/quiniela_users/today_sales",
+                      dataType: "json",
+					  data:{date1: $('#date1').val(), date2: $('#date2').val()},     
+                    }).done(function( data) {	
+						$('#sell_tira').text(data);
+		})
+	})
+</script>
 	
 	
 <% content_for :javascript_includes do %>

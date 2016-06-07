@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :quiniela_users do
 	collection do
 		get 'winners'
+		get '/today_sales',to: "quiniela_users#today_sales"
 	end
    end
 
@@ -97,6 +98,7 @@ Rails.application.routes.draw do
     collection do
         get 'winners'
         get 'winners_total'
+		get '/today_sales',to: "user_lotteries#today_sales"
         get 'winners_view'
 		get "tickets_by_lottery"
 		get "/tickets", to: "user_lotteries#search_ticket_by_lottery"

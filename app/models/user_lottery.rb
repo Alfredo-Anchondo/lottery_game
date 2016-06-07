@@ -5,6 +5,10 @@ class UserLottery < ActiveRecord::Base
     def select_display
       name
     end
+	
+	def self.today_sales(date1, date2)
+		where('purchase_date > ? AND purchase_date < ?',date1,date2).count
+	end
  
     def self.winners
         where('status >= ?', 'Ganador').order(lottery_id: :desc)
