@@ -1,4 +1,4 @@
-﻿# Files in the config/locales directory are used for internationalization
+# Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
 #
@@ -177,7 +177,7 @@ es:
   lotteries_winners: "Loterías con Ganador"
   bag_polity: "El valor de la bolsa que ves es el actual, este podra conservarse igual o aumentar segun la demanda de billetes"
   estimate_jackpot: "Bolsa Acumulada"
-  select_participe_number: "Este es tu número seleccionado para participar"
+  select_participe_number: "Número seleccionado para participar"
   no_balance_money: "¿No tienes saldo? Nosotros te redireccionamos"
   buy_ticket: "Comprar Billete"
   no_lotteries_programed: "No hay loterías programadas actualmente."
