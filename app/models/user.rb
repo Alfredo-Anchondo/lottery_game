@@ -217,7 +217,7 @@ end
             logger.info variable.email 
             winner = variable.email
             user_winner =  variable.id
-			BuyMailer.winner_congratulations(winner, winner_number, quiniela_name, total_update, count).deliver
+			BuyMailer.winner_congratulations_quiniela(winner, winner_number, quiniela_name, total_update, count).deliver
             User.find_by_id(user_winner).update(:balance => (variable.balance.to_f + total_update.to_f)) 
 			update_winner = QuinielaUser.where(:quiniela_id => quiniela_id_param, :ticket_number => String(winner_number_param), :user_id => user_winner).pluck(:id)
 			QuinielaUser.find_by_id(update_winner).update(:status => "Ganador") 
