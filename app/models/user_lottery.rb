@@ -8,6 +8,7 @@ class UserLottery < ActiveRecord::Base
 	
 	def self.today_sales(date1, date2)
 		@lotteries = where(purchase_date: date1..date2)
+		logger.info @lotteries.to_sql
 		@lotteries_total = @lotteries.count
 		@dates = []
 		@total_sales = 0
