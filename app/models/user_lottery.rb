@@ -17,12 +17,13 @@ class UserLottery < ActiveRecord::Base
 			@dates.push(lottery.purchase_date.strftime('%Y-%m-%d'))
 		end
 		@dates = @dates.uniq{|x| x}
+		@dates = @dates.sort
 		@dates.each do |date|
 			@date_array.push({label: date, cuantity: @lotteries.where('purchase_date >= ? AND purchase_date <= ?',Date.parse(date),(Date.parse(date)+1)).count})
 		end
 		logger.info @dates
 		logger.info @date_array
-		return {totals: [@lotteries_total,@total_sales], date_array: @date_array.sort}
+		return {totals: [@lotteries_total,@total_sales], date_array: @date_array}
 	end
  
     def self.winners
