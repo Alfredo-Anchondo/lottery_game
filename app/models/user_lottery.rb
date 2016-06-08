@@ -7,7 +7,7 @@ class UserLottery < ActiveRecord::Base
     end
 	
 	def self.today_sales(date1, date2)
-		@lotteries = where('purchase_date > ? AND purchase_date < ?',date1,date2)
+		@lotteries = where('purchase_date > ? AND purchase_date <= ?',date1,date2)
 		@lotteries_total = @lotteries.count
 		@total_sales = 0;
 		@lotteries.each do |lottery|
