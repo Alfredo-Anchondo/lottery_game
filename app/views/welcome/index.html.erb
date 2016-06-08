@@ -434,7 +434,8 @@
                       dataType: "json",
 					  data:{date1: $('#date1').val(), date2: $('#date2').val()},     
                     }).done(function( data) {	
-						$('#sell_lottery').text(data);
+						$('#sell_lottery').text(data.user_lotteries[0]);
+						$('#money_lottery').text('$' +data.user_lotteries[1]);
 		})
 		
 			$.ajax({
@@ -443,7 +444,8 @@
                       dataType: "json",
 					  data:{date1: $('#date1').val(), date2: $('#date2').val()},     
                     }).done(function( data) {	
-						$('#sell_tira').text(data);
+						$('#sell_tira').text(data.quiniela_users[0]);
+						$('#money_tira').text('$' +data.quiniela_users[1]);
 		})
 	})
 </script>
