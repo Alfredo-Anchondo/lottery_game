@@ -10,7 +10,7 @@ class UserLottery < ActiveRecord::Base
 		@lotteries = where('purchase_date > ? AND purchase_date <= ?',date1,date2)
 		@lotteries_total = @lotteries.count
 		@dates = []
-		@total_sales = 0;
+		@total_sales = 0
 		@date_array =[]
 		@lotteries.each do |lottery|
 			@total_sales = @total_sales + lottery.lottery.price
