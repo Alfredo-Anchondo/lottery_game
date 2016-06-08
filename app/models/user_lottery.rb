@@ -16,6 +16,7 @@ class UserLottery < ActiveRecord::Base
 			@total_sales = @total_sales + lottery.lottery.price
 			@dates.push(lottery.purchase_date.strftime('%Y-%m-%d'))
 		end
+		logger.info @dates
 		@dates = @dates.uniq{|x| x}
 		@dates = @dates.sort
 		@dates.each do |date|
