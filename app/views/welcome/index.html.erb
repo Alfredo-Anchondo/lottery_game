@@ -401,10 +401,31 @@
 
 </div>
 
+
 <div class="row">
-	<h4><input style="width:48%" type="date" id="date1">
-	<input style="width:48%; margin-left:2%;" type="date" id="date2"></h4>
-	<h4 style="text-align:center"><button id="search" class="btn btn-primary">Consultar</button></h4>
+<div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Consulta de Ventas<small style="color:#F7CEE4" class="m-l-sm">Ganancias y ventas</small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+<br>
+<div class="row">
+	<div class="col-md-4">
+		<h4 style="text-align:center"><label style=''> Fecha Inicial:</label></h4><input  class="selectpicker form-control" style="width:80%; margin-left:10%" type="date" id="date1">
+	</div>
+	<div class="col-md-4">
+		<h4 style="text-align:center"><label style=''>Fecha Final:</label></h4> <h4 style="text-align:center"><input class="selectpicker form-control" style="width:80%; margin-left:10%;" type="date" id="date2"></h4>
+	</div>
+	<div class="col-md-4">
+		<h4 style="text-align:center"><button style="width:100%; margin-top:6%" id="search" class="btn btn-primary">Consultar</button></h4>
+	</div>
+</div>
+	<hr>
 	<div class="row">
 		<div class="col-md-3">
 			<h4 style="text-align:center">Boletos de Loteria Vendidos</h4>
@@ -423,19 +444,41 @@
 			<h5 style="text-align:center" id="money_tira"></h5>
 		</div>
 	</div>
+	</div>
 </div>
 
+<div class="row">
+	  <canvas id="myChart4" style="width:100%"  height="100"></canvas>
+</div>
 
 <script>
+	
+	function unique(list) {
+    var result = [];
+    $.each(list, function(i, e) {
+        if ($.inArray(e, result) == -1) result.push(e);
+    });
+    return result;
+}
+	
 	$('#search').click(function(){
+			var labels_lottery = [];
+			var datasets_lottery = [];
+			var datasets_tira = [];
 		$.ajax({
                       method: "GET",
                       url: "/user_lotteries/today_sales",
                       dataType: "json",
 					  data:{date1: $('#date1').val(), date2: $('#date2').val()},     
                     }).done(function( data) {	
-						$('#sell_lottery').text(data.user_lotteries[0]);
-						$('#money_lottery').text('$' +data.user_lotteries[1]);
+						$('#sell_lottery').text(data.totals[0]);
+						$('#money_lottery').text('$' +data.totals[1]);
+
+			for(var i in data.date_array){
+				labels_lottery.push(data.date_array[i].label);
+				datasets_lottery.push( data.date_array[i].cuantity);
+			}
+			  
 		})
 		
 			$.ajax({
@@ -444,9 +487,47 @@
                       dataType: "json",
 					  data:{date1: $('#date1').val(), date2: $('#date2').val()},     
                     }).done(function( data) {	
-						$('#sell_tira').text(data.quiniela_users[0]);
-						$('#money_tira').text('$' +data.quiniela_users[1]);
+						$('#sell_tira').text(data.totals[0]);
+						$('#money_tira').text('$' +data.totals[1]);
+				for(var i in data.date_array){
+				labels_lottery.push(data.date_array[i].label);
+				datasets_tira.push( data.date_array[i].cuantity);
+			}
+				labels_lottery = unique(labels_lottery)
 		})
+			
+		
+			
+			 var data_lotteries = {
+    labels: labels_lottery,
+    datasets: [
+        {
+            data: datasets_lottery,
+            label: "Billetes Loteria Vendidos",
+            backgroundColor: "rgba(100, 31, 255, 0.2)",
+            borderColor: "rgb(98, 5, 167)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(167, 20, 173, 0.4)",
+            hoverBorderColor: "rgb(113, 9, 178)",
+        },
+	 {
+            data: datasets_tira,
+            label: "Billetes tira Vendidos",
+            backgroundColor: "rgba(31, 255, 91, 0.2)",
+            borderColor: "rgb(5, 167, 11)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(49, 173, 20, 0.4)",
+            hoverBorderColor: "rgb(9, 178, 16)",
+        }]
+};
+			  var ctw = document.getElementById("myChart4").getContext("2d");
+	   
+	   
+	    var myBarChart = new Chart(ctw, {
+    type: 'bar',
+    data: data_lotteries
+			
+	   });
 	})
 </script>
 	
