@@ -18,7 +18,7 @@ class QuinielaUser < ActiveRecord::Base
 		@dates = @dates.uniq{|x| x}
 		logger.info @total_sales
 		@dates.each do |date|
-			@date_array.push({label:date, cuantity: @quinielas.where('purchase_date > ? AND purchase_date < ?',Date,(Date.parse(date)+1)).count})
+			@date_array.push({label:date, cuantity: @quinielas.where('purchase_date > ? AND purchase_date < ?',date,(Date.parse(date)+1)).count})
 		end
 		return {totals: [@quinielas_total,@total_sales], date_array: @date_array}
 	end
