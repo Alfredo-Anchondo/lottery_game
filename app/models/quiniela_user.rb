@@ -20,7 +20,7 @@ class QuinielaUser < ActiveRecord::Base
 		@dates.each do |date|
 			@date_array.push({label:date, cuantity: @quinielas.where('purchase_date > ? AND purchase_date < ?',date,(Date.parse(date)+1)).count})
 		end
-		return {totals: [@quinielas_total,@total_sales], date_array: @date_array}
+		return {totals: [@quinielas_total,@total_sales], date_array: @date_array.sort}
 	end
 	
 	 def self.winners

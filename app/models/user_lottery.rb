@@ -22,7 +22,7 @@ class UserLottery < ActiveRecord::Base
 		end
 		logger.info @dates
 		logger.info @date_array
-		return {totals: [@lotteries_total,@total_sales], date_array: @date_array}
+		return {totals: [@lotteries_total,@total_sales], date_array: @date_array.sort}
 	end
  
     def self.winners
