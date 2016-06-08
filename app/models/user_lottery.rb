@@ -18,7 +18,7 @@ class UserLottery < ActiveRecord::Base
 		end
 		@dates = @dates.uniq{|x| x}
 		@dates.each do |date|
-			@date_array.push({label: date, cuantity: @lotteries.where('purchase_date > ? AND purchase_date < ?',Date.parse(date),(Date.parse(date)+1)).count})
+			@date_array.push({label: date, cuantity: @lotteries.where('purchase_date >= ? AND purchase_date <= ?',Date.parse(date),(Date.parse(date)+1)).count})
 		end
 		logger.info @dates
 		logger.info @date_array
