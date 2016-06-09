@@ -11,6 +11,7 @@
           <table id="history-table"  class=" table responsive table-bordered table-striped" >
             <thead style="background-color:#171616; color:white;">
               <tr>
+                             	  <th>Id</th>
                               	  <th>Tira</th>
                                   <th><%= t('purchase_number') %> </th>
                                   <th><%= t("activerecord.attributes.lottery.winner_number") %></th>
@@ -32,7 +33,7 @@
                             
                       
                     
-   <div class="wrapper"><h3 style="text-align:center">Historial de billetes Loterias</h3><table id="history-table-quiniela"  class="table responsive table-bordered table-hover table-striped " ><thead style="background-color:#171616; color:white;"><tr>   <th><%= t("lottery_id") %></th><th><%= t('purchase_number') %> </th><th><%= t("activerecord.attributes.quiniela.winner_number") %></th><th><%= t("activerecord.attributes.quiniela.price") %></th><th><%= t("activerecord.attributes.quiniela_user.purchase_date") %></th></tr></thead><tbody></tbody>
+   <div class="wrapper"><h3 style="text-align:center">Historial de billetes Loterias</h3><table id="history-table-quiniela"  class="table responsive table-bordered table-hover table-striped " ><thead style="background-color:#171616; color:white;"><tr> <th>Id</th>   <th><%= t("lottery_id") %></th><th><%= t('purchase_number') %> </th><th><%= t("activerecord.attributes.quiniela.winner_number") %></th><th><%= t("activerecord.attributes.quiniela.price") %></th><th><%= t("activerecord.attributes.quiniela_user.purchase_date") %></th></tr></thead><tbody></tbody>
 	   </table>
      
     <script>
@@ -51,7 +52,7 @@
     
   var table2 = $('#history-table-quiniela').DataTable( {
        responsive: true,
-       order: [ 4, 'desc' ],
+       order: [ 0, 'desc' ],
     ajax: {
         url: "/partials/lotteries/"+<%= current_user.id %>+".json",
         dataSrc: 'partials'
@@ -60,7 +61,9 @@
             "url": languaje
         },
     columns: [
-  
+  		   { data: function ( row, type, val, meta ) {
+           return row.id
+        }},
         { data: function ( row, type, val, meta ) {
            return row.lottery.team.name + " vs " + row.lottery.team2.name
         }},
@@ -78,6 +81,13 @@
             return moment(row.purchase_date ,'' ,'es').format('MM/DD/YYYY HH:mm');
         }  }
     ],
+	  "columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": false
+            }
+        ]
 } );
 										
       </script>
@@ -110,7 +120,7 @@
     
   var table = $('#history-table').DataTable( {
        responsive: true,
-       order: [ 4, 'desc' ],
+       order: [ 0, 'desc' ],
     ajax: {
         url: "/partials/quinielas/"+<%= current_user.id %>+".json",
         dataSrc: 'partials'
@@ -119,7 +129,9 @@
             "url": languaje
         },
     columns: [
-  
+  		  { data: function ( row, type, val, meta ) {
+           return row.id
+        }},
         { data: function ( row, type, val, meta ) {
            return row.quiniela.team.name + " vs " + row.quiniela.team2.name
         }},
@@ -130,6 +142,13 @@
             return moment(row.purchase_date ,'' ,'es').format('MM/DD/YYYY HH:mm');
         }  }
     ],
+	   "columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": false
+            }
+        ]
 } );
       
 	  
