@@ -6,7 +6,7 @@ class QuinielaUser < ActiveRecord::Base
 	
 	def self.today_sales(date1, date2)
 		
-		@quinielas = where(purchase_date: date1..String(Date.parse(date2) - 5.hours))
+		@quinielas = where(purchase_date: date1..date2)
 		@quinielas_total = @quinielas.count
 		@total_sales = 0
 		@dates =[]
