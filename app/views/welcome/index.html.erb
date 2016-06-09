@@ -465,6 +465,8 @@
 			var labels_lottery = [];
 			var datasets_lottery = [];
 			var datasets_tira = [];
+		    var final_array_lottery = [];
+		    var final_array_tira = [];
 		$.ajax({
                       method: "GET",
                       url: "/user_lotteries/today_sales",
@@ -476,12 +478,9 @@
 
 			for(var i in data.date_array){
 				labels_lottery.push(data.date_array[i].label);
-				datasets_lottery.push( data.date_array[i].cuantity);
+				datasets_lottery = data.date_array;
 			}
-			  labels_lottery = unique(labels_lottery)
-		})
-		
-			$.ajax({
+			 	$.ajax({
                       method: "GET",
                       url: "/quiniela_users/today_sales",
                       dataType: "json",
@@ -491,18 +490,35 @@
 						$('#money_tira').text('$' +data.totals[1]);
 				for(var i in data.date_array){
 				labels_lottery.push(data.date_array[i].label);
-				datasets_tira.push( data.date_array[i].cuantity);
+				datasets_tira =  data.date_array;
 			}
 				labels_lottery = unique(labels_lottery)
-		})
-			
-		
-			
-			 var data_lotteries = {
+				labels_lottery - labels_lottery.sort();
+				
+				
+				for(var o in labels_lottery){
+					result = datasets_lottery.filter(x=> x.label === labels_lottery[o]);
+					result2 = datasets_tira.filter(x=> x.label === labels_lottery[o]);
+						if(result != ''){
+						
+							final_array_lottery.push(result[0].cuantity); }
+						else{
+							final_array_lottery.push(0);
+						}
+						if(result2 != ''){
+							final_array_tira.push(result2[0].cuantity); }
+						else{
+							final_array_tira.push(0);
+						}
+					
+					
+				}
+
+					 var data_lotteries = {
     labels: labels_lottery,
     datasets: [
         {
-            data: datasets_lottery,
+            data: final_array_lottery,
             label: "Billetes Loteria Vendidos",
             backgroundColor: "rgba(100, 31, 255, 0.2)",
             borderColor: "rgb(98, 5, 167)",
@@ -511,7 +527,7 @@
             hoverBorderColor: "rgb(113, 9, 178)",
         },
 	 {
-            data: datasets_tira,
+            data: final_array_tira,
             label: "Billetes tira Vendidos",
             backgroundColor: "rgba(31, 255, 91, 0.2)",
             borderColor: "rgb(5, 167, 11)",
@@ -528,6 +544,15 @@
     data: data_lotteries
 			
 	   });
+		}) //end second metod done
+		
+		}) //end first metod done		
+		
+		
+			
+		
+			
+			
 	})
 </script>
 	
