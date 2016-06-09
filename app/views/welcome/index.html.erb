@@ -429,27 +429,52 @@
 	<div class="row">
 		<div class="col-md-3">
 			<h4 style="text-align:center">Boletos de Loteria Vendidos</h4>
-			<h5 style="text-align:center" id="sell_lottery"></h5>
+			<h2 style="text-align:center;font-weight:800" id="sell_lottery"></h2>
 		</div>
 		<div class="col-md-3">
 			<h4 style="text-align:center">Boletos de Tira Vendidos</h4>
-			<h5 style="text-align:center" id="sell_tira"></h5>
+			<h2 style="text-align:center;font-weight:800" id="sell_tira"></h2>
 		</div>
 		<div class="col-md-3">
 			<h4 style="text-align:center">$ de Loteria Vendidos</h4>
-			<h5 style="text-align:center" id="money_lottery"></h5>
+			<h2 style="text-align:center;font-weight:800" id="money_lottery"></h2>
 		</div>
 		<div class="col-md-3">
 			<h4 style="text-align:center">$ de Tira Vendidos</h4>
-			<h5 style="text-align:center" id="money_tira"></h5>
+			<h2 style="text-align:center; font-weight:800" id="money_tira"></h2>
 		</div>
 	</div>
 	</div>
 </div>
 
 <div class="row">
-	  <canvas id="myChart4" style="width:100%"  height="100"></canvas>
+  <div class="tabs-container">
+
+                        <div class="tabs-left">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#tab-6" aria-expanded="true"> Cantidad de boletos</a></li>
+                                <li class=""><a data-toggle="tab" href="#tab-7" aria-expanded="false">Cantidad de efectivo</a></li>
+                            </ul>
+                            <div class="tab-content ">
+                                <div id="tab-6" class="tab-pane active">
+                                    <div class="panel-body">
+                                       	  <canvas id="myChart4" style="width:100%"  height="100"></canvas>
+                                    </div>
+                                </div>
+                                <div id="tab-7" class="tab-pane">
+                                    <div class="panel-body">
+                                        	  <canvas id="myChart5" style="width:100%"  height="100"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
 </div>
+
+
 
 <script>
 	
@@ -460,14 +485,27 @@
     });
     return result;
 }
-	
+		 var myBarChart2=''; 
+		  var myBarChart=''; 
 	$('#search').click(function(){
+	
+			
+		if(myBarChart != ''){
+			myBarChart.destroy();
+			myBarChart2.destroy();
+		}
 			var labels_lottery = [];
 			var datasets_lottery = [];
 			var datasets_tira = [];
 		    var final_array_lottery = [];
 		    var final_array_tira = [];
-		$.ajax({
+			var labels_money = [];
+		    var datasets_lottery_money = [];
+		    var datasets_tira_money = [];
+		    var final_array_lottery_money = [];
+		    var final_array_tira_money = [];
+			
+			$.ajax({
                       method: "GET",
                       url: "/user_lotteries/today_sales",
                       dataType: "json",
@@ -479,6 +517,10 @@
 			for(var i in data.date_array){
 				labels_lottery.push(data.date_array[i].label);
 				datasets_lottery = data.date_array;
+			}
+				for(var i in data.total_sales){
+				labels_money.push(data.total_sales[i].label);
+				datasets_lottery_money =  data.total_sales;
 			}
 			 	$.ajax({
                       method: "GET",
@@ -492,8 +534,15 @@
 				labels_lottery.push(data.date_array[i].label);
 				datasets_tira =  data.date_array;
 			}
+						for(var i in data.total_sales){
+				labels_money.push(data.total_sales[i].label);
+				datasets_tira_money =  data.total_sales;
+			}
 				labels_lottery = unique(labels_lottery)
 				labels_lottery - labels_lottery.sort();
+					
+				labels_money = unique(labels_lottery)
+				labels_money - labels_lottery.sort();	
 				
 				
 				for(var o in labels_lottery){
@@ -513,6 +562,24 @@
 					
 					
 				}
+					
+					for(var o in labels_lottery){
+					result3 = datasets_lottery_money.filter(x=> x.label === labels_money[o]);
+					result4 = datasets_tira_money.filter(x=> x.label === labels_money[o]);
+						if(result3 != ''){
+						
+							final_array_lottery_money.push(result3[0].sales); }
+						else{
+							final_array_lottery_money.push(0);
+						}
+						if(result4 != ''){
+							final_array_tira_money.push(result4[0].sales); }
+						else{
+							final_array_tira_money.push(0);
+						}
+					
+					
+				}	
 
 					 var data_lotteries = {
     labels: labels_lottery,
@@ -536,10 +603,41 @@
             hoverBorderColor: "rgb(9, 178, 16)",
         }]
 };
+					
+	 var data_money = {
+    labels: labels_money,
+    datasets: [
+        {
+            data: final_array_lottery_money,
+            label: "Ganancias de loterias",
+            backgroundColor: "rgba(100, 31, 255, 0.2)",
+            borderColor: "rgb(98, 5, 167)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(167, 20, 173, 0.4)",
+            hoverBorderColor: "rgb(113, 9, 178)",
+        },
+	 {
+            data: final_array_tira_money,
+            label: "Ganancias de Tiras",
+            backgroundColor: "rgba(31, 255, 91, 0.2)",
+            borderColor: "rgb(5, 167, 11)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(49, 173, 20, 0.4)",
+            hoverBorderColor: "rgb(9, 178, 16)",
+        }]
+};
+					
+					
 			  var ctw = document.getElementById("myChart4").getContext("2d");
-	   
-	   
-	    var myBarChart = new Chart(ctw, {
+			   var ctp = document.getElementById("myChart5").getContext("2d");
+	   	   
+	        myBarChart2 = new Chart(ctp, {
+    type: 'bar',
+    data: data_money
+			
+	   });
+					
+	     myBarChart = new Chart(ctw, {
     type: 'bar',
     data: data_lotteries
 			
