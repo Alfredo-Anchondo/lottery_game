@@ -52,7 +52,7 @@
     
   var table2 = $('#history-table-quiniela').DataTable( {
        responsive: true,
-       order: [ 0, 'desc' ],
+       order: [ 1, 'desc' ],
     ajax: {
         url: "/partials/lotteries/"+<%= current_user.id %>+".json",
         dataSrc: 'partials'
@@ -61,11 +61,12 @@
             "url": languaje
         },
     columns: [
-  		   { data: function ( row, type, val, meta ) {
-           return row.id
-        }},
+  		 
         { data: function ( row, type, val, meta ) {
            return row.lottery.team.name + " vs " + row.lottery.team2.name
+        }},
+		  { data: function ( row, type, val, meta ) {
+           return row.id
         }},
         { data: function ( row, type, val, meta ) {
 				return (row.ticket_number < 10 ? '0' : '') + row.ticket_number;
@@ -83,7 +84,7 @@
     ],
 	  "columnDefs": [
             {
-                "targets": [ 0 ],
+                "targets": [ 1 ],
                 "visible": false,
                 "searchable": false
             }
