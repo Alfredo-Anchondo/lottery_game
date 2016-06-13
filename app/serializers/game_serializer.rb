@@ -5,5 +5,4 @@ class GameSerializer < ActiveModel::Serializer
     has_many :lotteries
     has_one :sport_category
     has_one :category
-	has_many :quinielas
 end
