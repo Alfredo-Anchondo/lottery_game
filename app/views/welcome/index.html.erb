@@ -314,7 +314,7 @@
 </div>
 
 
-<div class="col-md-6 col-xs-12">
+<!--div class="col-md-6 col-xs-12">
    <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5><%= t('lotteries_winners') %><small style="color:#F7CEE4" class="m-l-sm"><%= t('comparation') %></small></h5>
@@ -359,15 +359,15 @@
                     </div>
                     
                 </div>
-</div>
+</div-->
 
 					
 
 
-<div class="col-md-6 col-xs-12">
+<div class="col-md-12 col-xs-12">
     <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Partidos de la Semana<small style="color:#F7CEE4" class="m-l-sm">Partidos programados para esta semana</small></h5>
+                        <h5>Partidos a futuro<small style="color:#F7CEE4" class="m-l-sm">Partidos proximos</small></h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -375,22 +375,20 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-                       <table id="data-table" style="background-color:white" class="display responsive nowrap table table-striped table-bordered  dt-responsive" cellspacing="0" width="100%">
+                       <table id="data-table2" style="background-color:white" class="display responsive nowrap table table-striped table-bordered  dt-responsive" cellspacing="0" width="100%">
         <thead style="background-color:#171616 !important; color:white">
             <tr>
-                <th>Visitante</th>
-                <th>Local</th>
                 <th>Fecha</th>
+                <th>Categoria</th>
+                <th>Evento</th>
+                <th>Tipo</th>
+                <th># Boletos</th>
+                <th>Cantidad $</th>
             </tr>
         </thead>
        
         <tbody>
-            <tr>
-                <td>Real Madrid</td>
-                <td>Atletico de Madrid</td>
-                <td>28 de Mayo</td>
-                
-            </tr>
+           
         </tbody>
     </table>
                     </div>
@@ -398,6 +396,35 @@
                 </div>
 
 </div>
+
+<script>
+	
+	      var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+
+	
+	 $('#data-table2').DataTable( {
+		  responsive: true,
+		 "language": {
+            "url": languaje
+        },
+        "ajax": "/games/future_games_programed",
+		 "columns": [
+            { "data": "date" },
+            { "data": "category" },
+            { "data": "event" },
+            { "data": "type" },
+            { "data": "sales" },
+            { "data": "money" }
+        ]
+    } );
+	</script>
 
 </div>
 
@@ -726,11 +753,11 @@ $(document).ready(function(){
 };
    
 			
-    var ctx = document.getElementById("myChart").getContext("2d");
+   /* var ctx = document.getElementById("myChart").getContext("2d");
     var myPieChart = new Chart(ctx,{
     type: 'pie',
     data: data2
-});
+});*/
             
                      });
     

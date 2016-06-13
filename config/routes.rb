@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
     resources :games do
         collection do
+			get '/future_games_programed', to: "games#future_games_programed"
             get 'next_game'
             get 'future_games'
             get 'finish_games'

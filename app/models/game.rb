@@ -66,6 +66,38 @@ class Game < ActiveRecord::Base
     def self.future_games
         where('game_date >= ?', DateTime.now).order(:game_date).all
     end
+
+    def self.future_games_programed
+		future_games = []
+       games_id = where('game_date >= ?', DateTime.now).order(:game_date)
+		games_id.each do|game|
+		lotteries =  Lottery.find_by game_id: game.id
+		quinielas = Quiniela.find_by game_id: game.id
+			if lotteries
+				tickets_sale_lot = UserLottery.where(lottery_id: lotteries.id)
+				if tickets_sale_lot
+					tickets_sale_lot = tickets_sale_lot.count
+					money_sales_lot = tickets_sale_lot * Integer(lotteries.price)
+					else
+					tickets_sale_lot = 0
+				end
+				future_games.push({date: game.game_date.strftime('%d-%m-%Y %H:%M'), category: game.category.name, event: game.team.name + ' vs ' + game.team2.name, type: 'Loteria', sales: tickets_sale_lot, money: money_sales_lot })
+			end
+			if quinielas
+			  tickets_sale = QuinielaUser.where(quiniela_id: quinielas.id)
+				if tickets_sale
+					tickets_sale = tickets_sale.count
+					money_sales = tickets_sale * Integer(quinielas.price)
+					else
+					tickets_sale = 0
+				end
+				future_games.push({date: game.game_date.strftime('%d-%m-%Y %H:%M'), category: game.category.name, event: quinielas.description, type: 'Tira', sales: tickets_sale, money: money_sales })
+			end
+		end
+		
+		return ({ data: future_games})
+		
+    end
     
       def self.finish_games
           where('game_date <= ?', DateTime.now).order(game_date: :desc).all

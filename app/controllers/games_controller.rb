@@ -25,7 +25,11 @@ class GamesController < ApplicationController
   def new
     @game = Game.new
   end
-
+	
+   def future_games_programed
+		render :json => Game.future_games_programed 
+    end
+	
     def next_game
         render :json => Game.next_game 
     end
