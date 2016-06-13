@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :quiniela_users do
 	collection do
 		get 'winners'
-		get '/today_sales',to: "quiniela_users#today_sales"
+		get '/today_sales',to: "quiniela_users#today_sales"	
+		get '/sales_by_month',to: "quiniela_users#sales_by_month"
 	end
    end
 
@@ -102,6 +103,7 @@ Rails.application.routes.draw do
         get 'winners_view'
 		get "tickets_by_lottery"
 		get "/tickets", to: "user_lotteries#search_ticket_by_lottery"
+		get '/sales_by_month',to: "user_lotteries#sales_by_month"
     end
   end
 

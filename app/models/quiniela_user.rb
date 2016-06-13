@@ -4,6 +4,52 @@ class QuinielaUser < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :quiniela
 	
+	
+		def self.sales_by_month
+		array_months = []
+		month_label = ''
+		sales_month = []
+		for i in 1..12
+			@quiniela =  where('extract(month from purchase_date) = ?', i)
+			@month_sale = @quiniela.count
+			total = 0
+			case i
+			when 1
+			  month_label = 'Enero'
+			when 2
+			  month_label = 'Febrero'
+			when 3
+			  month_label = 'Marzo'
+			when 4
+			 month_label = 'Abril'
+			when 5
+			   month_label = 'Mayo'
+			when 6
+			   month_label = 'Junio'
+			when 7
+			  month_label = 'Julio'
+			when 8
+			   month_label = 'Agosto'
+			when 9
+			   month_label = 'Septiembre'
+			when 10
+			 month_label = 'Octubre'
+			when 11
+			  month_label = 'Noviembre'
+			when 12
+			  month_label = 'Diciembre'
+			else
+			  puts "You just making it up!"
+			end
+			@quiniela.each do |quiniela|
+				total += Integer(quiniela.quiniela.price)
+			end
+			array_months.push({month: month_label , sales: @month_sale})
+			sales_month.push({month: month_label, money: total})
+		end
+		return { tickets: array_months, sales: sales_month } 
+	end
+	
 	def self.today_sales(date1, date2)
 		
 		@quinielas = where(purchase_date: date1..date2)

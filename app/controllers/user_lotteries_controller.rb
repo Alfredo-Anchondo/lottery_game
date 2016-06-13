@@ -19,6 +19,10 @@ class UserLotteriesController < ApplicationController
 	def today_sales
 		render :json => UserLottery.today_sales(params[:date1], params[:date2])
 	end
+	
+	def sales_by_month
+		render :json => UserLottery.sales_by_month
+	end
 
   # GET /user_lotteries/1
   # GET /user_lotteries/1.json

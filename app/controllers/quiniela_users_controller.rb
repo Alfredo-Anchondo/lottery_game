@@ -13,6 +13,10 @@ class QuinielaUsersController < ApplicationController
 		render :json => QuinielaUser.today_sales(params[:date1], params[:date2])
 	end
 	
+	def sales_by_month
+		render :json => QuinielaUser.sales_by_month
+	end
+	
   def index
     @quiniela_users = QuinielaUser.all
     respond_with(@quiniela_users)

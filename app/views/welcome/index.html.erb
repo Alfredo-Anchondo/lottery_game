@@ -474,6 +474,42 @@
 
 </div>
 
+<div class="row">
+	<div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Ventas por mes<small style="color:#F7CEE4" class="m-l-sm">Ganancias y ventas</small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                       <div class="tabs-left">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#tab-8" aria-expanded="true"> Cantidad de boletos</a></li>
+                                <li class=""><a data-toggle="tab" href="#tab-9" aria-expanded="false">Cantidad de efectivo</a></li>
+                            </ul>
+                            <div class="tab-content ">
+                                <div id="tab-8" class="tab-pane active">
+                                    <div class="panel-body">
+                                       	  <canvas id="myChart6" style="width:100%"  height="100"></canvas>
+                                    </div>
+                                </div>
+                                <div id="tab-9" class="tab-pane">
+                                    <div class="panel-body">
+                                        	  <canvas id="myChart7" style="width:100%"  height="100"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                     
+		</div>
+	</div>
+	</div>
+</div>
+
 
 
 <script>
@@ -832,7 +868,117 @@ $(document).ready(function(){
 	
 </script>
 
-   
+   <script>
+	   $( document ).ready(function() {
+			
+	
+	   var labels = [];
+	   var lotteries_values = [];
+	   var tiras_values = [];	
+	   var lotteries_sale = [];
+	   var quiniela_sale = [];
+	   $.ajax({
+                method: "GET",
+                url: "/user_lotteries/sales_by_month",
+                dataType: "json",
+			    data:{},     
+            	}).done(function(data) {
+		   			for(var i in data.tickets){
+						labels.push(data.tickets[i].month);
+						lotteries_values.push(data.tickets[i].sales)
+					}
+		   for(var i in data.sales){					
+						quiniela_sale.push(data.sales[i].money)
+					}
+		   
+		   
+		    $.ajax({
+                method: "GET",
+                url: "/quiniela_users/sales_by_month",
+                dataType: "json",
+			    data:{},     
+            	}).done(function(data) {
+					for(var i in data.tickets){
+						tiras_values.push(data.tickets[i].sales)
+					} 
+					   for(var i in data.sales){					
+						lotteries_sale.push(data.sales[i].money)
+					}
+
+
+				   var data_lotteries_month = {
+    labels: labels,
+    datasets: [
+        {
+            data: lotteries_values,
+            label: "Billetes Loteria Vendidos",
+            backgroundColor: "rgba(100, 31, 255, 0.2)",
+            borderColor: "rgb(98, 5, 167)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(167, 20, 173, 0.4)",
+            hoverBorderColor: "rgb(113, 9, 178)",
+        },
+		{
+			 data: tiras_values,
+            label: "Billetes Tira Vendidos",
+            backgroundColor: "rgba(255, 31, 212, 0.2)",
+            borderColor: "rgb(167, 5, 136)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(250, 131, 255, 0.4)",
+            hoverBorderColor: "rgb(242, 12, 83)",
+		}
+	]
+	
+};
+				
+	var data_lotteries_month_money = {
+    labels: labels,
+    datasets: [
+        {
+            data: lotteries_sale,
+            label: "Billetes Loteria Vendidos",
+            backgroundColor: "rgba(100, 31, 255, 0.2)",
+            borderColor: "rgb(98, 5, 167)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(167, 20, 173, 0.4)",
+            hoverBorderColor: "rgb(113, 9, 178)",
+        },
+		{
+			 data: quiniela_sale,
+            label: "Billetes Tira Vendidos",
+            backgroundColor: "rgba(255, 31, 212, 0.2)",
+            borderColor: "rgb(167, 5, 136)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(250, 131, 255, 0.4)",
+            hoverBorderColor: "rgb(242, 12, 83)",
+		}
+	]
+	
+};
+	
+			   var ctz = document.getElementById("myChart6").getContext("2d");
+				   var cta = document.getElementById("myChart7").getContext("2d");
+	   	   
+	        myBarChart2 = new Chart(ctz, {
+			type: 'bar',
+			data:  data_lotteries_month
+
+			   });
+				    myBarChart3 = new Chart(cta, {
+			type: 'bar',
+			data:  data_lotteries_month_money
+
+			   });
+			})
+		   
+		    
+		   
+	   	})
+	   
+		});
+					
+	  
+  </script>
    
 
    
