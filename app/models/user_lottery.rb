@@ -93,5 +93,5 @@ class UserLottery < ActiveRecord::Base
 	def self.search_ticket_by_lottery(id)
 		where('lottery_id = ?', id).all
 	end
-	
+
 end
