@@ -258,6 +258,28 @@
                             </div>
                 	
                     </div>
+                </div>      
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6 col-md-3">
+                                   <i class="fa fa-money fa-5x"></i>
+                                </div>
+                                <div class="col-xs-6 col-md-9 text-right text-indicators">
+									<div class="huge">$<span id="game_money"></span></div>
+                                    <div>Dinero en Juego</div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                            <div class="panel-footer">
+                                <span class="pull-left"><%= t('viewdetails') %></span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                	
+                    </div>
                 </div>         
 				
             	</div>
@@ -910,6 +932,7 @@ $(document).ready(function(){
                 dataType: "json",
 			    data:{},     
             	}).done(function(data) {
+		  
 		   			for(var i in data.tickets){
 						labels.push(data.tickets[i].month);
 						lotteries_values.push(data.tickets[i].sales)
@@ -1004,6 +1027,20 @@ $(document).ready(function(){
 	   
 		});
 					
+	  
+  </script>
+  
+  <script>
+	   $( document ).ready(function() {
+	  	$.ajax({
+                      method: "GET",
+                      url: "/games/future_games_programed",
+                      dataType: "json"   
+                    }).done(function( data) {	
+				
+                  $('#game_money').text(data.total_sales);
+		});
+		});
 	  
   </script>
    
