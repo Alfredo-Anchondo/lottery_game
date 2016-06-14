@@ -69,6 +69,7 @@ class Game < ActiveRecord::Base
 
     def self.future_games_programed
 		future_games = []
+		total_sales = 0
        games_id = where('game_date >= ?', DateTime.now).order(:game_date)
 		games_id.each do|game|
 		lotteries =  Lottery.find_by game_id: game.id
@@ -81,6 +82,7 @@ class Game < ActiveRecord::Base
 					else
 					tickets_sale_lot = 0
 				end
+				total_sales += money_sales_lot
 				future_games.push({date: game.game_date.strftime('%d-%m-%Y %H:%M'), category: game.category.name, event: game.team.name + ' vs ' + game.team2.name, type: 'Loteria', sales: tickets_sale_lot, money: money_sales_lot })
 			end
 			if quinielas
@@ -91,12 +93,11 @@ class Game < ActiveRecord::Base
 					else
 					tickets_sale = 0
 				end
+				total_sales += money_sales
 				future_games.push({date: game.game_date.strftime('%d-%m-%Y %H:%M'), category: game.category.name, event: quinielas.description, type: 'Tira', sales: tickets_sale, money: money_sales })
 			end
 		end
-		
-		return ({ data: future_games})
-		
+		return ({ data: future_games, total_sales: total_sales})
     end
     
       def self.finish_games
