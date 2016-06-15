@@ -28,7 +28,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-#gem 'unicorn', group: :production
+gem 'unicorn', group: :production
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -51,4 +51,10 @@ gem 'openpay'
 gem 'whenever'
 gem 'rack-cors', :require => 'rack/cors'
 
+
+group :test do
+  gem "mocha"
+  gem "capybara"
+  gem "factory_girl_rails"
+end
 
