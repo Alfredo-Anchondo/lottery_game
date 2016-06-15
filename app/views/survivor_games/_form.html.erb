@@ -1,0 +1,84 @@
+<%= form_for(@survivor_game, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @survivor_game.errors.any? %>
+<div id="error_explanation">
+  <% if @survivor_game.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.survivor_game")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.survivor_game"), :count => @survivor_game.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @survivor_game.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+ <div class="col-md-12">
+      	 <div class="form-group">
+          <%= f.label :game_date, :class => "col-md-2" %>
+          <div class="col-md-10">
+            <%= f.datetime_select :game_date, :class => "form-control" %>
+          </div>
+        </div>
+      </div>
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+              <div class="form-group">
+          <%= f.label :team_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:team_id, Team.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :team2_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:team2_id, Team.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :handicap, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :handicap, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :plus_handicap, :class => "col-md-3" %>
+          <div class="col-md-9">
+           <input id="survivor_game_plus_handicap" value="1" type="radio" name="survivor_game[plus_handicap]"> Si </input>
+           <input id="survivor_game_plus_handicap" value="0" name="survivor_game[plus_handicap]" type="radio"> No </input>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :description, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_area :description, :class => "form-control" %>
+          </div>
+        </div>
+                
+                  <div class="form-group">
+          <%= f.label :winner_team, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :winner_team, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :survivor_week_game_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:survivor_week_game_id, SurvivorWeekGame.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+      </div>
+     
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

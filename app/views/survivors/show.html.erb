@@ -1,0 +1,82 @@
+<!-- begin row -->
+<div class="row">
+  <!-- begin col-md-12 -->
+  <div class="col-md-12">
+    <div class="invoice">
+      <div class="invoice-content">
+        <div class="table-responsive">
+          <table class="table table-invoice">
+            <thead>
+              <tr>
+                <td colspan="2">
+                  <h4><%= t("details_of", model: t("activerecord.models.survivor").downcase) %></h4>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor.name") %>: <br />
+                    <small><%= @survivor.name %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor.description") %>: <br />
+                    <small><%= @survivor.description %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor.price") %>: <br />
+                    <small><%= @survivor.price %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor.initial_balance") %>: <br />
+                    <small><%= @survivor.initial_balance %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor.created_at") %>: <br />
+                    <small><%= @survivor.created_at %></small>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="invoice-footer text-muted"></div>
+    </div>
+  </div>
+  <!-- end col-md-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :edit, @survivor %>
+      <%= link_to edit_survivor_path(@survivor), :class => "btn btn-default" do %>
+        <i class="icon-pencil"></i>
+        <%= t("actions.edit") %>
+      <% end %>
+    <% end %>
+    <% if can? :delete, @survivor %>
+      <%= link_to @survivor, method: :delete, data: { confirm: t("are_you_sure?", model: t("activerecord.models.survivor").downcase) }, :class => "btn btn-danger" do %>
+        <i class="icon-trash"></i>
+        <%= t("actions.delete") %>
+      <% end %>
+    <% end %>
+    <% if can? :index, Survivor  %>
+      <%= link_to survivors_path, :class => "btn btn-default" do %>
+        <i class="icon-chevron-left"></i>
+        <%= t("actions.back") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->

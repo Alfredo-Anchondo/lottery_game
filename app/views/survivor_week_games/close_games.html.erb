@@ -1,0 +1,60 @@
+		<div class="row">
+			<h2 style="text-align:center; font-weight:800">Cerrar juegos por semana</h2>
+			<hr>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-2"><h4>Selecciona una semana</h4></div>
+				<div class="col-md-3"><%= select_tag "access", options_from_collection_for_select(SurvivorWeekGame.all, "id", "select_display"), class: 'form_input', id: 'week_number' %></div>
+				<div class="col-md-3"></div>
+			</div>
+			<hr>
+			<div class="row" id="games_row">
+				
+			</div>
+			<script>
+				  var current_language = $("#current_language").val();
+				$('#week_number').change(function(){
+					var week = $('#week_number option:selected').val();
+					$.ajax({
+				  method: "GET",
+				  format: "json",
+				  url: "/survivor_week_games/get_games",
+				  data: { id: week}
+				})
+				  .done(function( data ) {
+					for(var i in data.survivor_week_games){
+						
+		if (data.survivor_week_games[i].team.id < 10){
+         var image_url = '/system/teams/logos/000/000/00'+data.survivor_week_games[i].team.id+'/original/'+data.survivor_week_games[i].team.logo_file_name;
+    }   else{
+    var image_url = '/system/teams/logos/000/000/0'+data.survivor_week_games[i].team.id+'/original/'+data.survivor_week_games[i].team.logo_file_name;
+    }  
+                           if (data.survivor_week_games[i].second_team.id < 10){
+         var image_url2 = '/system/teams/logos/000/000/00'+data.survivor_week_games[i].second_team.id+'/original/'+data.survivor_week_games[i].second_team.logo_file_name;
+    }   else{
+    var image_url2 = '/system/teams/logos/000/000/0'+data.survivor_week_games[i].second_team.id+'/original/'+data.survivor_week_games[i].second_team.logo_file_name;
+    }  
+						
+						$('#games_row').append(' <div class="col-md-4"><h4 style="text-align:center"> Fecha del juego: <span>'+moment(data.survivor_week_games[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+'  </span> </h4> <div class="col-md-2"><input style="margin-top:50%" type="radio" data-game="'+data.survivor_week_games[i].id+'" data-team="'+data.survivor_week_games[i].team.id+'" name="game'+data.survivor_week_games[i].id+'"></div><div class="col-md-4"> <img width="100%" src="'+image_url+'"> </div> <div class="col-md-4"> <img width="100%" src="'+image_url2+'"> </div> <div class="col-md-2"><input style="margin-top:50%" type="radio" data-game="'+data.survivor_week_games[i].id+'" data-team="'+data.survivor_week_games[i].second_team.id+'" name="game'+data.survivor_week_games[i].id+'"> </div> </div> ');
+					}
+						$('input[type=radio]').change(function(){
+						var game_id = $(this).data("game");
+						var team_id = $(this).data("team");		
+						
+							  $.ajax({
+                      method: "PUT",
+                      url: "/survivor_games/"+game_id+"",
+                      dataType: "json",     
+                      data: { survivor_game: {winner_team: team_id} }
+                    }).done(function(data) {
+								
+							  })
+				})
+				  });
+				})
+				
+				
+				
+			</script>
+		</div>
+		

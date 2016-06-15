@@ -52,3 +52,9 @@ gem 'whenever'
 gem 'rack-cors', :require => 'rack/cors'
 
 
+group :test do
+  gem "mocha"
+  gem "capybara"
+  gem "factory_girl_rails"
+end
+

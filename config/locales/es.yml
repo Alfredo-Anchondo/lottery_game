@@ -1,4 +1,4 @@
-# Files in the config/locales directory are used for internationalization
+﻿# Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
 #
@@ -10,7 +10,7 @@
 #
 #     <%= t('hello') %>
 #
-# To use a different locale, set it with `I18n.locale`:
+# To use a different locale, set it with `I18n.locale`: 
 #
 #     I18n.locale = :es
 #
@@ -284,6 +284,14 @@ es:
         users: "Usuarios"
         user: "Usuario"
         roles: "Roles"
+        survivor: "Survivor"
+        survivors: "Survivors"
+        survivor_users: "Boletos de survivor"
+        survivor_user: "Boleto de survivor"
+        survivor_games: "Juegos de survivor"
+        survivor_game: "Juego de survivor"
+        survivor_week_games: "Semanas del survivor"
+        survivor_week_game: "Semana del survivor"
         role: "Rol"
         user_lotteries: "Loterías compradas por usuario"
         user_lottery: "Lotería comprada por usuario"
@@ -304,6 +312,31 @@ es:
             description: "Descripción"
             is_admin: "Es administrador?"
             is_client: "Es Cliente?"
+        survivor:
+            name: "Nombre"
+            description: "Descripción"
+            price: "Precio"
+            initial_balance: "Bolsa inicial"
+        survivor_game:
+            team: "Equipo Local"
+            team2: "Equipo Visitante"
+            handicap: "Handicap"
+            plus_handicap: "Visitante lleva ventaja?"
+            description: "Descripción"
+            game_date: "Fecha del Juego"
+            winner_team: "Equipo Ganador"
+            survivor_week_game: "Semana del survivor"
+        survivor_week_game:
+            survivor: "Survivor"
+            initial_date: "Fecha inicio de la semana"
+            final_date: "Fecha de fin de la semana"
+            week: "Numero de semana"
+        survivor_user:
+            survivor_week_game: "Semana del survivor"
+            team: "Equipo seleccionado"
+            purchase_date: "Fecha de compra"
+            user: "Usuario"
+            status: "Status"
         user:
             role_id: "Rol"
             role: "Rol"

@@ -1,0 +1,88 @@
+<!-- begin row -->
+<div class="row">
+  <!-- begin col-md-12 -->
+  <div class="col-md-12">
+    <div class="invoice">
+      <div class="invoice-content">
+        <div class="table-responsive">
+          <table class="table table-invoice">
+            <thead>
+              <tr>
+                <td colspan="2">
+                  <h4><%= t("details_of", model: t("activerecord.models.survivor_user").downcase) %></h4>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor_user.survivor_week_game") %>: <br />
+                    <small><%= @survivor_user.survivor_week_game %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor_user.team") %>: <br />
+                    <small><%= @survivor_user.team %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor_user.purchase_date") %>: <br />
+                    <small><%= @survivor_user.purchase_date %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor_user.user") %>: <br />
+                    <small><%= @survivor_user.user %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor_user.status") %>: <br />
+                    <small><%= @survivor_user.status %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor_user.created_at") %>: <br />
+                    <small><%= @survivor_user.created_at %></small>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="invoice-footer text-muted"></div>
+    </div>
+  </div>
+  <!-- end col-md-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :edit, @survivor_user %>
+      <%= link_to edit_survivor_user_path(@survivor_user), :class => "btn btn-default" do %>
+        <i class="icon-pencil"></i>
+        <%= t("actions.edit") %>
+      <% end %>
+    <% end %>
+    <% if can? :delete, @survivor_user %>
+      <%= link_to @survivor_user, method: :delete, data: { confirm: t("are_you_sure?", model: t("activerecord.models.survivor_user").downcase) }, :class => "btn btn-danger" do %>
+        <i class="icon-trash"></i>
+        <%= t("actions.delete") %>
+      <% end %>
+    <% end %>
+    <% if can? :index, SurvivorUser  %>
+      <%= link_to survivor_users_path, :class => "btn btn-default" do %>
+        <i class="icon-chevron-left"></i>
+        <%= t("actions.back") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->

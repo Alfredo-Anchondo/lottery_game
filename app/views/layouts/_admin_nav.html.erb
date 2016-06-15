@@ -26,19 +26,32 @@
             </li>
           <li  class="<%= 'active' if controller_name == 'games' %>"><a href="/games"> <span class="nav-label"><%= t('games') %></span>  </a>
             </li>
-       
+        <li class="dropdown">
+                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Survivor<span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+                             <li  class="<%= 'active' if controller_name == 'survivor' %>"><a href="/survivors"> <span class="nav-label">Survivor</span>  </a>
+							 </li>
+							<li  class="<%= 'active' if controller_name == 'survivor_user' %>"><a href="/survivor_users"> <span class="nav-label">Boletos de survivor</span>  </a>
+							</li>
+							<li  class="<%= 'active' if controller_name == 'survivor_game' %>"><a href="/survivor_games"> <span class="nav-label">Juegos del Survivor</span>  </a>
+            				</li>
+							<li  class="<%= 'active' if controller_name == 'survivor_week_game' %>"><a href="/survivor_week_games"> <span class="nav-label">Semanas del Survivor</span>  </a>
+            				</li>
+							 <li><a href="/survivor_week_games/close_games">Cerrar juegos survivor</a></li>
+                        </ul>
+                    </li>
 		            <li class="dropdown">
-                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Quiniela<span class="caret"></span></a>
+                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Tiras<span class="caret"></span></a>
                         <ul role="menu" class="dropdown-menu">
                              <li  class="<%= 'active' if controller_name == 'questions' %>"><a href="/questions"> <span class="nav-label">Preguntas</span>  </a>
 							 </li>
-							<li  class="<%= 'active' if controller_name == 'quiniela' %>"><a href="/quinielas"> <span class="nav-label">Quiniela</span>  </a>
+							<li  class="<%= 'active' if controller_name == 'quiniela' %>"><a href="/quinielas"> <span class="nav-label">Tira</span>  </a>
 							</li>
-							<li  class="<%= 'active' if controller_name == 'quiniela_questions' %>"><a href="/quiniela_questions"> <span class="nav-label">Preguntas por quiniela</span>  </a>
+							<li  class="<%= 'active' if controller_name == 'quiniela_questions' %>"><a href="/quiniela_questions"> <span class="nav-label">Preguntas por tira</span>  </a>
             				</li>
-							<li  class="<%= 'active' if controller_name == 'quiniela_users' %>"><a href="/quiniela_users"> <span class="nav-label">Usuarios por quiniela</span>  </a>
+							<li  class="<%= 'active' if controller_name == 'quiniela_users' %>"><a href="/quiniela_users"> <span class="nav-label">Boletos de tira</span>  </a>
             				</li>
-							 <li><a href="/quinielas/close_quiniela">Cerrar Quiniela</a></li>
+							 <li><a href="/quinielas/close_quiniela">Cerrar Tira</a></li>
                         </ul>
                     </li>
           <li class="dropdown">
@@ -47,9 +60,9 @@
                             <li><a href="/user_lotteries/winners_view"><%= t('winners_history') %></a></li>
                             <li><a href="/games/today_games_view">Cerrar loterias</a></li>
 							<li><a href="/user_lotteries/tickets_by_lottery">Tickets vendidos por loteria</a></li>
-							   <li  class="<%= 'active' if controller_name == 'lotteries' %>"><a href="/lotteries"> <span class="nav-label"><%= t('lotteries') %></span>  </a>
+							<li  class="<%= 'active' if controller_name == 'lotteries' %>"><a href="/lotteries"> <span class="nav-label"><%= t('lotteries') %></span>  </a>
             </li>
-          <li  class="<%= 'active' if controller_name == 'user_lotteries' %>"><a href="/user_lotteries"> <span class="nav-label"><%= t('userlotteries') %></span>  </a>
+          <li  class="<%= 'active' if controller_name == 'user_lotteries' %>"><a href="/user_lotteries"> <span class="nav-label">Boletos de loteria</span>  </a>
             </li>
 							
                         </ul>

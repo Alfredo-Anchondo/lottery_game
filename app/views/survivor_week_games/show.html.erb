@@ -1,0 +1,82 @@
+<!-- begin row -->
+<div class="row">
+  <!-- begin col-md-12 -->
+  <div class="col-md-12">
+    <div class="invoice">
+      <div class="invoice-content">
+        <div class="table-responsive">
+          <table class="table table-invoice">
+            <thead>
+              <tr>
+                <td colspan="2">
+                  <h4><%= t("details_of", model: t("activerecord.models.survivor_week_game").downcase) %></h4>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor_week_game.survivor") %>: <br />
+                    <small><%= @survivor_week_game.survivor.name %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor_week_game.initial_date") %>: <br />
+                    <small><%= @survivor_week_game.initial_date %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor_week_game.final_date") %>: <br />
+                    <small><%= @survivor_week_game.final_date %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor_week_game.week") %>: <br />
+                    <small><%= @survivor_week_game.week %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.survivor_week_game.created_at") %>: <br />
+                    <small><%= @survivor_week_game.created_at %></small>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="invoice-footer text-muted"></div>
+    </div>
+  </div>
+  <!-- end col-md-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :edit, @survivor_week_game %>
+      <%= link_to edit_survivor_week_game_path(@survivor_week_game), :class => "btn btn-default" do %>
+        <i class="icon-pencil"></i>
+        <%= t("actions.edit") %>
+      <% end %>
+    <% end %>
+    <% if can? :delete, @survivor_week_game %>
+      <%= link_to @survivor_week_game, method: :delete, data: { confirm: t("are_you_sure?", model: t("activerecord.models.survivor_week_game").downcase) }, :class => "btn btn-danger" do %>
+        <i class="icon-trash"></i>
+        <%= t("actions.delete") %>
+      <% end %>
+    <% end %>
+    <% if can? :index, SurvivorWeekGame  %>
+      <%= link_to survivor_week_games_path, :class => "btn btn-default" do %>
+        <i class="icon-chevron-left"></i>
+        <%= t("actions.back") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
