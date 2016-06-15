@@ -85,12 +85,12 @@ end
   protected
     
     def configure_permitted_parameters
-  devise_parameter_sanitizer.for(:sign_up) { |params|
+  devise_parameter_sanitizer.permit(:sign_up) { |params|
     params.permit(
         :email, :password, :password_confirmation, :name, :address_1, :address_2, :zip_code, :cellphone,:role_id, :country, :username,:last_name, :friend_reference
     )
   }
-  devise_parameter_sanitizer.for(:account_update) { |params|
+  devise_parameter_sanitizer.permit(:account_update) { |params|
     params.permit(
       :email, :password, :password_confirmation, :name,
       :last_name
