@@ -1,0 +1,77 @@
+<div class="row">
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <h3 style="margin-left:15px"><%= t("activerecord.models.survivor_week_games") %></h3>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
+            <thead>
+              <tr>
+                                  <th><%= t("activerecord.attributes.survivor_week_game.survivor") %></th>
+                                  <th><%= t("activerecord.attributes.survivor_week_game.initial_date") %></th>
+                                  <th><%= t("activerecord.attributes.survivor_week_game.final_date") %></th>
+                                  <th><%= t("activerecord.attributes.survivor_week_game.week") %></th>
+                                <th style="width: 155px"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @survivor_week_games.each do |survivor_week_game| %>
+              <tr>
+                                  <td><%= survivor_week_game.survivor.name %></td>
+                                  <td><%= survivor_week_game.initial_date %></td>
+                                  <td><%= survivor_week_game.final_date %></td>
+                                  <td><%= survivor_week_game.week %></td>
+                                <td class="action-link">
+                  <% if can? :show,survivor_week_game %>
+                    <%= link_to survivor_week_game, :class => "btn btn-default", :title => t("actions.show") do %>
+                      <i class="fa fa-eye"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :edit, survivor_week_game %>
+                    <%= link_to edit_survivor_week_game_path(survivor_week_game), :class => "btn btn-info", :title => t("actions.edit") do %>
+                      <i class="fa fa-pencil"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :delete, survivor_week_game %>
+                    <%= link_to survivor_week_game, :method => :delete, :data => { :confirm => t("are_you_sure?", model: t("activerecord.models.survivor_week_game").downcase) }, :class => "btn btn-danger", :title => t("actions.delete") do %>
+                      <i class="fa fa-trash"></i>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center">
+        
+        </div>
+      </div>
+      <!-- end panel-body -->
+    </div>
+    <!-- end panel -->
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :new, SurvivorWeekGame  %>
+      <%= link_to new_survivor_week_game_path, :class => "btn btn-default" do %>
+        <i class="icon-plus-sign-alt"></i>
+        <%= t("actions.new") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->

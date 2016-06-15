@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  resources :survivor_games
+
+  resources :survivor_users
+
+  resources :survivor_week_games do
+	collection do
+		get 'close_games'
+		get '/get_games',to: "survivor_week_games#get_games"	
+	end
+  end
+	
+
+  resources :survivors
+
   resources :error_reports
 
     devise_for :users,  controllers: { registrations: "registrations"  }

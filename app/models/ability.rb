@@ -11,8 +11,12 @@ class Ability
 			user.id == u.id
 		end
         cannot [:new, :create, :edit, :update, :delete, :destroy], Game
+		cannot [:new, :create, :edit, :update, :delete, :destroy], Survivor
+		cannot [:new, :create, :edit, :update, :delete, :destroy], SurvivorWeekGame
+		cannot [:new, :create, :edit, :update, :delete, :destroy], SurvivorGame
 		cannot [:new, :create, :edit, :update, :delete, :destroy], Quiniela
 		cannot [:new, :create, :edit, :update, :delete, :destroy], QuinielaUser
+		cannot [:new, :create, :edit, :update, :delete, :destroy], SurvivorUser
 		cannot [:new, :create, :edit, :update, :delete, :destroy], QuinielaQuestion
         cannot [:new, :create, :edit, :update, :delete, :destroy], Role
         cannot [:new, :create, :edit, :update, :delete, :destroy], Team

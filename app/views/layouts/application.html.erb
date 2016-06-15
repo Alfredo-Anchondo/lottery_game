@@ -42,7 +42,8 @@
 </head>
 <body >
        <% if signed_in? %>
-    <input id="current_language" type="hidden" value="<%= current_user.language %>" >
+    <!--input id="current_language" type="hidden" value="<%= current_user.language %>" -->
+     <input id="current_language" type="hidden" value="es" >
       <% else %>
      <input id="current_language" type="hidden" value="<%= I18n.locale %>" >
       <% end %>
