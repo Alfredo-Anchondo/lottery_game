@@ -263,6 +263,11 @@ en:
   registeredusers: "Users"
   registeredteams: "Teams"
   ticketpurchased: "Tickets"
+  status:
+    bought: "Bought"
+    alive: "Alive"
+    loser: "Loser"
+    winner: "Winner"  
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:

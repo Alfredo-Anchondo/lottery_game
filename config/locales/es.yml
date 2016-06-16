@@ -265,6 +265,11 @@ es:
   registeredusers: "Usuarios"
   registeredteams: "Equipos"
   ticketpurchased: "Boletos Lotería"
+  status:
+    bought: "Comprado"
+    alive: "Vivo"
+    loser: "Perdedor"
+    winner: "Ganador"
   errors: &errors
     format: ! "%{attribute} %{message}"
     messages:
