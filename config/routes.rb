@@ -146,15 +146,16 @@ Rails.application.routes.draw do
   get 'welcome/privacy'
   get 'welcome/faq'
 
-  get '/landing', :to => redirect('/index.html')
-
+  get '/landing', :to => redirect('/index2.html')
+  get '/error', :to => redirect('/404.html')
 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
+	  root 'welcome#index'
+      
 
 
   # Example of regular route:
