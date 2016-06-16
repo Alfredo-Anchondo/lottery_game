@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-     include ApplicationHelper   
+     include ApplicationHelper
 	 before_filter :configure_permitted_parameters, if: :devise_controller?
-	 before_action :change_language    
+	 before_action :change_language
 	before_filter do
   resource = controller_name.singularize.to_sym
   method = "#{resource}_params"
@@ -9,22 +9,22 @@ class ApplicationController < ActionController::Base
 end
 	 respond_to :html
   	 respond_to :json
-    
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-   
-	
-	
 
-	if Rails.env == 'production' || Rails.env == 'development' 
-    rescue_from StandardError do |exception|	
+
+
+
+	if Rails.env == 'production'
+    rescue_from StandardError do |exception|
       process_exception(exception)
 		respond_to do |format|
 			format.html { redirect_to (request.referer || :root), alert: 'Ocurrio un error, se a reportado al administrador de la pagina.' }
       format.json { head :no_content }
     end
-	
+
     end
 
     rescue_from ActiveRecord::DeleteRestrictionError do |exception|
@@ -81,9 +81,9 @@ end
       :backtrace => exception.backtrace.to_s
     )
   end
-    
+
   protected
-    
+
     def configure_permitted_parameters
   devise_parameter_sanitizer.permit(:sign_up) { |params|
     params.permit(
@@ -97,15 +97,15 @@ end
     )
   }
 end
-    
-    
+
+
     def change_language
         if current_user
         I18n.locale = current_user.language
         end
     end
-    
-    
+
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception

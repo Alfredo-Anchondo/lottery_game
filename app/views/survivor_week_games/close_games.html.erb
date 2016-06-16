@@ -9,7 +9,7 @@
 			</div>
 			<hr>
 			<div class="row" id="games_row">
-				
+
 			</div>
 			<script>
 				  var current_language = $("#current_language").val();
@@ -22,39 +22,59 @@
 				  data: { id: week}
 				})
 				  .done(function( data ) {
+				  $('#games_row').html("");
 					for(var i in data.survivor_week_games){
-						
-		if (data.survivor_week_games[i].team.id < 10){
-         var image_url = '/system/teams/logos/000/000/00'+data.survivor_week_games[i].team.id+'/original/'+data.survivor_week_games[i].team.logo_file_name;
-    }   else{
-    var image_url = '/system/teams/logos/000/000/0'+data.survivor_week_games[i].team.id+'/original/'+data.survivor_week_games[i].team.logo_file_name;
-    }  
-                           if (data.survivor_week_games[i].second_team.id < 10){
-         var image_url2 = '/system/teams/logos/000/000/00'+data.survivor_week_games[i].second_team.id+'/original/'+data.survivor_week_games[i].second_team.logo_file_name;
-    }   else{
-    var image_url2 = '/system/teams/logos/000/000/0'+data.survivor_week_games[i].second_team.id+'/original/'+data.survivor_week_games[i].second_team.logo_file_name;
-    }  
-						
-						$('#games_row').append(' <div class="col-md-4"><h4 style="text-align:center"> Fecha del juego: <span>'+moment(data.survivor_week_games[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+'  </span> </h4> <div class="col-md-2"><input style="margin-top:50%" type="radio" data-game="'+data.survivor_week_games[i].id+'" data-team="'+data.survivor_week_games[i].team.id+'" name="game'+data.survivor_week_games[i].id+'"></div><div class="col-md-4"> <img width="100%" src="'+image_url+'"> </div> <div class="col-md-4"> <img width="100%" src="'+image_url2+'"> </div> <div class="col-md-2"><input style="margin-top:50%" type="radio" data-game="'+data.survivor_week_games[i].id+'" data-team="'+data.survivor_week_games[i].second_team.id+'" name="game'+data.survivor_week_games[i].id+'"> </div> </div> ');
-					}
-						$('input[type=radio]').change(function(){
-						var game_id = $(this).data("game");
-						var team_id = $(this).data("team");		
-						
-							  $.ajax({
-                      method: "PUT",
-                      url: "/survivor_games/"+game_id+"",
-                      dataType: "json",     
-                      data: { survivor_game: {winner_team: team_id} }
-                    }).done(function(data) {
-								
-							  })
-				})
+         var image_url = data.survivor_week_games[i].team.logo_url;
+         var image_url2 = data.survivor_week_games[i].second_team.logo_url;
+				 var winner_team_1 = "";
+				 var winner_team_2 = "";
+
+				 if(data.survivor_week_games[i].winner_team === data.survivor_week_games[i].team.id) {
+             winner_team_1 = '<img src="/assets/trophy.png" class="trophy selected">';
+				 }
+				 else {
+             winner_team_2 = '<img src="/assets/trophy.png" class="trophy selected">';
+				 }
+
+						$('#games_row').append('<div class="col-md-4 teams-div"><h4 style="text-align: center;"> Fecha del juego: <span>'+moment(data.survivor_week_games[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+'  </span> </h4> <div class="col-md-6 team-div" data-game="'+data.survivor_week_games[i].id+'" data-team="'+data.survivor_week_games[i].team.id+'"><img width="100%" src="' + image_url + '">' + winner_team_1 + '</div><div class="col-md-6 team-div" data-game="'+data.survivor_week_games[i].id+'" data-team="'+data.survivor_week_games[i].second_team.id+'"><img width="100%" src="' + image_url2 + '">' + winner_team_2 + '</div></div>');
+          }
 				  });
-				})
-				
-				
-				
+				});
+
+				$(document).on("mouseover", ".team-div", function() {
+					  if($(this).children(".trophy").length === 0) {
+							  $(this).append('<img src="/assets/trophy_bw.png" class="trophy">');
+						}
+				});
+
+				$(document).on("mouseout", ".team-div", function() {
+					  $(this).children(".trophy:not(.selected)").remove();
+				});
+
+        $(document).on("click", ".team-div", function() {
+					  if($(this).children(".selected").length === 0) {
+								var $team_div = $(this);
+								var game_id = $team_div.data("game");
+								var team_id = $team_div.data("team");
+
+								$.ajax({
+								    method: "PUT",
+										url: "/survivor_games/"+ game_id,
+										dataType: "json",
+										data: { survivor_game: { winner_team: team_id } },
+								    success: function(data, text_status, jq_xhr) {
+												var $selected_team = $team_div.closest(".teams-div").find(".selected");
+
+												if($selected_team) {
+													  $selected_team.parent().removeClass("shake_effect");
+													  $selected_team.remove();
+												}
+
+				                $team_div.addClass("shake_effect");
+												$team_div.children(".trophy").addClass("selected").attr("src", "/assets/trophy.png");
+									  }
+								});
+						}
+				});
 			</script>
 		</div>
-		
