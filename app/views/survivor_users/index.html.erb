@@ -21,7 +21,6 @@
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
-
             <tbody>
               <% @survivor_users.each do |survivor_user| %>
               <tr>
@@ -29,7 +28,7 @@
                                   <td><%= survivor_user.team.select_display %></td>
                                   <td><%= survivor_user.purchase_date %></td>
                                   <td><%= survivor_user.user.select_display %></td>
-                                  <td><%= survivor_user.status %></td>
+                                  <td><%= t("status.#{survivor_user.status}") %></td>
                                 <td class="action-link">
                   <% if can? :show,survivor_user %>
                     <%= link_to survivor_user, :class => "btn btn-default", :title => t("actions.show") do %>
