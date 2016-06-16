@@ -1011,7 +1011,7 @@ body{
 .trophy {
     position: absolute;
     top: 80px;
-    left: 80px;
+    left: 90px;
 }
 
 .trophy.selected {
@@ -1020,6 +1020,11 @@ body{
 
 .team-div {
     text-align: center;
+}
+
+.team-div:hover {
+    border: 5px solid gold;
+    border-radius: 5px;
 }
 
 .shake_effect {
