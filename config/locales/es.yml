@@ -10,7 +10,7 @@
 #
 #     <%= t('hello') %>
 #
-# To use a different locale, set it with `I18n.locale`: 
+# To use a different locale, set it with `I18n.locale`:
 #
 #     I18n.locale = :es
 #
@@ -79,7 +79,11 @@ es:
     - :day
     - :month
     - :year
-
+  time:
+    am: "am"
+    pm: "pm"
+    formats:
+      long: ! "%d/%m/%Y %I:%M %p"
   actions:
     edit_title_female: "Editar %{model}"
     edit_title_male: "Editar %{model}"
@@ -92,6 +96,7 @@ es:
     save: "Guardar"
     new: "Crear Nuevo"
     back: "Volver"
+  week: "Semana"
   "true": "Si"
   "false": "No"
   welcome_don: "Bienvenido a DonBillete"
@@ -260,7 +265,43 @@ es:
   registeredusers: "Usuarios"
   registeredteams: "Equipos"
   ticketpurchased: "Boletos Lotería"
-
+  status:
+    bought: "Comprado"
+    alive: "Vivo"
+    loser: "Perdedor"
+    winner: "Ganador"
+  errors: &errors
+    format: ! "%{attribute} %{message}"
+    messages:
+      accepted: debe ser aceptado
+      blank: no puede estar en blanco
+      confirmation: no coincide con la confirmación
+      empty: no puede estar vacío
+      equal_to: debe ser igual a %{count}
+      even: debe ser un número par
+      exclusion: está reservado
+      greater_than: debe ser mayor que %{count}
+      greater_than_or_equal_to: debe ser mayor o igual que %{count}
+      inclusion: no está incluído en la lista
+      invalid: es inválido
+      less_than: debe ser menor que %{count}
+      less_than_or_equal_to: debe ser menor o igual que %{count}
+      not_a_number: no es un número
+      not_an_integer: debe ser un entero
+      odd: debe ser un número non
+      record_invalid: ! "La validación falló: %{errors}"
+      taken: ya ha sido tomado
+      overlaps_with_another_range: se empalma con otro rango
+      initial_date_lesser_than_final_date: debe ser menor que la fecha final
+      too_long:
+        one: es demasiado largo (máximo 1 caracter)
+        other: es demasiado largo (máximo %{count} caracteres)
+      too_short:
+        one: es demasiado corto (mínimo 1 caracter)
+        other: es demasiado corto (mínimo %{count} caracteres)
+      wrong_length:
+        one: longitud errónea (debe ser de 1 caracter)
+        other: longitud errónea (debe ser de %{count} caracteres)
   activerecord:
     errors:
       models:
@@ -317,6 +358,7 @@ es:
             description: "Descripción"
             price: "Precio"
             initial_balance: "Bolsa inicial"
+            created_at: "Fecha de creación"
         survivor_game:
             team: "Equipo Local"
             team2: "Equipo Visitante"
@@ -326,17 +368,20 @@ es:
             game_date: "Fecha del Juego"
             winner_team: "Equipo Ganador"
             survivor_week_game: "Semana del survivor"
+            created_at: "Fecha de creación"
         survivor_week_game:
             survivor: "Survivor"
             initial_date: "Fecha inicio de la semana"
             final_date: "Fecha de fin de la semana"
             week: "Numero de semana"
+            created_at: "Fecha de creación"
         survivor_user:
             survivor_week_game: "Semana del survivor"
             team: "Equipo seleccionado"
             purchase_date: "Fecha de compra"
             user: "Usuario"
             status: "Status"
+            created_at: "Fecha de creación"
         user:
             role_id: "Rol"
             role: "Rol"

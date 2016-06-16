@@ -21,9 +21,9 @@ class SurvivorWeekGamesController < ApplicationController
 
   def edit
   end
-	
+
 	def get_games
-		render :json => SurvivorWeekGame.get_games(params[:id])
+		render :json => SurvivorWeekGame.find(params[:id]).survivor_games
 	end
 
   def create

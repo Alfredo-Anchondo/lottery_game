@@ -79,7 +79,11 @@ en:
     - :day
     - :month
     - :year
-
+  time:
+    am: "am"
+    pm: "pm"
+    formats:
+      long: ! "%d/%m/%Y %I:%M %p"
   actions:
     new_title_male: "New %{model}"
     new_title_female: "New %{model}"
@@ -90,6 +94,7 @@ en:
     save: "Save"
     new: "New"
     back: "Back"
+  week: "Week"
   "true": "True"
   "false": "False"
   winner_number: "Winner Number"
@@ -258,7 +263,43 @@ en:
   registeredusers: "Users"
   registeredteams: "Teams"
   ticketpurchased: "Tickets"
-
+  status:
+    bought: "Bought"
+    alive: "Alive"
+    loser: "Loser"
+    winner: "Winner"  
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: must be acepted
+      blank: can not be blank
+      confirmation: does not match the confirmation
+      empty: can not be empty
+      equal_to: must equal to %{count}
+      even: must be an even number
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater or equal to %{count}
+      inclusion: is not included in the list
+      invalid: it is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less or equal to %{count}
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be an odd number
+      record_invalid: ! 'The validation failure: %{errors}'
+      taken: it have been already taken
+      overlaps_with_another_range: overlaps with another range
+      initial_date_lesser_than_final_date: must be lesser than final date
+      too_long:
+        one: es demasiado largo (máximo 1 caracter)
+        other: es demasiado largo (máximo %{count} caracteres)
+      too_short:
+        one: is too long (minimum 1 character)
+        other: is too short (mínimo %{count} character)
+      wrong_length:
+        one: longitud errónea (debe ser de 1 caracter)
+        other: longitud errónea (debe ser de %{count} caracteres)
   activerecord:
     errors:
       models:
@@ -292,6 +333,35 @@ en:
             description: "Description"
             is_admin: "Is admin?"
             is_client: "Is client?"
+        survivor:
+            name: "Name"
+            description: "Description"
+            price: "Price"
+            initial_balance: "Initial stock"
+            created_at: "Created at"
+        survivor_game:
+            team: "Home team"
+            team2: "Visitor team"
+            handicap: "Handicap"
+            plus_handicap: "Visitor has handicap?"
+            description: "Description"
+            game_date: "Game date"
+            winner_team: "Winner team"
+            survivor_week_game: "Survivor week game"
+            created_at: "Created at"
+        survivor_week_game:
+            survivor: "Survivor"
+            initial_date: "Week initial date"
+            final_date: "Week final date"
+            week: "Week number"
+            created_at: "Created at"
+        survivor_user:
+            survivor_week_game: "Survivor week"
+            team: "Selected team"
+            purchase_date: "Date of purchase"
+            user: "User"
+            status: "Status"
+            created_at: "Created at"
         user:
             name: "Name"
             photo: "User Photo"
@@ -341,7 +411,6 @@ en:
             description: "Description"
             sport_category_id: "Sport-Category"
             sport_category: "Sport-Category"
-
         game:
             team_id: "Local Team"
             team: "Local Team"

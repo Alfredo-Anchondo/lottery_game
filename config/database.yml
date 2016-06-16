@@ -17,7 +17,11 @@ development:
 production:
   adapter: postgresql
   database: lottery_game
-  host: localhost
   username: postgres
   password: postgres
 
+test:
+  adapter: postgresql
+  database: lottery_game
+  username: postgres
+  password: postgres

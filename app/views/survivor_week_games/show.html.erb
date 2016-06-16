@@ -23,13 +23,13 @@
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor_week_game.initial_date") %>: <br />
-                    <small><%= @survivor_week_game.initial_date %></small>
+                    <small><%= I18n.l(@survivor_week_game.initial_date, :format => :default) %></small>
                   </td>
                 </tr>
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor_week_game.final_date") %>: <br />
-                    <small><%= @survivor_week_game.final_date %></small>
+                    <small><%= I18n.l(@survivor_week_game.final_date, :format => :default) %></small>
                   </td>
                 </tr>
                               <tr>
@@ -41,7 +41,7 @@
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor_week_game.created_at") %>: <br />
-                    <small><%= @survivor_week_game.created_at %></small>
+                    <small><%= I18n.l(@survivor_week_game.created_at, :format => :long) %></small>
                   </td>
                 </tr>
             </tbody>
