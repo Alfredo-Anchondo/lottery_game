@@ -16,16 +16,11 @@ class Devise::SessionsController < DeviseController
   # POST /resource/sign_in
   def create
     if signed_in?
-      if current_user.active && current_user.role.can_sign_in?
-        self.resource = warden.authenticate!(auth_options)
-        set_flash_message(:notice, :signed_in) if is_flashing_format?
-        sign_in(resource_name, resource)
-        yield resource if block_given?
-        respond_with resource, location: after_sign_in_path_for(resource)
-      else
-        sign_out(current_user)
-        redirect_to new_user_session_path, warning: t("errors.messages.account_cannot_sign_in")
-      end
+      self.resource = warden.authenticate!(auth_options)
+      set_flash_message(:notice, :signed_in) if is_flashing_format?
+      sign_in(resource_name, resource)
+      yield resource if block_given?
+      respond_with resource, location: after_sign_in_path_for(resource)
     else
       redirect_to new_user_session_path, alert: t("devise.failure.invalid")
     end

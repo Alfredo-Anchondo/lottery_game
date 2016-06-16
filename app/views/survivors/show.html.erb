@@ -29,19 +29,19 @@
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor.price") %>: <br />
-                    <small><%= @survivor.price %></small>
+                    <small><%= number_to_currency(@survivor.price) %></small>
                   </td>
                 </tr>
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor.initial_balance") %>: <br />
-                    <small><%= @survivor.initial_balance %></small>
+                    <small><%= number_to_currency(@survivor.initial_balance) %></small>
                   </td>
                 </tr>
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor.created_at") %>: <br />
-                    <small><%= @survivor.created_at %></small>
+                    <small><%= I18n.l(@survivor.created_at, :format => :long) %></small>
                   </td>
                 </tr>
             </tbody>

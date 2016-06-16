@@ -50,11 +50,9 @@ gem 'omniauth-twitter'
 gem 'openpay'
 gem 'whenever'
 gem 'rack-cors', :require => 'rack/cors'
-
+gem 'validates_overlap'
 
 group :test do
   gem "mocha"
-  gem "capybara"
   gem "factory_girl_rails"
 end
-

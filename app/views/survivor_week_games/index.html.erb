@@ -25,8 +25,8 @@
               <% @survivor_week_games.each do |survivor_week_game| %>
               <tr>
                                   <td><%= survivor_week_game.survivor.name %></td>
-                                  <td><%= survivor_week_game.initial_date %></td>
-                                  <td><%= survivor_week_game.final_date %></td>
+                                  <td><%= I18n.l(survivor_week_game.initial_date, :format => :default) %></td>
+                                  <td><%= I18n.l(survivor_week_game.final_date, :format => :default) %></td>
                                   <td><%= survivor_week_game.week %></td>
                                 <td class="action-link">
                   <% if can? :show,survivor_week_game %>
@@ -51,7 +51,7 @@
           </table>
         </div>
         <div class="text-center">
-        
+
         </div>
       </div>
       <!-- end panel-body -->

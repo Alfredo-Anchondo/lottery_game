@@ -1,6 +1,6 @@
-@media screen 
-  and (device-width: 601px) 
-  and (-webkit-min-device-pixel-ratio: 1.331) 
+@media screen
+  and (device-width: 601px)
+  and (-webkit-min-device-pixel-ratio: 1.331)
   and (-webkit-max-device-pixel-ratio: 1.332) {
        #user_name{
         display:-webkit-inline-box  !important;
@@ -10,103 +10,103 @@
          #alert-display-modal{
           width: 100% !important;
       }
-    
+
     #login-container{
     border:0px solid #AB015C !important;
 }
     .loginColumns{
         padding: 0px !important;
     }
-    
+
     .hide-phone{
         display:none;
     }
-    
+
     #myNavbar{
         width: 100% !important;
     }
-    
+
     #menu{
         width: 100% !important;
     }
-    
+
     #banner{
-        background-size:contain !important; 
+        background-size:contain !important;
     }
-    
+
     .confirm_buy_modal{
         width: 100% !important;
     }
-    
+
     .hide-mobile{
         display:none;
     }
-    
+
     .col-xs-12{
         padding-left: 0px !important;
         padding-right: 0px !important;
     }
-    
+
    #vs{
     margin-top: 10px !important;
 	   font-size:30px !important;
    }
-    
+
     #responsive-cellphone{
         text-align:center;
     }
-    
+
     #main-con{
         margin-top: 0% !important;
     }
-    
+
     #user_image{
         float: none !important;
     }
-    
+
     #current_bal{
         margin-left:3% !important;
     }
-    
-   
-    
+
+
+
     .logo_lotteries{
         width: 100% !important;
     }
-    
+
     #logo-image{
     width: 100% !important;
     }
-    
+
     .category_logo{
         width: 40px !important;
     }
-    
+
     .center-text{
         text-align:center;
     }
-    
+
     #move-top{
         margin-top: 3%;
     }
-    
+
     #buy-ticket-button{
         margin-left:25% !important;
         margin-top: 2%;
     }
-    
+
     #header-loterry{
         text-align: center !important;
     }
-      
+
     .sctn-row2{
          margin:70px 0px 0px 20px !important;
     }
-    
+
     .sctn-col{
-    margin-top:10px !important;      
+    margin-top:10px !important;
       }
-      
+
       .logo_lotteries1{
     width: 100% !important;
     height: auto !important;
@@ -115,11 +115,11 @@
           font-size:15px;
           margin-bottom: 5px;
       }
-	  
+
 	  .footer{
 		  position:relative !important;
 	  }
-	  
+
 	  #team1{
 	width: 100% !important;
 }
@@ -127,143 +127,143 @@
 #team2{
 	width: 100% !important;
 }
-	  
+
 	  .margin-cellphone{
 		  margin-top:5%;
 	  }
 	  #cards_responsive{
 		  width: 100%;
 	  }
-	  
+
 	  #rexponsive-text-mark{
 		  margin-left:20px;
 	  }
-	  
+
 	  #user_acount{
 		  display:block !important;
 	  }
-	  
+
 	  .margin-row{
 	margin-left:0% !important;
 	margin-right:0% !important;
 }
-      
+
 }
 
 
 
 
 
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: landscape) { 
+  and (orientation: landscape) {
  #user_name{
         display:-webkit-inline-box  !important;
         font-size:11px;
         margin-top:2.5%;
     }
-      
+
          #alert-display-modal{
           width: 100% !important;
       }
-    
+
     #login-container{
     border:0px solid #AB015C !important;
 }
     .loginColumns{
         padding: 0px !important;
     }
-    
+
     .hide-phone{
         display:none;
     }
-    
+
     #myNavbar{
         width: 100% !important;
     }
-    
+
     #menu{
         width: 100% !important;
     }
-    
+
     #banner{
-        background-size:contain !important; 
+        background-size:contain !important;
     }
-    
+
     .confirm_buy_modal{
         width: 100% !important;
     }
-    
+
     .hide-mobile{
         display:none;
     }
-    
+
     .col-xs-12{
         padding-left: 0px !important;
         padding-right: 0px !important;
     }
-    
+
    #vs{
     margin-top: 10px !important;
 	    font-size:30px !important;
    }
-    
+
     #responsive-cellphone{
         text-align:center;
     }
-    
+
     #main-con{
         margin-top: 0% !important;
     }
-    
+
     #user_image{
         float: none !important;
     }
-    
+
     #current_bal{
         margin-left:3% !important;
     }
-    
-   
-    
+
+
+
     .logo_lotteries{
         width: 100% !important;
     }
-    
+
     #logo-image{
     width: 100% !important;
     }
-    
+
     .category_logo{
         width: 40px !important;
     }
-    
+
     .center-text{
         text-align:center;
     }
-    
+
     #move-top{
         margin-top: 3%;
     }
-    
+
     #buy-ticket-button{
         margin-left:25% !important;
         margin-top: 2%;
     }
-    
+
     #header-loterry{
         text-align: center !important;
     }
     .sctn-row2{
          margin:70px 0px 0px 20px !important;
     }
-      
+
       #login_form_responsive{
           display: none;
-      }  
-      
+      }
+
        .logo_lotteries1{
     width: 100% !important;
     height: auto !important;
@@ -272,11 +272,11 @@
           font-size:15px;
           margin-bottom: 5px;
       }
-	  
+
 	   .footer{
 		  position:relative !important;
 	  }
-	  
+
 	    #team1{
 	width: 100% !important;
 }
@@ -290,137 +290,137 @@
 	   #cards_responsive{
 		  width: 100%;
 	  }
-	  
+
 	    #rexponsive-text-mark{
 		  margin-left:20px;
 	  }
-	  
+
 	    #user_acount{
 		  display:block !important;
 	  }
-	  
+
 	  .margin-row{
 	margin-left:0% !important;
 	margin-right:0% !important;
 }
-      
+
 }
 
-@media screen 
-  and (device-width: 320px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) 
+@media screen
+  and (device-width: 320px)
+  and (device-height: 640px)
+  and (-webkit-device-pixel-ratio: 3)
   and (orientation: landscape) {
         #user_name{
         display:-webkit-inline-box  !important;
         font-size:11px;
         margin-top:2.5%;
     }
-      
+
          #alert-display-modal{
           width: 100% !important;
       }
-    
+
     #login-container{
     border:0px solid #AB015C !important;
 }
     .loginColumns{
         padding: 0px !important;
     }
-    
+
     .hide-phone{
         display:none;
     }
-    
+
     #myNavbar{
         width: 100% !important;
     }
-    
+
     #menu{
         width: 100% !important;
     }
-    
+
     #banner{
-        background-size:contain !important; 
+        background-size:contain !important;
     }
-    
+
     .confirm_buy_modal{
         width: 100% !important;
     }
-    
+
     .hide-mobile{
         display:none;
     }
-    
+
     .col-xs-12{
         padding-left: 0px !important;
         padding-right: 0px !important;
     }
-    
+
    #vs{
     margin-top: 10px !important;
 	    font-size:30px !important;
    }
-    
+
     #responsive-cellphone{
         text-align:center;
     }
-    
+
     #main-con{
         margin-top: 0% !important;
     }
-    
+
     #user_image{
         float: none !important;
     }
-    
+
     #current_bal{
         margin-left:3% !important;
     }
-    
-   
-    
+
+
+
     .logo_lotteries{
         width: 100% !important;
     }
-    
+
     #logo-image{
     width: 100% !important;
     }
-    
+
     .category_logo{
         width: 40px !important;
     }
-    
+
     .center-text{
         text-align:center;
     }
-    
+
     #move-top{
         margin-top: 3%;
     }
-    
+
     #buy-ticket-button{
         margin-left:25% !important;
         margin-top: 2%;
     }
-    
+
     #header-loterry{
         text-align: center !important;
     }
-    
+
     .sctn-row2{
          margin:70px 0px 0px 20px !important;
     }
-      
+
         #login_form_responsive{
           display:none;
-      }  
-      
+      }
+
       #login_form_responsive2{
           display:block !important;
       }
-      
+
        #log_out_mov{
         display:block !important;
     }
@@ -433,11 +433,11 @@
           font-size:15px;
           margin-bottom: 5px;
       }
-	  
+
 	   .footer{
 		  position:relative !important;
 	  }
-	  
+
 	    #team1{
 	width: 100% !important;
 }
@@ -445,149 +445,149 @@
 #team2{
 	width: 100% !important;
 }
-	  
+
 	    .margin-cellphone{
 		  margin-top:5%;
 	  }
-	  
+
 	   #cards_responsive{
 		  width: 100%;
 	  }
-	  
+
 	    #rexponsive-text-mark{
 		  margin-left:20px;
 	  }
 	    #user_acount{
 		  display:block !important;
 	  }
-	  
+
 	  .margin-row{
 	margin-left:0% !important;
 	margin-right:0% !important;
 }
-	  
+
 }
 
 @media screen and (max-width: 480px) {
-    
+
     #user_name{
         display:-webkit-inline-box  !important;
         font-size:11px;
         margin-top:2.5%;
     }
-    
+
        #alert-display-modal{
           width: 100% !important;
       }
-    
+
     #login-container{
     border:0px solid #AB015C !important;
 }
     .loginColumns{
         padding: 0px !important;
     }
-    
+
     .hide-phone{
         display:none;
     }
-    
+
     #myNavbar{
         width: 100% !important;
     }
-    
+
     #menu{
         width: 100% !important;
     }
-    
+
     #banner{
-        background-size:contain !important; 
+        background-size:contain !important;
     }
-    
+
     .confirm_buy_modal{
         width: 100% !important;
     }
-    
+
     .hide-mobile{
         display:none;
     }
-    
+
     .col-xs-12{
         padding-left: 0px !important;
         padding-right: 0px !important;
     }
-    
+
    #vs{
     margin-top: 10px !important;
 	    font-size:30px !important;
    }
-    
+
     #responsive-cellphone{
         text-align:center;
     }
-    
+
     #main-con{
         margin-top: 0% !important;
     }
-    
+
     #user_image{
         float: none !important;
     }
-    
+
     #current_bal{
         margin-left:3% !important;
     }
-    
-   
-    
+
+
+
     .logo_lotteries{
         width: 100% !important;
     }
-    
+
     #logo-image{
     width: 100% !important;
     }
-    
+
     .category_logo{
         width: 40px !important;
     }
-    
+
     .center-text{
         text-align:center;
     }
-    
+
     #move-top{
         margin-top: 3%;
     }
-    
+
     #buy-ticket-button{
         margin-left:25% !important;
         margin-top: 2%;
     }
-    
+
     #header-loterry{
         text-align: center !important;
     }
-    
+
     .sctn-row2{
         margin:70px 0px 0px 20px !important;
     }
-    
+
      .sctn-col{
-    margin-top:20px !important;      
+    margin-top:20px !important;
       }
-    
+
       #login_form_responsive{
           display: none;
-      }  
-    
+      }
+
     #login_form_responsive2{
           display:block !important;
       }
-    
+
     #log_out_mov{
         display:block !important;
     }
-    
+
      .logo_lotteries1{
     width: 100% !important;
     height: auto !important;
@@ -599,7 +599,7 @@
 	 .footer{
 		  position:relative !important;
 	  }
-	
+
 	  #team1{
 	width: 100% !important;
 }
@@ -609,19 +609,19 @@
 }
      .margin-cellphone{
 		  margin-top:5%;
-	  } 
+	  }
 	 #cards_responsive{
 		  width: 100%;
 	  }
-	
+
 	  #rexponsive-text-mark{
 		  margin-left:20px;
 	  }
-	
+
 	  #user_acount{
 		  display:block !important;
 	  }
-	
+
 	.margin-row{
 	margin-left:0% !important;
 	margin-right:0% !important;
@@ -679,7 +679,7 @@
 
 #banner{
      background-color: white;
-     background-size:cover; 
+     background-size:cover;
 }
 
  .alert-success{
@@ -700,8 +700,8 @@
 }
 
 .property-text{
-    margin-left:3%; 
-    margin-top:3%; 
+    margin-left:3%;
+    margin-top:3%;
 }
 
 .logo_lotteries{
@@ -797,7 +797,7 @@ body{
 .margin-row{
 	margin-left:7% ;
 	margin-right:7% ;
-	
+
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button{
@@ -825,7 +825,7 @@ body{
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
     box-shadow: 1px 1px 1px 1px #ccc;
 }
- 
+
 #mainwrapper .box img {
     position: absolute;
     left: 0;
@@ -894,7 +894,7 @@ body{
     -webkit-transform: rotate(-180deg);
     transform: rotate(-180deg);
 }
- 
+
 #mainwrapper .box .rotate {
     width: 200px;
     height: 400px;
@@ -915,7 +915,7 @@ body{
     -ms-transition: all 300ms ease-out;
     transition: all 300ms ease-out;
 }
- 
+
 #mainwrapper .box .scale-caption h3 {
     -webkit-transition-delay: 300ms;
     -moz-transition-delay: 300ms;
@@ -923,7 +923,7 @@ body{
     -ms-transition-delay: 300ms;
     transition-delay: 300ms;
 }
- 
+
 #mainwrapper .box .scale-caption p {
     -webkit-transition-delay: 500ms;
     -moz-transition-delay: 500ms;
@@ -988,4 +988,47 @@ body{
     -o-transform: translateX(200px);
     -webkit-transform: translateX(200px);
     transform: translateX(200px);
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.trophy {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+}
+
+.trophy.selected {
+    display: block;
+}
+
+.team-div {
+    text-align: center;
+}
+
+.shake_effect {
+    animation: shake 0.50s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.team-div:hover {
+    cursor: pointer;
 }

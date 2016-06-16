@@ -26,8 +26,8 @@
               <tr>
                                   <td><%= survivor.name %></td>
                                   <td><%= survivor.description %></td>
-                                  <td><%= survivor.price %></td>
-                                  <td><%= survivor.initial_balance %></td>
+                                  <td><%= number_to_currency(survivor.price) %></td>
+                                  <td><%= number_to_currency(survivor.initial_balance) %></td>
                                 <td class="action-link">
                   <% if can? :show,survivor %>
                     <%= link_to survivor, :class => "btn btn-default", :title => t("actions.show") do %>
@@ -51,7 +51,7 @@
           </table>
         </div>
         <div class="text-center">
-   
+
         </div>
       </div>
       <!-- end panel-body -->
