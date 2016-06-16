@@ -19,13 +19,13 @@
               <div class="form-group">
           <%= f.label :survivor_week_game, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.collection_select(:survivor_week_game, SurvivorWeekGame.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+            <%= f.collection_select(:survivor_week_game_id, SurvivorWeekGame.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
           </div>
         </div>
                   <div class="form-group">
           <%= f.label :team, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.collection_select(:team, Team.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+            <%= f.collection_select(:team_id, Team.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
           </div>
         </div>
                   <div class="form-group">
@@ -37,14 +37,9 @@
                   <div class="form-group">
           <%= f.label :user, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.collection_select(:user, User.clients, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+            <%= f.collection_select(:user_id, User.clients, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
           </div>
         </div>
-                  <div class="form-group">
-          <%= f.label :status, :class => "col-md-3" %>
-          <div class="col-md-9">
-            <%= f.text_field :status, :class => "form-control" %>
-          </div>
         </div>
       </div>
 <!-- end col-md-6 -->

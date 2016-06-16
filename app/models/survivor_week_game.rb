@@ -2,6 +2,7 @@ class SurvivorWeekGame < ActiveRecord::Base
   #ASSOCIATIONS
   belongs_to :survivor
   has_many :survivor_games
+  has_many :survivor_users
 
   #VALIDATIONS
   validates :survivor_id, :initial_date, :final_date, :week, :presence => true
