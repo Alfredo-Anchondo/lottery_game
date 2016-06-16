@@ -17,13 +17,13 @@
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor_user.survivor_week_game") %>: <br />
-                    <small><%= @survivor_user.survivor_week_game %></small>
+                    <small><%= @survivor_user.survivor_week_game.select_display %></small>
                   </td>
                 </tr>
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor_user.team") %>: <br />
-                    <small><%= @survivor_user.team %></small>
+                    <small><%= @survivor_user.team.select_display %></small>
                   </td>
                 </tr>
                               <tr>
@@ -35,7 +35,7 @@
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor_user.user") %>: <br />
-                    <small><%= @survivor_user.user %></small>
+                    <small><%= @survivor_user.user.select_display %></small>
                   </td>
                 </tr>
                               <tr>
