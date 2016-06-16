@@ -146,11 +146,7 @@ Rails.application.routes.draw do
   get 'welcome/privacy'
   get 'welcome/faq'
 
-
-
-
-
-
+  get '/landing', :to => redirect('/index.html')
 
 
 
