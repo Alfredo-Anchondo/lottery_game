@@ -14,6 +14,15 @@ class Quiniela < ActiveRecord::Base
 	def total_sales
 		QuinielaUser.where('quiniela_id = ?', id).length
 	end	
+		
+	def winner?
+		winner = QuinielaUser.where('quiniela_id = ? AND ticket_number = ?', id, winner_number)
+		if winner != []
+			return "Ganador"
+			else
+			return "Sin Ganador"
+		end
+	end
 	
 		def self.last_quinielas
 			return  Quiniela.limit(10).order(id: :desc)

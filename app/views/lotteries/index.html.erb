@@ -22,6 +22,7 @@
                                   <th><%= t("activerecord.attributes.lottery.price") %></th>
 				  				  <th>Ticket regalo</th>
                                   <th>Tickets Vendidos</th>	
+                                  <th>Ganador?</th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -38,6 +39,7 @@
                                   <td><%= lottery.price %></td>
 				  				  <td> <%= lottery.purchase_gift_tickets %></td>
 								  <td> <%= lottery.total_sales %></td>
+                                <td> <%= lottery.winner? %></td>
                                 <td class="action-link">
                   <% if can? :show,lottery %>
                     <%= link_to lottery, :class => "btn btn-default", :title => t("actions.show") do %>
