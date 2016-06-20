@@ -9,6 +9,9 @@ class PartialsController < ApplicationController
      get_customer_credit_cars(current_user)
      render "credit_card_form"
   end
+	
+	
+
 
 	def buy_random_quinielas
 		@numbers = params[:numbers]
@@ -280,6 +283,11 @@ end
 		UserLottery.create({user_id: @user_id.id, lottery_id: params[:lottery_id], status: 'Comprado', ticket_number: @array_values[Integer(i)], purchase_date: DateTime.now})
 		end
 		#BuyMailer.buy_many_tickets(@user_id, @array_values, @lottery).deliver
+	end
+	
+	def get_survivor
+	  	render :json =>	Survivor.where('extract(year  from created_at) = ?',Time.now.year)
+		logger.info 'aqui se hizo //////////////'
 	end
 
  #def show_category

@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="survivors"></div>
+</div>
+
+
+<script>
+	$( document ).ready(function() {
+	  $.ajax({
+            method: "GET",
+            url: "/partials/current_survivors",
+            format: "json"
+               }).done(function(data) {
+		   for( var i in data.partials){
+			   
+			    var week_length = data.partials[i].survivor_week_games.length;
+			   
+			   
+			 $('.survivors').append('<h4 style="text-align:center"> '+data.partials[i].name+'</h4> <h4 style="text-align:center"> '+data.partials[i].description+'</h4> <h4 style="text-align:center"> '+data.partials[i].initial_balance+'</h4> <h4 style="text-align:center"> '+data.partials[i].price+'</h4><h4 style="text-align:center"> '+data.partials[i].survivor_week_games[0].initial_date+'</h4> <h4 style="text-align:center"> '+data.partials[i].survivor_week_games[week_length - 1].final_date+'</h4>');	   
+		   }	 	 
+	  });		
+			});
+</script>

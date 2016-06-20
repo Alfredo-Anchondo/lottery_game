@@ -3,7 +3,7 @@ class SurvivorsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_survivor, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @survivors = Survivor.all
@@ -21,6 +21,8 @@ class SurvivorsController < ApplicationController
 
   def edit
   end
+	
+	
 
   def create
     @survivor = Survivor.new(survivor_params)

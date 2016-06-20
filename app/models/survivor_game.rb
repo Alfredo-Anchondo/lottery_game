@@ -12,7 +12,7 @@ class SurvivorGame < ActiveRecord::Base
 
   #METHODS
 	def second_team
-		Team.find(team2_id)
+	   Team.find(team2_id)
 	end
 
   protected
