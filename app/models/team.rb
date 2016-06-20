@@ -9,8 +9,7 @@ class Team < ActiveRecord::Base
 
     #Validations
     validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
-
-
+    validates :name, :uniqueness => { :case_sensitive => false }
 
       def select_display
       name
