@@ -59,13 +59,13 @@
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor_game.survivor_week_game") %>: <br />
-                    <small><%= @survivor_game.survivor_week_game %></small>
+                    <small><%= @survivor_game.survivor_week_game.select_display %></small>
                   </td>
                 </tr>
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor_game.created_at") %>: <br />
-                    <small><%= @survivor_game.created_at %></small>
+                    <small><%= I18n.l(@survivor_game.created_at, :format => :long) %></small>
                   </td>
                 </tr>
             </tbody>
