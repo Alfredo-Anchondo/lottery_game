@@ -34,13 +34,13 @@
 
             <div class="col-md-2">
 				 <% if current_user.photo.present? %>
-               <h4><img id="user_image" class="pull-right" width="100px" height="100px" style="border-radius:150px; border:1px solid #720062;" src="<%= current_user.photo %>"></h4>
+               <h4><img id="user_image" class="pull-right" width="100px" height="100px" style="border-radius:150px; border:1px solid #696969;" src="<%= current_user.photo %>"></h4>
 				   <% end %>
             </div>
 
             <div class="col-md-10" style="background-color: rgb(255, 255, 255); color: black;">
                 <div class="col-md-7">
-                    <h4 style="color:#720062"> <%= t('welcome') %>: <span style="text-transform: uppercase; color:black"><%= current_user.username %></span> </h4>
+                    <h4 style="color:#696969"> <%= t('welcome') %>: <span style="text-transform: uppercase; color:black"><%= current_user.username %></span> </h4>
                      <h4 style="color:black">
                        <span id="clock"></span> </h4>
 					    <% if signed_in? %>
@@ -53,9 +53,9 @@
 
 
                 <div class="col-md-5">
-                   <h4 style="color:#720062"> <span id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase; color:black "><%= number_with_precision(current_user.balance, :precision => 2)  %> DB</span></span>
-					     <h4 style="color:#720062"> <span id="current_bal"> Saldo de Regalo: <span style="color:black;text-transform: uppercase;"><%= number_with_precision(current_user.gift_credit, :precision => 2)  %> DB</span></span>
-                  <h4 style="color:#720062"> 1 DB =<span style="color:black">  $1.00 MXN </span> </h4>
+                   <h4 style="color:#696969"> <span id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase; color:black "><%= number_with_precision(current_user.balance, :precision => 2)  %> DB</span></span>
+					     <h4 style="color:#696969"> <span id="current_bal"> Saldo de Regalo: <span style="color:black;text-transform: uppercase;"><%= number_with_precision(current_user.gift_credit, :precision => 2)  %> DB</span></span>
+                  <h4 style="color:#696969"> 1 DB =<span style="color:black">  $1.00 MXN </span> </h4>
 							 <h4><a style="margin-top:1%;" class="twitter-follow-button" href="https://twitter.com/7DONBILLETE" data-show-count="false">
 							Follow @TwitterDev</a></h4>
                 </div>
@@ -89,7 +89,7 @@
     <%= f.label :password, :style => 'color:black' %><br />
     <%= f.password_field :password, :style => "color:black",  :class => "form-control",  autocomplete: "off" %>
                  <div class="actions" style="color:black">
-      <%= f.submit t('log_in'), :class => "form-group btn", :style => "background-color:#720062; margin-top:2%; width:100%; color: white;
+      <%= f.submit t('log_in'), :class => "form-group btn", :style => "background-color:#696969; margin-top:2%; width:100%; color: white;
     font-weight: 900;" %> <br>
 
       <div id="status">
