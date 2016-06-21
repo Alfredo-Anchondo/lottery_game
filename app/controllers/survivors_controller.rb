@@ -1,9 +1,9 @@
 class SurvivorsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:new, :create, :update, :edit]
   before_action :authenticate_user!
   before_action :set_survivor, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @survivors = Survivor.all
@@ -21,6 +21,8 @@ class SurvivorsController < ApplicationController
 
   def edit
   end
+	
+	
 
   def create
     @survivor = Survivor.new(survivor_params)
@@ -44,6 +46,6 @@ class SurvivorsController < ApplicationController
     end
 
     def survivor_params
-      params.require(:survivor).permit(:name, :description, :price, :initial_balance)
+      params.require(:survivor).permit(:name, :description, :access_key, :price, :initial_balance)
     end
 end

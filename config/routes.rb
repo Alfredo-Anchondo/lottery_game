@@ -4,28 +4,28 @@ Rails.application.routes.draw do
   resources :survivor_users
 
   resources :survivor_week_games do
-	collection do
-		get 'close_games'
-		get '/get_games',to: "survivor_week_games#get_games"	
-	end
+  	collection do
+  		get 'close_games'
+  		get '/get_games',to: "survivor_week_games#get_games"
+      put 'close_last_week/:id', to: "survivor_week_games#close_last_week"
+  	end
   end
-	
 
   resources :survivors
 
   resources :error_reports
 
-    devise_for :users,  controllers: { registrations: "registrations"  }
+  devise_for :users,  controllers: { registrations: "registrations"  }
   #, omniauth_callbacks: 'omniauth_callbacks'
   resources :questions
 
   resources :quiniela_users do
-	collection do
-		get 'winners'
-		get '/today_sales',to: "quiniela_users#today_sales"	
-		get '/sales_by_month',to: "quiniela_users#sales_by_month"
-	end
-   end
+  	collection do
+  		get 'winners'
+  		get '/today_sales',to: "quiniela_users#today_sales"
+  		get '/sales_by_month',to: "quiniela_users#sales_by_month"
+  	end
+  end
 
   resources :quiniela_questions
 
@@ -65,6 +65,8 @@ Rails.application.routes.draw do
 			get 'next_game'
 			get 'finish_games'
 			get 'future_games'
+			get 'survivor_game'
+			get "/current_survivors", to: "partials#get_survivor"
 			get "/team_logos/:id", to: "partials#team_logos"
 			post 'buy_random_quinielas', to: "partials#buy_random_quinielas"
 			get 'get_quinielas_no_winner', to: "partials#get_quinielas_no_winner"
@@ -86,7 +88,7 @@ Rails.application.routes.draw do
         end
     end
 
-	
+
   resources :teams
   resources :sport_categories
 
@@ -146,19 +148,16 @@ Rails.application.routes.draw do
   get 'welcome/privacy'
   get 'welcome/faq'
 
-
-
-
-
-
-
+  get '/landing', :to => redirect('/index2.html')
+  get '/error', :to => redirect('/404.html')
 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
+	  root 'welcome#index'
+
 
 
   # Example of regular route:

@@ -5,7 +5,7 @@ Devise.setup do |config|
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
-  # by default. You can change it below and use your own secret key.   
+  # by default. You can change it below and use your own secret key.
    config.secret_key = '5d1aac34a6484f360abe179bc56ab138424cf684cbf42a51e036c7d3f220da37dd82b83e15ec2db7dfaa8b10dc04f06cbf8b157a6cd5a4062e9aff84ddf0f05a'
 
   # ==> Mailer Configuration
@@ -148,6 +148,7 @@ Devise.setup do |config|
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
   # config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -242,11 +243,11 @@ end
     config.omniauth :facebook, "810845932381003", "58ced0568b16643d8bce33866174930f", callback_url: "http://donbillete.com/users/auth/facebook/callback", scope: 'email', info_fields: 'email, first_name, last_name'
 
     config.omniauth :twitter, "1F5rFDREEwZkyFvGNPLDGNXOb", "lxG8IK1LJ5kW8BTOq1xRcFAme47A5oMhTVY2NKaAlD3YBEEe8G", callback_url: "http://donbillete.com/users/auth/twitter/callback", scope: 'email', info_fields: 'email, first_name, last_name'
-    
-    
 
-    
-  
+
+
+
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

@@ -9,6 +9,7 @@ class SurvivorWeekGame < ActiveRecord::Base
   validates :initial_date, :final_date, overlap: { scope: "survivor_id",
     message_content: I18n.t("errors.messages.overlaps_with_another_range") }
   validate :initial_date_lesser_than_final_date
+  validates :week, :uniqueness => { :scope => [:survivor_id] }
 
   #METHODS
 	def select_display

@@ -1,1 +1,2 @@
-Team2 = Team
+class Team2 < Team
+end

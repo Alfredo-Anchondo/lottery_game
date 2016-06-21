@@ -47,7 +47,7 @@
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor_user.created_at") %>: <br />
-                    <small><%= @survivor_user.created_at %></small>
+                    <small><%= I18n.l(@survivor_user.created_at, :format => :long) %></small>
                   </td>
                 </tr>
             </tbody>
