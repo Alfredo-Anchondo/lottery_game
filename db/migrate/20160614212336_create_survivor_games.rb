@@ -9,6 +9,8 @@ class CreateSurvivorGames < ActiveRecord::Migration
       t.text :description 
       t.datetime :game_date, null:false
       t.integer :winner_team
+	  t.integer :local_score
+	  t.integer :visit_score	
       t.references :survivor_week_game, index: true
 	  t.foreign_key :survivor_week_games
       t.timestamps
