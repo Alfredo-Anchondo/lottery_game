@@ -9,7 +9,6 @@
 			</div>
 			<hr>
 			<div class="row" id="games_row">
-
 			</div>
 			<script>
 				  var current_language = $("#current_language").val();
@@ -25,7 +24,7 @@
 				  $('#games_row').html("");
 					for(var i in data.survivor_week_games){
          var image_url = data.survivor_week_games[i].team.logo_url;
-         var image_url2 = data.survivor_week_games[i].second_team.logo_url;
+         var image_url2 = data.survivor_week_games[i].team2.logo_url;
 				 var winner_team_1 = "";
 				 var winner_team_2 = "";
 
