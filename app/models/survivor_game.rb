@@ -16,7 +16,7 @@ class SurvivorGame < ActiveRecord::Base
   def change_status
     if winner_team_changed?
       loser_team = (winner_team == team_id)? team2_id: team_id
-      winner_status = (survivor_week_game.week == 17)? "winner": "alive"
+      winner_status = (survivor_week_game.last_week?)? "winner": "alive"
 
       survivor_week_game
       .survivor_users

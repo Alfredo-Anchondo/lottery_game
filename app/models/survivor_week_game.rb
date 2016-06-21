@@ -1,4 +1,7 @@
 class SurvivorWeekGame < ActiveRecord::Base
+  #SCOPES
+  default_scope -> { order(:week) }
+
   #ASSOCIATIONS
   belongs_to :survivor
   has_many :survivor_games
@@ -15,6 +18,18 @@ class SurvivorWeekGame < ActiveRecord::Base
 	def select_display
 		"#{survivor.name} #{I18n.t("week")} #{week}"
 	end
+
+  def last_week?
+    week == 17
+  end
+
+  def no_pending_games?
+    survivor_games.count == survivor_games.where.not(:local_score => nil, :visit_score => nil).count
+  end
+
+  def can_close?
+    last_week? && no_pending_games?
+  end
 
   protected
 

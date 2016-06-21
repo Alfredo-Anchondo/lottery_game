@@ -46,6 +46,6 @@ class SurvivorsController < ApplicationController
     end
 
     def survivor_params
-      params.require(:survivor).permit(:name, :description, :access_key, :price, :initial_balance)
+      params.require(:survivor).permit(:name, :description, :access_key, :price, :percentage, :initial_balance)
     end
 end
