@@ -1,7 +1,7 @@
 class SurvivorsController < ApplicationController
-  load_and_authorize_resource except: [:new, :create, :update, :edit]
+  load_and_authorize_resource except: [:new, :create, :update, :edit, :close]
   before_action :authenticate_user!
-  before_action :set_survivor, only: [:show, :edit, :update, :destroy]
+  before_action :set_survivor, only: [:show, :edit, :update, :destroy, :close]
 
   respond_to :html, :json
 
@@ -21,8 +21,6 @@ class SurvivorsController < ApplicationController
 
   def edit
   end
-	
-	
 
   def create
     @survivor = Survivor.new(survivor_params)
@@ -38,6 +36,11 @@ class SurvivorsController < ApplicationController
   def destroy
     @survivor.destroy
     respond_with(@survivor)
+  end
+
+  def close
+    @survivor.close
+    render :nothing => true
   end
 
   private

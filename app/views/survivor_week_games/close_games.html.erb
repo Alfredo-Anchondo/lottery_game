@@ -41,11 +41,11 @@
              winner_team_2 = '<img src="/assets/trophy.png" class="trophy">';
 				 }
 
-         if (data.survivor_games[i].local_score !== undefined) {
+         if (data.survivor_games[i].local_score !== null) {
 					   local_score_label = "<label class='score_label'>" + data.survivor_games[i].local_score + "</label>";
 				 }
 
-				 if (data.survivor_games[i].visit_score !== undefined){
+				 if (data.survivor_games[i].visit_score !== null){
              visit_score_label = "<label class='score_label'>" + data.survivor_games[i].visit_score + "</label>";
 				 }
 						$('#games_row').append('<div class="col-md-4 teams-div"><h4 style="text-align: center;"> Fecha del juego: <span>'+moment(data.survivor_games[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+'  </span> </h4> <div class="col-md-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team.id+'"><img width="100%" src="' + image_url + '">' + winner_team_1 + local_score_label + '</div><div class="col-md-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team2.id+'"><img width="100%" src="' + image_url2 + '">' + winner_team_2 + visit_score_label + '</div></div>');

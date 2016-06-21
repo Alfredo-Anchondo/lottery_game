@@ -7,11 +7,14 @@ Rails.application.routes.draw do
   	collection do
   		get 'close_games'
   		get '/get_games',to: "survivor_week_games#get_games"
-      put 'close_last_week/:id', to: "survivor_week_games#close_last_week"
   	end
   end
 
-  resources :survivors
+  resources :survivors do
+    collection do
+      put 'close/:id', to: "survivors#close"
+  	end
+  end
 
   resources :error_reports
 
