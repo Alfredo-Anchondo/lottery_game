@@ -11,8 +11,9 @@
 			<div class="row" id="games_row">
 			</div>
 			<script>
-				  var current_language = $("#current_language").val();
-				$('#week_number').change(function(){
+				var current_language = $("#current_language").val();
+
+        function get_games() {
 					var week = $('#week_number option:selected').val();
 					$.ajax({
 				  method: "GET",
@@ -21,58 +22,118 @@
 				  data: { id: week}
 				})
 				  .done(function( data ) {
-				  $('#games_row').html("");
-					for(var i in data.survivor_week_games){
-         var image_url = data.survivor_week_games[i].team.logo_url;
-         var image_url2 = data.survivor_week_games[i].team2.logo_url;
+				 $('#games_row').html("");
+				 for(var i in data.survivor_games){
+         var image_url = data.survivor_games[i].team.logo_url;
+         var image_url2 = data.survivor_games[i].team2.logo_url;
 				 var winner_team_1 = "";
 				 var winner_team_2 = "";
+				 var local_score_label = "";
+				 var visit_score_label = "";
 
-				 if(data.survivor_week_games[i].winner_team === data.survivor_week_games[i].team.id) {
-             winner_team_1 = '<img src="/assets/trophy.png" class="trophy selected">';
+				 if(data.survivor_games[i].winner_team === data.survivor_games[i].team.id) {
+             winner_team_1 = '<img src="/assets/trophy.png" class="trophy">';
 				 }
 				 else {
-             winner_team_2 = '<img src="/assets/trophy.png" class="trophy selected">';
+             winner_team_2 = '<img src="/assets/trophy.png" class="trophy">';
 				 }
 
-						$('#games_row').append('<div class="col-md-4 teams-div"><h4 style="text-align: center;"> Fecha del juego: <span>'+moment(data.survivor_week_games[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+'  </span> </h4> <div class="col-md-6 team-div" data-game="'+data.survivor_week_games[i].id+'" data-team="'+data.survivor_week_games[i].team.id+'"><img width="100%" src="' + image_url + '">' + winner_team_1 + '</div><div class="col-md-6 team-div" data-game="'+data.survivor_week_games[i].id+'" data-team="'+data.survivor_week_games[i].team2.id+'"><img width="100%" src="' + image_url2 + '">' + winner_team_2 + '</div></div>');
+         if (data.survivor_games[i].local_score) {
+					   local_score_label = "<label class='score_label'>" + data.survivor_games[i].local_score + "</label>";
+				 }
+
+				 if (data.survivor_games[i].visit_score){
+             visit_score_label = "<label class='score_label'>" + data.survivor_games[i].visit_score + "</label>";
+				 }
+
+						$('#games_row').append('<div class="col-md-4 teams-div"><h4 style="text-align: center;"> Fecha del juego: <span>'+moment(data.survivor_games[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+'  </span> </h4> <div class="col-md-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team.id+'"><img width="100%" src="' + image_url + '">' + winner_team_1 + local_score_label + '</div><div class="col-md-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team2.id+'"><img width="100%" src="' + image_url2 + '">' + winner_team_2 + visit_score_label + '</div></div>');
           }
 				  });
-				});
+				}
 
-				$(document).on("mouseover", ".team-div", function() {
-					  if($(this).children(".trophy").length === 0) {
-							  $(this).append('<img src="/assets/trophy_bw.png" class="trophy">');
+				function declare_winner(team_div, local_score_value, visit_score_value) {
+						var $team_div = team_div;
+						var game_id = $team_div.data("game");
+						var team_id = $team_div.data("team");
+
+						$.ajax({
+								method: "PUT",
+								url: "/survivor_games/"+ game_id,
+								dataType: "json",
+								data: { survivor_game: { winner_team: team_id, local_score: local_score_value, visit_score: visit_score_value } },
+								success: function(data, text_status, jq_xhr) {
+										$team_div.parent().find(".trophy").remove();
+										$("<img class='trophy'/>").appendTo($team_div).addClass("selected").attr("src", "/assets/trophy.png");
+								}
+						});
+				}
+
+				$('#week_number').change(get_games);
+				$('#week_number').each(get_games);
+
+				$(document).on("click", ".team-div", function() {
+						if($(this).children(".score").length === 0) {
+								$("<input type='text' class='score'/>").appendTo($(this)).focus();
 						}
 				});
 
-				$(document).on("mouseout", ".team-div", function() {
-					  $(this).children(".trophy:not(.selected)").remove();
-				});
+				$(document).on("keyup", ".score", function(e) {
+					  if(e.keyCode == 13) {
+                var $local_score = $(this).closest(".teams-div").children(".team-div").first().find(".score");
+								var $visit_score = $(this).closest(".teams-div").children(".team-div").last().find(".score");
+								var local_score_value, visit_score_value, winner;
 
-        $(document).on("click", ".team-div", function() {
-					  if($(this).children(".selected").length === 0) {
-								var $team_div = $(this);
-								var game_id = $team_div.data("game");
-								var team_id = $team_div.data("team");
+								if ($local_score.length) {
+									  local_score_value = $local_score.val();
+								}
+								else {
+									  $local_score = $(this).closest(".teams-div").children(".team-div").first().find(".score_label")
 
-								$.ajax({
-								    method: "PUT",
-										url: "/survivor_games/"+ game_id,
-										dataType: "json",
-										data: { survivor_game: { winner_team: team_id } },
-								    success: function(data, text_status, jq_xhr) {
-												var $selected_team = $team_div.closest(".teams-div").find(".selected");
+										if ($local_score.length) {
+											  local_score_value = $local_score.text();
+										}
+								}
 
-												if($selected_team) {
-													  $selected_team.parent().removeClass("shake_effect");
-													  $selected_team.remove();
-												}
+								if ($visit_score.length) {
+										visit_score_value = $visit_score.val();
+							  }
+							  else {
+										$visit_score = $(this).closest(".teams-div").children(".team-div").last().find(".score_label")
 
-				                $team_div.addClass("shake_effect");
-												$team_div.children(".trophy").addClass("selected").attr("src", "/assets/trophy.png");
-									  }
+										if ($visit_score.length) {
+												visit_score_value = $visit_score.text();
+										}
+								}
+
+                if(local_score_value && visit_score_value) {
+										if(local_score_value > visit_score_value) {
+											  winner = $local_score.parent().data("team");
+												declare_winner($local_score.parent(), local_score_value, visit_score_value);
+										}
+										else if(visit_score_value > local_score_value) {
+											  winner = $visit_score.parent().data("team");
+												declare_winner($visit_score.parent(), local_score_value, visit_score_value);
+										}
+										else {
+											  $(this).closest(".teams-div").find(".trophy").remove();
+										}
+								}
+								else {
+									  $(this).closest(".teams-div").find(".trophy").remove();
+								}
+
+								$(this).closest(".teams-div").find(".score").each(function() {
+									  var score_value = $(this).val();
+                    var $label_score = $(this).siblings(".score_label");
+
+										if($label_score.length === 0) {
+										    $label_score = $("<label class='score_label'></label>").appendTo($(this).parent());
+										}
+
+										$label_score.text(score_value);
 								});
+
+								$("input[type='text'].score").remove();
 						}
 				});
 			</script>

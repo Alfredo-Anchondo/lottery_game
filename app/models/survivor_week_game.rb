@@ -1,4 +1,7 @@
 class SurvivorWeekGame < ActiveRecord::Base
+  #SCOPES
+  default_scope -> { order(:week) }
+
   #ASSOCIATIONS
   belongs_to :survivor
   has_many :survivor_games
@@ -15,6 +18,10 @@ class SurvivorWeekGame < ActiveRecord::Base
 	def select_display
 		"#{survivor.name} #{I18n.t("week")} #{week}"
 	end
+
+  def last_week?
+    week == 17
+  end
 
   protected
 
