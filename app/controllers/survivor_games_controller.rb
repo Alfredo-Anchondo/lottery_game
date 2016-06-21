@@ -44,6 +44,6 @@ class SurvivorGamesController < ApplicationController
     end
 
     def survivor_game_params
-      params.require(:survivor_game).permit(:team_id, :team2_id, :handicap, :plus_handicap, :description, :game_date, :winner_team, :survivor_week_game_id)
-    end
+      params.require(:survivor_game).permit(:team_id, :team2_id, :handicap, :plus_handicap, :description, :game_date, :winner_team, :local_score, :visit_score, :survivor_week_game_id)
+    end 
 end
