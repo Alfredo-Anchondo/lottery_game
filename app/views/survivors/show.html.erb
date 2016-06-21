@@ -46,6 +46,12 @@
                 </tr>
                               <tr>
                   <td>
+                    <%= t("activerecord.attributes.survivor.percentage") %>: <br />
+                    <small><%= number_to_currency(@survivor.percentage) %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
                     <%= t("activerecord.attributes.survivor.created_at") %>: <br />
                     <small><%= I18n.l(@survivor.created_at, :format => :long) %></small>
                   </td>

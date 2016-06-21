@@ -359,6 +359,7 @@ es:
             description: "Descripción"
             access_key: "Clave de acceso"
             price: "Precio"
+            percentage: "Porcentaje"
             initial_balance: "Bolsa inicial"
             created_at: "Fecha de creación"
         survivor_game:

@@ -34,10 +34,22 @@
             <%= f.text_field :price, :class => "form-control" %>
           </div>
         </div>
+                 <% if signed_in? %>
+                  <% if current_user.role.is_admin? %>
                   <div class="form-group">
           <%= f.label :initial_balance, :class => "col-md-3" %>
           <div class="col-md-9">
             <%= f.text_field :initial_balance, :class => "form-control" %>
+          </div>
+        </div>
+                 <% end %>
+                 <% end %>
+                  
+        
+         <div class="form-group">
+          <%= f.label :percentage, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :percentage, :class => "form-control" %>
           </div>
         </div>
         

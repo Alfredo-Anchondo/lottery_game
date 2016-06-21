@@ -169,6 +169,10 @@
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
     box-shadow: 1px 1px 1px 1px #ccc;
 }
+	  
+	  .hide-phone {
+		  display:none;
+	  }
       
 }
 
@@ -346,7 +350,9 @@
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
     box-shadow: 1px 1px 1px 1px #ccc;
 }
-      
+      .hide-phone {
+		  display:none;
+	  }
 
 }
 
@@ -531,6 +537,10 @@
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
     box-shadow: 1px 1px 1px 1px #ccc;
 }
+	  
+	  .hide-phone {
+		  display:none;
+	  }
 
 }
 
@@ -712,6 +722,9 @@
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
     box-shadow: 1px 1px 1px 1px #ccc;
 }
+	.hide-phone {
+		  display:none;
+	  }
 }
 
 .row{
