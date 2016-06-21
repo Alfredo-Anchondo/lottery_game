@@ -27,7 +27,7 @@
   
 </style>
 
-<h1 style="text-align:center; font-size:30px; font-weight:900; color:#2d68ac;">─────── Tiras ───────</h1>
+<h1 style="text-align:center; font-size:30px; font-weight:900; color:#2d68ac;"><span class="hide-phone">───────</span> Tiras <span  class="hide-phone">───────</span></h1>
 <div id="mainwrapper"><!-- This #mainwrapper section contains all of our images to make them center and look proper in the browser ->
  
 </div> <!-- end of #mainwrapper-->
@@ -35,7 +35,7 @@
 <div class="clearfix"></div>
 <hr>
 
-<h1 style="text-align:center; font-size:30px; font-weight:900; color:#2d68ac;">───── Loterias ──────</h1>
+<h1 style="text-align:center; font-size:30px; font-weight:900; color:#2d68ac;"><span  class="hide-phone">─────</span> Loterias <span  class="hide-phone">──────</span></h1>
 <div id="mainwrapper2"><!-- This #mainwrapper section contains all of our images to make them center and look proper in the browser ->
  
 </div> <!-- end of #mainwrapper-->
@@ -76,7 +76,7 @@
                             <h4>¡No te preocupes! Nosotros te ayudamos con el generador de números al azar.</h4> <br>
                                 <label>Tira: </label> <select style="text-align:center" class="form-control" id="tiras_random"><option value="0">Selecciona una Tira</option></select> <br><br>
                                 
-                                <div class="row">
+                                <div class="row" id="team_tira_random">
                                 <div class="col-md-5 col-xs-5">
                                     <h4 style="text-align:center" id="local_team_random_tira"></h4>
                                     </div> 
@@ -1745,6 +1745,8 @@
 		var normal_buy;
 		
 		$('#tiras_random').change(function(){
+			 $('#local_team_random_tira').empty();
+			$('#visit_team_random_tira').empty();
 			 local = $('#tiras_random option:selected').data('local');
 		     visit = $('#tiras_random option:selected').data('visit');
 			 price = $('#tiras_random option:selected').data('price');

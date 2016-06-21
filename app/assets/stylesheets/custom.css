@@ -170,11 +170,10 @@
     box-shadow: 1px 1px 1px 1px #ccc;
 }
 
+	  .hide-phone {
+		  display:none;
+	  }
 }
-
-
-
-
 
 @media only screen
   and (min-device-width: 375px)
@@ -346,7 +345,13 @@
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
     box-shadow: 1px 1px 1px 1px #ccc;
 }
+<<<<<<< HEAD
 
+=======
+      .hide-phone {
+		  display:none;
+	  }
+>>>>>>> 2af65e2e7acef1ff166c3f8fe108e17adebcc884
 
 }
 
@@ -532,6 +537,10 @@
     box-shadow: 1px 1px 1px 1px #ccc;
 }
 
+	  .hide-phone {
+		  display:none;
+	  }
+
 }
 
 @media screen and (max-width: 480px) {
@@ -712,6 +721,9 @@
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
     box-shadow: 1px 1px 1px 1px #ccc;
 }
+	.hide-phone {
+		  display:none;
+	  }
 }
 
 .row{
