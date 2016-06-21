@@ -94,6 +94,7 @@ en:
     save: "Save"
     new: "New"
     back: "Back"
+  close_week: "Close week"
   week: "Week"
   "true": "True"
   "false": "False"
@@ -267,7 +268,7 @@ en:
     bought: "Bought"
     alive: "Alive"
     loser: "Loser"
-    winner: "Winner"  
+    winner: "Winner"
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:

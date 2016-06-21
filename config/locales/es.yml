@@ -97,6 +97,7 @@ es:
     save: "Guardar"
     new: "Crear Nuevo"
     back: "Volver"
+  close_week: "Cerrar semana"
   week: "Semana"
   "true": "Si"
   "false": "No"
