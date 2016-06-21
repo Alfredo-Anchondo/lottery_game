@@ -26,7 +26,7 @@ class SurvivorWeekGamesController < ApplicationController
     survivor_week_game = SurvivorWeekGame.find(params[:id])
 
 		render :json => {
-      :last_week => survivor_week_game.last_week?,
+      :can_close => survivor_week_game.can_close?,
       :survivor_games => ActiveModel::ArraySerializer.new(survivor_week_game.survivor_games)
     }
 	end

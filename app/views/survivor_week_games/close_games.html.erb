@@ -10,6 +10,8 @@
 			<hr>
 			<div class="row" id="games_row">
 			</div>
+			<div class="row" id="submit_row">
+			</div>
 			<script>
 				var current_language = $("#current_language").val();
 
@@ -23,6 +25,7 @@
 				})
 				  .done(function( data ) {
 				 $('#games_row').html("");
+				 $('#submit_row').html("");
 				 for(var i in data.survivor_games){
          var image_url = data.survivor_games[i].team.logo_url;
          var image_url2 = data.survivor_games[i].team2.logo_url;
@@ -34,27 +37,25 @@
 				 if(data.survivor_games[i].winner_team === data.survivor_games[i].team.id) {
              winner_team_1 = '<img src="/assets/trophy.png" class="trophy">';
 				 }
-				 else {
+				 else if (data.survivor_games[i].winner_team === data.survivor_games[i].team2.id) {
              winner_team_2 = '<img src="/assets/trophy.png" class="trophy">';
 				 }
 
-         if (data.survivor_games[i].local_score) {
+         if (data.survivor_games[i].local_score !== undefined) {
 					   local_score_label = "<label class='score_label'>" + data.survivor_games[i].local_score + "</label>";
 				 }
 
-				 if (data.survivor_games[i].visit_score){
+				 if (data.survivor_games[i].visit_score !== undefined){
              visit_score_label = "<label class='score_label'>" + data.survivor_games[i].visit_score + "</label>";
 				 }
-
 						$('#games_row').append('<div class="col-md-4 teams-div"><h4 style="text-align: center;"> Fecha del juego: <span>'+moment(data.survivor_games[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+'  </span> </h4> <div class="col-md-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team.id+'"><img width="100%" src="' + image_url + '">' + winner_team_1 + local_score_label + '</div><div class="col-md-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team2.id+'"><img width="100%" src="' + image_url2 + '">' + winner_team_2 + visit_score_label + '</div></div>');
           }
 				  });
 				}
 
-				function declare_winner(team_div, local_score_value, visit_score_value) {
+				function declare_winner(team_div, team_id, local_score_value, visit_score_value) {
 						var $team_div = team_div;
 						var game_id = $team_div.data("game");
-						var team_id = $team_div.data("team");
 
 						$.ajax({
 								method: "PUT",
@@ -63,7 +64,9 @@
 								data: { survivor_game: { winner_team: team_id, local_score: local_score_value, visit_score: visit_score_value } },
 								success: function(data, text_status, jq_xhr) {
 										$team_div.parent().find(".trophy").remove();
-										$("<img class='trophy'/>").appendTo($team_div).addClass("selected").attr("src", "/assets/trophy.png");
+										if(team_id) {
+										    $("<img class='trophy'/>").appendTo($team_div).addClass("selected").attr("src", "/assets/trophy.png");
+										}
 								}
 						});
 				}
@@ -83,7 +86,7 @@
 								var $visit_score = $(this).closest(".teams-div").children(".team-div").last().find(".score");
 								var local_score_value, visit_score_value, winner;
 
-								if ($local_score.length) {
+								if ($local_score.length && $local_score.val() !== "") {
 									  local_score_value = $local_score.val();
 								}
 								else {
@@ -94,7 +97,7 @@
 										}
 								}
 
-								if ($visit_score.length) {
+								if ($visit_score.length && $visit_score.val() !== "") {
 										visit_score_value = $visit_score.val();
 							  }
 							  else {
@@ -108,14 +111,15 @@
                 if(local_score_value && visit_score_value) {
 										if(local_score_value > visit_score_value) {
 											  winner = $local_score.parent().data("team");
-												declare_winner($local_score.parent(), local_score_value, visit_score_value);
+												declare_winner($local_score.parent(), $local_score.parent().data("team"), local_score_value, visit_score_value);
 										}
 										else if(visit_score_value > local_score_value) {
 											  winner = $visit_score.parent().data("team");
-												declare_winner($visit_score.parent(), local_score_value, visit_score_value);
+												declare_winner($visit_score.parent(), $visit_score.parent().data("team"), local_score_value, visit_score_value);
 										}
 										else {
 											  $(this).closest(".teams-div").find(".trophy").remove();
+												declare_winner($(this).parent(), null, local_score_value, visit_score_value);
 										}
 								}
 								else {
@@ -124,13 +128,16 @@
 
 								$(this).closest(".teams-div").find(".score").each(function() {
 									  var score_value = $(this).val();
-                    var $label_score = $(this).siblings(".score_label");
 
-										if($label_score.length === 0) {
-										    $label_score = $("<label class='score_label'></label>").appendTo($(this).parent());
-										}
+										if(score_value !== "") {
+		                    var $label_score = $(this).siblings(".score_label");
 
-										$label_score.text(score_value);
+												if($label_score.length === 0) {
+												    $label_score = $("<label class='score_label'></label>").appendTo($(this).parent());
+												}
+
+										    $label_score.text(score_value);
+									  }
 								});
 
 								$("input[type='text'].score").remove();

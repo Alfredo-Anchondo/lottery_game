@@ -23,6 +23,14 @@ class SurvivorWeekGame < ActiveRecord::Base
     week == 17
   end
 
+  def no_pending_games?
+    survivor_games.count == survivor_games.where.not(:local_score => nil, :visit_score => nil).count
+  end
+
+  def can_close?
+    last_week? && no_pending_games?
+  end
+
   protected
 
   def initial_date_lesser_than_final_date
