@@ -83,11 +83,11 @@
 								<div class="row" id="random_caracteristics_tira" style="display:none">
 							<div class="col-md-6">
 								<h4 style="text-align:center; color:black;">Bolsa acumulada: </h4>
-								<h3  style="text-align:center; font-weight:900; color:#696969" id="random_balance_tira"></h3>
+								<h3  style="text-align:center; font-weight:900; color:#2d68ac" id="random_balance_tira"></h3>
 							</div>
 							<div class="col-md-6">
 								<h4 style="text-align:center; color:black;">Precio del billete:</h4>
-								<h3 style="text-align:center; font-weight:900; color:#696969;" id="random_price_tira"></h3>
+								<h3 style="text-align:center; font-weight:900; color:#2d68ac;" id="random_price_tira"></h3>
 							</div>
 
 						</div>
@@ -106,9 +106,9 @@
                             </select> </span>    <br> <hr>
                                 
                                 <h3>Números Generados: </h3> 
-                                <h2 style="font-weight:900; word-spacing:10px; color:#696969;" id="generate_numbers_div_tira"></h2>
+                                <h2 style="font-weight:900; word-spacing:10px; color:#2d68ac" id="generate_numbers_div_tira"></h2>
 								<hr>
-								<h3 style="font-weight:800">Total a pagar: <span style="font-size:120%; color:#696969" id="total_pay_ran_tira"></span></h3>
+								<h3 style="font-weight:800">Total a pagar: <span style="font-size:120%; color:#2d68ac" id="total_pay_ran_tira"></span></h3>
                                 <hr>
                                 
                                 <button class="btn btn-primary" id="generate_numbers_tira">Generar Números</button>
@@ -1762,7 +1762,7 @@
 						result = result.concat(String(Math.round(r)));
 					}
 					generate_numbers.push(result);
-					$('#generate_numbers_div_tira').append('<label style="font-weight:800; margin-left:3%;"> '+result+' </label>');
+					$('#generate_numbers_div_tira').append('<label style="font-weight:800; color:#2d68ac; margin-left:3%;"> '+result+' </label>');
 				}	
 				$('#buy_numbers_tira').show();
 				}
