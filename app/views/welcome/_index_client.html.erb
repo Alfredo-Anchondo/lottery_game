@@ -1609,14 +1609,14 @@
 						var radio_buttons="";
 						
 						for(var o = 0; o < total_questions-1 ;o++){
-					$('.slide2'+i+'').append(' <div class="col-md-7 col-xs-12"><h4 style="text-align:left">'+ data.partials[i].quiniela_questions[o].question.title +'</h4></div> <div class="col-md-3 col-xs-6"> <div class="radio radio-inline radio-danger"><input class="answers_select" data-id="'+i+'" type="radio" name="answer'+i+o+'" value="1"><label style="text-align: left !important;" for="answer'+i+o+'" class="">Si</label></div><div class="radio radio-inline radio-danger"><input data-id="'+i+'" type="radio" class="answers_select" name="answer'+i+o+'" value="0"> <label for="answer'+i+o+'" style="text-align: left !important;" class="">No</label></div> </div> <div class="col-md-1 col-xs-6"> <input style="text-align:left; width:35px;"  type="text" disabled class="form-control value_result '+i+o+'"> </div>');
+					$('.slide2'+i+'').append(' <div class="col-md-7 col-xs-12"><h4 style="text-align:left">'+ data.partials[i].quiniela_questions[o].question.title +'</h4></div> <div class="col-md-3 col-xs-8"> <div class="radio radio-inline radio-danger"><input class="answers_select" data-id="'+i+'" type="radio" name="answer'+i+o+'" value="1"><label style="text-align: left !important;" for="answer'+i+o+'" class="">Si</label></div><div class="radio radio-inline radio-danger"><input data-id="'+i+'" type="radio" class="answers_select" name="answer'+i+o+'" value="0"> <label for="answer'+i+o+'" style="text-align: left !important;" class="">No</label></div> </div> <div class="col-md-1 col-xs-4"> <input style="text-align:left; width:35px;"  type="text" disabled class="form-control value_result '+i+o+'"> </div>');
 						}
 						total_questions = total_questions-1
 						var texts = text_responses.split(',');
 						for (var cantidad=0; cantidad < quantity_response ;cantidad++){
 							radio_buttons=radio_buttons + '<div class="radio radio-inline radio-danger"><input class="answers_select" data-id="'+i+'" type="radio" name="answer'+i+total_questions+'" value="'+cantidad+'"><label style="text-align: left !important;" for="answer'+i+total_questions+'" class="">'+texts[cantidad]+'</label></div>'
 						}
-						$('.slide2'+i+'').append(' <div class="col-md-12 col-xs-12"><h4 style="text-align:left">'+ data.partials[i].quiniela_questions[total_questions].question.title +'</h4></div> <div class="col-md-11 col-xs-6"> '+radio_buttons+'  </div> <div class="col-md-1 col-xs-6"> <input style="text-align:left; width:35px;"  type="text" disabled class="form-control value_result '+i+total_questions+'"> </div>');
+						$('.slide2'+i+'').append(' <div class="col-md-12 col-xs-12"><h4 style="text-align:left">'+ data.partials[i].quiniela_questions[total_questions].question.title +'</h4></div> <div class="col-md-11 col-xs-8"> '+radio_buttons+'  </div> <div class="col-md-1 col-xs-4"> <input style="text-align:left; width:35px;"  type="text" disabled class="form-control value_result '+i+total_questions+'"> </div>');
 						
 					}else{
 						 
