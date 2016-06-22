@@ -60,16 +60,9 @@
     <div class="modal-content">
       <div class="modal-body">
         <div class="row">
-              <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Tira aleatoria</h5>
-                            <span class="label label-primary">Generar números</span>
-                        </div>
-
-                        <div class="ibox-content" id="random_tira">
        <div class="row" style="text-align:center" id="random_lotteries_div">
-                            <h3>¿Te sientes con suerte y no sabes qué números elegir?</h3>
-                            <h4>¡No te preocupes! Nosotros te ayudamos con el generador de números al azar.</h4> <br>
+                            <h3>Tira aleatoria</h3>
+                            <h4>Nosotros te ayudamos con el generador de números al azar.</h4> <br>
                                 <label>Tira: </label> <select style="text-align:center" class="form-control" id="tiras_random"><option value="0">Selecciona una Tira</option></select> <br><br>
                                 
                                 <div class="row" id="team_tira_random">
@@ -124,15 +117,10 @@
 								<h5 style=" text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:black" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5>
                                 
                             </div>
-          
-        </div>
-            </div>
+            
         </div>
       </div>
-      <div class="modal-footer" style="background-color:#2d68ac; color:white;">
-       <h4 style="text-align:center"> <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button></h4>
-        <h5 style="text-align:center; color:white;">*Nota: En caso de que no se especifique, para el resultado de las preguntas se considerará el partido completo, incluyendo tiempos extra y penaltis en caso de que así se dé. Futbol En caso de 0-0 se tomará como acierto el último periodo, el signo de + es igual a la prórroga. NBA En caso de que haya empate en 2 o más cuartos, se tomará el primer cuarto en el que ocurra.  </h5>
-      </div>
+     
     </div>
   </div>
 </div>
@@ -1749,8 +1737,8 @@
 		     balance = $('#tiras_random option:selected').data('balance');
 			 tira_id = $('#tiras_random option:selected').val();
 			 number_questions = $('#tiras_random option:selected').data('quantity');
-			$('#local_team_random_tira').append('<img width="100%" src="'+ local +'">');
-			$('#visit_team_random_tira').append('<img width="100%" src="'+ visit +'">');
+			$('#local_team_random_tira').append('<img style="margin-left:25%" width="50%" src="'+ local +'">');
+			$('#visit_team_random_tira').append('<img style="margin-left:25%" width="50%" src="'+ visit +'">');
 			$('#random_price_tira').text(price + " DB");
 			$('#random_balance_tira').text(balance + " DB");
 			$('#random_caracteristics_tira').show();
