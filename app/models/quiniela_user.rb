@@ -4,6 +4,25 @@ class QuinielaUser < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :quiniela
 	
+	def money_sales 
+		quinielas = QuinielaUser.where('status = ?','Ganador').uniq().pluck(:quiniela_id)
+		total_lose = 0;
+		quinielas.each do |quiniela|
+			quinielas_winner = Quiniela.where('id = ?',quiniela)	
+			total_lose += Float(quinielas_winner[0].initial_balance)	
+			
+		end
+		return total_lose
+	end
+	
+	def total_win
+		wins_quiniela = 0
+		QuinielaUser.all.each do |quiniela|
+			wins_quiniela += Float(quiniela.quiniela.price)
+		end
+		logger.info wins_quiniela
+		return wins_quiniela
+	end
 	
 		def self.sales_by_month
 		array_months = []

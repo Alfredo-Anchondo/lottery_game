@@ -10,6 +10,9 @@ class Ability
 		can [:edit, :update], User do |u|
 			user.id == u.id
 		end
+		can [:index, :show], Survivor do |s|
+			user.id == s.user_id
+		end
         cannot [:new, :create, :edit, :update, :delete, :destroy], Game
 		cannot [:new, :create, :edit, :update, :delete, :destroy], Survivor
 		cannot [:new, :create, :edit, :update, :delete, :destroy], SurvivorWeekGame

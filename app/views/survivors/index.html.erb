@@ -18,7 +18,8 @@
                                   <th><%= t("activerecord.attributes.survivor.price") %></th>
                                   <th><%= t("activerecord.attributes.survivor.initial_balance") %></th>
                                   <th><%= t("activerecord.attributes.survivor.access_key") %></th>
-                                     <th><%= t("activerecord.attributes.survivor.percentage") %></th>
+                                  <th><%= t("activerecord.attributes.survivor.percentage") %></th>
+                                  <th><%= t("activerecord.attributes.survivor.user_id") %></th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -30,8 +31,9 @@
                                   <td><%= survivor.description %></td>
                                   <td><%= number_to_currency(survivor.price) %></td>
                                   <td><%= number_to_currency(survivor.initial_balance) %></td>
-                                  <td><%= number_to_currency(survivor.access_key) %></td>
-                                  <td><%= number_to_currency(survivor.percentage) %></td> 
+                                  <td><%= survivor.access_key %></td>
+                                  <td><%= survivor.percentage %></td> 
+                                  <td><%= User.find(survivor.user_id).username %></td> 
                                 <td class="action-link">
                   <% if can? :show,survivor %>
                     <%= link_to survivor, :class => "btn btn-default", :title => t("actions.show") do %>

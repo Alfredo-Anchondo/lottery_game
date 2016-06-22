@@ -6,6 +6,26 @@ class UserLottery < ActiveRecord::Base
       name
     end
 	
+	def money_sales 
+		lotteries = UserLottery.where('status = ?','Ganador').uniq().pluck(:lottery_id)
+		total_lose = 0;
+		lotteries.each do |lottery|
+			lottery_winner = Lottery.where('id = ?',lottery)	
+			total_lose += Float(lottery_winner[0].initial_balance)	
+			
+		end
+		return total_lose
+	end
+	
+	def total_win
+		wins_lottery = 0
+		UserLottery.all.each do |lottery|
+			wins_lottery += Float(lottery.lottery.price)
+		end
+		logger.info wins_lottery
+		return wins_lottery
+	end
+	
 	def self.sales_by_month
 		array_months = []
 		month_label = ''
