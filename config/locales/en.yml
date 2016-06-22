@@ -339,6 +339,7 @@ en:
             description: "Description"
             price: "Price"
             initial_balance: "Initial stock"
+            closed: "Closed"
             created_at: "Created at"
         survivor_game:
             team: "Home team"

@@ -24,11 +24,11 @@ class SurvivorWeekGame < ActiveRecord::Base
   end
 
   def no_pending_games?
-    survivor_games.count == survivor.survivor_games.where.not(:local_score => nil, :visit_score => nil).count
+    survivor.survivor_games.count == survivor.survivor_games.where.not(:local_score => nil, :visit_score => nil).count
   end
 
   def can_close?
-    last_week? && no_pending_games? && survivor.initial_balance > 0
+    last_week? && no_pending_games? && !survivor.closed && survivor.survivor_users.winner.count > 0 && survivor.initial_balance > 0
   end
 
   protected

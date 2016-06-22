@@ -10,7 +10,7 @@
 			<hr>
 			<div class="row" id="games_row">
 			</div>
-			<div class="row" id="submit_row">
+			<div class="row text-center" id="submit_row">
 			</div>
 			<script>
 				var current_language = $("#current_language").val();
@@ -26,30 +26,37 @@
 				  .done(function( data ) {
 				 $('#games_row').html("");
 				 $('#submit_row').html("");
-				 for(var i in data.survivor_games){
-         var image_url = data.survivor_games[i].team.logo_url;
-         var image_url2 = data.survivor_games[i].team2.logo_url;
-				 var winner_team_1 = "";
-				 var winner_team_2 = "";
-				 var local_score_label = "";
-				 var visit_score_label = "";
 
-				 if(data.survivor_games[i].winner_team === data.survivor_games[i].team.id) {
-             winner_team_1 = '<img src="/assets/trophy.png" class="trophy">';
-				 }
-				 else if (data.survivor_games[i].winner_team === data.survivor_games[i].team2.id) {
-             winner_team_2 = '<img src="/assets/trophy.png" class="trophy">';
-				 }
+         if(data.survivor_games) {
+						 for(var i in data.survivor_games){
+		         var image_url = data.survivor_games[i].team.logo_url;
+		         var image_url2 = data.survivor_games[i].team2.logo_url;
+						 var winner_team_1 = "";
+						 var winner_team_2 = "";
+						 var local_score_label = "";
+						 var visit_score_label = "";
 
-         if (data.survivor_games[i].local_score !== null) {
-					   local_score_label = "<label class='score_label'>" + data.survivor_games[i].local_score + "</label>";
-				 }
+						 if(data.survivor_games[i].winner_team === data.survivor_games[i].team.id) {
+		             winner_team_1 = '<img src="/assets/trophy.png" class="trophy">';
+						 }
+						 else if (data.survivor_games[i].winner_team === data.survivor_games[i].team2.id) {
+		             winner_team_2 = '<img src="/assets/trophy.png" class="trophy">';
+						 }
 
-				 if (data.survivor_games[i].visit_score !== null){
-             visit_score_label = "<label class='score_label'>" + data.survivor_games[i].visit_score + "</label>";
-				 }
-						$('#games_row').append('<div class="col-md-4 teams-div"><h4 style="text-align: center;"> Fecha del juego: <span>'+moment(data.survivor_games[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+'  </span> </h4> <div class="col-md-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team.id+'"><img width="100%" src="' + image_url + '">' + winner_team_1 + local_score_label + '</div><div class="col-md-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team2.id+'"><img width="100%" src="' + image_url2 + '">' + winner_team_2 + visit_score_label + '</div></div>');
-          }
+		         if (data.survivor_games[i].local_score !== null) {
+							   local_score_label = "<label class='score_label'>" + data.survivor_games[i].local_score + "</label>";
+						 }
+
+						 if (data.survivor_games[i].visit_score !== null){
+		             visit_score_label = "<label class='score_label'>" + data.survivor_games[i].visit_score + "</label>";
+						 }
+								$('#games_row').append('<div class="col-md-4 teams-div"><h4 style="text-align: center;"> Fecha del juego: <span>'+moment(data.survivor_games[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+'  </span> </h4> <div class="col-md-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team.id+'"><img width="100%" src="' + image_url + '">' + winner_team_1 + local_score_label + '</div><div class="col-md-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team2.id+'"><img width="100%" src="' + image_url2 + '">' + winner_team_2 + visit_score_label + '</div></div>');
+		         }
+				  }
+
+					if(data.can_close) {
+						  $("#submit_row").append("<button id='close_survivor' data-url='/survivors/close/" + data.survivor_id + "' class='btn btn-default btn-lg'>Cerrar survivor</button><br/>");
+					}
 				  });
 				}
 
@@ -66,6 +73,18 @@
 										$team_div.parent().find(".trophy").remove();
 										if(team_id) {
 										    $("<img class='trophy'/>").appendTo($team_div).addClass("selected").attr("src", "/assets/trophy.png");
+										}
+								}
+						});
+				}
+
+				function close_survivor() {
+            $.ajax({
+							  method: "PUT",
+								url: $(this).data("url"),
+								complete: function(data, text_status, jq_xhr) {
+									  if(text_status == "success") {
+									      $("#close_survivor").prop("disabled", true);
 										}
 								}
 						});
@@ -142,6 +161,8 @@
 
 								$("input[type='text'].score").remove();
 						}
-				});
+				  });
+
+					$(document).on("click", "#close_survivor", close_survivor);
 			</script>
 		</div>
