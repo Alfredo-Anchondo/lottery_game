@@ -1,6 +1,7 @@
 class Survivor < ActiveRecord::Base
   #ASSOCIATIONS
   has_many :survivor_week_games
+  has_many :survivor_games, :through => :survivor_week_games
   has_many :survivor_users, :through => :survivor_week_games
 
   #VALIDATIONS

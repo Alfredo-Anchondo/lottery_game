@@ -147,13 +147,13 @@
 	margin-left:0% !important;
 	margin-right:0% !important;
 }
-	  
-	  
+
+
 	  #mainwrapper .box {
     border: 5px solid #fff;
     cursor: pointer;
     height: 300px;
-    margin-top: 20px;	 
+    margin-top: 20px;
 	margin-left:0px !important;
     -webkit-box-shadow: 1px 1px 1px 1px #ccc;
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
@@ -163,22 +163,17 @@
     border: 5px solid #fff;
     cursor: pointer;
     height: 300px;
-    margin-top: 20px;	 
+    margin-top: 20px;
 	margin-left:0px !important;
     -webkit-box-shadow: 1px 1px 1px 1px #ccc;
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
     box-shadow: 1px 1px 1px 1px #ccc;
 }
-	  
+
 	  .hide-phone {
 		  display:none;
 	  }
-      
 }
-
-
-
-
 
 @media only screen
   and (min-device-width: 375px)
@@ -335,7 +330,7 @@
     cursor: pointer;
     height: 300px;
 	margin-left:0px !important;
-	margin-top: 20px;	 
+	margin-top: 20px;
     -webkit-box-shadow: 1px 1px 1px 1px #ccc;
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
     box-shadow: 1px 1px 1px 1px #ccc;
@@ -344,15 +339,19 @@
     border: 5px solid #fff;
     cursor: pointer;
     height: 300px;
-    margin-top: 20px;	 
+    margin-top: 20px;
 	margin-left:0px !important;
     -webkit-box-shadow: 1px 1px 1px 1px #ccc;
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
     box-shadow: 1px 1px 1px 1px #ccc;
 }
+<<<<<<< HEAD
+
+=======
       .hide-phone {
 		  display:none;
 	  }
+>>>>>>> 2af65e2e7acef1ff166c3f8fe108e17adebcc884
 
 }
 
@@ -515,29 +514,29 @@
 	margin-left:0% !important;
 	margin-right:0% !important;
 }
-	  
+
 	    #mainwrapper .box {
     border: 5px solid #fff;
     cursor: pointer;
     height: 300px;
-	margin-top: 20px;	 
+	margin-top: 20px;
 	margin-left:0px !important;
     -webkit-box-shadow: 1px 1px 1px 1px #ccc;
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
     box-shadow: 1px 1px 1px 1px #ccc;
 }
-	  
+
 	  #mainwrapper2 .box {
     border: 5px solid #fff;
     cursor: pointer;
     height: 300px;
-    margin-top: 20px;	 
+    margin-top: 20px;
 	margin-left:0px !important;
     -webkit-box-shadow: 1px 1px 1px 1px #ccc;
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
     box-shadow: 1px 1px 1px 1px #ccc;
 }
-	  
+
 	  .hide-phone {
 		  display:none;
 	  }
@@ -697,7 +696,7 @@
 	  #user_acount{
 		  display:block !important;
 	  }
-	
+
 .margin-row{
 	margin-left:0% !important;
 	margin-right:0% !important;
@@ -707,7 +706,7 @@
     cursor: pointer;
     height: 300px;
 	margin-left:0px !important;
-	margin-top: 20px;	  
+	margin-top: 20px;
     -webkit-box-shadow: 1px 1px 1px 1px #ccc;
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
     box-shadow: 1px 1px 1px 1px #ccc;
@@ -716,7 +715,7 @@
     border: 5px solid #fff;
     cursor: pointer;
     height: 300px;
-    margin-top: 20px;	 
+    margin-top: 20px;
 	margin-left:0px !important;
     -webkit-box-shadow: 1px 1px 1px 1px #ccc;
     -moz-box-shadow: 1px 1px 1px 1px #ccc;
@@ -1296,6 +1295,10 @@ body{
 
 .trophy.selected {
     display: block;
+    animation: shake 0.50s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 .team-div {
@@ -1307,13 +1310,29 @@ body{
     border-radius: 5px;
 }
 
-.shake_effect {
-    animation: shake 0.50s cubic-bezier(.36,.07,.19,.97) both;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-}
-
 .team-div:hover {
     cursor: pointer;
+}
+
+input[type='text'].score {
+    position: absolute;
+    top: 65px;
+    left: 65px;
+    width: 120px;
+    height: 90px;
+    font-size: 80px;
+    text-align: center;
+}
+
+.score_label {
+    position: absolute;
+    top: 155px;
+    left: 85px;
+    width: 80px;
+    height: 60px;
+    font-size: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #fff;
+    color: #2d68ac;
 }

@@ -24,6 +24,6 @@ test:
 production:
   adapter: postgresql
   database: lottery_game
-  host: localhost
   username: postgres
   password: postgres
+
