@@ -54,10 +54,30 @@
 		         }
 				  }
 
+					if(data.last_week) {
+							$("#submit_row").append(
+								  "<input id='survivor_week_game_id' type='hidden' value='" + data.id + "'/>" +
+									"<input id='survivor_id' type='hidden' value='" + data.survivor_id + "'/>"
+							);
+					}
+
 					if(data.can_close) {
 						  $("#submit_row").append("<button id='close_survivor' data-url='/survivors/close/" + data.survivor_id + "' class='btn btn-default btn-lg'>Cerrar survivor</button><br/>");
 					}
 				  });
+				}
+
+				function show_close_survivor() {
+					  if($("#can_close").length === 0) {
+							  $.get(
+		                "/survivor_week_games/can_close/" + $("#survivor_week_game_id").val(),
+										function(data) {
+											  if(data.can_close) {
+										        $("<button id='close_survivor' data-url='/survivors/close/" + $("#survivor_id").val() + "' class='btn btn-default btn-lg' style='display: none;'>Cerrar survivor</button><br/>").appendTo("#submit_row").fadeIn();
+		                    }
+										}
+								);
+						}
 				}
 
 				function declare_winner(team_div, team_id, local_score_value, visit_score_value) {
@@ -71,9 +91,12 @@
 								data: { survivor_game: { winner_team: team_id, local_score: local_score_value, visit_score: visit_score_value } },
 								success: function(data, text_status, jq_xhr) {
 										$team_div.parent().find(".trophy").remove();
+
 										if(team_id) {
 										    $("<img class='trophy'/>").appendTo($team_div).addClass("selected").attr("src", "/assets/trophy.png");
 										}
+
+										show_close_survivor();
 								}
 						});
 				}

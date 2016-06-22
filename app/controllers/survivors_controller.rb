@@ -1,7 +1,7 @@
 class SurvivorsController < ApplicationController
-  load_and_authorize_resource except: [:new, :create, :update, :edit, :close]
+  load_and_authorize_resource except: [:new, :create, :update, :edit, :can_close, :close]
   before_action :authenticate_user!
-  before_action :set_survivor, only: [:show, :edit, :update, :destroy, :close]
+  before_action :set_survivor, only: [:show, :edit, :update, :destroy, :can_close, :close]
 
   respond_to :html, :json
 

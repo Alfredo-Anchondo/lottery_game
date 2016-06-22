@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   	collection do
   		get 'close_games'
   		get '/get_games',to: "survivor_week_games#get_games"
+      get 'can_close/:id', to: "survivor_week_games#can_close"
   	end
   end
 

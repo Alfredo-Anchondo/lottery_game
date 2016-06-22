@@ -22,7 +22,7 @@ class Survivor < ActiveRecord::Base
         profit = initial_balance.to_f / total_winners
 
         survivor_users.winner.each do |s|
-          s.user.update(:balance => profit)
+          s.user.update(:balance => s.user.balance + profit)
         end
 
         update(:closed => true)
