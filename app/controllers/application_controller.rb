@@ -22,6 +22,7 @@ end
       process_exception(exception)
 		respond_to do |format|
 			format.html { redirect_to (request.referer || :root), alert: 'Ocurrio un error, se a reportado al administrador de la pagina.' }
+			logger.info exception
       format.json { head :no_content }
     end
 
@@ -31,6 +32,7 @@ end
       process_exception(exception)
 		respond_to do |format|
 			format.html { redirect_to (request.referer || :root), alert: 'Ocurrio un error al intentar eliminar un registro. ' }
+			logger.info exception
       format.json { head :no_content }
     end
     end
@@ -39,6 +41,7 @@ end
       process_exception(exception)
 		respond_to do |format|
 			format.html { redirect_to (request.referer || :root), alert: 'No se encontro el archivo solicitado.' }
+			logger.info exception
       format.json { head :no_content }
     end
     end
@@ -47,6 +50,7 @@ end
       process_exception(exception)
 	respond_to do |format|
 		format.html { redirect_to (request.referer || :root), alert: 'No tienes permisos para acceder a esta pagina.' }
+		logger.info exception
       format.json { head :no_content }
     end
     end

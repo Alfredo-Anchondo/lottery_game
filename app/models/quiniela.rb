@@ -15,6 +15,7 @@ class Quiniela < ActiveRecord::Base
 		QuinielaUser.where('quiniela_id = ?', id).length
 	end	
 		
+		
 	def winner?
 		winner = QuinielaUser.where('quiniela_id = ? AND ticket_number = ?', id, winner_number)
 		if winner != []

@@ -360,6 +360,7 @@ es:
             description: "Descripción"
             access_key: "Clave de acceso"
             price: "Precio"
+            user_id: "Usuario"
             percentage: "Porcentaje"
             initial_balance: "Bolsa inicial"
             closed: "Cerrado"

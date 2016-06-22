@@ -12,7 +12,7 @@ class Lottery < ActiveRecord::Base
     end   
 	
 	def winner?
-		winner = UserLottery.where('lottery_id = ? AND ticket_number = ?', id, winner_number)
+		winner = UserLottery.where('lottery_id = ? AND ticket_number = ?', id, String(winner_number))
 		if winner != []
 			return "Ganador"
 			else
