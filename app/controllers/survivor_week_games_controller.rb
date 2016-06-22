@@ -1,7 +1,7 @@
 class SurvivorWeekGamesController < ApplicationController
-  load_and_authorize_resource except: [:new,:create]
+  load_and_authorize_resource except: [:new,:create, :get_games, :can_close]
   before_action :authenticate_user!
-  before_action :set_survivor_week_game, only: [:show, :edit, :update, :destroy]
+  before_action :set_survivor_week_game, only: [:show, :edit, :update, :destroy, :get_games, :can_close]
 
   respond_to :html, :json
 
@@ -23,12 +23,12 @@ class SurvivorWeekGamesController < ApplicationController
   end
 
 	def get_games
-    survivor_week_game = SurvivorWeekGame.find(params[:id])
-
 		render :json => {
-      :can_close => survivor_week_game.can_close?,
-      :survivor_id => survivor_week_game.survivor_id,
-      :survivor_games => survivor_week_game.survivor_games.map do |s|
+      :id => @survivor_week_game.id,
+      :can_close => @survivor_week_game.can_close?,
+      :last_week => @survivor_week_game.last_week?,
+      :survivor_id => @survivor_week_game.survivor_id,
+      :survivor_games => @survivor_week_game.survivor_games.map do |s|
         s.attributes.merge(
           :survivor_week_game => s.survivor_week_game,
           :team => s.team.attributes.merge(:logo_url => s.team.logo_url),
@@ -37,6 +37,10 @@ class SurvivorWeekGamesController < ApplicationController
       end
     }
 	end
+
+  def can_close
+    render :json => { :can_close => @survivor_week_game.can_close? }
+  end
 
   def create
     @survivor_week_game = SurvivorWeekGame.new(survivor_week_game_params)
