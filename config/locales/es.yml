@@ -362,6 +362,7 @@ es:
             price: "Precio"
             percentage: "Porcentaje"
             initial_balance: "Bolsa inicial"
+            closed: "Cerrado"
             created_at: "Fecha de creación"
         survivor_game:
             team: "Equipo Local"
