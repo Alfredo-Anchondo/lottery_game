@@ -27,7 +27,14 @@ class SurvivorWeekGamesController < ApplicationController
 
 		render :json => {
       :can_close => survivor_week_game.can_close?,
-      :survivor_games => ActiveModel::ArraySerializer.new(survivor_week_game.survivor_games)
+      :survivor_id => survivor_week_game.survivor_id,
+      :survivor_games => survivor_week_game.survivor_games.map do |s|
+        s.attributes.merge(
+          :survivor_week_game => s.survivor_week_game,
+          :team => s.team.attributes.merge(:logo_url => s.team.logo_url),
+          :team2 => s.team2.attributes.merge(:logo_url => s.team2.logo_url)
+        )
+      end
     }
 	end
 
