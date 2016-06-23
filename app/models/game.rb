@@ -63,7 +63,6 @@ class Game < ActiveRecord::Base
 
 
 
-
     def self.future_games
         where('game_date >= ?', DateTime.now).order(:game_date).all
     end

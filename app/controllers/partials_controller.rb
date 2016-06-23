@@ -10,9 +10,6 @@ class PartialsController < ApplicationController
      render "credit_card_form"
   end
 	
-	
-
-
 	def buy_random_quinielas
 		@numbers = params[:numbers]
 		@price = params[:price]
