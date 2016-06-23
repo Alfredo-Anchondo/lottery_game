@@ -4,5 +4,13 @@ FactoryGirl.define do
     name "Survivor"
     price "100"
     initial_balance "2000"
+
+    factory :survivor_from_aanchondo do
+      name "Survivor from aanchondo"
+      price "100"
+      initial_balance "4000"
+      percentage 20
+      association :user, :factory => :aanchondo
+    end
   end
 end

@@ -1,5 +1,6 @@
 class Survivor < ActiveRecord::Base
   #ASSOCIATIONS
+  belongs_to :user
   has_many :survivor_week_games
   has_many :survivor_games, :through => :survivor_week_games
   has_many :survivor_users, :through => :survivor_week_games
@@ -15,7 +16,7 @@ class Survivor < ActiveRecord::Base
   end
 
   def close
-    if !closed
+    if !closed && survivor_games.count == survivor_games.where.not(:local_score => nil, :visit_score => nil).count
       total_winners = survivor_users.winner.count
 
       if total_winners > 0 && initial_balance > 0

@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 	 load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :data, only: [:index, :new, :create, :edit, :update]    
+  before_action :data, only: [:index, :new, :create, :edit, :update]
 
   # GET /categories
   # GET /categories.json
@@ -15,10 +15,10 @@ class CategoriesController < ApplicationController
 		@user = current_user
 		logger.info @mails
 		logger.info @reference
-		BuyMailer.invite(@mails,@reference,@user).deliver
+		BuyMailer.invite(@mails, @reference, @user).deliver
 		render nothing: true
 	end
-    
+
   # GET /categories/1
   # GET /categories/1.json
   def show

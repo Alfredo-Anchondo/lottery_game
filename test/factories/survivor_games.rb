@@ -33,5 +33,33 @@ FactoryGirl.define do
       association :team, :factory => :brazil
       team2_id { Team.where(:name => "Argentina").first_or_create.id }
     end
+
+    factory :survivor_game_5 do
+      association :survivor_week_game, :factory => :survivor_week_game_3
+      game_date "2016-10-15 12:00"
+      association :team, :factory => :rockets
+      team2_id { Team.where(:name => "Lackers").first_or_create.id }
+    end
+
+    factory :survivor_game_6 do
+      association :survivor_week_game, :factory => :survivor_week_game_3
+      game_date "2016-10-15 12:00"
+      association :team, :factory => :italy
+      team2_id { Team.where(:name => "France").first_or_create.id }
+    end
+
+    factory :survivor_game_7 do
+      association :survivor_week_game, :factory => :survivor_week_game_4
+      game_date "2016-10-22 12:00"
+      association :team, :factory => :nuggets
+      team2_id { Team.where(:name => "Clippers").first_or_create.id }
+    end
+
+    factory :survivor_game_8 do
+      association :survivor_week_game, :factory => :survivor_week_game_4
+      game_date "2016-10-22 12:00"
+      association :team, :factory => :usa
+      team2_id { Team.where(:name => "Neerland").first_or_create.id }
+    end
   end
 end

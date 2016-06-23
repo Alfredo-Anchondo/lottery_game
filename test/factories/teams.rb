@@ -41,5 +41,45 @@ FactoryGirl.define do
       name "Argentina"
       association :sport_category, :factory => :soccer_fifa
     end
+
+    factory :rockets do
+      name "Rockets"
+      association :sport_category, :factory => :basketball_nba
+    end
+
+    factory :lackers do
+      name "Lackers"
+      association :sport_category, :factory => :basketball_nba
+    end
+
+    factory :italy do
+      name "Italy"
+      association :sport_category, :factory => :soccer_fifa
+    end
+
+    factory :france do
+      name "France"
+      association :sport_category, :factory => :soccer_fifa
+    end
+
+    factory :nuggets do
+      name "Nuggets"
+      association :sport_category, :factory => :basketball_nba
+    end
+
+    factory :clippers do
+      name "Clippers"
+      association :sport_category, :factory => :basketball_nba
+    end
+
+    factory :usa do
+      name "USA"
+      association :sport_category, :factory => :soccer_fifa
+    end
+
+    factory :neerland do
+      name "Neerland"
+      association :sport_category, :factory => :soccer_fifa
+    end
   end
 end
