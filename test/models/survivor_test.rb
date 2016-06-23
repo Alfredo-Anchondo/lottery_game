@@ -50,7 +50,6 @@ class SurvivorTest < ActiveSupport::TestCase
   end
 
   test "User Jorge Luna has 1000 DB after closing survivor" do
-    @survivor_game_4.reload
     @survivor_game_4.survivor_week_game.survivor.close
     @jluna_6.reload
     assert @jluna_6.user.balance == 1000.0, "Jorge Luna hasn't 2000 DB"
@@ -64,5 +63,17 @@ class SurvivorTest < ActiveSupport::TestCase
   test "User jluna 11 is winner after victory of nuggets" do
     @jluna_11.reload
     assert @jluna_11.status == "winner", "jluna 11 isn't winner"
+  end
+
+  test "User Alfredo Anchondo has 2400 DB after closing survivor" do
+    @survivor_game_7.survivor_week_game.survivor.close
+    @aanchondo_10.reload
+    assert @aanchondo_10.user.balance == 2400.0, "Alfredo Anchondo hasn't 2400 DB"
+  end
+
+  test "User Jorge Alberto has 1600 DB after closing survivor" do
+    @survivor_game_7.survivor_week_game.survivor.close
+    @jluna_11.reload
+    assert @jluna_11.user.balance == 1600.0, "Jorge Luna hasn't 1600 DB"
   end
 end
