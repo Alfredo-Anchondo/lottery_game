@@ -36,6 +36,7 @@ class Survivor < ActiveRecord::Base
 
           s.survivor_users.winner.each do |su|
             su.user.update(:balance => su.user.balance + profit)
+            su.survivor_week_survivor.survivor_week.update(:closed => true)
           end
         end
       end
