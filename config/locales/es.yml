@@ -313,6 +313,8 @@ es:
               taken: Ya esta en uso"
     models:
         error_reports: "Reporte de Errores"
+        survivor_week_survivors: "Relaciones Semana - Survivor"
+        survivor_week_survivor: "Relacion Semana - Survivor"
         error_report: "Reporte de Error"
         categories: "Categorias"
         question: "Pregunta"
@@ -355,6 +357,9 @@ es:
             description: "Descripción"
             is_admin: "Es administrador?"
             is_client: "Es Cliente?"
+        survivor_week_survivor:
+            survivor_id: "Nombre Survivor"
+            survivor_week_game_id: "Semana Asignada"
         survivor:
             name: "Nombre"
             description: "Descripción"

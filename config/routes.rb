@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :survivor_week_survivors
+
   resources :survivor_games
 
   resources :survivor_users

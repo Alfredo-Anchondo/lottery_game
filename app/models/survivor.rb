@@ -1,7 +1,9 @@
 class Survivor < ActiveRecord::Base
   #ASSOCIATIONS
   belongs_to :user
-  has_many :survivor_week_games
+  has_many :survivor_week_survivors
+  has_many :survivor_week_games, :through => :survivor_week_survivors
+ 	
   has_many :survivor_games, :through => :survivor_week_games
   has_many :survivor_users, :through => :survivor_week_games
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614212336) do
+ActiveRecord::Schema.define(version: 20160623170330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,9 +165,9 @@ ActiveRecord::Schema.define(version: 20160614212336) do
     t.text     "description"
     t.datetime "game_date",             null: false
     t.integer  "winner_team"
+    t.integer  "local_score"
+    t.integer  "visit_score"
     t.integer  "survivor_week_game_id"
-    t.integer  "local_score",           default: 0, null: false
-    t.integer  "visit_score",           default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -201,19 +201,27 @@ ActiveRecord::Schema.define(version: 20160614212336) do
 
   add_index "survivor_week_games", ["survivor_id"], name: "index_survivor_week_games_on_survivor_id", using: :btree
 
+  create_table "survivor_week_survivors", force: true do |t|
+    t.integer  "survivor_id",           null: false
+    t.integer  "survivor_week_game_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "survivor_week_survivors", ["survivor_id"], name: "index_survivor_week_survivors_on_survivor_id", using: :btree
+  add_index "survivor_week_survivors", ["survivor_week_game_id"], name: "index_survivor_week_survivors_on_survivor_week_game_id", using: :btree
+
   create_table "survivors", force: true do |t|
     t.string   "name",                          null: false
     t.text     "description"
     t.float    "price",           default: 0.0, null: false
     t.float    "initial_balance", default: 0.0, null: false
-    t.boolean  "closed",          default: false, null: false
-    t.integer  "percentage"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "access_key"
+    t.float    "percentage"
+    t.integer  "user_id"
   end
-
-  add_index "survivors", ["user_id"], name: "index_survivors_on_user_id", using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "name",              null: false
@@ -321,7 +329,10 @@ ActiveRecord::Schema.define(version: 20160614212336) do
 
   add_foreign_key "survivor_week_games", "survivors", name: "survivor_week_games_survivor_id_fk"
 
-  add_foreign_key "survivors", "users", name: "survivors_user_id_fk"
+  add_foreign_key "survivor_week_survivors", "survivor_week_games", name: "survivor_week_survivors_survivor_week_game_id_fk"
+  add_foreign_key "survivor_week_survivors", "survivors", name: "survivor_week_survivors_survivor_id_fk"
+
+  add_foreign_key "survivors", "users", name: "usersfk"
 
   add_foreign_key "teams", "sport_categories", name: "teams_sport_category_id_fk"
 

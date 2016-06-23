@@ -46,6 +46,7 @@ class SurvivorWeekGamesController < ApplicationController
     @survivor_week_game = SurvivorWeekGame.new(survivor_week_game_params)
     @survivor_week_game.save
     respond_with(@survivor_week_game)
+	  
   end
 
   def update

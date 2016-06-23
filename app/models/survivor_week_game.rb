@@ -3,7 +3,7 @@ class SurvivorWeekGame < ActiveRecord::Base
   default_scope -> { order(:week) }
 
   #ASSOCIATIONS
-  belongs_to :survivor
+  has_many :survivor_week_survivors
   has_many :survivor_games
   has_many :survivor_users
 
@@ -15,8 +15,13 @@ class SurvivorWeekGame < ActiveRecord::Base
   validates :week, :uniqueness => { :scope => [:survivor_id] }
 
   #METHODS
+	
+	def self.current_year
+		where('extract(year  from initial_date) = ?', Time.now.year)
+	end
+	
 	def select_display
-		"#{survivor.name} #{I18n.t("week")} #{week}"
+		"#{I18n.t("week")} #{week}"
 	end
 
   def last_week?

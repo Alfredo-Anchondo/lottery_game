@@ -26,6 +26,12 @@ class SurvivorsController < ApplicationController
     @survivor = Survivor.new(survivor_params)
     @survivor.save
     respond_with(@survivor)
+	  
+	    SurvivorWeekGame.current_year.each do |week|
+		survivor1 = SurvivorWeekSurvivor.new(:survivor_id => @survivor.id, :survivor_week_game_id => week.id )
+		  survivor1.save
+		  logger.info '//////// se creo /////////'
+	  end
   end
 
   def update
