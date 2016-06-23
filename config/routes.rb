@@ -72,6 +72,7 @@ Rails.application.routes.draw do
 			get 'finish_games'
 			get 'future_games'
 			get 'survivor_game'
+			get 'survivor_leagues'
 			get "/current_survivors", to: "partials#get_survivor"
 			get "/team_logos/:id", to: "partials#team_logos"
 			post 'buy_random_quinielas', to: "partials#buy_random_quinielas"

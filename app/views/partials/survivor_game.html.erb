@@ -45,7 +45,7 @@
 		<div class="col-md-3 col-xs-6">
 			<div class="col-md-6 col-md-offset-3 col-xs-12">
 			<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px; color:white; font-weight:700;">Ingresa a una liga existente</h4>
-			<h4 style="text-align:center"><a class="btn btn-lg btn-primary" style="width:100%; font-weight:800;"> Ingresar </a></h4>
+			<h4 style="text-align:center"><a href="/partials/survivor_leagues" class="btn btn-lg btn-primary" style="width:100%; font-weight:800;"> Ingresar </a></h4>
 			</div>
 		</div>
 		<div class="col-md-3 col-xs-6">
@@ -57,40 +57,3 @@
 	</div>
 </div>
 
-
-<div class="row">
-	<div class="survivors"></div>
-</div>
-
-
-<script>
-	$( document ).ready(function() {
-	  $.ajax({
-            method: "GET",
-            url: "/partials/current_survivors",
-            format: "json"
-               }).done(function(data) {
-		   for( var i in data.partials){
-			   
-			    var week_length = data.partials[i].survivor_week_survivors.length;
-			  
-			   if(data.partials[i].survivor_week_survivors[0]){
-				   if (data.partials[i].survivor_week_survivors[0].survivor_week_game){
-					   var game_lengh = data.partials[i].survivor_week_survivors[0].survivor_week_game;
-					    var initial = data.partials[i].survivor_week_survivors[0].survivor_week_game.initial_date;
-					    var final = data.partials[i].survivor_week_survivors[week_length - 1].survivor_week_game.final_date; 
-				   }else{
-					      var final = "0"; var initial="0"
-				   }
-				  
-				   
-			   }else{ 
-				   var final = "0"; var initial="0"
-				   }
-			   
-			   
-			 $('.survivors').append('<h4 style="text-align:center"> '+data.partials[i].name+'</h4> <h4 style="text-align:center"> '+data.partials[i].description+'</h4> <h4 style="text-align:center"> '+data.partials[i].initial_balance+'</h4> <h4 style="text-align:center"> '+data.partials[i].price+'</h4><h4 style="text-align:center"> '+initial +'</h4> <h4 style="text-align:center"> '+final+'</h4>');	   
-		   }	 	 
-	  });		
-			});
-</script>
