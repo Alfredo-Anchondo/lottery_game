@@ -11,7 +11,6 @@ class SurvivorWeekGame < ActiveRecord::Base
   #VALIDATIONS
   validates :initial_date, :final_date, :week, :presence => true
   validate :initial_date_lesser_than_final_date
-  validates :week, :uniqueness => { :scope => [:survivor_id] }
 
   #METHODS
 
