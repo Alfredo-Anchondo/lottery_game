@@ -17,9 +17,9 @@
 <!-- begin col-md-6 -->
 <div class="col-md-6">
               <div class="form-group">
-          <%= f.label :survivor_week_game, :class => "col-md-3" %>
+          <%= f.label :survivor_week_survivor, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.collection_select(:survivor_week_game_id, SurvivorWeekGame.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+            <%= f.collection_select(:survivor_week_survivor_id, SurvivorWeekSurvivor.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
           </div>
         </div>
                   <div class="form-group">

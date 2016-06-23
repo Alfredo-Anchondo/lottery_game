@@ -13,7 +13,7 @@
           <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
             <thead>
               <tr>
-                                  <th><%= t("activerecord.attributes.survivor_user.survivor_week_game") %></th>
+                                  <th><%= t("activerecord.attributes.survivor_user.survivor_week_survivor") %></th>
                                   <th><%= t("activerecord.attributes.survivor_user.team") %></th>
                                   <th><%= t("activerecord.attributes.survivor_user.purchase_date") %></th>
                                   <th><%= t("activerecord.attributes.survivor_user.user") %></th>
@@ -24,7 +24,7 @@
             <tbody>
               <% @survivor_users.each do |survivor_user| %>
               <tr>
-                                  <td><%= survivor_user.survivor_week_game.select_display %></td>
+                                  <td><%= survivor_user.survivor_week_survivor.select_display %></td>
                                   <td><%= survivor_user.team.select_display %></td>
                                   <td><%= survivor_user.purchase_date %></td>
                                   <td><%= survivor_user.user.select_display %></td>

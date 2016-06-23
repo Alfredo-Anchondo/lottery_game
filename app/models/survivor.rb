@@ -1,11 +1,13 @@
 class Survivor < ActiveRecord::Base
+  #SCOPES
+  scope :from_year, ->(year=Date.current.year) { where("EXTRACT(YEAR FROM created_at) = ?", year) }
+
   #ASSOCIATIONS
   belongs_to :user
   has_many :survivor_week_survivors
   has_many :survivor_week_games, :through => :survivor_week_survivors
- 	
   has_many :survivor_games, :through => :survivor_week_games
-  has_many :survivor_users, :through => :survivor_week_games
+  has_many :survivor_users, :through => :survivor_week_survivors
 
   #VALIDATIONS
   validates :name, :price, :initial_balance, :presence => true
@@ -14,31 +16,29 @@ class Survivor < ActiveRecord::Base
   #METHODS
 
   def alive_users
-    survivor_week_games.order(:initial_date).last.survivor_users.alive
+    last_survivor_week_game = SurvivorWeekGame.from_year.order(:initial_date).last
+    survivor_users.where(:survivor_week_game_id => last_survivor_week_game.id).alive
   end
 
-  def close
-    if !closed && survivor_games.count == survivor_games.where.not(:local_score => nil, :visit_score => nil).count
-      total_winners = survivor_users.winner.count
+  def self.close
+    from_year.each do |s|
+      if SurvivorGame.no_pending_games?
+        total_winners = s.survivor_users.winner.count
 
-      if total_winners > 0 && initial_balance > 0
-        if percentage.present? && survivor_users.winner.find_by(:user_id => user_id).present?
-          percentage_profit = initial_balance * percentage / 100
-          user.update(:balance => user.balance + percentage_profit)
-          profit = (initial_balance.to_f - percentage_profit) / total_winners
-        else
-          profit = initial_balance.to_f / total_winners
+        if total_winners > 0 && s.initial_balance > 0
+          if s.percentage.present? && s.survivor_users.winner.find_by(:user_id => s.user_id).present?
+            percentage_profit = s.initial_balance * s.percentage / 100
+            s.user.update(:balance => s.user.balance + percentage_profit)
+            profit = (s.initial_balance.to_f - percentage_profit) / total_winners
+          else
+            profit = s.initial_balance.to_f / total_winners
+          end
+
+          s.survivor_users.winner.each do |su|
+            su.user.update(:balance => su.user.balance + profit)
+          end
         end
-
-        survivor_users.winner.each do |s|
-          s.user.update(:balance => s.user.balance + profit)
-        end
-
-        update(:closed => true)
-        return true
       end
     end
-
-    return false
   end
 end

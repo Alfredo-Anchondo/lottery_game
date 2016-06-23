@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :survivors do
     collection do
-      put 'close/:id', to: "survivors#close"
+      put 'close'
   	end
   end
 

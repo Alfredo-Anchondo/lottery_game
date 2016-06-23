@@ -27,7 +27,6 @@ class SurvivorWeekGamesController < ApplicationController
       :id => @survivor_week_game.id,
       :can_close => @survivor_week_game.can_close?,
       :last_week => @survivor_week_game.last_week?,
-      :survivor_id => @survivor_week_game.survivor_id,
       :survivor_games => @survivor_week_game.survivor_games.map do |s|
         s.attributes.merge(
           :survivor_week_game => s.survivor_week_game,
@@ -46,7 +45,7 @@ class SurvivorWeekGamesController < ApplicationController
     @survivor_week_game = SurvivorWeekGame.new(survivor_week_game_params)
     @survivor_week_game.save
     respond_with(@survivor_week_game)
-	  
+
   end
 
   def update

@@ -8,7 +8,6 @@ class CreateSurvivors < ActiveRecord::Migration
       t.foreign_key :users
       t.float :price, :null => false, :default => 0
       t.float :initial_balance, :null => false, :default => 0
-      t.boolean :closed, :default => false, :null => false
       t.integer :percentage
 
       t.timestamps

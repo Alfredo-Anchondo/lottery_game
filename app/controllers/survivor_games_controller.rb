@@ -2,7 +2,7 @@ class SurvivorGamesController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_survivor_game, only: [:show, :edit, :update, :destroy]
- 
+
   respond_to :html
 
   def index
@@ -39,11 +39,11 @@ class SurvivorGamesController < ApplicationController
   end
 
   private
-    def set_survivor_game
-      @survivor_game = SurvivorGame.find(params[:id])
-    end
+  def set_survivor_game
+    @survivor_game = SurvivorGame.find(params[:id])
+  end
 
-    def survivor_game_params
-      params.require(:survivor_game).permit(:team_id, :team2_id, :handicap, :plus_handicap, :description, :game_date, :winner_team, :local_score, :visit_score, :survivor_week_game_id)
-    end 
+  def survivor_game_params
+    params.require(:survivor_game).permit(:team_id, :team2_id, :handicap, :plus_handicap, :description, :game_date, :winner_team, :local_score, :visit_score, :survivor_week_game_id)
+  end
 end

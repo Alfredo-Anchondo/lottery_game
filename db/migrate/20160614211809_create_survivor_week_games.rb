@@ -4,6 +4,7 @@ class CreateSurvivorWeekGames < ActiveRecord::Migration
       t.date :initial_date, null:false
       t.date :final_date, null:false
       t.integer :week, null:false, default:1
+      t.boolean :closed, :default => false, :null => false
 
       t.timestamps
     end

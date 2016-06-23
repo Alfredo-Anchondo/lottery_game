@@ -1,25 +1,26 @@
 class SurvivorWeekGame < ActiveRecord::Base
   #SCOPES
   default_scope -> { order(:week) }
+  scope :from_year, ->(year=Date.current.year) { where("EXTRACT(YEAR FROM initial_date) = ?", year) }
 
   #ASSOCIATIONS
   has_many :survivor_week_survivors
   has_many :survivor_games
-  has_many :survivor_users
+  has_many :survivor_users, :through => :survivor_week_survivors
 
   #VALIDATIONS
-  validates :survivor_id, :initial_date, :final_date, :week, :presence => true
+  validates :initial_date, :final_date, :week, :presence => true
   validates :initial_date, :final_date, overlap: { scope: "survivor_id",
     message_content: I18n.t("errors.messages.overlaps_with_another_range") }
   validate :initial_date_lesser_than_final_date
   validates :week, :uniqueness => { :scope => [:survivor_id] }
 
   #METHODS
-	
+
 	def self.current_year
 		where('extract(year  from initial_date) = ?', Time.now.year)
 	end
-	
+
 	def select_display
 		"#{I18n.t("week")} #{week}"
 	end
@@ -28,12 +29,8 @@ class SurvivorWeekGame < ActiveRecord::Base
     week == 17
   end
 
-  def no_pending_games?
-    survivor.survivor_games.count == survivor.survivor_games.where.not(:local_score => nil, :visit_score => nil).count
-  end
-
   def can_close?
-    last_week? && no_pending_games? && !survivor.closed && survivor.survivor_users.winner.count > 0 && survivor.initial_balance > 0
+    last_week? && SurvivorGame.no_pending_games? && !closed
   end
 
   protected

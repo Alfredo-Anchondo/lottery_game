@@ -1,7 +1,7 @@
 class SurvivorsController < ApplicationController
-  load_and_authorize_resource except: [:new, :create, :update, :edit, :can_close, :close]
+  load_and_authorize_resource except: [:new, :create, :update, :edit]
   before_action :authenticate_user!
-  before_action :set_survivor, only: [:show, :edit, :update, :destroy, :can_close, :close]
+  before_action :set_survivor, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json
 
@@ -26,11 +26,10 @@ class SurvivorsController < ApplicationController
     @survivor = Survivor.new(survivor_params)
     @survivor.save
     respond_with(@survivor)
-	  
+
 	    SurvivorWeekGame.current_year.each do |week|
 		survivor1 = SurvivorWeekSurvivor.new(:survivor_id => @survivor.id, :survivor_week_game_id => week.id )
 		  survivor1.save
-		  logger.info '//////// se creo /////////'
 	  end
   end
 
@@ -45,7 +44,7 @@ class SurvivorsController < ApplicationController
   end
 
   def close
-    @survivor.close
+    Survivor.close
     render :nothing => true
   end
 
