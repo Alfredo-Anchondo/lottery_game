@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20160623170330) do
   add_index "lotteries", ["game_id"], name: "index_lotteries_on_game_id", using: :btree
 
   create_table "questions", force: true do |t|
-    t.string   "title",       null: false
+    t.text     "title",       null: false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -112,10 +112,10 @@ ActiveRecord::Schema.define(version: 20160623170330) do
     t.text     "initial_balance",                       null: false
     t.text     "price"
     t.text     "description"
+    t.text     "winner_number"
     t.integer  "game_id",                               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "winner_number"
     t.string   "purchase_gift_tickets",   default: "0"
     t.string   "last_questions"
     t.string   "last_questions_text"
@@ -165,11 +165,11 @@ ActiveRecord::Schema.define(version: 20160623170330) do
     t.text     "description"
     t.datetime "game_date",             null: false
     t.integer  "winner_team"
-    t.integer  "local_score"
-    t.integer  "visit_score"
     t.integer  "survivor_week_game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "local_score"
+    t.integer  "visit_score"
   end
 
   add_index "survivor_games", ["survivor_week_game_id"], name: "index_survivor_games_on_survivor_week_game_id", using: :btree
@@ -177,11 +177,11 @@ ActiveRecord::Schema.define(version: 20160623170330) do
   add_index "survivor_games", ["team_id"], name: "index_survivor_games_on_team_id", using: :btree
 
   create_table "survivor_users", force: true do |t|
-    t.integer  "survivor_week_game_id", null: false
-    t.integer  "team_id",               null: false
-    t.datetime "purchase_date",         null: false
-    t.integer  "user_id",               null: false
-    t.string   "status",                null: false
+    t.integer  "survivor_week_game_id",                    null: false
+    t.integer  "team_id",                                  null: false
+    t.datetime "purchase_date",                            null: false
+    t.integer  "user_id",                                  null: false
+    t.string   "status",                default: "bought", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -191,7 +191,7 @@ ActiveRecord::Schema.define(version: 20160623170330) do
   add_index "survivor_users", ["user_id"], name: "index_survivor_users_on_user_id", using: :btree
 
   create_table "survivor_week_games", force: true do |t|
-    t.integer  "survivor_id",              null: false
+    t.integer  "survivor_id"
     t.date     "initial_date",             null: false
     t.date     "final_date",               null: false
     t.integer  "week",         default: 1, null: false
@@ -212,15 +212,16 @@ ActiveRecord::Schema.define(version: 20160623170330) do
   add_index "survivor_week_survivors", ["survivor_week_game_id"], name: "index_survivor_week_survivors_on_survivor_week_game_id", using: :btree
 
   create_table "survivors", force: true do |t|
-    t.string   "name",                          null: false
+    t.string   "name",                            null: false
     t.text     "description"
-    t.float    "price",           default: 0.0, null: false
-    t.float    "initial_balance", default: 0.0, null: false
+    t.float    "price",           default: 0.0,   null: false
+    t.float    "initial_balance", default: 0.0,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "access_key"
     t.float    "percentage"
     t.integer  "user_id"
+    t.boolean  "closed",          default: false, null: false
   end
 
   create_table "teams", force: true do |t|
@@ -241,7 +242,7 @@ ActiveRecord::Schema.define(version: 20160623170330) do
     t.integer  "user_id",       null: false
     t.integer  "lottery_id",    null: false
     t.string   "status",        null: false
-    t.integer  "ticket_number", null: false
+    t.string   "ticket_number", null: false
     t.datetime "purchase_date", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -280,18 +281,18 @@ ActiveRecord::Schema.define(version: 20160623170330) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
     t.string   "provider"
     t.string   "uid"
-    t.string   "favorite_team",          limit: 30
-    t.date     "birthday"
     t.string   "openpay_id"
+    t.string   "favorite_team"
+    t.date     "birthday"
     t.string   "gender"
     t.string   "language",               limit: 30
     t.string   "friend_reference"

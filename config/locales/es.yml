@@ -389,7 +389,7 @@ es:
             week: "Numero de semana"
             created_at: "Fecha de creación"
         survivor_user:
-            survivor_week_game: "Semana del survivor"
+            survivor_week_survivor: "Survivor / Semana"
             team: "Equipo seleccionado"
             purchase_date: "Fecha de compra"
             user: "Usuario"

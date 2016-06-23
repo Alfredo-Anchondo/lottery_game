@@ -1,4 +1,7 @@
 class SurvivorGame < ActiveRecord::Base
+  #SCOPES
+  scope :from_year, ->(year=Date.current.year) { where("EXTRACT(YEAR FROM game_date) = ?", year) }
+
   #ASSOCIATIONS
   belongs_to :team
   belongs_to :team2
@@ -11,6 +14,10 @@ class SurvivorGame < ActiveRecord::Base
   before_update :change_status
 
   #METHODS
+  def self.no_pending_games?
+    SurvivorGame.from_year.count == SurvivorGame.from_year.where.not(:local_score => nil, :visit_score => nil).count
+  end
+
   protected
 
   def change_status

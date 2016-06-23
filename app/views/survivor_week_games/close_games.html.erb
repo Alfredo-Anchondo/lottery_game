@@ -56,24 +56,23 @@
 
 					if(data.last_week) {
 							$("#submit_row").append(
-								  "<input id='survivor_week_game_id' type='hidden' value='" + data.id + "'/>" +
-									"<input id='survivor_id' type='hidden' value='" + data.survivor_id + "'/>"
+								  "<input id='survivor_week_game_id' type='hidden' value='" + data.id + "'/>"
 							);
 					}
 
 					if(data.can_close) {
-						  $("#submit_row").append("<button id='close_survivor' data-url='/survivors/close/" + data.survivor_id + "' class='btn btn-default btn-lg'>Cerrar survivor</button><br/>");
+						  $("#submit_row").append("<button id='close_survivors' data-url='/survivors/close' class='btn btn-default btn-lg'>Cerrar survivors</button><br/>");
 					}
 				  });
 				}
 
 				function show_close_survivor() {
-					  if($("#can_close").length === 0) {
+					  if($("#close_survivors").length === 0 && $("#survivor_week_game_id").val()) {
 							  $.get(
 		                "/survivor_week_games/can_close/" + $("#survivor_week_game_id").val(),
 										function(data) {
 											  if(data.can_close) {
-										        $("<button id='close_survivor' data-url='/survivors/close/" + $("#survivor_id").val() + "' class='btn btn-default btn-lg' style='display: none;'>Cerrar survivor</button><br/>").appendTo("#submit_row").fadeIn();
+										        $("<button id='close_survivors' data-url='/survivors/close' class='btn btn-default btn-lg' style='display: none;'>Cerrar survivors</button><br/>").appendTo("#submit_row").fadeIn();
 		                    }
 										}
 								);
@@ -101,13 +100,13 @@
 						});
 				}
 
-				function close_survivor() {
+				function close_survivors() {
             $.ajax({
 							  method: "PUT",
 								url: $(this).data("url"),
 								complete: function(data, text_status, jq_xhr) {
 									  if(text_status == "success") {
-									      $("#close_survivor").prop("disabled", true);
+									      $("#close_survivors").prop("disabled", true);
 										}
 								}
 						});
@@ -186,6 +185,6 @@
 						}
 				  });
 
-					$(document).on("click", "#close_survivor", close_survivor);
+					$(document).on("click", "#close_survivors", close_survivors);
 			</script>
 		</div>
