@@ -9,6 +9,7 @@ class CreateSurvivors < ActiveRecord::Migration
       t.float :price, :null => false, :default => 0
       t.float :initial_balance, :null => false, :default => 0
       t.integer :percentage
+      t.rebuy_quantity, :default => 1, :null => false
 
       t.timestamps
     end

@@ -97,6 +97,7 @@ es:
     save: "Guardar"
     new: "Crear Nuevo"
     back: "Volver"
+  no_rebuy_available: "No hay recompras disponibles"
   close_week: "Cerrar semana"
   week: "Semana"
   "true": "Si"
@@ -369,6 +370,7 @@ es:
             percentage: "Porcentaje"
             initial_balance: "Bolsa inicial"
             closed: "Cerrado"
+            rebuy: "Cantidad de recompras"
             created_at: "Fecha de creación"
         survivor_game:
             team: "Equipo Local"
@@ -393,6 +395,7 @@ es:
             team: "Equipo seleccionado"
             purchase_date: "Fecha de compra"
             user: "Usuario"
+            user_id: "Usuario"
             status: "Status"
             created_at: "Fecha de creación"
         user:

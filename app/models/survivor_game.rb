@@ -11,7 +11,7 @@ class SurvivorGame < ActiveRecord::Base
   validate :team_id, :team2_id, :survivor_week_game_id, :game_date, :presence => true
 
   #CALLBACKS
-  before_update :change_status
+  after_update :change_status
 
   #METHODS
   def self.no_pending_games?
