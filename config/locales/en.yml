@@ -94,6 +94,7 @@ en:
     save: "Save"
     new: "New"
     back: "Back"
+  no_rebuy_available: "No rebuy available"
   close_week: "Close week"
   week: "Week"
   "true": "True"
@@ -340,6 +341,7 @@ en:
             price: "Price"
             initial_balance: "Initial stock"
             closed: "Closed"
+            rebuy_quantity: "Rebuy quantity"
             created_at: "Created at"
         survivor_game:
             team: "Home team"
@@ -362,6 +364,7 @@ en:
             team: "Selected team"
             purchase_date: "Date of purchase"
             user: "User"
+            user_id: "User"
             status: "Status"
             created_at: "Created at"
         user:

@@ -41,9 +41,15 @@
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor.access_key") %>: <br />
-                    <small><%= number_to_currency(@survivor.access_key) %></small>
+                    <small><%= @survivor.access_key %></small>
                   </td>
                 </tr>
+                <tr>
+                              <td>
+                                <%= t("activerecord.attributes.survivor.rebuy_quantity") %>: <br />
+                                <small><%= @survivor.rebuy_quantity %></small>
+                              </td>
+                            </tr>
                               <tr>
                   <td>
                     <%= t("activerecord.attributes.survivor.percentage") %>: <br />
@@ -51,7 +57,7 @@
                   </td>
                 </tr>
                 <tr>
-                  
+
                 </tr>
                               <tr>
                   <td>

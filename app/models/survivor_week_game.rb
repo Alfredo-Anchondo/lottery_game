@@ -22,6 +22,10 @@ class SurvivorWeekGame < ActiveRecord::Base
 		"#{I18n.t("week")} #{week}"
 	end
 
+  def first_week?
+    week == 1
+  end
+
   def last_week?
     week == 17
   end
