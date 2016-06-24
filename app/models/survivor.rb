@@ -21,14 +21,14 @@ class Survivor < ActiveRecord::Base
   end
 
   def self.close
-    if SurvivorGame.no_pending_games?
+    if SurvivorGame.no_pending_games? && survivor_week_games.last.last_week? && !survivor_week_games.last.closed
       from_year.each do |s|
         total_winners = s.survivor_users.winner.count
 
         if total_winners > 0 && s.initial_balance > 0
-          if s.percentage.present? && s.survivor_users.winner.find_by(:user_id => s.user_id).present?
-            percentage_profit = s.initial_balance * s.percentage / 100
-            s.user.update(:balance => s.user.balance + percentage_profit)
+          if s.percentage.present?
+            percentage_profit = s.initial_balance * s.percentage.to_s / 100
+            s.user.update(:balance => s.user.balance + percentage_profit.to_f / 2)
             profit = (s.initial_balance.to_f - percentage_profit) / total_winners
           else
             profit = s.initial_balance.to_f / total_winners
