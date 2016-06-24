@@ -91,13 +91,12 @@ end
     def configure_permitted_parameters
   devise_parameter_sanitizer.permit(:sign_up) { |params|
     params.permit(
-        :email, :password, :password_confirmation, :name, :address_1, :address_2, :zip_code, :cellphone,:role_id, :country, :username,:last_name, :friend_reference
+        :email, :password, :password_confirmation, :name, :address_1, :address_2, :zip_code, :cellphone,:role_id, :country, :username,:last_name, :friend_reference, :gift_credit
     )
   }
   devise_parameter_sanitizer.permit(:account_update) { |params|
     params.permit(
-      :email, :password, :password_confirmation, :name,
-      :last_name
+      :email, :password, :password_confirmation, :name, :gift_credit, :last_name
     )
   }
 end
