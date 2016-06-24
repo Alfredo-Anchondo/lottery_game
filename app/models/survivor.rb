@@ -21,8 +21,8 @@ class Survivor < ActiveRecord::Base
   end
 
   def self.close
-    from_year.each do |s|
-      if SurvivorGame.no_pending_games?
+    if SurvivorGame.no_pending_games?
+      from_year.each do |s|
         total_winners = s.survivor_users.winner.count
 
         if total_winners > 0 && s.initial_balance > 0
