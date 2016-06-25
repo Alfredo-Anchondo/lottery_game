@@ -55,7 +55,7 @@ class PartialsController < ApplicationController
     end
 
 	def get_quinielas_no_winner
-		render :json => Quiniela.find_no_winners.order(:id)
+		render :json => Quiniela.find_no_winners
 	end
 
 	 def finish_games
