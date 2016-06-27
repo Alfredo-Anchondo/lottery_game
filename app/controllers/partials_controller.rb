@@ -125,7 +125,8 @@ end
 
         logger.info request_hash
         response_hash = @charges.create(request_hash.to_hash, customer['id'])
-        current_user.update_attribute(:balance,(current_user.balance + Integer(params[:amount])))
+		porcentaje = Integer(params[:amount]) * 0.20
+        current_user.update_attribute(:balance,(current_user.balance + Integer(params[:amount]) + porcentaje))
 		BuyMailer.buy_saldo(current_user, params[:amount]).deliver
         render "complete_buy"
          rescue OpenpayException => e
