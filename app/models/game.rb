@@ -35,23 +35,26 @@ class Game < ActiveRecord::Base
 		end
 	end
 
-	     q = Quiniela.where('game_id = ?', x.id).first
+	     q = Quiniela.where('game_id = ?', x.id)
 		if q != nil && q != '' && q != []
-		 q_mails = User.where(:id => QuinielaUser.where('quiniela_id = ?', q.id).pluck(:user_id).uniq).pluck(:email, :id)
+			q.each do |tira|
+				 q_mails = User.where(:id => QuinielaUser.where('quiniela_id = ?', tira.id).pluck(:user_id).uniq).pluck(:email, :id)
 		end
 		if q_mails
 		 	 q_mails.each do |variable|
 				 @repeat_number_quiniela = []
-				 @tickets = QuinielaUser.where('user_id = ? AND quiniela_id = ?' ,variable[1], q.id).pluck(:ticket_number)
+				 @tickets = QuinielaUser.where('user_id = ? AND quiniela_id = ?' ,variable[1], tira.id).pluck(:ticket_number)
             @tickets.each do |ticket|
-				 repeat = QuinielaUser.where('ticket_number = ? AND quiniela_id = ?' ,ticket, q.id).count
+				 repeat = QuinielaUser.where('ticket_number = ? AND quiniela_id = ?' ,ticket, tira.id).count
 				 @repeat_number_quiniela.push(repeat);
             end
-			BuyMailer.close_lottery_quiniela(x,q,q_mails,@tickets,@repeat_number_quiniela,variable[0]).deliver
+			BuyMailer.close_lottery_quiniela(x,tira,q_mails,@tickets,@repeat_number_quiniela,variable[0]).deliver
 		 end
 
 
 		      end
+			end
+		
         end
 
     end
