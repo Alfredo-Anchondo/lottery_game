@@ -39,7 +39,7 @@ class Game < ActiveRecord::Base
 		if q != nil && q != '' && q != []
 			q.each do |tira|
 				 q_mails = User.where(:id => QuinielaUser.where('quiniela_id = ?', tira.id).pluck(:user_id).uniq).pluck(:email, :id)
-		end
+	
 		if q_mails
 		 	 q_mails.each do |variable|
 				 @repeat_number_quiniela = []
@@ -50,7 +50,7 @@ class Game < ActiveRecord::Base
             end
 			BuyMailer.close_lottery_quiniela(x,tira,q_mails,@tickets,@repeat_number_quiniela,variable[0]).deliver
 		 end
-
+	end
 
 		      end
 			end
