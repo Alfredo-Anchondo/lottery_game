@@ -55,7 +55,7 @@ class PartialsController < ApplicationController
     end
 
 	def get_quinielas_no_winner
-		render :json => Quiniela.find_no_winners.order(:id)
+		render :json => Quiniela.find_no_winners.order("created_at DESC")
 	end
 
 	 def finish_games
@@ -125,7 +125,9 @@ end
 
         logger.info request_hash
         response_hash = @charges.create(request_hash.to_hash, customer['id'])
+		porcentaje = Integer(params[:amount]) * 0.20
         current_user.update_attribute(:balance,(current_user.balance + Integer(params[:amount])))
+		current_user.update_attribute(:gift_credit, (current_user.gift_credit + porcentaje))
 		BuyMailer.buy_saldo(current_user, params[:amount]).deliver
         render "complete_buy"
          rescue OpenpayException => e

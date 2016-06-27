@@ -20,6 +20,8 @@ class SurvivorUser < ActiveRecord::Base
   #METHODS
   protected
 
+  
+	
   def available_rebuy
     losses = survivor_week_survivor.survivor.survivor_users.where(:user_id => user_id).loser.count
     rebuy_quantity = survivor_week_survivor.survivor.rebuy_quantity

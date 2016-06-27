@@ -1,0 +1,44 @@
+<h1 style="text-align:center; font-size:30px; font-weight:900; color:#2d68ac;"><span  class="hide-phone">───────</span> Survivors <span  class="hide-phone">───────</span></h1>
+<div id="mainwrapper"><!-- This #mainwrapper section contains all of our images to make them center and look proper in the browser ->
+ 
+</div> <!-- end of #mainwrapper-->
+</div>
+<div class="clearfix"></div>
+<hr>
+
+<script>
+	$( document ).ready(function() {
+		  var current_language = $("#current_language").val();
+	  $.ajax({
+            method: "GET",
+            url: "/partials/current_survivors",
+            format: "json"
+               }).done(function(data) {
+		   for( var i in data.partials){
+			   
+			    var week_length = data.partials[i].survivor_week_survivors.length;
+			  
+			   if(data.partials[i].survivor_week_survivors[0]){
+				   if (data.partials[i].survivor_week_survivors[0].survivor_week_game){
+					   var game_lengh = data.partials[i].survivor_week_survivors[0].survivor_week_game;
+					    var initial = data.partials[i].survivor_week_survivors[0].survivor_week_game.initial_date;
+					    var final = data.partials[i].survivor_week_survivors[week_length - 1].survivor_week_game.final_date; 
+				   }else{
+					      var final = "0"; var initial="0"
+				   }
+				  
+				   
+			   }else{ 
+				   var final = "0"; var initial="0"
+				   }
+			   
+			   
+			 $('.survivors').append('<h4 style="text-align:center"> '+data.partials[i].name+'</h4> <h4 style="text-align:center"> '+data.partials[i].description+'</h4> <h4 style="text-align:center"> '+data.partials[i].initial_balance+'</h4> <h4 style="text-align:center"> '+data.partials[i].price+'</h4><h4 style="text-align:center"> '+initial +'</h4> <h4 style="text-align:center"> '+final+'</h4>');
+			   
+			 $('#mainwrapper').append('<div id="box-3" class="box col-md-3 col-xs-12"><div class="row"><h4 style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; font-size:18px; font-weight:800;">'+data.partials[i].name+ '</h4><h3 style="text-align:center; color:white; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; text-transform: capitalize; font-weight:800;"> '+moment(initial,"", current_language ).format("MMMM D YYYY")+' </h3> </div><span class="caption fade-caption"><h3 style="text-align:center">'+data.partials[i].name+' </h3><h3 style="text-align:center; color:white;">Bolsa Acumulada</h3><p style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; font-weight:800; font-size:40px;"> <span>'+data.partials[i].initial_balance+' </span> DB </p> <h3 style="text-align:center; color:white;"> Precio de la Tira </h3> <h1 style="text-align:center;     text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; font-size:40px; color:#696969; font-weight:800"> <span> '+data.partials[i].price+'</span> DB </h1> </span></div>');
+			   
+			   
+		   }	 	 
+	  });		
+			});
+</script>

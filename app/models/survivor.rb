@@ -15,6 +15,7 @@ class Survivor < ActiveRecord::Base
 
   #METHODS
 
+	
   def alive_users
     last_survivor_week_game = SurvivorWeekGame.from_year.order(:initial_date).last
     survivor_users.where(:survivor_week_game_id => last_survivor_week_game.id).alive

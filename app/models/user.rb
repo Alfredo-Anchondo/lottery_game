@@ -95,7 +95,7 @@ end
 		@balance = 0
 		@users.each do |balance|
 			if balance.gift_credit
-				@balance = @balance + Integer(balance.gift_credit)
+				@balance = @balance + Float(balance.gift_credit)
 			end
 		end
 		return @balance
