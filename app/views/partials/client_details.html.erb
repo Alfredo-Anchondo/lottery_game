@@ -24,7 +24,7 @@
                 <div class="col-md-6">
                 	<h4 style="color:#2D68AC">Nombre de Usuario: <span style="color:Black"> <%= @user.username %></span></h4>
 					<h4 style="color:#2D68AC">Fecha de Creación: <span style="color:Black"><%= @user.created_at.strftime('%F  %T') %></span></h4>
-                	   <h4 style="color:#2D68AC">Ubicacion: <span style="color:Black"> <%= @user.country + ", " + @user.state + ", " + @user.city %></span> </h4>
+                	   <h4 style="color:#2D68AC">Ubicacion: <span style="color:Black"> <%= "#{@user.country}, #{@user.state}, #{@user.city}" %></span> </h4>
                 	   <h4 style="color:#2D68AC">Correo: <span style="color:Black"><%= @user.email %></span></h4>
                 	   <h4 style="color:#2D68AC">Telefono: <span style="color:Black"><%=  @user.phone %></span></h4>
                 	   	<h4 style="color:#2D68AC">Saldo: <span style="color:Black"><%= @user.balance %> DB</span></h4>
@@ -33,7 +33,7 @@
                  <div class="col-md-6">
                  	<h4 style="color:#2D68AC">Nombre: <span style="color:Black"> <%= @user.name + " " + @user.last_name  %></span></h4>
                  	<h4 style="color:#2D68AC">Fecha Nacimiento: <span style="color:Black"> <%= @user.birthday %></span></h4>
-                 	<h4 style="color:#2D68AC">Direccion: <span style="color:Black"> <%= @user.address_1 + " " +  @user.address_2 + " # "+ String(@user.ext_number) +  " CP:" + @user.zip_code %> </span> </h4>
+                 	<h4 style="color:#2D68AC">Direccion: <span style="color:Black"> <%= "#{@user.address_1}, #{@user.address_2}, #{String(@user.ext_number)}, #{@user.zip_code}"  %> </span> </h4>
                  	<h4 style="color:#2D68AC">Genero: <span style="color:Black"> <%= @user.gender %></span></h4>
                  	<h4 style="color:#2D68AC">Celular: <span style="color:Black"> <%= @user.cellphone  %></span></h4>
                  		

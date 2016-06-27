@@ -8,18 +8,23 @@ class Survivor < ActiveRecord::Base
   has_many :survivor_week_games, :through => :survivor_week_survivors
   has_many :survivor_games, :through => :survivor_week_games
   has_many :survivor_users, :through => :survivor_week_survivors
+  has_many :users, :through => :survivor_users	
 
   #VALIDATIONS
   validates :name, :price, :initial_balance, :presence => true
   validates :price, :initial_balance, :numericality => { :greater_than => 0 }
 
   #METHODS
-
+  
 	
   def alive_users
     last_survivor_week_game = SurvivorWeekGame.from_year.order(:initial_date).last
     survivor_users.where(:survivor_week_game_id => last_survivor_week_game.id).alive
   end
+	
+	def participant_users
+		users.uniq.count
+	end
 
   def self.close
     if SurvivorGame.no_pending_games? && survivor_week_games.last.last_week? && !survivor_week_games.last.closed
