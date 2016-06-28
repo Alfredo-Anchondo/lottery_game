@@ -62,17 +62,17 @@ ActiveRecord::Schema.define(version: 20160628150934) do
   add_index "games", ["team_id"], name: "index_games_on_team_id", using: :btree
 
   create_table "lotteries", force: true do |t|
-    t.float    "initial_balance",                     null: false
-    t.text     "rules",                               null: false
+    t.float    "initial_balance",       null: false
+    t.text     "rules",                 null: false
     t.text     "description"
-    t.integer  "game_id",                             null: false
+    t.integer  "game_id",               null: false
     t.integer  "winner_number"
-    t.integer  "initial_number",                      null: false
-    t.integer  "final_number",                        null: false
-    t.float    "price",                               null: false
+    t.integer  "initial_number",        null: false
+    t.integer  "final_number",          null: false
+    t.float    "price",                 null: false
+    t.text     "purchase_gift_tickets"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "purchase_gift_tickets", default: "0"
   end
 
   add_index "lotteries", ["game_id"], name: "index_lotteries_on_game_id", using: :btree
@@ -109,16 +109,15 @@ ActiveRecord::Schema.define(version: 20160628150934) do
   add_index "quiniela_users", ["user_id"], name: "index_quiniela_users_on_user_id", using: :btree
 
   create_table "quinielas", force: true do |t|
-    t.text     "initial_balance",                       null: false
+    t.text     "initial_balance",         null: false
     t.text     "price"
     t.text     "description"
     t.text     "winner_number"
-    t.integer  "game_id",                               null: false
+    t.integer  "game_id",                 null: false
+    t.text     "purchase_gift_tickets"
+    t.text     "last_question"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "purchase_gift_tickets",   default: "0"
-    t.string   "last_questions"
-    t.string   "last_questions_text"
     t.string   "cap_result_file_name"
     t.string   "cap_result_content_type"
     t.integer  "cap_result_file_size"
@@ -165,11 +164,11 @@ ActiveRecord::Schema.define(version: 20160628150934) do
     t.text     "description"
     t.datetime "game_date",             null: false
     t.integer  "winner_team"
+    t.integer  "local_score"
+    t.integer  "visit_score"
     t.integer  "survivor_week_game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "local_score"
-    t.integer  "visit_score"
   end
 
   add_index "survivor_games", ["survivor_week_game_id"], name: "index_survivor_games_on_survivor_week_game_id", using: :btree
@@ -177,14 +176,13 @@ ActiveRecord::Schema.define(version: 20160628150934) do
   add_index "survivor_games", ["team_id"], name: "index_survivor_games_on_team_id", using: :btree
 
   create_table "survivor_users", force: true do |t|
-    t.integer  "survivor_week_game_id"
-    t.integer  "team_id",                                      null: false
-    t.datetime "purchase_date",                                null: false
-    t.integer  "user_id",                                      null: false
-    t.string   "status",                    default: "bought", null: false
+    t.integer  "survivor_week_game_id",                    null: false
+    t.integer  "team_id",                                  null: false
+    t.datetime "purchase_date",                            null: false
+    t.integer  "user_id",                                  null: false
+    t.string   "status",                default: "bought", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "survivor_week_survivor_id"
   end
 
   add_index "survivor_users", ["survivor_week_game_id"], name: "index_survivor_users_on_survivor_week_game_id", using: :btree
@@ -192,15 +190,13 @@ ActiveRecord::Schema.define(version: 20160628150934) do
   add_index "survivor_users", ["user_id"], name: "index_survivor_users_on_user_id", using: :btree
 
   create_table "survivor_week_games", force: true do |t|
-    t.integer  "survivor_id"
-    t.date     "initial_date",             null: false
-    t.date     "final_date",               null: false
-    t.integer  "week",         default: 1, null: false
+    t.date     "initial_date",                 null: false
+    t.date     "final_date",                   null: false
+    t.integer  "week",         default: 1,     null: false
+    t.boolean  "closed",       default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "survivor_week_games", ["survivor_id"], name: "index_survivor_week_games_on_survivor_id", using: :btree
 
   create_table "survivor_week_survivors", force: true do |t|
     t.integer  "survivor_id",           null: false
@@ -213,22 +209,23 @@ ActiveRecord::Schema.define(version: 20160628150934) do
   add_index "survivor_week_survivors", ["survivor_week_game_id"], name: "index_survivor_week_survivors_on_survivor_week_game_id", using: :btree
 
   create_table "survivors", force: true do |t|
-    t.string   "name",                                    null: false
+    t.string   "name",                                  null: false
     t.text     "description"
-    t.float    "price",                   default: 0.0,   null: false
-    t.float    "initial_balance",         default: 0.0,   null: false
+    t.text     "access_key"
+    t.integer  "user_id",                               null: false
+    t.float    "price",                   default: 0.0, null: false
+    t.float    "initial_balance",         default: 0.0, null: false
+    t.integer  "percentage"
+    t.integer  "rebuy_quantity",          default: 1,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "access_key"
-    t.float    "percentage"
-    t.integer  "user_id"
-    t.boolean  "closed",                  default: false, null: false
-    t.integer  "rebuy_quantity",                          null: false
     t.string   "background_file_name"
     t.string   "background_content_type"
     t.integer  "background_file_size"
     t.datetime "background_updated_at"
   end
+
+  add_index "survivors", ["user_id"], name: "index_survivors_on_user_id", using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "name",              null: false
@@ -248,7 +245,7 @@ ActiveRecord::Schema.define(version: 20160628150934) do
     t.integer  "user_id",       null: false
     t.integer  "lottery_id",    null: false
     t.string   "status",        null: false
-    t.string   "ticket_number", null: false
+    t.integer  "ticket_number", null: false
     t.datetime "purchase_date", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -258,31 +255,39 @@ ActiveRecord::Schema.define(version: 20160628150934) do
   add_index "user_lotteries", ["user_id"], name: "index_user_lotteries_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "name",                                            null: false
-    t.string   "last_name",                                       null: false
+    t.string   "name",                                 null: false
+    t.string   "last_name",                            null: false
     t.string   "address_1"
     t.string   "address_2"
     t.string   "zip_code"
     t.integer  "age"
-    t.string   "email",                                           null: false
+    t.string   "email",                                null: false
     t.string   "phone"
     t.string   "cellphone"
-    t.float    "balance",                           default: 0.0
-    t.integer  "role_id",                                         null: false
+    t.float    "balance",                default: 0.0
+    t.integer  "role_id",                              null: false
     t.string   "country"
     t.string   "state"
     t.string   "city"
     t.integer  "int_number"
     t.integer  "ext_number"
-    t.string   "username",                                        null: false
+    t.string   "username",                             null: false
     t.string   "password"
+    t.string   "favorite_team"
+    t.date     "birthday"
+    t.string   "openpay_id"
+    t.string   "gender"
+    t.string   "language"
+    t.string   "friend_reference"
+    t.string   "gift_credit"
+    t.string   "reference_by_friend"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encrypted_password",                default: "",  null: false
+    t.string   "encrypted_password",     default: "",  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                     default: 0,   null: false
+    t.integer  "sign_in_count",          default: 0,   null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -294,16 +299,6 @@ ActiveRecord::Schema.define(version: 20160628150934) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "openpay_id"
-    t.string   "favorite_team"
-    t.date     "birthday"
-    t.string   "gender"
-    t.string   "language",               limit: 30
-    t.string   "friend_reference"
-    t.string   "gift_credit",                       default: "0"
-    t.string   "reference_by_friend"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
@@ -334,12 +329,10 @@ ActiveRecord::Schema.define(version: 20160628150934) do
   add_foreign_key "survivor_users", "teams", name: "survivor_users_team_id_fk"
   add_foreign_key "survivor_users", "users", name: "survivor_users_user_id_fk"
 
-  add_foreign_key "survivor_week_games", "survivors", name: "survivor_week_games_survivor_id_fk"
-
   add_foreign_key "survivor_week_survivors", "survivor_week_games", name: "survivor_week_survivors_survivor_week_game_id_fk"
   add_foreign_key "survivor_week_survivors", "survivors", name: "survivor_week_survivors_survivor_id_fk"
 
-  add_foreign_key "survivors", "users", name: "usersfk"
+  add_foreign_key "survivors", "users", name: "survivors_user_id_fk"
 
   add_foreign_key "teams", "sport_categories", name: "teams_sport_category_id_fk"
 

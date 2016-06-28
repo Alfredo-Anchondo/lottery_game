@@ -1,9 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  survivor_id_id: 
-  survivor_week_games_id_id: 
+survivor_from_aanchondo_week_1:
+  survivor: survivor_from_aanchondo
+  survivor_week_game: week_1
 
-two:
-  survivor_id_id: 
-  survivor_week_games_id_id: 
+survivor_from_aanchondo_week_2:
+  survivor: survivor_from_aanchondo
+  survivor_week_game: week_2
+
+survivor_from_aanchondo_week_3:
+  survivor: survivor_from_aanchondo
+  survivor_week_game: week_3
+
+survivor_from_aanchondo_week_4:
+  survivor: survivor_from_aanchondo
+  survivor_week_game: week_4
