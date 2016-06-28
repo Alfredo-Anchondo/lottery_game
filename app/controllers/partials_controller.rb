@@ -20,6 +20,7 @@ class PartialsController < ApplicationController
 		@total_balance_update = params[:total_balance_update]
 		@quiniela = Quiniela.find(params[:tira_id]);
 		@purchase_gift = @quiniela.purchase_gift_tickets
+		@update_balance = (Integer(@price)  * 0.95 )
 		if @purchase_gift == '' || @purchase_gift == "NaN" || @purchase_gift == nil
 			@purchase_gift = 0
 		end
@@ -29,8 +30,11 @@ class PartialsController < ApplicationController
 		if params[:normal_buy] != 'true'
 			@user.update( {gift_credit: @total_balance_update})
 			logger.info "saldo de regaliux"+ String(@purchase_gift)
-			@quiniela.update({purchase_gift_tickets: (Integer(@purchase_gift) + @numbers.length) })
+			@quiniela.update({purchase_gift_tickets: (Integer(@purchase_gift) + @numbers.length)})
+			@quiniela.update({initial_balance: String(@balance.to_f + @update_balance) })
+			logger.info @update_balance
 		else
+			@quiniela.update({initial_balance: (@balance + @update_balance)  })
 			@user.update( {balance: @total_balance_update})
 		end
 
