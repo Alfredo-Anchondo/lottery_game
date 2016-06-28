@@ -1632,6 +1632,7 @@
 					var user_id = <%= current_user.id %>;
 					var quiniela_id = $(this).data('quinielaid');
 					var gift_number = $(this).data('tiragift');
+					var initial_balance = parseFloat($('#initial_balance'+current_view+'').text()); 
 					if(gift_number == '' || gift_number == null || gift_number == 'NaN'){
 						gift_number = 0 ;
 					}
@@ -1640,6 +1641,7 @@
 					var quiniela_price = parseInt($('#price'+current_view+'').text());
 					var balance;
 					var flag_balance;
+					var porcentage_update = quiniela_price * .95;  
 					
 					if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= quiniela_price){
 						balance = <%= current_user.gift_credit %>;
@@ -1662,6 +1664,14 @@
 						if(flag_balance){
 							$('.buy_quiniela').prop( "disabled", true );
 							var total_balance_update = balance - quiniela_price;
+							  $.ajax({
+                      method: "PUT",
+                      url: "/quinielas/"+quiniela_id+"",
+                      dataType: "json",     
+                      data: {initial_balance: (initial_balance + porcentage_update) } 
+                    }).done(function( data) {
+									
+								})
 							  $.ajax({
                       method: "PUT",
                       url: "/users/"+user_id+"",
@@ -1690,11 +1700,13 @@
 								    setTimeout(function(){ location.reload(); }, 2000);     
 							  })
 							  
+							
+							  
 							    $.ajax({
                       method: "PUT",
                       url: "/quinielas/"+quiniela_id+"",
                       dataType: "json",     
-                      data: { quiniela: {purchase_gift_tickets: parseInt(gift_number) + 1} }
+                      data: { quiniela: {purchase_gift_tickets: parseInt(gift_number) + 1, initial_balance: initial_balance + porcentage_update } }
                     }).done(function( data) {
 									
 								})
@@ -1746,7 +1758,7 @@
 			 local = $('#tiras_random option:selected').data('local');
 		     visit = $('#tiras_random option:selected').data('visit');
 			 price = $('#tiras_random option:selected').data('price');
-		     balance = $('#tiras_random option:selected').data('balance');
+		     balance = parseFloat($('#tiras_random option:selected').data('balance'));
 			 tira_id = $('#tiras_random option:selected').val();
 			 number_questions = $('#tiras_random option:selected').data('quantity');
 			$('#local_team_random_tira').append('<img style="margin-left:25%" width="50%" src="'+ local +'">');

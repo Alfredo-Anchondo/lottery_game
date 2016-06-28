@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623170330) do
+ActiveRecord::Schema.define(version: 20160628150934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,13 +177,14 @@ ActiveRecord::Schema.define(version: 20160623170330) do
   add_index "survivor_games", ["team_id"], name: "index_survivor_games_on_team_id", using: :btree
 
   create_table "survivor_users", force: true do |t|
-    t.integer  "survivor_week_game_id",                    null: false
-    t.integer  "team_id",                                  null: false
-    t.datetime "purchase_date",                            null: false
-    t.integer  "user_id",                                  null: false
-    t.string   "status",                default: "bought", null: false
+    t.integer  "survivor_week_game_id"
+    t.integer  "team_id",                                      null: false
+    t.datetime "purchase_date",                                null: false
+    t.integer  "user_id",                                      null: false
+    t.string   "status",                    default: "bought", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "survivor_week_survivor_id"
   end
 
   add_index "survivor_users", ["survivor_week_game_id"], name: "index_survivor_users_on_survivor_week_game_id", using: :btree
@@ -212,16 +213,21 @@ ActiveRecord::Schema.define(version: 20160623170330) do
   add_index "survivor_week_survivors", ["survivor_week_game_id"], name: "index_survivor_week_survivors_on_survivor_week_game_id", using: :btree
 
   create_table "survivors", force: true do |t|
-    t.string   "name",                            null: false
+    t.string   "name",                                    null: false
     t.text     "description"
-    t.float    "price",           default: 0.0,   null: false
-    t.float    "initial_balance", default: 0.0,   null: false
+    t.float    "price",                   default: 0.0,   null: false
+    t.float    "initial_balance",         default: 0.0,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "access_key"
     t.float    "percentage"
     t.integer  "user_id"
-    t.boolean  "closed",          default: false, null: false
+    t.boolean  "closed",                  default: false, null: false
+    t.integer  "rebuy_quantity",                          null: false
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
   end
 
   create_table "teams", force: true do |t|
