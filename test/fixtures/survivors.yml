@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+survivor_from_aanchondo:
+  name: "Survivor from aanchondo"
+  price: 100
+  initial_balance: 4000
+  percentage: 20
+  user: aanchondo

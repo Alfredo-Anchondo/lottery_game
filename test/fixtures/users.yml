@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+aanchondo:
+  name: "Alfredo"
+  last_name: "Anchondo"
+  address_1: "calle"
+  address_2: "lugar"
+  zip_code: "1234"
+  email: "alfre@sad.com"
+  cellphone: "478324"
+  role: client
+  country: "mexico"
+  username: "aanchondo"
+  password: "aanchondo"
+
+jluna:
+  name: "Jorge"
+  last_name: "Luna"
+  address_1: "calle"
+  address_2: "lugar"
+  zip_code: "5678"
+  email: "jluna@publiwi.com"
+  cellphone: "5573941543"
+  role: client
+  country: "mexico"
+  username: "jluna"
+  password: "jluna123"

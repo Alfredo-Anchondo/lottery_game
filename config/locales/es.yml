@@ -97,6 +97,7 @@ es:
     save: "Guardar"
     new: "Crear Nuevo"
     back: "Volver"
+  team_already_selected: "No disponible, ya haz seleccionado este equipo"
   no_rebuy_available: "No hay recompras disponibles"
   close_week: "Cerrar semana"
   week: "Semana"

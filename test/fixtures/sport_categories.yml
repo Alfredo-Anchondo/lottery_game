@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+basketball_nba:
+  sport: basketball
+  category: nba
+
+soccer_fifa:
+  sport: soccer
+  category: fifa

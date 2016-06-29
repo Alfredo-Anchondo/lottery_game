@@ -1,0 +1,65 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+mavericks:
+  name: "Mavericks"
+  sport_category: basketball_nba
+
+chicago:
+  name: "Chicago"
+  sport_category: basketball_nba
+
+mexico:
+  name: "Mexico"
+  sport_category: soccer_fifa
+
+brazil:
+  name: "Brazil"
+  sport_category: soccer_fifa
+
+celtics:
+  name: "Celtics"
+  sport_category: basketball_nba
+
+charlotte:
+  name: "Charlotte"
+  sport_category: basketball_nba
+
+germany:
+  name: "Germany"
+  sport_category: soccer_fifa
+
+argentina:
+  name: "Argentina"
+  sport_category: soccer_fifa
+
+rockets:
+  name: "Rockets"
+  sport_category: basketball_nba
+
+lackers:
+  name: "Lackers"
+  sport_category: basketball_nba
+
+italy:
+  name: "Italy"
+  sport_category: soccer_fifa
+
+france:
+  name: "France"
+  sport_category: soccer_fifa
+
+nuggets:
+  name: "Nuggets"
+  sport_category: basketball_nba
+
+clippers:
+  name: "Clippers"
+  sport_category: basketball_nba
+
+usa:
+  name: "USA"
+  sport_category: soccer_fifa
+
+neerland:
+  name: "Neerland"
+  sport_category: soccer_fifa

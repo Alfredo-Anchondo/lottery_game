@@ -1,0 +1,85 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+survivor_user_1:
+  status: bought
+  survivor_week_survivor: survivor_from_aanchondo_week_1
+  team: mavericks
+  user: aanchondo
+  purchase_date: "2016-06-16"
+
+survivor_user_2:
+  status: bought
+  survivor_week_survivor: survivor_from_aanchondo_week_1
+  team: celtics
+  user: jluna
+  purchase_date: "2016-06-16"
+
+survivor_user_3:
+  status: bought
+  survivor_week_survivor: survivor_from_aanchondo_week_1
+  team: mexico
+  user: jluna
+  purchase_date: "2016-06-16"
+
+survivor_user_4:
+  status: bought
+  survivor_week_survivor: survivor_from_aanchondo_week_2
+  team: chicago
+  user: aanchondo
+  purchase_date: "2016-10-07"
+
+survivor_user_5:
+  status: bought
+  survivor_week_survivor: survivor_from_aanchondo_week_2
+  team: charlotte
+  user:  jluna
+  purchase_date: "2016-10-07"
+
+survivor_user_6:
+  status: bought
+  survivor_week_survivor: survivor_from_aanchondo_week_2
+  team: brazil
+  user: jluna
+  purchase_date: "2016-10-07"
+
+survivor_user_7:
+  status: bought
+  survivor_week_survivor: survivor_from_aanchondo_week_3
+  team: rockets
+  user: aanchondo
+  purchase_date: "2016-10-15"
+
+survivor_user_8:
+  status: bought
+  survivor_week_survivor: survivor_from_aanchondo_week_3
+  team: france
+  user: aanchondo
+  purchase_date: "2016-10-15"
+
+survivor_user_9:
+  status: bought
+  survivor_week_survivor: survivor_from_aanchondo_week_3
+  team: italy
+  user: jluna
+  purchase_date: "2016-10-15"
+
+survivor_user_10:
+  status: bought
+  survivor_week_survivor: survivor_from_aanchondo_week_4
+  team: nuggets
+  user: aanchondo
+  purchase_date: "2016-10-22"
+
+survivor_user_11:
+  status: bought
+  survivor_week_survivor: survivor_from_aanchondo_week_4
+  team: nuggets
+  user: jluna
+  purchase_date: "2016-10-22"
+
+survivor_user_12:
+  status: bought
+  survivor_week_survivor: survivor_from_aanchondo_week_4
+  team: neerlands
+  user: jluna
+  purchase_date: "2016-10-22"

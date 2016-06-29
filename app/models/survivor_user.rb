@@ -11,9 +11,11 @@ class SurvivorUser < ActiveRecord::Base
   belongs_to :user
   belongs_to :survivor_user	
 
+
   #VALIDATIONS
   validates :survivor_week_survivor_id,  :user_id, :presence => true
   validate :available_rebuy, :on => :create
+  validate :available_team, :on => :create
 
   #CALLBACKS
   before_create :discount_price
@@ -22,10 +24,10 @@ class SurvivorUser < ActiveRecord::Base
   #METHODS
   protected
 
-  
-	
+
+
   def available_rebuy
-    losses = survivor_week_survivor.survivor.survivor_users.where(:user_id => user_id).loser.count
+    losses = survivor_week_survivor.survivor.survivor_users.where(:survivor_user_id => survivor_user_id).loser.count
     rebuy_quantity = survivor_week_survivor.survivor.rebuy_quantity
 
     if losses > rebuy_quantity
@@ -39,17 +41,25 @@ class SurvivorUser < ActiveRecord::Base
 		end
 	end
 
+  def available_team
+    team_ids = survivor_week_survivor.survivor.survivor_users.where(:survivor_user_id => survivor_user_id).pluck(:team_id)
+
+    if team_ids.include?(team_id)
+      errors.add(:team_id, I18n.t("team_already_selected"))
+    end
+  end
+
   def discount_price
 	 previous_survivor_week_survivor = survivor_week_survivor.previous_survivor_week_survivor
 	 if user.gift_credit.to_f >= survivor_week_survivor.survivor.price.to_f
-		   if previous_survivor_week_survivor.nil? || previous_survivor_week_survivor.survivor_users.alive.find_by(:user_id => user.id).nil?
+		   if previous_survivor_week_survivor.nil? || previous_survivor_week_survivor.survivor_users.alive.find_by(:survivor_user_id => survivor_user_id).nil?
       user.update(:gift_credit => user.gift_credit.to_f - survivor_week_survivor.survivor.price.to_f)
            end
 	 else
-		  if previous_survivor_week_survivor.nil? || previous_survivor_week_survivor.survivor_users.alive.find_by(:user_id => user.id).nil?
+		  if previous_survivor_week_survivor.nil? || previous_survivor_week_survivor.survivor_users.alive.find_by(:survivor_user_id => survivor_user_id).nil?
       user.update(:balance => user.balance - survivor_week_survivor.survivor.price)
            end
 	 end
   end
-	
+
 end

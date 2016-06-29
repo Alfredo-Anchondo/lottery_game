@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+week_1:
+  initial_date: "2016-06-16"
+  final_date: "2016-06-22"
+  week: 1
+
+week_2:
+  initial_date: "2016-10-07"
+  final_date: "2016-10-13"
+  week: 17
+
+week_3:
+  initial_date: "2016-10-15"
+  final_date: "2016-10-21"
+  week: 1
+
+week_4:
+  initial_date: "2016-10-22"
+  final_date: "2016-10-28"
+  week: 17
