@@ -27,9 +27,11 @@
       		<br>
       		<h3 style="text-align:center; color:#86b1ff; font-weight:900; font-size:20px;">Usuarios participando: <span style="color:white"><%= @current_survivor.participant_users.count %> </span>  </h3>
       		<hr>
-      		  	 <% @last_tickets_purchase.each do |entry| %>
-      		  	 	<buttton class="btn btn-primary"> <%= entry.status %> </button>
+     		  	 <h4>
+      		  	 <% @last_tickets_purchase.each_with_index do |entry, index| %>
+      		  	 	<%= button_tag ('Entrada:'+(index+1).to_s+''), :id => "",:style => "margin-left:5%;", :class => "btn btn-primary" %>
       		  	  <% end %> 
+      		  	  </h4>
 				</div>
 				
 				</div>
@@ -82,8 +84,7 @@
 									  dataType: "json",     
 									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id,  user_id: user_id ,purchase_date: purchase_date, status: "alive"}  }
 									}).done(function( data) {
-									 	setTimeout(function(){ location.reload(); }, 2000);  
-										
+											setTimeout(function(){ location.reload(); }, 2000);  	  
 								 	})
 
 							 });

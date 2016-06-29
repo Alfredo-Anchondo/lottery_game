@@ -9,7 +9,7 @@ class SurvivorUser < ActiveRecord::Base
   belongs_to :survivor_week_survivor
   belongs_to :team
   belongs_to :user
-  has_one :survivor_user	
+  belongs_to :survivor_user	
 
   #VALIDATIONS
   validates :survivor_week_survivor_id,  :user_id, :presence => true
@@ -17,6 +17,7 @@ class SurvivorUser < ActiveRecord::Base
 
   #CALLBACKS
   before_create :discount_price
+  after_create  :update_survivor_user_id 
 
   #METHODS
   protected
@@ -31,6 +32,12 @@ class SurvivorUser < ActiveRecord::Base
       errors.add(:user_id, I18n.t("no_rebuy_available"))
     end
   end
+	
+	def update_survivor_user_id
+		if survivor_user_id.blank?
+			update({survivor_user_id: id})
+		end
+	end
 
   def discount_price
 	 previous_survivor_week_survivor = survivor_week_survivor.previous_survivor_week_survivor

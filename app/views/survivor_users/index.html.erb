@@ -18,6 +18,7 @@
                                   <th><%= t("activerecord.attributes.survivor_user.purchase_date") %></th>
                                   <th><%= t("activerecord.attributes.survivor_user.user") %></th>
                                   <th><%= t("activerecord.attributes.survivor_user.status") %></th>
+                                  <th>id</th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -29,6 +30,7 @@
                                   <td><%= survivor_user.purchase_date %></td>
                                   <td><%= survivor_user.user.select_display %></td>
                                   <td><%= t("status.#{survivor_user.status}") %></td>
+                                  <td><%= survivor_user.survivor_user_id %> </td>
                                 <td class="action-link">
                   <% if can? :show,survivor_user %>
                     <%= link_to survivor_user, :class => "btn btn-default", :title => t("actions.show") do %>
