@@ -8,7 +8,7 @@ class Survivor < ActiveRecord::Base
   has_many :survivor_week_games, :through => :survivor_week_survivors
   has_many :survivor_games, :through => :survivor_week_games
   has_many :survivor_users, :through => :survivor_week_survivors
-  has_many :users, :through => :survivor_users	
+  has_many :users, :through => :survivor_users
 
   has_attached_file :background, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/default_background.png"
   validates_attachment_content_type :background, :content_type => /\Aimage\/.*\Z/	
@@ -23,28 +23,31 @@ class Survivor < ActiveRecord::Base
 		User.find(user_id).username
 	end
 	
+
   def alive_users
     last_survivor_week_game = SurvivorWeekGame.from_year.order(:initial_date).last
     survivor_users.where(:survivor_week_game_id => last_survivor_week_game.id).alive
   end
+
 	
 	
 	def background_url
 		background.url
 	end
 	
+
 	def participant_users
 		users.uniq
 	end
 
   def self.close
-    if SurvivorGame.no_pending_games? && survivor_week_games.last.last_week? && !survivor_week_games.last.closed
+    if SurvivorGame.no_pending_games? && SurvivorWeekGame.from_year.last.last_week? && !SurvivorWeekGame.from_year.last.closed
       from_year.each do |s|
         total_winners = s.survivor_users.winner.count
 
         if total_winners > 0 && s.initial_balance > 0
           if s.percentage.present?
-            percentage_profit = s.initial_balance * s.percentage.to_s / 100
+            percentage_profit = s.initial_balance * s.percentage.to_f / 100
             s.user.update(:balance => s.user.balance + percentage_profit.to_f / 2)
             profit = (s.initial_balance.to_f - percentage_profit) / total_winners
           else
@@ -53,10 +56,11 @@ class Survivor < ActiveRecord::Base
 
           s.survivor_users.winner.each do |su|
             su.user.update(:balance => su.user.balance + profit)
-            su.survivor_week_survivor.survivor_week_game.update(:closed => true)
           end
         end
       end
+
+      SurvivorWeekGame.from_year.last.update(:closed => true)
     end
   end
 end
