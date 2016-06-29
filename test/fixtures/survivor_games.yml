@@ -1,0 +1,55 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+game_1:
+  survivor_week_game: week_1
+  handicap: 2
+  plus_handicap: 2
+  game_date: "2016-06-16 12:00"
+  team: mavericks
+  team2: celtics
+
+game_2:
+  survivor_week_game: week_1
+  handicap: 2
+  plus_handicap: 1
+  game_date: "2016-06-17 12:00"
+  team: mexico
+  team2: germany
+
+game_3:
+  survivor_week_game: week_2
+  handicap: 1
+  plus_handicap: 1
+  game_date: "2016-10-07 12:00"
+  team: chicago
+  team2: Charlotte
+
+game_4:
+  survivor_week_game: week_2
+  game_date: "2016-10-08 12:00"
+  team: brazil
+  team2: argentina
+
+game_5:
+  survivor_week_game: week_3
+  game_date: "2016-10-15 12:00"
+  team: rockets
+  team2: lackers
+
+# game_6:
+#   survivor_week_game: week_3
+#   game_date: "2016-10-15 12:00"
+#   team: italy
+#   team2: france
+
+game_7:
+  survivor_week_game: week_4
+  game_date: "2016-10-22 12:00"
+  team: nuggets
+  team2: clippers
+
+# game_8:
+#   survivor_week_game: week_4
+#   game_date: "2016-10-22 12:00"
+#   team: usa
+#   team2: neerland

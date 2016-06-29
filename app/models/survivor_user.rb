@@ -9,11 +9,12 @@ class SurvivorUser < ActiveRecord::Base
   belongs_to :survivor_week_survivor
   belongs_to :team
   belongs_to :user
-  has_one :survivor_user	
+  has_one :survivor_user
 
   #VALIDATIONS
   validates :survivor_week_survivor_id,  :user_id, :presence => true
   validate :available_rebuy, :on => :create
+  validate :available_team, :on => :create
 
   #CALLBACKS
   before_create :discount_price
@@ -21,14 +22,22 @@ class SurvivorUser < ActiveRecord::Base
   #METHODS
   protected
 
-  
-	
+
+
   def available_rebuy
-    losses = survivor_week_survivor.survivor.survivor_users.where(:user_id => user_id).loser.count
+    losses = survivor_week_survivor.survivor.survivor_users.where(:survivor_user_id => survivor_user_id).loser.count
     rebuy_quantity = survivor_week_survivor.survivor.rebuy_quantity
 
     if losses > rebuy_quantity
       errors.add(:user_id, I18n.t("no_rebuy_available"))
+    end
+  end
+
+  def available_team
+    team_ids = survivor_week_survivor.survivor.survivor_users.where(:survivor_user_id => survivor_user_id).pluck(:team_id)
+
+    if team_ids.include?(team_id)
+      errors.add(:team_id, I18n.t("team_already_selected"))
     end
   end
 
@@ -44,5 +53,5 @@ class SurvivorUser < ActiveRecord::Base
            end
 	 end
   end
-	
+
 end
