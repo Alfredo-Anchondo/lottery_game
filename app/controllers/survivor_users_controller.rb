@@ -1,5 +1,5 @@
 class SurvivorUsersController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:new,:create]
   before_action :authenticate_user!
   before_action :set_survivor_user, only: [:show, :edit, :update, :destroy]
   respond_to :html
@@ -36,7 +36,7 @@ class SurvivorUsersController < ApplicationController
     @survivor_user.destroy
     respond_with(@survivor_user)
   end
-
+  
   private
     def set_survivor_user
       @survivor_user = SurvivorUser.find(params[:id])

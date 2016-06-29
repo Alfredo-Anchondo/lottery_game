@@ -19,7 +19,7 @@ class Ability
 		cannot [:new, :create, :edit, :update, :delete, :destroy], SurvivorGame
 		cannot [:new, :create, :edit, :update, :delete, :destroy], Quiniela
 		cannot [:new, :create, :edit, :update, :delete, :destroy], QuinielaUser
-		cannot [:new, :create, :edit, :update, :delete, :destroy], SurvivorUser
+		cannot [:edit, :update, :delete, :destroy], SurvivorUser
 		cannot [:new, :create, :edit, :update, :delete, :destroy], QuinielaQuestion
         cannot [:new, :create, :edit, :update, :delete, :destroy], Role
         cannot [:new, :create, :edit, :update, :delete, :destroy], Team

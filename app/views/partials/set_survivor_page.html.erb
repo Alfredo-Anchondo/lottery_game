@@ -1,9 +1,15 @@
-<% if @current_survivor.participant_users != [] %>
-<% @current_survivor.participant_users.each do |user|%>
-	<% if user.id == current_user.id %>
+<style>
+	.footer{
+		position: fixed;
+	}
+</style>
+
+<% if @current_survivor.participant_users != [] %> <!-- pregunta si existen participantes -->
+<% @current_survivor.participant_users.each do |user|%> 
+	<% if user.id == current_user.id %>             <!-- Esto se realiza si el usuario ya tiene ticket -->
 		<h4> Estas participando en este survivor </h4>
-	<% else %>
-      <% if @current_week[0].week == 0 %>
+	<% else %> 								<!-- Aqui termina cuando realiza si el usuario ya tiene ticket -->
+      <% if @current_week[0].week == 0 %>  <!-- Esto se realiza si el usuario ya tiene ticket y es la semana 0 -->
       	<h4>Estas a tiempo de participar en el survivor</h4>
       <% else %>
       	 <h4>Lo sentimos pero esta liga ya comenzo</h4>
@@ -11,8 +17,8 @@
 	<% end %>
 
 <% end %>
-<% else %>
-	  <% if @current_week[0].week == 0 %>
+<% else %> 	<!-- Esto se ejecuta si no hay participantes aun en el survivor -->
+	  <% if @current_week[0].week == 0 %> <!-- Esto se ejecuta si la semana es la inicial -->
          	<div class="row" style="background-image: url(<%= @current_survivor.background_url %>)">
           	<h1 style="text-align:center; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
       		<h4 style="text-align:center; color:white; font-size:20px;">Estas a tiempo de participar en el survivor</h4>
@@ -28,36 +34,52 @@
       		</div>
       		
       		<br>
-      		<h3 style="text-align:center; color:white; font-weight:900; font-size:30px;">Usuarios participando: <%= @current_survivor.participant_users.count %>  </h3>
+      		<h3 style="text-align:center; color:#86b1ff; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.participant_users.count %> </span>  </h3>
       		<h3><%= @survivor_week_sur[0].id %></h3>
       		<hr>
       		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
+      		
       		<script>
 				$('#buy_entry').click(function(){
+					$(this).prop('disabled', true);
 					var user_balance;
-					if(<%=current_user.gift_credit %> >= <%= @current_survivor.price %>){
-					    alert('saldo de regalo mayor a precio');
+					var user_id = <%= current_user.id %>;
+					var survivor_balance = <%= @current_survivor.initial_balance %>;
+					var survivor_week_survivor_id = <%= @survivor_week_sur[0].id %>;
+					var survivor_id = <%= @current_survivor.id %>;
+					var purchase_date = new Date();
+					var survivor_new_balance = parseFloat(survivor_balance) + <%= @current_survivor.price %>;
+					var total_balance_update;
+					if(<%=current_user.gift_credit %> >= <%= @current_survivor.price %> || <%= current_user.balance %> >= <%= @current_survivor.price %>  ){
 					    user_balance = <%=current_user.gift_credit %>;
-					   }else if( <%= current_user.balance %> >= <%= @current_survivor.price %>){
-						   alert('Saldo normal mayor a precio');
-						   user_balance = <%= current_user.balance %>;		
-					   }else{
-						   alert('No tienes saldo suficiente');
-					   }
-					alert(user_balance);
-					
-				/*	$.ajax({
-            method: "GET",
-            url: "/partials/future_games",
-            format: "json",
-		    dataType: "html"
-               }).done(function(data) {
+						total_balance_update = user_balance - <%= @current_survivor.price %>;
 						
-					})*/
+                    	  $.ajax({
+							  method: "PUT",
+							  url: "/survivors/"+survivor_id+"",
+							  dataType: "json",     
+							  data: { survivor: {initial_balance: survivor_new_balance } }
+							}).done(function( data) {
+							  	 $.ajax({
+									  method: "POST",
+									  url: "/survivor_users",
+									  dataType: "json",     
+									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id,  user_id: user_id ,purchase_date: purchase_date, status: "bought"}  }
+									}).done(function( data) {
+									 	setTimeout(function(){ location.reload(); }, 2000);  
+										
+								 	})
+
+							 });
+               
+					   }else{       //opcion cuando el cliente no tiene saldo
+						    alert('No tienes saldo suficiente');
+							window.location.assign("/partials/credit_card_form")
+					   }
 				})
 				</script>
       	</div>
-      <% else %>
+      <% else %> <!-- Aqui termina la ejecucion si la semana es la inicial y no hay usuarios y empieza el mensaje de survivor cerrado -->
       	 <h4>Lo sentimos pero esta liga ya comenzo</h4>
       <% end %>
-<% end %>
+<% end %> <!-- fin del else si no hay usuarios ->

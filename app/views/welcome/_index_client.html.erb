@@ -1665,26 +1665,30 @@
 							$('.buy_quiniela').prop( "disabled", true );
 							var total_balance_update = balance - quiniela_price;
 							  $.ajax({
-                      method: "PUT",
-                      url: "/quinielas/"+quiniela_id+"",
-                      dataType: "json",     
-                      data: {initial_balance: (initial_balance + porcentage_update) } 
-                    }).done(function( data) {
-									
-								})
+								  method: "PUT",
+								  url: "/quinielas/"+quiniela_id+"",
+								  dataType: "json",     
+								  data: {quiniela: {initial_balance: (initial_balance + porcentage_update)} } 
+								}).done(function( data) {
+
+											})
+					  
+							
+								
 							  $.ajax({
-                      method: "PUT",
-                      url: "/users/"+user_id+"",
-                      dataType: "json",     
-                      data: { user: {balance: total_balance_update} }
-                    }).done(function( data) {
-								  $('#success-content').empty();
-                     $('#success-content').append('<h2 style="text-align:center; color:#2D68AC; font-weight:900;">DON<span style="color:black; font-weight:900;">BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
-						$('.modal').modal('hide');						  
-                       $("#success-modal").modal('show');
-						setTimeout(function(){ location.reload(); }, 2000);     
-							  })
-						}else{
+								  method: "PUT",
+								  url: "/users/"+user_id+"",
+								  dataType: "json",     
+								  data: { user: {balance: total_balance_update} }
+								}).done(function( data) {
+											  $('#success-content').empty();
+								 $('#success-content').append('<h2 style="text-align:center; color:#2D68AC; font-weight:900;">DON<span style="color:black; font-weight:900;">BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
+									$('.modal').modal('hide');						  
+								   $("#success-modal").modal('show');
+									setTimeout(function(){ location.reload(); }, 2000);     
+										  })
+									}
+						else{
 							$('.buy_quiniela').prop( "disabled", true );
 							var total_balance_update = balance - quiniela_price;
 							  $.ajax({
