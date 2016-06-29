@@ -7,16 +7,166 @@
 <% if @current_survivor.participant_users != [] %> <!-- pregunta si existen participantes -->
 <% @current_survivor.participant_users.each do |user|%> 
 	<% if user.id == current_user.id %>             <!-- Esto se realiza si el usuario ya tiene ticket -->
-		<h4> Estas participando en este survivor </h4>
-	<% else %> 								<!-- Aqui termina cuando realiza si el usuario ya tiene ticket -->
-      <% if @current_week[0].week == 0 %>  <!-- Esto se realiza si el usuario ya tiene ticket y es la semana 0 -->
-      	<h4>Estas a tiempo de participar en el survivor</h4>
-      <% else %>
-      	 <h4>Lo sentimos pero esta liga ya comenzo</h4>
-      <% end %>
-	<% end %>
+		<% if @current_week[0].week > 0 && @current_week[0].week <= 17 %>
+			<div class="row" style="background-image: url(<%= @current_survivor.background_url %>)">
+         	<div class="col-md-4" style="border-right:1px solid black;">
+          	<h1 style="text-align:center; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
+      		<h4 style="text-align:center; color:white; font-size:20px;">Semana #<%= @current_week[0].week %></h4>
+      		<h4 style="text-align:center; color:white; font-size:20px;"> Tienes  <%= @last_tickets_purchase.count  %>  <span><%= @last_tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
+      		<h4 style="text-align:center; color:white; font-size:20px;">Tienes hasta el dia: <span style="color:#86b1ff; font-weight:900;" id="final_date"><%= @current_week[0].final_date.strftime('%d-%m-%Y') %></span> para comprar entradas</h4> 
+      		<hr>
+      		<div class="row">
+      			<div class="col-md-6 col-xs-6">
+      				<h3 style="text-align:center; color:#86b1ff; font-size:20px; font-weight:900;">Precio del rebuy : <span style="color:white;">$<%= @current_survivor.price %></span></h3>
+      			</div>
+      			<div class="col-md-6 col-xs-6">
+      				<h3 style="text-align:center; color:#86b1ff; font-weight:900; font-size:20px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
+      			</div>
+      		</div>
+      		
+      		<br>
+      		<h3 style="text-align:center; color:#86b1ff; font-weight:900; font-size:20px;">Usuarios participando: <span style="color:white"><%= @current_survivor.participant_users.count %> </span>  </h3>
+      		<hr>
+      		  	 <% @last_tickets_purchase.each do |entry| %>
+      		  	 	<buttton class="btn btn-primary"> <%= entry.status %> </button>
+      		  	  <% end %> 
+				</div>
+				
+				</div>
+		<!-- Termina si la semana es mayor a 0 y menor igual a 17 -->
+		<% else if @current_week[0].week == 0 %>  <!-- Esto se realiza si el usuario ya tiene ticket y es la semana 0 -->
+      	<div class="row" style="background-image: url(<%= @current_survivor.background_url %>)">
+          	<h1 style="text-align:center; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
+      		<h4 style="text-align:center; color:white; font-size:20px;">Ya estas participando en este survivor</h4>
+      		<h4 style="text-align:center; color:white; font-size:20px;"> Haz comprado <%= @tickets_purchase %>  <span><%= @tickets_purchase > 1 ? "Entradas" : "Entrada" %></span> </h4>
+      		<h4 style="text-align:center; color:white; font-size:20px;">Tienes hasta el dia: <span style="color:#86b1ff; font-weight:900;" id="final_date"><%= @current_week[0].final_date.strftime('%d-%m-%Y') %></span> para comprar entradas</h4> 
+      		<hr>
+      		<div class="row">
+      			<div class="col-md-6 col-xs-6">
+      				<h3 style="text-align:center; color:#86b1ff; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
+      			</div>
+      			<div class="col-md-6 col-xs-6">
+      				<h3 style="text-align:center; color:#86b1ff; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
+      			</div>
+      		</div>
+      		
+      		<br>
+      		<h3 style="text-align:center; color:#86b1ff; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.participant_users.count %> </span>  </h3>
+      		<hr>
+      		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
+      		
+      		<script>
+				$('#buy_entry').click(function(){
+					$(this).prop('disabled', true);
+					var user_balance;
+					var user_id = <%= current_user.id %>;
+					var survivor_balance = <%= @current_survivor.initial_balance %>;
+					var survivor_week_survivor_id = <%= @survivor_week_sur[0].id %>;
+					var survivor_id = <%= @current_survivor.id %>;
+					var purchase_date = new Date();
+					var survivor_new_balance = parseFloat(survivor_balance) + <%= @current_survivor.price %>;
+					var total_balance_update;
+					if(<%=current_user.gift_credit %> >= <%= @current_survivor.price %> || <%= current_user.balance %> >= <%= @current_survivor.price %>  ){
+					    user_balance = <%=current_user.gift_credit %>;
+						total_balance_update = user_balance - <%= @current_survivor.price %>;
+						
+                    	  $.ajax({
+							  method: "PUT",
+							  url: "/survivors/"+survivor_id+"",
+							  dataType: "json",     
+							  data: { survivor: {initial_balance: survivor_new_balance } }
+							}).done(function( data) {
+							  	 $.ajax({
+									  method: "POST",
+									  url: "/survivor_users",
+									  dataType: "json",     
+									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id,  user_id: user_id ,purchase_date: purchase_date, status: "alive"}  }
+									}).done(function( data) {
+									 	setTimeout(function(){ location.reload(); }, 2000);  
+										
+								 	})
 
-<% end %>
+							 });
+               
+					   }else{       //opcion cuando el cliente no tiene saldo
+						    alert('No tienes saldo suficiente');
+							window.location.assign("/partials/credit_card_form")
+					   }
+				})
+				</script>
+      	</div>
+      <% else %>
+      <% end %>
+       <% end %>
+		<% else %>						<!-- Aqui termina cuando realiza si el usuario ya tiene ticket -->
+      	 <% if @current_week[0].week == 0 %> <!-- Aqui inicia la opcion si hay usuarios y la semana es igual a 0 -->
+      	 	<div class="row" style="background-image: url(<%= @current_survivor.background_url %>)">
+          	<h1 style="text-align:center; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
+      		<h4 style="text-align:center; color:white; font-size:20px;">Estas a tiempo de participar en el survivor</h4>
+      		<h4 style="text-align:center; color:white; font-size:20px;">Tienes hasta el dia: <span style="color:#86b1ff; font-weight:900;" id="final_date"><%= @current_week[0].final_date.strftime('%d-%m-%Y') %></span> para comprar tu entrada</h4> 
+      		<hr>
+      		<div class="row">
+      			<div class="col-md-6 col-xs-6">
+      				<h3 style="text-align:center; color:#86b1ff; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
+      			</div>
+      			<div class="col-md-6 col-xs-6">
+      				<h3 style="text-align:center; color:#86b1ff; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
+      			</div>
+      		</div>
+      		
+      		<br>
+      		<h3 style="text-align:center; color:#86b1ff; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.participant_users.count %> </span>  </h3>
+      		<h3><%= @survivor_week_sur[0].id %></h3>
+      		<hr>
+      		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
+      		
+      		<script>
+				$('#buy_entry').click(function(){
+					$(this).prop('disabled', true);
+					var user_balance;
+					var user_id = <%= current_user.id %>;
+					var survivor_balance = <%= @current_survivor.initial_balance %>;
+					var survivor_week_survivor_id = <%= @survivor_week_sur[0].id %>;
+					var survivor_id = <%= @current_survivor.id %>;
+					var purchase_date = new Date();
+					var survivor_new_balance = parseFloat(survivor_balance) + <%= @current_survivor.price %>;
+					var total_balance_update;
+					if(<%=current_user.gift_credit %> >= <%= @current_survivor.price %> || <%= current_user.balance %> >= <%= @current_survivor.price %>  ){
+					    user_balance = <%=current_user.gift_credit %>;
+						total_balance_update = user_balance - <%= @current_survivor.price %>;
+						
+                    	  $.ajax({
+							  method: "PUT",
+							  url: "/survivors/"+survivor_id+"",
+							  dataType: "json",     
+							  data: { survivor: {initial_balance: survivor_new_balance } }
+							}).done(function( data) {
+							  	 $.ajax({
+									  method: "POST",
+									  url: "/survivor_users",
+									  dataType: "json",     
+									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id,  user_id: user_id ,purchase_date: purchase_date, status: "alive"}  }
+									}).done(function( data) {
+									 	setTimeout(function(){ location.reload(); }, 2000);  
+										
+								 	})
+
+							 });
+               
+					   }else{       //opcion cuando el cliente no tiene saldo
+						    alert('No tienes saldo suficiente');
+							window.location.assign("/partials/credit_card_form")
+					   }
+				})
+				</script>
+      	</div>
+      	 <% else %> <!-- Aqui termina la opcion si hay usuarios y la semana es igual a 0 --->
+      	 <h4>Lo sentimos pero esta liga ya comenzo</h4>
+     	<% end %>
+     	<% end %>
+     	<% end %> <!-- Aqui termina el user each -->
+
+
 <% else %> 	<!-- Esto se ejecuta si no hay participantes aun en el survivor -->
 	  <% if @current_week[0].week == 0 %> <!-- Esto se ejecuta si la semana es la inicial -->
          	<div class="row" style="background-image: url(<%= @current_survivor.background_url %>)">
@@ -64,7 +214,7 @@
 									  method: "POST",
 									  url: "/survivor_users",
 									  dataType: "json",     
-									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id,  user_id: user_id ,purchase_date: purchase_date, status: "bought"}  }
+									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id,  user_id: user_id ,purchase_date: purchase_date, status: "alive"}  }
 									}).done(function( data) {
 									 	setTimeout(function(){ location.reload(); }, 2000);  
 										

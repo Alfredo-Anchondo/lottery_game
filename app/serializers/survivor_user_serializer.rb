@@ -3,4 +3,5 @@ class SurvivorUserSerializer < ActiveModel::Serializer
   has_one :survivor_week_survivor
   has_one :team
   has_one :user
+  has_one :survivor_user
 end

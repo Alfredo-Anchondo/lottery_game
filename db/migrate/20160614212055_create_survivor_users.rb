@@ -9,6 +9,8 @@ class CreateSurvivorUsers < ActiveRecord::Migration
       t.references :user, index: true, null:false
 	  t.foreign_key :users
       t.string :status, null:false, default: "bought"
+	  t.references :survivor_user, index: true 
+	  t.foreign_key :survivor_users	
 
       t.timestamps
     end

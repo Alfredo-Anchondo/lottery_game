@@ -9,6 +9,7 @@ class SurvivorUser < ActiveRecord::Base
   belongs_to :survivor_week_survivor
   belongs_to :team
   belongs_to :user
+  has_one :survivor_user	
 
   #VALIDATIONS
   validates :survivor_week_survivor_id,  :user_id, :presence => true

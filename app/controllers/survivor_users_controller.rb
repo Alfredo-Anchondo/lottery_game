@@ -43,6 +43,6 @@ class SurvivorUsersController < ApplicationController
     end
 
     def survivor_user_params
-      params.require(:survivor_user).permit(:survivor_week_survivor_id, :team_id, :purchase_date, :user_id, :status)
+      params.require(:survivor_user).permit(:survivor_week_survivor_id, :survivor_user_id, :team_id, :purchase_date, :user_id, :status)
     end
 end

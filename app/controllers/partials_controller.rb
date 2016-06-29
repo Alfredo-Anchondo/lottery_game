@@ -298,10 +298,20 @@ end
 	@current_survivor 
 	@current_week
 	@survivor_week_sur
+	@tickets_purchase
+	@last_survivor_week_sur
+	@last_tickets_purchase
 	def set_survivor_page
 		 @current_survivor = Survivor.find(params[:id])
 		 @current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ?', Time.now, Time.now)
 		 @survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],@current_week[0].id)
+		@last_survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],(@current_week[0].id - 1))
+		@tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @survivor_week_sur[0].id).count
+		if @current_week[0].week == 0 
+			
+			else
+		@last_tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @last_survivor_week_sur[0].id)
+		end
 	end
 	
 end
