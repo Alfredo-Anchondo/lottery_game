@@ -1,0 +1,63 @@
+<% if @current_survivor.participant_users != [] %>
+<% @current_survivor.participant_users.each do |user|%>
+	<% if user.id == current_user.id %>
+		<h4> Estas participando en este survivor </h4>
+	<% else %>
+      <% if @current_week[0].week == 0 %>
+      	<h4>Estas a tiempo de participar en el survivor</h4>
+      <% else %>
+      	 <h4>Lo sentimos pero esta liga ya comenzo</h4>
+      <% end %>
+	<% end %>
+
+<% end %>
+<% else %>
+	  <% if @current_week[0].week == 0 %>
+         	<div class="row" style="background-image: url(<%= @current_survivor.background_url %>)">
+          	<h1 style="text-align:center; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
+      		<h4 style="text-align:center; color:white; font-size:20px;">Estas a tiempo de participar en el survivor</h4>
+      		<h4 style="text-align:center; color:white; font-size:20px;">Tienes hasta el dia: <span style="color:#86b1ff; font-weight:900;" id="final_date"><%= @current_week[0].final_date.strftime('%d-%m-%Y') %></span> para comprar tu entrada</h4> 
+      		<hr>
+      		<div class="row">
+      			<div class="col-md-6 col-xs-6">
+      				<h3 style="text-align:center; color:#86b1ff; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
+      			</div>
+      			<div class="col-md-6 col-xs-6">
+      				<h3 style="text-align:center; color:#86b1ff; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
+      			</div>
+      		</div>
+      		
+      		<br>
+      		<h3 style="text-align:center; color:white; font-weight:900; font-size:30px;">Usuarios participando: <%= @current_survivor.participant_users.count %>  </h3>
+      		<h3><%= @survivor_week_sur[0].id %></h3>
+      		<hr>
+      		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
+      		<script>
+				$('#buy_entry').click(function(){
+					var user_balance;
+					if(<%=current_user.gift_credit %> >= <%= @current_survivor.price %>){
+					    alert('saldo de regalo mayor a precio');
+					    user_balance = <%=current_user.gift_credit %>;
+					   }else if( <%= current_user.balance %> >= <%= @current_survivor.price %>){
+						   alert('Saldo normal mayor a precio');
+						   user_balance = <%= current_user.balance %>;		
+					   }else{
+						   alert('No tienes saldo suficiente');
+					   }
+					alert(user_balance);
+					
+				/*	$.ajax({
+            method: "GET",
+            url: "/partials/future_games",
+            format: "json",
+		    dataType: "html"
+               }).done(function(data) {
+						
+					})*/
+				})
+				</script>
+      	</div>
+      <% else %>
+      	 <h4>Lo sentimos pero esta liga ya comenzo</h4>
+      <% end %>
+<% end %>

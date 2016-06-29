@@ -10,20 +10,31 @@ class Survivor < ActiveRecord::Base
   has_many :survivor_users, :through => :survivor_week_survivors
   has_many :users, :through => :survivor_users	
 
+  has_attached_file :background, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/default_background.png"
+  validates_attachment_content_type :background, :content_type => /\Aimage\/.*\Z/	
+
   #VALIDATIONS
   validates :name, :price, :initial_balance, :presence => true
   validates :price, :initial_balance, :numericality => { :greater_than => 0 }
 
   #METHODS
   
+	def user_username
+		User.find(user_id).username
+	end
 	
   def alive_users
     last_survivor_week_game = SurvivorWeekGame.from_year.order(:initial_date).last
     survivor_users.where(:survivor_week_game_id => last_survivor_week_game.id).alive
   end
 	
+	
+	def background_url
+		background.url
+	end
+	
 	def participant_users
-		users.uniq.count
+		users.uniq
 	end
 
   def self.close

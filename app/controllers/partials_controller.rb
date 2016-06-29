@@ -289,11 +289,19 @@ end
 	end
 	
 	def get_survivor
-	  	render :json =>	Survivor.where('extract(year  from created_at) = ?',Time.now.year)
-		logger.info 'aqui se hizo //////////////'
+	  	render :json =>	Survivor.where('extract(year  from created_at) = ?',Time.now.year).order(:id)
 	end
 
  #def show_category
   # @category = Category.find_by_friendly_name(params[:name])
   #end
+	@current_survivor 
+	@current_week
+	@survivor_week_sur
+	def set_survivor_page
+		 @current_survivor = Survivor.find(params[:id])
+		 @current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ?', Time.now, Time.now)
+		 @survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],@current_week[0].id)
+	end
+	
 end

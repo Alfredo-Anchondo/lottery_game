@@ -71,7 +71,9 @@ Rails.application.routes.draw do
 			get 'next_game'
 			get 'finish_games'
 			get 'future_games'
+			get 'set_survivor_page/:id', to: "partials#set_survivor_page"
 			get 'survivor_game'
+			get 'survivor_search', to: "partials#set_survivor_page"
 			get 'survivor_leagues'
 			get "/current_survivors", to: "partials#get_survivor"
 			get "/team_logos/:id", to: "partials#team_logos"

@@ -65,6 +65,11 @@
                     <small><%= I18n.l(@survivor.created_at, :format => :long) %></small>
                   </td>
                 </tr>
+                <tr>
+                	<td>
+                		<%= image_tag @survivor.background.url %>
+                	</td>
+                </tr>
             </tbody>
           </table>
         </div>

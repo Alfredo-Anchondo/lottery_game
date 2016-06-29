@@ -11,7 +11,7 @@ class SurvivorUser < ActiveRecord::Base
   belongs_to :user
 
   #VALIDATIONS
-  validates :survivor_week_survivor_id, :team_id, :user_id, :presence => true
+  validates :survivor_week_survivor_id,  :user_id, :presence => true
   validate :available_rebuy, :on => :create
 
   #CALLBACKS
