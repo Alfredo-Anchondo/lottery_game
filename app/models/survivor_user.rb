@@ -9,22 +9,19 @@ class SurvivorUser < ActiveRecord::Base
   belongs_to :survivor_week_survivor
   belongs_to :team
   belongs_to :user
-  belongs_to :survivor_user	
-
+  belongs_to :survivor_user
 
   #VALIDATIONS
-  validates :survivor_week_survivor_id,  :user_id, :presence => true
+  validates :survivor_week_survivor_id, :user_id, :presence => true
   validate :available_rebuy, :on => :create
   validate :available_team, :on => :create
 
   #CALLBACKS
-  before_create :discount_price
-  after_create  :update_survivor_user_id 
+  after_create :discount_price
+  after_create  :update_survivor_user_id
 
   #METHODS
   protected
-
-
 
   def available_rebuy
     losses = survivor_week_survivor.survivor.survivor_users.where(:survivor_user_id => survivor_user_id).loser.count
@@ -34,7 +31,7 @@ class SurvivorUser < ActiveRecord::Base
       errors.add(:user_id, I18n.t("no_rebuy_available"))
     end
   end
-	
+
 	def update_survivor_user_id
 		if survivor_user_id.blank?
 			update({survivor_user_id: id})
@@ -51,15 +48,13 @@ class SurvivorUser < ActiveRecord::Base
 
   def discount_price
 	 previous_survivor_week_survivor = survivor_week_survivor.previous_survivor_week_survivor
-	 if user.gift_credit.to_f >= survivor_week_survivor.survivor.price.to_f
-		   if previous_survivor_week_survivor.nil? || previous_survivor_week_survivor.survivor_users.alive.find_by(:survivor_user_id => survivor_user_id).nil?
-      user.update(:gift_credit => user.gift_credit.to_f - survivor_week_survivor.survivor.price.to_f)
-           end
-	 else
-		  if previous_survivor_week_survivor.nil? || previous_survivor_week_survivor.survivor_users.alive.find_by(:survivor_user_id => survivor_user_id).nil?
-      user.update(:balance => user.balance - survivor_week_survivor.survivor.price)
-           end
-	 end
-  end
 
+    if previous_survivor_week_survivor.nil? || previous_survivor_week_survivor.survivor_users.alive.find_by(:survivor_user_id => survivor_user_id).nil?
+    	if user.gift_credit.to_f >= survivor_week_survivor.survivor.price.to_f
+        user.update(:gift_credit => user.gift_credit.to_f - survivor_week_survivor.survivor.price.to_f)
+    	else
+        user.update(:balance => user.balance - survivor_week_survivor.survivor.price)
+    	end
+    end
+  end
 end
