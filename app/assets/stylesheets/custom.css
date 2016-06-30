@@ -10,6 +10,10 @@
          #alert-display-modal{
           width: 100% !important;
       }
+	  
+	  .display-phone{
+		  display:block !important;
+	  }
 
     #login-container{
     border:0px solid #AB015C !important;
@@ -180,6 +184,9 @@
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) {
+	   .display-phone{
+		  display:block !important;
+	  }
  #user_name{
         display:-webkit-inline-box  !important;
         font-size:11px;
@@ -358,6 +365,9 @@
   and (device-height: 640px)
   and (-webkit-device-pixel-ratio: 3)
   and (orientation: landscape) {
+	   .display-phone{
+		  display:block !important;
+	  }
         #user_name{
         display:-webkit-inline-box  !important;
         font-size:11px;
@@ -542,6 +552,9 @@
 }
 
 @media screen and (max-width: 480px) {
+	 .display-phone{
+		  display:block !important;
+	  }
 
     #user_name{
         display:-webkit-inline-box  !important;
