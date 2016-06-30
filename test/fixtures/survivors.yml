@@ -6,3 +6,4 @@ survivor_from_aanchondo:
   initial_balance: 4000
   percentage: 20
   user: aanchondo
+  rebuy_quantity: 1

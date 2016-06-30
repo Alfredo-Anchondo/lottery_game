@@ -394,6 +394,7 @@ es:
         survivor_user:
             survivor_week_survivor: "Survivor / Semana"
             team: "Equipo seleccionado"
+            team_id: "Equipo seleccionado"
             purchase_date: "Fecha de compra"
             user: "Usuario"
             user_id: "Usuario"

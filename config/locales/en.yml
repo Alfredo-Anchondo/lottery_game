@@ -363,6 +363,7 @@ en:
         survivor_user:
             survivor_week_survivor: "Survivor / Week"
             team: "Selected team"
+            team_id: "Selected team"
             purchase_date: "Date of purchase"
             user: "User"
             user_id: "User"
