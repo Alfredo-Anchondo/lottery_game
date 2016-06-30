@@ -35,7 +35,6 @@ module LotteryGame
       g.stylesheets     false
       g.javascripts     false
       g.helper = false
-      g.fixture_replacement :factory_girl
     end
   end
 end
