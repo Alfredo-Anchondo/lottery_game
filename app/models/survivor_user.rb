@@ -40,6 +40,9 @@ class SurvivorUser < ActiveRecord::Base
 
   def available_team
     team_ids = survivor_week_survivor.survivor.survivor_users.where(:survivor_user_id => survivor_user_id).pluck(:team_id)
+	  puts "/////////////////////////////////////"
+	  puts team_ids.inspect
+	  puts team_id.inspect
 
     if team_ids.include?(team_id)
       errors.add(:team_id, I18n.t("team_already_selected"))
