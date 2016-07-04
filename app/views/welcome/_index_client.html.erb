@@ -448,6 +448,7 @@
 
     
     <div class="row">
+        
          <div class="col-md-7 col-xs-12">
               <div class="ibox float-e-margins">
                         <div class="ibox-title">
@@ -457,6 +458,21 @@
 
                         <div class="ibox-content" id="finish_lotteries">
             <div class="slider8">
+               
+            </div>
+                  </div>
+            </div>
+        </div>
+        
+         <div class="col-md-7 col-xs-12">
+              <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Resultado de Tiras</h5>
+                            <span class="label label-primary"><%= t('last_results') %></span>
+                        </div>
+
+                        <div class="ibox-content" id="finish_tiras">
+            <div class="slidertira">
                
             </div>
                   </div>
@@ -2033,4 +2049,29 @@
       });
 	
 			
+</script>
+
+
+<script>
+	
+	$.ajax({
+          method: "GET",
+          url: "/partials/quinielas_closed",
+          format: "json"
+        })
+          .done(function(data) {
+			for( var i in data.partials){
+				$('.slidertira').append('<div class="slide"><div class="row"> <h4 style="text-align:center; font-weight:800; color:black;"> Fecha del partido:  ' +moment(data.partials[i].game.game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h4> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Número Ganador </h4> <h1 style="font-weight:900; text-align:center; color:#696969;"> '+data.partials[i].winner_number+' </h1> </div> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Bolsa Acumulada </h4> <h2 style="font-weight:900; color:#696969; text-align:center"> '+data.partials[i].initial_balance+' DB </h2> </div> <div class="col-md-6 col-xs-12"> <div class="row"> <div class="col-md-4 col-xs-4"> <h4 style="text-align:center"> <img width="100%" src="'+data.partials[i].game.team.logo_url+'"> </h4> </div> <div class="col-md-2 col-xs-2"><br> <br> <h2 style="text-align:center; font-size:10px; color:black; font-weight:800;"> '+data.partials[i].game.team.name+'  </h2> </div> <div class="col-md-2 col-xs-2"> <br> <br> <h2 style="text-align:center; font-weight:800; color:black; font-size:10px; ">'+data.partials[i].game.team2.name+'</h2> </div> <div class="col-md-4 col-xs-4">  <h4 style="text-align:center"> <img width="100%" src="'+data.partials[i].game.team2.logo_url+'"> </h4> </div> </div> </div>  </div> <hr> </div> ');		
+			}
+		
+		 	$('.slidertira').bxSlider({
+            mode: 'vertical',
+            minSlides: 4,
+            slideMargin: 13
+    		});
+	});
+	
+	
+
+	
 </script>

@@ -314,4 +314,8 @@ end
 		end
 	end
 	
+	def close_quinielas
+		render :json =>	Quiniela.where('winner_number != ? ', '').order(id: :desc).first(10)
+	end
+	
 end

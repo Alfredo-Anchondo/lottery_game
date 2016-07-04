@@ -68,6 +68,7 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+			get 'quinielas_closed', to: "partials#close_quinielas"
 			get 'next_game'
 			get 'finish_games'
 			get 'future_games'

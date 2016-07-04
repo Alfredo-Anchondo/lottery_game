@@ -60,10 +60,10 @@ class QuinielasController < ApplicationController
 	end
 	
 	
-  def index
-    @quinielas = Quiniela.all
-    respond_with(@quinielas)
-  end
+	def index
+    	@quinielas = Quiniela.all
+    	respond_with(@quinielas)
+	end
 
   def show
     respond_with(@quiniela)

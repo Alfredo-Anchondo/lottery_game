@@ -42,6 +42,8 @@ class Quiniela < ActiveRecord::Base
 		logger.info ids
 		where(:game_id => ids )
 	end
+		
+		
 
 		def self.toclose
 			where(:winner_number => '')
