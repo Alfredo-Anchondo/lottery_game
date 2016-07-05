@@ -68,11 +68,13 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+			get 'my_leagues', to: "partials#my_leagues"
 			get 'quinielas_closed', to: "partials#close_quinielas"
 			get 'next_game'
 			get 'finish_games'
 			get 'future_games'
 			get 'set_survivor_page/:id', to: "partials#set_survivor_page"
+			get 'survivor_history/:id', to: "partials#survivor_history"
 			get 'survivor_game'
 			get 'survivor_search', to: "partials#set_survivor_page"
 			get 'survivor_leagues'

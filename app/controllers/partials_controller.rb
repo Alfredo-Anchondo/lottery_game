@@ -129,7 +129,7 @@ end
 
         logger.info request_hash
         response_hash = @charges.create(request_hash.to_hash, customer['id'])
-		porcentaje = Integer(params[:amount]) * 0.20
+		porcentaje = Integer(params[:amount]) * 0.25
         current_user.update_attribute(:balance,(current_user.balance + Integer(params[:amount])))
 		current_user.update_attribute(:gift_credit, (current_user.gift_credit + porcentaje))
 		BuyMailer.buy_saldo(current_user, params[:amount]).deliver
@@ -316,6 +316,30 @@ end
 	
 	def close_quinielas
 		render :json =>	Quiniela.where('winner_number != ? ', '').order(id: :desc).first(10)
+	end
+	
+	 @survivor_id 
+	 @survivor_create
+	
+	def my_leagues
+		tickets = SurvivorUser.where('user_id = ?',current_user.id).pluck(:survivor_week_survivor_id).uniq()
+		survivor_user_survivor = SurvivorWeekSurvivor.where(:id => tickets).pluck(:survivor_id).uniq()
+		@survivor_id = Survivor.where(:id => survivor_user_survivor)
+		@survivor_create = Survivor.where(:user_id => current_user.id)
+	end
+	
+	
+	def survivor_history
+	  @usuarios = {}	
+	  @survivorweeksurvivor = SurvivorWeekSurvivor.where(:survivor_id => params[:id]).pluck(:id)
+	  @survivoruser = SurvivorUser.where(:survivor_week_survivor_id => @survivorweeksurvivor)
+		@survivoruser.each do |user|
+			@usuarios[user.user.username]=[]
+		end
+		@survivoruser.each do |user|
+			@usuarios[user.user.username].push(user.survivor_week_survivor.survivor_week_game.week )
+		end
+	  render :json => @survivoruser
 	end
 	
 end

@@ -17,6 +17,14 @@ class SurvivorGame < ActiveRecord::Base
   def self.no_pending_games?
     SurvivorGame.from_year.count == SurvivorGame.from_year.where.not(:local_score => nil, :visit_score => nil).count
   end
+	
+  def past_game
+	  if (game_date <= Time.now)
+		  return "passgame"
+	  else
+		  return ''
+	  end	   
+  end
 
   protected
 

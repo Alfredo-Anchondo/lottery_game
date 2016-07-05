@@ -17,7 +17,6 @@
                                   <th><%= t("activerecord.attributes.survivor.description") %></th>
                                   <th><%= t("activerecord.attributes.survivor.price") %></th>
                                   <th><%= t("activerecord.attributes.survivor.initial_balance") %></th>
-                                  <th><%= t("activerecord.attributes.survivor.access_key") %></th>
                                   <th><%= t("activerecord.attributes.survivor.rebuy_quantity") %></th>
                                   <th><%= t("activerecord.attributes.survivor.percentage") %></th>
                                   <th><%= t("activerecord.attributes.survivor.user_id") %></th>
@@ -32,7 +31,6 @@
                                   <td><%= survivor.description %></td>
                                   <td><%= number_to_currency(survivor.price) %></td>
                                   <td><%= number_to_currency(survivor.initial_balance) %></td>
-                                  <td><%= survivor.access_key %></td>
                                   <td><%= survivor.rebuy_quantity %></td>
                                   <td><%= survivor.percentage %></td>
                                   <td><%= User.find(survivor.user_id).username %></td>
