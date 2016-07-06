@@ -332,14 +332,17 @@ end
 	def survivor_history
 	  @usuarios = {}	
 	  @survivorweeksurvivor = SurvivorWeekSurvivor.where(:survivor_id => params[:id]).pluck(:id)
-	  @survivoruser = SurvivorUser.where(:survivor_week_survivor_id => @survivorweeksurvivor)
+	  @survivoruser = SurvivorUser.where(:survivor_week_survivor_id => @survivorweeksurvivor).order(:id)
 		@survivoruser.each do |user|
-			@usuarios[user.user.username]=[]
+		@usuarios[user.user.username]= {}
 		end
 		@survivoruser.each do |user|
-			@usuarios[user.user.username].push(user.survivor_week_survivor.survivor_week_game.week )
+			@usuarios[user.user.username][user.survivor_user_id] = {}
 		end
-	  render :json => @survivoruser
+		@survivoruser.each do |user|
+			@usuarios[user.user.username][user.survivor_user_id][user.survivor_week_survivor.survivor_week_game.week.to_s] = {:team => user.team, :status => user.status }
+			logger.info @usuarios
+		end
 	end
 	
 end
