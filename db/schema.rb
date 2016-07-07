@@ -177,14 +177,16 @@ ActiveRecord::Schema.define(version: 20160628150934) do
 
   create_table "survivor_users", force: true do |t|
     t.integer  "survivor_week_game_id",                    null: false
-    t.integer  "team_id",                                  null: false
+    t.integer  "team_id"
     t.datetime "purchase_date",                            null: false
     t.integer  "user_id",                                  null: false
     t.string   "status",                default: "bought", null: false
+    t.integer  "survivor_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "survivor_users", ["survivor_user_id"], name: "index_survivor_users_on_survivor_user_id", using: :btree
   add_index "survivor_users", ["survivor_week_game_id"], name: "index_survivor_users_on_survivor_week_game_id", using: :btree
   add_index "survivor_users", ["team_id"], name: "index_survivor_users_on_team_id", using: :btree
   add_index "survivor_users", ["user_id"], name: "index_survivor_users_on_user_id", using: :btree
@@ -325,6 +327,7 @@ ActiveRecord::Schema.define(version: 20160628150934) do
   add_foreign_key "survivor_games", "teams", name: "survivor_games_team2_id_fk", column: "team2_id"
   add_foreign_key "survivor_games", "teams", name: "survivor_games_team_id_fk"
 
+  add_foreign_key "survivor_users", "survivor_users", name: "survivor_users_survivor_user_id_fk"
   add_foreign_key "survivor_users", "survivor_week_games", name: "survivor_users_survivor_week_game_id_fk"
   add_foreign_key "survivor_users", "teams", name: "survivor_users_team_id_fk"
   add_foreign_key "survivor_users", "users", name: "survivor_users_user_id_fk"
