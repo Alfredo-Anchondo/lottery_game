@@ -68,6 +68,7 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+			get 'access_mail', to: "partials#access_request_mail"
 			get 'my_leagues', to: "partials#my_leagues"
 			get 'quinielas_closed', to: "partials#close_quinielas"
 			get 'next_game'

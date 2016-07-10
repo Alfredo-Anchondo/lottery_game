@@ -91,5 +91,12 @@ class BuyMailer < ActionMailer::Base
 		mail(to: mails, subject: subject,  body: content,
          content_type: "text/html", )
 	end
+	
+	def access_request_mail(current_user, owner, survivor)
+		@current_user = current_user
+		@owner = owner
+		@survivor = survivor
+		mail(to: "marianolascurain@gmail.com", subject: 'Solicitud de acceso survivor')
+	end
 
 end

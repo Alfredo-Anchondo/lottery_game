@@ -15,14 +15,26 @@ class SurvivorUser < ActiveRecord::Base
   validates :survivor_week_survivor_id, :user_id, :presence => true
   validate :available_rebuy, :on => :create
   validate :available_team, :on => :create
+  validate :available_entrys, :on => :create	
 
   #CALLBACKS
   after_create :discount_price
-  after_create  :update_survivor_user_id
+  after_create :update_survivor_user_id
 
   #METHODS
   protected
 
+
+  def available_entrys
+  	 user_total = SurvivorUser.where('survivor_week_survivor_id = ?', survivor_week_survivor.id).pluck(:user_id).uniq().count
+	 survivor_max = survivor_week_survivor.survivor.user_quantity 
+	 
+	  if user_total > survivor_max
+		  errors.add(:user_id, "No puedes comprar la entrada por que la liga tiene su maximo de usuarios.")
+	  end	  
+	  
+  end	
+	
   def available_rebuy
     losses = survivor_week_survivor.survivor.survivor_users.where(:survivor_user_id => survivor_user_id).loser.count
     rebuy_quantity = survivor_week_survivor.survivor.rebuy_quantity

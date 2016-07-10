@@ -18,7 +18,7 @@
                                   <th><%= t("activerecord.attributes.survivor.price") %></th>
                                   <th><%= t("activerecord.attributes.survivor.initial_balance") %></th>
                                   <th><%= t("activerecord.attributes.survivor.rebuy_quantity") %></th>
-                                  <th><%= t("activerecord.attributes.survivor.percentage") %></th>
+                                  <th><%= t("activerecord.attributes.survivor.user_quantity") %></th>
                                   <th><%= t("activerecord.attributes.survivor.user_id") %></th>
                                 <th style="width: 155px"></th>
               </tr>
@@ -32,7 +32,7 @@
                                   <td><%= number_to_currency(survivor.price) %></td>
                                   <td><%= number_to_currency(survivor.initial_balance) %></td>
                                   <td><%= survivor.rebuy_quantity %></td>
-                                  <td><%= survivor.percentage %></td>
+                                  <td><%= survivor.user_quantity %></td>
                                   <td><%= User.find(survivor.user_id).username %></td>
                                 <td class="action-link">
                   <% if can? :show,survivor %>

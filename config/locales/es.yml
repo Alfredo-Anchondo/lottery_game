@@ -368,6 +368,7 @@ es:
             access_key: "Clave de acceso"
             price: "Precio"
             user_id: "Usuario"
+            user_quantity: "Cantidad de usuarios"
             percentage: "Porcentaje"
             initial_balance: "Bolsa inicial"
             closed: "Cerrado"

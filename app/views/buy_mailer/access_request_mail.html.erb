@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+      
+      <style>
+    h1{font-size:40px; text-align:center;}
+    h2, h3, h4, h5{text-align:center;}
+    h4{font-size:20px;}
+    h5{font-size:16px;}      
+    .welcome{color:black;}
+    .panel-header{width:100%;}    
+    .panel{width:100%;}      
+    .row {width:100%; display:block;}   
+    .col-md-4 {width:33.33%; float: left; display:table-cell;}      
+    .col-md-12{width:100%;}      
+    .col-md-6{width:50%;}     
+    #ticket_name_modal{margin-left:20%;}   
+    .margin-center{}   
+    .panel-footer{ width:100%;}
+</style>
+      
+  </head>
+  <body>
+      <div class="panel">
+        <div class="panel-header">
+            <h4 style="text-align:center"> <img width="80%" src="https://scontent-ord1-1.xx.fbcdn.net/t31.0-8/13235333_238627376507489_1879977168019320657_o.png"></h4>
+           <h1 class="welcome">Tenemos una nueva solicitud de acceso</h1>
+           <h2 class="welcome"><%= @survivor.name %></h2>      
+          </div>
+      
+      </div>
+      <div class="panel-body">
+         <h4>El usuario <% @current_user.username %> solicita acceso a la liga de survivor <%= @survivor.name %></h4>
+         
+         <h4> Datos del survivor </h4>
+         <h4> Nombre: <%= @survivor.name %></h4>
+         <h4> Usuario: <%= @owner.name %> <%= @owner.last_name %> </h4>
+         <h4> Nombre de usuario: <%= @owner.username %> </h4>
+         <h4> Mail del usuario: <%= @owner.email %></h4>
+         <h4> Cantidad de usuarios maximo: <%= @survivor.user_quantity %></h4>
+         <hr>
+         <h4>Datos del solicitante</h4>
+         <h4>Nombre: <%= @current_user.name %> <%= @current_user.last_name%></h4>
+         <h4>Nombre de usuario: <%= @current_user.username %></h4>
+         <h4>Mail del usuario: <%= @current_user.email %></h4>
+         
+         
+     
+          <br>
+      </div>
+    <div class="panel-footer">
+       
+        <h4 style="text-align:center"><a style="text-align:center; color:#2D68AC; font-size:25px;" href="http://donbillete.com">Entra a nuestro sitio para seguir jugando</a> </h4> <br>
+         <h4>Siguenos en:  <a href="https://www.facebook.com/7donbillete/"><img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xft1/v/t1.0-9/12924533_216008632102697_6569374066802473538_n.png?_nc_eui=ARgvbFZs7y5Iq1FvtrgQEHdq7cJHQzYWWFh4NMDHrdGToc9H2j1tGA&oh=a06d9609adcc4ecce4132ce1e2be38c4&oe=578D01AA" width="50px"></a> <a href="https://twitter.com/7DONBILLETE"><img width="50px" src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xtp1/v/t1.0-9/12417900_216008615436032_1537948209837185904_n.png?_nc_eui=ARiUxbBXmdA8nCxKnkE9LGmNrwbzAfGT6byEr7pgq-PdgCBFNW5iEw&oh=a38990118122134469933f22d8d6e0d2&oe=57B859C9"></a>  </h4>
+      </div>
+  </body>
+</html>
