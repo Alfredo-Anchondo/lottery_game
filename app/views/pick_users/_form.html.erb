@@ -1,0 +1,63 @@
+<%= form_for(@pick_user, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @pick_user.errors.any? %>
+<div id="error_explanation">
+  <% if @pick_user.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.pick_user")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.pick_user"), :count => @pick_user.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @pick_user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+              <div class="form-group">
+          <%= f.label :user_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:user_id, User.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :pick_survivor_week_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:pick_survivor_week_id, PickSurvivorWeek.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :points, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :points, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :local_score, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :local_score, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :visit_score, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :visit_score, :class => "form-control" %>
+          </div>
+        </div>
+                
+      </div>
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

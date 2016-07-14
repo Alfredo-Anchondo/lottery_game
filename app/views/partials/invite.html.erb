@@ -64,8 +64,9 @@
 	})
 	
 	$('#send_emails').click(function(){
+			$(this).prop('disabled', true);
 			$.ajax({
-				  url: "/categories/invite/",
+				  url: "/partials/inviting/",
 				  method: "POST",
                   data: { mails: emails, reference: reference }
 				

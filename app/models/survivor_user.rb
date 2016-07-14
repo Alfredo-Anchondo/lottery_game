@@ -20,10 +20,21 @@ class SurvivorUser < ActiveRecord::Base
   #CALLBACKS
   after_create :discount_price
   after_create :update_survivor_user_id
+  after_create :send_buy_mail	
 
   #METHODS
   protected
 
+  def send_buy_mail
+	  if survivor_week_survivor.survivor_week_game.week == 0
+		 week_1 = SurvivorWeekGame.find_by week: 1 
+		 BuyMailer.buy_survivor_entry(survivor_week_survivor.survivor, user, week_1 ).deliver
+	  else
+		  next_week = SurvivorWeekGame.find_by week: survivor_week_survivor.survivor_week_game.week + 1
+		  BuyMailer.buy_survivor_team(survivor_week_survivor.survivor, user, next_week, team ).deliver
+	  end
+  end
+	
 
   def available_entrys
   	 user_total = SurvivorUser.where('survivor_week_survivor_id = ?', survivor_week_survivor.id).pluck(:user_id).uniq().count
@@ -55,10 +66,14 @@ class SurvivorUser < ActiveRecord::Base
 	  puts "/////////////////////////////////////"
 	  puts team_ids.inspect
 	  puts team_id.inspect
+	  
+	  if team_id.present?
 
     if team_ids.include?(team_id)
       errors.add(:team_id, I18n.t("team_already_selected"))
     end
+		  else
+	  end
   end
 
   def discount_price

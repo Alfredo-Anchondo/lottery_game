@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pick_user_id: 
+  team_id: 
+  survivor_game_id: 
+
+two:
+  pick_user_id: 
+  team_id: 
+  survivor_game_id: 

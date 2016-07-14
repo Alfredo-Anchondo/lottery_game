@@ -16,16 +16,39 @@
             </li>
           <li  class="<%= 'active' if controller_name == 'users' %>"><a href="/users"> <span class="nav-label"><%= t('users') %></span>  </a>
             </li>
-          <li  class="<%= 'active' if controller_name == 'sports' %>"><a href="/sports"> <span class="nav-label"><%= t('sports') %></span>  </a>
+             <li class="dropdown">
+                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Deporte - Categoria <span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+            				 <li  class="<%= 'active' if controller_name == 'sports' %>"><a href="/sports"> <span class="nav-label"><%= t('sports') %></span>  </a>
             </li>
-          <li  class="<%= 'active' if controller_name == 'categories' %>"><a href="/categories"> <span class="nav-label"><%= t('categories') %></span>  </a>
+							 <li  class="<%= 'active' if controller_name == 'categories' %>"><a href="/categories"> <span class="nav-label"><%= t('categories') %></span>  </a>
             </li>
-           <li  class="<%= 'active' if controller_name == 'sport_categories' %>"><a href="/sport_categories"> <span class="nav-label"><%= t('sportcategories') %></span>  </a>
+             <li  class="<%= 'active' if controller_name == 'sport_categories' %>"><a href="/sport_categories"> <span class="nav-label"><%= t('sportcategories') %></span>  </a>
             </li>
+							
+                        </ul>
+                    </li>
+         
+         
+          
           <li  class="<%= 'active' if controller_name == 'teams' %>"><a href="/teams"> <span class="nav-label"><%= t('teams') %></span>  </a>
             </li>
           <li  class="<%= 'active' if controller_name == 'games' %>"><a href="/games"> <span class="nav-label"><%= t('games') %></span>  </a>
             </li>
+             <li class="dropdown">
+                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Picks <span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+                             <li  class="<%= 'active' if controller_name == 'pick' %>"><a href="/picks"> <span class="nav-label">Picks</span>  </a>
+							 </li>
+							<li  class="<%= 'active' if controller_name == 'pick_user' %>"><a href="/pick_users"> <span class="nav-label">Boletos de Picks</span>  </a>
+							</li>
+            				 <li  class="<%= 'active' if controller_name == 'pick_survivor_week' %>"><a href="/pick_survivor_weeks"> <span class="nav-label">Relacion Semana - Picks</span>  </a>
+							 </li>
+							  <li  class="<%= 'active' if controller_name == 'pick_user_game' %>"><a href="/pick_user_games"> <span class="nav-label">Relacion Boleto con Partido</span>  </a>
+							 </li>
+							 <li><a href="/survivor_week_games/close_games">Cerrar juegos survivor</a></li>
+                        </ul>
+                    </li>
         <li class="dropdown">
                         <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Survivor<span class="caret"></span></a>
                         <ul role="menu" class="dropdown-menu">
@@ -69,8 +92,17 @@
 							
                         </ul>
                     </li>
-                    <li><a href="/error_reports">Errores</a></li>
-                     <li><a href="users/send_mails">Mails</a></li>
+                     <li class="dropdown">
+                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Acciones <span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+            				 <li  class="<%= 'active' if controller_name == 'error_report' %>"><a href="/error_reports"> <span class="nav-label">Reporte de errores</span>  </a>
+							 </li>
+							  <li  class="<%= 'active' if controller_name == 'user' %>"><a href="users/send_mails"> <span class="nav-label">Envio de correos</span>  </a>
+							 </li>
+							
+                        </ul>
+                    </li>
+                    
          
       </ul>
         <% end %>

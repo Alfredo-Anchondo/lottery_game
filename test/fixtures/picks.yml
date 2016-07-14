@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  user_id: 
+  price: 1.5
+  initial_balance: 1.5
+  access_key: MyString
+  users_quantity: 1
+  percentage: 1.5
+
+two:
+  name: MyString
+  description: MyString
+  user_id: 
+  price: 1.5
+  initial_balance: 1.5
+  access_key: MyString
+  users_quantity: 1
+  percentage: 1.5

@@ -1,0 +1,44 @@
+<%= form_for(@pick_survivor_week, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @pick_survivor_week.errors.any? %>
+<div id="error_explanation">
+  <% if @pick_survivor_week.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.pick_survivor_week")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.pick_survivor_week"), :count => @pick_survivor_week.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @pick_survivor_week.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+              <div class="form-group">
+          <%= f.label :pick_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:pick_id, Pick.all, :id, :name, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :survivor_week_game_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:survivor_week_game_id, SurvivorWeekGame.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+      </div>
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -314,6 +314,14 @@ es:
             name:
               taken: Ya esta en uso"
     models:
+        picks: "Picks"
+        pick: "Pick'em"
+        pick_users: "Boletos de Picks"
+        pick_user: "Boleto de Pick"
+        pick_user_games: "Juegos por boleto de Pick de usuario"
+        pick_user_game: "Juego por boleto de Pick de usuario"
+        pick_survivor_weeks: "Semanas del Pick"
+        pick_survivor_week: "Semana del Pick"
         error_reports: "Reporte de Errores"
         survivor_week_survivors: "Relaciones Semana - Survivor"
         survivor_week_survivor: "Relacion Semana - Survivor"
@@ -353,6 +361,37 @@ es:
         lotteries: "Loterías"
         lottery: "Lotería"
     attributes:
+        pick:
+            name: "Nombre"
+            description: "Descripción"
+            user_id: "Usuario"
+            user: "Usuario"
+            price: "Precio"
+            initial_balance: "Bolsa"
+            access_key: "Clave de Acceso"
+            users_quantity: "Cantidad Maxima de usuarios"
+            percentage: "Porcentaje de Ganancia"
+        pick_user:
+            user: "Usuario"
+            user_id: "Usuario"
+            pick_survivor_week_id: "Semana del Pick"
+            pick_survivor_week: "Semana del Pick"
+            points: "Puntos"
+            local_score: "Marcador Local"
+            visit_score: "Marcador Visitante"
+            pick_user: "Referencia de pick"
+        pick_survivor_week:
+            pick: "Pick"
+            survivor_week_game: "Semana"
+            survivor_week_game_id: "Semana"
+            pick_id: "Pick"  
+        pick_user_game:
+            pick_user: "Boleto del usuario"
+            team: "Equipo seleccionado"
+            survivor_game: "Juego al que pertenece" 
+            pick_user_id: "Boleto del usuario"
+            team_id: "Equipo seleccionado"
+            survivor_game_id: "Juego al que pertenece" 
         role:
             created_at: "Fecha de Creación"
             name: "Nombre"

@@ -6,6 +6,21 @@ class BuyMailer < ActionMailer::Base
 		@saldo = saldo
 		mail(to: @user.email, subject: '[DonBillete] Compra de Saldo DonBillete')
 	end
+	
+	def buy_survivor_entry(survivor,user, next_week)
+		@user = user
+		@survivor = survivor
+		@next_week = next_week
+		mail(to: @user.email, subject: '[DonBillete] Compra de entrada liga survivor')
+	end
+	
+	def buy_survivor_team(survivor,user, next_week, team)
+		@user = user
+		@survivor = survivor
+		@next_week = next_week
+		@team = team
+		mail(to: @user.email, subject: '[DonBillete] Seleccion de equipo semanal liga survivor')
+	end
 
 	def invite(mails,reference,user)
 		@mails = mails
@@ -14,6 +29,13 @@ class BuyMailer < ActionMailer::Base
 		mail(to: @mails, subject: '[DonBillete] Un amigo te invita a registrarte')
 	end
 
+	def invite_survivor(mails,survivor,user)
+		@mails = mails
+		@survivor = survivor
+		@user = user
+		mail(to: @mails, subject: '[DonBillete] Un amigo te invita a participar en su liga de survivor')
+	end
+	
   def buy_ticket(user, lottery, lottery_user)
     @user = user
     @lottery = lottery

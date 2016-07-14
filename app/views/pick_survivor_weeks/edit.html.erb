@@ -1,0 +1,39 @@
+<div class="row">
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <h3 style="margin-left:15px"><%= t("actions.edit_title_male", model: t("activerecord.models.pick_survivor_week").downcase) %></h3>
+        </div>
+      </div>
+      <div class="panel-body">
+        <%= render "form" %>
+      </div>
+    </div>
+    <!-- end panel -->
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :delete, @pick_survivor_week %>
+      <%= link_to @pick_survivor_week, method: :delete, data: { confirm: t("are_you_sure?", model: t("activerecord.models.pick_survivor_week").downcase) }, :class => "btn btn-danger" do %>
+        <i class="icon-trash"></i>
+        <%= t("actions.delete") %>
+      <% end %>
+    <% end %>
+    <% if can? :index, PickSurvivorWeek  %>
+      <%= link_to pick_survivor_weeks_path, :class => "btn btn-default" do %>
+        <i class='icon-chevron-left'></i>
+        <%= t("actions.back") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->

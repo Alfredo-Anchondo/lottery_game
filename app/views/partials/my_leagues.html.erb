@@ -6,6 +6,18 @@
 	#mainwrapper .box .fade-caption, #mainwrapper2 .box .scale-caption{
 		margin-top:-200px;
 	}
+	
+
+
+	.navbar-teal{
+		background-color:#06733d;
+	}
+	
+	.footer{
+		position:fixed;
+	}
+	
+
 </style>
 
 <div class="row">
@@ -15,15 +27,18 @@
 	 <div class="col-md-12" style="margin-left:6%">
 		
 		<%  @survivor_create.each do |survivor| %>
-			<div id="box-3" style="background-size: cover; padding:0px; background-image: url('<%= survivor.background_url %>')" class="box col-md-3 col-xs-12"><div class="row" style="background-color:rgba(0, 0, 0, 0.3); height:200px;"><h4 style="text-align:center; color: #00ff37;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:18px; font-weight:800;"><%= survivor.name %></h4> <div class="col-md-6 col-xs-6"><h3 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Bolsa Acumulada</h3><p style="text-align:center; color: #00ff37;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-weight:800; font-size:20px;"> </h4> <span><%= survivor.initial_balance %> </span> DB </p></div>   <div class="col-md-6 col-xs-6"> <h3 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"> Precio de la Tira </h3><h3 style="text-align:center;    color: #00ff37;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-weight:800"> <span> <%= survivor.price  %></span> DB </h3> </div> <div class="clearfix"></div> <br> <h3 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Cantidad de usuarios: <h3 style="text-align:center; color: #00ff37;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;font-weight:800"> <%= survivor.participant_users.count %> </span> </h3> </div><span class="caption fade-caption"><h3 style="text-align:center"><%= survivor.name %> </h3>
+			<div id="box-3" style="background-size: cover; padding:0px; background-image: url('<%= survivor.background_url %>')" class="box col-md-3 col-xs-12"><div class="row" style="background-color:rgba(0, 0, 0, 0.3); height:200px;"><h4 style="text-align:center; color: #06733d;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:18px; font-weight:800;"><%= survivor.name %></h4> <div class="col-md-6 col-xs-6"><h3 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Bolsa Acumulada</h3><p style="text-align:center; color: #06733d;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-weight:800; font-size:20px;"> </h4> <span><%= survivor.initial_balance %> </span> DB </p></div>   <div class="col-md-6 col-xs-6"> <h3 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"> Precio de la Tira </h3><h3 style="text-align:center;    color: #06733d;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-weight:800"> <span> <%= survivor.price  %></span> DB </h3> </div> <div class="clearfix"></div> <br> <h3 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Cantidad de usuarios: <h3 style="text-align:center; color: #06733d;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;font-weight:800"> <%= survivor.participant_users.count %> </span> </h3> </div><span class="caption fade-caption"><h3 style="text-align:center"><%= survivor.name %> </h3>
 		<br>
 		<h5 style="text-align:center">Puedes entrar a la ventana principal de la liga o consultar el historial de compras semanales de los usuarios</h5>
 		<br>
-		<div class="col-md-6">
-			<a href="/survivors/<%= survivor.id%>/edit" style="width:80%" class="enter_survivor btn btn-primary"> Editar </a>
+		<div class="col-md-4">
+			<a href="/survivors/<%= survivor.id%>/edit" style="width:100%" class="enter_survivor btn btn-primary"> Editar </a>
 		</div> 
-		<div class="col-md-6">
-			<a href="/partials/survivor_history/<%= survivor.id%>" style="width:80%" class="enter_survivor btn btn-primary"> Ver historial </a>
+		<div class="col-md-4">
+			<a href="/partials/survivor_history/<%= survivor.id%>" style="width:100%" class="enter_survivor btn btn-primary"> Historial </a>
+		</div>
+		<div class="col-md-4">
+			<a href="invite_friends_survivor/<%= survivor.id%>" class="btn btn-primary" data-id="<%= survivor.id%>">Invitar</a>
 		</div>
 		</span></div>
 		<% end %>
@@ -43,7 +58,7 @@
 		
  		<% @survivor_id.each do |survivor| %>
 	
-		<div id="box-3" style="background-size: cover; padding:0px; background-image: url('<%= survivor.background_url %>')" class="box col-md-3 col-xs-12"><div class="row" style="background-color:rgba(0, 0, 0, 0.3); height:200px;"><h4 style="text-align:center; color: #00ff37;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:18px; font-weight:800;"><%= survivor.name %></h4> <div class="col-md-6 col-xs-6"><h3 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white;">Bolsa Acumulada</h3><p style="text-align:center; color: #00ff37;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-weight:800; font-size:20px;"> </h4> <span><%= survivor.initial_balance %> </span> DB </p></div>   <div class="col-md-6 col-xs-6"> <h3 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"> Precio de la Tira </h3><h3 style="text-align:center;    color: #00ff37;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-weight:800"> <span> <%= survivor.price  %></span> DB </h3> </div> <div class="clearfix"></div> <br> <h3 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Cantidad de usuarios: <h3 style="text-align:center;    color: #00ff37;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-weight:800"> <%= survivor.participant_users.count %> </span> </h3> </div><span class="caption fade-caption"><h3 style="text-align:center"><%= survivor.name %> </h3>
+		<div id="box-3" style="background-size: cover; padding:0px; background-image: url('<%= survivor.background_url %>')" class="box col-md-3 col-xs-12"><div class="row" style="background-color:rgba(0, 0, 0, 0.3); height:200px;"><h4 style="text-align:center; color: #06733d;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:18px; font-weight:800;"><%= survivor.name %></h4> <div class="col-md-6 col-xs-6"><h3 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white;">Bolsa Acumulada</h3><p style="text-align:center; color: #06733d;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-weight:800; font-size:20px;"> </h4> <span><%= survivor.initial_balance %> </span> DB </p></div>   <div class="col-md-6 col-xs-6"> <h3 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"> Precio de la Tira </h3><h3 style="text-align:center;    color: #06733d;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-weight:800"> <span> <%= survivor.price  %></span> DB </h3> </div> <div class="clearfix"></div> <br> <h3 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Cantidad de usuarios: <h3 style="text-align:center;    color: #06733d;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-weight:800"> <%= survivor.participant_users.count %> </span> </h3> </div><span class="caption fade-caption"><h3 style="text-align:center"><%= survivor.name %> </h3>
 		<br>
 		<h5 style="text-align:center">Puedes entrar a la ventana principal de la liga o consultar el historial de compras semanales de los usuarios</h5>
 		<br>

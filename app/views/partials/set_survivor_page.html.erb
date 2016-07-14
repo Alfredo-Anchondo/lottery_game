@@ -1,8 +1,15 @@
 <style>
-	.footer{
-		position: fixed;
+
+	.navbar-teal{
+		background-color:#06733d;
 	}
+	
+	.footer{
+		position:fixed;
+	}
+	
 </style>
+
 <div class="row" style="    padding-bottom: 100px !important;">
 <% if @current_survivor.participant_users != [] %> <!-- pregunta si existen participantes -->
 	<% participant = '' %>
@@ -19,23 +26,23 @@
          	<div class="col-md-4" style="border-right:1px solid black;">
           	<h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Semana #<%= @current_week[0].week %></h4>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Tienes hasta el dia: <span style="color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"><%= @current_week[0].final_date.strftime('%d-%m-%Y') %></span> para comprar entradas</h4> 
+      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Tienes hasta el dia: <span style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"><%= @current_week[0].final_date.strftime('%d-%m-%Y') %></span> para comprar entradas</h4> 
       		<hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;"> Tienes  <%= @last_tickets_purchase.count  %>  <span><%= @last_tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
-      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Recompra disponibles por entrada: <span style="color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Recompra disponibles por entrada: <span style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
       		
       		<hr>
       		<div class="row">
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:20px; font-weight:900;">Precio de recompra : <span style="color:white;"><%= @current_survivor.price %> DB</span></h3>
+      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:20px; font-weight:900;">Precio de recompra : <span style="color:white;"><%= @current_survivor.price %> DB</span></h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Bolsa acumulada: <span style="color:white" ><%= @current_survivor.initial_balance %> DB </span> </h3>
+      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Bolsa acumulada: <span style="color:white" ><%= @current_survivor.initial_balance %> DB </span> </h3>
       			</div>
       		</div>
       		
       		<br>
-      		<h3 style="text-align:center; color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Usuarios participando: <span style="color:white"><%= @current_survivor.participant_users.count %> </span>  </h3>
+      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Usuarios participando: <span style="color:white"><%= @current_survivor.participant_users.count %> </span>  </h3>
       		<hr>
      		  	 <h4>
      		  	 <% already_buy = '' %>
@@ -93,7 +100,7 @@
 					 
 					 	<div class="col-md-3 life-div"  id="life<%= entry.survivor_user_id %>" style="display:none; border-right:1px solid black; min-height:440px;">
 					 		<h3 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Entrada con el registro <%= entry.survivor_user_id %> </h3>
-					 		 <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Resultado de la ultima semana: <span style="color:#00ff37; text-align:center;"><%= @last_tickets_purchase.where('survivor_user_id = ?', entry.survivor_user_id).last.status == 'alive' ? 'Ganador' : 'Perdedor' %> </span></h4>
+					 		 <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Resultado de la ultima semana: <span style="color:#06733d; text-align:center;"><%= @last_tickets_purchase.where('survivor_user_id = ?', entry.survivor_user_id).last.status == 'alive' ? 'Ganador' : 'Perdedor' %> </span></h4>
 					 		<hr>
 					 		<h3 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Equipos que ya haz seleccionado</h3>
 				 			 <h4>
@@ -120,9 +127,9 @@
 					 				<h4 style="text-align:center"><img width="70%" class="team_image" src="" ></h4>
 					 			</div>
 					 			<div class="col-md-6">
-					 			<h4 style="color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Nombre del equipo: <span  style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_name"></span> </h4>
-					 			<h4 style="color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Handicap del equipo: <span style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_handicap"></span></h4>
-					 			<h4 style="color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;">Equipo rival: <span style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_rival"></span></h4>
+					 			<h4 style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Nombre del equipo: <span  style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_name"></span> </h4>
+					 			<h4 style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Handicap del equipo: <span style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_handicap"></span></h4>
+					 			<h4 style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;">Equipo rival: <span style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_rival"></span></h4>
 					 			</div>
 					 			<div class="clearfix"></div>
 					 			
@@ -135,8 +142,8 @@
 					 			</div>
 					 			<div class="col-md-6">
 					 			<br>
-					 			<h4 style="color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Nombre del equipo: <span  style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_select_name"></span> </h4>
-					 			<h4 style="color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Handicap del equipo: <span style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_select_handicap"></span></h4>
+					 			<h4 style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Nombre del equipo: <span  style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_select_name"></span> </h4>
+					 			<h4 style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Handicap del equipo: <span style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_select_handicap"></span></h4>
 					 			</div>
 					 			<div class="clearfix"></div>
 					 			<button data-survivorcode=" <%= entry.survivor_user_id %>" style="width:100%; font-weight:900; background-color:white; color:black;" class="btn buy-ticket btn-primary"> Comprar entrada</button>
@@ -230,7 +237,15 @@
 							$('.passgame').children().css('background-color','rgba(0, 0, 0, 0.59)');
 							
 							
-							$('.buy-ticket').click(function(){
+							
+						 </script>
+		
+					 </div>
+					 <% end %>
+					 
+					 <script>
+						$('.buy-ticket').click(function(){
+								$(this).prop('disabled', true);
 								var team_id = parseInt($('.clic').data('id'));
 								var user_id = <%= current_user.id %>;
 								var survivor_week_survivor_id = <%= @survivor_week_sur[0].id %>;
@@ -244,17 +259,15 @@
 									  dataType: "json",     
 									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id, team_id: team_id ,  user_id: user_id ,purchase_date: purchase_date, survivor_user_id: survivor_user_id  }  }
 									}).done(function( data) {
-											setTimeout(function(){ location.reload(); }, 2000);  	  
+									 		$('#thanks_modal').modal('show');
+											setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000);  	  
 								 	}).error(function(data) {
 											 alert(data.responseJSON.errors.user_id);
 											 })
 
 							
 							})
-						 </script>
-		
-					 </div>
-					 <% end %>
+				</script>
 					 
 				
 				<script>
@@ -280,20 +293,27 @@
           	<h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Ya estas participando en este survivor</h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> Haz comprado <%= @tickets_purchase.count %>  <span><%= @tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
-      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Recompra disponibles por entrada: <span style="color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
-      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Tienes hasta el dia: <span style="color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"><%= @current_week[0].final_date.strftime('%d-%m-%Y') %></span> para comprar entradas</h4> 
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Recompra disponibles por entrada: <span style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Tienes: <span style="color:#06733d; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
       		<hr>
+      			<script>
+					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
+					   $('#final_date').countdown(countdown1, function(event) {
+							$(this).html(event.strftime('%H:%M:%S'));
+								  
+  						});
+				</script>
       		<div class="row">
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
+      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
+      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
       			</div>
       		</div>
       		
       		<br>
-      		<h3 style="text-align:center; color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.participant_users.count %> </span>  </h3>
+      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.participant_users.count %> </span>  </h3>
       		<hr>
       		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
       		
@@ -324,7 +344,8 @@
 									  dataType: "json",     
 									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id,  user_id: user_id ,purchase_date: purchase_date, status: "alive"}  }
 									}).done(function( data) {
-											setTimeout(function(){ location.reload(); }, 2000);  	  
+									 				$('#thanks_modal').modal('show');
+											setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000); 	  
 								 	}).error(function(data) {
 												 alert(data.responseJSON.errors.user_id);
 											 })
@@ -348,20 +369,27 @@
          	<div class="row" style="background-color:rgba(0, 0, 0, 0.3)">
           	<h1 style="text-align:center; font-size: 40px; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Estas a tiempo de participar en el survivor</h4>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Recompra disponibles por entrada: <span style="color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Tienes hasta el dia: <span style="color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"><%= @current_week[0].final_date.strftime('%d-%m-%Y') %></span> para comprar tu entrada</h4> 
+      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Recompra disponibles por entrada: <span style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
+      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Tienes hasta el dia: <span style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> para comprar tu entrada</h4> 
       		<hr>
+      		<script>
+					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
+					   $('#final_date').countdown(countdown1, function(event) {
+							$(this).html(event.strftime('%H:%M:%S'));
+								  
+  						});
+				</script>
       		<div class="row">
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#00ff37; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
+      				<h3 style="text-align:center; color:#06733d; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
+      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
       			</div>
       		</div>
       		
       		<br>
-      		<h3 style="text-align:center; color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.participant_users.count %> </span>  </h3>
+      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.participant_users.count %> </span>  </h3>
       		<h3><%= @survivor_week_sur[0].id %></h3>
       		<hr>
       		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
@@ -393,7 +421,8 @@
 									  dataType: "json",     
 									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id,  user_id: user_id ,purchase_date: purchase_date, status: "alive"}  }
 									}).done(function( data) {
-									 	setTimeout(function(){ location.reload(); }, 2000);  
+									 	$('#thanks_modal').modal('show');
+									 setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000); 
 										
 								 	}).error(function(data) {
 											 alert(data.responseJSON.errors.user_id);
@@ -409,7 +438,7 @@
 				</script>
       	</div>
       	</div>
-      	 <% else %> <!-- Aqui termina la opcion si hay usuarios y la semana es igual a 0 --->
+      	 <% else %> <!-- Aqui termina la opcion si hay usuarios y la semana es igual a 0 y empieza mensaje de survivor cerrado --->
       	 <div class="row" style="background-image: url(/assets/default_background.png); margin-top:-20px !important;  ">
       	<br>
      		     		 
@@ -433,21 +462,27 @@
          	<div class="row" style="background-color:rgba(0, 0, 0, 0.31)">
           	<h1 style="text-align:center; font-size: 40px; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Estas a tiempo de participar en el survivor</h4>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Recompra disponibles por entrada: <span style="color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Tienes hasta el dia: <span style="color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"><%= @current_week[0].final_date.strftime('%d-%m-%Y') %></span> para comprar tu entrada</h4> 
+      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Recompra disponibles por entrada: <span style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
+      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Tienes: <span  style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> para comprar tu entrada</h4> 
       		<hr>
+      	  		<script>
+					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
+					   $('#final_date').countdown(countdown1, function(event) {
+							$(this).html(event.strftime('%H:%M:%S'));
+								  
+  						});
+				</script>
       		<div class="row">
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
+      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
+      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
       			</div>
       		</div>
       		
       		<br>
-      		<h3 style="text-align:center; color:#00ff37;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.participant_users.count %> </span>  </h3>
-      		<h3><%= @survivor_week_sur[0].id %></h3>
+      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.participant_users.count %> </span>  </h3>
       		<hr>
       		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
       		
@@ -478,7 +513,8 @@
 									  dataType: "json",     
 									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id,  user_id: user_id ,purchase_date: purchase_date, status: "alive"}  }
 									}).done(function( data) {
-									 	setTimeout(function(){ location.reload(); }, 2000);  
+									 	$('#thanks_modal').modal('show');
+									 	setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000);  
 										
 								 	}).error(function(data) {
 												 alert(data.responseJSON.errors.user_id);
@@ -511,3 +547,22 @@
 
 
 </div>
+
+<div class="modal fade" id="thanks_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#2d68ac;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" style="text-align:center; color:white;">Compra realizada con exito</h4>
+      </div>
+      <div class="modal-body">
+        <br>
+        <img width="100%" src="/assets/letrasazul.png">
+        <h4 style="text-align:center; font-size:30px; font-weight:900; color:black;">Gracias por comprar tu entrada</h4>
+        <h4 style="text-align:center; font-size:30px; font-weight:900; color:#2d68ac;">!Mucha suerte!</h4>
+        <br>
+      </div>
+     
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

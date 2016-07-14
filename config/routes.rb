@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :pick_user_games
+
+  resources :pick_users
+
+  resources :pick_survivor_weeks
+
+  resources :picks
+
   resources :survivor_week_survivors
 
   resources :survivor_games
@@ -68,6 +76,9 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+			post "invite_survivor", to: "partials#invite_survivor"
+			match "/inviting" => "partials#inviting", :via => :post
+			get 'invite_friends_survivor/:id', to: "partials#invite_friends_survivor"
 			get 'access_mail', to: "partials#access_request_mail"
 			get 'my_leagues', to: "partials#my_leagues"
 			get 'quinielas_closed', to: "partials#close_quinielas"
@@ -107,7 +118,7 @@ Rails.application.routes.draw do
 
 	resources :categories do
 		collection do
-			match "/invite" => "categories#invite", :via => :post
+		
 		end
 	end
 

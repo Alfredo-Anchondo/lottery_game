@@ -1,0 +1,85 @@
+<div class="row">
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <h3 style="margin-left:15px"><%= t("activerecord.models.picks") %></h3>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
+            <thead>
+              <tr>
+                                  <th><%= t("activerecord.attributes.pick.name") %></th>
+                                  <th><%= t("activerecord.attributes.pick.description") %></th>
+                                  <th><%= t("activerecord.attributes.pick.user") %></th>
+                                  <th><%= t("activerecord.attributes.pick.price") %></th>
+                                  <th><%= t("activerecord.attributes.pick.initial_balance") %></th>
+                                  <th><%= t("activerecord.attributes.pick.access_key") %></th>
+                                  <th><%= t("activerecord.attributes.pick.users_quantity") %></th>
+                                  <th><%= t("activerecord.attributes.pick.percentage") %></th>
+                                <th style="width: 155px"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @picks.each do |pick| %>
+              <tr>
+                                  <td><%= pick.name %></td>
+                                  <td><%= pick.description %></td>
+                                  <td><%= pick.user.name %></td>
+                                  <td><%= pick.price %></td>
+                                  <td><%= pick.initial_balance %></td>
+                                  <td><%= pick.access_key %></td>
+                                  <td><%= pick.users_quantity %></td>
+                                  <td><%= pick.percentage %></td>
+                                <td class="action-link">
+                  <% if can? :show,pick %>
+                    <%= link_to pick, :class => "btn btn-default", :title => t("actions.show") do %>
+                      <i class="fa fa-eye"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :edit, pick %>
+                    <%= link_to edit_pick_path(pick), :class => "btn btn-info", :title => t("actions.edit") do %>
+                      <i class="fa fa-pencil"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :delete, pick %>
+                    <%= link_to pick, :method => :delete, :data => { :confirm => t("are_you_sure?", model: t("activerecord.models.pick").downcase) }, :class => "btn btn-danger", :title => t("actions.delete") do %>
+                      <i class="fa fa-trash"></i>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center">
+ 
+        </div>
+      </div>
+      <!-- end panel-body -->
+    </div>
+    <!-- end panel -->
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :new, Pick  %>
+      <%= link_to new_pick_path, :class => "btn btn-default" do %>
+        <i class="icon-plus-sign-alt"></i>
+        <%= t("actions.new") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->

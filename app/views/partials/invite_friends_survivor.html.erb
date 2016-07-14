@@ -1,0 +1,71 @@
+<style>
+
+	.navbar-teal{
+		background-color:#06733d;
+	}
+	
+	.footer{
+		position:fixed;
+	}
+	
+</style>
+
+<h3 style="text-align:center; font-size:30px; color:#06733d;">Invitar amigos a tu liga de survivor <span style="color:black;">"<%= @survivor.name %>" </span></h3>
+<hr style="border-color:#06733d">
+
+
+<div class="row">     
+   
+		  <h3 style="text-align:center; color:black;">Invita a tus amigos a participar en tu liga de survivor.</h3>
+		  <h4 style="text-align:center">Solo escribe el correo de las personas que deseas invitar y comparte los datos de tu liga, si tiene clave de acceso se enviara en el mail:</h4>
+		  <h4 style="text-align:center; color:black;"> Clave de acceso: <span style="color:red" id="reference"><%= @survivor.access_key.present? ? @survivor.access_key : "No tiene clave de acceso" %> </span></h4>
+		  <hr style="border-color:#06733d">		  
+		  <div class="col-md-6" >
+		  	<h3 style="text-align:center; font-size:18px; color:black;">Agrega el correo electronico de tus amigos que deseas invitar.</h3>
+			  <input type="email" class="form-control" id="invitation_mail">
+			  <br>
+			 <h5 style="text-align:center"> <button style="background-color:#06733d; border-color:black;" id="add_mail" class="btn btn-primary" >Agregar Correo</button></h5>
+		  </div>
+		  <div class="col-md-6" style="border-left:1px solid #06733d">
+		  	<h3 style="text-align:center; color:black; font-size:18px;">Lista de correos electronicos para invitar</h3>
+			  <ul id="email_list">
+			  
+			  </ul>
+			  <br>
+			 <h4 style="text-align:center"> <button style="background-color:#06733d; border-color:black;" disabled class="btn btn-primary" id="send_emails"> Enviar correo </button> </h4>
+		  </div>
+	
+</div>
+
+<script>
+	var emails = [];
+	var survivor_id = <%= @survivor.id %>;
+	$('#add_mail').click(function(){
+		var mail = $('#invitation_mail').val();
+		var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+		if (regex.test(mail.trim())){
+			$('#email_list').append('<li style="font-size:16px; "> '+ mail +' </li>');
+			$('#invitation_mail').val('');
+			emails.push(mail);
+			$('#send_emails').prop( "disabled", false );
+		}else
+		{ alert('Este no es un correo valido')}
+	})
+	
+	$('#send_emails').click(function(){
+		$(this).prop('disabled', true);
+			$.ajax({
+				  url: "/partials/invite_survivor/",
+				  method: "POST",
+                  data: { mails: emails, survivor_id: survivor_id }
+				
+					})
+				  .done(function( msg ){
+					alert("La invitacion se realizo con exito. Gracias por invitar a tus amigos");
+				    setTimeout(function(){ location.reload(); }, 1000);
+				  });
+			})
+	
+
+	
+</script>

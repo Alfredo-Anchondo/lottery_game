@@ -9,15 +9,6 @@ class CategoriesController < ApplicationController
   def index
   end
 
-	def invite
-		@mails = params['mails']
-		@reference = params['reference']
-		@user = current_user
-		logger.info @mails
-		logger.info @reference
-		BuyMailer.invite(@mails, @reference, @user).deliver
-		render nothing: true
-	end
 
   # GET /categories/1
   # GET /categories/1.json

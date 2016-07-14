@@ -331,6 +331,7 @@ end
 	
 	def survivor_history
 	  @usuarios = {}	
+	  @survivor = Survivor.find(params[:id])	
 	  @survivorweeksurvivor = SurvivorWeekSurvivor.where(:survivor_id => params[:id]).pluck(:id)
 	  @survivoruser = SurvivorUser.where(:survivor_week_survivor_id => @survivorweeksurvivor).order(:id)
 		@survivoruser.each do |user|
@@ -351,5 +352,27 @@ end
 		survivor = Survivor.find(params[:survivor])
 		BuyMailer.access_request_mail(current_user,owner,survivor).deliver
 	end	
+	
+	def invite_friends_survivor
+		@survivor = Survivor.find(params[:id])
+	end
+	
+	def inviting
+		render nothing: true
+		@mails = params['mails']
+		@reference = params['reference']
+		@user = current_user
+		BuyMailer.invite(@mails, @reference, @user).deliver
+	
+	end
+	
+	def invite_survivor
+		render nothing: true
+		@mails = params['mails']
+		@survivor = Survivor.find(params['survivor_id'])
+		@user = current_user
+		BuyMailer.invite_survivor(@mails, @survivor, @user).deliver
+	
+	end
 	
 end
