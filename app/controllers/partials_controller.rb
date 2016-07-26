@@ -288,8 +288,9 @@ end
 		#BuyMailer.buy_many_tickets(@user_id, @array_values, @lottery).deliver
 	end
 	
-	def get_survivor
-	  	render :json =>	Survivor.where('extract(year  from created_at) = ?',Time.now.year).order(:id)
+	def survivor_leagues
+	  	@survivors = Survivor.where('extract(year  from created_at) = ?',Time.now.year).order(:id)
+		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, 6)
 	end
 
  #def show_category
@@ -303,13 +304,14 @@ end
 	@last_tickets_purchase
 	def set_survivor_page
 		@current_survivor = Survivor.find(params[:id])
-		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ?', Time.now, Time.now)
+		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, 6)
 		@survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],@current_week[0].id)
 		@last_survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],(@current_week[0].id - 1))
 		@tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @survivor_week_sur[0].id)
 		if @current_week[0].week == 0 
 			
 			else
+		@last_tickets_purchase_teams = SurvivorUser.where('user_id = ?', current_user.id)
 		@last_tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @last_survivor_week_sur[0].id)
 		end
 	end
@@ -326,6 +328,7 @@ end
 		survivor_user_survivor = SurvivorWeekSurvivor.where(:id => tickets).pluck(:survivor_id).uniq()
 		@survivor_id = Survivor.where(:id => survivor_user_survivor)
 		@survivor_create = Survivor.where(:user_id => current_user.id)
+		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, 6)
 	end
 	
 	
@@ -372,7 +375,29 @@ end
 		@survivor = Survivor.find(params['survivor_id'])
 		@user = current_user
 		BuyMailer.invite_survivor(@mails, @survivor, @user).deliver
+	end
 	
+	def pickem_leagues
+		@picks = Pick.where('extract(year from created_at) = ?',Time.now.year).order(:id)
+		@categories = Pick.where('extract(year from created_at) = ?',Time.now.year).order(:sport_category).pluck(:sport_category).uniq
+		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ?', Time.now, Time.now)
+	end
+	
+	def pickem
+		@pick = Pick.find(params[:id])
+		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, @pick.sport_category)
+		@PickSurvivorWeek = PickSurvivorWeek.where(:pick_id => params[:id]).pluck(:id)
+		@tickets_purchase = PickUser.where('user_id = ? AND pick_survivor_week_id = ?', current_user.id, @PickSurvivorWeek[0])
+		@games = SurvivorGame.where('survivor_week_game_id = ?',@current_week[0].id)
+	end
+	
+		
+	def my_pickem_leagues
+		tickets = PickUser.where('user_id = ?',current_user.id).pluck(:pick_survivor_week_id).uniq()
+		survivor_user_survivor = PickSurvivorWeek.where(:id => tickets).pluck(:pick_id).uniq()
+		@survivor_id = Pick.where(:id => survivor_user_survivor)
+		@survivor_create = Pick.where(:user_id => current_user.id)
+		@current_week = PickSurvivorWeek.where('initial_date <= ? AND final_date >= ? ', Time.now, Time.now)
 	end
 	
 end

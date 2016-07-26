@@ -42,6 +42,6 @@ class PickUserGamesController < ApplicationController
     end
 
     def pick_user_game_params
-      params.require(:pick_user_game).permit(:pick_user_id, :team_id, :survivor_game_id)
+      params.require(:pick_user_game).permit(:pick_user_id, :points, :team_id, :survivor_game_id)
     end
 end

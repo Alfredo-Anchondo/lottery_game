@@ -21,6 +21,7 @@
                                   <th><%= t("activerecord.attributes.pick.access_key") %></th>
                                   <th><%= t("activerecord.attributes.pick.users_quantity") %></th>
                                   <th><%= t("activerecord.attributes.pick.percentage") %></th>
+				  				  <th><%= t("activerecord.attributes.pick.pick_type") %></th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -36,6 +37,7 @@
                                   <td><%= pick.access_key %></td>
                                   <td><%= pick.users_quantity %></td>
                                   <td><%= pick.percentage %></td>
+				  				  <td><%= pick.pick_type %></td>
                                 <td class="action-link">
                   <% if can? :show,pick %>
                     <%= link_to pick, :class => "btn btn-default", :title => t("actions.show") do %>

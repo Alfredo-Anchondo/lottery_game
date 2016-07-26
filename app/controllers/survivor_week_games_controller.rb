@@ -22,6 +22,11 @@ class SurvivorWeekGamesController < ApplicationController
   def edit
   end
 
+	def get_weeks
+		  render :json => SurvivorWeekGame.where('sport_category = ?', params[:id])
+	end
+	
+	
 	def get_games
 		render :json => {
       :id => @survivor_week_game.id,
@@ -64,6 +69,6 @@ class SurvivorWeekGamesController < ApplicationController
     end
 
     def survivor_week_game_params
-      params.require(:survivor_week_game).permit(:survivor_id, :initial_date, :final_date, :week)
+      params.require(:survivor_week_game).permit(:survivor_id, :sport_category, :initial_date, :final_date, :week)
     end
 end

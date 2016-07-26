@@ -26,8 +26,7 @@ class SurvivorsController < ApplicationController
     @survivor = Survivor.new(survivor_params)
     @survivor.save
     respond_with(@survivor)
-
-	    SurvivorWeekGame.current_year.each do |week|
+	    SurvivorWeekGame.current_year.where('sport_category = ?',6).each do |week|
 		survivor1 = SurvivorWeekSurvivor.new(:survivor_id => @survivor.id, :survivor_week_game_id => week.id )
 		  survivor1.save
 	  end

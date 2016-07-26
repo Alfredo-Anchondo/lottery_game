@@ -24,8 +24,15 @@ class Survivor < ActiveRecord::Base
 	end
 
   def alive_users
-    last_survivor_week_game = SurvivorWeekGame.from_year.order(:initial_date).last
-    survivor_users.where(:survivor_week_game_id => last_survivor_week_game.id).alive
+	@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now,6) 
+	  if @current_week[0].week == 0
+		  last_survivor_week_game = SurvivorWeekGame.from_year.find(@current_week[0].id )
+      else
+		  last_survivor_week_game = SurvivorWeekGame.from_year.find(@current_week[0].id - 1) 
+	  end
+   
+	survivor_week_survivor = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?',id, last_survivor_week_game.id)   
+    survivor_users.where(:survivor_week_survivor_id => survivor_week_survivor[0].id).alive
   end
 
 	def background_url
@@ -38,7 +45,7 @@ class Survivor < ActiveRecord::Base
 	end
 
   def self.close
-    if SurvivorGame.no_pending_games? && SurvivorWeekGame.from_year.last.last_week? && !SurvivorWeekGame.from_year.last.closed
+    if SurvivorGame.no_pending_games? && SurvivorWeekGame.from_year.last.last_week? 
       from_year.each do |s|
         total_winners = s.survivor_users.winner.count
 
@@ -53,6 +60,7 @@ class Survivor < ActiveRecord::Base
 
           s.survivor_users.winner.each do |su|
             su.user.update(:balance => su.user.balance + profit)
+			BuyMailer.winner_survivor(s,su.user,s.survivor_users.winner.count,profit).deliver  
           end
         end
       end

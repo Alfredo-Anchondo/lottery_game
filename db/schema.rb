@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711173836) do
+ActiveRecord::Schema.define(version: 20160725155252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20160711173836) do
     t.integer  "survivor_game_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "points"
   end
 
   add_index "pick_user_games", ["pick_user_id"], name: "index_pick_user_games_on_pick_user_id", using: :btree
@@ -115,16 +116,22 @@ ActiveRecord::Schema.define(version: 20160711173836) do
   add_index "pick_users", ["user_id"], name: "index_pick_users_on_user_id", using: :btree
 
   create_table "picks", force: true do |t|
-    t.string   "name",                          null: false
+    t.string   "name",                                  null: false
     t.string   "description"
-    t.integer  "user_id",                       null: false
-    t.float    "price",           default: 1.0, null: false
-    t.float    "initial_balance", default: 1.0, null: false
+    t.integer  "user_id",                               null: false
+    t.float    "price",                   default: 1.0, null: false
+    t.float    "initial_balance",         default: 1.0, null: false
     t.string   "access_key"
     t.integer  "users_quantity"
     t.float    "percentage"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sport_category"
+    t.integer  "pick_type"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
   end
 
   add_index "picks", ["user_id"], name: "index_picks_on_user_id", using: :btree
@@ -243,12 +250,13 @@ ActiveRecord::Schema.define(version: 20160711173836) do
   add_index "survivor_users", ["user_id"], name: "index_survivor_users_on_user_id", using: :btree
 
   create_table "survivor_week_games", force: true do |t|
-    t.date     "initial_date",                 null: false
-    t.date     "final_date",                   null: false
-    t.integer  "week",         default: 1,     null: false
+    t.date     "initial_date",                   null: false
+    t.date     "final_date",                     null: false
+    t.integer  "week",           default: 1,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "closed",       default: false, null: false
+    t.boolean  "closed",         default: false, null: false
+    t.integer  "sport_category"
   end
 
   create_table "survivor_week_survivors", force: true do |t|

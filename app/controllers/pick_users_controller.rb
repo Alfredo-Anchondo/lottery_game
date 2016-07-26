@@ -1,7 +1,7 @@
 class PickUsersController < ApplicationController
   before_action :set_pick_user, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @pick_users = PickUser.all
@@ -23,7 +23,8 @@ class PickUsersController < ApplicationController
   def create
     @pick_user = PickUser.new(pick_user_params)
     @pick_user.save
-    respond_with(@pick_user)
+    #respond_with(@pick_user)
+	render json: nil, status: :ok
   end
 
   def update

@@ -77,14 +77,15 @@ class SurvivorGame < ActiveRecord::Base
 		
 			if pending == true
 				logger.info "Aun hay juegos pendientes"
-				
-				
 				else
 				logger.info "Ya no hay juegos pendientes"
 				last_week_number = survivor_week_game.week - 1
-				last_week_game = SurvivorWeekGame.where(:week => last_week_number).first
+				category = survivor_week_game.sport_category
+				last_week_game = SurvivorWeekGame.where(:week => last_week_number, :sport_category => category).first
+				logger.info last_week_game.id
+				logger.info '/////////////'
 				survivor_week_survivors = SurvivorWeekSurvivor.where(:survivor_week_game => last_week_game.id)
-				 last_tickets = survivor_week_survivors[0].survivor_week_game.survivor_users	
+				last_tickets = survivor_week_survivors[0].survivor_week_game.survivor_users	
 				current_tickets = survivor_week_game.survivor_users
 				
 				if current_tickets.count != last_tickets.count

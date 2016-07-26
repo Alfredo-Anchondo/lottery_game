@@ -5,7 +5,12 @@ Rails.application.routes.draw do
 
   resources :pick_survivor_weeks
 
-  resources :picks
+  resources :picks do
+	  collection do
+		  get 'close_pick'
+	  end
+  end
+	
 
   resources :survivor_week_survivors
 
@@ -17,6 +22,7 @@ Rails.application.routes.draw do
   	collection do
   		get 'close_games'
   		get '/get_games',to: "survivor_week_games#get_games"
+		get '/get_weeks',to: "survivor_week_games#get_weeks"
       get 'can_close/:id', to: "survivor_week_games#can_close"
   	end
   end
@@ -76,11 +82,15 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+			get 'pickem_game'
+			get 'pickem_leagues', to: "partials#pickem_leagues"
+			get 'pickem/:id', to: "partials#pickem"
 			post "invite_survivor", to: "partials#invite_survivor"
 			match "/inviting" => "partials#inviting", :via => :post
 			get 'invite_friends_survivor/:id', to: "partials#invite_friends_survivor"
 			get 'access_mail', to: "partials#access_request_mail"
 			get 'my_leagues', to: "partials#my_leagues"
+			get 'my_pickem_leagues', to: "partials#my_pickem_leagues"
 			get 'quinielas_closed', to: "partials#close_quinielas"
 			get 'next_game'
 			get 'finish_games'
@@ -89,7 +99,7 @@ Rails.application.routes.draw do
 			get 'survivor_history/:id', to: "partials#survivor_history"
 			get 'survivor_game'
 			get 'survivor_search', to: "partials#set_survivor_page"
-			get 'survivor_leagues'
+			get 'survivor_leagues', to: "partials#survivor_leagues"
 			get "/current_survivors", to: "partials#get_survivor"
 			get "/team_logos/:id", to: "partials#team_logos"
 			post 'buy_random_quinielas', to: "partials#buy_random_quinielas"

@@ -14,6 +14,13 @@ class BuyMailer < ActionMailer::Base
 		mail(to: @user.email, subject: '[DonBillete] Compra de entrada liga survivor')
 	end
 	
+	def buy_pick_entry(pick,user, next_week)
+		@user = user
+		@pick = pick
+		@next_week = next_week
+		mail(to: @user.email, subject: "[DonBillete] Compra de entrada liga PICK'EM")
+	end
+	
 	def buy_survivor_team(survivor,user, next_week, team)
 		@user = user
 		@survivor = survivor
@@ -121,4 +128,11 @@ class BuyMailer < ActionMailer::Base
 		mail(to: "marianolascurain@gmail.com", subject: 'Solicitud de acceso survivor')
 	end
 
+	def winner_survivor(survivor, user, winners, total_win)
+		@survivor = survivor
+		@user = user
+		@winners = winners
+		@total_win = total_win
+		mail(to: @user.email, subject: '[DonBillete] Ganador de una liga survivor')
+	end
 end

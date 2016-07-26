@@ -2,21 +2,47 @@
 			<h2 style="text-align:center; font-weight:800">Cerrar juegos por semana</h2>
 			<hr>
 			<div class="row">
-				<div class="col-md-4"></div>
+				<div class="col-md-1"></div>
+				<div class="col-md-2"><h4>Selecciona una categoria</h4></div>
+				<div class="col-md-3"><%= select_tag "category",  options_from_collection_for_select(SportCategory.all, "id", "select_display"), class: 'form_input', id: 'sport_category' %></div>
 				<div class="col-md-2"><h4>Selecciona una semana</h4></div>
-				<div class="col-md-3"><%= select_tag "access", options_from_collection_for_select(SurvivorWeekGame.where('sport_category = ?',6), "id", "select_display"), class: 'form_input', id: 'week_number' %></div>
-				<div class="col-md-3"></div>
+				<div class="col-md-3"><select class="form-control" id="weeks"></select></div>
+				<div class="col-md-1"></div>
+				
 			</div>
+			
 			<hr>
 			<div class="row" id="games_row">
 			</div>
 			<div class="row text-center" id="submit_row">
 			</div>
 			<script>
+				
+				
+				$('#sport_category').change(function(){
+				  var sport_id = $('#sport_category option:selected').val();
+						$.ajax({
+					  method: "GET",
+					  format: "json",
+					  url: "/survivor_week_games/get_weeks",
+					  data: { id: sport_id }
+					})
+					  .done(function( data ) {
+							$('#weeks').empty();
+							for( var i in data.survivor_week_games){
+								
+								$('#weeks').append('<option value="'+data.survivor_week_games[i].id+'">Semana '+data.survivor_week_games[i].week+'</option>');
+								$('#weeks').selectpicker('refresh');
+
+							}
+						})
+				})
+				
+				
 				var current_language = $("#current_language").val();
 
         function get_games() {
-					var week = $('#week_number option:selected').val();
+					var week = $('#weeks option:selected').val();
 					$.ajax({
 				  method: "GET",
 				  format: "json",
@@ -112,8 +138,8 @@
 						});
 				}
 
-				$('#week_number').change(get_games);
-				$('#week_number').each(get_games);
+				$('#weeks').change(get_games);
+				$('#weeks').each(get_games);
 
 				$(document).on("click", ".team-div", function() {
 						if($(this).children(".score").length === 0) {

@@ -16,6 +16,14 @@
 
 <!-- begin col-md-6 -->
 <div class="col-md-12">
+	
+	 <div class="form-group">
+          <%= f.label :sport_category, :class => "col-md-2" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:sport_category, SportCategory.all.order('id DESC'), :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+
              
                   <div class="form-group">
           <%= f.label :initial_date, :class => "col-md-2" %>

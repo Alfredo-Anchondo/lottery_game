@@ -26,12 +26,12 @@
             <tbody>
               <% @pick_users.each do |pick_user| %>
               <tr>
-                                  <td><%= pick_user.user %></td>
-                                  <td><%= pick_user.pick_survivor_week %></td>
+                                  <td><%= pick_user.user.username %></td>
+                                  <td><%= pick_user.pick_survivor_week.survivor_week_game.select_display %></td>
                                   <td><%= pick_user.points %></td>
                                   <td><%= pick_user.local_score %></td>
                                   <td><%= pick_user.visit_score %></td>
-                                  <td><%= pick_user.pick_user %></td>
+                                  <td><%= pick_user.pick_user.id %></td>
                                 <td class="action-link">
                   <% if can? :show,pick_user %>
                     <%= link_to pick_user, :class => "btn btn-default", :title => t("actions.show") do %>

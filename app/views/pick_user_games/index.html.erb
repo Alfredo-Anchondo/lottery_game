@@ -16,6 +16,7 @@
                                   <th><%= t("activerecord.attributes.pick_user_game.pick_user") %></th>
                                   <th><%= t("activerecord.attributes.pick_user_game.team") %></th>
                                   <th><%= t("activerecord.attributes.pick_user_game.survivor_game") %></th>
+                                   <th><%= t("activerecord.attributes.pick_user_game.points") %></th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -26,6 +27,7 @@
                                   <td><%= pick_user_game.pick_user %></td>
                                   <td><%= pick_user_game.team %></td>
                                   <td><%= pick_user_game.survivor_game %></td>
+                                  <td><%= pick_user_game.points %></td>
                                 <td class="action-link">
                   <% if can? :show,pick_user_game %>
                     <%= link_to pick_user_game, :class => "btn btn-default", :title => t("actions.show") do %>

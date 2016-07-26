@@ -363,6 +363,7 @@ es:
     attributes:
         pick:
             name: "Nombre"
+            sport_category: "Categorias del pick"
             description: "Descripción"
             user_id: "Usuario"
             user: "Usuario"
@@ -371,6 +372,7 @@ es:
             access_key: "Clave de Acceso"
             users_quantity: "Cantidad Maxima de usuarios"
             percentage: "Porcentaje de Ganancia"
+            pick_type: "Tipo de pick"
         pick_user:
             user: "Usuario"
             user_id: "Usuario"
@@ -392,6 +394,7 @@ es:
             pick_user_id: "Boleto del usuario"
             team_id: "Equipo seleccionado"
             survivor_game_id: "Juego al que pertenece" 
+            points: "Valor en Puntos"
         role:
             created_at: "Fecha de Creación"
             name: "Nombre"
@@ -427,6 +430,7 @@ es:
             created_at: "Fecha de creación"
         survivor_week_game:
             survivor: "Survivor"
+            sport_category: "Categorias por deporte"
             initial_date: "Fecha inicio de la semana"
             final_date: "Fecha de fin de la semana"
             week: "Numero de semana"

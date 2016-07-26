@@ -1,0 +1,191 @@
+<style>	
+	.navbar-teal{
+		background-color:purple;
+	}
+		
+</style>
+
+
+<% if @current_week[0].week == 0 %>
+	<div class="row" style=" background-size: cover; background-image: url(<%= @pick.background_url %>)">
+         	<div class="row" style="background-color:rgba(0, 0, 0, 0.3)">
+          	<h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 40px; color:white; font-weight:900;"><%= @pick.name %></h1> <hr>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Ya estas participando en este survivor</h4>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> Haz comprado <%= @tickets_purchase.count %>  <span><%= @tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
+      		
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Tienes: <span style="color:purple; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
+      		<hr>
+      			<script>
+					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
+					   $('#final_date').countdown(countdown1, function(event) {
+							$(this).html(event.strftime('%H:%M:%S'));
+								  
+  						});
+				</script>
+      		<div class="row">
+      			<div class="col-md-6 col-xs-6">
+      				<h3 style="text-align:center; color:purple;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @pick.price %></span></h3>
+      			</div>
+      			<div class="col-md-6 col-xs-6">
+      				<h3 style="text-align:center; color:purple;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @pick.initial_balance %> </span> </h3>
+      			</div>
+      		</div>
+      		
+      		<br>
+      		<h3 style="text-align:center; color:purple;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @pick.alive_users %> </span>  </h3>
+      		<hr>
+      		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
+      		
+      		<script>
+				$('#buy_entry').click(function(){
+					$(this).prop('disabled', true);
+					var user_balance;
+					var user_id = <%= current_user.id %>;
+					var survivor_balance = <%= @pick.initial_balance %>;
+					var survivor_week_survivor_id = <%= @PickSurvivorWeek[0] %>;
+					var survivor_id = <%= @pick.id %>;
+					var purchase_date = new Date();
+					var survivor_new_balance = parseFloat(survivor_balance) + <%= @pick.price %>;
+					var total_balance_update;
+					if(<%=current_user.gift_credit %> >= <%= @pick.price %> || <%= current_user.balance %> >= <%= @pick.price %>  ){
+					    user_balance = <%=current_user.gift_credit %>;
+						total_balance_update = user_balance - <%= @pick.price %>;
+						
+                    	
+							  	 $.ajax({
+									  method: "POST",
+									  url: "/pick_users",
+									  dataType: "json",     
+									  data: { pick_user: {pick_survivor_week_id: survivor_week_survivor_id,  user_id: user_id ,purchase_date: purchase_date, status: "alive"}  }
+									}).done(function(data) {
+									 		$('#thanks_modal').modal('show');
+											setTimeout(function(){    window.location.assign("/partials/my_pickem_leagues"); }, 2000); 	  
+								 	}).error(function(data) {
+												 alert(data.responseJSON.errors.user_id);
+											 })
+
+							
+               
+					   }else{       //opcion cuando el cliente no tiene saldo
+						    alert('No tienes saldo suficiente');
+							window.location.assign("/partials/credit_card_form")
+					   }
+				})
+				</script>
+      	</div>
+      	</div>
+
+<% else %>
+<!--- Aqui empiezan las acciones cuando no es la semana 0 y se pueden empezar a realizar las compras  --->
+	<div class="row" style=" margin-top:-20px !important; background-size: cover; background-image: url(<%= @pick.background_url %>)">
+        	<div class="row" style="background-color:rgba(0, 0, 0, 0.3)">
+         	<div class="col-md-4" style="border-right:1px solid black;">
+          	<h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 40px; color:white; font-weight:900;"><%= @pick.name %></h1> <hr>
+      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Semana #<%= @current_week[0].week %></h4>
+      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Tienes: <span style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
+      		<hr>
+      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;"> Tienes    <span></span> </h4>
+      		
+      		
+      		<script>
+					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
+					   $('#final_date').countdown(countdown1, function(event) {
+							$(this).html(event.strftime('%H:%M:%S'));
+								  
+  						});
+				</script>
+      		<hr>
+      		<div class="row">
+      			<div class="col-md-6 col-xs-6">
+      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:20px; font-weight:900;">Precio de recompra : <span style="color:white;"><%= @pick.price %> DB</span></h3>
+      			</div>
+      			<div class="col-md-6 col-xs-6">
+      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Bolsa acumulada: <span style="color:white" ><%= @pick.initial_balance %> DB </span> </h3>
+      			</div>
+      		</div>
+      		
+      		<br>
+      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Usuarios participando: <span style="color:white"><%= @pick.alive_users %> </span>  </h3>
+      		<hr>
+    		  <h3 style="text-align:center; color:white;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Entradas compradas</h3>	
+     		  	<br>
+     		  	<h4 style="text-align:center"><% @tickets_purchase.each_with_index do |entry,index| %>
+     		  		<button data-pick="<%= entry.pick_user_id %>" data-index="<%= index + 1 %>" style="margin-left:2%" class="btn btn-primary"> Entrada #<%= index + 1  %> </button>
+     		  	<% end %>
+     		  	</h4>
+				</div>
+				
+				<div class="col-md-8">
+     		  	 <h3 style="text-align:center; color:white;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Seleccion de Equipos</h3>
+    		  	 	 	<div class="row">
+    		  	 	 		<% @games.each_with_index do |game,index|%>
+    		  	 	 		<div class="col-md-6" <% if index%2 != 0 %> style="border-left:1px solid black;" <% end %></div>
+    		  	 	 		<div class="col-md-3" > <img width="60%" src="<%= game.team.logo_url  %>"> </div>
+    		  	 	 		<div class="col-md-4"></div>
+    		  	 	 		<div class="col-md-3"><img width="60%" src="<%= game.team2.logo_url  %>"></div>
+    		  	 	 		<div class="col-md-2"></div>
+    		  	 	 		</div>
+    		  	 	 		<% end %>
+    		  	 	 	</div>
+     		  	 	 
+     		  	</div>
+				
+				<% @tickets_purchase.each_with_index do |entry,index| %>
+    		  		
+     		  		
+     		  	<% end %>
+				
+				
+			  </div>
+</div>
+	
+	
+<% end %>
+
+
+
+
+<div class="modal fade" id="thanks_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#2d68ac;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" style="text-align:center; color:white;">Compra realizada con exito</h4>
+      </div>
+      <div class="modal-body">
+        <br>
+        <img width="100%" src="/assets/letrasazul.png">
+        <h4 style="text-align:center; font-size:30px; font-weight:900; color:black;">Gracias por comprar tu entrada</h4>
+        <h4 style="text-align:center; font-size:30px; font-weight:900; color:#2d68ac;">!Mucha suerte!</h4>
+        <br>
+      </div>
+     
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+<div class="modal fade" id="confirm_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#2d68ac;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" style="text-align:center; color:white;">Confirmación de seleccion de equipo</h4>
+      </div>
+      <div class="modal-body">
+               <h4 style="text-align:center;  color:#2d68ac; font-size:20px;">Equipo Seleccionado</h4>
+               <hr style="border-color:#2d68ac">
+               <h4 style="text-align:center; font-size:20px; color:black;" id="select_team_description_modal"> </h4>
+               <h4 style="text-align:center; font-size:20px; color:black;" id="select_team_name_modal"> </h4>
+               <h4 style="text-align:center"><img width="50%" id="select_team_modal" src=""></h4>
+                  <hr style="border-color:#2d68ac">
+        <h5 style="text-align:center; font-size:12px; font-weight:900; color:red;">Recuerda que una ves seleccionado el equipo no se puede cambiar tu seleccion.</h5>
+        <br>
+       	<h4><button class="btn btn-primary" style="width:70%" id="confirm_buy"> Confirmar equipo </button><button data-dismiss="modal" class="btn btn-danger" style="width:25%; margin-left:3%">Cancelar</button></h4>
+      </div>
+     
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

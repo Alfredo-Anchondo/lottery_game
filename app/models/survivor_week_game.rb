@@ -7,6 +7,7 @@ class SurvivorWeekGame < ActiveRecord::Base
   has_many :survivor_week_survivors
   has_many :survivor_games
   has_many :survivor_users, :through => :survivor_week_survivors
+  
 
   #VALIDATIONS
   validates :initial_date, :final_date, :week, :presence => true
@@ -19,7 +20,7 @@ class SurvivorWeekGame < ActiveRecord::Base
 	end
 
 	def select_display
-		"#{I18n.t("week")} #{week}"
+		"#{I18n.t("week")} #{week} #{SportCategory.find(sport_category).select_display}"
 	end
 
   def first_week?

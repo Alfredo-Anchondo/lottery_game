@@ -27,35 +27,32 @@
       <div class="panel">
         <div class="panel-header">
             <h4 style="text-align:center"> <img width="80%" src="https://scontent-dfw1-1.xx.fbcdn.net/v/t1.0-9/13428419_255873698116190_4544569671011974568_n.png?oh=a341237d398d08639a411fd4533b9d24&oe=5825D3A7"></h4>
-           <h1 class="welcome">Gracias por seleccionar tu equipo para la semana <%= @next_week ? @next_week.week - 1 : 'Semana 17' %> del survivor: <span style="color:black"> <%= @survivor.name %> </span></h1>
+           <h1 class="welcome">Felicidades eres el ganador de la liga: <span style="color:black"> <%= @survivor.name %> </span></h1>
            <h2 class="welcome" style="font-weight:800"> Creada por: <span><%= "" +@survivor.user.name+ " " + @survivor.user.last_name %></span></h2>      
           </div>
       
       </div>
       <div class="panel-body">
-         <br>
           <div class="margin-center row">
-          <div class="col-md-12 " style="border: 1px solid black;">
+          <div class="col-md-12 " style="border: 1px dotted black;">
           	
-          		<h4>Equipo seleccionado:</h4>
-          		<h3><%= @team.present? ? @team.name : "Lo sentimos pero no seleccionaste equipo esta semana" %></h3>
-          		<hr>
-				<h4>Bolsa inicial:</h4>
+				
+				<h4>Bolsa Final:</h4>
 				<h3><%= @survivor.initial_balance %> DB</h3>
-				<hr>
-				<h4>Usuarios participando:</h4>
-				<h3><%= @survivor.alive_users.count %></h3>
-				<hr>
-				<h4>Fecha de inicio de la siguiente semana de la liga:</h4>
-				<h3><%= @next_week ? @next_week.initial_date : 'Ultima semana' %></h3>
-			 
+				
+				<h4>Cantidad de ganadores:</h4>
+				<h3><%= @winners %></h3>
+				
+				<h4>Cantidad Ganada:</h4>
+				<h3><%= @total_win %> DBs</h3>
+			 	
            		
             </div>
           </div>
           <br>
       </div>
     <div class="panel-footer">
-        <h4 style="text-align:center"><a style="text-align:center; color:#2D68AC; font-size:25px;" href="http://donbillete.com">Entra a nuestro sitio para registrarte</a> </h4> <br>
+        <h4 style="text-align:center"><a style="text-align:center; color:#2D68AC; font-size:25px;" href="http://donbillete.com">Entra a nuestro sitio para ver los resultados </a> </h4> <br>
          <h4>Siguenos en:  <a href="https://www.facebook.com/7donbillete/"><img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xft1/v/t1.0-9/12924533_216008632102697_6569374066802473538_n.png?_nc_eui=ARgvbFZs7y5Iq1FvtrgQEHdq7cJHQzYWWFh4NMDHrdGToc9H2j1tGA&oh=a06d9609adcc4ecce4132ce1e2be38c4&oe=578D01AA" width="50px"></a> <a href="https://twitter.com/7DONBILLETE"><img width="50px" src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xtp1/v/t1.0-9/12417900_216008615436032_1537948209837185904_n.png?_nc_eui=ARiUxbBXmdA8nCxKnkE9LGmNrwbzAfGT6byEr7pgq-PdgCBFNW5iEw&oh=a38990118122134469933f22d8d6e0d2&oe=57B859C9"></a>  </h4>
       
       </div>

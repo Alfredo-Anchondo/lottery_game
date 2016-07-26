@@ -90,7 +90,7 @@ t = $('#example').DataTable({
 });
 	
 		<% @usuarios.each do |user|  %>
-	    <%  user[1].each do |live| %>
+	    <%  user[1].each_with_index do |live, index| %>
 				<% @week_day = [] %>
 		<% live[1].each do |week| %>		
 			<% @week_day.push(week[1])  %>
@@ -100,24 +100,24 @@ t = $('#example').DataTable({
 			<% logger.info @week_day.count %>
 			<% logger.info @week_day[0] %>
 				t.row.add( [
-            	   '<h4 style="text-align:center"><%= user[0].upcase %> </h4',
-				   '<h4 class="<%= @week_day[1] ? @week_day[1][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[1] ?  @week_day[1][:team] ? @week_day[1][:team].logo_url : '' : '' %>"></h4>',
-				   '<h4 class="<%= @week_day[2] ? @week_day[2][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[2] ?  @week_day[2][:team] ?  @week_day[2][:team].logo_url : '' : '' %>"></h4>',
-				   '<h4 class="<%= @week_day[3] ? @week_day[3][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[3] ?  @week_day[3][:team] ?  @week_day[3][:team].logo_url : '' : '' %>"></h4>',
-				    '<h4 class="<%= @week_day[4] ? @week_day[4][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[4] ?  @week_day[4][:team] ?  @week_day[4][:team].logo_url : '' : '' %>"></h4>',  
-				    '<h4 class="<%= @week_day[5] ? @week_day[5][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[5] ?  @week_day[5][:team]?  @week_day[5][:team].logo_url : '' : '' %>"></h4>',
-				    '<h4 class="<%= @week_day[6] ? @week_day[6][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[6] ?  @week_day[6][:team] ?  @week_day[6][:team].logo_url : '' : '' %>"></h4>',
-				    '<h4 class="<%= @week_day[7] ? @week_day[7][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[7] ?  @week_day[7][:team] ?  @week_day[7][:team].logo_url : '' : '' %>"></h4>',
-				   '<h4 class="<%= @week_day[8] ? @week_day[8][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[8] ?  @week_day[8][:team] ?  @week_day[8][:team].logo_url : '' : '' %>"></h4>',
-				    '<h4 class="<%= @week_day[9] ? @week_day[9][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[9] ?  @week_day[9][:team] ?  @week_day[9][:team].logo_url : '' : '' %>"></h4>',
-				    '<h4 class="<%= @week_day[10] ? @week_day[10][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[10] ?  @week_day[10][:team] ?  @week_day[10][:team].logo_url : '' : '' %>"></h4>',
-				   '<h4 class="<%= @week_day[11] ? @week_day[11][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[11] ?  @week_day[11][:team] ?  @week_day[11][:team].logo_url : '' : '' %>"></h4>',
-				    '<h4 class="<%= @week_day[12] ? @week_day[12][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[12] ?  @week_day[12][:team] ?  @week_day[12][:team].logo_url : '' : '' %>"></h4>',
-				   '<h4 class="<%= @week_day[13] ? @week_day[13][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[13] ?  @week_day[13][:team] ?  @week_day[13][:team].logo_url : '' : '' %>"></h4>',
-				    '<h4 class="<%= @week_day[14] ? @week_day[14][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[14] ?  @week_day[14][:team] ?  @week_day[14][:team].logo_url : '' : '' %>"></h4>',
-				    '<h4 class="<%= @week_day[15] ? @week_day[15][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[15] ?  @week_day[15][:team] ?  @week_day[15][:team].logo_url : '' : '' %>"></h4>',
-				    '<h4 class="<%= @week_day[16] ? @week_day[16][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[16] ?  @week_day[16][:team] ?  @week_day[16][:team].logo_url : '' : '' %>"></h4>',
-				    '<h4 class="<%= @week_day[17] ? @week_day[17][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[17] ?  @week_day[17][:team] ?  @week_day[17][:team].logo_url : '' : '' %>"></h4>'
+            	   '<h4 style="text-align:center"><%= user[0].upcase %> <%= index %> </h4',
+				   '<h4 class="<%= @week_day[1] ? @week_day[1][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[1] ?  @week_day[1][:team] ? @week_day[1][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				   '<h4 class="<%= @week_day[2] ? @week_day[2][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[2] ?  @week_day[2][:team] ?  @week_day[2][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				   '<h4 class="<%= @week_day[3] ? @week_day[3][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[3] ?  @week_day[3][:team] ?  @week_day[3][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				    '<h4 class="<%= @week_day[4] ? @week_day[4][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[4] ?  @week_day[4][:team] ?  @week_day[4][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',  
+				    '<h4 class="<%= @week_day[5] ? @week_day[5][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[5] ?  @week_day[5][:team]?  @week_day[5][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				    '<h4 class="<%= @week_day[6] ? @week_day[6][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[6] ?  @week_day[6][:team] ?  @week_day[6][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				    '<h4 class="<%= @week_day[7] ? @week_day[7][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[7] ?  @week_day[7][:team] ?  @week_day[7][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				   '<h4 class="<%= @week_day[8] ? @week_day[8][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[8] ?  @week_day[8][:team] ?  @week_day[8][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				    '<h4 class="<%= @week_day[9] ? @week_day[9][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[9] ?  @week_day[9][:team] ?  @week_day[9][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				    '<h4 class="<%= @week_day[10] ? @week_day[10][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[10] ?  @week_day[10][:team] ?  @week_day[10][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				   '<h4 class="<%= @week_day[11] ? @week_day[11][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[11] ?  @week_day[11][:team] ?  @week_day[11][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				    '<h4 class="<%= @week_day[12] ? @week_day[12][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[12] ?  @week_day[12][:team] ?  @week_day[12][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				   '<h4 class="<%= @week_day[13] ? @week_day[13][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[13] ?  @week_day[13][:team] ?  @week_day[13][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				    '<h4 class="<%= @week_day[14] ? @week_day[14][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[14] ?  @week_day[14][:team] ?  @week_day[14][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				    '<h4 class="<%= @week_day[15] ? @week_day[15][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[15] ?  @week_day[15][:team] ?  @week_day[15][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				    '<h4 class="<%= @week_day[16] ? @week_day[16][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[16] ?  @week_day[16][:team] ?  @week_day[16][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
+				    '<h4 class="<%= @week_day[17] ? @week_day[17][:status] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[17] ?  @week_day[17][:team] ?  @week_day[17][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>'
         	] ).draw( false );
 		<% end %>
 		<% end %>
@@ -125,6 +125,7 @@ t = $('#example').DataTable({
 	
 	$('.loser').parent().css('background-color','rgba(255, 0, 0, 0.62)');
 	$('.alive').parent().css('background-color','rgba(49, 255, 0, 0.54)');
+	$('.winner').parent().css('background-color','rgba(255, 255, 0, 0.54)');
 	
 });
 </script>

@@ -7,6 +7,7 @@ class SurvivorUser < ActiveRecord::Base
 
   #ASSOCIATIONS
   belongs_to :survivor_week_survivor
+  has_one :survivor,  through: :survivor_week_survivor 	
   belongs_to :team
   belongs_to :user
   belongs_to :survivor_user
@@ -27,10 +28,10 @@ class SurvivorUser < ActiveRecord::Base
 
   def send_buy_mail
 	  if survivor_week_survivor.survivor_week_game.week == 0
-		 week_1 = SurvivorWeekGame.find_by week: 1 
+		 week_1 = SurvivorWeekGame.find_by week: 1, sport_category: 6
 		 BuyMailer.buy_survivor_entry(survivor_week_survivor.survivor, user, week_1 ).deliver
 	  else
-		  next_week = SurvivorWeekGame.find_by week: survivor_week_survivor.survivor_week_game.week + 1
+		  next_week = SurvivorWeekGame.find_by week: survivor_week_survivor.survivor_week_game.week + 1, sport_category: 6
 		  BuyMailer.buy_survivor_team(survivor_week_survivor.survivor, user, next_week, team ).deliver
 	  end
   end
@@ -82,8 +83,10 @@ class SurvivorUser < ActiveRecord::Base
     if previous_survivor_week_survivor.nil? || previous_survivor_week_survivor.survivor_users.alive.find_by(:survivor_user_id => survivor_user_id).nil?
     	if user.gift_credit.to_f >= survivor_week_survivor.survivor.price.to_f
         user.update(:gift_credit => user.gift_credit.to_f - survivor_week_survivor.survivor.price.to_f)
+		survivor.update(:initial_balance => survivor.initial_balance + survivor.price)	
     	else
         user.update(:balance => user.balance - survivor_week_survivor.survivor.price)
+		survivor.update(:initial_balance => survivor.initial_balance + survivor.price)	
     	end
     end
   end

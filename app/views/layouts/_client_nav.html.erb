@@ -132,7 +132,7 @@
          <% if signed_in? %>
 
       <ul id="menu" class="nav navbar-nav metismenu">
-		  <li id="user_acount" style="display:none"><a href="/partials/client_details>"> Ver perfil </a></li>
+      <li id="user_acount" style="display:none"><a href="/partials/client_details>"> Ver perfil </a></li>
        <!-- <li class="dropdown">
              <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Ligas<span class="caret"></span></a>
              <ul role="menu" class="dropdown-menu">
@@ -148,6 +148,14 @@
           <li><a href="/partials/history"> <%= t('history') %> </a> </li>
           <li><a href="/partials/checkout"> <%= t('checkout') %> </a> </li>
 		  <li><a href="/partials/invite">Invitar Amigos</a>  </li>
+           <li class="dropdown">
+                        <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown">Ligas Survivor<span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">   
+                        	 <li><a href="/partials/set_survivor_page/4">Liga DONBILLETE</a></li>
+							 <li><a href="/partials/survivor_leagues">Ligas de survivor</a></li>
+                       		 <li><a href="/partials/my_leagues">Mis ligas</a></li>
+                        </ul>
+                    </li>
           <li id="log_out_mov" style="display:none;"><%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
            <h4> <i class="fa fa-sign-out"></i><%= t('logout') %> </h4>
           <% end %></li>
