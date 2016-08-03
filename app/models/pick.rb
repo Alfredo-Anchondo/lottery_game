@@ -16,7 +16,8 @@ class Pick < ActiveRecord::Base
 	end
 	
 	def alive_users
-		users ? users.count : 0
+       zero_pick = pick_survivor_weeks.where(:survivor_week_game_id => survivor_week_games.where(:week => 0).pluck(:id) )
+		pick_users ? pick_users.where('pick_survivor_week_id = ?', zero_pick[0].id).count : 0
   	end
 	
 	

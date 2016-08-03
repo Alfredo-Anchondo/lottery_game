@@ -84,6 +84,8 @@ Rails.application.routes.draw do
         collection do
 			get 'pickem_game'
 			get 'pickem_leagues', to: "partials#pickem_leagues"
+            get 'pick_history/:id', to: "partials#pick_history"
+            get 'get_weeks', to: "partials#get_weeks"
 			get 'pickem/:id', to: "partials#pickem"
 			post "invite_survivor", to: "partials#invite_survivor"
 			match "/inviting" => "partials#inviting", :via => :post

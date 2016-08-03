@@ -24,9 +24,9 @@
             <tbody>
               <% @pick_user_games.each do |pick_user_game| %>
               <tr>
-                                  <td><%= pick_user_game.pick_user %></td>
-                                  <td><%= pick_user_game.team %></td>
-                                  <td><%= pick_user_game.survivor_game %></td>
+                                  <td><%= pick_user_game.pick_user.user.select_display %> <%= pick_user_game.pick_user.id %> <%= pick_user_game.pick_user.pick_survivor_week.survivor_week_game.week %></td>
+                                  <td><%= pick_user_game.team.name %></td>
+                                  <td><%= pick_user_game.survivor_game.team.name %> vs <%= pick_user_game.survivor_game.team2.name %></td>
                                   <td><%= pick_user_game.points %></td>
                                 <td class="action-link">
                   <% if can? :show,pick_user_game %>
@@ -74,3 +74,23 @@
   <!-- end col-12 -->
 </div>
 <!-- end row -->
+
+
+<script>
+       var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+    
+$('#data-table').DataTable({
+    responsive: true,
+    order: [1,"desc"],
+     "language": {
+            "url": languaje
+        }
+});
+</script>

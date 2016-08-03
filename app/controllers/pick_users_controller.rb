@@ -24,7 +24,7 @@ class PickUsersController < ApplicationController
     @pick_user = PickUser.new(pick_user_params)
     @pick_user.save
     #respond_with(@pick_user)
-	render json: nil, status: :ok
+	render json: @pick_user.id, status: :ok
   end
 
   def update
@@ -43,6 +43,6 @@ class PickUsersController < ApplicationController
     end
 
     def pick_user_params
-      params.require(:pick_user).permit(:user_id, :pick_survivor_week_id, :points, :local_score, :visit_score, :pick_user_id)
+      params.require(:pick_user).permit(:user_id, :pick_survivor_week_id, :points, :local_score, :visit_score, :pick_user_id, :status)
     end
 end

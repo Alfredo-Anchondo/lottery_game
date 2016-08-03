@@ -12,7 +12,12 @@ class CreatePicks < ActiveRecord::Migration
       t.string :access_key
       t.integer :users_quantity
       t.float :percentage
-	  t.integer :type	
+	  t.integer :pick_type
+      t.integer :winner_type    
+      t.float :percentage_per_week   
+      t.float :first_percentage  
+      t.float :second_percentage  
+      t.float :third_percentage  
       t.timestamps
     end
   end

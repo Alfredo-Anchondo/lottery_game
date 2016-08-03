@@ -25,5 +25,6 @@
  *= require chosen.min
  *= require custom_check
  *= require summernote
- *= require bootstrap2-toggle.min
+ * require bootstrap2-toggle.min
+ *= require bootstrap-switch.min
  */

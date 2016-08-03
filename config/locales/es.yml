@@ -372,6 +372,10 @@ es:
             access_key: "Clave de Acceso"
             users_quantity: "Cantidad Maxima de usuarios"
             percentage: "Porcentaje de Ganancia"
+            percentage_per_week: "Porcentanje a repartir por semana"
+            first_percentage: "Porcentaje primer lugar"
+            second_percentage: "Porcentaje segundo lugar"
+            third_percentage: "Porcentaje tercer lugar"
             pick_type: "Tipo de pick"
         pick_user:
             user: "Usuario"

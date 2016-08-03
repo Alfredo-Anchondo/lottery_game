@@ -32,7 +32,7 @@ class SurvivorWeekGamesController < ApplicationController
       :id => @survivor_week_game.id,
       :can_close => @survivor_week_game.can_close?,
       :last_week => @survivor_week_game.last_week?,
-      :survivor_games => @survivor_week_game.survivor_games.map do |s|
+      :survivor_games => @survivor_week_game.survivor_games.order(:game_date).map do |s|
         s.attributes.merge(
           :survivor_week_game => s.survivor_week_game,
           :team => s.team.attributes.merge(:logo_url => s.team.logo_url),

@@ -23,7 +23,8 @@ class PickUserGamesController < ApplicationController
   def create
     @pick_user_game = PickUserGame.new(pick_user_game_params)
     @pick_user_game.save
-    respond_with(@pick_user_game)
+    #respond_with(@pick_user_game)
+    render json: true, status: :ok
   end
 
   def update

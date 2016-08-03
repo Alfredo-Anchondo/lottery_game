@@ -87,7 +87,7 @@
 								method: "PUT",
 								url: "/survivor_games/"+ game_id,
 								dataType: "json",
-								data: { survivor_game: { winner_team: team_id, local_score: local_score_value, visit_score: visit_score_value } },
+								data: { survivor_game: { winner_team: team_id, local_score: local_score_value, visit_score: visit_score_value, type_update: 0 } },
 								success: function(data, text_status, jq_xhr) {
 										$team_div.parent().find(".trophy").remove();
 

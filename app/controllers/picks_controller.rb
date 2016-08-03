@@ -36,6 +36,8 @@ class PicksController < ApplicationController
     @pick.update(pick_params)
     respond_with(@pick)
   end
+    
+  
 
   def destroy
     @pick.destroy
@@ -48,6 +50,6 @@ class PicksController < ApplicationController
     end
 
     def pick_params
-      params.require(:pick).permit(:name, :description, :user_id, :price, :sport_category, :initial_balance, :background, :access_key, :pick_type, :users_quantity, :percentage)
+      params.require(:pick).permit(:name, :description, :user_id, :price, :sport_category, :initial_balance, :background, :access_key, :pick_type, :winner_type, :first_percentage, :second_percentage, :third_percentage, :users_quantity,:percentage_per_week, :percentage)
     end
 end

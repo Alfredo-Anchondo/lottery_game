@@ -4,9 +4,13 @@ class SurvivorWeekGame < ActiveRecord::Base
   scope :from_year, ->(year=Date.current.year) { where("EXTRACT(YEAR FROM initial_date) = ?", year) }
 
   #ASSOCIATIONS
-  has_many :survivor_week_survivors
+  has_many :survivor_week_survivors  
+  has_many :pick_survivor_weeks    
   has_many :survivor_games
+  has_many :picks    
   has_many :survivor_users, :through => :survivor_week_survivors
+  has_many :pick_users, :through => :pick_survivor_weeks 
+  has_many :pick_user_games, :through => :pick_users        
   
 
   #VALIDATIONS

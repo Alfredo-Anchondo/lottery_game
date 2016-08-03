@@ -68,6 +68,21 @@
             <%= f.collection_select(:survivor_week_game_id, SurvivorWeekGame.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
           </div>
         </div>
+        
+         <div class="form-group">
+          <%= f.label :local_score, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :local_score, :class => "form-control" %>
+          </div>
+        </div>
+        
+         <div class="form-group">
+          <%= f.label :visit_score, :class => "col-md-3" %>
+          <div class="col-md-9">
+             <%= f.text_field :visit_score, :class => "form-control" %>
+          </div>
+        </div>
+        
       </div>
 
 <!-- end col-md-6 -->

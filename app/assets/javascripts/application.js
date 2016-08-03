@@ -33,7 +33,8 @@
 //= require chosen.jquery.min
 //= require summernote.min
 //= require html2canvas
-//= require bootstrap2-toggle.min
+// require bootstrap2-toggle.min
+//= require bootstrap-switch
 
 $(document).ready(function(){
 	

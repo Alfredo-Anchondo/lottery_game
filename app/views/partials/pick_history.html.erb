@@ -1,0 +1,119 @@
+
+<style>
+
+	.navbar-teal{
+		background-color:purple;
+	}
+	
+	.footer{
+		position:fixed;
+	}
+	
+		#myNavbar .navbar-nav li a:hover{
+		background-color: rgb(181, 0, 181);
+	}
+	
+	.navbar-nav > li > .dropdown-menu{
+		background-color: purple;
+	}
+	
+</style>
+
+
+<h4 style="text-align:center; font-size:30px;">Liga del PICK'EM: <span style="color:black"> <%= @pick.name %> </span></h4>
+
+<hr style="border-color:black">
+
+<div class="row">
+	<h3 style="text-align:center">Historial de equipos seleccionados</h3>
+		<h5 style="text-align:center">Te presentamos el historial de todos los usuarios que estan participando en esta liga de survivor</h5>
+	<hr>
+	<div class="col-md-6 col-md-offset-3">
+	
+		
+		<div class="col-md-6" style="border:1px solid black; background-color:purple; color:white;">
+			<h5 style="text-align:center; color:white;">Ganador Semanal</h5>
+	</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<table id="example" class="table table-bordered responsive table-hover table-striped " cellspacing="0" width="100%">
+        <thead style="background-color:black; color:white;">
+            <tr>
+                <th>Usuario</th>
+                 <% @week_quantity = @pick.pick_survivor_weeks.count  %>
+                <% @pick.pick_survivor_weeks.each_with_index do |week, index| %>
+                   <% if index+1 == @week_quantity %>
+                    
+                   <% else %>
+                    <th style="text-align:center"> <%= index + 1  %></th> 
+                   <% end %>
+                <% end %>
+               
+                     </tr>
+        </thead>
+      
+        <tbody>
+           
+        </tbody>
+    </table>
+</div>
+
+
+
+<script>
+$(document).ready(function(){
+      var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+    
+t = $('#example').DataTable({
+    responsive: true,
+	 "columnDefs": [
+    { "width": "5.5%", "targets": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17] }
+  ],
+    order: [0,"desc"],
+     "language": {
+            "url": languaje
+        }
+});
+	
+		<% @usuarios.each do |user|  %>
+	    <%  user[1].each_with_index do |live, index| %>
+				<% @week_day = [] %>
+		<% live[1].each do |week| %>		
+			<% @week_day.push(week[1])  %>
+		<% end %>
+				t.row.add( [
+                     <% @week_quantity = @pick.pick_survivor_weeks.count  %>
+                     <% @pick.pick_survivor_weeks.order(:id).each_with_index do |week, indexx| %>
+                     <% if indexx == 0  %>
+                      '<h4 style="text-align:center"><%= user[indexx].upcase %> <%= index %> </h4>',
+                     <% elsif indexx == 1  %>
+                   '<h4 class="<%= @week_day[indexx] ? @week_day[indexx ][:status] : ''  %>" style="text-align:center"> <%= @week_day[indexx] ? @week_day[indexx ][:points] : 0 %></h4>',
+                    <% else %>
+                    '<h4 class="<%= @week_day[indexx] ? @week_day[indexx][:status] : ''  %>" style="text-align:center"> <%= @week_day[indexx] ? @week_day[indexx][:points] : 0 %></h4>',
+                     <% end %>
+				 
+                    <% end %>
+            	  
+        	] ).draw( false );
+		<% end %>
+		<% end %>
+	
+	
+	$('.Ganadorsemanal').parent().css('background-color','purple');
+    $('.Ganadorsemanal').parent().css('color','white');
+	
+	
+});
+</script>
+
+

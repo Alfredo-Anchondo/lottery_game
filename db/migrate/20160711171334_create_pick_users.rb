@@ -6,6 +6,7 @@ class CreatePickUsers < ActiveRecord::Migration
       t.references :pick_survivor_week, index: true
 	  t.foreign_key :pick_survivor_weeks	
       t.float :points
+      t.text :status    
       t.integer :local_score
       t.integer :visit_score
       t.references :pick_user, index: true

@@ -7,6 +7,7 @@ class CreateSurvivorGames < ActiveRecord::Migration
       t.integer :handicap
       t.integer :plus_handicap
       t.text :description 
+      t.text :type_update    
       t.datetime :game_date, null:false
       t.integer :winner_team
 	    t.integer :local_score

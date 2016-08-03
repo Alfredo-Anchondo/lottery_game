@@ -15,7 +15,8 @@
 <% end %>
 
 
-<div class="col-md-12">
+<div class="row">
+<div class="col-md-6"> 
 	<h3 style="text-align:center"> Selecciona el tipo de Liga que deseas crear</h3>
 		<div class="form-group" style="text-align:center; font-size:20px;">
          		<%= f.radio_button('pick_type', 1, :class => "type")  %>
@@ -24,6 +25,18 @@
 				<%= label_tag(:type, "Pick'em DB") %>
 				
         </div>
+</div>
+<div class="col-md-6">
+    	<h3 style="text-align:center"> Selecciona el tipo de manejo de la bolsa</h3>
+		<div class="form-group" style="text-align:center; font-size:20px;">
+         		<%= f.radio_button('winner_type', 1, :class => "type")  %>
+				<%= label_tag(:type, "Equitativo") %>
+				<%= f.radio_button('winner_type', 2, :style => 'margin-left:4%', :class => 'type' ) %>
+				<%= label_tag(:type, "1er 2do y 3rd lugar") %>
+				
+        </div>
+    
+</div>
 
 </div>
 
@@ -37,10 +50,25 @@
             <%= f.text_field :name, :class => "form-control" %>
           </div>
         </div>
+                 
+                  <div class="form-group">
+          <%= f.label :sport_category, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:sport_category, SportCategory.all.order('id DESC'), :id, :select_display, { :include_blank => false, :prompt => '-Selecciona una categoria-' }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+
                   <div class="form-group">
           <%= f.label :description, :class => "col-md-3" %>
           <div class="col-md-9">
             <%= f.text_field :description, :class => "form-control" %>
+          </div>
+        </div>
+                 
+                    <div class="form-group">
+          <%= f.label :access_key, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :access_key, :class => "form-control" %>
           </div>
         </div>
                   <div class="form-group">
@@ -78,20 +106,9 @@
 	
 
 
-              <div class="form-group">
-          <%= f.label :sport_category, :class => "col-md-3" %>
-          <div class="col-md-9">
-            <%= f.collection_select(:sport_category, SportCategory.all.order('id DESC'), :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
-          </div>
-        </div>
-
+             
                 
-                  <div class="form-group">
-          <%= f.label :access_key, :class => "col-md-3" %>
-          <div class="col-md-9">
-            <%= f.text_field :access_key, :class => "form-control" %>
-          </div>
-        </div>
+               
                   <div class="form-group">
           <%= f.label :users_quantity, :class => "col-md-3" %>
           <div class="col-md-9">
@@ -101,9 +118,39 @@
                   <div class="form-group">
           <%= f.label :percentage, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.text_field :percentage, :class => "form-control" %>
+            <%= f.number_field :percentage, :class => "form-control" %>
           </div>
         </div>
+        
+                <div class="form-group">
+          <%= f.label :percentage_per_week, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.number_field :percentage_per_week, :max => @pick.percentage_per_week,  :class => "form-control" %>
+            <h4 style="display:none;" id="equitative_porcentage"> </h4>
+          </div>
+        </div>
+        
+         <div class="form-group no-equitative">
+          <%= f.label :first_percentage, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.number_field :first_percentage, :class => "form-control" %>
+          </div>
+        </div>
+        
+         <div class="form-group no-equitative">
+          <%= f.label :second_percentage, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.number_field :second_percentage, :class => "form-control" %>
+          </div>
+        </div>
+        
+         <div class="form-group no-equitative">
+          <%= f.label :third_percentage, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.number_field :third_percentage, :class => "form-control" %>
+          </div>
+        </div>
+        
       </div>
 <!-- end col-md-6 -->
 
@@ -118,3 +165,47 @@
   </div>
 </div>
 <% end %>
+
+
+<script>
+    var equitative;
+    $('#pick_winner_type_1').change(function(){
+        if($(this).prop( "checked" )){
+           equitative = true;
+        $('.no-equitative').hide();
+        }
+    })
+    
+      $('#pick_winner_type_2').change(function(){
+        if($(this).prop( "checked" )){
+           equitative = false;
+            $('.no-equitative').show();
+        }
+    })
+    
+    $('#pick_sport_category').change(function(){
+       $.ajax({
+					  method: "GET",
+					  format: "json",
+					  url: "/partials/get_weeks",
+					  data: { category: $(this).val() }
+					})
+					  .done(function( data ) {
+            $('#pick_percentage_per_week').attr('step', .01)
+           $('#pick_percentage_per_week').attr('max', (100/(data-1)).toFixed(2))
+           
+           if(equitative == true){
+               $('#pick_percentage_per_week').val((100/(data-1)).toFixed(2))
+               $('#pick_percentage_per_week').prop('readonly','true');
+               $('#equitative_porcentage').text(''+(100/(data-1)).toFixed(2)+'%');
+               $('#equitative_porcentage').show();
+               $('.no-equitative').hide();
+           }else{
+               $('#pick_percentage_per_week').show();
+               $('#equitative_porcentage').hide();
+               $('.no-equitative').show();
+           }
+          
+       })
+    })
+</script>

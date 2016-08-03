@@ -19,6 +19,7 @@
                                   <th><%= t("activerecord.attributes.pick_user.local_score") %></th>
                                   <th><%= t("activerecord.attributes.pick_user.visit_score") %></th>
                                   <th><%= t("activerecord.attributes.pick_user.pick_user") %></th>
+                                  <th><%= t("activerecord.attributes.pick_user.status") %></th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -27,11 +28,12 @@
               <% @pick_users.each do |pick_user| %>
               <tr>
                                   <td><%= pick_user.user.username %></td>
-                                  <td><%= pick_user.pick_survivor_week.survivor_week_game.select_display %></td>
+                                  <td><%= pick_user.pick.name  %>/<%= pick_user.pick_survivor_week.survivor_week_game.select_display %></td>
                                   <td><%= pick_user.points %></td>
                                   <td><%= pick_user.local_score %></td>
                                   <td><%= pick_user.visit_score %></td>
                                   <td><%= pick_user.pick_user.id %></td>
+                                  <td><%= pick_user.status %></td>
                                 <td class="action-link">
                   <% if can? :show,pick_user %>
                     <%= link_to pick_user, :class => "btn btn-default", :title => t("actions.show") do %>
@@ -78,3 +80,23 @@
   <!-- end col-12 -->
 </div>
 <!-- end row -->
+
+
+<script>
+       var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+    
+$('#data-table').DataTable({
+    responsive: true,
+    order: [1,"desc"],
+     "language": {
+            "url": languaje
+        }
+});
+</script>

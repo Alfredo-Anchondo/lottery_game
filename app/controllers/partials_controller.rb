@@ -387,8 +387,10 @@ end
 		@pick = Pick.find(params[:id])
 		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, @pick.sport_category)
 		@PickSurvivorWeek = PickSurvivorWeek.where(:pick_id => params[:id]).pluck(:id)
+        @current_pick_survivor_week = PickSurvivorWeek.where('pick_id = ? AND survivor_week_game_id = ?',params[:id],@current_week[0].id)
 		@tickets_purchase = PickUser.where('user_id = ? AND pick_survivor_week_id = ?', current_user.id, @PickSurvivorWeek[0])
-		@games = SurvivorGame.where('survivor_week_game_id = ?',@current_week[0].id)
+        @current_tickets_purchase = PickUser.where('user_id = ? AND pick_survivor_week_id = ?', current_user.id, @current_pick_survivor_week[0].id).pluck(:pick_user_id)
+		@games = SurvivorGame.where('survivor_week_game_id = ?',@current_week[0].id).order(:game_date)
 	end
 	
 		
@@ -398,6 +400,28 @@ end
 		@survivor_id = Pick.where(:id => survivor_user_survivor)
 		@survivor_create = Pick.where(:user_id => current_user.id)
 		@current_week = PickSurvivorWeek.where('initial_date <= ? AND final_date >= ? ', Time.now, Time.now)
+	end
+    
+      def get_weeks
+        render :json => SurvivorWeekGame.current_year.where('sport_category = ?', params[:category]).count
+    end
+    
+    
+    def pick_history
+	  @usuarios = {}	
+	  @pick = Pick.find(params[:id])	
+	  @picksurvivorweek = PickSurvivorWeek.where(:pick_id => params[:id]).pluck(:id)
+	  @pickuser = PickUser.where(:pick_survivor_week_id => @picksurvivorweek).order(:id)
+		@pickuser.each do |user|
+		@usuarios[user.user.username]= {}
+		end
+		@pickuser.each do |user|
+			@usuarios[user.user.username][user.pick_user_id] = {}
+		end
+		@pickuser.each do |user|
+			@usuarios[user.user.username][user.pick_user_id][user.pick_survivor_week.survivor_week_game.week.to_s] = {:points => user.points, :status => user.status }
+			logger.info @usuarios
+		end
 	end
 	
 end

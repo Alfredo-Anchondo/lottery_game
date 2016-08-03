@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
 gem 'pg', '0.18.4'
+#gem 'pg', '~> 0.19.0.pre20160409114042'
 gem "foreigner"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -29,7 +30,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Use unicorn as the app server
  gem 'unicorn', group: :production
-
+    
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -37,7 +38,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # gem 'debugger', group: [:development, :test]
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin]
+#gem 'tzinfo-data', platforms: [:mingw, :mswin]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem "devise"
 gem 'money-rails'
 gem "cancan"

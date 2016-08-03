@@ -18,6 +18,14 @@ class Category < ActiveRecord::Base
   def select_display
     name
   end
+    
+    def logo_url
+       logo.url 
+    end
+    
+    def background_url
+       background.url 
+    end
 
   def self.find_by_friendly_name(name)
     select { |c| c.friendly_name == name }.first

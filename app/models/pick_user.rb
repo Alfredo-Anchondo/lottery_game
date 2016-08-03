@@ -1,8 +1,9 @@
 class PickUser < ActiveRecord::Base
   belongs_to :user
   belongs_to :pick_survivor_week
-  has_one :pick,  through: :pick_survivor_week 		
+  has_one :pick,  :through => :pick_survivor_week 	 
   belongs_to :pick_user
+  has_many :pick_user_games    
 	
   after_create :update_survivor_user_id	
   after_create :discount_price	
@@ -20,8 +21,7 @@ class PickUser < ActiveRecord::Base
 		 week_1 = SurvivorWeekGame.find_by week: 1, sport_category:  pick_survivor_week.pick.sport_category
 		 BuyMailer.buy_pick_entry(pick_survivor_week.pick, user, week_1 ).deliver
 	  else
-		  next_week = SurvivorWeekGame.find_by week: pick_survivor_week.survivor_week_game.week + 1, sport_category:  pick_survivor_week.pick.sport_category
-		  BuyMailer.buy_survivor_team(pick_survivor_week.pick, user, next_week, team ).deliver
+		 
 	  end
   end
 	

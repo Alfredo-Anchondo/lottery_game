@@ -149,13 +149,21 @@
           <li><a href="/partials/checkout"> <%= t('checkout') %> </a> </li>
 		  <li><a href="/partials/invite">Invitar Amigos</a>  </li>
            <li class="dropdown" >
-                        <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown">Ligas Survivor<span class="caret"></span></a>
+                        <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown">Survivor<span class="caret"></span></a>
                         <ul role="menu" class="dropdown-menu">   
-                        	 <li><a href="/partials/survivor_game">Survivor</a></li>
+                        	 <li><a href="/partials/survivor_game">Home</a></li>
 							 <li><a href="/partials/survivor_leagues">Ligas de survivor</a></li>
                        		 <li><a href="/partials/my_leagues">Mis ligas</a></li>
                         </ul>
                     </li>
+           <li class="dropdown" >
+                        <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown">Pick`em<span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">   
+                        	 <li><a href="/partials/pickem_game">Home</a></li>
+							 <li><a href="/partials/pickem_leagues">Ligas de Pick`em</a></li>
+                       		 <li><a href="/partials/my_pickem_leagues">Mis ligas</a></li>
+                        </ul>
+                    </li>            
           <li id="log_out_mov" style="display:none;"><%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
            <h4> <i class="fa fa-sign-out"></i><%= t('logout') %> </h4>
           <% end %></li>
