@@ -31,15 +31,15 @@
       
       </div>
       <div class="panel-body">
-         <h4>El usuario <% @current_user.username %> solicita acceso a la liga de survivor <%= @survivor.name %></h4>
+         <h4>El usuario <% @current_user.username %> solicita acceso a la liga de PICK'EM<%= @survivor.name %></h4>
          
-         <h4> Datos del survivor </h4>
+         <h4> Datos del PICK'EM </h4>
          <h4> Nombre: <%= @survivor.name %></h4>
          <h4> Clave de acceso: <%= @survivor.access_key %></h4>
          <h4> Usuario: <%= @owner.name %> <%= @owner.last_name %> </h4>
          <h4> Nombre de usuario: <%= @owner.username %> </h4>
          <h4> Mail del usuario: <%= @owner.email %></h4>
-         <h4> Cantidad de usuarios maximo: <%= @survivor.user_quantity %></h4>
+         <h4> Cantidad de usuarios maximo: <%= @survivor.alive_users %></h4>
          <hr>
          <h4>Datos del solicitante</h4>
          <h4>Nombre: <%= @current_user.name %> <%= @current_user.last_name%></h4>
@@ -47,7 +47,7 @@
          <h4>Mail del usuario: <%= @current_user.email %></h4>
          <hr>
          <h4>¿Quieres conceder acceso a la liga?</h4>
-            <h4 style="text-align:center"><a style="text-align:center; color:#2D68AC; font-size:25px;" href="http://donbillete.com/partials/response_request/<%= @current_user.id %>/<%= @owner.id %>/<%= @survivor.id %>/true">Conceder Acceso</a> <a style="text-align:center; margin-left:5%; color:red; font-size:25px;" href="http://donbillete.com/partials/response_request/<%= @current_user.id %>/<%= @owner.id %>/<%= @survivor.id %>/false">Rechazar Acceso</a>
+            <h4 style="text-align:center"><a style="text-align:center; color:#2D68AC; font-size:25px;" href="http://donbillete.com/partials/response_access_pick/<%= @current_user.id %>/<%= @owner.id %>/<%= @survivor.id %>/true">Conceder Acceso</a> <a style="text-align:center; margin-left:5%; color:red; font-size:25px;" href="http://donbillete.com/partials/response_access_pick/<%= @current_user.id %>/<%= @owner.id %>/<%= @survivor.id %>/false">Rechazar Acceso</a>
             </h4>
          
      

@@ -2,6 +2,20 @@
   and (device-width: 601px)
   and (-webkit-min-device-pixel-ratio: 1.331)
   and (-webkit-max-device-pixel-ratio: 1.332) {
+      
+      
+      .score_label_client {
+    position: static;
+    top: 155px;
+    left: 85px;
+    width: 60px !important;
+    height: 60px;
+    font-size: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: transparent;
+    color: #2d68ac;
+}
 	  
 	  .div-team{
 		  height:60px !important;
@@ -188,6 +202,20 @@
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) {
+      
+      
+        .score_label_client {
+    position: static;
+    top: 155px;
+    left: 85px;
+    width: 60px !important;
+    height: 60px;
+    font-size: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: transparent;
+    color: #2d68ac;
+}
 	  
 	   .div-team{
 		  height:60px !important;
@@ -374,6 +402,19 @@
   and (device-height: 640px)
   and (-webkit-device-pixel-ratio: 3)
   and (orientation: landscape) {
+      
+        .score_label_client {
+    position: static;
+    top: 155px;
+    left: 85px;
+    width: 60px !important;
+    height: 60px;
+    font-size: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: transparent;
+    color: #2d68ac;
+}
 	   .div-team{
 		  height:60px !important;
 	  }
@@ -564,6 +605,20 @@
 }
 
 @media screen and (max-width: 480px) {
+    
+      .score_label_client {
+    position: static;
+    top: 155px;
+    left: 85px;
+    width: 60px !important;
+    height: 60px;
+    font-size: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: transparent;
+    color: #2d68ac;
+}
+    
 	 .display-phone{
 		  display:block !important;
 	  }
@@ -1361,6 +1416,19 @@ input[type='text'].score {
     text-align: center;
     vertical-align: middle;
     background-color: #fff;
+    color: #2d68ac;
+}
+
+.score_label_client {
+    position: static;
+    top: 155px;
+    left: 85px;
+    width: 80px;
+    height: 60px;
+    font-size: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: transparent;
     color: #2d68ac;
 }
 

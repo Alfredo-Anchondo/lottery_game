@@ -1,0 +1,23 @@
+<style>
+    .footer{
+        position:fixed;
+    }
+</style>
+
+<div class="row">
+    <h4 style="text-align:center; color:#2D68AC; font-size:24px;"><%= @respuesta %></h4>
+    <hr>
+    
+    <h4 style="text-align:center; color:black; font-size:18px;"> <%= @respuesta2 %></h4>
+    <h4 style="text-align:center"> Te agradecemos el tomarte el tiempo para conceder acceso a tu liga</h4>
+    
+</div>
+
+
+<script>
+    $(document).ready(function(){
+        
+        setTimeout(function(){ window.location.assign("/");}, 4000);
+        
+    })
+</script>

@@ -22,17 +22,28 @@ class Survivor < ActiveRecord::Base
 	def user_username
 		User.find(user_id).username
 	end
+    
+    def winner_user
+      survivor_users.where('status =?','winner').count
+    end
 
   def alive_users
-	@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now,6) 
+	@current_week = survivor_week_games.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now,6) 
 	  if @current_week[0].week == 0
-		  last_survivor_week_game = SurvivorWeekGame.from_year.find(@current_week[0].id )
+		  last_survivor_week_game = survivor_week_games.from_year.find(@current_week[0].id )
       else
-		  last_survivor_week_game = SurvivorWeekGame.from_year.find(@current_week[0].id - 1) 
+		  last_survivor_week_game = survivor_week_games.from_year.find(@current_week[0].id - 1) 
 	  end
    
 	survivor_week_survivor = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?',id, last_survivor_week_game.id)   
-    survivor_users.where(:survivor_week_survivor_id => survivor_week_survivor[0].id).alive
+   alives = survivor_users.where(:survivor_week_survivor_id => survivor_week_survivor[0].id).alive
+   losers = survivor_users.where('survivor_week_survivor_id = ? and status = ?', survivor_week_survivor[0].id,'loser') 
+      loser_count = 0
+      losers.each do |loser|
+       loser_count += SurvivorUser.where('survivor_user_id = ? and status =? and survivor_week_survivor_id = ?' , loser.survivor_user_id,'loser',survivor_week_survivor[0].id).count
+      end
+      return alives.count + loser_count
+      
   end
 
 	def background_url

@@ -19,6 +19,23 @@
 </style>
 
 <div class="row" style="    padding-bottom: 100px !important;">
+<% if @current_survivor.status == 'Cerrada' %> <!------- Pregunta si el survivor esta cerrado  ----->
+ <div class="row" style=" background-size: cover; background-image: url(<%= @current_survivor.background_url %>)">
+         	<div class="row" style="background-color:rgba(0, 0, 0, 0.3)">
+          	<h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:26px;">Gracias por participar en nuestra liga de survivor</h4>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> Lamentablemente esta liga a llegado a su fin </h4>
+            <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">La liga termino con un total de : <%= @current_survivor.winner_user %> <%= @current_survivor.winner_user == 1 ? 'Ganador' : 'Ganadores' %> </h4>
+            <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Felicidades a <%= @current_survivor.winner_user == 1 ? 'el ganador' : 'los ganadores' %></h4> 	   
+      		<hr>
+      		   	<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"><a href="/partials/survivor_history/<%= @current_survivor.id%>" class="btn btn-lg" style="background-color:#06733d; color:white; border-color:#06733d;">Consultar resultados</a></h4> 		
+      		<hr>
+      	
+      		
+      		
+      	</div>
+      	</div>
+<% else %>
 <% if @current_survivor.participant_users != [] && @current_survivor.alive_users != nil %> <!-- pregunta si existen participantes -->
 	<% participant = '' %>
 <%  @current_survivor.participant_users.each do |user| %>
@@ -57,7 +74,7 @@
       		</div>
       		
       		<br>
-      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users.count %> </span>  </h3>
+      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<hr>
      		  	 <h4>
      		  	 <% already_buy = '' %>
@@ -129,7 +146,7 @@
 					  <% rebuy = entry.survivor_week_survivor.survivor.rebuy_quantity %>
 					 
 					 	<div class="col-md-3 life-div"  id="life<%= entry.survivor_user_id %>" style="display:none; border-right:1px solid black; min-height:440px;">
-					 		<h3 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Entrada con el registro <%= entry.survivor_user_id %> </h3>
+					 		<h3 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Entrada del survivor  </h3>
 					 		 <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Resultado de la ultima semana: <% if @last_tickets_purchase.where('survivor_user_id = ?', entry.survivor_user_id).last.status == 'alive' %><span style="color:green; text-align:center;"> Ganador </span> 
 					 		 <% else%>
 					 		 <span style="color:red; text-align:center;"> Perdedor </span>
@@ -385,7 +402,7 @@
       		</div>
       		
       		<br>
-      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users.count %> </span>  </h3>
+      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<hr>
       		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
       		
@@ -456,7 +473,7 @@
       		</div>
       		
       		<br>
-      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users.count %> </span>  </h3>
+      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<h3><%= @survivor_week_sur[0].id %></h3>
       		<hr>
       		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
@@ -544,7 +561,7 @@
       		</div>
       		
       		<br>
-      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users.count %> </span>  </h3>
+      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<hr>
       		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
       		
@@ -601,6 +618,7 @@
       	 </div>
       <% end %>
 <% end %> <!-- fin del else si no hay usuarios -->
+<% end %> <!-- Termina la pregunta si el survivor esta cerrado ----->
 
 
 </div>

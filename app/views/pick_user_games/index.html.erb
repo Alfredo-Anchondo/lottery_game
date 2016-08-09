@@ -17,6 +17,7 @@
                                   <th><%= t("activerecord.attributes.pick_user_game.team") %></th>
                                   <th><%= t("activerecord.attributes.pick_user_game.survivor_game") %></th>
                                    <th><%= t("activerecord.attributes.pick_user_game.points") %></th>
+                                    <th><%= t("activerecord.attributes.pick_user_game.status") %></th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -28,6 +29,7 @@
                                   <td><%= pick_user_game.team.name %></td>
                                   <td><%= pick_user_game.survivor_game.team.name %> vs <%= pick_user_game.survivor_game.team2.name %></td>
                                   <td><%= pick_user_game.points %></td>
+                                  <td><%= pick_user_game.status %></td>
                                 <td class="action-link">
                   <% if can? :show,pick_user_game %>
                     <%= link_to pick_user_game, :class => "btn btn-default", :title => t("actions.show") do %>

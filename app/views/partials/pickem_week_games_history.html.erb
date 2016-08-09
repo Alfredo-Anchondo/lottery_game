@@ -1,0 +1,90 @@
+<style>
+    .bootstrap-select {
+        width:50% !important;
+    }
+    
+    .footer{
+        position:fixed;
+    }
+</style>
+
+<h4 style="text-align:center; color:black; font-size:20px;"> Liga: <%= @pickem.name %></h4>
+
+<h4 style="text-align:center; color:black;"> Selección de semana: <%= select_tag "category",  options_from_collection_for_select(@weeks, "id", "select_display"), prompt: "Selecciona una semana por favor", class: 'form_input', id: 'week_number', :style => 'width:50% !important' %>  </h4>
+<hr>
+
+<% @weeks.each do |week| %>
+    <div id="<%= week.id %>" class="row week_row" style="display:none">
+        <h5 style="text-align:center;color:black;font-size:20px;">Semana <%= week.week %></h5>
+        <br>
+        <table id="example<%= week.id %>" class="table table-bordered responsive table-hover table-striped " cellspacing="0" width="100%">
+        <thead style="background-color:black; color:white;">
+            <tr>
+              <th> Usuario </th>
+              <% week.survivor_games.order(:id).each do |game| %>
+                  <th style="padding-right:0px;"> <%= game.team.name[0..2] %> - <%= game.team2.name[0..2] %> </th>
+              <% end %>
+            </tr>
+        </thead>
+        <tbody>
+           
+        
+        
+        </tbody>
+    </table>
+    </div>
+    <script>
+         var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+        
+        $(document).ready(function() {
+        var t = $('#example<%= week.id %>').DataTable({
+               responsive: true,
+               "language": {
+                    "url": languaje
+                }
+                   });
+               
+              <% pick_survivor_weekx = PickSurvivorWeek.where('survivor_week_game_id = ? and pick_id =?', week.id ,@pickem.id ) %>
+               
+              <% @pickem.pick_users.where('pick_survivor_week_id = ?', pick_survivor_weekx[0].id).each_with_index do |ticket,index| %>
+              
+          
+               t.row.add([
+                '<h4 style="text-align:center"><%= ticket.user.username.upcase %> </h4>',
+                 <% logger.info ticket.pick_user_games.count %>  <% logger.info '///////////' %>
+                <% ticket.pick_user_games.order(:survivor_game_id).pluck(:status,:team_id).each do |game_ticket| %>
+                 '<h4 class="<%= game_ticket[0] %>" style="text-align:center"> <img width="30px" src="<%= Team.find(game_ticket[1]).logo_url %>">  </h4',
+                <% end %>
+               ]).draw(false);
+        
+               <%end%>
+             
+                    $('.loser').parent().css('background-color','rgba(255, 0, 0, 0.62)');
+	$('.alive').parent().css('background-color','rgba(49, 255, 0, 0.54)');
+	$('.winner').parent().css('background-color','rgba(49, 255, 0, 0.54)');
+             
+        } );
+        
+
+        
+    </script>
+<% end %>
+
+
+<script>
+    
+
+    
+    $('#week_number').change(function(){
+        $('.week_row').hide();
+        $('#'+$(this).val()+'').show();
+   
+    })
+</script>

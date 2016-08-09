@@ -82,7 +82,7 @@
 			 var owner = $(this).data('id');
 			   $.ajax({
             method: "GET",
-            url: "/partials/access_mail",
+            url: "/partials/access_mail_pick",
             format: "json",
 			data: ({owner: owner, survivor: pick})	   
                }).done(function(data) {

@@ -82,7 +82,11 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+            get 'pickem_week_games_history/:id', to: 'partials#pickem_week_games_history'
 			get 'pickem_game'
+            get 'games_result'
+            get 'response_access_pick/:id_request/:id_owner/:survivor/:response', to: "partials#response_access_pick"
+            get 'response_request/:id_request/:id_owner/:survivor/:response', to: "partials#response_request"
 			get 'pickem_leagues', to: "partials#pickem_leagues"
             get 'pick_history/:id', to: "partials#pick_history"
             get 'get_weeks', to: "partials#get_weeks"
@@ -91,6 +95,7 @@ Rails.application.routes.draw do
 			match "/inviting" => "partials#inviting", :via => :post
 			get 'invite_friends_survivor/:id', to: "partials#invite_friends_survivor"
 			get 'access_mail', to: "partials#access_request_mail"
+            get 'access_mail_pick', to: "partials#access_request_mail_pick"
 			get 'my_leagues', to: "partials#my_leagues"
 			get 'my_pickem_leagues', to: "partials#my_pickem_leagues"
 			get 'quinielas_closed', to: "partials#close_quinielas"

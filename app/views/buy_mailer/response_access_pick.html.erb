@@ -25,31 +25,29 @@
       <div class="panel">
         <div class="panel-header">
                 <h4 style="text-align:center"> <img width="80%" src="https://scontent-dfw1-1.xx.fbcdn.net/v/t1.0-9/13428419_255873698116190_4544569671011974568_n.png?oh=a341237d398d08639a411fd4533b9d24&oe=5825D3A7"></h4>
-           <h1 class="welcome">Tenemos una nueva solicitud de acceso</h1>
-           <h2 class="welcome">Liga: <%= @survivor.name %></h2>      
+           <h1 class="welcome">Tenemos la respuesta para tu solicitud de acceso</h1>
+           <hr>
+           <h2 class="welcome">Liga de PICK'EM: <%= @survivor.name %></h2>      
           </div>
       
       </div>
       <div class="panel-body">
-         <h4>El usuario <% @current_user.username %> solicita acceso a la liga de survivor <%= @survivor.name %></h4>
-         
-         <h4> Datos del survivor </h4>
-         <h4> Nombre: <%= @survivor.name %></h4>
-         <h4> Clave de acceso: <%= @survivor.access_key %></h4>
-         <h4> Usuario: <%= @owner.name %> <%= @owner.last_name %> </h4>
-         <h4> Nombre de usuario: <%= @owner.username %> </h4>
-         <h4> Mail del usuario: <%= @owner.email %></h4>
-         <h4> Cantidad de usuarios maximo: <%= @survivor.user_quantity %></h4>
+        <br>
+         <h4>El usuario <%= @owner.username %> respondio a tu solitud de acceso a la liga PICK'EM: <%= @survivor.name %></h4>
          <hr>
-         <h4>Datos del solicitante</h4>
-         <h4>Nombre: <%= @current_user.name %> <%= @current_user.last_name%></h4>
-         <h4>Nombre de usuario: <%= @current_user.username %></h4>
-         <h4>Mail del usuario: <%= @current_user.email %></h4>
-         <hr>
-         <h4>¿Quieres conceder acceso a la liga?</h4>
-            <h4 style="text-align:center"><a style="text-align:center; color:#2D68AC; font-size:25px;" href="http://donbillete.com/partials/response_request/<%= @current_user.id %>/<%= @owner.id %>/<%= @survivor.id %>/true">Conceder Acceso</a> <a style="text-align:center; margin-left:5%; color:red; font-size:25px;" href="http://donbillete.com/partials/response_request/<%= @current_user.id %>/<%= @owner.id %>/<%= @survivor.id %>/false">Rechazar Acceso</a>
-            </h4>
-         
+         <% if @response == 'true' %>
+             <h4 style="text-align:center">
+                 Nos alegra comunicarte que el usuario te concedio el acceso a la liga <%= @survivor.name %>
+             </h4>
+             <h4>La contraseña para acceder a la liga es: <span style='color:red'><%= @survivor.access_key %></span></h4>
+             <h4 style="text-align:center"> <a style="text-align:center; color:#2D68AC; font-size:25px;" href="http://donbillete.com/partials/pickem_leagues"> Accede a esta liga para entrar a la liga</a></h4>
+         <% else %>
+          <h4 style="text-align:center">
+                 Lo sentimos pero tu solicitud de acceso fue denegada por el administrador de la liga.
+             </h4>
+             <h4>Pero no te preocupes puedes participar en nuestras ligas oficiales o en otros ligas que son publicas</h4>
+             <h4 style="text-align:center"> <a style="text-align:center; color:#2D68AC; font-size:25px;" href="http://donbillete.com/partials/pickem_leagues"> Accede a esta liga para ver las ligas disponibles</a></h4>
+         <% end%>
      
           <br>
       </div>

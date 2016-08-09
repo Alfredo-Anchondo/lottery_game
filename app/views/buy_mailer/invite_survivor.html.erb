@@ -35,7 +35,8 @@
       <div class="panel-body">
           <div class="margin-center row">
           <div class="col-md-12 " style="border: 1px dotted black;">
-			
+			  <h3>Nombre de la liga:</h3>
+			  <h2> <%= @survivor.name %></h2>
 			  <h3 >Clave de acceso:</h3>
 			  <h2> <%= @survivor.access_key.present? ? @survivor.access_key : "No tiene clave de acceso" %></h2>
 			  <h3>Bolsa acumulada</h3>

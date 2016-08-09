@@ -1,5 +1,5 @@
 class SurvivorWeekGamesController < ApplicationController
-  load_and_authorize_resource except: [:new,:create, :get_games, :can_close]
+  load_and_authorize_resource except: [:new,:create, :get_games, :can_close, :get_weeks]
   before_action :authenticate_user!
   before_action :set_survivor_week_game, only: [:show, :edit, :update, :destroy, :get_games, :can_close]
 

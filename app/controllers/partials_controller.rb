@@ -348,6 +348,13 @@ end
 			logger.info @usuarios
 		end
 	end
+    
+    def pickem_week_games_history
+        @pickem = Pick.find(params[:id])
+        @weeks = @pickem.survivor_week_games
+        
+    end
+    
 	
 	def access_request_mail
 		render :nothing => true
@@ -355,6 +362,16 @@ end
 		survivor = Survivor.find(params[:survivor])
 		BuyMailer.access_request_mail(current_user,owner,survivor).deliver
 	end	
+    
+    def access_request_mail_pick
+		render :nothing => true
+		owner = User.find(params[:owner])
+		survivor = Pick.find(params[:survivor])
+		BuyMailer.access_request_mail_pick(current_user,owner,survivor).deliver
+	end	
+    
+    
+    
 	
 	def invite_friends_survivor
 		@survivor = Survivor.find(params[:id])
@@ -423,5 +440,42 @@ end
 			logger.info @usuarios
 		end
 	end
+    
+    def response_request
+        logger.info params[:response]
+        @request = User.find(params[:id_request])
+        @owner = User.find(params[:id_owner])
+        @survivor = Survivor.find(params[:survivor])
+        @response = params[:response]
+        if params[:response] == 'true'
+            @respuesta = 'Se le concedio al usuario el acceso correctamente'
+            @respuesta2 = 'El usuario ya fue notificado por correo.'
+            BuyMailer.response_access(@request, @owner, @survivor, @response).deliver
+            else
+            @respuesta = 'El acceso fue denegado para el usuario'
+            @respuesta2 = 'El usuario ya fue notificado por correo'
+            BuyMailer.response_access(@request, @owner, @survivor, @response).deliver
+        end
+    end
+    
+     def response_access_pick
+        logger.info params[:response]
+        @request = User.find(params[:id_request])
+        @owner = User.find(params[:id_owner])
+        @survivor = Pick.find(params[:survivor])
+        @response = params[:response]
+        if params[:response] == 'true'
+            @respuesta = 'Se le concedio al usuario el acceso correctamente'
+            @respuesta2 = 'El usuario ya fue notificado por correo.'
+            BuyMailer.response_access_pick(@request, @owner, @survivor, @response).deliver
+            else
+            @respuesta = 'El acceso fue denegado para el usuario'
+            @respuesta2 = 'El usuario ya fue notificado por correo'
+            BuyMailer.response_access_pick(@request, @owner, @survivor, @response).deliver
+        end
+    end
+    
+    
+   
 	
 end

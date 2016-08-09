@@ -20,6 +20,7 @@
                                   <th><%= t("activerecord.attributes.survivor.rebuy_quantity") %></th>
                                   <th><%= t("activerecord.attributes.survivor.user_quantity") %></th>
                                   <th><%= t("activerecord.attributes.survivor.user_id") %></th>
+                                   <th><%= t("activerecord.attributes.survivor.status") %></th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -34,6 +35,7 @@
                                   <td><%= survivor.rebuy_quantity %></td>
                                   <td><%= survivor.user_quantity %></td>
                                   <td><%= User.find(survivor.user_id).username %></td>
+                                  <td><%= survivor.status %></td>
                                 <td class="action-link">
                   <% if can? :show,survivor %>
                     <%= link_to survivor, :class => "btn btn-default", :title => t("actions.show") do %>

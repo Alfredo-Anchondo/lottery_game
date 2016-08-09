@@ -125,7 +125,14 @@ class BuyMailer < ActionMailer::Base
 		@current_user = current_user
 		@owner = owner
 		@survivor = survivor
-		mail(to: "marianolascurain@gmail.com", subject: 'Solicitud de acceso survivor')
+		mail(to: @owner.email, subject: 'Solicitud de acceso a tu liga survivor')
+	end
+    
+    def access_request_mail_pick(current_user, owner, survivor)
+		@current_user = current_user
+		@owner = owner
+		@survivor = survivor
+		mail(to: @owner.email, subject: 'Solicitud de acceso a tu liga survivor')
 	end
 
 	def winner_survivor(survivor, user, winners, total_win)
@@ -134,5 +141,21 @@ class BuyMailer < ActionMailer::Base
 		@winners = winners
 		@total_win = total_win
 		mail(to: @user.email, subject: '[DonBillete] Ganador de una liga survivor')
+	end
+    
+    def response_access(request, owner, survivor, response)
+		@request = request
+		@owner = owner
+		@survivor = survivor
+		@response = response
+		mail(to: @request.email, subject: '[DonBillete] Respuesta a solicitud de acceso a liga survivor')
+	end
+    
+    def response_access_pick(request, owner, survivor, response)
+		@request = request
+		@owner = owner
+		@survivor = survivor
+		@response = response
+		mail(to: @request.email, subject: "[DonBillete] Respuesta a solicitud de acceso a liga PICK'EM")
 	end
 end

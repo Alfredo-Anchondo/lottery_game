@@ -412,7 +412,7 @@ es:
             name: "Nombre"
             description: "Descripción"
             access_key: "Clave de acceso"
-            price: "Precio"
+            price: "Precio/Rebuy"
             user_id: "Usuario"
             user_quantity: "Cantidad de usuarios"
             percentage: "Porcentaje"

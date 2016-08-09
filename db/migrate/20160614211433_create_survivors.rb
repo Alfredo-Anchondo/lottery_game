@@ -11,6 +11,7 @@ class CreateSurvivors < ActiveRecord::Migration
       t.integer :percentage
 	  t.integer :user_quantity	
       t.integer :rebuy_quantity, :default => 1, :null => false
+      t.text :status    
 
       t.timestamps
     end

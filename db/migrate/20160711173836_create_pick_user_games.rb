@@ -8,6 +8,7 @@ class CreatePickUserGames < ActiveRecord::Migration
       t.references :survivor_game, index: true, null:false
 	  t.foreign_key :survivor_games	
 	  t.integer :points, null:false	
+      t.text :status    
 
       t.timestamps
     end

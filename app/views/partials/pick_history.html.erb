@@ -48,7 +48,7 @@
                    <% if index+1 == @week_quantity %>
                     
                    <% else %>
-                    <th style="text-align:center"> <%= index + 1  %></th> 
+                    <th style="text-align:center; padding:8px;"> <%= index + 1  %></th> 
                    <% end %>
                 <% end %>
                
@@ -97,9 +97,9 @@ t = $('#example').DataTable({
                      <% if indexx == 0  %>
                       '<h4 style="text-align:center"><%= user[indexx].upcase %> <%= index %> </h4>',
                      <% elsif indexx == 1  %>
-                   '<h4 class="<%= @week_day[indexx] ? @week_day[indexx ][:status] : ''  %>" style="text-align:center"> <%= @week_day[indexx] ? @week_day[indexx ][:points] : 0 %></h4>',
+                   '<h4 style="text-align:center"  class="<%= @week_day[indexx] ? @week_day[indexx ][:status] : ''  %>" style="text-align:center"> <%= @week_day[indexx] ? @week_day[indexx ][:points].to_i : 0 %></h4>',
                     <% else %>
-                    '<h4 class="<%= @week_day[indexx] ? @week_day[indexx][:status] : ''  %>" style="text-align:center"> <%= @week_day[indexx] ? @week_day[indexx][:points] : 0 %></h4>',
+                    '<h4 style="text-align:center" class="<%= @week_day[indexx] ? @week_day[indexx][:status] : ''  %>" style="text-align:center"> <%= @week_day[indexx] ? @week_day[indexx][:points].to_i : 0 %></h4>',
                      <% end %>
 				 
                     <% end %>
