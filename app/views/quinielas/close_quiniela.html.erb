@@ -71,18 +71,7 @@
           .done(function(data) {
 				for(var i in data.quinielas){
 					
-					 if (data.quinielas[i].game.team.id < 10){
-         var image_url = '/system/teams/logos/000/000/00'+data.quinielas[i].game.team.id+'/original/'+data.quinielas[i].game.team.logo_file_name;
-    }   else{
-    var image_url = '/system/teams/logos/000/000/0'+data.quinielas[i].game.team.id+'/original/'+data.quinielas[i].game.team.logo_file_name;
-    }  
-                           if (data.quinielas[i].game.team2.id < 10){
-         var image_url2 = '/system/teams/logos/000/000/00'+data.quinielas[i].game.team2.id+'/original/'+data.quinielas[i].game.team2.logo_file_name;
-    }   else{
-    var image_url2 = '/system/teams/logos/000/000/0'+data.quinielas[i].game.team2.id+'/original/'+data.quinielas[i].game.team2.logo_file_name;
-    }  
-					
-					$('.cycle-slideshow2').append('<div class="slide'+i+'" data-id="'+data.quinielas[i].id+'"><h2 style="text-align:center; font-weight:800">Cerrar quiniela</h2><hr> <h3 style="text-align:center; color:#e4007d"> Selecciona el numero ganador de las quinielas participantes. </h3> <h4 style="text-align:center">En esta ventana se mostraran las quinielas que no tengan numero ganador programado, asegurate de poner los datos correctos antes de cerrar una quiniela ya que al cerrarla se noticara a los ganadores.</h4><hr> <h3 style="text-align:center; color:#E4007D; font-weight:800;">'+data.quinielas[i].description+'</h3> <div class="row"> <div class="col-md-4"> <div class="row"> <div class="col-md-5"> <img src="'+image_url+'"> </div> <div class="col-md-2"> <h1 style="text-align:center; margin-top:120%; font-weight: 900;color: #E4007D;"> VS </h1> </div> <div class="col-md-5"> <img src="'+image_url2+'"> </div> </div> <hr>  <h3 style="text-align:center; font-weight:700">Bolsa acumulada</h3> <h2 id="initial_balance'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].initial_balance +' <span>DB</span> </h2> <hr> <h3 style="text-align:center; font-weight:700"> Precio de la Quiniela </h3> <h2 id="price'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].price +' <span>DB</span> </h2>  </div> <div class="col-md-8 slide2'+i+'"> </div> </div> </div>');	
+					$('.cycle-slideshow2').append('<div class="slide'+i+'" data-id="'+data.quinielas[i].id+'"><h2 style="text-align:center; font-weight:800">Cerrar quiniela</h2><hr> <h3 style="text-align:center; color:#e4007d"> Selecciona el numero ganador de las quinielas participantes. </h3> <h4 style="text-align:center">En esta ventana se mostraran las quinielas que no tengan numero ganador programado, asegurate de poner los datos correctos antes de cerrar una quiniela ya que al cerrarla se noticara a los ganadores.</h4><hr> <h3 style="text-align:center; color:#E4007D; font-weight:800;">'+data.quinielas[i].description+'</h3> <div class="row"> <div class="col-md-4"> <div class="row"> <div class="col-md-5"> <img src="'+data.quinielas[i].game.team.logo_url+'"> </div> <div class="col-md-2"> <h1 style="text-align:center; margin-top:120%; font-weight: 900;color: #E4007D;"> VS </h1> </div> <div class="col-md-5"> <img src="'+data.quinielas[i].game.team2.logo_url+'"> </div> </div> <hr>  <h3 style="text-align:center; font-weight:700">Bolsa acumulada</h3> <h2 id="initial_balance'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].initial_balance +' <span>DB</span> </h2> <hr> <h3 style="text-align:center; font-weight:700"> Precio de la Quiniela </h3> <h2 id="price'+i+'" style="text-align:center; color:#E4007D; font-weight:900"> '+ data.quinielas[i].price +' <span>DB</span> </h2>  </div> <div class="col-md-8 slide2'+i+'"> </div> </div> </div>');	
 					
 					if(data.quinielas[i].last_questions != null && data.quinielas[i].last_questions != '' ){
 						var total_questions = data.quinielas[i].quiniela_questions.length;
