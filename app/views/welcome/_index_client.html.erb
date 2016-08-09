@@ -1816,9 +1816,8 @@
       $.ajax({
             method: "GET",
             url: "/partials/future_games",
-            format: "json",
-		    dataType: "html"
-               }).complete(function(data) {
+            format: "json"
+               }).done(function(data) {
                                 for(var i in data.partials){
                                     alert('entre');
 									tiras_count++;
