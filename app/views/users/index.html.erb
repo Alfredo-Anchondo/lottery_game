@@ -23,6 +23,7 @@
 				  <th><%= t("activerecord.attributes.user.created_at") %></th>
                                   <th>Loterias compradas</th>
                                   <th>Tiras compradas</th>
+                                  <th>updated</th>
                                  
                      
                                 <th style="width: 155px"></th>
@@ -42,6 +43,7 @@
 				  				  <td><%= user.created_at.strftime('%d/%m/%Y %H:%M') %></td>
                                   <td><%= user.ticket_purchase_lottery %></td>
 								  <td><%= user.ticket_purchase_quiniela %></td>
+                                  <td><%= user.updated_at %></td>
                                 
                            
                                 <td class="action-link">
