@@ -21,7 +21,7 @@
         <thead style="background-color:black; color:white;">
             <tr>
               <th> Usuario </th>
-              <% week.survivor_games.order(:id).each do |game| %>
+              <% week.survivor_games.where('game_date < ?', Time.new).order(:id).each do |game| %>
                   <th style="padding-right:0px;"> <%= game.team.name[0..2] %> - <%= game.team2.name[0..2] %> </th>
               <% end %>
             </tr>
