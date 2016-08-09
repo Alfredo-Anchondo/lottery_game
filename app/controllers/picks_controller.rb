@@ -25,7 +25,7 @@ class PicksController < ApplicationController
     @pick.save
     respond_with(@pick)
 	  
-	    SurvivorWeekGame.current_year.where('sport_category = ?', @pick.sport_category).each do |week|
+	    SurvivorWeekGame.current_year.where('sport_category = ?', @pick.sport_category_id).each do |week|
 		survivor1 = PickSurvivorWeek.new(:pick_id => @pick.id, :survivor_week_game_id => week.id )
 		  survivor1.save
 	  end
@@ -50,6 +50,6 @@ class PicksController < ApplicationController
     end
 
     def pick_params
-      params.require(:pick).permit(:name, :description, :user_id, :price, :sport_category, :initial_balance, :background, :access_key, :pick_type, :winner_type, :first_percentage, :second_percentage, :third_percentage, :users_quantity,:percentage_per_week, :percentage)
+      params.require(:pick).permit(:name, :description, :user_id, :price, :sport_category_id, :initial_balance, :background, :access_key, :pick_type, :winner_type, :first_percentage, :second_percentage, :third_percentage, :users_quantity,:percentage_per_week, :percentage)
     end
 end

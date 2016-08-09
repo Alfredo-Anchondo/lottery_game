@@ -18,7 +18,7 @@ class PickUser < ActiveRecord::Base
 	
   def send_buy_mail
 	  if pick_survivor_week.survivor_week_game.week == 0
-		 week_1 = SurvivorWeekGame.find_by week: 1, sport_category:  pick_survivor_week.pick.sport_category
+		 week_1 = SurvivorWeekGame.find_by week: 1, sport_category:  pick_survivor_week.pick.sport_category_id
 		 BuyMailer.buy_pick_entry(pick_survivor_week.pick, user, week_1 ).deliver
 	  else
 		 

@@ -91,9 +91,10 @@ ActiveRecord::Schema.define(version: 20160725155252) do
     t.integer  "pick_user_id",     null: false
     t.integer  "team_id",          null: false
     t.integer  "survivor_game_id", null: false
+    t.integer  "points",           null: false
+    t.text     "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "points"
   end
 
   add_index "pick_user_games", ["pick_user_id"], name: "index_pick_user_games_on_pick_user_id", using: :btree
@@ -104,6 +105,7 @@ ActiveRecord::Schema.define(version: 20160725155252) do
     t.integer  "user_id"
     t.integer  "pick_survivor_week_id"
     t.float    "points"
+    t.text     "status"
     t.integer  "local_score"
     t.integer  "visit_score"
     t.integer  "pick_user_id"
@@ -119,21 +121,27 @@ ActiveRecord::Schema.define(version: 20160725155252) do
     t.string   "name",                                  null: false
     t.string   "description"
     t.integer  "user_id",                               null: false
+    t.integer  "sport_category_id",                     null: false
     t.float    "price",                   default: 1.0, null: false
     t.float    "initial_balance",         default: 1.0, null: false
     t.string   "access_key"
     t.integer  "users_quantity"
     t.float    "percentage"
+    t.integer  "pick_type"
+    t.integer  "winner_type"
+    t.float    "percentage_per_week"
+    t.float    "first_percentage"
+    t.float    "second_percentage"
+    t.float    "third_percentage"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "sport_category"
-    t.integer  "pick_type"
     t.string   "background_file_name"
     t.string   "background_content_type"
     t.integer  "background_file_size"
     t.datetime "background_updated_at"
   end
 
+  add_index "picks", ["sport_category_id"], name: "index_picks_on_sport_category_id", using: :btree
   add_index "picks", ["user_id"], name: "index_picks_on_user_id", using: :btree
 
   create_table "questions", force: true do |t|
@@ -217,18 +225,19 @@ ActiveRecord::Schema.define(version: 20160725155252) do
   end
 
   create_table "survivor_games", force: true do |t|
-    t.integer  "team_id",               null: false
-    t.integer  "team2_id",              null: false
+    t.integer  "team_id",                          null: false
+    t.integer  "team2_id",                         null: false
     t.integer  "handicap"
     t.integer  "plus_handicap"
     t.text     "description"
-    t.datetime "game_date",             null: false
+    t.datetime "game_date",                        null: false
     t.integer  "winner_team"
     t.integer  "survivor_week_game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "local_score"
     t.integer  "visit_score"
+    t.string   "type_update",           limit: 30
   end
 
   add_index "survivor_games", ["survivor_week_game_id"], name: "index_survivor_games_on_survivor_week_game_id", using: :btree
@@ -270,22 +279,23 @@ ActiveRecord::Schema.define(version: 20160725155252) do
   add_index "survivor_week_survivors", ["survivor_week_game_id"], name: "index_survivor_week_survivors_on_survivor_week_game_id", using: :btree
 
   create_table "survivors", force: true do |t|
-    t.string   "name",                                    null: false
+    t.string   "name",                                               null: false
     t.text     "description"
-    t.float    "price",                   default: 0.0,   null: false
-    t.float    "initial_balance",         default: 0.0,   null: false
+    t.float    "price",                              default: 0.0,   null: false
+    t.float    "initial_balance",                    default: 0.0,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "access_key"
     t.float    "percentage"
     t.integer  "user_id"
-    t.boolean  "closed",                  default: false, null: false
-    t.integer  "rebuy_quantity",          default: 1,     null: false
+    t.boolean  "closed",                             default: false, null: false
+    t.integer  "rebuy_quantity",                     default: 1,     null: false
     t.string   "background_file_name"
     t.string   "background_content_type"
     t.integer  "background_file_size"
     t.datetime "background_updated_at"
     t.integer  "user_quantity"
+    t.string   "status",                  limit: 30
   end
 
   create_table "teams", force: true do |t|
@@ -376,10 +386,15 @@ ActiveRecord::Schema.define(version: 20160725155252) do
   add_foreign_key "pick_survivor_weeks", "picks", name: "pick_survivor_weeks_pick_id_fk"
   add_foreign_key "pick_survivor_weeks", "survivor_week_games", name: "pick_survivor_weeks_survivor_week_game_id_fk"
 
+  add_foreign_key "pick_user_games", "pick_users", name: "pick_user_games_pick_user_id_fk"
+  add_foreign_key "pick_user_games", "survivor_games", name: "pick_user_games_survivor_game_id_fk"
+  add_foreign_key "pick_user_games", "teams", name: "pick_user_games_team_id_fk"
+
   add_foreign_key "pick_users", "pick_survivor_weeks", name: "pick_users_pick_survivor_week_id_fk"
   add_foreign_key "pick_users", "pick_users", name: "pick_users_pick_user_id_fk"
   add_foreign_key "pick_users", "users", name: "pick_users_user_id_fk"
 
+  add_foreign_key "picks", "sport_categories", name: "picks_sport_category_id_fk"
   add_foreign_key "picks", "users", name: "picks_user_id_fk"
 
   add_foreign_key "quiniela_questions", "questions", name: "quiniela_questions_question_id_fk"

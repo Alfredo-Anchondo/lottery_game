@@ -135,7 +135,7 @@ class SurvivorGame < ActiveRecord::Base
                 porcentaje = ""
                 balance = ""
                 if pending == false
-                  picks = Pick.where('sport_category = ?', survivor_week_game.pick_users[0].pick.sport_category )
+                  picks = Pick.where('sport_category_id = ?', survivor_week_game.pick_users[0].pick.sport_category_id )
                     picks.each do |pickx|
                         
                           #Aqui comienza la creacion de un nuevo ticket si no se compro    

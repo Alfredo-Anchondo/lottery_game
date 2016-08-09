@@ -396,13 +396,13 @@ end
 	
 	def pickem_leagues
 		@picks = Pick.where('extract(year from created_at) = ?',Time.now.year).order(:id)
-		@categories = Pick.where('extract(year from created_at) = ?',Time.now.year).order(:sport_category).pluck(:sport_category).uniq
+		@categories = Pick.where('extract(year from created_at) = ?',Time.now.year).order(:sport_category_id).pluck(:sport_category_id).uniq
 		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ?', Time.now, Time.now)
 	end
 	
 	def pickem
 		@pick = Pick.find(params[:id])
-		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, @pick.sport_category)
+		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, @pick.sport_category_id)
 		@PickSurvivorWeek = PickSurvivorWeek.where(:pick_id => params[:id]).pluck(:id)
         @current_pick_survivor_week = PickSurvivorWeek.where('pick_id = ? AND survivor_week_game_id = ?',params[:id],@current_week[0].id)
 		@tickets_purchase = PickUser.where('user_id = ? AND pick_survivor_week_id = ?', current_user.id, @PickSurvivorWeek[0])
