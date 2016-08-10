@@ -1328,8 +1328,8 @@
                
         $("#visit_team_random").empty();
         $("#local_team_random").empty();            
-        $("#visit_team_random").append('<img width="70%" src="'+data.partials[i].team2.logo_url+'">'); 
-        $("#local_team_random").append('<img width="70%" src="'+data.partials[i].team.logo_url+'">');  
+        $("#visit_team_random").append('<img width="70%" src="'+data.team2+'">'); 
+        $("#local_team_random").append('<img width="70%" src="'+data.team1+'">');  
 		 $('#random_price').text( ""+$('#lotteries_random option:selected').data('price') + " DB");
          $('#random-balance').text(""+$('#lotteries_random option:selected').data('balance') + " DB");		
 		$('#random-caracteristics').show();

@@ -47,7 +47,7 @@ class PartialsController < ApplicationController
 
 	  def team_logos
         @lottery = Lottery.find(params[:id])
-        respond_with(:team1 => @lottery.game.team, :team2 => @lottery.game.team2)
+        respond_with(:team1 => @lottery.game.team.logo_url, :team2 => @lottery.game.team2.logo_url)
     end
 
 	def next_game
