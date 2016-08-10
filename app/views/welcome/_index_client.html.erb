@@ -1348,8 +1348,8 @@
                        
         $("#visit_team_random2").empty();
         $("#local_team_random2").empty();            
-        $("#visit_team_random2").append('<img width="70%" src="'+data.partials[i].team2.logo_url+'">'); 
-        $("#local_team_random2").append('<img width="70%" src="'+data.partials[i].team.logo_url+'">');  
+        $("#visit_team_random2").append('<img width="70%" src="'+data.team2+'">'); 
+        $("#local_team_random2").append('<img width="70%" src="'+data.team1+'">');  
 		 $('#serie_price').text( ""+$('#lotteries_random2 option:selected').data('price') + " DB");
          $('#serie-balance').text(""+$('#lotteries_random2 option:selected').data('balance') + " DB");		
 					  if(parseInt($('#lotteries_random2 option:selected').data('max-number')) < 100){
