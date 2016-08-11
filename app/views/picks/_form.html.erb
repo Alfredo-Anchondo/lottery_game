@@ -19,16 +19,16 @@
 <div class="col-md-6"> 
 	<h3 style="text-align:center"> Selecciona el tipo de Liga que deseas crear</h3>
 		<div class="form-group" style="text-align:center; font-size:20px;">
-         		<%= f.radio_button('pick_type', 1, :class => "type")  %>
+         		<%= f.radio_button('pick_type', 1, :class => "type", :checked => true)  %>
 				<%= label_tag(:type, "Pick'em") %>
-				<%= f.radio_button('pick_type', 2, :style => 'margin-left:4%', :class => 'type' ) %>
-				<%= label_tag(:type, "Pick'em DB") %>
+				<% f.radio_button('pick_type', 2, :style => 'margin-left:4%', :class => 'type' ) %>
+				<% label_tag(:type, "Pick'em DB") %>
 				
         </div>
 </div>
 <div class="col-md-6">
     	<h3 style="text-align:center"> Selecciona el tipo de manejo de la bolsa</h3>
-		<div class="form-group" style="text-align:center; font-size:20px;">
+		<div data-toggle = "tooltip" data-placement = "top" title = "Si seleccionas 'equitativo' se repartira la bolsa en la misma cantidad por semana. Es decir se reparte la bolsa entre el total de semanas que dure la liga. Aqui no importa el acumulado de puntos ya que el premio se entrega semanalmente. Si seleccionas '1er, 2ndo y 3rd lugar' tu elijes el porcentaje semanal que se repartira siempre y cuando no sobrepase el maximo,aqui al llegar a la ultima semana el restante de la bolsa se repartira entre los 3 primeros lugares del acumulado total de puntos durante la liga, los porcentajes de los lugares son seleccionables por ti." class="form-group" style="text-align:center; font-size:20px;">
          		<%= f.radio_button('winner_type', 1, :class => "type")  %>
 				<%= label_tag(:type, "Equitativo") %>
 				<%= f.radio_button('winner_type', 2, :style => 'margin-left:4%', :class => 'type' ) %>
@@ -43,40 +43,40 @@
 <div class="clearfix"></div>
 <hr>
 
-<div class="col-md-6">
- <div class="form-group">
+<div class="col-md-6 hide-default" style="display:none">
+ <div class="form-group" data-toggle = "tooltip" data-placement = "top" title = "Nombre de la liga.">
           <%= f.label :name, :class => "col-md-3" %>
           <div class="col-md-9">
             <%= f.text_field :name, :class => "form-control" %>
           </div>
         </div>
                  
-                  <div class="form-group">
+        <div class="form-group" data-toggle = "tooltip" data-placement = "top" title = "Selecciona el deporte del cual quieres crear la liga.">
           <%= f.label :sport_category_id, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.collection_select(:sport_category_id, SportCategory.all.order('id DESC'), :id, :select_display, { :include_blank => false, :prompt => '-Selecciona una categoria-' }, required: true, :class => "form-control") %>
+            <%= f.collection_select(:sport_category_id, SportCategory.where(:id => [6,2]).order('id DESC'), :id, :select_display, { :include_blank => false, :prompt => '-Selecciona una categoria-' }, required: true, :class => "form-control") %>
           </div>
         </div>
 
-                  <div class="form-group">
+                  <div class="form-group" data-toggle = "tooltip" data-placement = "top" title = "Puedes agregar una descripción a tu liga para que lo vean los usuarios de tu liga, puede ser una bienvenida a la liga, las reglas, algun comentario.">
           <%= f.label :description, :class => "col-md-3" %>
           <div class="col-md-9">
             <%= f.text_field :description, :class => "form-control" %>
           </div>
         </div>
                  
-                    <div class="form-group">
+        <div class="form-group" data-toggle = "tooltip" data-placement = "top" title = "Si no quieres que tu liga sea publica puedes agregar una clave de acceso para que solo las personas que tu invites puedan acceder.">
           <%= f.label :access_key, :class => "col-md-3" %>
           <div class="col-md-9">
             <%= f.text_field :access_key, :class => "form-control" %>
           </div>
         </div>
-                  <div class="form-group">
+        <div class="form-group" >
           <div class="col-md-9">
          	   <%= f.hidden_field :user_id, :value => current_user.id, :class => "form-control" %> 
           </div>
         </div>
-                  <div class="form-group">
+        <div class="form-group" data-toggle = "tooltip" data-placement = "top" title = "Selecciona el costo que tendra para los usuarios al ingresar a tu liga.">
           <%= f.label :price, :class => "col-md-3" %>
           <div class="col-md-9">
             <%= f.text_field :price, :class => "form-control" %>
@@ -102,52 +102,46 @@
 
 </div>
 <!-- begin col-md-6 -->
-<div class="col-md-6">
-	
-
-
-             
-                
-               
-                  <div class="form-group">
+<div class="col-md-6 hide-default" style="display:none" >
+        <div class="form-group" data-toggle = "tooltip" data-placement = "top" title = "Si deseas restringir la cantidad maxima de usuarios en la liga puedes agregar aqui el numero de usuarios maximos que pueden comprar entrada en tu liga.">
           <%= f.label :users_quantity, :class => "col-md-3" %>
           <div class="col-md-9">
             <%= f.text_field :users_quantity, :class => "form-control" %>
           </div>
         </div>
-                  <div class="form-group">
+        <div class="form-group" data-toggle = "tooltip" data-placement = "top" title = "Es el porcentaje de ganancias que deseas recibir como el administrador de la liga. Este se reparte cuando la semana 1 haya terminado.">
           <%= f.label :percentage, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.number_field :percentage, :class => "form-control" %>
+            <%= f.text_field :percentage, :class => "form-control percent" %>
           </div>
         </div>
         
-                <div class="form-group">
-          <%= f.label :percentage_per_week, :class => "col-md-3" %>
+      <div class="form-group" data-toggle = "tooltip" data-placement = "top" title = "Porcentaje a repartir por semana, recuerda que si elegiste equitativo este valor se asigna automaticamente, y no puedes superar el valor maximo.">
+          <%= f.label :percentage_per_week, :class => "col-md-3 " %>
           <div class="col-md-9">
-            <%= f.number_field :percentage_per_week, :max => @pick.percentage_per_week,  :class => "form-control" %>
+            <%= f.text_field :percentage_per_week, :max => @pick.percentage_per_week,  :class => "form-control percent" %>
             <h4 style="display:none;" id="equitative_porcentage"> </h4>
           </div>
         </div>
         
-         <div class="form-group no-equitative">
+         <div class="form-group no-equitative" data-toggle = "tooltip" data-placement = "top" title = "Porcentaje a repartir para el primer lugar de la liga de el restante de la bolsa">
           <%= f.label :first_percentage, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.number_field :first_percentage, :class => "form-control" %>
+            <%= f.text_field :first_percentage, :class => "form-control percent" %>
           </div>
         </div>
         
-         <div class="form-group no-equitative">
+         <div class="form-group no-equitative" data-toggle = "tooltip" data-placement = "top" title = "Porcentaje a repartir al segundo lugar de la liga del restante de la bolsa">
           <%= f.label :second_percentage, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.number_field :second_percentage, :class => "form-control" %>
+            <%= f.text_field :second_percentage, :class => "form-control percent" %>
           </div>
         </div>
         
-         <div class="form-group no-equitative">
+         <div class="form-group no-equitative" data-toggle = "tooltip" data-placement = "top" title = "Porcentaje a repartir al tercer lugar de la liga del restante de la bolsa">
           <%= f.label :third_percentage, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.number_field :third_percentage, :class => "form-control" %>
+            <%= f.text_field :third_percentage, :class => "form-control percent" %>
           </div>
         </div>
         
@@ -172,6 +166,7 @@
     $('#pick_winner_type_1').change(function(){
         if($(this).prop( "checked" )){
            equitative = true;
+            $('.hide-default').show();
         $('.no-equitative').hide();
         }
     })
@@ -179,6 +174,7 @@
       $('#pick_winner_type_2').change(function(){
         if($(this).prop( "checked" )){
            equitative = false;
+            $('.hide-default').show();
             $('.no-equitative').show();
         }
     })
@@ -206,4 +202,12 @@
           
        })
     })
+</script>
+
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+	 $('.percent').mask('##0,00%', {reverse: true});
+});
 </script>

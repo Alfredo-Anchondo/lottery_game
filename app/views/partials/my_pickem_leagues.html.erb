@@ -26,7 +26,7 @@
 
 <div class="row">
 	<div id="mainwrapper"><!-- This #mainwrapper section contains all of our images to make them center and look proper in the browser -->
-	<h2 style="text-align:center; font-weight:800; color:black;"> Ligas en las que estas participando </h2>
+	<h2 > <span style="text-align:left; float:left;"> PICKEM</span> <span style="text-align:center; font-weight:800; color:black;"> Ligas en las que estas participando</span>  </h2>
 	<hr>
 		<div class="col-md-12" style="margin-left:6%">
 		
@@ -37,11 +37,14 @@
 		<br>
 		<h5 style="text-align:center">Puedes entrar a la ventana principal de la liga o consultar el historial de compras semanales de los usuarios</h5>
 		<br>
-		<div class="col-md-6">
-			<a href="/partials/pickem/<%= survivor.id%>" style="width:80%" class="enter_survivor btn btn-primary">Entrar</a>
+		<div class="col-md-4">
+			<a href="/partials/pickem/<%= survivor.id%>" style="width:100%" class="enter_survivor btn btn-primary">Entrar</a>
 		</div> 
-		<div class="col-md-6">
-			<a href="/partials/pick_history/<%= survivor.id%>" style="width:80%" class="enter_survivor btn btn-primary"> Ver historial </a>
+		<div class="col-md-4">
+			<a href="/partials/pick_history/<%= survivor.id%>" style="width:100%" class="enter_survivor btn btn-primary"> Temporada </a>
+		</div>
+		<div class="col-md-4">
+		    <a href="/partials/pickem_week_games_history/<%= survivor.id%>" style="width:100%" class="enter_survivor btn btn-primary"> Semanal </a>
 		</div>
 		</span></div>
 

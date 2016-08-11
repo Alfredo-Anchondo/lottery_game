@@ -82,6 +82,17 @@
 <!-- begin row -->
 <div class="row">
   <div class="col-md-12">
+  <br>
+   <% if current_user.role_id == 2 %>
+    <%= link_to edit_pick_path(@pick), :class => "btn btn-default" do %>
+        <i class="icon-pencil"></i>
+        <%= t("actions.edit") %>
+      <% end %>
+      <a class="btn btn-primary" href="/partials/my_pickem_leagues">Volver a mis ligas</a>
+      <br>
+      <div class="clearfix"></div>
+      <br>
+   <% end %>
     <% if can? :edit, @pick %>
       <%= link_to edit_pick_path(@pick), :class => "btn btn-default" do %>
         <i class="icon-pencil"></i>

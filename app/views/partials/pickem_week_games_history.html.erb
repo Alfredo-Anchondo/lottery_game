@@ -58,10 +58,15 @@
           
                t.row.add([
                 '<h4 style="text-align:center"><%= ticket.user.username.upcase %> </h4>',
-                 <% logger.info ticket.pick_user_games.count %>  <% logger.info '///////////' %>
-                <% ticket.pick_user_games.order(:survivor_game_id).pluck(:status,:team_id).each do |game_ticket| %>
-                 '<h4 class="<%= game_ticket[0] %>" style="text-align:center"> <img width="30px" src="<%= Team.find(game_ticket[1]).logo_url %>">  </h4',
-                <% end %>
+             <% week.survivor_games.where('game_date < ?', Time.new).order(:id).each do |game| %>
+                <% exist_for_game =  ticket.pick_user_games.where('survivor_game_id = ?', game.id) %>
+                  <% if exist_for_game != nil && exist_for_game != '' && exist_for_game != []  %>
+                 '<h4 class="<%= exist_for_game[0].status %>" style="text-align:center"> <img width="30px" src="<%= exist_for_game[0].team.logo_url %>">  </h4',
+                   <%else%>
+                   '<h4 class="loser" style="text-align:center"><img width="30px" src="/assets/red-x4.png"></h4>',
+                   <% end %>
+             <%end%>
+                   
                ]).draw(false);
         
                <%end%>

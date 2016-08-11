@@ -190,8 +190,10 @@ class SurvivorGame < ActiveRecord::Base
                        if pick_survivor != nil && pick_survivor != []   
                         max_points = pick_survivor.pick_users.maximum("points")
                         winner_week = pick_survivor.pick_users.where(:points => max_points)
+                           logger.info max_points
                            logger.info winner_week
                            logger.info winner_week.length
+                           logger.info 'esta es la ultima que se ahace'
                         porcentaje = pickx.percentage_per_week
                         balance = pickx.initial_balance
                         
@@ -199,22 +201,44 @@ class SurvivorGame < ActiveRecord::Base
                             if winner_week.length > 1
                             array_pos = []
                             winner_week.each do |pos_win|
-                              local_error =  (pos_win.local_score - local_score).abs
-                              visit_error =  (pos_win.visit_score - visit_score).abs
+                              local_error =  (pos_win.local_score ? pos_win.local_score : 0 - local_score).abs
+                              visit_error =  (pos_win.visit_score ? pos_win.visit_score : 0  - visit_score).abs
                               total_error =  local_error + visit_error    
                               array_pos.push(total_error)    
                                  logger.info 'HAY MAS DE UN GANADOR' 
                                  logger.info total_error
                             end
-                               array_pos.min
+                                array_pos.min
                                 logger.info 'el minimo es'
                                 logger.info array_pos.each_with_index.min
                                 result = array_pos.each_with_index.min
-                                winner_week = winner_week[result[1]]
-                            winner_week.update(:status => 'Ganadorsemanal')
-                            porcentaje = porcentaje/100
-                            balance_sum = balance * porcentaje    
-                            winner_week.user.update(:balance => winner_week.user.balance + balance_sum )   
+                                logger.info result[0]
+                                logger.info array_pos.index(result[0])
+                                count_winners = 0
+                                array_pos.each_with_index do |position, is|
+                                    if position == result[0]
+                                        logger.info 'entre en el ciclo'
+                                        count_winners += 1
+                                    end
+                                end
+                            
+                             if count_winners > 1
+                               porcentaje = porcentaje/100
+                                balance_sum = (balance * porcentaje)/winner_week.count   
+                                 
+                                 winner_week.each do |winnerz|
+                                     winnerz.update(:status => 'Ganadorsemanal')
+                                     winnerz.user.update(:balance => winnerz.user.balance + balance_sum)
+                                 end
+                              
+                             else
+                                  winner_week = winner_week[result[1]]
+                                winner_week.update(:status => 'Ganadorsemanal')
+                                porcentaje = porcentaje/100
+                                balance_sum = balance * porcentaje    
+                                winner_week.user.update(:balance => winner_week.user.balance + balance_sum )   
+                             end     
+                           
                         else   
                             winner_week[0].update(:status => 'Ganadorsemanal')
                             porcentaje = porcentaje/100
