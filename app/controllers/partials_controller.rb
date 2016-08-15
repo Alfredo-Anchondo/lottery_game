@@ -333,6 +333,9 @@ end
 	
 	
 	def survivor_history
+      @current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, 6)    
+      @survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],@current_week[0].id)    
+      @buy_ticket_already = SurvivorUser.where('survivor_week_survivor_id = ? and user_id = ?', @survivor_week_sur[0].id, current_user.id )    
 	  @usuarios = {}	
 	  @survivor = Survivor.find(params[:id])	
 	  @survivorweeksurvivor = SurvivorWeekSurvivor.where(:survivor_id => params[:id]).pluck(:id)
@@ -344,13 +347,35 @@ end
 			@usuarios[user.user.username][user.survivor_user_id] = {}
 		end
 		@survivoruser.each do |user|
-			@usuarios[user.user.username][user.survivor_user_id][user.survivor_week_survivor.survivor_week_game.week.to_s] = {:team => user.team, :status => user.status }
+            if user.survivor_week_survivor_id == @survivor_week_sur[0].id
+                teamid = user.team ? user.team.id : 'No tiene equipo'
+            if teamid == 'No tiene equipo'
+            else
+                game = SurvivorGame.where('survivor_week_game_id = ? and team_id = ?',@current_week[0].id, teamid)  
+                if game != [] && game != '' && game != nil
+                    logger.info game[0].team.name
+                    logger.info '////////////&&&&&&&&&&&&&&&///////////'
+                   pendint = game[0].game_date > Time.new ? 'Juegopendiente' : 'Juegoterminado' 
+                    logger.info pendint
+                else
+                  game = SurvivorGame.where('survivor_week_game_id = ? and team2_id = ?',@current_week[0].id, teamid)   
+                    logger.info game[0].team.name
+                    logger.info '////////////&&&&&&&&&&&&&&&///////////'
+                   pendint = game[0].game_date > Time.new ? 'Juegopendiente' : 'Juegoterminado' 
+                    logger.info pendint
+                end    
+            end
+            else
+            end    
+            
+			@usuarios[user.user.username][user.survivor_user_id][user.survivor_week_survivor.survivor_week_game.week.to_s] = {:team => user.team, :status => user.status, :game => pendint }
 			logger.info @usuarios
 		end
 	end
     
     def pickem_week_games_history
         @pickem = Pick.find(params[:id])
+        @current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, @pickem.sport_category_id)  
         @weeks = @pickem.survivor_week_games
         
     end

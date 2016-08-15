@@ -8,9 +8,14 @@
     }
 </style>
 
-<h4 style="text-align:center; color:black; font-size:20px;"> Liga: <%= @pickem.name %></h4>
+<div class="col-md-6"><h4 style="text-align:center; color:#2D68AC; font-size:20px;"> Liga PICK'EM: <span style="color:black;"> <%= @pickem.name %> </span></h4></div>
+<div class="col-md-6"><h4 style="text-align:center">  <a class="btn btn-primary"  href="/partials/pickem/<%= @pickem.id %>">Seleccionar Pick</a>  <a class="btn btn-primary"  href="/partials/pick_history/<%= @pickem.id %>">Temporada</a>  <a class="btn btn-primary"  href="/partials/games_result/">Resultados</a> </h4> </div>
 
-<h4 style="text-align:center; color:black;"> Selección de semana: <%= select_tag "category",  options_from_collection_for_select(@weeks, "id", "select_display"), prompt: "Selecciona una semana por favor", class: 'form_input', id: 'week_number', :style => 'width:50% !important' %>  </h4>
+<div class="clearfix"></div>
+<hr>
+
+
+<h4 style="text-align:center; color:black;"> Selección de semana: <%= select_tag "category",  options_from_collection_for_select(@weeks, "id", "select_display"), prompt: "Selecciona una semana por favor", class: 'form_input', id: 'week_number', :selected => @weeks[1], :style => 'width:50% !important' %>  </h4>
 <hr>
 
 <% @weeks.each do |week| %>
@@ -20,10 +25,11 @@
         <table id="example<%= week.id %>" class="table table-bordered responsive table-hover table-striped " cellspacing="0" width="100%">
         <thead style="background-color:black; color:white;">
             <tr>
-              <th> Usuario </th>
+              <th style="text-align:center"> Usuario </th>
               <% week.survivor_games.where('game_date < ?', Time.new).order(:id).each do |game| %>
-                  <th style="padding-right:0px;"> <%= game.team.name[0..2] %> - <%= game.team2.name[0..2] %> </th>
+                  <th style="padding-right:0px;text-align:center">  <%= game.game_date.strftime('%d/%m/%Y %H:%M %P ') %> <br> <%= game.team.name[0..2] %> - <%= game.team2.name[0..2] %>   </th>
               <% end %>
+              <th style="text-align:center">Puntos</th>
             </tr>
         </thead>
         <tbody>
@@ -66,7 +72,7 @@
                    '<h4 class="loser" style="text-align:center"><img width="30px" src="/assets/red-x4.png"></h4>',
                    <% end %>
              <%end%>
-                   
+                   '<h4 style="text-align:center"><%= ticket.pick_user_games.where(:status => 'winner').count %></h4>',
                ]).draw(false);
         
                <%end%>
@@ -84,9 +90,15 @@
 
 
 <script>
-    
+    $(document).ready(function(){
+        $('#week_number option[value=<%=   @current_week[0].id %>]').prop('selected', true);
+        $('.week_row').hide();
+        $('#<%=   @current_week[0].id %>').show();      
+    })
+</script>
 
-    
+<script>
+
     $('#week_number').change(function(){
         $('.week_row').hide();
         $('#'+$(this).val()+'').show();

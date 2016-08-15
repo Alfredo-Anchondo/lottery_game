@@ -1,20 +1,10 @@
 <style>
-
-	.navbar-teal{
-		background-color:#06733d;
-	}
 	
 	.footer{
 		position:fixed;
 	}
 	
-		#myNavbar .navbar-nav li a:hover{
-		background-color: #099b53;
-	}
-	
-	.navbar-nav > li > .dropdown-menu{
-		background-color: #06733d;
-	}
+
 	
 </style>
 
@@ -99,7 +89,7 @@
         <div class="form-group">
           <%= f.label :background, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.file_field :background,  "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Puedes subir un fondo para tu survivor, este se usara en la ventana principal de tu survivor, es recomendable subir una fondo de colores oscuros ya que los textos son claros. Queda prohibido subir imagenes ofensivas, y de contenido sexual. Si se infringe estos terminos la imagen, o la liga puede ser dada de baja depende de la gravedad." %>
+            <%= f.file_field :background,  "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Puedes subir un logo a tu liga para darle identidad, recuerda que no debes subir imagenes ofensivas, en caso de ser asi se eliminara sin previo aviso." %>
           </div>
         </div>
          

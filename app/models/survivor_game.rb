@@ -134,10 +134,18 @@ class SurvivorGame < ActiveRecord::Base
                 winner_week = ""
                 porcentaje = ""
                 balance = ""
+                
                 if pending == false
                   picks = Pick.where('sport_category_id = ?', survivor_week_game.pick_users[0].pick.sport_category_id )
                     picks.each do |pickx|
-                        
+                            if survivor_week_game.week == 1
+                                 if pickx.percentage.present?
+                                     total_porcentage = (pickx.percentage/100) * pickx.initial_balance
+                                     pickx.update(:initial_balance => (pickx.initial_balance - total_porcentage) )
+                                     pickx.user.update(:balance => pickx.user.balance + total_porcentage)
+                                     
+                                 end
+                            end
                           #Aqui comienza la creacion de un nuevo ticket si no se compro    
                          pick_survivor = pickx.pick_survivor_weeks.where('survivor_week_game_id = ? and pick_id = ?', survivor_week_game.id, pickx.id).first
                 if pick_survivor != nil && pick_survivor != []   
@@ -215,21 +223,28 @@ class SurvivorGame < ActiveRecord::Base
                                 logger.info result[0]
                                 logger.info array_pos.index(result[0])
                                 count_winners = 0
+                                array_winner_pos = []
                                 array_pos.each_with_index do |position, is|
                                     if position == result[0]
                                         logger.info 'entre en el ciclo'
                                         count_winners += 1
+                                        array_winner_pos.push(is)
                                     end
                                 end
                             
                              if count_winners > 1
                                porcentaje = porcentaje/100
                                 balance_sum = (balance * porcentaje)/winner_week.count   
-                                 
-                                 winner_week.each do |winnerz|
-                                     winnerz.update(:status => 'Ganadorsemanal')
-                                     winnerz.user.update(:balance => winnerz.user.balance + balance_sum)
+                                 array_winner_pos.each do |winner_pos|
+                                     logger.info 'Entre en este ciclo del array'
+                                     winner_week[winner_pos].update(:status => 'Ganadorsemanal')
+                                     winner_week[winner_pos].user.update(:balance => winner_week[winner_pos].user.balance + balance_sum)
                                  end
+                                 
+                               #  winner_week.each do |winnerz|
+                                #     winnerz.update(:status => 'Ganadorsemanal')
+                                 #    winnerz.user.update(:balance => winnerz.user.balance + balance_sum)
+                                # end
                               
                              else
                                   winner_week = winner_week[result[1]]

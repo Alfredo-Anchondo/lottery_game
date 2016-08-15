@@ -363,7 +363,7 @@ es:
     attributes:
         pick:
             name: "Nombre"
-            sport_category: "Categorias del pick"
+            sport_category_id: "Categorias del pick"
             description: "Descripción"
             user_id: "Usuario"
             user: "Usuario"
@@ -377,6 +377,7 @@ es:
             second_percentage: "Porcentaje segundo lugar"
             third_percentage: "Porcentaje tercer lugar"
             pick_type: "Tipo de pick"
+            background: "Logo"
         pick_user:
             user: "Usuario"
             user_id: "Usuario"
@@ -413,6 +414,7 @@ es:
             description: "Descripción"
             access_key: "Clave de acceso"
             price: "Precio/Rebuy"
+            background: "Logo"
             user_id: "Usuario"
             user_quantity: "Cantidad de usuarios"
             percentage: "Porcentaje"

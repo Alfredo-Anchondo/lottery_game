@@ -1,26 +1,11 @@
 <style>
-
-	.navbar-teal{
-		background-color:#06733d;
-	}
-	
-	.footer{
-		position:fixed;
-	}
-	
-		#myNavbar .navbar-nav li a:hover{
-		background-color: #099b53;
-	}
-	
-	.navbar-nav > li > .dropdown-menu{
-		background-color: #06733d;
-	}
+		
 	
 </style>
 
-<div class="row" style="    padding-bottom: 100px !important;">
+<div class="row" style="    padding-bottom: 10px !important;">
 <% if @current_survivor.status == 'Cerrada' %> <!------- Pregunta si el survivor esta cerrado  ----->
- <div class="row" style=" background-size: cover; background-image: url(<%= @current_survivor.background_url %>)">
+ <div class="row" style=" background-size: cover; background-image: url(/assets/default_background.png)">
          	<div class="row" style="background-color:rgba(0, 0, 0, 0.3)">
           	<h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:26px;">Gracias por participar en nuestra liga de survivor</h4>
@@ -28,7 +13,7 @@
             <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">La liga termino con un total de : <%= @current_survivor.winner_user %> <%= @current_survivor.winner_user == 1 ? 'Ganador' : 'Ganadores' %> </h4>
             <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Felicidades a <%= @current_survivor.winner_user == 1 ? 'el ganador' : 'los ganadores' %></h4> 	   
       		<hr>
-      		   	<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"><a href="/partials/survivor_history/<%= @current_survivor.id%>" class="btn btn-lg" style="background-color:#06733d; color:white; border-color:#06733d;">Consultar resultados</a></h4> 		
+      		   	<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"><a href="/partials/survivor_history/<%= @current_survivor.id%>" class="btn btn-lg" style="background-color:#2D68AC; color:white; border-color:#2D68AC;">Consultar resultados</a></h4> 		
       		<hr>
       	
       		
@@ -46,15 +31,17 @@
 
 	<% if participant != [] && participant != '' %>     <!-- Esto se realiza si el usuario ya tiene ticket -->
 		<% if @current_week[0].week > 0 && @current_week[0].week <= 17 %>
-			<div class="row" style=" margin-top:-20px !important; background-size: cover; background-image: url(<%= @current_survivor.background_url %>)">
+			<div class="row" style=" margin-top:-20px !important; background-size: cover; background-image: url(/assets/default_background.png)">
         	<div class="row" style="background-color:rgba(0, 0, 0, 0.3)">
          	<div class="col-md-4" style="border-right:1px solid black;">
-          	<h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
+          	<h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 34px; color:white; font-weight:900;"><img style="padding-right:5px" width="80px" class="img-circle" src="<%= @current_survivor.background_url %>"><%= @current_survivor.name %></h1>
+          	 <h4 style="text-align:center">  <a class="btn btn-primary"  href="/partials/survivor_history/<%= @current_survivor.id %>">Consultar Temporada</a>  <a class="btn btn-primary"  href="/partials/games_result/">Resultados de Partidos</a> </h4> <hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Semana #<%= @current_week[0].week %></h4>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Tienes: <span style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
+      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:12px;"><%= @current_survivor.description %></h4>
+      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Tienes: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
       		<hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;"> Tienes  <%= @last_tickets_purchase.count  %>  <span><%= @last_tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
-      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Recompra disponibles por entrada: <span style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Rebuys disponibles por entrada: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
       		
       		<script>
 					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
@@ -66,15 +53,15 @@
       		<hr>
       		<div class="row">
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:20px; font-weight:900;">Precio de recompra : <span style="color:white;"><%= @current_survivor.price %> DB</span></h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:20px; font-weight:900;">Precio de rebuy : <span style="color:white;"><%= @current_survivor.price %> DB</span></h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Bolsa acumulada: <span style="color:white" ><%= @current_survivor.initial_balance %> DB </span> </h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Bolsa acumulada: <span style="color:white" ><%= @current_survivor.initial_balance %> DB </span> </h3>
       			</div>
       		</div>
       		
       		<br>
-      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
+      		<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<hr>
      		  	 <h4>
      		  	 <% already_buy = '' %>
@@ -154,16 +141,16 @@
 					 		<% if @last_tickets_purchase.where('survivor_user_id = ?', entry.survivor_user_id).last.status == 'loser'  %>
 					 		
 					 		<% end %>
-					 		<h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Cantidad de veces perdidas: <span style="color:#06733d"> <%= losses %> </span></h4>
+					 		<h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Cantidad de veces perdidas: <span style="color:#2D68AC"> <%= losses %> </span></h4>
 					 		<% if losses > rebuy %>
 					 		<% buy = false %>
-					 			<h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Lo sentimos pero ya tienes recompras disponibles gracias por participar con nosotros</h4>
+					 			<h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Lo sentimos pero ya tienes rebuys disponibles gracias por participar con nosotros</h4>
 					 		<% elsif losses == rebuy %>
 					 			<% buy = true %>
 					 			<h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Estas utilizando tu ultima vida mucha suerte.</h4>
 					 			<% else %>
 					 			<% buy = true %>
-					 			<h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Aun tienes recompras disponibles</h4>
+					 			<h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Aun tienes rebuys disponibles</h4>
 					 		<% end %>
 					 		
 					 		
@@ -197,9 +184,9 @@
 					 				<h4 style="text-align:center"><img width="70%" class="team_image" src="" ></h4>
 					 			</div>
 					 			<div class="col-md-6">
-					 			<h4 style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Nombre del equipo: <span  style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_name"></span> </h4>
-					 			<h4 style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Handicap del equipo: <span style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_handicap"></span></h4>
-					 			<h4 style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;">Equipo rival: <span style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_rival"></span></h4>
+					 			<h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Nombre del equipo: <span  style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_name"></span> </h4>
+					 			<h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Handicap del equipo: <span style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_handicap"></span></h4>
+					 			<h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;">Equipo rival: <span style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_rival"></span></h4>
 					 			</div>
 					 			<div class="clearfix"></div>
 					 			
@@ -212,9 +199,9 @@
 					 			</div>
 					 			<div class="col-md-6">
 					 			<br>
-					 			<h4 style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Nombre del equipo: <span  style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_select_name"></span> </h4>
+					 			<h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Nombre del equipo: <span  style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_select_name"></span> </h4>
 					 			<input type="hidden" class="team_select_description">
-					 			<h4 style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Handicap del equipo: <span style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_select_handicap"></span></h4>
+					 			<h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Handicap del equipo: <span style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_select_handicap"></span></h4>
 					 			</div>
 					 			<div class="clearfix"></div>
 					 			<button data-survivorcode=" <%= entry.survivor_user_id %>" style="width:100%; font-weight:900; background-color:white; color:black;" class="btn buy-ticket btn-primary"> Seleccionar equipo </button>
@@ -377,13 +364,25 @@
 			  </div>
 		<!-- Termina si la semana es mayor a 0 y menor igual a 17 -->
 		<% else if @current_week[0].week == 0 %>  <!-- Esto se realiza si el usuario ya tiene ticket y es la semana 0 -->
-      	<div class="row" style=" background-size: cover; background-image: url(<%= @current_survivor.background_url %>)">
+      	<div class="row" style=" background-size: cover; background-image: url(/assets/default_background.png)">
          	<div class="row" style="background-color:rgba(0, 0, 0, 0.3)">
-          	<h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
-      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Ya estas participando en este survivor</h4>
+         	<div class="col-md-4">
+         	     <h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
+         	     <h4 style="text-align:center"> <img width="40%" src="<%= @current_survivor.background_url%>"></h4>
+         	</div>
+         	<div class="col-md-4">
+             <br>
+             <br>
+              <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Descripción</h4>
+              <hr>
+            <h4 style="text-align:center; color:white;"><%= @current_survivor.description %> </h4>
+         	</div>
+         	<div class="col-md-4">
+               <br> <br> <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Entradas</h4>   <hr>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Participa en este survivor</h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> Haz comprado <%= @tickets_purchase.count %>  <span><%= @tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
-      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Recompra disponibles por entrada: <span style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
-      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Tienes: <span style="color:#06733d; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Cantidad de Rebuy: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Tienes: <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
       		<hr>
       			<script>
 					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
@@ -392,17 +391,20 @@
 								  
   						});
 				</script>
+         	</div>
+             <div class="clearfix"></div>
+             <hr>
       		<div class="row">
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Precio de entrada: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
       			</div>
       		</div>
       		
       		<br>
-      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
+      		<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<hr>
       		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
       		
@@ -449,31 +451,47 @@
        <% end %>
 		<% else %>						<!-- Aqui termina cuando realiza si el usuario ya tiene ticket -->
       	 <% if @current_week[0].week == 0 %> <!-- Aqui inicia la opcion si hay usuarios y la semana es igual a 0 -->
-      	 	<div class="row" style="background-size: cover; background-image: url(<%= @current_survivor.background_url %>)">
+      	 	<div class="row" style="background-size: cover; background-image: url(/assets/default_background.png)">
          	<div class="row" style="background-color:rgba(0, 0, 0, 0.3)">
-          	<h1 style="text-align:center; font-size: 40px; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Estas a tiempo de participar en el survivor</h4>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Recompra disponibles por entrada: <span style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Tienes hasta el dia: <span style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar tu entrada</h4> 
+         <div class="col-md-4">
+         	     <h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
+         	     <h4 style="text-align:center"> <img width="40%" src="<%= @current_survivor.background_url%>"></h4>
+         	</div>
+         	<div class="col-md-4">
+             <br>
+             <br>
+              <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Descripción</h4>
+              <hr>
+            <h4 style="text-align:center; color:white;"><%= @current_survivor.description %> </h4>
+         	</div>
+         	<div class="col-md-4">
+               <br> <br> <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Entradas</h4>   <hr>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Participa en este survivor</h4>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> Haz comprado <%= @tickets_purchase.count %>  <span><%= @tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Cantidad de Rebuy: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Tienes: <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
       		<hr>
-      		<script>
+      			<script>
 					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
 					   $('#final_date').countdown(countdown1, function(event) {
 							$(this).html(event.strftime('%H:%M:%S'));
 								  
   						});
 				</script>
+         	</div>
+             <div class="clearfix"></div>
+             <hr>
       		<div class="row">
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#06733d; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
+      				<h3 style="text-align:center; color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
       			</div>
       		</div>
       		
       		<br>
-      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
+      		<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<h3><%= @survivor_week_sur[0].id %></h3>
       		<hr>
       		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
@@ -537,31 +555,47 @@
 
 <% else %> 	<!-- Esto se ejecuta si no hay participantes aun en el survivor -->
 	  <% if @current_week[0].week == 0 %> <!-- Esto se ejecuta si la semana es la inicial -->
-         	<div class="row" style="background-size:cover;  background-image: url(<%= @current_survivor.background_url %>)">
+         	<div class="row" style="background-size:cover;  background-image: url(/assets/default_background.png)">
          	<div class="row" style="background-color:rgba(0, 0, 0, 0.31)">
-          	<h1 style="text-align:center; font-size: 40px; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Estas a tiempo de participar en el survivor</h4>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Recompra disponibles por entrada: <span style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Tienes: <span  style="color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar tu entrada</h4> 
+          <div class="col-md-4">
+         	     <h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 40px; color:white; font-weight:900;"><%= @current_survivor.name %></h1> <hr>
+         	     <h4 style="text-align:center"> <img width="40%" src="<%= @current_survivor.background_url%>"></h4>
+         	</div>
+         	<div class="col-md-4">
+             <br>
+             <br>
+              <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Descripción</h4>
+              <hr>
+            <h4 style="text-align:center; color:white;"><%= @current_survivor.description %> </h4>
+         	</div>
+         	<div class="col-md-4">
+               <br> <br> <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Entradas</h4>   <hr>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Participa en este survivor</h4>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> Haz comprado <%= @tickets_purchase.count %>  <span><%= @tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Cantidad de Rebuy: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Tienes: <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
       		<hr>
-      	  		<script>
+      			<script>
 					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
 					   $('#final_date').countdown(countdown1, function(event) {
 							$(this).html(event.strftime('%H:%M:%S'));
 								  
   						});
 				</script>
+         	</div>
+             <div class="clearfix"></div>
+             <hr>
       		<div class="row">
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %></span></h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance %> </span> </h3>
       			</div>
       		</div>
       		
       		<br>
-      		<h3 style="text-align:center; color:#06733d;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
+      		<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<hr>
       		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
       		
