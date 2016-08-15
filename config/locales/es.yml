@@ -363,7 +363,7 @@ es:
     attributes:
         pick:
             name: "Nombre"
-            sport_category_id: "Categorias del pick"
+            sport_category_id: "Deporte - Liga"
             description: "Descripción"
             user_id: "Usuario"
             user: "Usuario"
