@@ -517,6 +517,7 @@ es:
         team:
             name: "Nombre"
             logo: "Logo"
+            team_abbr: "Abreviatura del nombre"
             created_at: "Fecha de Creación"
             description: "Descripción"
             sport_category_id: "Deporte por Categoria"

@@ -16,6 +16,7 @@
                                   <th><%= t("activerecord.attributes.team.name") %></th>
                                   <th><%= t("activerecord.attributes.team.description") %></th>
                                   <th><%= t("activerecord.attributes.team.sport_category") %></th>
+                                  <th><%= t("activerecord.attributes.team.team_abbr") %></th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -26,6 +27,7 @@
                                   <td><%= team.name %></td>
                                   <td><%= team.description %></td>
                   <td><%= team.sport_category.sport.name + ' - ' +team.sport_category.category.name %></td>
+                                <td><%= team.team_abbr %></td>
                                 <td class="action-link">
                   <% if can? :show,team %>
                     <%= link_to team, :class => "btn btn-default", :title => t("actions.show") do %>
