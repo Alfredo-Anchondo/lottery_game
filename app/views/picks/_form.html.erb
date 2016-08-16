@@ -175,6 +175,7 @@
            equitative = true;
             $('.hide-default').show();
         $('.no-equitative').hide();
+                     $('#pick_percentage_per_week').prop('readonly',true);
         }
     })
     
@@ -183,9 +184,12 @@
            equitative = false;
             $('.hide-default').show();
             $('.no-equitative').show();
+            $('#pick_percentage_per_week').prop('readonly',false);
         }
     })
     
+      
+      
     $('#pick_sport_category_id').change(function(){
        $.ajax({
 					  method: "GET",
@@ -198,23 +202,73 @@
            $('#pick_percentage_per_week').attr('max', (100/(data-1)).toFixed(2))
            
            if(equitative == true){
-               $('#pick_percentage_per_week').val((100/(data-1)).toFixed(2))
+               $('#pick_percentage_per_week').val((100/(data-1)).toFixed(2));
                $('#pick_percentage_per_week').prop('readonly','true');
                $('.no-equitative').hide();
            }else{
+               $('#pick_percentage_per_week').attr('placeholder', 'Porcentaje Máximo '+(100/(data-1)).toFixed(2) + '%');
                $('#pick_percentage_per_week').show();
+               $('#pick_percentage_per_week').prop('readonly',false);
                $('#equitative_porcentage').hide();
                $('.no-equitative').show();
+               $('.no-equitative').attr('required', 'required');
            }
           
        })
     })
 </script>
 
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="error_modal_percentage">
+  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-content">
+   <div class="modal-header" style="background-color:rgba(255, 0, 0, 0.73); color:white;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"  id="myModalLabel">Error al crear la liga</h4>
+      </div>
+    <div class="modal-body">
+      <h4 style="text-align:center">El porcentaje no puede ser mayor a <span id="percent_max"></span>%</h4>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="error_modal_places">
+  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-content">
+   <div class="modal-header" style="background-color:rgba(255, 0, 0, 0.73); color:white;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"  id="myModalLabel">Error al crear la liga</h4>
+      </div>
+    <div class="modal-body">
+      <h4 style="text-align:center">La suma de los porcentajes de los lugares debe ser igual a <span id="percent_places">100</span>%</h4>
+    </div>
+    </div>
+  </div>
+</div>
+
 
 <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 	 $('.percent').mask('##0,00%', {reverse: true});
+    
+     $('#new_pick').submit(function() {
+        if(parseInt($('#pick_percentage_per_week').val()) >  $('#pick_percentage_per_week').attr('max')) {
+            $('#percent_max').text($('#pick_percentage_per_week').attr('max'));
+            $('#error_modal_percentage').modal('show');
+            return false;
+        }
+         
+        if(equitative == false){
+         var total =  parseInt($('#pick_first_percentage').val()) +  parseInt($('#pick_second_percentage').val()) +  parseInt($('#pick_third_percentage').val());
+         if (total != 100){
+              $('#error_modal_places').modal('show');
+             return false;
+         }     
+            
+        }
+    });
+    
+    
 });
 </script>
