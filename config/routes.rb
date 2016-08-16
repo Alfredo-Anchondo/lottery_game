@@ -82,6 +82,7 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+            get 'tiras'
             get 'survivor_rules'
             get 'pickem_rules'
             get 'pickem_week_games_history/:id', to: 'partials#pickem_week_games_history'
