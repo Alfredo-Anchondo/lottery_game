@@ -22,8 +22,8 @@
             <tbody>
               <% @pick_survivor_weeks.each do |pick_survivor_week| %>
               <tr>
-                                  <td><%= pick_survivor_week.pick.id %></td>
-                                  <td><%= pick_survivor_week.survivor_week_game.id %></td>
+                                  <td><%= pick_survivor_week.pick.name %></td>
+                                  <td><%= pick_survivor_week.survivor_week_game.select_display %></td>
                                 <td class="action-link">
                   <% if can? :show,pick_survivor_week %>
                     <%= link_to pick_survivor_week, :class => "btn btn-default", :title => t("actions.show") do %>
