@@ -70,23 +70,25 @@
     columns: [
   		 
         { data: function ( row, type, val, meta ) {
-           return row.lottery.team.name + " vs " + row.lottery.team2.name
+           return '<h4 style="text-align:center">'+row.lottery.team.name + 'vs ' + row.lottery.team2.name +  '</h4>'
         }},
 		  { data: function ( row, type, val, meta ) {
-           return row.id
+           return '<h4 style="text-align:center">' + row.id + '</h4>'
         }},
         { data: function ( row, type, val, meta ) {
-				return (row.ticket_number < 10 ? '0' : '') + row.ticket_number;
+				return '<h4 style="text-align:center">'+ ((row.ticket_number < 10 ? '0' : '') + row.ticket_number) + '</h4>';
         }  },
         { data: function ( row, type, val, meta ) {
 			if (row.lottery.winner_number != null){
-				return (row.lottery.winner_number < 10 ? '0' : '') + row.lottery.winner_number;
+				return '<h4 style="text-align:center">'+((row.lottery.winner_number < 10 ? '0' : '') + row.lottery.winner_number) + '</h4>';
 			}
-             return 'Resultado pendiente';
+             return '<h4 style="text-align:center">'+'Resultado pendiente'+'</h4>';
         }  },
-        { data: 'lottery.price' },
         { data: function ( row, type, val, meta ) {
-            return moment(row.purchase_date ,'' ,'es').format('MM/DD/YYYY HH:mm');
+				return '<h4 style="text-align:center">'+ row.lottery.price + ' DB</h4>';
+        } },
+        { data: function ( row, type, val, meta ) {
+            return '<h4 style="text-align:center">' + moment(row.purchase_date ,'' ,'es').format('MM/DD/YYYY HH:mm') + '</h4>';
         }  }
     ],
 	  "columnDefs": [
@@ -139,16 +141,22 @@
     columns: [
   		
         { data: function ( row, type, val, meta ) {
-           return row.quiniela.description
+           return '<h4 style="text-align:center">' +row.quiniela.description+ '</h4>'
         }},
 		  { data: function ( row, type, val, meta ) {
-           return row.id
+           return '<h4 style="text-align:center">' + row.id + '</h4>'
         }},
-        { data: 'ticket_number' },
-        { data: 'quiniela.winner_number' },
-        { data: 'quiniela.price' },
         { data: function ( row, type, val, meta ) {
-            return moment(row.purchase_date ,'' ,'es').format('MM/DD/YYYY HH:mm');
+           return '<h4 style="text-align:center">' + row.ticket_number + '</h4>'
+        } },
+        { data: function ( row, type, val, meta ) {
+           return '<h4 style="text-align:center">' + row.quiniela.winner_number + '</h4>'
+        } },
+        { data: function ( row, type, val, meta ) {
+           return '<h4 style="text-align:center">' + row.quiniela.price + ' DB </h4>'
+        } },
+        { data: function ( row, type, val, meta ) {
+            return '<h4 style="text-align:center">' + moment(row.purchase_date ,'' ,'es').format('MM/DD/YYYY HH:mm') + '</h4>';
         }  }
     ],
 	   "columnDefs": [
