@@ -92,6 +92,11 @@
       <br>
       <div class="clearfix"></div>
       <br>
+      <script>
+        $(document).ready(function(){
+             window.location.assign("/partials/my_pickem_leagues")
+        })
+      </script>
    <% end %>
     <% if can? :edit, @pick %>
       <%= link_to edit_pick_path(@pick), :class => "btn btn-default" do %>
