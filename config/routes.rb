@@ -120,6 +120,7 @@ Rails.application.routes.draw do
             get "buy_error"
 			get "tickets_history"
 			get "client_details"
+            get 'lottery'
 		    get "/lotteries/:id", to: "partials#lotteries"
 		    get "/quinielas/:id", to: "partials#quinielas"
 			get "invite"
