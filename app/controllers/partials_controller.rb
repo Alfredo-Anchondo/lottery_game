@@ -34,7 +34,7 @@ class PartialsController < ApplicationController
 			@quiniela.update({initial_balance: String(@balance.to_f + @update_balance) })
 			logger.info @update_balance
 		else
-			@quiniela.update({initial_balance: (@balance + @update_balance)  })
+			@quiniela.update({initial_balance: (@balance.to_i + @update_balance.to_i)  })
 			@user.update( {balance: @total_balance_update})
 		end
 
@@ -60,6 +60,10 @@ class PartialsController < ApplicationController
 
 	def get_quinielas_no_winner
 		render :json => Quiniela.find_no_winners.order("created_at DESC")
+	end
+    
+    def get_quinielas_mainpage
+		render :json => Quiniela.where(:to_mainpage => true)
 	end
 
 	 def finish_games

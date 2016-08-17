@@ -121,6 +121,7 @@ Rails.application.routes.draw do
 			get "tickets_history"
 			get "client_details"
             get 'lottery'
+            get 'get_quinielas_mainpage', to: "partials#get_quinielas_mainpage"
 		    get "/lotteries/:id", to: "partials#lotteries"
 		    get "/quinielas/:id", to: "partials#quinielas"
 			get "invite"

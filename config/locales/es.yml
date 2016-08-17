@@ -366,6 +366,7 @@ es:
             sport_category_id: "Deporte - Liga"
             description: "Descripción"
             user_id: "Usuario"
+            to_mainpage: "Mostrar en pagina principal"
             user: "Usuario"
             price: "Precio"
             initial_balance: "Bolsa"
@@ -411,6 +412,7 @@ es:
             survivor_week_game_id: "Semana Asignada"
         survivor:
             name: "Nombre"
+            to_mainpage: "Mostrar en pagina principal"
             description: "Descripción"
             access_key: "Clave de acceso"
             price: "Precio/Rebuy"
@@ -482,6 +484,7 @@ es:
             description: "Descripción"
         quiniela:
             initial_balance: "Bolsa Inicial"
+            to_mainpage: "Mostrar en pagina principal"
             last_questions: "Cantidad de respuestas de la ultima pregunta"
             last_questions_text: "Texto de cada respuesta"
             price: "Precio"
@@ -535,6 +538,7 @@ es:
         lottery:
             initial_balance: "Monto Inicial"
             created_at: "Fecha de Creación"
+            to_mainpage: "Mostrar en pagina principal"
             rules: "Reglas"
             description: "Descripción"
             game: "Juego/partido"

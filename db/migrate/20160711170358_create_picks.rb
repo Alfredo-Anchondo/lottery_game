@@ -3,6 +3,7 @@ class CreatePicks < ActiveRecord::Migration
     create_table :picks do |t|
       t.string :name, :null => false
       t.string :description
+      t.boolean :to_mainpage    
 	  t.references :user, index: true, :null => false
       t.foreign_key :users
 	  t.references :sport_category, index: true, :null => false

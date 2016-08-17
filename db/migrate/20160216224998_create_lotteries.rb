@@ -6,6 +6,7 @@ class CreateLotteries < ActiveRecord::Migration
       t.text :description
       t.references :game, index: true, :null => false
       t.foreign_key :games
+      t.boolean :to_mainpage    
       t.integer :winner_number
       t.integer :initial_number, :null => false
       t.integer :final_number, :null => false

@@ -26,8 +26,9 @@
     
   
 </style>
-
-<h1 style="text-align:center; font-size:30px; font-weight:900; color:#2d68ac;"><span class="hide-phone">───────</span> Tiras <span  class="hide-phone">───────</span></h1>
+<div class="row" style="margin-top:-20px !important; background-image:url(/assets/default_background.png)">
+<h1 style="text-align:center; font-size:30px; font-weight:900; color:#2d68ac;"><img src="/assets/logo_tira.png" width="70px"> Tiras </h1>
+</div>
 <div id="mainwrapper"><!-- This #mainwrapper section contains all of our images to make them center and look proper in the browser ->
  
 </div> <!-- end of #mainwrapper-->
@@ -481,61 +482,9 @@
     <!--------------------------------------- Tour ----------------------------------------------------------------->
 
     
-    <script>
-    $(document).ready(function(){
-          var current_language = $("#current_language").val();
-        $.ajax({
-          method: "GET",
-          url: " /partials/finish_games",
-          dataType: "json"     
-        })
-          .done(function( data ) {
-            for(var i in data.partials){
-                    
-				if(data.partials[i].lotteries[0]){
-                if (data.partials[i].lotteries[0].winner_number != null){
-                    var lottery_winner = data.partials[i].lotteries[0].winner_number
-					if (lottery_winner < 10){
-						lottery_winner = "0"+lottery_winner+""}
-                }else{
-                    var lottery_winner = "En Juego"
-                }
-				}else{
-					
-				}
-            if(data.partials[i].lotteries[0]){    
-         $('.slider8').append('<div class="slide"><div class="row"> <h4 style="text-align:center; font-weight:800; color:black;"> <label class="label label-primary"> ' +moment(data.partials[i].game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a')+'   </label>  </h4> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Número Ganador </h4> <h1 style="font-weight:900; text-align:center; color:#696969;"> '+lottery_winner+' </h1> </div> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Bolsa Acumulada </h4> <h2 style="font-weight:900; color:#696969; text-align:center"> $'+data.partials[i].lotteries[0].initial_balance+'  </h2> </div> <div class="col-md-6 col-xs-12"> <div class="row"> <div class="col-md-4 col-xs-4"> <h4 style="text-align:center"> <img width="100%" src="'+data.partials[i].team.logo_url+'"> </h4> </div> <div class="col-md-2 col-xs-2"><br> <br> <h2 style="text-align:center; color:black; font-weight:800;"> '+data.partials[i].local_score+'  </h2> </div> <div class="col-md-2 col-xs-2"> <br> <br> <h2 style="text-align:center; font-weight:800; color:black;"">'+data.partials[i].visit_score+'</h2> </div> <div class="col-md-4 col-xs-4">  <h4 style="text-align:center"> <img width="100%" src="'+data.partials[i].team2.logo_url+'"> </h4> </div> </div> </div>  </div> <hr> </div> ');
-			}else{
-            }
-				
-			}
-            
-                $('.slider8').bxSlider({
-            mode: 'vertical',
-            minSlides: 4,
-            slideMargin: 13
-          });
-            
-          });
-       
-        
+
     
-    });
-    </script>
-    
-    <!--script> 
-         $.ajax({
-  method: "GET", 
-  origin: "https://donbillete.com", 
-  contentType: "application/json",
-  crossDomain: true,
-  url: "https://api.performfeeds.com/basketballdata/match/10q19hfn5lego16erqtal3z8xi?tmcl=e2w9iicoifx689pzi5jqw7j4a",
-  datatype: "json"              
-})
-  .done(function( data) {
-         });
-    </script--> 
-    
+  
     <script>
         var number_array = [];
       $('#lotteries_random').change(function(){

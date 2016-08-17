@@ -5,6 +5,7 @@ class CreateQuinielas < ActiveRecord::Migration
 	  t.text :price
 	  t.text :description
 	  t.text :winner_number	
+      t.boolean :to_mainpage    
 	  t.references :game, index: true, :null => false
 	  t.foreign_key :games, :on_delete => "cascade"
 	  t.text :purchase_gift_tickets	

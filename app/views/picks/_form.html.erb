@@ -93,6 +93,16 @@
 	
 	     <% if signed_in? %>
                   <% if current_user.role.is_admin? %>
+                   <div class="form-group">
+          <%= f.label :to_mainpage, :class => "col-md-3" %>
+          <div class="col-md-9">
+           <%= f.radio_button :to_mainpage, true, :class => "" %>
+            <%= f.label 'Presentar en Pagina Principal', :class => "" %> 
+            
+           <%= f.radio_button :to_mainpage,  false, :class => "", :checked => true %> <%= f.label 'Ocultar en Pagina Principal', :class => "" %> 
+          </div>
+        </div>
+                  
                   <div class="form-group">
           <%= f.label :initial_balance, :class => "col-md-3" %>
           <div class="col-md-9">

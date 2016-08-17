@@ -50,6 +50,6 @@ class PicksController < ApplicationController
     end
 
     def pick_params
-      params.require(:pick).permit(:name, :description, :user_id, :price, :sport_category_id, :initial_balance, :background, :access_key, :pick_type, :winner_type, :first_percentage, :second_percentage, :third_percentage, :users_quantity,:percentage_per_week, :percentage)
+      params.require(:pick).permit(:name, :description, :user_id, :price, :sport_category_id, :initial_balance, :background, :access_key, :pick_type, :winner_type, :first_percentage, :second_percentage, :third_percentage, :to_mainpage , :users_quantity,:percentage_per_week, :percentage)
     end
 end

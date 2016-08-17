@@ -4,6 +4,7 @@ class CreateSurvivors < ActiveRecord::Migration
       t.string :name, :null => false
       t.text :description
 	  t.text :access_key
+      t.boolean :to_mainpage    
 	  t.references :user, index: true, :null => false
       t.foreign_key :users
       t.float :price, :null => false, :default => 0
