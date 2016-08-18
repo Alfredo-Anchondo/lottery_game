@@ -38,7 +38,7 @@
           	 <h4 style="text-align:center">  <a class="btn btn-primary"  href="/partials/survivor_history/<%= @current_survivor.id %>">Consultar Temporada</a>  <a class="btn btn-primary"  href="/partials/games_result/">Resultados de Partidos</a> </h4> <hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Semana #<%= @current_week[0].week %></h4>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:12px;"><%= @current_survivor.description %></h4>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Tienes: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
+      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;"> <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
       		<hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;"> Tienes  <%= @last_tickets_purchase.count  %>  <span><%= @last_tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Rebuys disponibles por entrada: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
@@ -46,7 +46,7 @@
       		<script>
 					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
 					   $('#final_date').countdown(countdown1, function(event) {
-							$(this).html(event.strftime('%H:%M:%S'));
+							$(this).html(event.strftime('%D Dias %H:%M:%S'));
 								  
   						});
 				</script>
@@ -382,12 +382,12 @@
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Participa en este survivor</h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> Haz comprado <%= @tickets_purchase.count %>  <span><%= @tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Cantidad de Rebuy: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
-      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Tienes: <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
       		<hr>
       			<script>
 					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
 					   $('#final_date').countdown(countdown1, function(event) {
-							$(this).html(event.strftime('%H:%M:%S'));
+							$(this).html(event.strftime('%D Dias %H:%M:%S'));
 								  
   						});
 				</script>
@@ -469,12 +469,12 @@
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Participa en este survivor</h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> Haz comprado <%= @tickets_purchase.count %>  <span><%= @tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Cantidad de Rebuy: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
-      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Tienes: <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
       		<hr>
       			<script>
 					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
 					   $('#final_date').countdown(countdown1, function(event) {
-							$(this).html(event.strftime('%H:%M:%S'));
+							$(this).html(event.strftime('%D Dias %H:%M:%S'));
 								  
   						});
 				</script>
@@ -573,12 +573,12 @@
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Participa en este survivor</h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> Haz comprado <%= @tickets_purchase.count %>  <span><%= @tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Cantidad de Rebuy: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
-      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Tienes: <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
       		<hr>
       			<script>
 					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
 					   $('#final_date').countdown(countdown1, function(event) {
-							$(this).html(event.strftime('%H:%M:%S'));
+							$(this).html(event.strftime('%D Dias %H:%M:%S'));
 								  
   						});
 				</script>
