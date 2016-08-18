@@ -95,8 +95,10 @@ Rails.application.routes.draw do
             get 'get_weeks', to: "partials#get_weeks"
 			get 'pickem/:id', to: "partials#pickem"
 			post "invite_survivor", to: "partials#invite_survivor"
+            post "invite_pick", to: "partials#invite_pick"
 			match "/inviting" => "partials#inviting", :via => :post
 			get 'invite_friends_survivor/:id', to: "partials#invite_friends_survivor"
+            get 'invite_friends_pick/:id', to: "partials#invite_friends_pick"
 			get 'access_mail', to: "partials#access_request_mail"
             get 'access_mail_pick', to: "partials#access_request_mail_pick"
 			get 'my_leagues', to: "partials#my_leagues"

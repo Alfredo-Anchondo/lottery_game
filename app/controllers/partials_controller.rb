@@ -405,6 +405,10 @@ end
 	def invite_friends_survivor
 		@survivor = Survivor.find(params[:id])
 	end
+    
+    def invite_friends_pick
+        @survivor = Pick.find(params[:id])
+    end    
 	
 	def inviting
 		render nothing: true
@@ -421,6 +425,14 @@ end
 		@survivor = Survivor.find(params['survivor_id'])
 		@user = current_user
 		BuyMailer.invite_survivor(@mails, @survivor, @user).deliver
+	end
+    
+    def invite_pick
+		render nothing: true
+		@mails = params['mails']
+		@survivor = Pick.find(params['survivor_id'])
+		@user = current_user
+		BuyMailer.invite_pick(@mails, @survivor, @user).deliver
 	end
 	
 	def pickem_leagues

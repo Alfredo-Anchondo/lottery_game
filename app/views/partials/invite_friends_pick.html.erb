@@ -1,18 +1,14 @@
 <style>
 
-
-
-
-	
 </style>
 
-<h3 style="text-align:center; font-size:30px; color:#06733d;">Invitar amigos a tu liga de survivor <span style="color:black;">"<%= @survivor.name %>" </span></h3>
+<h3 style="text-align:center; font-size:30px; color:#06733d;">Invitar amigos a tu liga de PICK'EM <span style="color:black;">"<%= @survivor.name %>" </span></h3>
 <hr style="border-color:#06733d">
 
 
 <div class="row">     
    
-		  <h3 style="text-align:center; color:black;">Invita a tus amigos a participar en tu liga de survivor.</h3>
+		  <h3 style="text-align:center; color:black;">Invita a tus amigos a participar en tu liga de PICK'EM.</h3>
 		  <h4 style="text-align:center">Solo escribe el correo de las personas que deseas invitar y comparte los datos de tu liga, si tiene clave de acceso se enviara en el mail:</h4>
 		  <h4 style="text-align:center; color:black;"> Clave de acceso: <span style="color:red" id="reference"><%= @survivor.access_key.present? ? @survivor.access_key : "No tiene clave de acceso" %> </span></h4>
 		  <hr style="border-color:#06733d">		  
@@ -51,7 +47,7 @@
 	$('#send_emails').click(function(){
 		$(this).prop('disabled', true);
 			$.ajax({
-				  url: "/partials/invite_survivor/",
+				  url: "/partials/invite_pick/",
 				  method: "POST",
                   data: { mails: emails, survivor_id: survivor_id }
 				

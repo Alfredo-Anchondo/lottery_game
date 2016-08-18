@@ -42,6 +42,13 @@ class BuyMailer < ActionMailer::Base
 		@user = user
 		mail(to: @mails, subject: '[DonBillete] Un amigo te invita a participar en su liga de survivor')
 	end
+    
+    def invite_pick(mails,survivor,user)
+		@mails = mails
+		@survivor = survivor
+		@user = user
+		mail(to: @mails, subject: '[DonBillete] Un amigo te invita a participar en su liga de pick')
+	end
 	
   def buy_ticket(user, lottery, lottery_user)
     @user = user
