@@ -16,7 +16,7 @@ class BuyMailer < ActionMailer::Base
      def admin_resume_tira(tira)
         @tira = tira
         @mails = ['alfredo_anchondo@hotmail.com','marianolascurain@gmail.com','rodrigolascurain@gmail.com']
-        mail(to: @mails, subject: '[DonBillete] Resumen de loteria')
+        mail(to: @mails, subject: '[DonBillete] Resumen de Tira')
     end
 	
 	def buy_survivor_entry(survivor,user, next_week)
