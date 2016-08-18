@@ -6,8 +6,8 @@
 	
 </style>
 
-<h3 style="text-align:center; font-size:30px; color:#06733d;">Invitar amigos a tu liga de survivor <span style="color:black;">"<%= @survivor.name %>" </span></h3>
-<hr style="border-color:#06733d">
+<h3 style="text-align:center; font-size:30px; color:#2D68AC;">Invitar amigos a tu liga de survivor <span style="color:black;">"<%= @survivor.name %>" </span></h3>
+<hr style="border-color:#2D68AC">
 
 
 <div class="row">     
@@ -15,20 +15,20 @@
 		  <h3 style="text-align:center; color:black;">Invita a tus amigos a participar en tu liga de survivor.</h3>
 		  <h4 style="text-align:center">Solo escribe el correo de las personas que deseas invitar y comparte los datos de tu liga, si tiene clave de acceso se enviara en el mail:</h4>
 		  <h4 style="text-align:center; color:black;"> Clave de acceso: <span style="color:red" id="reference"><%= @survivor.access_key.present? ? @survivor.access_key : "No tiene clave de acceso" %> </span></h4>
-		  <hr style="border-color:#06733d">		  
+		  <hr style="border-color:#2D68AC">		  
 		  <div class="col-md-6" >
 		  	<h3 style="text-align:center; font-size:18px; color:black;">Agrega el correo electronico de tus amigos que deseas invitar.</h3>
 			  <input type="email" class="form-control" id="invitation_mail">
 			  <br>
-			 <h5 style="text-align:center"> <button style="background-color:#06733d; border-color:black;" id="add_mail" class="btn btn-primary" >Agregar Correo</button></h5>
+			 <h5 style="text-align:center"> <button style="background-color:#2D68AC; border-color:black;" id="add_mail" class="btn btn-primary" >Agregar Correo</button></h5>
 		  </div>
-		  <div class="col-md-6" style="border-left:1px solid #06733d">
+		  <div class="col-md-6" style="border-left:1px solid #2D68AC">
 		  	<h3 style="text-align:center; color:black; font-size:18px;">Lista de correos electronicos para invitar</h3>
 			  <ul id="email_list">
 			  
 			  </ul>
 			  <br>
-			 <h4 style="text-align:center"> <button style="background-color:#06733d; border-color:black;" disabled class="btn btn-primary" id="send_emails"> Enviar correo </button> </h4>
+			 <h4 style="text-align:center"> <button style="background-color:#2D68AC; border-color:black;" disabled class="btn btn-primary" id="send_emails"> Enviar correo </button> </h4>
 		  </div>
 	
 </div>
