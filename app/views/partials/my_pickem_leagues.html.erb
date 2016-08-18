@@ -20,22 +20,22 @@
 	<div id="mainwrapper"><!-- This #mainwrapper section contains all of our images to make them center and look proper in the browser -->
 	<h2 > <span style="font-weight:800; color:#2D68AC">Ligas PICK'EM :</span> <span style="text-align:center; font-weight:800; color:black;"> Ligas en las que estas participando</span>  </h2>
 	<hr>
-		<div class="col-md-12" style="margin-left:6%">
+		<div class="row" style="margin-left:6%">
 		
 		
  		<% @survivor_id.each do |survivor| %>
  	
-		<div id="box-3" style="background-size: cover; padding:0px; background-color:white" class="box col-md-3 col-xs-12"><div class="row" style="max-height:200px; height:200px;"> <div class="col-md-5 col-xs-5"><h4 style="text-align:center; color:black; font-size:15px; font-weight:800;"><%= survivor.name %></h4> <h4 style="text-align:center"> <img width="100%" style="position:relative; max-height:75px;" src="<%= survivor.background_url %>"></h4> <h3 style="color:black; font-size:15px; "> Participantes: </h3> <h3 style="text-align:center; font-size:20px; color: #2d68ac; text-transform: capitalize; font-weight:800;"> <span>  <%=  survivor.alive_users %> </span> </h3>   <br></div> <div class="col-md-7 col-xs-7"><div class="row"><div class="col-md-12 col-xs-12"><br><br><h3 style="color:black;"> Bolsa Acumulada </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;"> <span>$<%= survivor.initial_balance.round(2) %> </span>  </h3></div> <div class="clearfix"></div> <div class="col-md-12 col-xs-12">  </div><h3 style="color:black; "> Premio Semanal: </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;">$<%= survivor.week_amount.round(2) %> </h3></div> </div> </div><span class="caption fade-caption"><h3 style="text-align:center"><%= survivor.name %> </h3>
+		<div id="box-3" style="background-size: cover; padding:0px; background-color:white" class="box col-md-3 col-xs-12"><div class="row" style="max-height:200px; height:200px;"> <div class="col-md-5 col-xs-5"><h4 style="text-align:center; color:black; font-size:15px; font-weight:800;"><%= survivor.name %></h4> <h4 style="text-align:center"> <img width="100%" style="position:relative; max-height:75px;" src="<%= survivor.background_url %>"></h4> <h3 style="color:black; font-size:15px; "> Participantes: </h3> <h3 style="text-align:center; font-size:20px; color: #2d68ac; text-transform: capitalize; font-weight:800;"> <span>  <%=  survivor.alive_users %> </span> </h3>   <br></div> <div class="col-md-7 col-xs-7"><div class="row"><div class="col-md-12 col-xs-12"><br><br><h3 style="color:black;"> Bolsa: </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;"> <span>$<%= survivor.initial_balance.round(2) %> </span>  </h3></div> <div class="clearfix"></div> <div class="col-md-12 col-xs-12">  </div><h3 style="color:black; "> Premio Semanal: </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;">$<%= survivor.week_amount.round(2) %> </h3></div> </div> </div><span class="caption fade-caption"><h3 style="text-align:center"><%= survivor.name %> </h3>
 		<br>
 		<h5 style="text-align:center">Selecciona tus picks o ve el resumen de tu liga.</h5>
 		<br>
-		<div class="col-md-4">
+		<div class="col-md-4 col-xs-4">
 			<a href="/partials/pickem/<%= survivor.id%>" style="width:100%" class="enter_survivor btn btn-primary">Entrar</a>
 		</div> 
-		<div style="padding-left: 5px; padding-right: 8px;" class="col-md-4">
+		<div style="padding-left: 5px; padding-right: 8px;" class="col-md-4 col-xs-4">
 			<a href="/partials/pick_history/<%= survivor.id%>" style="width:100%" class="enter_survivor btn btn-primary"> Temporada </a>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4 col-xs-4">
 		    <a href="/partials/pickem_week_games_history/<%= survivor.id%>" style="width:100%" class="enter_survivor btn btn-primary"> Semanal </a>
 		</div>
 		</span></div>
@@ -51,21 +51,21 @@
 	<div id="mainwrapper">
 	<h2 style="text-align:center; font-weight:800; color:black;"> Ligas creadas por ti </h2>
 		<hr>
-	 <div class="col-md-12" style="margin-left:6%">
+	 <div class="row" style="margin-left:6%">
 		
 		<%  @survivor_create.each do |survivor| %>
 
-			<div id="box-3" style="background-size: cover; padding:0px; background-color:white;" class="box col-md-3 col-xs-12"><div class="row" style="max-height:200px; height:200px;"> <div class="col-md-5 col-xs-5"><h4 style="text-align:center; color:black; font-size:15px; font-weight:800;"><%= survivor.name %></h4> <h4 style="text-align:center"> <img width="100%" style="position:relative; max-height:75px;" src="<%= survivor.background_url %>"></h4> <h3 style="color:black; font-size:15px; "> Participantes: </h3> <h3 style="text-align:center; font-size:20px; color: #2d68ac; text-transform: capitalize; font-weight:800;"> <span>  <%=  survivor.alive_users %> </span> </h3>   <br></div> <div class="col-md-7 col-xs-7"><div class="row"><div class="col-md-12 col-xs-12"><br><br><h3 style="color:black;"> Bolsa Acumulada </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;"> <span>$<%= survivor.initial_balance.round(2) %> </span>  </h3></div> <div class="clearfix"></div> <div class="col-md-12 col-xs-12">  </div><h3 style="color:black; "> Premio Semanal: </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;">$<%= survivor.week_amount.round(2) %> </h3></div> </div> </div><span class="caption fade-caption"><h3 style="text-align:center"><%= survivor.name %> </h3>
+			<div id="box-3" style="background-size: cover; padding:0px; background-color:white;" class="box col-md-3 col-xs-12"><div class="row" style="max-height:200px; height:200px;"> <div class="col-md-5 col-xs-5"><h4 style="text-align:center; color:black; font-size:15px; font-weight:800;"><%= survivor.name %></h4> <h4 style="text-align:center"> <img width="100%" style="position:relative; max-height:75px;" src="<%= survivor.background_url %>"></h4> <h3 style="color:black; font-size:15px; "> Participantes: </h3> <h3 style="text-align:center; font-size:20px; color: #2d68ac; text-transform: capitalize; font-weight:800;"> <span>  <%=  survivor.alive_users %> </span> </h3>   <br></div> <div class="col-md-7 col-xs-7"><div class="row"><div class="col-md-12 col-xs-12"><br><br><h3 style="color:black;"> Bolsa: </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;"> <span>$<%= survivor.initial_balance.round(2) %> </span>  </h3></div> <div class="clearfix"></div> <div class="col-md-12 col-xs-12">  </div><h3 style="color:black; "> Premio Semanal: </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;">$<%= survivor.week_amount.round(2) %> </h3></div> </div> </div><span class="caption fade-caption"><h3 style="text-align:center"><%= survivor.name %> </h3>
 		<br>
 		<h5 style="text-align:center">Selecciona tus picks o ve el resumen de tu liga.</h5>
 		<br>
-		<div class="col-md-4">
+		<div class="col-md-4 col-xs-4">
 			<a href="/picks/<%= survivor.id%>/edit" style="width:100%" class="enter_survivor btn btn-primary"> Editar </a>
 		</div> 
-		<div class="col-md-4">
+		<div class="col-md-4 col-xs-4">
 			<a href="/partials/pick_history/<%= survivor.id%>" style="width:100%" class="enter_survivor btn btn-primary"> Historial </a>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4 col-xs-4">
 			<a href="invite_friends_pick/<%= survivor.id%>" class="btn btn-primary" data-id="<%= survivor.id%>">Invitar</a>
 		</div>
 		</span></div>

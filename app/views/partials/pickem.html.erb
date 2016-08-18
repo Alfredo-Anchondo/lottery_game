@@ -55,10 +55,10 @@
          
       		<div class="row">
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @pick.price %> </span></h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;"> Entrada: <span style="color:white;">$<%= @pick.price %> </span></h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @pick.initial_balance.round(2) %>  </span> </h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa: <span style="color:white" >$<%= @pick.initial_balance.round(2) %>  </span> </h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
       				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Premio Semanal: <span style="color:white;">$<%= @pick.week_amount.round(2) %> </span></h3>
@@ -79,7 +79,7 @@
 					var user_balance;
 					var user_id = <%= current_user.id %>;
 					var survivor_balance = <%= @pick.initial_balance %>;
-					var survivor_week_survivor_id = <%= @PickSurvivorWeek[0] %>;
+					var survivor_week_survivor_id = <%= @current_pick_survivor_week[0].id %>;
 					var survivor_id = <%= @pick.id %>;
 					var purchase_date = new Date();
 					var survivor_new_balance = parseFloat(survivor_balance) + <%= @pick.price %>;
@@ -169,7 +169,7 @@
       		<div class="row">
       			
       			<div class="col-md-12 col-xs-12">
-      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Bolsa acumulada: <span style="color:white; font-size:24px;"  >$<%= @pick.initial_balance.round(2) %>  </span> </h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Bolsa: <span style="color:white; font-size:24px;"  >$<%= @pick.initial_balance.round(2) %>  </span> </h3>
       				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;"> Premio Semanal: <span style="color:white; font-size:24px;">$<%= @pick.week_amount.round(2) %>  </span>  </h3>
       				
       				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;"> Tipo de bolsa: <span style="color:white"><%= @pick.winner_type == 1 ? 'Equitativa' : '1er, 2do y 3er lugar' %> </span>  </h3>

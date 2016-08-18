@@ -56,7 +56,7 @@
       				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:20px; font-weight:900;">Precio de rebuy : <span style="color:white;">$<%= @current_survivor.price %> </span></h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance.round(2) %>  </span> </h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Bolsa: <span style="color:white" >$<%= @current_survivor.initial_balance.round(2) %>  </span> </h3>
       			</div>
       		</div>
       		
@@ -396,17 +396,17 @@
              <hr>
       		<div class="row">
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Precio de entrada: <span style="color:white;">$<%= @current_survivor.price %> </span></h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Entrada: <span style="color:white;">$<%= @current_survivor.price %> </span></h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance.round(2) %>  </span> </h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa: <span style="color:white" >$<%= @current_survivor.initial_balance.round(2) %>  </span> </h3>
       			</div>
       		</div>
       		
       		<br>
       		<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<hr>
-      		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
+      		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 60%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
       		
       		<script>
 				$('#buy_entry').click(function(){
@@ -483,10 +483,10 @@
              <hr>
       		<div class="row">
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %> </span></h3>
+      				<h3 style="text-align:center; color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:30px; font-weight:900;"> Entrada: <span style="color:white;">$<%= @current_survivor.price %> </span></h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance.round(2) %>  </span> </h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa: <span style="color:white" >$<%= @current_survivor.initial_balance.round(2) %>  </span> </h3>
       			</div>
       		</div>
       		
@@ -494,7 +494,7 @@
       		<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<h3><%= @survivor_week_sur[0].id %></h3>
       		<hr>
-      		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
+      		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 60%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
       		
       		<script>
 				$('#buy_entry').click(function(){
@@ -587,17 +587,17 @@
              <hr>
       		<div class="row">
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Precio de ingreso: <span style="color:white;">$<%= @current_survivor.price %> </span></h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-size:30px; font-weight:900;">Entrada: <span style="color:white;">$<%= @current_survivor.price %> </span></h3>
       			</div>
       			<div class="col-md-6 col-xs-6">
-      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa acumulada: <span style="color:white" >$<%= @current_survivor.initial_balance.round(2) %>  </span> </h3>
+      				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa: <span style="color:white" >$<%= @current_survivor.initial_balance.round(2) %>  </span> </h3>
       			</div>
       		</div>
       		
       		<br>
       		<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<hr>
-      		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
+      		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 60%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
       		
       		<script>
 				$('#buy_entry').click(function(){
