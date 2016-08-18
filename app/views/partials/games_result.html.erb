@@ -80,7 +80,7 @@
 						 if (data.survivor_games[i].visit_score !== null){
 		             visit_score_label = "<label class='score_label_client'>" + data.survivor_games[i].visit_score + "</label>";
 						 }
-								$('#games_row').append('<div class="col-md-4 col-xs-12 teams-div"><h4 style="text-align: center; color:black;"> Fecha del juego: <span>'+moment(data.survivor_games[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+'  </span> </h4> <div class="col-md-6 col-xs-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team.id+'"><img width="50%" src="' + image_url + '">' + winner_team_1 + local_score_label + '</div><div class="col-md-6 col-xs-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team2.id+'">' + winner_team_2 + visit_score_label + '<img width="50%" src="' + image_url2 + '"></div></div>');
+								$('#games_row').append('<div class="col-md-4 col-xs-12 teams-div"><h4 style="text-align: center; color:black;"> <span>'+moment(data.survivor_games[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+'  </span> </h4> <div class="col-md-6 col-xs-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team.id+'"><img width="50%" src="' + image_url + '">' + winner_team_1 + local_score_label + '</div><div class="col-md-6 col-xs-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team2.id+'">' + winner_team_2 + visit_score_label + '<img width="50%" src="' + image_url2 + '"></div></div>');
 		         }
 				  }
 
