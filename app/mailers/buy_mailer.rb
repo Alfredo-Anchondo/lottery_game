@@ -6,6 +6,18 @@ class BuyMailer < ActionMailer::Base
 		@saldo = saldo
 		mail(to: @user.email, subject: '[DonBillete] Compra de Saldo DonBillete')
 	end
+    
+    def admin_resume_lottery(lottery)
+        @lottery = lottery
+        @mails = ['alfredo_anchondo@hotmail.com','marianolascurain@gmail.com','rodrigolascurain@gmail.com']
+        mail(to: @mails, subject: '[DonBillete] Resumen de loteria')
+    end
+    
+     def admin_resume_tira(tira)
+        @tira = tira
+        @mails = ['alfredo_anchondo@hotmail.com','marianolascurain@gmail.com','rodrigolascurain@gmail.com']
+        mail(to: @mails, subject: '[DonBillete] Resumen de loteria')
+    end
 	
 	def buy_survivor_entry(survivor,user, next_week)
 		@user = user

@@ -20,7 +20,8 @@ class Game < ActiveRecord::Base
 
         y = Lottery.where('game_id = ?', x.id).first
 			if y != nil && y != '' && y != []
-        z = User.where(:id => UserLottery.where('lottery_id = ?', y.id).pluck(:user_id).uniq).pluck(:email, :id)
+                 z = User.where(:id => UserLottery.where('lottery_id = ?', y.id).pluck(:user_id).uniq).pluck(:email, :id)
+                 BuyMailer.admin_resume_lottery(y).deliver
 			end
 			if z
          z.each do |variable|
@@ -38,6 +39,7 @@ class Game < ActiveRecord::Base
 	     q = Quiniela.where('game_id = ?', x.id)
 		if q != nil && q != '' && q != []
 			q.each do |tira|
+                 BuyMailer.admin_resume_tira(tira).deliver
 				 q_mails = User.where(:id => QuinielaUser.where('quiniela_id = ?', tira.id).pluck(:user_id).uniq).pluck(:email, :id)
 	
 		if q_mails

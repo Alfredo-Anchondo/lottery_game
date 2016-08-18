@@ -14,7 +14,13 @@ class Quiniela < ActiveRecord::Base
 	def total_sales
 		QuinielaUser.where('quiniela_id = ?', id).length
 	end
+        
+        
+    def participant_users
+		QuinielaUser.where('quiniela_id = ?', id).pluck(:user_id).uniq().count
+	end
 
+        
 	def self.quiniela_game
 		game.game_date
 	end

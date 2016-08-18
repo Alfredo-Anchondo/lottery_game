@@ -32,5 +32,9 @@ class Lottery < ActiveRecord::Base
 	def total_sales
 		UserLottery.where('lottery_id = ?', id).length
 	end
+    
+    def participant_users
+        UserLottery.where('lottery_id = ?', id).pluck(:user_id).uniq().count
+    end
 end
 
