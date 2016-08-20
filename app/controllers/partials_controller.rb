@@ -444,7 +444,7 @@ end
 	def pickem
 		@pick = Pick.find(params[:id])
 		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, @pick.sport_category_id)
-		@PickSurvivorWeek = PickSurvivorWeek.where(:pick_id => params[:id]).pluck(:id)
+		@PickSurvivorWeek = PickSurvivorWeek.where(:pick_id => params[:id]).order(:id).pluck(:id)
         @current_pick_survivor_week = PickSurvivorWeek.where('pick_id = ? AND survivor_week_game_id = ?',params[:id],@current_week[0].id)
 		@tickets_purchase = PickUser.where('user_id = ? AND pick_survivor_week_id = ?', current_user.id, @PickSurvivorWeek[0])
         @current_tickets_purchase = PickUser.where('user_id = ? AND pick_survivor_week_id = ?', current_user.id, @current_pick_survivor_week[0].id).pluck(:pick_user_id)

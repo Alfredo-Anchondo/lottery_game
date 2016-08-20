@@ -682,7 +682,7 @@
 		if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= $('#lottery_price').val()){
 				current_balance = <%= current_user.gift_credit %>;
 				  lottery_price = $('#lottery_price').val();
-        var current_bag = parseInt($('#initial_balance').text());
+        var current_bag = (lottery_price * 0.95) + parseInt($('#initial_balance').text())  ;
         var total_balance_update = current_balance - lottery_price;
             $.ajax({
                       method: "PUT",
@@ -706,7 +706,7 @@
 			}else{
 				  current_balance = <%= current_user.balance %>;
 							  lottery_price = $('#lottery_price').val();
-        var current_bag = parseInt($('#initial_balance').text());
+        var current_bag = (lottery_price * 0.95) + parseInt($('#initial_balance').text());
         var total_balance_update = current_balance - lottery_price;
             $.ajax({
                       method: "PUT",
@@ -751,7 +751,7 @@
                  lottery_id = $('#lottery_id_modal').val();
 				  var gift_tickets = $('#gift_modal').val();  
                  lottery_price = $('#total_price_modal').text();
-                 var current_bag = parseInt($('.total_modal_initial_balance').text());
+                 var current_bag = (parseInt(lottery_price) * 0.95) + parseInt($('.total_modal_initial_balance').text()) ;
                
 		if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= lottery_price){
 				current_balance = <%= current_user.gift_credit %>;
@@ -1095,7 +1095,7 @@
          var lottery_id = $('#lotteries_random').val();
          var normal_buy;
          var lottery_price = $('#lotteries_random option:selected').data('price');
-         var current_bag = $('#lotteries_random option:selected').data('balance');
+         var current_bag = parseInt($('#lotteries_random option:selected').data('balance')) + (parseInt(lottery_price) * 0.95);
 		 if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= lottery_price){
 			 var current_balance = <%= current_user.gift_credit %>;
 			 normal_buy = false;
@@ -1173,7 +1173,7 @@
          var lottery_id = $('#lotteries_random2').val();
          var normal_buy;
          var lottery_price = $('#lotteries_random2 option:selected').data('price');
-         var current_bag = $('#lotteries_random2 option:selected').data('balance');
+         var current_bag =   (parseInt(lottery_price) * 0.95) + parseInt($('#lotteries_random2 option:selected').data('balance'));
 		 if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= lottery_price){
 			 var current_balance = <%= current_user.gift_credit %>;
 			 normal_buy = false;

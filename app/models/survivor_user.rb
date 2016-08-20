@@ -4,6 +4,7 @@ class SurvivorUser < ActiveRecord::Base
   scope :loser, -> { where(:status => "loser") }
   scope :alive, -> { where(:status => "alive") }
   scope :winner, -> { where(:status => "winner") }
+  scope :already_rebuy, -> { where(:status => "already_rebuy") }    
 
   #ASSOCIATIONS
   belongs_to :survivor_week_survivor
@@ -80,7 +81,7 @@ class SurvivorUser < ActiveRecord::Base
   def discount_price
 	 previous_survivor_week_survivor = survivor_week_survivor.previous_survivor_week_survivor
 
-    if previous_survivor_week_survivor.nil? || previous_survivor_week_survivor.survivor_users.alive.find_by(:survivor_user_id => survivor_user_id).nil?
+    if previous_survivor_week_survivor.nil? || previous_survivor_week_survivor.survivor_users.alive.find_by(:survivor_user_id => survivor_user_id).nil? || previous_survivor_week_survivor.survivor_users.already_rebuy.find_by(:survivor_user_id => survivor_user_id).nil?  
     	if user.gift_credit.to_f >= survivor_week_survivor.survivor.price.to_f
         user.update(:gift_credit => user.gift_credit.to_f - survivor_week_survivor.survivor.price.to_f)
 		survivor.update(:initial_balance => survivor.initial_balance + survivor.price)	
@@ -90,4 +91,5 @@ class SurvivorUser < ActiveRecord::Base
     	end
     end
   end
+    
 end

@@ -31,12 +31,12 @@
       
       </div>
       <div class="panel-body">
-          <h4>El partido a comenzado: <%= @game.format_date %> </h4>
+          <h4>El partido ha comenzado: <%= @game.format_date %> </h4>
            <h3 style="margin-left:30%; margin:0px; font-weight:900; color:black" id="ticket_name_modal"><%= @game.team.name + '   vs   ' + @game.team2.name %> </h3>  
           <div class="margin-center row">
           <div class="col-md-12 " style="">
                 <div class="row" style="padding:0px">
-                    <h2 style="color:black; font-weight:800;">El valor de la bolsa quedo en: <%= @lottery.initial_balance %> DB</h2>
+                    <h2 style="color:black; font-weight:800;">El valor de la bolsa quedo en: $<%= @lottery.initial_balance %> </h2>
                     <h2 style="color:black; font-weight:800;">Te deseamos mucho suerte, tus billetes participantes para la Tira son:</h2>
                     <h1 style="color:black; font-weight:900;"> Billete: <%= @tickets %> </h1>
                     <h1> Veces comprado: <%= @repeat_number %> </h1>

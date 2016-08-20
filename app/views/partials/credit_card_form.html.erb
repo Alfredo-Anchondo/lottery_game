@@ -22,7 +22,15 @@
      })
      
      $("input[name='amountradio']").change(function(){
-         var amount_select = $("input[name='amountradio']:checked").val();
+          if ($(this).val() == 'otra'){
+               $('#other_quantity').show();
+              var amount_select = $("#other_quantity").val();
+        }else{
+              $('#other_quantity').hide();
+              var amount_select = $("input[name='amountradio']:checked").val();
+        }
+         
+       
          $('#amount').val(amount_select);
      })
     
@@ -48,6 +56,9 @@
          event.preventDefault();
          $('#pay-button-used').prop('disabled', true);
          var current_id = $("input[name='optradio']:checked").val();
+         if(current_id == 'otra'){
+             current_id = $('#quantity_select').val();
+         }
          $('#token_id').val(current_id);
           $('#payment-form').submit();
      })
@@ -82,6 +93,8 @@
                <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="200" name="amountradio"><span style="color:#696969; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 200 DB </span> </label>
                <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="500" name="amountradio"><span style="color:#696969; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 500 DB </span> </label>
                <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="1000" name="amountradio"><span style="color:#696969; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> 1000 DB </span> </label>
+               <label style="margin-left:30px; margin-top:30px; font-weight:900; font-size:18px" ><input style="" type="radio" value="otra" name="amountradio"><span style="color:#696969; padding-left:10px;"><i class="fa fa-ticket fa-2x"></i> Otra cantidad </span> </label>
+               <input id="other_quantity"  placeholder="Selecciona una cantidad" style="display:none; border:2px solid blue;" type="number" max="70000" class="form-control">
         </div>
     </div>
     </div>
@@ -204,3 +217,7 @@ $('.delete_card').click(function(e){
               }
                             });
 </script>
+
+
+
+
