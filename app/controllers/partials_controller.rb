@@ -135,7 +135,7 @@ end
         response_hash = @charges.create(request_hash.to_hash, customer['id'])
 		porcentaje = Integer(params[:amount]) * 0.25
         current_user.update_attribute(:balance,(current_user.balance + Integer(params[:amount])))
-		current_user.update_attribute(:gift_credit, (current_user.gift_credit.to_f + porcentaje))
+		#current_user.update_attribute(:gift_credit, (current_user.gift_credit.to_f + porcentaje))
 		BuyMailer.buy_saldo(current_user, params[:amount]).deliver
         render "complete_buy"
          rescue OpenpayException => e
