@@ -38,11 +38,12 @@ class Survivor < ActiveRecord::Base
 	survivor_week_survivor = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?',id, last_survivor_week_game.id)   
    alives = survivor_users.where(:survivor_week_survivor_id => survivor_week_survivor[0].id).alive
    losers = survivor_users.where('survivor_week_survivor_id = ? and status = ?', survivor_week_survivor[0].id,'loser') 
+   already_rebuy =  survivor_users.where('survivor_week_survivor_id = ? and status = ?', survivor_week_survivor[0].id,'alreadyrebuy')     
       loser_count = 0
       losers.each do |loser|
        loser_count += SurvivorUser.where('survivor_user_id = ? and status =? and survivor_week_survivor_id = ?' , loser.survivor_user_id,'loser',survivor_week_survivor[0].id).count
       end
-      return alives.count + loser_count
+      return alives.count + loser_count + already_rebuy.count
       
   end
 

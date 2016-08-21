@@ -4,7 +4,7 @@ class SurvivorUser < ActiveRecord::Base
   scope :loser, -> { where(:status => "loser") }
   scope :alive, -> { where(:status => "alive") }
   scope :winner, -> { where(:status => "winner") }
-  scope :already_rebuy, -> { where(:status => "already_rebuy") }    
+  scope :alreadyrebuy, -> { where(:status => "alreadyrebuy") }    
 
   #ASSOCIATIONS
   belongs_to :survivor_week_survivor
@@ -80,8 +80,12 @@ class SurvivorUser < ActiveRecord::Base
 
   def discount_price
 	 previous_survivor_week_survivor = survivor_week_survivor.previous_survivor_week_survivor
+        
+      logger.info SurvivorUser.where('survivor_week_survivor_id = ? and status = ? and survivor_user_id = ?',previous_survivor_week_survivor.id,'alreadyrebuy', survivor_user_id).count
+      
+     logger.info SurvivorUser.where('survivor_week_survivor_id = ? and status = ? and survivor_user_id = ?',previous_survivor_week_survivor.id,'alive', survivor_user_id).count
 
-    if previous_survivor_week_survivor.nil? || previous_survivor_week_survivor.survivor_users.alive.find_by(:survivor_user_id => survivor_user_id).nil? || previous_survivor_week_survivor.survivor_users.already_rebuy.find_by(:survivor_user_id => survivor_user_id).nil?  
+    if  SurvivorUser.where('survivor_week_survivor_id = ? and status = ? and survivor_user_id = ?',previous_survivor_week_survivor.id,'alreadyrebuy', survivor_user_id).count == 0 && SurvivorUser.where('survivor_week_survivor_id = ? and status = ? and survivor_user_id = ?',previous_survivor_week_survivor.id,'alive', survivor_user_id).count == 0   
     	if user.gift_credit.to_f >= survivor_week_survivor.survivor.price.to_f
         user.update(:gift_credit => user.gift_credit.to_f - survivor_week_survivor.survivor.price.to_f)
 		survivor.update(:initial_balance => survivor.initial_balance + survivor.price)	

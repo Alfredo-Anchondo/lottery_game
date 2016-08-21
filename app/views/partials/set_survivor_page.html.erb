@@ -118,8 +118,24 @@
 					<h4 style="text-align:center"><img width="80%" src="<%= team_choose_id %>"></h4>
 					<h3 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;"> <%= team_choose_name %></h3>
 					<h4 style="text-align:center">
-					    <button class="btn btn-danger"> Cambiar Selección </button>
+					    <button id="change_team" class="btn btn-danger"> Cambiar Selección </button>
 					</h4>
+	
+					<script>
+                        $(document).ready(function(){
+                            $('#change_team').click(function(){
+                              $.ajax({
+									  method: "Get",
+									  url: "/partials/delete_ticket",
+									  dataType: "json",     
+									  data: { last_tickets_purchase: <%= @last_tickets_purchase.pluck(:id) %>, entry: <%= entry.id %>, tickets_purchase: <%= @tickets_purchase.pluck(:id) %>  }
+									}).complete(function( data) {
+                                        location.reload();
+                                    })    
+                            })
+                        })
+                    </script>
+					
 					
 				</div>
 				 	
@@ -159,7 +175,7 @@
 					 		
 					 		
 					 		<hr>
-					 		<% if buy %>
+					 		<% if buy == true %>
 					 		<h3 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Equipos que ya haz seleccionado</h3>
 				 			 <h4>
 				 			  <% logger.info hash_select_teams[entry.survivor_user_id] %>
@@ -208,7 +224,20 @@
 					 			<h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Handicap del equipo: <span style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_select_handicap"></span></h4>
 					 			</div>
 					 			<div class="clearfix"></div>
+					 			 <% if @last_tickets_purchase.where('survivor_user_id = ?', entry.survivor_user_id).last.status == 'loser' %>
+                                  <% if @games == 0  %>
+                                     <h5 style="color:white"><span style="color:red;">*</span>Tu boleto de la semana anterior resulto perdedor si deseas continuar participando se te cobrara el costo del rebuy al lado izquierdo. Al confirmar equipo estas aceptando el cobro de esta cantidad.
+                                     Recuerda que tienes hasta antes de que comienze el primer partido para utilizar tu rebuy, una ves que comienze el primer partido ya no podras utilizar tu rebuy
+                                     </h5>
+                                      <button data-survivorcode=" <%= entry.survivor_user_id %>" style="width:100%; font-weight:900; background-color:white; color:black;" class="btn buy-ticket btn-primary"> Comprar rebuy </button>
+                                  <% else %>
+                                       <h5 style="color:white"><span style="color:red;">*</span>Lo sentimos pero el tiempo para comprar tu rebuy termino. El boleto para esta semana sera tomado como perdedor.</h5>
+                                  <% end %>
+					 			     
+					 			 <% else %>
 					 			<button data-survivorcode=" <%= entry.survivor_user_id %>" style="width:100%; font-weight:900; background-color:white; color:black;" class="btn buy-ticket btn-primary"> Seleccionar equipo </button>
+					 			
+					 			<% end %> 
 					 		</div>
 					 		<% else %>
 					 		<div>

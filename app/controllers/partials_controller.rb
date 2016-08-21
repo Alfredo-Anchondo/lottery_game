@@ -317,12 +317,31 @@ end
 			else
 		@last_tickets_purchase_teams = SurvivorUser.where('user_id = ?', current_user.id)
 		@last_tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @last_survivor_week_sur[0].id)
+        @games = SurvivorGame.where('survivor_week_game_id = ? and game_date < ?',@current_week[0].id, Time.now).count    
 		end
 	end
 	
 	def close_quinielas
 		render :json =>	Quiniela.where('winner_number != ? ', '').order(id: :desc).first(10)
 	end
+    
+    				
+    def delete_ticket
+        render :nothing => true
+        last_tickets_purchase = SurvivorUser.where('id = ?' ,params[:last_tickets_purchase])
+        entry = SurvivorUser.where('id = ?',params[:entry])
+        logger.info params[:tickets_purchase]
+        tickets_purchase = SurvivorUser.where('id = ?',params[:tickets_purchase])
+        
+        
+         last_ticket = last_tickets_purchase.where('survivor_user_id = ? and status = ?',entry[0].survivor_user_id,'loser').exists? 
+             if last_ticket == true
+                last_tickets_purchase.where('survivor_user_id = ? and status = ?',entry[0].survivor_user_id,'loser').first.update(:status => 'alreadyrebuy')
+             else
+             end  
+                tickets_purchase.where('survivor_user_id = ?',entry[0].survivor_user_id).first().delete()
+        return true
+    end 
 	
 	 @survivor_id 
 	 @survivor_create

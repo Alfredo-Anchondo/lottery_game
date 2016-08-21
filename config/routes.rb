@@ -122,6 +122,7 @@ Rails.application.routes.draw do
             get "buy_error"
 			get "tickets_history"
 			get "client_details"
+            get "delete_ticket", to: 'partials#delete_ticket'
             get 'lottery'
             get 'get_quinielas_mainpage', to: "partials#get_quinielas_mainpage"
 		    get "/lotteries/:id", to: "partials#lotteries"
