@@ -25,7 +25,7 @@ class Pick < ActiveRecord::Base
   	end
     
     def week_amount
-        if percentage_per_week.nil?
+        if percentage_per_week.nil? != true
         percentage_per_week/100 * initial_balance
             else
             return 0
