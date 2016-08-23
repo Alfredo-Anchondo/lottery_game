@@ -25,7 +25,11 @@ class Pick < ActiveRecord::Base
   	end
     
     def week_amount
+        if pecentege_per_week.exist?
         percentage_per_week/100 * initial_balance
+            else
+            return 0
+        end
     end
 	
 	
