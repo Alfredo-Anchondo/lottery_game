@@ -80,11 +80,18 @@ class SurvivorUser < ActiveRecord::Base
 
   def discount_price
 	 previous_survivor_week_survivor = survivor_week_survivor.previous_survivor_week_survivor
-        
-      logger.info SurvivorUser.where('survivor_week_survivor_id = ? and status = ? and survivor_user_id = ?',previous_survivor_week_survivor.id,'alreadyrebuy', survivor_user_id).count
       
-     logger.info SurvivorUser.where('survivor_week_survivor_id = ? and status = ? and survivor_user_id = ?',previous_survivor_week_survivor.id,'alive', survivor_user_id).count
-
+      if survivor_week_survivor.survivor_week_game.week == 0
+          	if user.gift_credit.to_f >= survivor_week_survivor.survivor.price.to_f
+        user.update(:gift_credit => user.gift_credit.to_f - survivor_week_survivor.survivor.price.to_f)
+		survivor.update(:initial_balance => survivor.initial_balance + survivor.price)	
+    	else
+        user.update(:balance => user.balance - survivor_week_survivor.survivor.price)
+		survivor.update(:initial_balance => survivor.initial_balance + survivor.price)	
+    	end
+          else
+          
+        
     if  SurvivorUser.where('survivor_week_survivor_id = ? and status = ? and survivor_user_id = ?',previous_survivor_week_survivor.id,'alreadyrebuy', survivor_user_id).count == 0 && SurvivorUser.where('survivor_week_survivor_id = ? and status = ? and survivor_user_id = ?',previous_survivor_week_survivor.id,'alive', survivor_user_id).count == 0   
     	if user.gift_credit.to_f >= survivor_week_survivor.survivor.price.to_f
         user.update(:gift_credit => user.gift_credit.to_f - survivor_week_survivor.survivor.price.to_f)
@@ -94,6 +101,7 @@ class SurvivorUser < ActiveRecord::Base
 		survivor.update(:initial_balance => survivor.initial_balance + survivor.price)	
     	end
     end
+   end
   end
     
 end
