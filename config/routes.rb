@@ -82,11 +82,13 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+            get "select_pick_1/:id", to: "partials#select_pick_1"
             get 'tiras'
             get 'survivor_rules'
             get 'pickem_rules'
             get 'pickem_week_games_history/:id', to: 'partials#pickem_week_games_history'
 			get 'pickem_game'
+            get "select_week_1/:id", to: "partials#select_week_1"
             get 'games_result'
             get 'response_access_pick/:id_request/:id_owner/:survivor/:response', to: "partials#response_access_pick"
             get 'response_request/:id_request/:id_owner/:survivor/:response', to: "partials#response_request"

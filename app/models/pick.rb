@@ -14,6 +14,10 @@ class Pick < ActiveRecord::Base
 	def background_url
 		background.url
 	end
+    
+    def entry_quantity
+        pick_users.where("")
+    end
 	
 	def alive_users
        zero_pick = pick_survivor_weeks.where(:survivor_week_game_id => survivor_week_games.where(:week => 0).pluck(:id) )

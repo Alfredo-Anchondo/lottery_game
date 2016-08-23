@@ -320,6 +320,21 @@ end
         @games = SurvivorGame.where('survivor_week_game_id = ? and game_date < ?',@current_week[0].id, Time.now).count    
 		end
 	end
+    
+    	def select_week_1
+		@current_survivor = Survivor.find(params[:id])
+		@current_week = SurvivorWeekGame.where('week = ? AND sport_category = ?', 1, 6)
+		@survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],@current_week[0].id)
+		@last_survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],(@current_week[0].id - 1))
+		@tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @survivor_week_sur[0].id)
+		if @current_week[0].week == 0 
+			
+			else
+		@last_tickets_purchase_teams = SurvivorUser.where('user_id = ?', current_user.id)
+		@last_tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @last_survivor_week_sur[0].id)
+        @games = SurvivorGame.where('survivor_week_game_id = ? and game_date < ?',@current_week[0].id, Time.now).count    
+		end
+	end
 	
 	def close_quinielas
 		render :json =>	Quiniela.where('winner_number != ? ', '').order(id: :desc).first(10)
@@ -465,6 +480,16 @@ end
 	def pickem
 		@pick = Pick.find(params[:id])
 		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, @pick.sport_category_id)
+		@PickSurvivorWeek = PickSurvivorWeek.where(:pick_id => params[:id]).order(:id).pluck(:id)
+        @current_pick_survivor_week = PickSurvivorWeek.where('pick_id = ? AND survivor_week_game_id = ?',params[:id],@current_week[0].id)
+		@tickets_purchase = PickUser.where('user_id = ? AND pick_survivor_week_id = ?', current_user.id, @PickSurvivorWeek[0])
+        @current_tickets_purchase = PickUser.where('user_id = ? AND pick_survivor_week_id = ?', current_user.id, @current_pick_survivor_week[0].id).pluck(:pick_user_id)
+		@games = SurvivorGame.where('survivor_week_game_id = ?',@current_week[0].id).order(:game_date)
+	end
+    
+    def select_pick_1
+		@pick = Pick.find(params[:id])
+		@current_week = SurvivorWeekGame.where('week = ? AND sport_category = ?',1, @pick.sport_category_id)
 		@PickSurvivorWeek = PickSurvivorWeek.where(:pick_id => params[:id]).order(:id).pluck(:id)
         @current_pick_survivor_week = PickSurvivorWeek.where('pick_id = ? AND survivor_week_game_id = ?',params[:id],@current_week[0].id)
 		@tickets_purchase = PickUser.where('user_id = ? AND pick_survivor_week_id = ?', current_user.id, @PickSurvivorWeek[0])
