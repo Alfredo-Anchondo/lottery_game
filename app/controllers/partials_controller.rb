@@ -328,11 +328,13 @@ end
     				
     def delete_ticket
         render :nothing => true
-        last_tickets_purchase = SurvivorUser.where('id = ?' ,params[:last_tickets_purchase])
+        last_tickets_purchase = SurvivorUser.where(:id => params[:last_tickets_purchase])
         entry = SurvivorUser.where('id = ?',params[:entry])
         logger.info params[:tickets_purchase]
-        tickets_purchase = SurvivorUser.where('id = ?',params[:tickets_purchase])
-        
+        tickets_purchase = SurvivorUser.where(:id => params[:tickets_purchase])
+         logger.info entry[0]
+        logger.info last_tickets_purchase
+         logger.info "///////////////////"
         
          last_ticket = last_tickets_purchase.where('survivor_user_id = ? and status = ?',entry[0].survivor_user_id,'loser').exists? 
              if last_ticket == true

@@ -125,7 +125,7 @@
                         $(document).ready(function(){
                             $('#change_team').click(function(){
                               $.ajax({
-									  method: "Get",
+									  method: "post",
 									  url: "/partials/delete_ticket",
 									  dataType: "json",     
 									  data: { last_tickets_purchase: <%= @last_tickets_purchase.pluck(:id) %>, entry: <%= entry.id %>, tickets_purchase: <%= @tickets_purchase.pluck(:id) %>  }
