@@ -71,7 +71,12 @@
       		<br>
       		<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @pick.alive_users %> </span>  </h3>
       		<hr>
-      		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
+                <% if @current_tickets_purchase.count >= 2 && @pick.id == 8 %>
+                <h4 style="text-align:center; color:white;">  Lo sentimos pero esta liga esta limitada a dos entradas por usuario. </h4>
+                <% else %>
+                	<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 50%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
+                <% end %>
+      	
                 
                 <% if @current_tickets_purchase.count > 0 %>
                 <h4 style="text-align:center"><a href="/partials/select_pick_1/<%= @pick.id %>" id="buy_entry" class="btn btn-success btn-lg" style="width: 50%;  font-weight:900;">Seleccionar Pick Semana 1 </a></h4>

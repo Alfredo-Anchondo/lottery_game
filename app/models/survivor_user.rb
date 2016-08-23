@@ -23,10 +23,21 @@ class SurvivorUser < ActiveRecord::Base
   after_create :discount_price
   after_create :update_survivor_user_id
   after_create :send_buy_mail	
+  before_create :can_buy    
 
   #METHODS
   protected
 
+  def can_buy
+      if survivor.id == 14
+          if SurvivorUser.where("user_id = ? and survivor_week_survivor_id = ?",user.id,survivor_week_survivor_id).count >= 2
+              return false
+          end
+              
+      end
+  end
+      
+    
   def send_buy_mail
 	  if survivor_week_survivor.survivor_week_game.week == 0
 		 week_1 = SurvivorWeekGame.find_by week: 1, sport_category: 6

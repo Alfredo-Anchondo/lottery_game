@@ -8,6 +8,7 @@ class PickUser < ActiveRecord::Base
   after_create :update_survivor_user_id	
   after_create :discount_price	
   after_create :send_buy_mail	
+  before_create :tickets_quantity    
 	
 	def update_survivor_user_id
 		if pick_user_id.blank?
@@ -15,6 +16,14 @@ class PickUser < ActiveRecord::Base
 		end
 	end
 	
+    def tickets_quantity
+          if pick.id == 8
+          if SurvivorUser.where("user_id = ? and survivor_week_survivor_id = ?",user.id,pick_survivor_week.id).count >= 2
+              return false
+          end
+              
+      end
+    end
 	
   def send_buy_mail
 	  if pick_survivor_week.survivor_week_game.week == 0

@@ -158,7 +158,7 @@
 					 		 <span style="color:red; text-align:center;"> Perdedor </span>
 							<% end %></h4>
 					 		<% if @last_tickets_purchase.where('survivor_user_id = ?', entry.survivor_user_id).last.status == 'loser'  %>
-					 		
+					 		    <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;"> *Recuerda que si deseas continuar jugando tu entrada tendra el costo marcado del lado izquierdo en precio de rebuy.</h4>
 					 		<% end %>
 					 		<h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Cantidad de veces perdidas: <span style="color:#2D68AC"> <%= losses %> </span></h4>
 					 		<% if losses > rebuy %>
@@ -170,7 +170,7 @@
 					 			<% else %>
 					 			<% buy = true %>
 					 			<h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Aun tienes rebuys disponibles</h4>
-					 			<h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;"> *Recuerda que si deseas continuar jugando tu entrada tendra el costo marcado del lado izquierdo en precio de rebuy.</h4>
+					 			
 					 		<% end %>
 					 		
 					 		
@@ -439,8 +439,14 @@
       		<br>
       		<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<hr>
-      		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 60%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
                 
+                 <% if @tickets_purchase.count >= 2 && @current_survivor.id == 14 %>
+                <h4 style="text-align:center; color:white;">  Lo sentimos pero esta liga esta limitada a dos entradas por usuario. </h4>
+                <% else %>
+      		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 60%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
+                <% end %>
+                
+              
                  <% if @tickets_purchase.count != 0 %>
                     <h4 style="text-align:center"><a href="/partials/select_week_1/<%= @current_survivor.id %>" class="btn btn-success btn-lg" style="width: 60%;  font-weight:900;">Seleccionar equipo semana 1 </a></h4>
                 <% end %>
