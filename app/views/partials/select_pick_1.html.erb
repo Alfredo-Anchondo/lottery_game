@@ -208,3 +208,47 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+<script>
+               $('#confirm_buy').click(function(){
+                   $(this).prop('disabled','disabled');
+                        var local_score = $('#local_score').val();
+                        var visit_score = $('#visit_score').val();
+                        var user_id = <%= current_user.id %>;
+                        var purchase_date = new Date();
+                        var pick_survivor = <%= @current_pick_survivor_week[0].id %>;
+                        var pick_user_id =  $('#pick_user_id').val();
+                        
+                         $.ajax({
+									  method: "POST",
+									  url: "/pick_users",
+									  dataType: "json",     
+									  data: { pick_user: {pick_survivor_week_id: pick_survivor,  user_id: user_id ,purchase_date: purchase_date, pick_user_id: pick_user_id, local_score: local_score , visit_score: visit_score, status: "alive"}  }
+									}).done(function(data) {
+                                      var teams = $('#select_teams').val();
+                                      var games= $('#select_games').val();
+                                      var teams_array = teams.split(',');
+                                      var games_array = games.split(',');
+                                
+                             for(var i=0; i < teams_array.length; i++){
+                                    $.ajax({
+									  method: "POST",
+									  url: "/pick_user_games",
+									  dataType: "json",     
+									  data: { pick_user_game: {pick_user_id: data, points: 1, team_id: teams_array[i], survivor_game_id: games_array[i] }  }
+									}).done(function(response) {
+                                       
+                                    })
+                             }
+                             
+                                     $('#confirm_modal').modal('hide');
+                                    $('#thanks_modal').modal('show');
+                                      setTimeout(function(){    window.location.assign("/partials/my_pickem_leagues"); }, 4000);
+                                    
+                         })
+                   
+                        
+                    })
+
+</script>
