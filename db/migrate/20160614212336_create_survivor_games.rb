@@ -4,7 +4,7 @@ class CreateSurvivorGames < ActiveRecord::Migration
       t.references :team, index: true, null:false
 	    t.foreign_key :teams
       t.references :team2, index: true, null:false
-      t.integer :handicap
+      t.float :handicap
       t.integer :plus_handicap
       t.text :description 
       t.text :type_update    
