@@ -89,7 +89,7 @@
 					<h4 style="text-align:center"><img width="80%" src="<%= team_choose_id %>"></h4>
 					<h3 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;"> <%= team_choose_name %></h3>
 					<h4 style="text-align:center">
-                        <% survivors_games = SurvivorGame.where("survivor_week_game_id = ?",entry.survivor_week_survivor.survivor_week_game_id) 
+                        <% survivors_games = SurvivorGame.where("survivor_week_game_id = ?",@current_week[0].id) 
                             current_game = survivors_games.where("team_id = ? OR team2_id = ?", team_choose_name_id, team_choose_name_id) %>
                         <% if current_game[0] ? current_game[0].game_date > Time.now : "" %>
 					    <button id="change_team" class="btn btn-danger"> Cambiar Selección </button>
