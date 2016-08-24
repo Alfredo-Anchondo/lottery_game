@@ -226,7 +226,7 @@
                                   <h4 style="text-align:center"> <img width="40%" class="<%= selected == true ? "selected_team": "" %>" src="<%= game.survivor_game.team.logo_url %>"> </h4>
                               </div>
                               <div class="col-md-4 col-xs-4">
-                                  <h4 style="color:white; text-align:center;"><%= game.team.name %> </h4>
+                                  <h4 style="color:white; font-size:12px; text-align:center;"><%= game.team.name %> </h4>
                                 <% if  game.survivor_game.game_date > Time.now  %>
                                   <h4 style="text-align:center;"><button class="btn btn-sm btn-primary change-team" data-team = "<%= selected == true ? game.survivor_game.team2.id : game.survivor_game.team.id  %>" data-id = "<%= game.id %> ">Cambiar equipo</button></h4>
                                   <% end %>
