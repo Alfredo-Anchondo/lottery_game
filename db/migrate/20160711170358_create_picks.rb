@@ -12,10 +12,10 @@ class CreatePicks < ActiveRecord::Migration
       t.float :initial_balance, :null => false, :default => 1
       t.string :access_key
       t.integer :users_quantity
-      t.float :percentage
+      t.float :percentage, :default => 0
 	  t.integer :pick_type
       t.integer :winner_type    
-      t.float :percentage_per_week   
+      t.float :percentage_per_week,  :default => 0 
       t.float :first_percentage  
       t.float :second_percentage  
       t.float :third_percentage  

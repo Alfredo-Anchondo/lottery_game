@@ -91,7 +91,7 @@
                         <% survivors_games = SurvivorGame.where("survivor_week_game_id = ?",entry.survivor_week_survivor.survivor_week_game.id)  current_game = survivors_games.where("team_id = ? or team2_id = ?",entry.team.id,entry.team.id) %>
                         <% if current_game.game_date > Time.now %>
 					    <button id="change_team" class="btn btn-danger"> Cambiar Selección </button>
-                        <% else %>
+                        <% end %>
 					</h4>
 	
 					<script>
