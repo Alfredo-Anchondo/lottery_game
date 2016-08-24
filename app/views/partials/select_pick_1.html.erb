@@ -120,16 +120,16 @@
                           <% selected = game.survivor_game.team.id == game.team.id ? true : false  %>
                           <div class="col-md-6 col-xs-12" style="border:1px solid black;">
                               <div class="col-md-4 col-xs-4">
-                                  <h4 style="text-align:center"> <img width="50%" class="<%= selected == true ? "selected_team": "" %>" src="<%= game.survivor_game.team.logo_url %>"> </h4>
+                                  <h4 style="text-align:center"> <img width="40%" class="<%= selected == true ? "selected_team": "" %>" src="<%= game.survivor_game.team.logo_url %>"> </h4>
                               </div>
                               <div class="col-md-4 col-xs-4">
                                   <h4 style="color:white; text-align:center;"><%= game.team.name %> </h4>
                                 <% if  game.survivor_game.game_date > Time.now  %>
-                                  <button class="btn btn-primary change-team" data-team = "<%= selected == true ? game.survivor_game.team2.id : game.survivor_game.team.id  %>" data-id = "<%= game.id %> ">Cambiar equipo</button>
+                                <h4 style="text-align:center">  <button class="btn btn-sm btn-primary change-team" data-team = "<%= selected == true ? game.survivor_game.team2.id : game.survivor_game.team.id  %>" data-id = "<%= game.id %> ">Cambiar equipo</button></h4>
                                   <% end %>
                               </div>
                               <div class="col-md-4 col-xs-4" >
-                                  <h4 style="text-align:center">  <img width="50%" class="<%= selected == false ? "selected_team": "" %>" src="<%= game.survivor_game.team2.logo_url %>"> </h4>
+                                  <h4 style="text-align:center">  <img width="40%" class="<%= selected == false ? "selected_team": "" %>" src="<%= game.survivor_game.team2.logo_url %>"> </h4>
                               </div>
                           </div>    
                              
