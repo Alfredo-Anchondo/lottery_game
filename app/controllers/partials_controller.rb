@@ -497,6 +497,12 @@ end
 		@games = SurvivorGame.where('survivor_week_game_id = ?',@current_week[0].id).order(:game_date)
 	end
 	
+    def change_pick_team
+        ticket = PickUserGame.find(params[:ticket_id])
+        team_id = params[:team_id]
+        ticket.update(:team_id => team_id)
+        	render json: true
+    end
 		
 	def my_pickem_leagues
 		tickets = PickUser.where('user_id = ?',current_user.id).pluck(:pick_survivor_week_id).uniq()

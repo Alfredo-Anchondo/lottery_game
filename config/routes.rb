@@ -82,6 +82,7 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+            post "change_pick_team", to: "partials#change_pick_team"
             get "select_pick_1/:id", to: "partials#select_pick_1"
             get 'tiras'
             get 'survivor_rules'
