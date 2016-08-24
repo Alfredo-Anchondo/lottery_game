@@ -47,7 +47,7 @@
  <div class="form-group" data-toggle = "tooltip" data-placement = "top" title = "Nombre de la liga.">
           <%= f.label :name, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.text_field :name, :class => "form-control" %>
+            <%= f.text_field :name, required: true, :class => "form-control" %>
           </div>
         </div>
                  
@@ -86,7 +86,7 @@
         <div class="form-group" data-toggle = "tooltip" data-placement = "top" title = "Selecciona el costo que tendra para los usuarios al ingresar a tu liga.">
           <%= f.label :price, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.text_field :price, :class => "form-control" %>
+            <%= f.text_field :price, required: true, :class => "form-control" %>
           </div>
         </div>
 	
@@ -136,7 +136,7 @@
       <div class="form-group" data-toggle = "tooltip" data-placement = "top" title = "Porcentaje a repartir por semana, recuerda que si elegiste equitativo este valor se asigna automaticamente, y no puedes superar el valor maximo.">
           <%= f.label :percentage_per_week, :class => "col-md-3 " %>
           <div class="col-md-9">
-            <%= f.text_field :percentage_per_week, :max => @pick.percentage_per_week,  :class => "form-control percent" %>
+            <%= f.text_field :percentage_per_week, required: true, :max => @pick.percentage_per_week,  :class => "form-control percent" %>
             <h4 style="display:none;" id="equitative_porcentage"> </h4>
           </div>
         </div>
