@@ -239,11 +239,11 @@
                           <div class="clearfix"></div>
                           <div class="row" style="border:1px solid black;">
                               <h4 style="text-align:center ; color:white;"> Cambiar marcador de desempate </h4> 
-                              <div class="col-md-4 col-xs-4"> <input id="local_score_selected<%= current_ticket[0].id %>" type="number" disabled style="font-size:32px
-                                  ; width: 80px; margin-top:6px; font-weight:800; color:#2d68ac; margin-left:40%;text-align:center;" value="<%= current_ticket[0].local_score %>"> <img style="float:right" width="20%" src="<%= games_selected.last.survivor_game.team.logo_url%>"> </div>
+                              <div class="col-md-4 col-xs-4"> <img style="margin-left:20%"  class="col-md-4 col-xs-12" src="<%= games_selected.last.survivor_game.team.logo_url%>"> <input class="col-md-4 col-xs-10 " id="local_score_selected<%= current_ticket[0].id %>" type="number" disabled style="font-size:32px
+                                  ;  margin-top:6px; font-weight:800; color:#2d68ac; margin-left:10%;text-align:center;" value="<%= current_ticket[0].local_score %>">  </div>
                               <div class="col-md-4 col-xs-4"> <h4 style="text-align:center; margin-top:15px;"> <button id="edit_score<%= current_ticket[0].id %>" class="btn btn-default"> Editar </button> <button class="btn btn-primary save_score_button<%= current_ticket[0].id %>" data-id="<%= current_ticket[0].id %>" > Guardar </button> </h4> </div>
-                              <div class="col-md-4 col-xs-4">  <img  class="col-md-4" src="<%= games_selected.last.survivor_game.team2.logo_url%>"> <input id="visit_score_selected<%= current_ticket[0].id %>" type="number" disabled style="font-size:32px
-                                  ; width: 80px; margin-top:6px; margin-left:10%; font-weight:800; color:#2d68ac; text-align:center;"value="<%= current_ticket[0].visit_score %>"></div>
+                              <div class="col-md-4 col-xs-4">  <img  class="col-md-4 col-xs-12" src="<%= games_selected.last.survivor_game.team2.logo_url%>"> <input class="col-md-4 col-xs-10" id="visit_score_selected<%= current_ticket[0].id %>" type="number" disabled style="font-size:32px
+                                  ;  margin-top:6px; margin-left:10%; font-weight:800; color:#2d68ac; text-align:center;"value="<%= current_ticket[0].visit_score %>"></div>
                           </div>
                       </div>
                    <script>
