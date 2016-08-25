@@ -161,7 +161,7 @@
 <!--- Aqui empiezan las acciones cuando no es la semana 0 y se pueden empezar a realizar las compras  --->
 	<div class="row" style=" margin-top:-20px !important; background-size: cover; background-image: url(/assets/default_background.png)">
         	<div class="row" style="background-color:rgba(0, 0, 0, 0.3)">
-         	<div class="col-md-3 " style="border-right:1px solid black;">
+         	<div class="col-md-3 " >
           	<h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 25px; color:white; font-weight:900;"><img style="margin-right:10px;" class="img-circle" width="80px" src="<%= @pick.background_url %>"><%= @pick.name %></h1>
           	<h4 style="text-align:center">  <a class="btn btn-primary"  href="/partials/pick_history/<%= @pick.id %>">Temporada</a>  <a class="btn btn-primary"  href="/partials/pickem_week_games_history/<%= @pick.id %>">Semanal</a>  <a class="btn btn-primary"  href="/partials/games_result/">Resultados</a> </h4> <hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Semana #<%= @current_week[0].week %></h4>
@@ -215,10 +215,10 @@
 				
 				<% @tickets_purchase.each_with_index do |entry,index| %>
                   <% if @current_tickets_purchase.include? entry.pick_user_id  %>
-                      <div style="display:none" class="col-md-9 col-xs-12 entry-div" id="entry<%= index + 1 %>">
+                      <div style="display:none; border-left:1px solid black;" class="col-md-9 col-xs-12 entry-div" id="entry<%= index + 1 %>">
                           <h4 style="text-align:center; color:white; font-size:20px;">Ya seleccionaste los equipos para esta entrada</h4>
                           <% current_ticket = PickUser.where('user_id = ? AND pick_survivor_week_id = ? AND pick_user_id =?', current_user.id, @current_pick_survivor_week[0].id,entry.pick_user_id)%>
-                          <% games_selected = PickUserGame.where('pick_user_id = ?',current_ticket[0].id).order('survivor_game_id') %>
+                          <% games_selected = PickUserGame.where('pick_user_id = ?',current_ticket[0].id).order('id') %>
                           <% games_selected.each do | game |  %>
                              <% selected = game.survivor_game.team.id == game.team.id ? true : false  %>
                           <div class="col-md-6 col-xs-12" style="border:1px solid black;">
@@ -236,9 +236,36 @@
                               </div>
                           </div>    
                           <% end %>
+                          <div class="clearfix"></div>
+                          <div class="row" style="border:1px solid black;">
+                              <h4 style="text-align:center ; color:white;"> Cambiar marcador de desempate </h4> 
+                              <div class="col-md-4 col-xs-4"> <input id="local_score_selected<%= current_ticket[0].id %>" type="number" disabled style="font-size:32px
+                                  ; width: 80px; margin-top:6px; font-weight:800; color:#2d68ac; margin-left:40%;text-align:center;" value="<%= current_ticket[0].local_score %>"> <img style="float:right" width="20%" src="<%= games_selected.last.survivor_game.team.logo_url%>"> </div>
+                              <div class="col-md-4 col-xs-4"> <h4 style="text-align:center; margin-top:15px;"> <button id="edit_score<%= current_ticket[0].id %>" class="btn btn-default"> Editar </button> <button class="btn btn-primary save_score_button<%= current_ticket[0].id %>" data-id="<%= current_ticket[0].id %>" > Guardar </button> </h4> </div>
+                              <div class="col-md-4 col-xs-4">  <img  class="col-md-4" src="<%= games_selected.last.survivor_game.team2.logo_url%>"> <input id="visit_score_selected<%= current_ticket[0].id %>" type="number" disabled style="font-size:32px
+                                  ; width: 80px; margin-top:6px; margin-left:10%; font-weight:800; color:#2d68ac; text-align:center;"value="<%= current_ticket[0].visit_score %>"></div>
+                          </div>
                       </div>
+                   <script>
+                       $("#edit_score<%= current_ticket[0].id %>").click(function(){
+                           $("#local_score_selected<%= current_ticket[0].id %>").removeAttr('disabled');
+                           $("#visit_score_selected<%= current_ticket[0].id %>").removeAttr('disabled');
+                       })
+                       
+                       $(".save_score_button<%= current_ticket[0].id %>").click(function(){
+                           $.ajax({
+									  method: "POST",
+									  url: "/partials/change_score",
+									  dataType: "json",     
+									  data: { id: $(this).data("id"), local_score:  $("#local_score_selected<%= current_ticket[0].id %>").val(), visit_score: $("#visit_score_selected<%= current_ticket[0].id %>").val() }
+									}).done(function(data) {
+                               location.reload();
+                           })
+                       })
+                   </script>
+                
                   <% else %>
-    		  		<div style="display:none" class="col-md-9 col-xs-12 entry-div" id="entry<%= index + 1 %>">
+    		  		<div style="display:none; border-left:1px solid black;" class="col-md-9 col-xs-12 entry-div" id="entry<%= index + 1 %>">
      		  	 <h3 style="text-align:center; color:white;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Seleccion de Equipos Entrada #<%= index +1  %></h3>
     		  	 	 	<div class="row">
     		  	 	 		<% @games.where('game_date > ?', Time.new).each_with_index do |game,indexx|%>

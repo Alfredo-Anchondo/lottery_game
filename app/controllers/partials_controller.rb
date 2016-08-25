@@ -321,6 +321,12 @@ end
 		end
 	end
     
+    def change_score
+        ticket = PickUser.find(params[:id])
+        ticket.update(:local_score => params[:local_score] , :visit_score => params[:visit_score])
+        	render json: true
+    end
+    
     	def select_week_1
 		@current_survivor = Survivor.find(params[:id])
 		@current_week = SurvivorWeekGame.where('week = ? AND sport_category = ?', 1, 6)

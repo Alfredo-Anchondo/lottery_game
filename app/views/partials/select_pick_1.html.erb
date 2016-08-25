@@ -134,8 +134,33 @@
                           </div>    
                              
                           <% end %>
-                        
+                            <div class="clearfix"></div>
+                          <div class="row" style="border:1px solid black;">
+                              <h4 style="text-align:center ; color:white;"> Cambiar marcador de desempate </h4> 
+                              <div class="col-md-4 col-xs-4"> <input id="local_score_selected<%= current_ticket[0].id %>" type="number" disabled style="font-size:32px
+                                  ; width: 80px; margin-top:6px; font-weight:800; color:#2d68ac; margin-left:40%;text-align:center;" value="<%= current_ticket[0].local_score %>"> <img style="float:right" width="20%" src="<%= games_selected.last.survivor_game.team.logo_url%>"> </div>
+                              <div class="col-md-4 col-xs-4"> <h4 style="text-align:center; margin-top:15px;"> <button id="edit_score<%= current_ticket[0].id %>" class="btn btn-default"> Editar </button> <button class="btn btn-primary save_score_button<%= current_ticket[0].id %>" data-id="<%= current_ticket[0].id %>" > Guardar </button> </h4> </div>
+                              <div class="col-md-4 col-xs-4">  <img  width="20%" src="<%= games_selected.last.survivor_game.team2.logo_url%>"> <input id="visit_score_selected<%= current_ticket[0].id %>" type="number" disabled style="font-size:32px
+                                  ; width: 80px; margin-top:6px; margin-left:10%; font-weight:800; color:#2d68ac; text-align:center;"value="<%= current_ticket[0].visit_score %>"></div>
+                          </div>
                       </div>
+                   <script>
+                       $("#edit_score<%= current_ticket[0].id %>").click(function(){
+                           $("#local_score_selected<%= current_ticket[0].id %>").removeAttr('disabled');
+                           $("#visit_score_selected<%= current_ticket[0].id %>").removeAttr('disabled');
+                       })
+                       
+                       $(".save_score_button<%= current_ticket[0].id %>").click(function(){
+                           $.ajax({
+									  method: "POST",
+									  url: "/partials/change_score",
+									  dataType: "json",     
+									  data: { id: $(this).data("id"), local_score:  $("#local_score_selected<%= current_ticket[0].id %>").val(), visit_score: $("#visit_score_selected<%= current_ticket[0].id %>").val() }
+									}).done(function(data) {
+                               location.reload();
+                           })
+                       })
+                   </script>
                   <% else %>
     		  		<div style="display:none" class="col-md-9 col-xs-12 entry-div" id="entry<%= index + 1 %>">
      		  	 <h3 style="text-align:center; color:white;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Seleccion de Equipos Entrada #<%= index +1  %></h3>
