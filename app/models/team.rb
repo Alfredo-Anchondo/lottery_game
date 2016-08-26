@@ -18,4 +18,16 @@ class Team < ActiveRecord::Base
   def logo_url
     logo.url
   end
+    
+    def played_games
+        SurvivorGame.where("team_id = ?  AND winner_team IS NOT NULL",id).count +  SurvivorGame.where("team2_id = ?  AND winner_team IS NOT NULL",id).count 
+    end
+    
+    def won_games
+         SurvivorGame.where("winner_team = ? ",id).count
+    end
+    
+    def losed_games
+        played_games - won_games
+    end
 end

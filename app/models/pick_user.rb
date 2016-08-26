@@ -38,10 +38,16 @@ class PickUser < ActiveRecord::Base
 	  if pick_survivor_week.survivor_week_game.week == 0
 		 if user.gift_credit.to_f >= pick_survivor_week.pick.price.to_f
         user.update(:gift_credit => user.gift_credit.to_f - pick_survivor_week.pick.price.to_f)
+             if pick.id == 3
+                 else
 		pick.update(:initial_balance => pick.initial_balance + pick.price)	
+             end
     	else
         user.update(:balance => user.balance - pick_survivor_week.pick.price)
+		    if pick.id == 3
+                 else
 		pick.update(:initial_balance => pick.initial_balance + pick.price)	
+             end
     	end
 	  else
 		  
