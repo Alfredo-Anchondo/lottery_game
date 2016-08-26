@@ -63,7 +63,9 @@ class PartialsController < ApplicationController
 	end
     
     def get_quinielas_mainpage
-		render :json => Quiniela.where(:to_mainpage => true)
+        quinielas = Quiniela.where(:to_mainpage => true)
+       
+		render :json =>  quinielas.where("game.game_date > ?", Time.now)
 	end
 
 	 def finish_games
