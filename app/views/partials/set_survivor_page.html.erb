@@ -213,7 +213,7 @@
 					 			<h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;"> <span  style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_name"></span> </h4>
 					 			<h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Handicap: <span style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_handicap"></span></h4>
 					 			<h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;">Rival: <span style="color:white; display:none; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_rival"></span><img class="team_rival_image" width="50px"></h4>
-                                    <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;"><span style="color:#2D68AC">JJ:</span><span class="played_games"></span><span style="color:#2D68AC; margin-left:6%;">JG:</span><span class="won_games"></span><span style="color:#2D68AC; margin-left:6%;">JP:</span><span class="losed_games"></span></h4>
+                                <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;"><span style="color:#2D68AC">JJ:</span><span class="played_games"></span><span style="color:#2D68AC; margin-left:6%;">JG:</span><span class="won_games"></span><span style="color:#2D68AC; margin-left:6%;">JP:</span><span class="losed_games"></span><span style="color:#2D68AC; margin-left:6%;">JE:</span><span class="draw_games"></span></h4>
 					 			</div>
 					 			<div class="clearfix"></div>
 					 			
@@ -230,7 +230,7 @@
 					 			<input type="hidden" class="team_select_description">
 					 			<h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Handicap: <span style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_select_handicap"></span></h4>
                                 <h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;">Rival: <span style="color:white; display:none; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_rival"></span><img class="team_rival_image_selected" width="50px"></h4>    
-                                 <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;"><span style="color:#2D68AC">JJ:</span><span class="played_games_selected"></span><span style="color:#2D68AC; margin-left:6%;">JG:</span><span class="won_games_selected"></span><span style="color:#2D68AC; margin-left:6%;">JP:</span><span class="losed_games_selected"></span></h4>
+                                 <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;"><span style="color:#2D68AC">JJ:</span><span class="played_games_selected"></span><span style="color:#2D68AC; margin-left:6%;">JG:</span><span class="won_games_selected"></span><span style="color:#2D68AC; margin-left:6%;">JP:</span><span class="losed_games_selected"></span><span style="color:#2D68AC; margin-left:6%;">JE:</span><span class="draw_games_selected"></span></h4>
 					 			</div>
 					 			<div class="clearfix"></div>
 					 			 <% if @last_tickets_purchase.where('survivor_user_id = ?', entry.survivor_user_id).last.status == 'loser' %>
@@ -267,10 +267,10 @@
 					 		 	<% visitor_handicap = '-'+ game.handicap.to_s + ''
 									local_handicap = '+'+ game.handicap.to_s + '' %>
 					 		 <%end%>	
-					 		<a data-url="<%= game.team.logo_url %>" data-description="<%= game.team.description %>" data-id="<%= game.team.id %>" data-rival="<%= game.team2.name %>" data-handicap="<%= local_handicap %>" data-rivalurl="<%= game.team2.logo_url %>"  data-name="<%= game.team.name %>" class="team  <%= game.past_game %>" data-played="<%= game.team.played_games %>" data-won="<%= game.team.won_games %>" data-losed="<%= game.team.losed_games %>" data-position="Local" id="<%= game.team.id %><%= entry.survivor_user_id %>"><div style="border:1px solid black; background-color:rgba(45, 104, 172, 0.41); height:80px;" class="col-md-2 col-xs-3 div-team">
+					 		<a data-url="<%= game.team.logo_url %>" data-description="<%= game.team.description %>" data-id="<%= game.team.id %>" data-rival="<%= game.team2.name %>" data-handicap="<%= local_handicap %>" data-rivalurl="<%= game.team2.logo_url %>"  data-name="<%= game.team.name %>" class="team  <%= game.past_game %>" data-played="<%= game.team.played_games %>" data-won="<%= game.team.won_games %>" data-losed="<%= game.team.losed_games %>" data-draw="<%= game.team.draw_games %>" data-position="Local" id="<%= game.team.id %><%= entry.survivor_user_id %>"><div style="border:1px solid black; background-color:rgba(45, 104, 172, 0.41); height:80px;" class="col-md-2 col-xs-3 div-team">
 					 		<img width="100%" src="<%= game.team.logo_url %>">
 					 	</div></a>
-					 	<a data-url="<%= game.team2.logo_url %>" data-description="<%= game.team2.description %>"  data-id="<%= game.team2.id %>" data-rival="<%= game.team.name %>" data-rivalurl="<%= game.team.logo_url %>" data-handicap="<%= visitor_handicap %>" data-played="<%= game.team2.played_games %>" data-position="Visitante" data-won="<%= game.team2.won_games %>" data-losed="<%= game.team2.losed_games %>" data-name="<%= game.team2.name %>" class="team   <%= game.past_game %>" id="<%= game.team2.id %><%= entry.survivor_user_id %>"><div style="border:1px solid black; background-color:rgba(45, 104, 172, 0.41);  height:80px;" class="col-md-2 col-xs-3 div-team">
+					 	<a data-url="<%= game.team2.logo_url %>" data-description="<%= game.team2.description %>"  data-id="<%= game.team2.id %>" data-rival="<%= game.team.name %>" data-rivalurl="<%= game.team.logo_url %>" data-handicap="<%= visitor_handicap %>" data-played="<%= game.team2.played_games %>" data-position="Visitante" data-draw="<%= game.team2.draw_games %>" data-won="<%= game.team2.won_games %>" data-losed="<%= game.team2.losed_games %>" data-name="<%= game.team2.name %>" class="team   <%= game.past_game %>" id="<%= game.team2.id %><%= entry.survivor_user_id %>"><div style="border:1px solid black; background-color:rgba(45, 104, 172, 0.41);  height:80px;" class="col-md-2 col-xs-3 div-team">
 					 		<img width="100%" src="<%= game.team2.logo_url %>">
 					 	</div></a>
 					 	<% end %>
@@ -290,6 +290,7 @@
                                  $(".played_games").text($(this).data("played"));
                                  $(".losed_games").text($(this).data("losed"));
                                  $(".won_games").text($(this).data("won"));  
+                                 $(".draw_games").text($(this).data("draw"));    
 							  }else{
 								 $('.team-details').show();
 								 $(this).children().css('background-color','rgba(0, 0, 128, 0.55)');
@@ -302,6 +303,7 @@
                                  $(".played_games").text($(this).data("played"));
                                  $(".losed_games").text($(this).data("losed"));
                                  $(".won_games").text($(this).data("won"));  
+                                 $(".draw_games").text($(this).data("draw"));   
 							  }
 						  })
 						  
@@ -337,6 +339,7 @@
 								 $('.team_select_name').text($(this).data('name'));
                                   $('.played_games_selected').text($(this).data('played'));
                                  $('.won_games_selected').text($(this).data('won'));
+                                 $('.draw_games_selected').text($(this).data('draw'));
                                 $('.losed_games_selected').text($(this).data('losed'));
 								 $('.team_select_description').text($(this).data('description'));
 								 $('.team_select_handicap').text($(this).data('handicap'));

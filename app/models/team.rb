@@ -24,10 +24,15 @@ class Team < ActiveRecord::Base
     end
     
     def won_games
-         SurvivorGame.where("winner_team = ? ",id).count
+         SurvivorGame.where("winner_team = ? AND local_score != visit_score ",id).count
     end
     
     def losed_games
-        played_games - won_games
+           SurvivorGame.where("team_id = ?  AND winner_team != ? AND local_score != visit_score",id,id).count +  SurvivorGame.where("team2_id = ?  AND winner_team != ? AND local_score != visit_score",id,id).count 
     end
+    
+    def draw_games
+        SurvivorGame.where("team_id = ?  AND local_score = visit_score",id).count +  SurvivorGame.where("team2_id = ?  AND local_score = visit_score",id).count 
+    end
+        
 end
