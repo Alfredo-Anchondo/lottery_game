@@ -798,6 +798,7 @@
 					
 				for(var i in data.partials){
 					
+                    if(data.partials[i].game.game_date > new Date()){
 					
 					
 					if(data.partials[i].game.category.id == 5){
@@ -853,6 +854,7 @@
 						}
 					}
 				}
+                 }else{}
 				$('input[type=radio][class=answers_select]').change(function(){
 					var xz = $(this).val();
 					current_view = $(this).data('id');
