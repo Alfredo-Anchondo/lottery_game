@@ -77,7 +77,7 @@ Rails.application.routes.draw do
 
 
     resources :webhooks do
-        match '/webhooks', to: 'webhooks#receive', via: :post
+       get '/webhooks', to: 'webhooks#receive'
     end
 
     resources :partials  do

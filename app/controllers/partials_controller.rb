@@ -192,7 +192,7 @@ rescue OpenpayConnectionException => error
 end
 
 def stablich_connection
-  @openpay = OpenpayApi.new("ml8ii2xvkgmpoxjl0aib", "sk_183c43416f464e33b5e0330cfb0e5c47") if Rails.env.development?
+  @openpay = OpenpayApi.new("m8dvprmyk9adbcmhonod", "sk_22a93d1817864bebbf99ca009358e48b") if Rails.env.development?
   @openpay = OpenpayApi.new("ml8ii2xvkgmpoxjl0aib", "sk_183c43416f464e33b5e0330cfb0e5c47", true) if Rails.env.production?
   @cards = @openpay.create(:cards)
   @bank_accounts = @openpay.create(:bankaccounts)
@@ -279,20 +279,21 @@ end
     end
 
 	def buy_much_tickets
-		logger.info "entramos"
-		logger.info params
 		render nothing: true
 		@lottery = Lottery.find(params[:lottery_id])
 		@lottery_price = params[:lottery_price]
 		@lottery_price = Integer(@lottery_price) * Integer(params[:quantity_sale])
+        @price_porcentage = @lottery_price * 0.95
+        @lottery_updated_balance = @lottery.initial_balance + @price_porcentage
 		@user_id = User.find(params[:user_id])
 		@array_values = params[:array_values]
 		logger.info @array_values
 		if params[:normal_buy] != 'true'
 			@user_id.update( {gift_credit: Integer(current_user.gift_credit) - @lottery_price})
-			@lottery.update( {purchase_gift_tickets: Integer(@lottery.purchase_gift_tickets) + @array_values.length})
+			@lottery.update( {purchase_gift_tickets: Integer(@lottery.purchase_gift_tickets) + @array_values.length, initial_balance: @lottery_updated_balance})
 		else
 			@user_id.update( {balance: current_user.balance - @lottery_price})
+            @lottery.update( {initial_balance: @lottery_updated_balance})
 		end
 		@array_values.each_with_index do |_, i|
 		UserLottery.create({user_id: @user_id.id, lottery_id: params[:lottery_id], status: 'Comprado', ticket_number: @array_values[Integer(i)], purchase_date: DateTime.now})
