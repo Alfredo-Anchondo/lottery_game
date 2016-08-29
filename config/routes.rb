@@ -76,7 +76,7 @@ Rails.application.routes.draw do
     end
 
 
-    constraints subdomain: "webhooks" do
+    constraints subdomain: :webhooks do
         post '/webhookdemo' => 'webhooks#demo', as: :receive_webhooks
         get '/webhooks', to: 'webhooks#receive'
     end
