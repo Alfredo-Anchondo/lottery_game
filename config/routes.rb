@@ -76,10 +76,11 @@ Rails.application.routes.draw do
     end
 
 
-    resources :webhooks do
-       get '/webhooks', to: 'webhooks#receive'
-       post "/webhookdemo", to:"webhooks#demo"
+    constraints subdomain: "hooks" do
+        post '/webhookdemo' => 'webhooks#demo', as: :receive_webhooks
+        get '/webhooks', to: 'webhooks#receive'
     end
+    
 
     resources :partials  do
         collection do
