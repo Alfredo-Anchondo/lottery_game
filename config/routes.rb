@@ -77,7 +77,7 @@ Rails.application.routes.draw do
 
 
     constraints subdomain: :webhooks do
-        post '/confirmation' => 'webhooks#receive', as: :receive_webhooks
+        post '/:integration_name' => 'webhooks#receive', as: :receive_webhooks
     end
     
 
