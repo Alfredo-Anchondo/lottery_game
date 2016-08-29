@@ -7,4 +7,8 @@ class WebhooksController < ApplicationController
         
     end
     
+    def demo
+        logger.info "jalo"
+    end
+    
 end
