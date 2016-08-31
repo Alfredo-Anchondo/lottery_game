@@ -187,6 +187,7 @@ rescue OpenpayTransactionException => e
 end
 
 def get_customer_credit_cars(user)
+    if user.openpay_id != "" && user.openpay_id != nil
   logger.info "//////////////////////////////////////Hello////////////////////////////"
   stablich_connection
   logger.info @cards.all(user.openpay_id)
@@ -196,6 +197,7 @@ def get_customer_credit_cars(user)
   logger.info error.description
 rescue OpenpayConnectionException => error
 	logger.info error.description
+    end
 end
     
  def pay_store
