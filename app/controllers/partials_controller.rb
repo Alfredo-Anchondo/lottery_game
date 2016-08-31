@@ -197,7 +197,6 @@ def get_customer_credit_cars(user)
   logger.info error.description
 rescue OpenpayConnectionException => error
 	logger.info error.description
-        else
     end
 end
     
