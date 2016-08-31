@@ -166,6 +166,10 @@ def get_customer(customer_id)
     if params[:store_buy] 
         pay_store_ticket(customer)
     else
+    
+    if params[:bank_buy] 
+        pay_bank_ticket(customer)
+    else
    
     if params[:only_register]
      create_credit_debit_card(customer)
@@ -174,6 +178,7 @@ def get_customer(customer_id)
     else
      create_credit_debit_card(customer)
      charge_with_credit_card(customer)
+    end
     end
    end
 
@@ -208,6 +213,8 @@ end
    stablich_connection  
    check_if_customer_exists_global(current_user)
  end
+    
+    
 
  def pay_store_ticket(user)
      
@@ -221,6 +228,20 @@ end
  response_hash=@charges.create(request_hash.to_hash,user['id'])
      render json: response_hash
  end    
+    
+ def pay_bank_ticket(user)
+     
+   stablich_connection  
+     request_hash={
+     "method" => "bank_account",
+     "amount" => params[:amount],
+     "description" => "Abono de saldo por medio de transferencia bancaria"
+   }
+
+ response_hash=@charges.create(request_hash.to_hash,user['id'])
+     render json: response_hash
+ end    
+    
     
     
 

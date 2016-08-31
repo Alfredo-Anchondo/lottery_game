@@ -25,7 +25,9 @@
 <div class="row methods-divs" style="display:none;  padding-bottom:80px !important;" id="store">
 <%= render :partial => "pay_in_store" %>
 </div>
-<div class="row methods-divs" style="display:none;  padding-bottom:80px !important;" id="bank"></div>
+<div class="row methods-divs" style="display:none;  padding-bottom:80px !important;" id="bank">
+<%= #render :partial => "bank_tranfer" %>
+</div>
 
 <script>
     $("#credit_button").click(function(){
