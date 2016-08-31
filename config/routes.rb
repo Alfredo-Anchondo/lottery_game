@@ -205,7 +205,7 @@ Rails.application.routes.draw do
   get 'welcome/contact'
   get 'welcome/privacy'
   get 'welcome/faq'
-  post "/", to: "webhooks#receive"    
+  post "/webhooks", to: "webhooks#receive"    
 
   get '/landing', :to => redirect('/index2.html')
   get '/error', :to => redirect('/404.html')
