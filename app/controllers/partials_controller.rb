@@ -187,8 +187,11 @@ rescue OpenpayTransactionException => e
 end
 
 def get_customer_credit_cars(user)
+    if user == nil || user == ""
+        return false
+    end
     if user.openpay_id == ""
-        retunr false
+        return false
           end
   logger.info "//////////////////////////////////////Hello////////////////////////////"
   stablich_connection
