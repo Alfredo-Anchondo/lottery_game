@@ -30,7 +30,7 @@
          $('#amount').val(amount_select);
      })
     
-  var deviceSessionId = OpenPay.deviceData.setup("payment-form", "deviceIdHiddenFieldName");
+  var deviceSessionId = OpenPay.deviceData.setup("payment-form", "#device_hidden_id");
        OpenPay.setId('ml8ii2xvkgmpoxjl0aib');
        OpenPay.setApiKey('pk_8e59eadca8fe4fc9804c6e4492c376f0');
        OpenPay.setSandboxMode(false);
@@ -116,6 +116,7 @@
 	<div class="col-md-7 col-xs-12">
 		<form style="width:100%" action="#" method="POST" id="payment-form">
 			    <input type="hidden" name="token_id" id="token_id">
+                 <input type="hidden" name="device_hidden_id" id="device_hidden_id">
                 <input type="hidden" name="amount" id="amount" value="20">
 			<h2 style="background-color:#696969; color:white; padding:28px 0 28px 20px; margin:0px;"><%= t('registeredmon') %></h2>
 			<div class="row" style="background-color:white;">
