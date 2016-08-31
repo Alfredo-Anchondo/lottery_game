@@ -195,8 +195,10 @@ def get_customer_credit_cars(user)
   return @get_cards
   rescue OpenpayTransactionException => error
   logger.info error.description
+    end
 rescue OpenpayConnectionException => error
 	logger.info error.description
+end
     end
 end
     
