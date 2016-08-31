@@ -83,10 +83,13 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+            get "pay_in_store"
+            get "pay_methods"
             post "change_score", to: "partials#change_score"
             post "change_pick_team", to: "partials#change_pick_team"
             get "select_pick_1/:id", to: "partials#select_pick_1"
             get 'tiras'
+            get "pay_store", to: "partials#pay_store"
             get 'survivor_rules'
             get 'pickem_rules'
             get 'pickem_week_games_history/:id', to: 'partials#pickem_week_games_history'
@@ -122,6 +125,7 @@ Rails.application.routes.draw do
 			post 'buy_random_quinielas', to: "partials#buy_random_quinielas"
 			get 'get_quinielas_no_winner', to: "partials#get_quinielas_no_winner"
             post "credit_card_form", to: "partials#credit_card_pay"
+            post "pay_methods", to: "partials#credit_card_pay"
             get "/partials/:user", to: "partials#get_customer_credit_cars"
             get "complete_buy"
             get "buy_error"
@@ -201,6 +205,7 @@ Rails.application.routes.draw do
   get 'welcome/contact'
   get 'welcome/privacy'
   get 'welcome/faq'
+  post "/", to: "webhooks#receive"    
 
   get '/landing', :to => redirect('/index2.html')
   get '/error', :to => redirect('/404.html')

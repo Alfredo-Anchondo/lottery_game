@@ -1,0 +1,46 @@
+<style>
+    .footer{
+        position:fixed;
+    }
+</style>
+
+
+<% if current_user.address_1 == nil || current_user.address_2 == nil || current_user.ext_number == nil || current_user.state == nil || current_user.city == nil || current_user.zip_code == nil %>
+<script>
+    alert('Para poder realizar la compra debes de completar todos tus datos del registro.');
+    location.replace("/users/"+ <%= current_user.id %> +"/edit");
+</script>
+    
+<% end %>
+
+
+<h4 style="text-align:center; font-size:20px; color:black;">Selecciona tu forma de pago preferida</h4>
+<hr>
+<h4 style="text-align:center"> <button id="credit_button" style="margin-bottom:5px;" class="btn btn-primary"><i class="fa fa-credit-card" aria-hidden="true"></i> Tarjeta de Credito/Debito</button> <button id="store_button" class="btn btn-default " style="margin-bottom:5px;"><i class="fa fa-money" aria-hidden="true"></i> Pago en Tiendas</button> <button style="margin-bottom:5px;" class="btn btn-primary " id="bank_button"><i class="fa fa-university" aria-hidden="true"></i> Pago por deposito bancario </button> </h4>
+<hr>
+
+<div class="row methods-divs" style="display:none; padding-bottom:80px !important;" id="credit" >
+<%= render :partial => "credit_card_form" %>
+</div>
+<div class="row methods-divs" style="display:none;  padding-bottom:80px !important;" id="store">
+<%= render :partial => "pay_in_store" %>
+</div>
+<div class="row methods-divs" style="display:none;  padding-bottom:80px !important;" id="bank"></div>
+
+<script>
+    $("#credit_button").click(function(){
+        $(".methods-divs").hide();
+        $("#credit").show();
+    })
+    
+     $("#store_button").click(function(){
+        $(".methods-divs").hide();
+        $("#store").show();
+    })
+     
+      $("#bank_button").click(function(){
+        $(".methods-divs").hide();
+        $("#bank").show();
+    })
+</script>
+

@@ -1,12 +1,4 @@
 
-<% if current_user.address_1 == nil || current_user.address_2 == nil || current_user.ext_number == nil || current_user.state == nil || current_user.city == nil || current_user.zip_code == nil %>
-<script>
-    alert('Para poder realizar la compra debes de completar todos tus datos del registro.');
-    location.replace("/users/"+ <%= current_user.id %> +"/edit");
-</script>
-    
-<% end %>
-
        
 
 <script type="text/javascript" 
@@ -39,13 +31,13 @@
      })
     
   var deviceSessionId = OpenPay.deviceData.setup("payment-form", "deviceIdHiddenFieldName");
-       OpenPay.setId('ml8ii2xvkgmpoxjl0aib');
-       OpenPay.setApiKey('pk_8e59eadca8fe4fc9804c6e4492c376f0');
-       OpenPay.setSandboxMode(false);
+      // OpenPay.setId('ml8ii2xvkgmpoxjl0aib');
+       //OpenPay.setApiKey('pk_8e59eadca8fe4fc9804c6e4492c376f0');
+       //OpenPay.setSandboxMode(false);
      
-       //OpenPay.setId('m8dvprmyk9adbcmhonod');
-       //OpenPay.setApiKey('pk_2f0633a2ccd249fcb244685a7ef0ef4c');
-       //OpenPay.setSandboxMode(true);
+       OpenPay.setId('m8dvprmyk9adbcmhonod');
+       OpenPay.setApiKey('pk_2f0633a2ccd249fcb244685a7ef0ef4c');
+       OpenPay.setSandboxMode(true);
      
      $('#pay-button').on('click', function(event) {
        event.preventDefault();
@@ -84,7 +76,8 @@
 
 </script>
 
-
+<h4 style="    text-align: center;font-size: 26px;color: #2d68ac; font-weight: 700;">Pago con Tarjeta</h4>
+<hr>
 <div class="row">
 
 <div class="col-md-2 col-xs-12">

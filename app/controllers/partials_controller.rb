@@ -2,6 +2,7 @@ class PartialsController < ApplicationController
     skip_before_filter :verify_authenticity_token
 	before_action :authenticate_user!, except: ['future_games', 'get_quinielas_no_winner']
 	before_action "get_user"
+    before_action "get_customer_credit_cars(current_user)"
     respond_to :html
   	respond_to :json
 
@@ -161,7 +162,11 @@ end
 def get_customer(customer_id)
   stablich_connection
   customer = @customers.get(customer_id)
-
+    
+    if params[:store_buy] 
+        pay_store_ticket(customer)
+    else
+   
     if params[:only_register]
      create_credit_debit_card(customer)
      logger.info "SOLO SE REGISTRO LA TARJETA"
@@ -170,6 +175,8 @@ def get_customer(customer_id)
      create_credit_debit_card(customer)
      charge_with_credit_card(customer)
     end
+   end
+
 
 rescue OpenpayTransactionException => e
   @e = e
@@ -190,6 +197,26 @@ def get_customer_credit_cars(user)
 rescue OpenpayConnectionException => error
 	logger.info error.description
 end
+    
+ def pay_store
+   stablich_connection  
+   check_if_customer_exists_global(current_user)
+ end
+
+ def pay_store_ticket(user)
+     
+   stablich_connection  
+     request_hash={
+     "method" => "store",
+     "amount" => params[:amount],
+     "description" => "Abono de saldo por medio de tienda"
+   }
+
+ response_hash=@charges.create(request_hash.to_hash,user['id'])
+     render json: response_hash
+ end    
+    
+    
 
 def stablich_connection
   @openpay = OpenpayApi.new("m8dvprmyk9adbcmhonod", "sk_22a93d1817864bebbf99ca009358e48b") if Rails.env.development?

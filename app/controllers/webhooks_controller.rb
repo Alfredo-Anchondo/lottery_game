@@ -9,8 +9,11 @@ class WebhooksController < ApplicationController
       data = params.as_json
     end
 
-    Webhook::Received.save(data: data, integration: params[:integration_name])
-
+     if data["type"] == "charge.succeeded" && data["transaction"]["method"] == "store"
+       user_actual =  User.where("openpay_id = ?", data["transaction"]["customer_id"])
+       user_actual[0].update(:balance => data["transaction"]["amount"].to_f + user_actual[0].balance) 
+     end
+   
     render nothing: true
   end
 end
