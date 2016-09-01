@@ -27,7 +27,7 @@ class RegistrationsController < Devise::RegistrationsController
 				last1 = Integer(@user1[0].gift_credit)
 		  	end
 		  @user1[0].update( :gift_credit => last1 +10)
-		   @user.update( :gift_credit =>  last + 10) 
+		  @user.update( :gift_credit =>  last + 10) 
 		  logger.info @user1
 		  logger.info @user.gift_credit
 		  logger.info @user1[0].gift_credit 
