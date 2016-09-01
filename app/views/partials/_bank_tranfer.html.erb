@@ -61,10 +61,10 @@
 					  data: { bank_buy: true, amount: $("#amount_input_bank").val() }
 					}).done(function(data) {
                 $("#complete_store_bank").show();
-               // $("#link_to_recibe").attr("href","https://dashboard.openpay.mx/paynet-pdf/ml8ii2xvkgmpoxjl0aib/"+data.payment_method.reference+"");
-               // var win = window.open("https://dashboard.openpay.mx/paynet-pdf/ml8ii2xvkgmpoxjl0aib/"+data.payment_method.reference+"", '_blank');
-                $("#link_to_recibe_bank").attr("href","https://sandbox-dashboard.openpay.mx/spei-pdf/m8dvprmyk9adbcmhonod/"+data.id+"");
-                var win = window.open("https://sandbox-dashboard.openpay.mx/spei-pdf/m8dvprmyk9adbcmhonod/"+data.id+"", '_blank');
+                $("#link_to_recibe").attr("href","https://dashboard.openpay.mx/spei-pdf/ml8ii2xvkgmpoxjl0aib/"+data.id+"");
+                var win = window.open("https://dashboard.openpay.mx/spei-pdf/ml8ii2xvkgmpoxjl0aib/"+data.id+"", '_blank');
+               // $("#link_to_recibe_bank").attr("href","https://sandbox-dashboard.openpay.mx/spei-pdf/m8dvprmyk9adbcmhonod/"+data.id+"");
+            //    var win = window.open("https://sandbox-dashboard.openpay.mx/spei-pdf/m8dvprmyk9adbcmhonod/"+data.id+"", '_blank');
                 win.focus();
               })      
        }

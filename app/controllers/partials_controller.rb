@@ -198,9 +198,8 @@ def get_customer_credit_cars(user)
     if user.openpay_id == ""
         return false
           end
-  logger.info "//////////////////////////////////////Hello////////////////////////////"
+
   stablich_connection
-  logger.info @cards.all(user.openpay_id)
   @get_cards = @cards.all(user.openpay_id)
   return @get_cards
   rescue OpenpayTransactionException => error
