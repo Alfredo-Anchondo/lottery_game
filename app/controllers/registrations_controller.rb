@@ -8,8 +8,11 @@ class RegistrationsController < Devise::RegistrationsController
     if resource.persisted?
 		 if @user.reference_by_friend != nil && @user.reference_by_friend != ""
 		  logger.info "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NO maaaaa %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-		  x = User.search_reference1(@user.reference_by_friend)
+		  x = User.search_reference1(@user.reference_by_friend) 
+             if x == nil || x == [] || x == ""
+             else
 		    logger.info x
+             
 		  	if @user.gift_credit == nil
 				last = 0
 		  	else
@@ -28,6 +31,7 @@ class RegistrationsController < Devise::RegistrationsController
 		  logger.info @user1
 		  logger.info @user.gift_credit
 		  logger.info @user1[0].gift_credit 
+             end
 	  end
 		
     BuyMailer.welcome_user(@user).deliver
