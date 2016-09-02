@@ -2,7 +2,7 @@ class CreatePicks < ActiveRecord::Migration
   def change
     create_table :picks do |t|
       t.string :name, :null => false
-      t.string :description
+      t.text :description
       t.boolean :to_mainpage    
 	  t.references :user, index: true, :null => false
       t.foreign_key :users
