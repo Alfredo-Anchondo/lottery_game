@@ -83,6 +83,8 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+            get "tira_banner"
+            get "tiras_rules"
             get "_bank_tranfer"
             get "pay_in_store"
             get "pay_methods"

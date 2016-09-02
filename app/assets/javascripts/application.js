@@ -35,6 +35,7 @@
 //= require html2canvas
 // require bootstrap2-toggle.min
 //= require bootstrap-switch
+//= require jquery.innerfade
 
 $(document).ready(function(){
 	

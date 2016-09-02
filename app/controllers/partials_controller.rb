@@ -30,7 +30,7 @@ class PartialsController < ApplicationController
 
 		if params[:normal_buy] != 'true'
 			@user.update( {gift_credit: @total_balance_update})
-			logger.info "saldo de regaliux"+ String(@purchase_gift)
+			logger.info "saldo de regaliux" + String(@purchase_gift)
 			@quiniela.update({purchase_gift_tickets: (Integer(@purchase_gift) + @numbers.length)})
 			@quiniela.update({initial_balance: String(@balance.to_f + @update_balance) })
 			logger.info @update_balance
