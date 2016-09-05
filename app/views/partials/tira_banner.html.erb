@@ -1,32 +1,5 @@
-<ul id="news">
-	<li>
-		<a href="#n1">1 Lorem ipsum dolor</a>
-	</li>
-	<li>
-		<a href="#n2">2 Sit amet, consectetuer</a>
-	</li>
-	<li>
-		<a href="#n3">3 Sdipiscing elit,</a>
-	</li>
-	<li>
-		<a href="#n4">4 sed diam nonummy nibh euismod tincidunt ut</a>
-	</li>
-	<li>
-		<a href="#n5">5 Nec Lorem.</a>
-	</li>
-	<li>
-		<a href="#n6">6 Et eget.</a>
-	</li>
-	<li>
-		<a href="#n7">7 Leo orci pede.</a>
-	</li>
-	<li>
-		<a href="#n8">8 Ratio randorus wil.</a>
-	</li>
-</ul>
 
-
-<div id="banner" style="position:absolute !important; background-color:transparent; top:100; top: 0px; left: 50%;">
+<div id="bannerq" style=" display:none; position:absolute !important; background-color:transparent; top: 50%; left: 50%;">
 <ul style="position:absolute !important; top:100" id="portfolio">
 	<li style="list-style-type:none">
 		<a href="http://medienfreunde.com/deutsch/referenzen/kreation/good_guy__bad_guy.html">
@@ -61,14 +34,17 @@
 </div>	
 
 <script type="text/javascript">
+       function show_banner(){
+           $("#bannerq").fadeIn(1000);
+            setTimeout(function(){$("#bannerq").fadeOut(1000)}, 9000);     
+       }
+    
+      window.setInterval(function(){
+            show_banner();
+        }, 60000);
+    
 	$(document).ready(function(){
-			$('#news').innerfade({
-				animationtype: 'slide',
-				speed: 750,
-				timeout: 2000,
-				type: 'random',
-				containerheight: '1em'
-			});
+		
 
 			$('#portfolio').innerfade({
 				speed: 'slow',
@@ -76,9 +52,6 @@
 				type: 'sequence',
 				containerheight: '220px'
 			});
-        
-        setTimeout(function(){ $("#banner").hide(); }, 3000);
-        setTimeout(function(){ $("#banner").show(); }, 10000);
         
 		}
 	);
