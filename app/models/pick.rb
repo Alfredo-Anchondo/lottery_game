@@ -10,7 +10,6 @@ class Pick < ActiveRecord::Base
   validates_attachment_content_type :background, :content_type => /\Aimage\/.*\Z/	
 	
 	
-	
 	def background_url
 		background.url
 	end

@@ -10,6 +10,7 @@ class CreateQuinielas < ActiveRecord::Migration
 	  t.foreign_key :games, :on_delete => "cascade"
 	  t.text :purchase_gift_tickets	
 	  t.text :last_question
+      t.boolean :show_banner    
 	  
       t.timestamps
     end

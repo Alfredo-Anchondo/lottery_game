@@ -122,7 +122,7 @@ class QuinielasController < ApplicationController
     end
 
     def quiniela_params
-		params.require(:quiniela).permit(:initial_balance, :price, :game_id, :description, :purchase_gift_tickets, :to_mainpage,  :winner_number, :cap_result, :last_questions, :last_questions_text, quiniela_questions_attributes: [:id, :question_id, :_destroy])
+		params.require(:quiniela).permit(:initial_balance, :price, :game_id, :description, :purchase_gift_tickets, :to_mainpage,  :winner_number, :show_banner, :cap_result, :last_questions, :last_questions_text, quiniela_questions_attributes: [:id, :question_id, :_destroy])
     end
 	
       

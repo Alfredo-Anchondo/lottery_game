@@ -77,6 +77,16 @@
            <%= f.radio_button :to_mainpage,  false, :class => "", :checked => true %> <%= f.label 'Ocultar en Pagina Principal', :class => "" %> 
           </div>
         </div>
+    
+     <div class="form-group">
+          <%= f.label :show_banner, :class => "col-md-3" %>
+          <div class="col-md-9">
+           <%= f.radio_button :show_banner, true, :class => "" %>
+            <%= f.label 'Presentar en Banners', :class => "" %> 
+            
+           <%= f.radio_button :show_banner,  false, :class => "", :checked => true %> <%= f.label 'Ocultar en Presentar en Banners', :class => "" %> 
+          </div>
+        </div>
         
       </div>
 <!-- end col-md-6 -->

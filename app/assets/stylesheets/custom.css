@@ -195,6 +195,14 @@
 	  .hide-phone {
 		  display:none;
 	  }
+      
+      #bannerq{
+     display:none; 
+    position:absolute !important; 
+    background-color:transparent;
+    top: 30%;
+    left: -8% !important;
+}
 }
 
 @media only screen
@@ -393,6 +401,14 @@
       .hide-phone {
 		  display:none;
 	  }
+      
+         #bannerq{
+     display:none; 
+    position:absolute !important; 
+    background-color:transparent;
+    top: 30%;
+    left: -8% !important;
+}
 
 
 }
@@ -601,6 +617,14 @@
 	  .hide-phone {
 		  display:none;
 	  }
+      
+             #bannerq{
+     display:none; 
+    position:absolute !important; 
+    background-color:transparent;
+    top: 30%;
+    left: -8% !important;
+}
 
 }
 
@@ -806,6 +830,14 @@
 	.hide-phone {
 		  display:none;
 	  }
+    
+           #bannerq{
+     display:none; 
+    position:absolute !important; 
+    background-color:transparent;
+    top: 30%;
+    left: -8% !important;
+}
 }
 
 .row{
@@ -1432,3 +1464,10 @@ input[type='text'].score {
     color: #2d68ac;
 }
 
+#bannerq{
+     display:none; 
+    position:absolute !important; 
+    background-color:transparent;
+    top: 30%;
+    left: 40%;
+}

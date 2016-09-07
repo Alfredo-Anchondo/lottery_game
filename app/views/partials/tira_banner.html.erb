@@ -1,32 +1,30 @@
-
-<div id="bannerq" style=" display:none; position:absolute !important; background-color:transparent; top: 50%; left: 50%;">
-<ul style="position:absolute !important; top:100" id="portfolio">
+<div id="bannerq">
+  <div class="row"><h4><a  onclick="$('#bannerq').hide()" style="float:right; color:red; font-size:18px;">x</a></h4></div>
+<ul id="portfolio">
 	<li style="list-style-type:none">
 		<a href="http://medienfreunde.com/deutsch/referenzen/kreation/good_guy__bad_guy.html">
-			<img width="100px" src="/assets/basketball.jpg" alt="Good Guy bad Guy" />
+           <img width="300px" height="250px" src="/assets/basketball.jpg" alt="Good Guy bad Guy" />
 		</a>
 	</li>
 	<li style="list-style-type:none">
 		<a href="http://medienfreunde.com/deutsch/referenzen/kreation/whizzkids.html">
-					<img width="100px" src="/assets/background.jpg" alt="Good Guy bad Guy" />
-
+          <img width="300px" height="250px" src="/assets/background.jpg" alt="Good Guy bad Guy" />
 		</a>
 	</li>
 	<li style="list-style-type:none">
 		<a href="http://medienfreunde.com/deutsch/referenzen/printdesign/koenigin_mutter.html">
-						<img width="100px" src="/assets/Basketball2.jpg" alt="Good Guy bad Guy" />
-
+          <img width="300px" height="250px" src="/assets/Basketball2.jpg" alt="Good Guy bad Guy" />
 		</a>
 	</li>
 	<li style="list-style-type:none">
 		<a href="http://medienfreunde.com/deutsch/referenzen/webdesign/rt_reprotechnik_-_hybride_archivierung.html">
-					<img width="100px" src="/assets/Basketball3.jpg" alt="Good Guy bad Guy" />
+        <img width="300px" height="250px" src="/assets/Basketball3.jpg" alt="Good Guy bad Guy" />
 
 		</a>
 	</li>
 	<li style="list-style-type:none">
 		<a href="http://medienfreunde.com/deutsch/referenzen/kommunikation/tuev_sued_gruppe.html">
-						<img width="100px" src="/assets/Basketball4.jpg" alt="Good Guy bad Guy" />
+        <img width="300px" height="250px" src="/assets/Basketball4.jpg" alt="Good Guy bad Guy" />
 
 		</a>
 	</li>
@@ -36,10 +34,10 @@
 <script type="text/javascript">
        function show_banner(){
            $("#bannerq").fadeIn(1000);
-            setTimeout(function(){$("#bannerq").fadeOut(1000)}, 9000);     
+            setTimeout(function(){$("#bannerq").fadeOut(1000)}, 60000);     
        }
     
-      window.setInterval(function(){
+     setTimeout(function(){
             show_banner();
         }, 60000);
     
@@ -48,7 +46,7 @@
 
 			$('#portfolio').innerfade({
 				speed: 'slow',
-				timeout: 4000,
+				timeout: 6000,
 				type: 'sequence',
 				containerheight: '220px'
 			});
