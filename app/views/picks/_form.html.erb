@@ -54,7 +54,7 @@
         <div class="form-group status_field" data-toggle = "tooltip" data-placement = "top" title = "Selecciona el deporte del cual quieres crear la liga.">
           <%= f.label :sport_category_id, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.collection_select(:sport_category_id, SportCategory.where(:id => [11,6]).order('id DESC'), :id, :select_display, { :include_blank => false, :prompt => '-Selecciona una categoria-' }, required: true, :class => "form-control") %>
+            <%= f.collection_select(:sport_category_id, SportCategory.where(:id => [12,6]).order('id DESC'), :id, :select_display, { :include_blank => false, :prompt => '-Selecciona una categoria-' }, required: true, :class => "form-control") %>
           </div>
         </div>
 
