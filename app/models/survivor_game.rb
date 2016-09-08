@@ -41,6 +41,43 @@ class SurvivorGame < ActiveRecord::Base
 
   def change_status
       
+      if survivor_week_game.sport_category == 12
+          
+          if local_score > visit_score
+              winner_team = team.id
+          else if local_score == visit_score
+              winner_team = 185
+          else
+              winner_team = team2.id
+          end
+          end    
+            partido = survivor_week_game.survivor_games.order(:game_date).last
+            elegidos =  survivor_week_game.pick_users.each do |pick_user|
+            games_user = PickUserGame.where(:pick_user_id => pick_user.id)
+            games_user.where('survivor_game_id = ?', id).each do |game|
+                
+                if partido.id == id
+                    if pick_user.local_score == local_score && pick_user.visit_score == visit_score
+                        pick_user.update(:points => pick_user.points ? pick_user.points + 3 : 0 + 3)
+                    end
+                end    
+    
+                 if game.team_id == winner_team
+                     if winner_team == 185
+                       pick_user.update(:points => pick_user.points ? pick_user.points + 2 : 0 + 2 )  
+                     else     
+                     pick_user.update(:points => pick_user.points ? pick_user.points + game.points : 0 + game.points )
+                     end
+                     game.update(:status => 'winner')
+                     logger.info 'Se realizo la suma de puntos'
+                     else
+                     game.update(:status => 'loser')
+                 end
+             end
+            end
+          logger.info "Entre y se que soy de futball carnal !!!!!!!!!!!!!!!"
+      else      
+      
       if type_update == '1'
         if plus_handicap == 1
             visitor_handicap = handicap
@@ -86,6 +123,7 @@ class SurvivorGame < ActiveRecord::Base
          logger.info elegidos
 
       else
+  end
   end
     
     if winner_team_changed?
@@ -134,6 +172,117 @@ class SurvivorGame < ActiveRecord::Base
                 winner_week = ""
                 porcentaje = ""
                 balance = ""
+                
+                #----------------------------------football soccer pick -----------------------------------
+                
+                if survivor_week_game.pick_users[0].pick.sport_category_id == 12
+                
+                if type_update == '1'
+                last_pick = ""
+                winner_week = ""
+                porcentaje = ""
+                balance = ""
+                
+                if pending == false
+                  picks = Pick.where('sport_category_id = ?', survivor_week_game.pick_users[0].pick.sport_category_id )
+                    picks.each do |pickx|
+                            if survivor_week_game.week == 1
+                                 if pickx.percentage.present?
+                                     total_porcentage = (pickx.percentage/100) * pickx.initial_balance
+                                     pickx.update(:initial_balance => (pickx.initial_balance - total_porcentage) )
+                                     pickx.user.update(:balance => pickx.user.balance + total_porcentage)
+                                     
+                                 end
+                            end
+                          #Aqui comienza la creacion de un nuevo ticket si no se compro    
+                         pick_survivor = pickx.pick_survivor_weeks.where('survivor_week_game_id = ? and pick_id = ?', survivor_week_game.id, pickx.id).first
+                if pick_survivor != nil && pick_survivor != []   
+                last_week_number = survivor_week_game.week - 1
+				category = survivor_week_game.sport_category
+				last_week_game = SurvivorWeekGame.where(:week => last_week_number, :sport_category => category).first
+				logger.info last_week_game.id
+				logger.info '/////////////'
+				survivor_week_survivors = pickx.pick_survivor_weeks.where('survivor_week_game_id = ? and pick_id =?', last_week_game.id, pickx.id )    
+                survivor_week_survivors_current = pickx.pick_survivor_weeks.where('survivor_week_game_id = ? and pick_id =?', survivor_week_game.id, pickx.id )        
+                last_tickets = survivor_week_survivors[0].pick_users.order(:pick_user_id)
+				current_tickets = survivor_week_survivors_current[0].pick_users.order(:pick_user_id)
+				
+				if current_tickets.count != last_tickets.count
+					currents = []
+					lasts = []
+					current_tickets.each_with_index do|ticket, index_s|
+						currents.push({pick: ticket.pick_survivor_week.pick.id ,pick_user_id: ticket.pick_user.id, user_id: ticket.user.id, index: index_s })
+					end
+					last_tickets.each_with_index do|ticket, index_s|
+						lasts.push({pick: ticket.pick_survivor_week.pick.id, pick_user_id: ticket.pick_user.id, user_id: ticket.user.id, index: index_s })
+					end
+					logger.info lasts
+					lasts.each do |ticket|
+						x = currents.include?(ticket) ? "Si existe en el arreglo" :  "No existe en el arreglo"
+						logger.info x
+						if x == "No existe en el arreglo"
+						 survivor_week_survivor_current_id = PickSurvivorWeek.where('pick_id = ? AND survivor_week_game_id = ?',ticket[:pick],survivor_week_game.id ).pluck(:id).first
+							sur = PickUser.new(pick_survivor_week_id: survivor_week_survivor_current_id , pick_user_id: ticket[:pick_user_id], points: 0, user_id: ticket[:user_id], status: 'loser')
+							sur.save()
+                            logger.info 'Se creo un nuevo boleto'
+							else
+						end
+					end
+					
+					logger.info 'un usuario no selecciono ticket en la semana pasada'
+					logger.info lasts
+					logger.info currents
+					else
+                    logger.info 'todos las entradas estan correctas'
+				end
+                end
+                    #aqui termina la creacion de el ticket si falta
+                        
+  
+                        pick_survivor = pickx.pick_survivor_weeks.where('survivor_week_game_id = ? and pick_id = ?', survivor_week_game.id, pickx.id).first
+                        logger.info survivor_week_game.id
+                        logger.info pickx.id
+                        logger.info pick_survivor
+                       if pick_survivor != nil && pick_survivor != []   
+                        max_points = pick_survivor.pick_users.maximum("points")
+                        winner_week = pick_survivor.pick_users.where(:points => max_points)
+                           logger.info max_points
+                           logger.info winner_week
+                           logger.info winner_week.length
+                           logger.info 'esta es la ultima que se ahace'
+                        porcentaje = pickx.percentage_per_week
+                        balance = pickx.initial_balance
+                        
+                        if winner_week != nil && winner_week != []
+                            if winner_week.length > 1
+                            porcentaje = porcentaje/100
+                                balance_sum = (balance * porcentaje)/winner_week.count   
+                                 winner_week.each do |winner_pos|
+                                     logger.info 'Entre en este ciclo del array'
+                                     winner_pos.update(:status => 'Ganadorsemanal')
+                                     winner_pos.user.update(:balance => winner_pos.user.balance + balance_sum)
+                                 end   
+                           
+                        else   
+                            winner_week[0].update(:status => 'Ganadorsemanal')
+                            porcentaje = porcentaje/100
+                            balance_sum = balance * porcentaje    
+                            winner_week[0].user.update(:balance => winner_week[0].user.balance + balance_sum )   
+                        end
+                        else
+                        end
+                           else
+                       end
+                       
+                    
+                       
+                    end
+                      
+                end
+            end
+            end
+                
+                #------------------------------------termina el pick de futball soccer --------------------
                 
                 if pending == false
                   picks = Pick.where('sport_category_id = ?', survivor_week_game.pick_users[0].pick.sport_category_id )
@@ -274,8 +423,12 @@ class SurvivorGame < ActiveRecord::Base
                 
 		
 			if pending == true
+                 
 				logger.info "Aun hay juegos pendientes"
 				else
+                 if survivor_week_game.pick_users[0].pick.sport_category_id == 12
+                     return
+                  end
 				logger.info "Ya no hay juegos pendientes"
 				last_week_number = survivor_week_game.week - 1
 				category = survivor_week_game.sport_category

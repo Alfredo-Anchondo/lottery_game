@@ -174,20 +174,26 @@
 												visit_score_value = $visit_score.text();
 										}
 								}
-
-                if(parseInt(local_score_value) && parseInt(visit_score_value)) {
+                     
+                
+                if(parseInt(local_score_value) != null && parseInt(visit_score_value) != null) {
+                          
 										if(parseInt(local_score_value) > parseInt(visit_score_value)) {
+                                            
 											  winner = $local_score.parent().data("team");
 												declare_winner($local_score.parent(), $local_score.parent().data("team"), local_score_value, visit_score_value);
 										}
 										else if(parseInt(visit_score_value) > parseInt(local_score_value)) {
+                                          
 											  winner = $visit_score.parent().data("team");
 												declare_winner($visit_score.parent(), $visit_score.parent().data("team"), local_score_value, visit_score_value);
 										}
 										else if(parseInt(visit_score_value) == parseInt(local_score_value)) {
+                                          
 											 winner = ''
 												declare_winner($visit_score.parent(), $visit_score.parent().data("team"), local_score_value, visit_score_value);
 										}else{
+                                          
 											  $(this).closest(".teams-div").find(".trophy").remove();
 												declare_winner($(this).parent(), null, local_score_value, visit_score_value);
 										}
