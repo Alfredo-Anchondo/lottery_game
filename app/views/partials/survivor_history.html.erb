@@ -5,6 +5,7 @@
 		position:fixed;
 	}
 
+    td < .loser{background-color:red;}
 	
 </style>
 
@@ -83,6 +84,7 @@ $(document).ready(function(){
     
 t = $('#example').DataTable({
     responsive: true,
+     "iDisplayLength": 100,
 	 "columnDefs": [
     { "width": "5.5%", "targets": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17] }
   ],
@@ -122,14 +124,16 @@ t = $('#example').DataTable({
 				    '<h4 class="<%= @week_day[16] ? @week_day[16][:status] : ''  %> <%= @week_day[16] ? @week_day[16][:game] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[16] ?  @week_day[16][:team] ?  @week_day[16][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
 				    '<h4 class="<%= @week_day[17] ? @week_day[17][:status] : ''  %> <%= @week_day[17] ? @week_day[17][:game] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[17] ?  @week_day[17][:team] ?  @week_day[17][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>'
         	] ).draw( false );
-		<% end %>
-		<% end %>
-	
-	
-	$('.loser').parent().css('background-color','rgba(255, 0, 0, 0.62)');
+  
+     $('.loser').parent().css('background-color','rgba(255, 0, 0, 0.62)');
     $('.Juegopendiente').hide();
 	$('.alive').parent().css('background-color','rgba(49, 255, 0, 0.54)');
 	$('.winner').parent().css('background-color','rgba(255, 255, 0, 0.54)');
+		<% end %>
+    
+		<% end %>
+	 
+	
 	
 });
 </script>

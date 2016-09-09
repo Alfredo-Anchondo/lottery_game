@@ -140,7 +140,16 @@ class SurvivorGame < ActiveRecord::Base
 		  .update_all(:status => "loser")
 			
 		else
-		  loser_team = (winner_team == team_id)? team2_id : team_id
+            logger.info "Entre en el ciclo pero de seguro los ids estan mal y por eso esto esta valiendo pura vergota"
+            logger.info winner_team
+            logger.info local_score
+            logger.info visit_score
+            if local_score > visit_score
+                winner_team = team_id
+            else
+                 winner_team = team2_id
+            end
+          loser_team = (winner_team == team_id) ? team2_id : team_id
 		  winner_status = (survivor_week_game.last_week?)? "winner" : "alive"
 
 		  survivor_week_game
