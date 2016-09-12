@@ -93,7 +93,7 @@ class SurvivorGame < ActiveRecord::Base
           
           if local_score_total > visit_score_total
               winner_team_final = team.id
-              else if local_score_total = visit_score_total
+              else if local_score_total == visit_score_total
                 two_winners = team2.id
                 winner_team_final = team.id
               else
