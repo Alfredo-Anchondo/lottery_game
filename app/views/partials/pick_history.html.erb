@@ -112,6 +112,8 @@ t = $('#example').DataTable({
 	
 	
 });
+    
+    $.fn.dataTable.ext.errMode = 'none'; $('#table-id').on('error.dt', function(e, settings, techNote, message) { console.log( 'An error occurred: ', message); })
 </script>
 
 
