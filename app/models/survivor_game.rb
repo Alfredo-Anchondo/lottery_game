@@ -91,7 +91,10 @@ class SurvivorGame < ActiveRecord::Base
         visit_score_total = visit_score + visitor_handicap   
         two_winners = ''  
           
-          if local_score_total > visit_score_total
+          logger.info local_score_total
+          logger.info visit_score_total
+          
+          if local_score_total > visit_score
               winner_team_final = team.id
               else if local_score_total == visit_score_total
                 two_winners = team2.id

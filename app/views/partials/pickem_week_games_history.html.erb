@@ -30,6 +30,7 @@
                   <th style="padding-right:0px;text-align:center">  <%= game.game_date.strftime('%d/%m/%Y %H:%M %P ') %> <br> <%= game.team.name[0..2] %> - <%= game.team2.name[0..2] %>   </th>
               <% end %>
               <th style="text-align:center">Puntos</th>
+              <th style="text-align:center">Marcador Desempate</th>    
             </tr>
         </thead>
         <tbody>
@@ -73,6 +74,7 @@
                    <% end %>
              <%end%>
                    '<h4 style="text-align:center"><%= ticket.pick_user_games.where(:status => 'winner').count %></h4>',
+                   '<h4 style="text-align:center"><%= ticket.local_score %> - <%= ticket.visit_score %></h4>',
                ]).draw(false);
         
                <%end%>
