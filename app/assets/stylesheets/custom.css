@@ -1471,3 +1471,7 @@ input[type='text'].score {
     top: 30%;
     left: 40%;
 }
+
+.clickable {
+     cursor:pointer;
+  }
