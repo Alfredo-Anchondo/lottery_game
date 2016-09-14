@@ -22,7 +22,7 @@
     <div id="<%= week.id %>" class="row week_row" style="display:none">
         <h5 style="text-align:center;color:black;font-size:20px;">Semana <%= week.week %></h5>
         <br>
-        <table id="example<%= week.id %>" class="table table-bordered responsive table-hover table-striped " cellspacing="0" width="100%">
+        <table id="example<%= week.id %>" class="table table-bordered  table-hover table-striped " cellspacing="0" width="100%">
         <thead style="background-color:black; color:white;">
             <tr>
               <th style="text-align:center"> Usuario </th>
@@ -52,7 +52,6 @@
         
         $(document).ready(function() {
         var t = $('#example<%= week.id %>').DataTable({
-               responsive: true,
                "language": {
                     "url": languaje
                 }
@@ -73,7 +72,7 @@
                    '<h4 class="loser" style="text-align:center"><img width="30px" src="/assets/red-x4.png"></h4>',
                    <% end %>
              <%end%>
-                   '<h4 style="text-align:center"><%= ticket.pick_user_games.where(:status => 'winner').count %></h4>',
+                   '<h4 style="text-align:center"><%= ticket.points.to_i %></h4>',
                    '<h4 style="text-align:center"><%= ticket.local_score %> - <%= ticket.visit_score %></h4>',
                ]).draw(false);
         
