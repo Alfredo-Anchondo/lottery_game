@@ -244,7 +244,7 @@
                                   <% end %>
 					 			     
 					 			 <% else %>
-					 			<button data-survivorcode=" <%= entry.survivor_user_id %>" style="width:50%; margin-left:25%; margin-bottom:10px; font-weight:900; background-color:white; color:black;" class="btn buy-ticket btn-primary"> Seleccionar equipo </button>
+					 			<button data-survivorcode=" <%= entry.survivor_user_id %>" style="width:50%; margin-left:25%; margin-bottom:10px; font-weight:900; background-color:white; color:black;" type="button" class="btn buy-ticket btn-primary"> Seleccionar equipo </button>
 					 			
 					 			<% end %> 
 					 		</div>
@@ -267,12 +267,16 @@
 					 		 	<% visitor_handicap = '-'+ game.handicap.to_s + ''
 									local_handicap = '+'+ game.handicap.to_s + '' %>
 					 		 <%end%>	
-					 		<a data-url="<%= game.team.logo_url %>" data-description="<%= game.team.description %>" data-id="<%= game.team.id %>" data-rival="<%= game.team2.name %>" data-handicap="<%= local_handicap %>" data-rivalurl="<%= game.team2.logo_url %>"  data-name="<%= game.team.name %>" class="team  <%= game.past_game %>" data-played="<%= game.team.played_games %>" data-won="<%= game.team.won_games %>" data-losed="<%= game.team.losed_games %>" data-draw="<%= game.team.draw_games %>" data-position="Local" id="<%= game.team.id %><%= entry.survivor_user_id %>"><div style="border:1px solid black; background-color:rgba(45, 104, 172, 0.41); height:80px;" class="col-md-2 col-xs-3 div-team">
+					 		<div style="border:1px solid black; background-color:rgba(45, 104, 172, 0.41); height:80px;" class="col-md-2 col-xs-3 div-team">
+                                <a data-url="<%= game.team.logo_url %>" data-description="<%= game.team.description %>" data-id="<%= game.team.id %>" data-rival="<%= game.team2.name %>" data-handicap="<%= local_handicap %>" data-rivalurl="<%= game.team2.logo_url %>"  data-name="<%= game.team.name %>" class="team  <%= game.past_game %>" data-played="<%= game.team.played_games %>" data-won="<%= game.team.won_games %>" data-losed="<%= game.team.losed_games %>" data-draw="<%= game.team.draw_games %>" data-position="Local" id="<%= game.team.id %><%= entry.survivor_user_id %>">
 					 		<img width="100%" src="<%= game.team.logo_url %>">
-					 	</div></a>
-					 	<a data-url="<%= game.team2.logo_url %>" data-description="<%= game.team2.description %>"  data-id="<%= game.team2.id %>" data-rival="<%= game.team.name %>" data-rivalurl="<%= game.team.logo_url %>" data-handicap="<%= visitor_handicap %>" data-played="<%= game.team2.played_games %>" data-position="Visitante" data-draw="<%= game.team2.draw_games %>" data-won="<%= game.team2.won_games %>" data-losed="<%= game.team2.losed_games %>" data-name="<%= game.team2.name %>" class="team   <%= game.past_game %>" id="<%= game.team2.id %><%= entry.survivor_user_id %>"><div style="border:1px solid black; background-color:rgba(45, 104, 172, 0.41);  height:80px;" class="col-md-2 col-xs-3 div-team">
+                                    </a>
+					 	</div>
+					 <div style="border:1px solid black; background-color:rgba(45, 104, 172, 0.41);  height:80px;" class="col-md-2 col-xs-3 div-team">
+                         	<a data-url="<%= game.team2.logo_url %>" data-description="<%= game.team2.description %>"  data-id="<%= game.team2.id %>" data-rival="<%= game.team.name %>" data-rivalurl="<%= game.team.logo_url %>" data-handicap="<%= visitor_handicap %>" data-played="<%= game.team2.played_games %>" data-position="Visitante" data-draw="<%= game.team2.draw_games %>" data-won="<%= game.team2.won_games %>" data-losed="<%= game.team2.losed_games %>" data-name="<%= game.team2.name %>" class="team   <%= game.past_game %>" id="<%= game.team2.id %><%= entry.survivor_user_id %>">
 					 		<img width="100%" src="<%= game.team2.logo_url %>">
-					 	</div></a>
+                                </a>
+					 	</div>
 					 	<% end %>
 					 	
 					 	<script>
