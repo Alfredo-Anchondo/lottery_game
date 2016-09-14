@@ -351,6 +351,28 @@
 								$(this).children().css('background-color','rgba(0, 128, 25, 0.49) !important');
 								$('.team_name').text($(this).data('name'));						
 						  })
+                            
+                            	$('.team').on("tap",function(){
+
+								$('.team-detail').show();
+								x = true;
+								$('.team').removeClass('clic');
+								$(this).addClass('clic');	
+								 $('.team_select_name').text($(this).data('name'));
+                                  $('.played_games_selected').text($(this).data('played'));
+                                 $('.won_games_selected').text($(this).data('won'));
+                                 $('.draw_games_selected').text($(this).data('draw'));
+                                $('.losed_games_selected').text($(this).data('losed'));
+								 $('.team_select_description').text($(this).data('description'));
+								 $('.team_select_handicap').text($(this).data('handicap'));
+								 $('.team_select_image').attr('src',$(this).data('url'));
+                                $(".team_rival_image_selected").attr("src",$(this).data('rivalurl'));
+								$('.div-team').css('background-color','rgba(45, 104, 172, 0.41)');
+								$('.passgame').children().css('background-color','rgba(0, 0, 0, 0.59)');
+								$('.no-selectable').css('background-color','rgba(255, 0, 0, 0.49)');
+								$(this).children().css('background-color','rgba(0, 128, 25, 0.49) !important');
+								$('.team_name').text($(this).data('name'));						
+						  })
 							
 							$('.passgame').unbind('click');
 							$('.passgame').unbind('mouseenter');
