@@ -420,7 +420,7 @@
 									 		$('#thanks_modal').modal('show');
 											setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000);  	  
 								 	}).error(function(data) {
-											 alert(data.responseJSON.errors.user_id);
+											
 											 })
 							})
 															
@@ -528,7 +528,7 @@
 									 				$('#thanks_modal').modal('show');
 											setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000); 	  
 								 	}).error(function(data) {
-												 alert(data.responseJSON.errors.user_id);
+												
 											 })
 							
                
@@ -619,7 +619,7 @@
 									 setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000); 
 										
 								 	}).error(function(data) {
-											 alert(data.responseJSON.errors.user_id);
+											 
 											 })
 						
                
@@ -724,7 +724,7 @@
 									 	setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000);  
 										
 								 	}).error(function(data) {
-												 alert(data.responseJSON.errors.user_id);
+												 
 											 })
 							
                
@@ -786,7 +786,6 @@
                <h4 style="text-align:center; font-size:20px; color:black;" id="select_team_name_modal"> </h4>
                <h4 style="text-align:center"><img width="50%" id="select_team_modal" src=""></h4>
                   <hr style="border-color:#2d68ac">
-        <h5 style="text-align:center; font-size:12px; font-weight:900; color:red;">Recuerda que una ves seleccionado el equipo no se puede cambiar tu seleccion.</h5>
         <br>
        	<h4><button class="btn btn-primary" style="width:70%" id="confirm_buy"> Confirmar equipo </button><button data-dismiss="modal" class="btn btn-danger" style="width:25%; margin-left:3%">Cancelar</button></h4>
       </div>
