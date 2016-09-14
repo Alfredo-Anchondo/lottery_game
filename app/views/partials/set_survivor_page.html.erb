@@ -83,7 +83,7 @@
       		  	  </h4>
       		  	  </h4>
 				</div>
-				 <div  class="col-md-3 life-div col-xs-12"></div>
+				 <div class="col-md-3 life-div col-xs-12"></div>
 				 
 					 <% @last_tickets_purchase.each_with_index do |entry, index| %>
 					 
@@ -156,7 +156,7 @@
 					 <% losses = entry.survivor_week_survivor.survivor.survivor_users.where(:survivor_user_id => entry.survivor_user_id).loser.count %>
 					  <% rebuy = entry.survivor_week_survivor.survivor.rebuy_quantity %>
 					 
-					 	<div class="col-md-3 col-xs-12 life-div"  id="life<%= entry.survivor_user_id %>" style="display:none; border-right:1px solid black; min-height:440px;">
+					 	<div class="col-md-3 col-xs-12 life-div"  id="life<%= entry.survivor_user_id %>" style="display:none; border-right:1px solid black; ">
 					 		<h3 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Entrada del survivor  </h3>
 					 		 <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Resultado de la ultima semana: <% if @last_tickets_purchase.where('survivor_user_id = ?', entry.survivor_user_id).last.status == 'alive' %><span style="color:green; text-align:center;"> Ganador </span> 
 					 		 <% else%>
