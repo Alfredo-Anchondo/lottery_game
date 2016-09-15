@@ -36,6 +36,7 @@
         <thead style="background-color:black; color:white;">
             <tr>
                 <th style="text-align:center">Usuario</th>
+                  <th style="text-align:center; padding:8px;"> Total</th> 
                  <% @week_quantity = @pick.pick_survivor_weeks.count  %>
                 <% @pick.pick_survivor_weeks.each_with_index do |week, index| %>
                    <% if index+1 == @week_quantity %>
@@ -44,7 +45,7 @@
                     <th style="text-align:center; padding:8px;"> <%= index + 1  %></th> 
                    <% end %>
                 <% end %>
-                <th style="text-align:center; padding:8px;"> Total</th> 
+              
                      </tr>
         </thead>
       
