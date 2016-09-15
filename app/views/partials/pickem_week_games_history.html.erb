@@ -64,6 +64,7 @@
           
                t.row.add([
                 '<h4 style="text-align:center"><%= ticket.user.username.upcase %> </h4>',
+                '<h4 style="text-align:center"><%= ticket.points.to_i %></h4>',
              <% week.survivor_games.where('game_date < ?', Time.new).order(:id).each do |game| %>
                 <% exist_for_game =  ticket.pick_user_games.where('survivor_game_id = ?', game.id) %>
                   <% if exist_for_game != nil && exist_for_game != '' && exist_for_game != []  %>
@@ -72,7 +73,7 @@
                    '<h4 class="loser" style="text-align:center"><img width="30px" src="/assets/red-x4.png"></h4>',
                    <% end %>
              <%end%>
-                   '<h4 style="text-align:center"><%= ticket.points.to_i %></h4>',
+                   
                    '<h4 style="text-align:center"><%= ticket.local_score %> - <%= ticket.visit_score %></h4>',
                ]).draw(false);
         

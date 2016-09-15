@@ -32,7 +32,7 @@
 
 
 <div class="row">
-	<table id="example" class="table table-bordered responsive table-hover table-striped " cellspacing="0" width="100%">
+	<table id="example" class="table table-bordered table-hover table-striped " cellspacing="0" width="100%">
         <thead style="background-color:black; color:white;">
             <tr>
                 <th style="text-align:center">Usuario</th>
@@ -68,7 +68,6 @@ $(document).ready(function(){
 }
     
 t = $('#example').DataTable({
-    responsive: true,
 	 "columnDefs": [
     { "width": "5%", "targets": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17] }
   ],
@@ -89,6 +88,11 @@ t = $('#example').DataTable({
                      <% @pick.pick_survivor_weeks.order(:id).each_with_index do |week, indexx| %>
                      <% if indexx == 0  %>
                       '<h4 style="text-align:center"><%= user[indexx].upcase %> <%= index %> </h4>',
+                     <% @points_total = 0 %>
+                     <% @pick.pick_survivor_weeks.order(:id).each_with_index do |week, indexx| %>
+                        <% @points_total +=  @week_day[indexx] ? @week_day[indexx][:points].to_i : 0  %>
+                     <% end %>
+                    '<h4 style="text-align:center"><%= @points_total %></h4>',
                      <% elsif indexx == 1  %>
                    '<h4 style="text-align:center"  class="<%= @week_day[indexx] ? @week_day[indexx ][:status] : ''  %>" style="text-align:center"> <%= @week_day[indexx] ? @week_day[indexx ][:points].to_i : 0 %></h4>',
                     <% else %>
@@ -96,11 +100,7 @@ t = $('#example').DataTable({
                      <% end %>
 				 
                     <% end %>
-                     <% @points_total = 0 %>
-                     <% @pick.pick_survivor_weeks.order(:id).each_with_index do |week, indexx| %>
-                        <% @points_total +=  @week_day[indexx] ? @week_day[indexx][:points].to_i : 0  %>
-                     <% end %>
-                    '<h4 style="text-align:center"><%= @points_total %></h4>'
+                    
             	  
         	] ).draw( false );
 		<% end %>
