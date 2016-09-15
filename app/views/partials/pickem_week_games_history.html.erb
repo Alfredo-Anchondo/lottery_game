@@ -25,7 +25,7 @@
         <table id="example<%= week.id %>" class="table table-bordered  table-hover table-striped " cellspacing="0" width="100%">
         <thead style="background-color:black; color:white;">
             <tr>
-              <th style="text-align:center"> Usuario </th
+              <th style="text-align:center"> Usuario </th>
               <th style="text-align:center">Puntos</th>
               <% week.survivor_games.where('game_date < ?', Time.new).order(:id).each do |game| %>
                   <th style="padding-right:0px;text-align:center">  <%= game.game_date.strftime('%d/%m/%Y %H:%M %P ') %> <br> <%= game.team.name[0..2] %> - <%= game.team2.name[0..2] %>   </th>

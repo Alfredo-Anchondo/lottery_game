@@ -36,7 +36,6 @@
         <thead style="background-color:black; color:white;">
             <tr>
                 <th style="text-align:center">Usuario</th>
-                  <th style="text-align:center; padding:8px;"> Total</th> 
                  <% @week_quantity = @pick.pick_survivor_weeks.count  %>
                 <% @pick.pick_survivor_weeks.each_with_index do |week, index| %>
                    <% if index+1 == @week_quantity %>
@@ -45,7 +44,7 @@
                     <th style="text-align:center; padding:8px;"> <%= index + 1  %></th> 
                    <% end %>
                 <% end %>
-              
+                <th style="text-align:center; padding:8px;"> Total</th> 
                      </tr>
         </thead>
       
@@ -89,11 +88,6 @@ t = $('#example').DataTable({
                      <% @pick.pick_survivor_weeks.order(:id).each_with_index do |week, indexx| %>
                      <% if indexx == 0  %>
                       '<h4 style="text-align:center"><%= user[indexx].upcase %> <%= index %> </h4>',
-                     <% @points_total = 0 %>
-                     <% @pick.pick_survivor_weeks.order(:id).each_with_index do |week, indexx| %>
-                        <% @points_total +=  @week_day[indexx] ? @week_day[indexx][:points].to_i : 0  %>
-                     <% end %>
-                    '<h4 style="text-align:center"><%= @points_total %></h4>',
                      <% elsif indexx == 1  %>
                    '<h4 style="text-align:center"  class="<%= @week_day[indexx] ? @week_day[indexx ][:status] : ''  %>" style="text-align:center"> <%= @week_day[indexx] ? @week_day[indexx ][:points].to_i : 0 %></h4>',
                     <% else %>
@@ -101,7 +95,11 @@ t = $('#example').DataTable({
                      <% end %>
 				 
                     <% end %>
-                    
+                     <% @points_total = 0 %>
+                     <% @pick.pick_survivor_weeks.order(:id).each_with_index do |week, indexx| %>
+                        <% @points_total +=  @week_day[indexx] ? @week_day[indexx][:points].to_i : 0  %>
+                     <% end %>
+                    '<h4 style="text-align:center"><%= @points_total %></h4>'
             	  
         	] ).draw( false );
 		<% end %>
