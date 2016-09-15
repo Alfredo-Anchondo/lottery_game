@@ -232,11 +232,14 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                           <% games_selected.each do | game | %>
                              <% selected = game.survivor_game.team.id == game.team.id ? true : false  %>
                            <% handicap = game.survivor_game.plus_handicap == 1 ? true : false %>
+                           <% game.survivor_game.plus_handicap.nil? ? handicap = "null" : "" %>
                          <% empate = game.team.id == 185 ? true : false %>
                           <div class="col-md-6 col-xs-12" style="border:1px solid black;">
                               <div class="col-md-4 col-xs-4">
                                   <h4 style="text-align:center"> <img width="40%" <% if empate == false %> class="<%= selected == true ? "selected_team": "" %>" <% end %> src="<%= game.survivor_game.team.logo_url %>"> </h4>
+                                  <% if handicap != "null" %>
                                   <h4 style="text-align:center;color:white;"> <%= handicap == true ? "-" : "+"  %> <%= game.survivor_game.handicap  %> </h4>
+                                  <% end %>
                               </div>
                               <div class="col-md-4 col-xs-4">
                                   <h4 style=" <% if empate == false %> color:white; <%else%> color:red; <%end%>  text-align:center; font-size:12px;"><%= game.team.name %> </h4>
@@ -246,7 +249,9 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                               </div>
                               <div class="col-md-4 col-xs-4" >
                                   <h4 style="text-align:center">  <img width="40%" <% if empate == false %> class="<%= selected == false ? "selected_team": "" %>" <% end %> src="<%= game.survivor_game.team2.logo_url %>"> </h4>
+                                      <% if handicap != "null" %>
                                     <h4 style="text-align:center; color:white;"> <%= handicap == true ? "+" : "-"  %> <%= game.survivor_game.handicap  %> </h4>
+                                  <% end %>
                               </div>
                           </div>  
                                 
