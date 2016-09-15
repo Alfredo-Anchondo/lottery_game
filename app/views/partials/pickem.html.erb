@@ -229,12 +229,14 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                           <h4 style="text-align:center; color:white; font-size:20px;">Ya seleccionaste los equipos para esta entrada</h4>
                           <% current_ticket = PickUser.where('user_id = ? AND pick_survivor_week_id = ? AND pick_user_id =?', current_user.id, @current_pick_survivor_week[0].id,entry.pick_user_id)%>
                           <% games_selected = PickUserGame.where('pick_user_id = ?',current_ticket[0].id).order('id') %>
-                          <% games_selected.each do | game |  %>
+                          <% games_selected.each do | game | %>
                              <% selected = game.survivor_game.team.id == game.team.id ? true : false  %>
+                           <% handicap = game.survivor_game.plus_handicap == 1 ? true : false %>
                          <% empate = game.team.id == 185 ? true : false %>
                           <div class="col-md-6 col-xs-12" style="border:1px solid black;">
                               <div class="col-md-4 col-xs-4">
                                   <h4 style="text-align:center"> <img width="40%" <% if empate == false %> class="<%= selected == true ? "selected_team": "" %>" <% end %> src="<%= game.survivor_game.team.logo_url %>"> </h4>
+                                  <h4 style="text-align:center"> <%= handicap == true ? "-" : "+"  %> <%= game.survivor_game.handicap  %> </h4>
                               </div>
                               <div class="col-md-4 col-xs-4">
                                   <h4 style=" <% if empate == false %> color:white; <%else%> color:red; <%end%>  text-align:center; font-size:12px;"><%= game.team.name %> </h4>
@@ -244,6 +246,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                               </div>
                               <div class="col-md-4 col-xs-4" >
                                   <h4 style="text-align:center">  <img width="40%" <% if empate == false %> class="<%= selected == false ? "selected_team": "" %>" <% end %> src="<%= game.survivor_game.team2.logo_url %>"> </h4>
+                                    <h4 style="text-align:center"> <%= handicap == true ? "+" : "-"  %> <%= game.survivor_game.handicap  %> </h4>
                               </div>
                           </div>  
                                 
