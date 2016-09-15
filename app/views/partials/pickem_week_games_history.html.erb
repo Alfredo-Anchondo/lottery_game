@@ -19,7 +19,7 @@
 <hr>
 
 <% @weeks.each do |week| %>
-    <div id="<%= week.id %>" class="row week_row" style="display:none; overflow:scroll; margin-bottom:30px;">
+    <div id="<%= week.id %>" class="row week_row" style="display:none; overflow:scroll; padding-bottom:60px !important;">
         <h5 style="text-align:center;color:black;font-size:20px;">Semana <%= week.week %></h5>
         <br>
         <table id="example<%= week.id %>" class="table table-bordered  table-hover table-striped " cellspacing="0" width="100%">
