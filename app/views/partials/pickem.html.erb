@@ -236,7 +236,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                           <div class="col-md-6 col-xs-12" style="border:1px solid black;">
                               <div class="col-md-4 col-xs-4">
                                   <h4 style="text-align:center"> <img width="40%" <% if empate == false %> class="<%= selected == true ? "selected_team": "" %>" <% end %> src="<%= game.survivor_game.team.logo_url %>"> </h4>
-                                  <h4 style="text-align:center"> <%= handicap == true ? "-" : "+"  %> <%= game.survivor_game.handicap  %> </h4>
+                                  <h4 style="text-align:center;color:white;"> <%= handicap == true ? "-" : "+"  %> <%= game.survivor_game.handicap  %> </h4>
                               </div>
                               <div class="col-md-4 col-xs-4">
                                   <h4 style=" <% if empate == false %> color:white; <%else%> color:red; <%end%>  text-align:center; font-size:12px;"><%= game.team.name %> </h4>
@@ -246,7 +246,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                               </div>
                               <div class="col-md-4 col-xs-4" >
                                   <h4 style="text-align:center">  <img width="40%" <% if empate == false %> class="<%= selected == false ? "selected_team": "" %>" <% end %> src="<%= game.survivor_game.team2.logo_url %>"> </h4>
-                                    <h4 style="text-align:center"> <%= handicap == true ? "+" : "-"  %> <%= game.survivor_game.handicap  %> </h4>
+                                    <h4 style="text-align:center; color:white;"> <%= handicap == true ? "+" : "-"  %> <%= game.survivor_game.handicap  %> </h4>
                               </div>
                           </div>  
                                 
