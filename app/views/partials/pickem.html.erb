@@ -441,6 +441,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                                       var games_array = games.split(',');
                                 
                              for(var i=0; i < teams_array.length; i++){
+
                                     $.ajax({
 									  method: "POST",
 									  url: "/pick_user_games",
@@ -448,7 +449,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 									  data: { pick_user_game: {pick_user_id: data, points: 1, team_id: teams_array[i], survivor_game_id: games_array[i] }  }
 									}).done(function(response) {
                                        
-                                    })        
+                                    })
                              }
                              
                                      $('#confirm_modal').modal('hide');

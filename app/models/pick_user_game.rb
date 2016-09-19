@@ -3,7 +3,7 @@ class PickUserGame < ActiveRecord::Base
   belongs_to :team
   belongs_to :survivor_game
     
-  before_save :check_if_repeat      
+  before_create :check_if_repeat      
     
 
   def check_if_repeat
