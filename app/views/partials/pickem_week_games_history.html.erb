@@ -55,7 +55,8 @@
         var t = $('#example<%= week.id %>').DataTable({
                "language": {
                     "url": languaje
-                }
+                },
+               "iDisplayLength": 100
                    });
                
               <% pick_survivor_weekx = PickSurvivorWeek.where('survivor_week_game_id = ? and pick_id =?', week.id ,@pickem.id ) %>
