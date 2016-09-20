@@ -371,15 +371,15 @@ end
 	def set_survivor_page
 		@current_survivor = Survivor.find(params[:id])
 		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, 6)
-		@survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],@current_week[0].id)
-		@last_survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],(@current_week[0].id - 1))
+		@survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],@current_week[1].id)
+		@last_survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],(@current_week[1].id - 1))
 		@tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @survivor_week_sur[0].id)
-		if @current_week[0].week == 0 
+		if @current_week[1].week == 0 
 			
 			else
 		@last_tickets_purchase_teams = SurvivorUser.where('user_id = ?', current_user.id)
 		@last_tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @last_survivor_week_sur[0].id)
-        @games = SurvivorGame.where('survivor_week_game_id = ? and game_date < ?',@current_week[0].id, Time.now).count    
+        @games = SurvivorGame.where('survivor_week_game_id = ? and game_date < ?',@current_week[1].id, Time.now).count    
 		end
 	end
     
