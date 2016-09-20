@@ -142,40 +142,40 @@
              <#% end %>
              </ul>
          </li> -->
-         <li><a href="/partials/tickets_history"> Mis billetes </a></li>
+         <li><a target="_self" href="/partials/tickets_history"> Mis billetes </a></li>
          <!--<li><a href="/games/games_by_category"> <%= t('category_lotteries') %> </a> </li> -->
-          <li> <a href="/partials/pay_methods">Cargar Crédito</a><%#= link_to t('buy_credit'), credit_card_form_partials_path(:id => current_user.id), :method => :post %></li>
-          <li><a href="/partials/history"> <%= t('history') %> </a> </li>
-          <li><a href="/partials/checkout"> <%= t('checkout') %> </a> </li>
-		  <li><a href="/partials/invite">Invitar Amigos</a>  </li>
+          <li> <a target="_self" href="/partials/pay_methods">Cargar Crédito</a><%#= link_to t('buy_credit'), credit_card_form_partials_path(:id => current_user.id), :method => :post %></li>
+          <li><a target="_self" href="/partials/history"> <%= t('history') %> </a> </li>
+          <li><a target="_self" href="/partials/checkout"> <%= t('checkout') %> </a> </li>
+		  <li><a target="_self" href="/partials/invite">Invitar Amigos</a>  </li>
            <li class="dropdown" >
                         <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown"> <img width="25px" src="/assets/LogoMakr2White2.png"> Survivor<span class="caret"></span></a>
                         <ul role="menu" class="dropdown-menu">   
-                        	 <li><a href="/partials/survivor_game">Home</a></li>
-                        	 <li><a href="/partials/survivor_rules">Reglas del Survivor</a></li>
-                        	 <li><a href="/survivors/new">Crear Liga</a></li>
-							 <li><a href="/partials/survivor_leagues">Ligas de survivor</a></li>
-                       		 <li><a href="/partials/my_leagues">Mis ligas</a></li>
+                        	 <li><a target="_self" href="/partials/survivor_game">Home</a></li>
+                        	 <li><a target="_self" href="/partials/survivor_rules">Reglas del Survivor</a></li>
+                        	 <li><a target="_self" href="/survivors/new">Crear Liga</a></li>
+							 <li><a target="_self" href="/partials/survivor_leagues">Ligas de survivor</a></li>
+                       		 <li><a target="_self" href="/partials/my_leagues">Mis ligas</a></li>
                         </ul>
                     </li>
            <li class="dropdown" >
                         <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown"><img width="35px" src="/assets/Logo_pick.png"> Pick ‘em  <span class="caret"></span></a>
                         <ul role="menu" class="dropdown-menu">   
-                        	 <li><a href="/partials/pickem_game">Home</a></li>
-                        	 <li><a href="/partials/pickem_rules">Reglas del pick ‘em</a></li>
-                        	  <li><a href="/picks/new">Crear Liga</a></li>
-							 <li><a href="/partials/pickem_leagues">Ligas de pick ‘em</a></li>
-                       		 <li><a href="/partials/my_pickem_leagues">Mis ligas</a></li>
+                        	 <li><a target="_self" href="/partials/pickem_game">Home</a></li>
+                        	 <li><a target="_self" href="/partials/pickem_rules">Reglas del pick ‘em</a></li>
+                        	  <li><a target="_self" href="/picks/new">Crear Liga</a></li>
+							 <li><a target="_self" href="/partials/pickem_leagues">Ligas de pick ‘em</a></li>
+                       		 <li><a target="_self" href="/partials/my_pickem_leagues">Mis ligas</a></li>
                         </ul>
                     </li>
           <li class="dropdown" >
                         <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown"><img style="margin-right:7px" width="18px" src="/assets/logo_tira.png"> Tiras <span class="caret"></span></a>
                         <ul role="menu" class="dropdown-menu">   
-                        	 <li><a href="/partials/tiras">Home</a></li>
-                        	 <li><a href="/partials/tiras_rules">Reglas de Tiras</a></li>
+                        	 <li><a target="_self" href="/partials/tiras">Home</a></li>
+                        	 <li><a target="_self" href="/partials/tiras_rules">Reglas de Tiras</a></li>
                         </ul>
                     </li>   
-           <li><a href="/partials/lottery"><img width="40px" src="/assets/logo_lotto.png"> Loterias</a>  </li>            
+           <li><a target="_self" href="/partials/lottery"><img width="40px" src="/assets/logo_lotto.png"> Loterias</a>  </li>            
           <li id="log_out_mov" style="display:none;"><%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
            <h4> <i class="fa fa-sign-out"></i><%= t('logout') %> </h4>
           <% end %></li>
