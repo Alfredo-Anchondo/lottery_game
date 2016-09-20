@@ -15,7 +15,7 @@
             <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">La liga termino con un total de : <%= @current_survivor.winner_user %> <%= @current_survivor.winner_user == 1 ? 'Ganador' : 'Ganadores' %> </h4>
             <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Felicidades a <%= @current_survivor.winner_user == 1 ? 'el ganador' : 'los ganadores' %></h4> 	   
       		<hr>
-      		   	<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"><a href="/partials/survivor_history/<%= @current_survivor.id%>" class="btn btn-lg" style="background-color:#2D68AC; color:white; border-color:#2D68AC;">Consultar resultados</a></h4> 		
+      		   	<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"><a target="_self" href="/partials/survivor_history/<%= @current_survivor.id%>" class="btn btn-lg" style="background-color:#2D68AC; color:white; border-color:#2D68AC;">Consultar resultados</a></h4> 		
       		<hr>
       	
       		
@@ -37,7 +37,7 @@
         	<div class="row" style="background-color:rgba(0, 0, 0, 0.3)">
          	<div class="col-md-4" style="border-right:1px solid black;">
           	<h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 34px; color:white; font-weight:900;"><img style="padding-right:5px" width="80px" class="img-circle" src="<%= @current_survivor.background_url %>"><%= @current_survivor.name %></h1>
-          	 <h4 style="text-align:center">  <a class="btn btn-primary"  href="/partials/survivor_history/<%= @current_survivor.id %>">Consultar Temporada</a>  <a class="btn btn-primary"  href="/partials/games_result/">Resultados de Partidos</a> </h4> <hr>
+          	 <h4 style="text-align:center">  <a target="_self" class="btn btn-primary"  href="/partials/survivor_history/<%= @current_survivor.id %>">Consultar Temporada</a>  <a target="_self" class="btn btn-primary"  href="/partials/games_result/">Resultados de Partidos</a> </h4> <hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Semana #<%= @current_week[0].week %></h4>
       		<pre style="text-align:center; background-color:transparent; border: none;font-size: 14px; font-weight: 800; font-family: inherit; color:white;"><%= @current_survivor.description %> </pre>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;"> <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
