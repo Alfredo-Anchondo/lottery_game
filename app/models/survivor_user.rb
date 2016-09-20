@@ -123,10 +123,16 @@ class SurvivorUser < ActiveRecord::Base
       if survivor_week_survivor.survivor_week_game.week == 0
           	if user.gift_credit.to_f >= survivor_week_survivor.survivor.price.to_f
         user.update(:gift_credit => user.gift_credit.to_f - survivor_week_survivor.survivor.price.to_f)
+                if survivor.id == 15
+                    else
 		survivor.update(:initial_balance => survivor.initial_balance + survivor.price)	
+                end
     	else
         user.update(:balance => user.balance - survivor_week_survivor.survivor.price)
+                 if survivor.id == 15
+                    else
 		survivor.update(:initial_balance => survivor.initial_balance + survivor.price)	
+                 end
     	end
           else
           
