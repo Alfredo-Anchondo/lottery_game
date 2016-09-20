@@ -31,9 +31,9 @@ class SurvivorUser < ActiveRecord::Base
 
   def special_survivor
       logger.info "ENTREEEEEEEEEEEEEEE EN LA VALIDACION"
-      if survivor_week_survivor.id == 201
+      if survivor_week_survivor.id == 202
           ticket0 = SurvivorUser.new
-          ticket0.survivor_week_survivor_id = 202
+          ticket0.survivor_week_survivor_id = 201
           ticket0.user_id = user.id
           ticket0.purchase_date = Time.now
           ticket0.status = "alive"
