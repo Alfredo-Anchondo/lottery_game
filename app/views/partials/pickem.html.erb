@@ -35,7 +35,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 </style>
 
 
-<% if @current_week[0].week == 0 %>
+<% if @current_week[1].week == 0 %>
 	<div class="row" style=" background-size: cover; background-image: url(/assets/default_background.png)">
          	<div class="row" style="background-color:rgba(0, 0, 0, 0.3)">
        	<div class="col-md-4">
@@ -59,7 +59,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
       		
       			<script>
-					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
+					var countdown1 = moment('<%= (@current_week[1].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
 					   $('#final_date').countdown(countdown1, function(event) {
 							$(this).html(event.strftime('%D Dias %H:%M:%S'));
 								  
@@ -174,7 +174,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
          	<div class="col-md-3 " >
           	<h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 25px; color:white; font-weight:900;"><img style="margin-right:10px;" class="img-circle" width="80px" src="<%= @pick.background_url %>"><%= @pick.name %></h1>
           	<h4 style="text-align:center">  <a class="btn btn-primary"  href="/partials/pick_history/<%= @pick.id %>">Temporada</a>  <a class="btn btn-primary"  href="/partials/pickem_week_games_history/<%= @pick.id %>">Semanal</a>  <a class="btn btn-primary"  href="/partials/games_result/">Resultados</a> </h4> <hr>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Semana #<%= @current_week[0].week %></h4>
+      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Semana #<%= @current_week[1].week %></h4>
       		<pre style="text-align:center; overflow-x:hidden; background-color:transparent; border: none;font-size: 14px; font-weight: 800; font-family: inherit; color:white;"><%= @pick.description %> </pre>
       		<hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:14px;"> <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para elegir tus equipos</h4> 
@@ -183,7 +183,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
       		
       		
       		<script>
-					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
+					var countdown1 = moment('<%= (@current_week[1].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
 					   $('#final_date').countdown(countdown1, function(event) {
 							$(this).html(event.strftime('%D Dias %H:%M:%S'));
 								  
