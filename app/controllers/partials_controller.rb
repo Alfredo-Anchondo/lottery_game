@@ -389,9 +389,9 @@ end
         	render json: true
     end
     
-    	def select_week_1
+    def select_week_1
 		@current_survivor = Survivor.find(params[:id])
-		@current_week = SurvivorWeekGame.where('week = ? AND sport_category = ?', 1, 6)
+		@current_week = SurvivorWeekGame.where('week = ? AND sport_category = ?', 3, 6)
 		@survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],@current_week[0].id)
 		@last_survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],(@current_week[0].id - 1))
 		@tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @survivor_week_sur[0].id)

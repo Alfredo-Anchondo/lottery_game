@@ -24,10 +24,38 @@ class SurvivorUser < ActiveRecord::Base
   after_create :update_survivor_user_id
   after_create :send_buy_mail	
   before_create :can_buy    
+  before_create :special_survivor    
 
   #METHODS
   protected
 
+  def special_survivor
+      logger.info "ENTREEEEEEEEEEEEEEE EN LA VALIDACION"
+      if survivor_week_survivor.id == 201
+          ticket0 = SurvivorUser.new
+          ticket0.survivor_week_survivor_id = 202
+          ticket0.user_id = user.id
+          ticket0.purchase_date = Time.now
+          ticket0.status = "alive"
+          ticket0.survivor_user_id = ticket0.id
+          ticket0.save
+          ticket1 = SurvivorUser.new
+          ticket1.survivor_week_survivor_id = 203
+          ticket1.user_id = user.id
+          ticket1.purchase_date = Time.now
+          ticket1.status = "alive"
+          ticket1.survivor_user_id = ticket0.id
+          ticket2 = SurvivorUser.new
+          ticket2.survivor_week_survivor_id = 204
+          ticket2.user_id = user.id
+          ticket2.purchase_date = Time.now
+          ticket2.status = "alive"
+          ticket2.survivor_user_id = ticket0.id
+          ticket1.save
+          ticket2.save
+      end
+  end
+    
   def can_buy
       if survivor.id == 14
           if SurvivorUser.where("user_id = ? and survivor_week_survivor_id = ?",user.id,survivor_week_survivor_id).count >= 2

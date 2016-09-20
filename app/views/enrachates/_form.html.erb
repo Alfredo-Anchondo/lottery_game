@@ -1,0 +1,80 @@
+<%= form_for(@enrachate, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @enrachate.errors.any? %>
+<div id="error_explanation">
+  <% if @enrachate.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.enrachate")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.enrachate"), :count => @enrachate.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @enrachate.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+              <div class="form-group">
+          <%= f.label :price, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :price, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :initial_balance, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :initial_balance, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :percentage, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :percentage, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :type, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :type, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :description, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_area :description, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :winner, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.text_field :winner, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :initial_date, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.datetime_select :initial_date, :class => "form-control" %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :end_date, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.datetime_select :end_date, :class => "form-control" %>
+          </div>
+        </div>
+      </div>
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

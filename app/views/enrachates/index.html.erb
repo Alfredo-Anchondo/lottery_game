@@ -1,0 +1,85 @@
+<div class="row">
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <h3 style="margin-left:15px"><%= t("activerecord.models.enrachates") %></h3>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
+            <thead>
+              <tr>
+                                  <th><%= t("activerecord.attributes.enrachate.price") %></th>
+                                  <th><%= t("activerecord.attributes.enrachate.initial_balance") %></th>
+                                  <th><%= t("activerecord.attributes.enrachate.percentage") %></th>
+                                  <th><%= t("activerecord.attributes.enrachate.type") %></th>
+                                  <th><%= t("activerecord.attributes.enrachate.description") %></th>
+                                  <th><%= t("activerecord.attributes.enrachate.winner") %></th>
+                                  <th><%= t("activerecord.attributes.enrachate.initial_date") %></th>
+                                  <th><%= t("activerecord.attributes.enrachate.end_date") %></th>
+                                <th style="width: 155px"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @enrachates.each do |enrachate| %>
+              <tr>
+                                  <td><%= enrachate.price %></td>
+                                  <td><%= enrachate.initial_balance %></td>
+                                  <td><%= enrachate.percentage %></td>
+                                  <td><%= enrachate.type %></td>
+                                  <td><%= enrachate.description %></td>
+                                  <td><%= enrachate.winner %></td>
+                                  <td><%= enrachate.initial_date %></td>
+                                  <td><%= enrachate.end_date %></td>
+                                <td class="action-link">
+                  <% if can? :show,enrachate %>
+                    <%= link_to enrachate, :class => "btn btn-default", :title => t("actions.show") do %>
+                      <i class="fa fa-eye"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :edit, enrachate %>
+                    <%= link_to edit_enrachate_path(enrachate), :class => "btn btn-info", :title => t("actions.edit") do %>
+                      <i class="fa fa-pencil"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :delete, enrachate %>
+                    <%= link_to enrachate, :method => :delete, :data => { :confirm => t("are_you_sure?", model: t("activerecord.models.enrachate").downcase) }, :class => "btn btn-danger", :title => t("actions.delete") do %>
+                      <i class="fa fa-trash"></i>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center">
+      
+        </div>
+      </div>
+      <!-- end panel-body -->
+    </div>
+    <!-- end panel -->
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :new, Enrachate  %>
+      <%= link_to new_enrachate_path, :class => "btn btn-default" do %>
+        <i class="icon-plus-sign-alt"></i>
+        <%= t("actions.new") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->

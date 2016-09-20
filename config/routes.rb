@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  resources :relation_tira_questions
+
+  resources :relation_enrachate_tiras
+
+  resources :enrachate_users
+
+  resources :question_enrachates
+
+  resources :tira_enrachates
+
+  resources :enrachates
+
   resources :pick_user_games
 
   resources :pick_users

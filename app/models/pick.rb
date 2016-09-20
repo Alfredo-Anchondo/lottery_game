@@ -9,6 +9,7 @@ class Pick < ActiveRecord::Base
   has_attached_file :background, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/default_background.png"
   validates_attachment_content_type :background, :content_type => /\Aimage\/.*\Z/	
 	
+  
 	
 	def background_url
 		background.url

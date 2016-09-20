@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question_enrachate_id: 
+  tira_enrachate_id: 
+  answer: MyText
+  user_id: 
+  status: MyText
+  purchase_date: 2016-09-19 15:39:02
+
+two:
+  question_enrachate_id: 
+  tira_enrachate_id: 
+  answer: MyText
+  user_id: 
+  status: MyText
+  purchase_date: 2016-09-19 15:39:02

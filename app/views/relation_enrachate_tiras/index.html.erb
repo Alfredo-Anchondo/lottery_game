@@ -1,0 +1,73 @@
+<div class="row">
+  <!-- begin col-12 -->
+  <div class="col-md-12">
+    <!-- begin panel -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <h3 style="margin-left:15px"><%= t("activerecord.models.relation_enrachate_tiras") %></h3>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
+            <thead>
+              <tr>
+                                  <th><%= t("activerecord.attributes.relation_enrachate_tira.enrachate") %></th>
+                                  <th><%= t("activerecord.attributes.relation_enrachate_tira.tira_enrachate") %></th>
+                                <th style="width: 155px"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @relation_enrachate_tiras.each do |relation_enrachate_tira| %>
+              <tr>
+                                  <td><%= relation_enrachate_tira.enrachate %></td>
+                                  <td><%= relation_enrachate_tira.tira_enrachate %></td>
+                                <td class="action-link">
+                  <% if can? :show,relation_enrachate_tira %>
+                    <%= link_to relation_enrachate_tira, :class => "btn btn-default", :title => t("actions.show") do %>
+                      <i class="fa fa-eye"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :edit, relation_enrachate_tira %>
+                    <%= link_to edit_relation_enrachate_tira_path(relation_enrachate_tira), :class => "btn btn-info", :title => t("actions.edit") do %>
+                      <i class="fa fa-pencil"></i>
+                    <% end %>
+                  <% end %>
+                  <% if can? :delete, relation_enrachate_tira %>
+                    <%= link_to relation_enrachate_tira, :method => :delete, :data => { :confirm => t("are_you_sure?", model: t("activerecord.models.relation_enrachate_tira").downcase) }, :class => "btn btn-danger", :title => t("actions.delete") do %>
+                      <i class="fa fa-trash"></i>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center">
+         
+        </div>
+      </div>
+      <!-- end panel-body -->
+    </div>
+    <!-- end panel -->
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :new, RelationEnrachateTira  %>
+      <%= link_to new_relation_enrachate_tira_path, :class => "btn btn-default" do %>
+        <i class="icon-plus-sign-alt"></i>
+        <%= t("actions.new") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->

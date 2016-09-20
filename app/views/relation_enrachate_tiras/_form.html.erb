@@ -1,0 +1,44 @@
+<%= form_for(@relation_enrachate_tira, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @relation_enrachate_tira.errors.any? %>
+<div id="error_explanation">
+  <% if @relation_enrachate_tira.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.relation_enrachate_tira")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.relation_enrachate_tira"), :count => @relation_enrachate_tira.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @relation_enrachate_tira.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+              <div class="form-group">
+          <%= f.label :enrachate_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:enrachate_id, @enrachates_select, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+                  <div class="form-group">
+          <%= f.label :tira_enrachate_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:tira_enrachate_id, @tira_enrachates_select, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+      </div>
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
