@@ -13,6 +13,7 @@
           <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
             <thead>
               <tr>
+                                  <th><%= t("activerecord.attributes.enrachate.name") %></th>
                                   <th><%= t("activerecord.attributes.enrachate.price") %></th>
                                   <th><%= t("activerecord.attributes.enrachate.initial_balance") %></th>
                                   <th><%= t("activerecord.attributes.enrachate.percentage") %></th>
@@ -28,10 +29,11 @@
             <tbody>
               <% @enrachates.each do |enrachate| %>
               <tr>
+                                  <td><%= enrachate.name %></td>    
                                   <td><%= enrachate.price %></td>
                                   <td><%= enrachate.initial_balance %></td>
                                   <td><%= enrachate.percentage %></td>
-                                  <td><%= enrachate.type %></td>
+                                  <td><%= enrachate.type_enrachate %></td>
                                   <td><%= enrachate.description %></td>
                                   <td><%= enrachate.winner %></td>
                                   <td><%= enrachate.initial_date %></td>
@@ -83,3 +85,21 @@
   <!-- end col-12 -->
 </div>
 <!-- end row -->
+
+<script>
+       var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+    
+$('#data-table').DataTable({
+    responsive: true,
+     "language": {
+            "url": languaje
+        }
+});
+</script>

@@ -19,6 +19,7 @@
                                   <th><%= t("activerecord.attributes.enrachate_user.user") %></th>
                                   <th><%= t("activerecord.attributes.enrachate_user.status") %></th>
                                   <th><%= t("activerecord.attributes.enrachate_user.purchase_date") %></th>
+                                  <th><%= t("activerecord.attributes.enrachate_user.enrachate_user_id") %></th>    
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -32,6 +33,7 @@
                                   <td><%= enrachate_user.user %></td>
                                   <td><%= enrachate_user.status %></td>
                                   <td><%= enrachate_user.purchase_date %></td>
+                                  <td><%= enrachate_user.enrachate_user_id %></td>
                                 <td class="action-link">
                   <% if can? :show,enrachate_user %>
                     <%= link_to enrachate_user, :class => "btn btn-default", :title => t("actions.show") do %>
@@ -78,3 +80,22 @@
   <!-- end col-12 -->
 </div>
 <!-- end row -->
+
+
+<script>
+       var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+    
+$('#data-table').DataTable({
+    responsive: true,
+     "language": {
+            "url": languaje
+        }
+});
+</script>

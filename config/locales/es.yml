@@ -374,6 +374,7 @@ es:
         lottery: "Lotería"
     attributes:
         enrachate:
+            name: "Nombre"
             price: "Precio"
             initial_balance: "Bolsa acumulada"
             type: "Tipo"

@@ -15,19 +15,21 @@
 <% end %>
 
 <!-- begin col-md-6 -->
-<div class="col-md-6">
+<div class="col-md-12">
+       <div class="form-group">
+          <%= f.label :name, :class => "col-md-2" %>
+          <div class="col-md-3">
+            <%= f.text_field :name, :class => "form-control" %>
+          </div>
+        </div>
+    
               <div class="form-group">
-          <%= f.label :program_date, :class => "col-md-3" %>
-          <div class="col-md-9">
+          <%= f.label :program_date, :class => "col-md-2" %>
+          <div class="col-md-10">
             <%= f.datetime_select :program_date, :class => "form-control" %>
           </div>
         </div>
-                  <div class="form-group">
-          <%= f.label :name, :class => "col-md-3" %>
-          <div class="col-md-9">
-            <%= f.text_area :name, :class => "form-control" %>
-          </div>
-        </div>
+               
       </div>
 <!-- end col-md-6 -->
 
