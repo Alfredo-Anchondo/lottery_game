@@ -10,7 +10,7 @@ class PartialsController < ApplicationController
      get_customer_credit_cars(current_user)
      render "credit_card_form"
   end
-	
+
 	def buy_random_quinielas
 		@numbers = params[:numbers]
 		@price = params[:price]
@@ -62,7 +62,7 @@ class PartialsController < ApplicationController
 	def get_quinielas_no_winner
 		render :json => Quiniela.find_no_winners.order("created_at DESC")
 	end
-    
+
     def get_quinielas_mainpage
         quinielas = Quiniela.where(:to_mainpage => true)
         ids = []
@@ -71,7 +71,7 @@ class PartialsController < ApplicationController
                 ids.push(quiniela.id)
             end
         end
-       
+
 		render :json =>  Quiniela.find(ids)
 	end
 
@@ -162,15 +162,15 @@ end
 def get_customer(customer_id)
   stablich_connection
   customer = @customers.get(customer_id)
-    
-    if params[:store_buy] 
+
+    if params[:store_buy]
         pay_store_ticket(customer)
     else
-    
-    if params[:bank_buy] 
+
+    if params[:bank_buy]
         pay_bank_ticket(customer)
     else
-   
+
     if params[:only_register]
      create_credit_debit_card(customer)
      logger.info "SOLO SE REGISTRO LA TARJETA"
@@ -207,17 +207,17 @@ def get_customer_credit_cars(user)
 rescue OpenpayConnectionException => error
 	logger.info error.description
 end
-    
+
  def pay_store
-   stablich_connection  
+   stablich_connection
    check_if_customer_exists_global(current_user)
  end
-    
-    
+
+
 
  def pay_store_ticket(user)
-     
-   stablich_connection  
+
+   stablich_connection
      request_hash={
      "method" => "store",
      "amount" => params[:amount],
@@ -226,11 +226,11 @@ end
 
  response_hash=@charges.create(request_hash.to_hash,user['id'])
      render json: response_hash
- end    
-    
+ end
+
  def pay_bank_ticket(user)
-     
-   stablich_connection  
+
+   stablich_connection
      request_hash={
      "method" => "bank_account",
      "amount" => params[:amount],
@@ -239,10 +239,10 @@ end
 
  response_hash=@charges.create(request_hash.to_hash,user['id'])
      render json: response_hash
- end    
-    
-    
-    
+ end
+
+
+
 
 def stablich_connection
   @openpay = OpenpayApi.new("m8dvprmyk9adbcmhonod", "sk_22a93d1817864bebbf99ca009358e48b") if Rails.env.development?
@@ -353,7 +353,7 @@ end
 		end
 		#BuyMailer.buy_many_tickets(@user_id, @array_values, @lottery).deliver
 	end
-	
+
 	def survivor_leagues
 	  	@survivors = Survivor.where('extract(year  from created_at) = ?',Time.now.year).order(:id)
 		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, 6)
@@ -362,7 +362,7 @@ end
  #def show_category
   # @category = Category.find_by_friendly_name(params[:name])
   #end
-	@current_survivor 
+	@current_survivor
 	@current_week
 	@survivor_week_sur
 	@tickets_purchase
@@ -374,34 +374,37 @@ end
 		@survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],@current_week[0].id)
 		@last_survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],(@current_week[0].id - 1))
 		@tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @survivor_week_sur[0].id)
-		if @current_week[0].week == 0 
-			
+		if @current_week[0].week == 0
+
 			else
 		@last_tickets_purchase_teams = SurvivorUser.where('user_id = ?', current_user.id)
 		@last_tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @last_survivor_week_sur[0].id)
-        @games = SurvivorGame.where('survivor_week_game_id = ? and game_date < ?',@current_week[0].id, Time.now).count    
+        @games = SurvivorGame.where('survivor_week_game_id = ? and game_date < ?',@current_week[0].id, Time.now).count
 		end
 	end
-    
-    
+
+
     def enrachate
-        @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ?",0,Time.now,Time.now).first 
-        @current_tira = @enrachate.current_tira 
+        @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ?",0,Time.now,Time.now).first
+
+
+        @current_tira = @enrachate.current_tira
         @last_tira = @enrachate.past_tira
         @future_tira = @enrachate.future_tira
         @tickets_for_enrachate = EnrachateUser.where("enrachates_id = ?", @enrachate.id).pluck(:enrachate_user_id).uniq
         @racha_values = []
          @tickets_for_enrachate.each do | ticket |
             @count_ticket = EnrachateUser.where("enrachate_user_id = ? and status = ?",ticket, "alive").count
-             
+
          @racha_values.push(@count_ticket)
          end
         @lose_count =  EnrachateUser.where("user_id = ? and enrachates_id = ? and status = ?",current_user.id, @enrachate.id, "loser").count
+        @alive_count =  EnrachateUser.where("user_id = ? and enrachates_id = ? and status = ?",current_user.id, @enrachate.id, "alive").count
         @recent_buy_ticket_enrachate = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, @enrachate.id, @current_tira.id ).last
-        @last_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "alive", @enrachate.id, @last_tira.id ).last 
+        @last_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "alive", @enrachate.id, @last_tira.id ).last
         @can_change_question = true
-        
-        if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil 
+
+        if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil
             logger.info "Entre A DONDE NO DEBERIA U________U"
             logger.info @recent_buy_ticket_enrachate.id
             @already_select_question = @recent_buy_ticket_enrachate.answer != nil  ? true : false
@@ -409,63 +412,63 @@ end
                 if @recent_buy_ticket_enrachate.question_enrachate != "" && @recent_buy_ticket_enrachate.question_enrachate != [] && @recent_buy_ticket_enrachate.question_enrachate != nil
             @can_change_question = @recent_buy_ticket_enrachate.question_enrachate.program_date < Time.now ? false : true
                 end
-            @enrachate_user_id = @recent_buy_ticket_enrachate.enrachate_user_id 
+            @enrachate_user_id = @recent_buy_ticket_enrachate.enrachate_user_id
                 if @future_tira != "" && @future_tira != [] && @future_tira != nil
-                     @future_ticket =  EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ?",current_user.id,@enrachate.id,@future_tira.id).first   
-                     @future_tira_ticket = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ?",current_user.id,@enrachate.id,@future_tira.id).count != 0 ? true : false    
-                end    
+                     @future_ticket =  EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ?",current_user.id,@enrachate.id,@future_tira.id).first
+                     @future_tira_ticket = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ?",current_user.id,@enrachate.id,@future_tira.id).count != 0 ? true : false
+                end
         end
-        
-        if @last_day_ticket != "" && @last_day_ticket != [] && @last_day_ticket != nil 
-             @enrachate_user_id = @last_day_ticket.enrachate_user_id 
+
+        if @last_day_ticket != "" && @last_day_ticket != [] && @last_day_ticket != nil
+             @enrachate_user_id = @last_day_ticket.enrachate_user_id
         end
-        
+
              logger.info @can_change_question
-        logger.info "Se puede cambiar la respuesta????????????????"  
-        
+        logger.info "Se puede cambiar la respuesta????????????????"
+
     end
-    
-    
+
+
     def enrachate_history
-        @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ?",0,Time.now,Time.now).first 
-        @current_tira = @enrachate.current_tira 
+        @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ?",0,Time.now,Time.now).first
+        @current_tira = @enrachate.current_tira
         @last_tira = @enrachate.past_tira
         @future_tira = @enrachate.future_tira
         @recent_buy_ticket_enrachate = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, @enrachate.id, @current_tira.id ).last
-        @last_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "alive", @enrachate.id, @last_tira.id ).last 
+        @last_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "alive", @enrachate.id, @last_tira.id ).last
         @ticket_alive = @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != nil && @recent_buy_ticket_enrachate != [] ? @recent_buy_ticket_enrachate : @last_day_ticket
-            
-        
+
+
         @tickets = EnrachateUser.where("enrachate_user_id = ?", @ticket_alive.enrachate_user_id )
     end
-    
-    
+
+
     def change_score
         ticket = PickUser.find(params[:id])
         ticket.update(:local_score => params[:local_score] , :visit_score => params[:visit_score])
         	render json: true
     end
-    
+
     def select_week_1
 		@current_survivor = Survivor.find(params[:id])
 		@current_week = SurvivorWeekGame.where('week = ? AND sport_category = ?', 3, 6)
 		@survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],@current_week[0].id)
 		@last_survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],(@current_week[0].id - 1))
 		@tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @survivor_week_sur[0].id)
-		if @current_week[0].week == 0 
-			
+		if @current_week[0].week == 0
+
 			else
 		@last_tickets_purchase_teams = SurvivorUser.where('user_id = ?', current_user.id)
 		@last_tickets_purchase = SurvivorUser.where('user_id = ? AND survivor_week_survivor_id = ?', current_user.id, @last_survivor_week_sur[0].id)
-        @games = SurvivorGame.where('survivor_week_game_id = ? and game_date < ?',@current_week[0].id, Time.now).count    
+        @games = SurvivorGame.where('survivor_week_game_id = ? and game_date < ?',@current_week[0].id, Time.now).count
 		end
 	end
-	
+
 	def close_quinielas
 		render :json =>	Quiniela.where('winner_number != ? ', '').order(id: :desc).first(10)
 	end
-    
-    				
+
+
     def delete_ticket
         render :nothing => true
         last_tickets_purchase = SurvivorUser.where(:id => params[:last_tickets_purchase])
@@ -475,19 +478,19 @@ end
          logger.info entry[0]
         logger.info last_tickets_purchase
          logger.info "///////////////////"
-        
-         last_ticket = last_tickets_purchase.where('survivor_user_id = ? and status = ?',entry[0].survivor_user_id,'loser').exists? 
+
+         last_ticket = last_tickets_purchase.where('survivor_user_id = ? and status = ?',entry[0].survivor_user_id,'loser').exists?
              if last_ticket == true
                 last_tickets_purchase.where('survivor_user_id = ? and status = ?',entry[0].survivor_user_id,'loser').first.update(:status => 'alreadyrebuy')
              else
-             end  
+             end
                 tickets_purchase.where('survivor_user_id = ?',entry[0].survivor_user_id).first().delete()
         return true
-    end 
-	
-	 @survivor_id 
+    end
+
+	 @survivor_id
 	 @survivor_create
-	
+
 	def my_leagues
 		tickets = SurvivorUser.where('user_id = ?',current_user.id).pluck(:survivor_week_survivor_id).uniq()
 		survivor_user_survivor = SurvivorWeekSurvivor.where(:id => tickets).pluck(:survivor_id).uniq()
@@ -495,14 +498,14 @@ end
 		@survivor_create = Survivor.where(:user_id => current_user.id)
 		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, 6)
 	end
-	
-	
+
+
 	def survivor_history
-      @current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, 6)    
-      @survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],@current_week[0].id)    
-      @buy_ticket_already = SurvivorUser.where('survivor_week_survivor_id = ? and user_id = ?', @survivor_week_sur[0].id, current_user.id )    
-	  @usuarios = {}	
-	  @survivor = Survivor.find(params[:id])	
+      @current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, 6)
+      @survivor_week_sur = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?', params[:id],@current_week[0].id)
+      @buy_ticket_already = SurvivorUser.where('survivor_week_survivor_id = ? and user_id = ?', @survivor_week_sur[0].id, current_user.id )
+	  @usuarios = {}
+	  @survivor = Survivor.find(params[:id])
 	  @survivorweeksurvivor = SurvivorWeekSurvivor.where(:survivor_id => params[:id]).pluck(:id)
 	  @survivoruser = SurvivorUser.where(:survivor_week_survivor_id => @survivorweeksurvivor).order(:id)
 		@survivoruser.each do |user|
@@ -516,70 +519,70 @@ end
                 teamid = user.team ? user.team.id : 'No tiene equipo'
             if teamid == 'No tiene equipo'
             else
-                game = SurvivorGame.where('survivor_week_game_id = ? and team_id = ?',@current_week[0].id, teamid)  
+                game = SurvivorGame.where('survivor_week_game_id = ? and team_id = ?',@current_week[0].id, teamid)
                 if game != [] && game != '' && game != nil
                     logger.info game[0].team.name
                     logger.info '////////////&&&&&&&&&&&&&&&///////////'
-                   pendint = game[0].game_date > Time.new ? 'Juegopendiente' : 'Juegoterminado' 
+                   pendint = game[0].game_date > Time.new ? 'Juegopendiente' : 'Juegoterminado'
                     logger.info pendint
                 else
-                  game = SurvivorGame.where('survivor_week_game_id = ? and team2_id = ?',@current_week[0].id, teamid)   
+                  game = SurvivorGame.where('survivor_week_game_id = ? and team2_id = ?',@current_week[0].id, teamid)
                     logger.info game[0].team.name
                     logger.info '////////////&&&&&&&&&&&&&&&///////////'
-                   pendint = game[0].game_date > Time.new ? 'Juegopendiente' : 'Juegoterminado' 
+                   pendint = game[0].game_date > Time.new ? 'Juegopendiente' : 'Juegoterminado'
                     logger.info pendint
-                end    
+                end
             end
             else
-            end    
-            
+            end
+
 			@usuarios[user.user.username][user.survivor_user_id][user.survivor_week_survivor.survivor_week_game.week.to_s] = {:team => user.team, :status => user.status, :game => pendint }
 			logger.info @usuarios
 		end
 	end
-    
+
     def pickem_week_games_history
         @pickem = Pick.find(params[:id])
-        @current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, @pickem.sport_category_id)  
+        @current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, @pickem.sport_category_id)
         @weeks = @pickem.survivor_week_games
-        
+
     end
-    
-	
+
+
 	def access_request_mail
 		render :nothing => true
 		owner = User.find(params[:owner])
 		survivor = Survivor.find(params[:survivor])
 		BuyMailer.access_request_mail(current_user,owner,survivor).deliver
-	end	
-    
+	end
+
     def access_request_mail_pick
 		render :nothing => true
 		owner = User.find(params[:owner])
 		survivor = Pick.find(params[:survivor])
 		BuyMailer.access_request_mail_pick(current_user,owner,survivor).deliver
-	end	
-    
-    
-    
-	
+	end
+
+
+
+
 	def invite_friends_survivor
 		@survivor = Survivor.find(params[:id])
 	end
-    
+
     def invite_friends_pick
         @survivor = Pick.find(params[:id])
-    end    
-	
+    end
+
 	def inviting
 		render nothing: true
 		@mails = params['mails']
 		@reference = params['reference']
 		@user = current_user
 		BuyMailer.invite(@mails, @reference, @user).deliver
-	
+
 	end
-	
+
 	def invite_survivor
 		render nothing: true
 		@mails = params['mails']
@@ -587,7 +590,7 @@ end
 		@user = current_user
 		BuyMailer.invite_survivor(@mails, @survivor, @user).deliver
 	end
-    
+
     def invite_pick
 		render nothing: true
 		@mails = params['mails']
@@ -595,13 +598,13 @@ end
 		@user = current_user
 		BuyMailer.invite_pick(@mails, @survivor, @user).deliver
 	end
-	
+
 	def pickem_leagues
 		@picks = Pick.where('extract(year from created_at) = ?',Time.now.year).order(:id)
 		@categories = Pick.where('extract(year from created_at) = ?',Time.now.year).order(:sport_category_id).pluck(:sport_category_id).uniq
 		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ?', Time.now, Time.now)
 	end
-	
+
 	def pickem
 		@pick = Pick.find(params[:id])
 		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, @pick.sport_category_id)
@@ -611,7 +614,7 @@ end
         @current_tickets_purchase = PickUser.where('user_id = ? AND pick_survivor_week_id = ?', current_user.id, @current_pick_survivor_week[0].id).pluck(:pick_user_id)
 		@games = SurvivorGame.where('survivor_week_game_id = ?',@current_week[0].id).order(:game_date)
 	end
-    
+
     def select_pick_1
 		@pick = Pick.find(params[:id])
 		@current_week = SurvivorWeekGame.where('week = ? AND sport_category = ?',1, @pick.sport_category_id)
@@ -621,14 +624,14 @@ end
         @current_tickets_purchase = PickUser.where('user_id = ? AND pick_survivor_week_id = ?', current_user.id, @current_pick_survivor_week[0].id).pluck(:pick_user_id)
 		@games = SurvivorGame.where('survivor_week_game_id = ?',@current_week[0].id).order(:game_date)
 	end
-	
+
     def change_pick_team
         ticket = PickUserGame.find(params[:ticket_id])
         team_id = params[:team_id]
         ticket.update(:team_id => team_id)
         	render json: true
     end
-		
+
 	def my_pickem_leagues
 		tickets = PickUser.where('user_id = ?',current_user.id).pluck(:pick_survivor_week_id).uniq()
 		survivor_user_survivor = PickSurvivorWeek.where(:id => tickets).pluck(:pick_id).uniq()
@@ -636,15 +639,15 @@ end
 		@survivor_create = Pick.where(:user_id => current_user.id)
 		@current_week = PickSurvivorWeek.where('initial_date <= ? AND final_date >= ? ', Time.now, Time.now)
 	end
-    
+
       def get_weeks
         render :json => SurvivorWeekGame.current_year.where('sport_category = ?', params[:category]).count
     end
-    
-    
+
+
     def pick_history
-	  @usuarios = {}	
-	  @pick = Pick.find(params[:id])	
+	  @usuarios = {}
+	  @pick = Pick.find(params[:id])
 	  @picksurvivorweek = PickSurvivorWeek.where(:pick_id => params[:id]).pluck(:id)
 	  @pickuser = PickUser.where(:pick_survivor_week_id => @picksurvivorweek).order(:id)
 		@pickuser.each do |user|
@@ -658,7 +661,7 @@ end
 			logger.info @usuarios
 		end
 	end
-    
+
     def response_request
         logger.info params[:response]
         @request = User.find(params[:id_request])
@@ -675,7 +678,7 @@ end
             BuyMailer.response_access(@request, @owner, @survivor, @response).deliver
         end
     end
-    
+
      def response_access_pick
         logger.info params[:response]
         @request = User.find(params[:id_request])
@@ -692,8 +695,8 @@ end
             BuyMailer.response_access_pick(@request, @owner, @survivor, @response).deliver
         end
     end
-    
-    
-   
-	
+
+
+
+
 end

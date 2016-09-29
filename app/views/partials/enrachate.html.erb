@@ -7,6 +7,10 @@
 <% if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil || @last_day_ticket != "" &&  @last_day_ticket != [] &&  @last_day_ticket != nil %>
 
     <style>
+    #main-con{
+      background-color: white;
+    }
+
         label > input{ /* HIDE RADIO */
   visibility: hidden; /* Makes input not-clickable */
   position: absolute; /* Remove input from document flow */
@@ -45,7 +49,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
 
             <div class="row">
                 <div class="col-md-4 col-xs-4"><h4 style="text-align:center; font-size:16px; color:black;">Bolsa: <span style="color:green;">$<%= @enrachate.initial_balance.round(0) %> </span></h4> </div>
-                <div class="col-md-4 col-xs-4"> <h4 style="text-align:center; font-size:16px; color:black;">Racha: <label> <span style="color:green; "> <%= @racha = @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil ? @recent_buy_ticket_enrachate.racha : @last_day_ticket.racha %></span>-<span style="color:red"><%=  @lose_count %></span>-<span>0</span> </label>  </h4></div>
+                <div class="col-md-4 col-xs-4"> <h4 style="text-align:center; font-size:16px; color:black; margin-bottom:1px;">Racha: <label> <span style="color:green; "> <%= @racha = @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil ? @recent_buy_ticket_enrachate.racha : @last_day_ticket.racha %></span> </label>  </h4> <h4 style="text-align:center; margin:0px;"> <span style="color:green;"><%= @alive_count %></span>-<span style="color:red"><%=  @lose_count %></span>-<span>0</span> </h4></div>
                 <div class="col-md-4 col-xs-4">
                     <h4 style="text-align:center; font-size:16px; color:black;">Lider: <span style="color:green;"><%= @racha_values.max  %> </span> </h4>
                 </div>
@@ -72,7 +76,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                       <img width="40px" src="/assets/radio_button.png">
                                     </label></div>
                                    <div class="col-md-11 col-xs-11" style="padding:0px; text-align:center;">
-                                   <span style="margin-left:5%; font-size:12px; color:black; min-width:50px;"><%= relationquestion.question_enrachate.answer1 %></span> <br>
+                                   <span style="margin-left:15%; font-size:12px; color:black; min-width:50px;"><%= relationquestion.question_enrachate.answer1 %></span> <br>
                                          <span style="margin-left:5%; color:black;"> <i class="fa fa-users" style="color:black;"></i> <%= relationquestion.question_enrachate.answer1_count %>  </span>
                                     </div>
 
@@ -110,7 +114,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                       <img width="40px" src="/assets/radio_button.png">
                                     </label></div>
                                     <div class="col-md-11 col-xs-11" style="padding:0px; text-align:center;">
-                                   <span style="margin-left:5%; font-size:12px; color:black; min-width:50px;"><%= relationquestion.question_enrachate.answer1 %></span><br>
+                                   <span style="margin-left:15%; font-size:12px; color:black; min-width:50px;"><%= relationquestion.question_enrachate.answer1 %></span><br>
                                     <span class=""> <i class="fa fa-users" style="color:black;"></i> <%= relationquestion.question_enrachate.answer1_count %>  </span>
                                     </div></div>
                                 <div class="col-md-6 col-xs-6 float-question-right" style="padding:0px;" >
