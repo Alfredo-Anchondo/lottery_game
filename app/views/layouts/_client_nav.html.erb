@@ -150,7 +150,7 @@
 		  <li><a target="_self" href="/partials/invite">Invitar Amigos</a>  </li>
            <li class="dropdown" >
                         <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown"> <img width="25px" src="/assets/LogoMakr2White2.png"> Survivor<span class="caret"></span></a>
-                        <ul role="menu" class="dropdown-menu">   
+                        <ul role="menu" class="dropdown-menu">
                         	 <li><a target="_self" href="/partials/survivor_game">Home</a></li>
                         	 <li><a target="_self" href="/partials/survivor_rules">Reglas del Survivor</a></li>
                         	 <li><a target="_self" href="/survivors/new">Crear Liga</a></li>
@@ -160,7 +160,7 @@
                     </li>
            <li class="dropdown" >
                         <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown"><img width="35px" src="/assets/Logo_pick.png"> Pick ‘em  <span class="caret"></span></a>
-                        <ul role="menu" class="dropdown-menu">   
+                        <ul role="menu" class="dropdown-menu">
                         	 <li><a target="_self" href="/partials/pickem_game">Home</a></li>
                         	 <li><a target="_self" href="/partials/pickem_rules">Reglas del pick ‘em</a></li>
                         	  <li><a target="_self" href="/picks/new">Crear Liga</a></li>
@@ -168,22 +168,23 @@
                        		 <li><a target="_self" href="/partials/my_pickem_leagues">Mis ligas</a></li>
                         </ul>
                     </li>
+                    <li class="dropdown" >
+                                  <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown"><img width="32px" src="/assets/Logoenrachate.png"> Enrachate <span class="caret"></span></a>
+                                  <ul role="menu" class="dropdown-menu">
+                                     <li><a target="_self" href="/partials/enrachate"> Enrachate hasta 25</a>  </li>
+                                     <li><a target="_self" href="/partials/enrachate_history">Historial enrachate hasta 25</a></li>
+                                  </ul>
+                              </li>   
           <li class="dropdown" >
                         <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown"><img style="margin-right:7px" width="18px" src="/assets/logo_tira.png"> Tiras <span class="caret"></span></a>
-                        <ul role="menu" class="dropdown-menu">   
+                        <ul role="menu" class="dropdown-menu">
                         	 <li><a target="_self" href="/partials/tiras">Home</a></li>
                         	 <li><a target="_self" href="/partials/tiras_rules">Reglas de Tiras</a></li>
                         </ul>
-                    </li>   
+                    </li>
            <li><a target="_self" href="/partials/lottery"><img width="40px" src="/assets/logo_lotto.png"> Loterias</a>  </li>
-          <li class="dropdown" >
-                        <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown"><img width="32px" src="/assets/Logoenrachate.png"> Enrachate <span class="caret"></span></a>
-                        <ul role="menu" class="dropdown-menu">   
-                        	 <li><a target="_self" href="/partials/enrachate"> Enrachate hasta 25</a>  </li>    
-                        	 <li><a target="_self" href="/partials/enrachate_history">Historial enrachate hasta 25</a></li>
-                        </ul>
-                    </li>   
-           
+
+
           <li id="log_out_mov" style="display:none;"><%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
            <h4> <i class="fa fa-sign-out"></i><%= t('logout') %> </h4>
           <% end %></li>
