@@ -386,7 +386,7 @@ end
 
     def enrachate
         @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ?",0,Time.now,Time.now).first
-
+        if @enrachate != "" && @enrachate != [] && @enrachate != nil
 
         @current_tira = @enrachate.current_tira
         @last_tira = @enrachate.past_tira
@@ -425,7 +425,8 @@ end
 
              logger.info @can_change_question
         logger.info "Se puede cambiar la respuesta????????????????"
-
+      else
+      end
     end
 
 
