@@ -450,10 +450,10 @@ end
         @last_tira = @enrachate.past_tira
         @future_tira = @enrachate.future_tira
         @recent_buy_ticket_enrachate = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, @enrachate.id, @current_tira.id ).last
-        @last_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "alive", @enrachate.id, @last_tira.id ).last
+          if @last_tira != nil && @last_tira != "" && @last_tira != []
+           @last_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "alive", @enrachate.id, @last_tira.id ).last
+          end
         @ticket_alive = @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != nil && @recent_buy_ticket_enrachate != [] ? @recent_buy_ticket_enrachate : @last_day_ticket
-
-
         @tickets = EnrachateUser.where("enrachate_user_id = ?", @ticket_alive.enrachate_user_id )
     end
 
