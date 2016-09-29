@@ -1,0 +1,59 @@
+<style>
+    .footer{
+        position:fixed;
+    }
+</style>
+
+<div class="row" style="margin-bottom:80px;">
+    <h4 style="text-align:center; color:black; font-size:18px;"> Historial de enrachate hasta 25 </h4>
+    
+    <h4 style="text-align:center; color:black; font-size:18px;"> Tu racha actual es <span style="color:#2d68ac; font-size:20px;"> <%=  @tickets.first.racha %></span> ganadas al hilo </h4><%  %>
+    
+    <hr>
+    
+    <table id="data-table" class=" table table-bordered table-hover table-striped nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Fecha de compra</th>
+                <th>Tira del dia</th>
+                <th>Pregunta seleccionada</th>
+                <th>Respuesta</th>
+                <th>Status</th>
+                <th>Enrachate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @tickets.order(:purchase_date).each do |ticket| %>
+            <tr>
+                <td><%= ticket.purchase_date.strftime("%d-%m-%Y a las %T") %></td>
+                <td><%= ticket.tira_enrachate.name %></td>
+                <td><%= ticket.question_enrachate.title  %></td>
+                <td><%= ticket.answer == "1" ? ticket.question_enrachate.answer1 : ticket.question_enrachate.answer2  %></td>
+                <td><%= ticket.status ==  "alive" ? "Vivo" : ticket.status == "bought" ? "Comprado" : "Perdedor"   %></td>
+                <td><%= Enrachate.find(ticket.enrachates_id).name %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+
+<script>
+       var current_language = $("#current_language").val();
+       var languaje;
+    
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+    
+$('#data-table').DataTable({
+    responsive: true,
+    order: [1,"desc"],
+     "language": {
+            "url": languaje
+        }
+});
+</script>
+
+

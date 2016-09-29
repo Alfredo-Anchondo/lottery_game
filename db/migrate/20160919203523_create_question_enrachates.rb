@@ -5,6 +5,7 @@ class CreateQuestionEnrachates < ActiveRecord::Migration
       t.text :answer1
       t.text :answer2
       t.datetime :program_date
+      t.string :correct_answer    
 
       t.timestamps
     end

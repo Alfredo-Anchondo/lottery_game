@@ -2,6 +2,47 @@ class RelationEnrachateTirasController < ApplicationController
   before_action :set_relation_enrachate_tira, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
+  respond_to :json
+    
+    def tiras_for_enrachate
+        @enrachate = Enrachate.find(params[:enrachate_id])
+     respond_to do |format|
+   format.json { render :json => @enrachate }
+end
+        end
+    
+    def close_question
+         @tira_id = params[:tira_id]
+         @question_id = params[:question_id]
+         @answer = params[:answer]
+         if @answer == "1"
+         @incorrect_answer = "2"     
+             else
+          @incorrect_answer = "1"     
+         end
+        
+         @enrachate_id = params[:enrachate_id]
+        
+         @tickets_for_tira = EnrachateUser.where("question_enrachate_id = ? and tira_enrachate_id = ? and enrachates_id = ? and answer = ?",@question_id, @tira_id, @enrachate_id, @answer.to_s)
+         
+         @tickets_for_tira.each do |ticket|
+             ticket.update(:status => "alive")
+         end
+
+         @incorrects_tickets_for_tira = EnrachateUser.where("question_enrachate_id = ? and tira_enrachate_id = ? and enrachates_id = ? and answer = ?",@question_id, @tira_id, @enrachate_id, @incorrect_answer) 
+        
+         @incorrects_tickets_for_tira.each do |iticket|
+             iticket.update(:status => "loser") 
+         end
+        
+         @question = QuestionEnrachate.find(@question_id)
+         @question.update(:correct_answer => @answer)
+        
+          respond_to do |format|
+           format.json { render :json => true }
+        end
+       
+    end
 
   def index
     @relation_enrachate_tiras = RelationEnrachateTira.all

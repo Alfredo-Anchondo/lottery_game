@@ -17,6 +17,7 @@
                                   <th><%= t("activerecord.attributes.question_enrachate.answer1") %></th>
                                   <th><%= t("activerecord.attributes.question_enrachate.answer2") %></th>
                                   <th><%= t("activerecord.attributes.question_enrachate.program_date") %></th>
+                                   <th>Respuesta correcta</th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -28,6 +29,7 @@
                                   <td><%= question_enrachate.answer1 %></td>
                                   <td><%= question_enrachate.answer2 %></td>
                                   <td><%= question_enrachate.program_date %></td>
+                                  <td><%= question_enrachate.correct_answer %></td>    
                                 <td class="action-link">
                   <% if can? :show,question_enrachate %>
                     <%= link_to question_enrachate, :class => "btn btn-default", :title => t("actions.show") do %>

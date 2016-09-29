@@ -42,6 +42,6 @@ class EnrachateUsersController < ApplicationController
     end
 
     def enrachate_user_params
-      params.require(:enrachate_user).permit(:question_enrachate_id, :tira_enrachate_id, :answer, :user_id, :status, :purchase_date, :enrachate_user_id)
+      params.require(:enrachate_user).permit(:question_enrachate_id, :tira_enrachate_id, :answer, :user_id, :status, :purchase_date, :enrachate_user_id, :enrachates_id)
     end
 end

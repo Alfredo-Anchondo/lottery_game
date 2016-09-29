@@ -5,6 +5,10 @@ class TiraEnrachate < ActiveRecord::Base
     has_many :enrachates, :through => :relation_enrachate_tiras
     
     after_create :create_relation_enrachate
+    
+    def select_display
+        return name
+    end
         
     
     def create_relation_enrachate

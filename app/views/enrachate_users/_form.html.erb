@@ -28,13 +28,20 @@
               <div class="form-group">
           <%= f.label :question_enrachate_id, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.collection_select(:question_enrachate_id, QuestionEnrachate.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+            <%= f.collection_select(:question_enrachate_id, QuestionEnrachate.all, :id, :select_display, { :include_blank => false, :prompt => true },  :class => "form-control") %>
           </div>
         </div>
                   <div class="form-group">
           <%= f.label :tira_enrachate_id, :class => "col-md-3" %>
           <div class="col-md-9">
             <%= f.collection_select(:tira_enrachate_id,TiraEnrachate.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+    
+    <div class="form-group">
+          <%= f.label :enrachates_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:enrachates_id, Enrachate.all, :id, :name, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
           </div>
         </div>
                   <div class="form-group">

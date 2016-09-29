@@ -42,6 +42,6 @@ class QuestionEnrachatesController < ApplicationController
     end
 
     def question_enrachate_params
-      params.require(:question_enrachate).permit(:title, :answer1, :answer2, :program_date)
+      params.require(:question_enrachate).permit(:title, :correct_answer, :answer1, :answer2, :program_date)
     end
 end

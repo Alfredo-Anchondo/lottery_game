@@ -75,8 +75,11 @@
                    '<h4 class="loser" style="text-align:center"><img width="30px" src="/assets/red-x4.png"></h4>',
                    <% end %>
              <%end%>
-                   
+                   <% if week.survivor_games.where('game_date < ?', Time.new).count == week.survivor_games.count  %>
                    '<h4 style="text-align:center"><%= ticket.local_score %> - <%= ticket.visit_score %></h4>',
+                   <% else %>
+                   '<h4 style="text-align:center"></h4>',
+                   <% end %>
                ]).draw(false);
         
                <%end%>

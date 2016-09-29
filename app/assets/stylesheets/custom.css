@@ -3,6 +3,10 @@
   and (-webkit-min-device-pixel-ratio: 1.331)
   and (-webkit-max-device-pixel-ratio: 1.332) {
       
+      .icon-float{
+    float:right;
+    color:black;
+}
       
       .score_label_client {
     position: static;
@@ -202,6 +206,11 @@
     background-color:transparent;
     top: 30%;
     left: -8% !important;
+}
+      
+      
+.float-question-right{
+    text-align: left !important;
 }
 }
 
@@ -409,6 +418,9 @@
     top: 30%;
     left: -8% !important;
 }
+      .float-question-right{
+    text-align: left  !important;
+}
 
 
 }
@@ -418,6 +430,11 @@
   and (device-height: 640px)
   and (-webkit-device-pixel-ratio: 3)
   and (orientation: landscape) {
+      
+      .icon-float{
+    float:right;
+    color:black;
+}
       
         .score_label_client {
     position: static;
@@ -625,10 +642,19 @@
     top: 30%;
     left: -8% !important;
 }
+      
+      .float-question-right{
+    text-align: left  !important;
+}
 
 }
 
 @media screen and (max-width: 480px) {
+    
+    .icon-float{
+    float:right;
+    color:black;
+}
     
       .score_label_client {
     position: static;
@@ -838,6 +864,10 @@
     top: 30%;
     left: -8% !important;
 }
+    .float-question-right{
+    text-align: left !important;
+}
+    
 }
 
 .row{
@@ -1475,3 +1505,15 @@ input[type='text'].score {
 .clickable {
      cursor:pointer;
   }
+
+.float-question-left{
+    text-align: left;
+}
+
+.float-question-right{
+    text-align: right;
+}
+
+.icon-float{
+    color:black;
+}

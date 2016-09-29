@@ -421,7 +421,6 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 <script>
                $('#confirm_buy').click(function(){
-                   $(this).prop('disabled','disabled');
                         var local_score = $('#local_score').val();
                         var visit_score = $('#visit_score').val();
                         var user_id = <%= current_user.id %>;

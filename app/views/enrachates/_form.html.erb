@@ -62,7 +62,10 @@
                   <div class="form-group">
           <%= f.label :type, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.text_field :type_enrachate, :class => "form-control" %>
+            <%= f.radio_button :type_enrachate, 0 %> 
+              <%= label_tag(:age_child, "Hasta 25") %>
+             <%= f.radio_button :type_enrachate, 1, :style => "margin-left:10%"  %>
+              <%= label_tag(:age_child, "Survivor") %>
           </div>
         </div>
                   <div class="form-group">

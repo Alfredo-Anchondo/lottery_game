@@ -1,0 +1,114 @@
+ <%= javascript_include_tag 'cbpFWTabs' %>
+ <%= stylesheet_link_tag 'component' %>
+ <%= stylesheet_link_tag 'demo' %>
+
+<style>
+    
+        label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;    
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+    content:url("/assets/radio_button_checked.png");
+}
+        
+label > .selected_prev:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+    content:url("/assets/radio_button_checked_gold.png");
+}        
+
+label > input:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES */
+    content:url("/assets/radio_button_disabled.png");
+}        
+
+label > input:disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+    content:url("/assets/radio_button_checked_disabled.png");
+}        
+               
+    </style>
+
+
+<h4 style="text-align:center"> Cerrar pregunta de enrachate </h4>
+<hr>
+
+<div class="row">
+    <div class="col-md-2">
+        <h4>Selecciona el enrachate:</h4>
+    </div>
+       <div class="col-md-4">
+    <%= select_tag "enrachates", options_from_collection_for_select(Enrachate.all, "id", "name"), prompt: "Selecciona un enrachate"  %>
+    </div>
+       <div class="col-md-2"><h4>Selecciona la tira:</h4></div>
+       <div class="col-md-4">
+        <select id="tiras"> 
+           
+        </select>
+        </div>
+</div>
+
+<hr>
+
+<div class="row" id="questions_div">
+
+</div>
+
+<script>
+    $("#enrachates").change(function(){
+        var enrachate_id = $("#enrachates option:selected").val();
+        $.ajax({
+				  method: "GET",
+				  url: "/relation_enrachate_tiras/tiras_for_enrachate",
+				  dataType: "json",     
+				  data: { enrachate_id: enrachate_id  }
+				  }).done(function(data) {
+                       $("#tiras").append("<option value=''>Selecciona una tira </option>"); 
+                   for (var i in data.enrachate.relation_enrachate_tiras){
+                         $("#tiras").append("<option value='"+data.enrachate.relation_enrachate_tiras[i].tira_enrachate.id+"'>"+data.enrachate.relation_enrachate_tiras[i].tira_enrachate.name+"</option>"); 
+                       
+                        $("#questions_div").append('<div style="display:none; margin-bottom:80px !important;" class="row tira_div" id="'+data.enrachate.relation_enrachate_tiras[i].tira_enrachate.id+'"></div>');
+                       
+                       for (var e in data.enrachate.relation_enrachate_tiras[i].tira_enrachate.relation_tira_questions){
+                      
+                           $("#"+data.enrachate.relation_enrachate_tiras[i].tira_enrachate.id+"").append('<div class="row" style="border:1px dotted black;"> <h4 style="text-align:center; color:#2D68AC; font-size:.7em;">'+data.enrachate.relation_enrachate_tiras[i].tira_enrachate.relation_tira_questions[e].question_enrachate.program_date+'</h4><h4 style="text-align:center; color:black; font-size:1em;"><span style="color:#2D68AC"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> </span>'+data.enrachate.relation_enrachate_tiras[i].tira_enrachate.relation_tira_questions[e].question_enrachate.title+'</h4><div class="col-md-6 col-xs-12 float-question-left"><div class="col-md-1 col-xs-2 " style="padding:0"><label><input data-question="'+data.enrachate.relation_enrachate_tiras[i].tira_enrachate.relation_tira_questions[e].question_enrachate.id+'" data-tira="'+data.enrachate.relation_enrachate_tiras[i].tira_enrachate.id+'" type="radio"  name="question" class="question" value="1" /><img width="40px" src="/assets/radio_button.png"></label></div><div class="col-md-11 col-xs-10 " style="margin-top:8px; padding:0"><span style="margin-left:5%; color:black; min-width:50px;">'+data.enrachate.relation_enrachate_tiras[i].tira_enrachate.relation_tira_questions[e].question_enrachate.answer1+'</span></div> </div><div class="col-md-6 col-xs-12 float-question-right" ><div class="col-md-11 col-xs-10 col-md-push-0 col-xs-push-2" style="margin-top:8px;">  <span style="margin-right:5%; color:black;">'+data.enrachate.relation_enrachate_tiras[i].tira_enrachate.relation_tira_questions[e].question_enrachate.answer2+'</span></div><div class="col-md-1 col-xs-2 col-md-pull-0 col-xs-pull-10" style="padding:0"><label><input data-tira="'+data.enrachate.relation_enrachate_tiras[i].tira_enrachate.id+'" data-question="'+data.enrachate.relation_enrachate_tiras[i].tira_enrachate.relation_tira_questions[e].question_enrachate.id+'" type="radio" name="question" class="question"  value="2" /><img width="40px" src="/assets/radio_button.png"></label> </div></div> </div></div>');
+                          
+                                                  }
+                                     
+                   }
+                    $('#tiras').selectpicker('refresh');
+            
+            
+                
+				     $(".question").change(function(){
+                                var tira_id = $(this).data("tira");  
+                                var question_id = $(this).data("question"); 
+                                var answer = $(".question:checked").val();
+                                var enrachate_id = $("#enrachates option:selected").val();
+                                
+                                  $.ajax({
+                              method: "GET",
+                              url: "/relation_enrachate_tiras/close_question",
+                              dataType: "json",     
+                              data: { tira_id: tira_id, question_id: question_id, answer: answer, enrachate_id: enrachate_id  }
+                              }).done(function(data) { 
+                                      alert("se hizo correcto");    
+                                  })
+                                
+                                    
+                      })
+				  })
+        
+          
+    
+    })
+    
+    $("#tiras").change(function(){
+         active_view = $("#tiras option:selected").val();
+        $(".tira_div").hide();
+        $("#"+active_view+"").show();
+           
+    })
+    
+</script>

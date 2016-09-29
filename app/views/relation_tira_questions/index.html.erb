@@ -13,16 +13,16 @@
           <table id="data-table" class="table table-bordered table-hover table-striped nowrap" width="100%">
             <thead>
               <tr>
-                                  <th><%= t("activerecord.attributes.relation_tira_question.tira_enrachate") %></th>
-                                  <th><%= t("activerecord.attributes.relation_tira_question.question_enrachate") %></th>
-                                <th style="width: 155px"></th>
+                 <th><%= t("activerecord.attributes.relation_tira_question.tira_enrachate") %></th>
+                 <th><%= t("activerecord.attributes.relation_tira_question.question_enrachate") %></th>
+                 <th style="width: 155px"></th>
               </tr>
             </thead>
 
             <tbody>
               <% @relation_tira_questions.each do |relation_tira_question| %>
               <tr>
-                                  <td><%= relation_tira_question.tira_enrachate.name %></td>
+                                  <td><%= relation_tira_question.tira_enrachate ? "" : "" %></td>
                                   <td><%= relation_tira_question.question_enrachate.title %></td>
                                 <td class="action-link">
                   <% if can? :show,relation_tira_question %>

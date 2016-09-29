@@ -292,6 +292,7 @@ class SurvivorGame < ActiveRecord::Base
                       
                 end
             end
+                 return true
             end
                 
                 #------------------------------------termina el pick de futball soccer --------------------

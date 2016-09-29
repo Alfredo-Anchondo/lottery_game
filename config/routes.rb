@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   resources :relation_tira_questions
 
-  resources :relation_enrachate_tiras
+  resources :relation_enrachate_tiras do
+      collection do
+          get "close_tira_question"
+          get "tiras_for_enrachate", to: "relation_enrachate_tiras#tiras_for_enrachate"
+          get "close_question", to: "relation_enrachate_tiras#close_question"
+      end
+  end
 
   resources :enrachate_users
 
@@ -96,7 +102,8 @@ Rails.application.routes.draw do
     resources :partials  do
         collection do
             get "tira_banner"
-            get "enrachate"
+            get "enrachate_history", to: "partials#enrachate_history"
+            get "enrachate", to: "partials#enrachate"
             get "tiras_rules"
             get "_bank_tranfer"
             get "pay_in_store"

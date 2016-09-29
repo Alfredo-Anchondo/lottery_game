@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919204137) do
+ActiveRecord::Schema.define(version: 20160921210944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,8 +40,11 @@ ActiveRecord::Schema.define(version: 20160919204137) do
     t.datetime "purchase_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "enrachate_user_id"
+    t.integer  "enrachates_id"
   end
 
+  add_index "enrachate_users", ["enrachates_id"], name: "index_enrachate_users_on_enrachates_id", using: :btree
   add_index "enrachate_users", ["question_enrachate_id"], name: "index_enrachate_users_on_question_enrachate_id", using: :btree
   add_index "enrachate_users", ["tira_enrachate_id"], name: "index_enrachate_users_on_tira_enrachate_id", using: :btree
   add_index "enrachate_users", ["user_id"], name: "index_enrachate_users_on_user_id", using: :btree
@@ -50,13 +53,14 @@ ActiveRecord::Schema.define(version: 20160919204137) do
     t.float    "price"
     t.float    "initial_balance"
     t.float    "percentage"
-    t.integer  "type"
+    t.integer  "type_enrachate"
     t.text     "description"
     t.integer  "winner"
     t.datetime "initial_date"
     t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "error_reports", force: true do |t|
