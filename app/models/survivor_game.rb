@@ -462,8 +462,6 @@ class SurvivorGame < ActiveRecord::Base
                         else
                             currents.push({survivor: ticket.survivor_week_survivor.survivor.id ,survivor_user_id: ticket.survivor_user.id, user_id: ticket.user_id })
                         end
-
-
 					end
 					last_tickets.each do|ticket|
                         if ticket.survivor_week_survivor.survivor.status == 'Cerrada'

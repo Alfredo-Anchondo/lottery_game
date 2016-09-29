@@ -115,7 +115,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                     </label></div>
                                     <div class="col-md-11 col-xs-11" style="padding:0px; text-align:center;">
                                    <span style="margin-left:15%; font-size:12px; color:black; min-width:50px;"><%= relationquestion.question_enrachate.answer1 %></span><br>
-                                    <span class=""> <i class="fa fa-users" style="color:black;"></i> <%= relationquestion.question_enrachate.answer1_count %>  </span>
+                                    <span style="margin-left:15%" class=""> <i class="fa fa-users" style="color:black;"></i> <%= relationquestion.question_enrachate.answer1_count %>  </span>
                                     </div></div>
                                 <div class="col-md-6 col-xs-6 float-question-right" style="padding:0px;" >
                                         <div class="col-md-9 col-xs-9" style="padding:0px; text-align:center;">  <span style="margin-left:5%; font-size:12px; color:black;"><%= relationquestion.question_enrachate.answer2 %></span>
@@ -136,7 +136,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                             <script>
                                 $(".question").change(function(){
                                     if($(".question:checked").length > 0){
-                                        $(".question").closest(".row").css("border","1px dotted black");
+                                        $(".question").closest(".row").css("border","1px solid black");
                                         $(document).removeClass(".selected_prev");
                                         var question_id = $(".question:checked").data("question");
                                         var tira_id = $(".question:checked").data("tira");
@@ -145,8 +145,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                         var user_id = <%= current_user.id %>;
                                         var enrachate_id = <%= @enrachate.id %>;
                                         var enrachate_user_id = <%= @enrachate_user_id %>;
-                                        alert(question_id);
-                                        alert(tira_id);
+                                        location.reload();
 
                                         <% if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != nil %>
 
@@ -156,7 +155,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                               dataType: "json",
                                               data: { enrachate_user: { purchase_date: purchase_date, status: "bought", answer: answer, tira_enrachate_id: tira_id, question_enrachate_id: question_id } }
                                               }).done(function(data) {
-                                               $(".question:checked").closest(".row").css("border","1px dotted gold");
+                                               $(".question:checked").closest(".row").css("border","1px solid black");
                                               })
 
                                           <% else %>
@@ -166,7 +165,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                               dataType: "json",
                                               data: { enrachate_user: { purchase_date: purchase_date, status: "bought", answer: answer, tira_enrachate_id: tira_id, user_id: user_id, question_enrachate_id: question_id, enrachates_id:  enrachate_id ,enrachate_user_id: enrachate_user_id } }
                                               }).done(function(data) {
-                                               $(".question_future:checked").closest(".row").css("border","1px dotted gold");
+                                               $(".question_future:checked").closest(".row").css("border","1px solid black");
                                               })
                                           <% end %>
 
@@ -193,7 +192,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                     <div class="col-md-11 col-xs-11" style="padding:0px; text-align:center;">
                                     <span style="margin-left:15%; font-size:12px;  color:black; min-width:50px;"><%= relationquestion.question_enrachate.answer1 %></span>
                                         <br>
-                                        <span style="margin-left:5%; color:black;"> <i class="fa fa-users" style="color:black;"></i> <%= relationquestion.question_enrachate.answer1_count %>  </span>
+                                        <span style="margin-left:15%; color:black;"> <i class="fa fa-users" style="color:black;"></i> <%= relationquestion.question_enrachate.answer1_count %>  </span>
                                     </div>
 
 
@@ -216,7 +215,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                            <script>
                                 $(".question_future").change(function(){
                                     if($(".question_future:checked").length > 0){
-                                        $(".question.future").closest(".row").css("border","1px dotted black");
+                                        $(".question.future").closest(".row").css("border","1px solid black");
 
                                         var question_id = $(".question_future:checked").data("question");
                                         var tira_id = $(".question_future:checked").data("tira");
@@ -225,8 +224,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                         var enrachate_id = <%= @enrachate.id %>;
                                         var enrachate_user_id = <%= @enrachate_user_id %>;
                                         var user_id = <%= current_user.id %>;
-                                        alert(question_id);
-                                        alert(tira_id);
+                                        location.reload();
                                          <% if @future_tira_ticket == true %>
                                              $.ajax({
                                               method: "PUT",
@@ -312,7 +310,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
 				  dataType: "json",
 				  data: { enrachate_user: {tira_enrachate_id: <%= @enrachate.current_tira.id  %>,  user_id: <%= current_user.id %> ,purchase_date: purchase_date, status: "bought", enrachates_id: <%= @enrachate.id %>}  }
 				  }).done(function(data) {
-				    alert("complete");
+				    location.reload();
 				  })
 
         }else if(balance >= price){
@@ -323,7 +321,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
 				  dataType: "json",
 				  data: { enrachate_user: {tira_enrachate_id: <%= @enrachate.current_tira.id  %>,  user_id: <%= current_user.id %> ,purchase_date: purchase_date, status: "bought", enrachates_id: <%= @enrachate.id %>}  }
 				  }).done(function(data) {
-				    alert("complete");
+				    location.realod();
 				  })
 
         }else{
@@ -332,7 +330,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
 
         }
 
-        alert("<%= @enrachate.current_tira.name  %>");
+
     })
 
 </script>

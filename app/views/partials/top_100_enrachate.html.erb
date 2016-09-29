@@ -1,0 +1,52 @@
+<% if  @top_100.first != [] && @top_100.last != []  %>
+
+
+<h4 style="text-align:center; color:black; font-size:18px;"> Top 100 rachas  </h4>
+<hr>
+
+<table id="data-table" class=" table table-bordered table-hover table-striped nowrap" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Racha</th>
+            <th>Última Pregunta</th>
+            <th>Última Respuesta</th>
+        </tr>
+    </thead>
+    <tbody>
+      <%  @top_100.each do |user|  %>
+        <tr>
+            <td><%= user.user.username %></td>
+            <td><%= EnrachateUser.where("enrachate_user_id = ? and status = ?",user.enrachate_user_id, "alive").count %></td>
+            <td><%= EnrachateUser.where("enrachate_user_id = ? ",user.enrachate_user_id,).order(:id).last.question_enrachate.title %></td>
+            <td><%= EnrachateUser.where("enrachate_user_id = ? ",user.enrachate_user_id,).order(:id).last.answer == "1" ? EnrachateUser.where("enrachate_user_id = ? ",user.enrachate_user_id,).order(:id).last.question_enrachate.answer1 : EnrachateUser.where("enrachate_user_id = ? ",user.enrachate_user_id,).order(:id).last.question_enrachate.answer2  %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+
+<script>
+       var current_language = $("#current_language").val();
+       var languaje;
+
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+
+$('#data-table').DataTable({
+    responsive: true,
+    order: [1,"desc"],
+     "language": {
+            "url": languaje
+        }
+});
+</script>
+
+
+
+<%else%>
+
+<% end %>

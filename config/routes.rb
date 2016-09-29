@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 		  get 'close_pick'
 	  end
   end
-	
+
 
   resources :survivor_week_survivors
 
@@ -97,10 +97,11 @@ Rails.application.routes.draw do
     constraints subdomain: :webhooks do
         post '/:integration_name' => 'webhooks#receive', as: :receive_webhooks
     end
-    
+
 
     resources :partials  do
         collection do
+            get "top_100_enrachate", to: "partials#top_100_enrachate"
             get "tira_banner"
             get "enrachate_history", to: "partials#enrachate_history"
             get "enrachate", to: "partials#enrachate"
@@ -116,55 +117,55 @@ Rails.application.routes.draw do
             get 'survivor_rules'
             get 'pickem_rules'
             get 'pickem_week_games_history/:id', to: 'partials#pickem_week_games_history'
-			get 'pickem_game'
+			      get 'pickem_game'
             get "select_week_1/:id", to: "partials#select_week_1"
             get 'games_result'
             get 'response_access_pick/:id_request/:id_owner/:survivor/:response', to: "partials#response_access_pick"
             get 'response_request/:id_request/:id_owner/:survivor/:response', to: "partials#response_request"
-			get 'pickem_leagues', to: "partials#pickem_leagues"
+			      get 'pickem_leagues', to: "partials#pickem_leagues"
             get 'pick_history/:id', to: "partials#pick_history"
             get 'get_weeks', to: "partials#get_weeks"
-			get 'pickem/:id', to: "partials#pickem"
-			post "invite_survivor", to: "partials#invite_survivor"
+			      get 'pickem/:id', to: "partials#pickem"
+			      post "invite_survivor", to: "partials#invite_survivor"
             post "invite_pick", to: "partials#invite_pick"
-			match "/inviting" => "partials#inviting", :via => :post
-			get 'invite_friends_survivor/:id', to: "partials#invite_friends_survivor"
+			      match "/inviting" => "partials#inviting", :via => :post
+			      get 'invite_friends_survivor/:id', to: "partials#invite_friends_survivor"
             get 'invite_friends_pick/:id', to: "partials#invite_friends_pick"
-			get 'access_mail', to: "partials#access_request_mail"
+			      get 'access_mail', to: "partials#access_request_mail"
             get 'access_mail_pick', to: "partials#access_request_mail_pick"
-			get 'my_leagues', to: "partials#my_leagues"
-			get 'my_pickem_leagues', to: "partials#my_pickem_leagues"
-			get 'quinielas_closed', to: "partials#close_quinielas"
-			get 'next_game'
-			get 'finish_games'
-			get 'future_games'
-			get 'set_survivor_page/:id', to: "partials#set_survivor_page"
-			get 'survivor_history/:id', to: "partials#survivor_history"
-			get 'survivor_game'
-			get 'survivor_search', to: "partials#set_survivor_page"
-			get 'survivor_leagues', to: "partials#survivor_leagues"
-			get "/current_survivors", to: "partials#get_survivor"
-			get "/team_logos/:id", to: "partials#team_logos"
-			post 'buy_random_quinielas', to: "partials#buy_random_quinielas"
-			get 'get_quinielas_no_winner', to: "partials#get_quinielas_no_winner"
+			      get 'my_leagues', to: "partials#my_leagues"
+			      get 'my_pickem_leagues', to: "partials#my_pickem_leagues"
+			      get 'quinielas_closed', to: "partials#close_quinielas"
+			      get 'next_game'
+			      get 'finish_games'
+			      get 'future_games'
+			      get 'set_survivor_page/:id', to: "partials#set_survivor_page"
+			      get 'survivor_history/:id', to: "partials#survivor_history"
+			      get 'survivor_game'
+			      get 'survivor_search', to: "partials#set_survivor_page"
+      			get 'survivor_leagues', to: "partials#survivor_leagues"
+      			get "/current_survivors", to: "partials#get_survivor"
+      			get "/team_logos/:id", to: "partials#team_logos"
+      			post 'buy_random_quinielas', to: "partials#buy_random_quinielas"
+      			get 'get_quinielas_no_winner', to: "partials#get_quinielas_no_winner"
             post "credit_card_form", to: "partials#credit_card_pay"
             post "pay_methods", to: "partials#credit_card_pay"
             get "/partials/:user", to: "partials#get_customer_credit_cars"
             get "complete_buy"
             get "buy_error"
-			get "tickets_history"
-			get "client_details"
+      			get "tickets_history"
+      			get "client_details"
             post "delete_ticket", to: 'partials#delete_ticket'
             get 'lottery'
             get 'get_quinielas_mainpage', to: "partials#get_quinielas_mainpage"
-		    get "/lotteries/:id", to: "partials#lotteries"
-		    get "/quinielas/:id", to: "partials#quinielas"
-			get "invite"
+    		    get "/lotteries/:id", to: "partials#lotteries"
+    		    get "/quinielas/:id", to: "partials#quinielas"
+    			  get "invite"
             get "/history", to: "partials#history"
             get "checkout"
             match "/checkout" => "partials#dispersion", :via => :post
             match "/credit_card_form/delete_card/:card/:customer" => "partials#delete_card", :via => :post
-			post 'buy_much_tickets', to: "partials#buy_much_tickets"
+			      post 'buy_much_tickets', to: "partials#buy_much_tickets"
            # get ":name", to: "partials#show_category"
         end
     end
@@ -175,7 +176,7 @@ Rails.application.routes.draw do
 
 	resources :categories do
 		collection do
-		
+
 		end
 	end
 
@@ -228,8 +229,8 @@ Rails.application.routes.draw do
   get 'welcome/contact'
   get 'welcome/privacy'
   get 'welcome/faq'
-  post "/webhooks", to: "webhooks#receive" 
-  post "/", to: "webhooks#receive" 
+  post "/webhooks", to: "webhooks#receive"
+  post "/", to: "webhooks#receive"
 
   get '/landing', :to => redirect('/index2.html')
   get '/error', :to => redirect('/404.html')

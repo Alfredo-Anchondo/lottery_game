@@ -383,6 +383,19 @@ end
 		end
 	end
 
+   def top_100_enrachate
+     @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ?",0,Time.now,Time.now).first
+     if @enrachate != "" && @enrachate != [] && @enrachate != nil
+       @top_100 = []
+       @tickets_for_enrachate = EnrachateUser.where("enrachates_id = ?", @enrachate.id).pluck(:enrachate_user_id).uniq
+       @tickets_for_enrachate.each do | ticket |
+          @user_ticket = EnrachateUser.where("enrachate_user_id = ? and status = ?",ticket, "alive").first
+          @top_100.push(@user_ticket)
+       end
+     end
+   end
+
+
 
     def enrachate
         @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ?",0,Time.now,Time.now).first
@@ -394,14 +407,15 @@ end
         @tickets_for_enrachate = EnrachateUser.where("enrachates_id = ?", @enrachate.id).pluck(:enrachate_user_id).uniq
         @racha_values = []
          @tickets_for_enrachate.each do | ticket |
-            @count_ticket = EnrachateUser.where("enrachate_user_id = ? and status = ?",ticket, "alive").count
-
-         @racha_values.push(@count_ticket)
+           @count_ticket = EnrachateUser.where("enrachate_user_id = ? and status = ?",ticket, "alive").count
+           @racha_values.push(@count_ticket)
          end
         @lose_count =  EnrachateUser.where("user_id = ? and enrachates_id = ? and status = ?",current_user.id, @enrachate.id, "loser").count
         @alive_count =  EnrachateUser.where("user_id = ? and enrachates_id = ? and status = ?",current_user.id, @enrachate.id, "alive").count
         @recent_buy_ticket_enrachate = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, @enrachate.id, @current_tira.id ).last
-        @last_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "alive", @enrachate.id, @last_tira.id ).last
+        if   @last_tira != ""
+          @last_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "alive", @enrachate.id, @last_tira.id ).last
+        end
         @can_change_question = true
 
         if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil
