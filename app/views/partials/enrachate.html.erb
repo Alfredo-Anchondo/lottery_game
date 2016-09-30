@@ -145,7 +145,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                         var user_id = <%= current_user.id %>;
                                         var enrachate_id = <%= @enrachate.id %>;
                                         var enrachate_user_id = <%= @enrachate_user_id %>;
-                                        location.reload();
+
 
                                         <% if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != nil %>
 
@@ -156,6 +156,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                               data: { enrachate_user: { purchase_date: purchase_date, status: "bought", answer: answer, tira_enrachate_id: tira_id, question_enrachate_id: question_id } }
                                               }).done(function(data) {
                                                $(".question:checked").closest(".row").css("border","1px solid black");
+                                               location.reload();
                                               })
 
                                           <% else %>
@@ -224,7 +225,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                         var enrachate_id = <%= @enrachate.id %>;
                                         var enrachate_user_id = <%= @enrachate_user_id %>;
                                         var user_id = <%= current_user.id %>;
-                                        location.reload();
+
                                          <% if @future_tira_ticket == true %>
                                              $.ajax({
                                               method: "PUT",
@@ -232,7 +233,8 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                               dataType: "json",
                                               data: { enrachate_user: { purchase_date: purchase_date, status: "bought", answer: answer, tira_enrachate_id: tira_id, question_enrachate_id: question_id } }
                                               }).done(function(data) {
-                                               $(".question:checked").closest(".row").css("border","1px dotted gold");
+                                               $(".question:checked").closest(".row").css("border","1px solid black");
+                                               location.reload();
                                               })
                                          <% else %>
 

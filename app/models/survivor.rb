@@ -22,29 +22,31 @@ class Survivor < ActiveRecord::Base
 	def user_username
 		User.find(user_id).username
 	end
-    
+
     def winner_user
       survivor_users.where('status =?','winner').count
     end
 
   def alive_users
-	@current_week = survivor_week_games.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now,6) 
+	@current_week = survivor_week_games.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now,6)
 	  if @current_week[0].week == 0
 		  last_survivor_week_game = survivor_week_games.from_year.find(@current_week[0].id )
       else
-		  last_survivor_week_game = survivor_week_games.from_year.find(@current_week[0].id - 1) 
+		  last_survivor_week_game = survivor_week_games.from_year.find(@current_week[0].id - 1)
 	  end
-   
-	survivor_week_survivor = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?',id, last_survivor_week_game.id)   
+
+	survivor_week_survivor = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?',id, last_survivor_week_game.id)
    alives = survivor_users.where(:survivor_week_survivor_id => survivor_week_survivor[0].id).alive
-   losers = survivor_users.where('survivor_week_survivor_id = ? and status = ?', survivor_week_survivor[0].id,'loser') 
-   already_rebuy =  survivor_users.where('survivor_week_survivor_id = ? and status = ?', survivor_week_survivor[0].id,'alreadyrebuy')     
+   losers = survivor_users.where('survivor_week_survivor_id = ? and status = ?', survivor_week_survivor[0].id,'loser')
+   already_rebuy =  survivor_users.where('survivor_week_survivor_id = ? and status = ?', survivor_week_survivor[0].id,'alreadyrebuy')
       loser_count = 0
       losers.each do |loser|
        loser_count += SurvivorUser.where('survivor_user_id = ? and status =? and survivor_week_survivor_id = ?' , loser.survivor_user_id,'loser',survivor_week_survivor[0].id).count
       end
-      return alives.count + loser_count + already_rebuy.count
-      
+      return aliver.count
+      #Desactivado temporalmente para este survivor
+      #return alives.count + loser_count + already_rebuy.count
+
   end
 
 	def background_url
@@ -57,7 +59,7 @@ class Survivor < ActiveRecord::Base
 	end
 
   def self.close
-    if SurvivorGame.no_pending_games? && SurvivorWeekGame.from_year.last.last_week? 
+    if SurvivorGame.no_pending_games? && SurvivorWeekGame.from_year.last.last_week?
       from_year.each do |s|
         total_winners = s.survivor_users.winner.count
 
@@ -72,7 +74,7 @@ class Survivor < ActiveRecord::Base
 
           s.survivor_users.winner.each do |su|
             su.user.update(:balance => su.user.balance + profit)
-			BuyMailer.winner_survivor(s,su.user,s.survivor_users.winner.count,profit).deliver  
+			BuyMailer.winner_survivor(s,su.user,s.survivor_users.winner.count,profit).deliver
           end
         end
       end
