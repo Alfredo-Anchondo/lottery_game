@@ -43,7 +43,7 @@ class Survivor < ActiveRecord::Base
       losers.each do |loser|
        loser_count += SurvivorUser.where('survivor_user_id = ? and status =? and survivor_week_survivor_id = ?' , loser.survivor_user_id,'loser',survivor_week_survivor[0].id).count
       end
-      return aliver.count
+      return alives.count
       #Desactivado temporalmente para este survivor
       #return alives.count + loser_count + already_rebuy.count
 
