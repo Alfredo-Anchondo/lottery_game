@@ -1,6 +1,6 @@
 <style>
-		
-	
+
+
 </style>
 
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -13,13 +13,13 @@
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:26px;">Gracias por participar en nuestra liga de survivor</h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> Lamentablemente esta liga a llegado a su fin </h4>
             <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">La liga termino con un total de : <%= @current_survivor.winner_user %> <%= @current_survivor.winner_user == 1 ? 'Ganador' : 'Ganadores' %> </h4>
-            <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Felicidades a <%= @current_survivor.winner_user == 1 ? 'el ganador' : 'los ganadores' %></h4> 	   
+            <h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Felicidades a <%= @current_survivor.winner_user == 1 ? 'el ganador' : 'los ganadores' %></h4>
       		<hr>
-      		   	<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"><a target="_self" href="/partials/survivor_history/<%= @current_survivor.id%>" class="btn btn-lg" style="background-color:#2D68AC; color:white; border-color:#2D68AC;">Consultar resultados</a></h4> 		
+      		   	<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"><a target="_self" href="/partials/survivor_history/<%= @current_survivor.id%>" class="btn btn-lg" style="background-color:#2D68AC; color:white; border-color:#2D68AC;">Consultar resultados</a></h4>
       		<hr>
-      	
-      		
-      		
+
+
+
       	</div>
       	</div>
 <% else %>
@@ -29,7 +29,7 @@
 	<% if user.id == current_user.id %>
 		<% participant = true %>
 	<% end %>
-<% end %> 
+<% end %>
 
 	<% if participant != [] && participant != '' %>     <!-- Esto se realiza si el usuario ya tiene ticket -->
 		<% if @current_week[0].week > 0 && @current_week[0].week <= 17 %>
@@ -40,16 +40,16 @@
           	 <h4 style="text-align:center">  <a target="_self" class="btn btn-primary"  href="/partials/survivor_history/<%= @current_survivor.id %>">Consultar Temporada</a>  <a target="_self" class="btn btn-primary"  href="/partials/games_result/">Resultados de Partidos</a> </h4> <hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Semana #<%= @current_week[0].week %></h4>
       		<pre style="text-align:center; background-color:transparent; border: none;font-size: 14px; font-weight: 800; font-family: inherit; color:white;"><%= @current_survivor.description %> </pre>
-      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;"> <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
+      		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;"> <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4>
       		<hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;"> Tienes  <%= @last_tickets_purchase.count  %>  <span><%= @last_tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Rebuys disponibles por entrada: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
-      		
+
       		<script>
-					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
+					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');
 					   $('#final_date').countdown(countdown1, function(event) {
 							$(this).html(event.strftime('%D Dias %H:%M:%S'));
-								  
+
   						});
 				</script>
       		<hr>
@@ -61,7 +61,7 @@
       				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Bolsa: <span style="color:white" >$<%= @current_survivor.initial_balance.round(2) %>  </span> </h3>
       			</div>
       		</div>
-      		
+
       		<br>
       		<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:20px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<hr>
@@ -81,37 +81,37 @@
       		  	 	<% else %>
       		  	 	<%= button_tag ('Entrada:'+(index+1).to_s+''), :id => entry.survivor_user_id,:style => "margin-left:2%;", :class => "btn btn-primary select_life" %>
       		  	 	<% end %>
-      		  	  <% end %> 
+      		  	  <% end %>
       		  	  </h4>
       		  	  </h4>
 				</div>
 				 <div class="col-md-3 life-div col-xs-12"></div>
-				 
+
 					 <% @last_tickets_purchase.each_with_index do |entry, index| %>
-					 
+
 					 <% @last_tickets_purchase_teams.each do |ticket| %>
 					 	<% hash_select_teams[ticket.survivor_user_id] = [] %>
 					 <% end %>
-					 
+
 					  <% @last_tickets_purchase_teams.each do |ticket| %>
 					 	<% hash_select_teams[ticket.survivor_user_id].push(ticket.team) %>
 					 	<% end %>
-					 
-				
-					 
+
+
+
 					 <% @tickets_purchase.each do |ticket| %>
 					   <% array_ids.push(ticket.survivor_user_id) %>
 					   <% hash_teams[ticket.survivor_user_id] = {url: ticket.team ? ticket.team.logo_url : '/assets/red-x4.png'  , name: ticket.team ? ticket.team.name : 'No selecciono equipo', id: ticket.team ? ticket.team.id : "No team"} %>
-					   
+
 					 <% end %>
 					 	<% if array_ids.include? entry.survivor_user_id %>
 					 	<% already_buy = true %>  <% team_choose_id = hash_teams[entry.survivor_user_id][:url] %>
 					 	<% team_choose_name = hash_teams[entry.survivor_user_id][:name] %>
-                        <% team_choose_name_id = hash_teams[entry.survivor_user_id][:id] %> 
+                        <% team_choose_name_id = hash_teams[entry.survivor_user_id][:id] %>
 					 	<% else %>
 					 	<% already_buy = false %>
 					 	<% end %>
-				 
+
 					 <% if already_buy == true %>
 				<div class="col-md-3 life-div col-xs-12"  id="life<%= entry.survivor_user_id %>" style="display:none; border-right:1px solid black; min-height:440px;">
 				<br>
@@ -121,46 +121,46 @@
 					<h4 style="text-align:center"><img width="80%" src="<%= team_choose_id %>"></h4>
 					<h3 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;"> <%= team_choose_name %></h3>
 					<h4 style="text-align:center">
-					          <% survivors_games = SurvivorGame.where("survivor_week_game_id = ?",@current_week[0].id) 
+					          <% survivors_games = SurvivorGame.where("survivor_week_game_id = ?",@current_week[0].id)
                             current_game = survivors_games.where("team_id = ? OR team2_id = ?", team_choose_name_id, team_choose_name_id) %>
                         <% if current_game[0].game_date > Time.now %>
 					    <button id="change_team" class="btn btn-danger"> Cambiar Selección </button>
                         <% end %>
 					</h4>
-	
+
 					<script>
                         $(document).ready(function(){
                             $('#change_team').click(function(){
                               $.ajax({
 									  method: "post",
 									  url: "/partials/delete_ticket",
-									  dataType: "json",     
+									  dataType: "json",
 									  data: { last_tickets_purchase: <%= @last_tickets_purchase.pluck(:id) %>, entry: <%= entry.id %>, tickets_purchase: <%= @tickets_purchase.pluck(:id) %>  }
 									}).complete(function( data) {
                                         location.reload();
-                                    })    
+                                    })
                             })
                         })
                     </script>
-					
-					
+
+
 				</div>
-				 	
+
 				 	<script>
 						$('.life-div').ready(function(){
 							$('.select_team').hide();
 						})
-						
+
 					</script>
-					 	
+
 					 <% else %>
-					 
+
 					 <% losses = entry.survivor_week_survivor.survivor.survivor_users.where(:survivor_user_id => entry.survivor_user_id).loser.count %>
 					  <% rebuy = entry.survivor_week_survivor.survivor.rebuy_quantity %>
-					 
+
 					 	<div class="col-md-3 col-xs-12 life-div"  id="life<%= entry.survivor_user_id %>" style="display:none; border-right:1px solid black; ">
 					 		<h3 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Entrada del survivor  </h3>
-					 		 <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Resultado de la ultima semana: <% if @last_tickets_purchase.where('survivor_user_id = ?', entry.survivor_user_id).last.status == 'alive' %><span style="color:green; text-align:center;"> Ganador </span> 
+					 		 <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Resultado de la ultima semana: <% if @last_tickets_purchase.where('survivor_user_id = ?', entry.survivor_user_id).last.status == 'alive' %><span style="color:green; text-align:center;"> Ganador </span>
 					 		 <% else%>
 					 		 <span style="color:red; text-align:center;"> Perdedor </span>
 							<% end %></h4>
@@ -177,10 +177,10 @@
 					 			<% else %>
 					 			<% buy = true %>
 					 			<h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Aun tienes rebuys disponibles</h4>
-					 			
+
 					 		<% end %>
-					 		
-					 		
+
+
 					 		<hr>
 					 		<% if buy == true %>
 					 		<h3 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Equipos que ya haz seleccionado</h3>
@@ -195,18 +195,18 @@
 											 $('#<%= team.id %><%= entry.survivor_user_id %>').unbind('click');
 											 $('#<%= team.id %><%= entry.survivor_user_id %>').unbind('mouseenter');
                                              $('#<%= team.id %><%= entry.survivor_user_id %>').unbind('tap');
-                                             $('#<%= team.id %><%= entry.survivor_user_id %>').off('tap', this);   
-											 $('#<%= team.id %><%= entry.survivor_user_id %>').unbind('mouseleave');  
+                                             $('#<%= team.id %><%= entry.survivor_user_id %>').off('tap', this);
+											 $('#<%= team.id %><%= entry.survivor_user_id %>').unbind('mouseleave');
 											 $('#<%= team.id %><%= entry.survivor_user_id %>').children().css('background-color','rgba(255, 0, 0, 0.49)');
-											 $('#<%= team.id %><%= entry.survivor_user_id %>').children().addClass('no-selectable');  
+											 $('#<%= team.id %><%= entry.survivor_user_id %>').children().addClass('no-selectable');
 										 })
-								 		
+
 								 	 </script>
 								 	 <% end %>
 					 			 <% end %>
 					 			 </h4>
 					 		<hr>
-					 		
+
 					 		<div class="team-details" style="display:none">
 					 			<h3 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Información del equipo</h3>
 					 			<div class="col-md-6">
@@ -220,7 +220,7 @@
                                 <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;"><span style="color:#2D68AC">JJ:</span><span class="played_games"></span><span style="color:#2D68AC; margin-left:6%;">JG:</span><span class="won_games"></span><span style="color:#2D68AC; margin-left:6%;">JP:</span><span class="losed_games"></span><span style="color:#2D68AC; margin-left:6%;">JE:</span><span class="draw_games"></span></h4>
 					 			</div>
 					 			<div class="clearfix"></div>
-					 			
+
 					 		</div>
 					 		<hr>
 					 		<div class="team-detail" style="display:none;">
@@ -233,7 +233,7 @@
 					 		    <h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;"> <span  style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_select_name"></span> </h4>
 					 			<input type="hidden" class="team_select_description">
 					 			<h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; text-align:center; font-weight:800;">Handicap: <span style=" color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_select_handicap"></span></h4>
-                                <h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;">Rival: <span style="color:white; display:none; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_rival"></span><img class="team_rival_image_selected" width="50px"></h4>    
+                                <h4 style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;">Rival: <span style="color:white; display:none; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"class="team_rival"></span><img class="team_rival_image_selected" width="50px"></h4>
                                  <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center; font-weight:800;"><span style="color:#2D68AC">JJ:</span><span class="played_games_selected"></span><span style="color:#2D68AC; margin-left:6%;">JG:</span><span class="won_games_selected"></span><span style="color:#2D68AC; margin-left:6%;">JP:</span><span class="losed_games_selected"></span><span style="color:#2D68AC; margin-left:6%;">JE:</span><span class="draw_games_selected"></span></h4>
 					 			</div>
 					 			<div class="clearfix"></div>
@@ -246,11 +246,11 @@
                                   <% else %>
                                        <h5 style="color:white"><span style="color:red;">*</span>Lo sentimos pero el tiempo para comprar tu rebuy termino. El boleto para esta semana sera tomado como perdedor.</h5>
                                   <% end %>
-					 			     
+
 					 			 <% else %>
 					 			<button data-survivorcode=" <%= entry.survivor_user_id %>" style="width:50%; margin-left:25%; margin-bottom:10px; font-weight:900; background-color:white; color:black;" type="button" class="btn buy-ticket btn-primary"> Seleccionar equipo </button>
-					 			
-					 			<% end %> 
+
+					 			<% end %>
 					 		</div>
 					 		<% else %>
 					 		<div>
@@ -258,7 +258,7 @@
 					 		</div>
 					 		<% end %>
 					 	</div>
-					 		
+
 					 	<% end %>
 					 	<div class="col-md-5 col-xs-12 selects_teams select_team<%= entry.survivor_user_id %>" style="display:none">
 					 	<h3 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center;">Selecciona a tu equipo</h3>
@@ -270,7 +270,7 @@
 					 		 <% else %>
 					 		 	<% visitor_handicap = '-'+ game.handicap.to_s + ''
 									local_handicap = '+'+ game.handicap.to_s + '' %>
-					 		 <%end%>	
+					 		 <%end%>
 					 		<a href="#" data-url="<%= game.team.logo_url %>" data-description="<%= game.team.description %>" data-id="<%= game.team.id %>" data-rival="<%= game.team2.name %>" data-handicap="<%= local_handicap %>" data-rivalurl="<%= game.team2.logo_url %>"  data-name="<%= game.team.name %>" class="team  <%= game.past_game %>" data-played="<%= game.team.played_games %>" data-won="<%= game.team.won_games %>" data-losed="<%= game.team.losed_games %>" data-draw="<%= game.team.draw_games %>" data-position="Local" id="<%= game.team.id %><%= entry.survivor_user_id %>"><div style="border:1px solid black; background-color:rgba(45, 104, 172, 0.41); height:80px;" class="col-md-2 col-xs-3 div-team">
 					 		<img width="100%" src="<%= game.team.logo_url %>">
 					 	</div></a>
@@ -278,7 +278,7 @@
 					 		<img width="100%" src="<%= game.team2.logo_url %>">
 					 	</div></a>
 					 	<% end %>
-					 	
+
 					 	<script>
 							var x;
 						 	  $('.team').mouseenter(function(){
@@ -287,59 +287,59 @@
 								 $('.team-details').show();
 								 $('.team_name').text($(this).data('name'));
 								 $('.team_handicap').text($(this).data('handicap'));
-								 $('.team_image').attr('src',$(this).data('url'));	
-								 $('.team_rival').text($(this).data('rival'));	
+								 $('.team_image').attr('src',$(this).data('url'));
+								 $('.team_rival').text($(this).data('rival'));
                                  $('.team_rival_image').attr("src",$(this).data('rivalurl'));
                                  $('.team_position').text($(this).data('position'));
                                  $(".played_games").text($(this).data("played"));
                                  $(".losed_games").text($(this).data("losed"));
-                                 $(".won_games").text($(this).data("won"));  
-                                 $(".draw_games").text($(this).data("draw"));    
+                                 $(".won_games").text($(this).data("won"));
+                                 $(".draw_games").text($(this).data("draw"));
 							  }else{
 								 $('.team-details').show();
 								 $(this).children().css('background-color','rgba(0, 0, 128, 0.55)');
 								 $('.team_name').text($(this).data('name'));
 								 $('.team_handicap').text($(this).data('handicap'));
 								 $('.team_image').attr('src',$(this).data('url'));
-								 $('.team_rival').text($(this).data('rival'));	
+								 $('.team_rival').text($(this).data('rival'));
                                  $('.team_rival_image').attr("src",$(this).data('rivalurl'));
                                  $('.team_position').text($(this).data('position'));
                                  $(".played_games").text($(this).data("played"));
                                  $(".losed_games").text($(this).data("losed"));
-                                 $(".won_games").text($(this).data("won"));  
-                                 $(".draw_games").text($(this).data("draw"));   
+                                 $(".won_games").text($(this).data("won"));
+                                 $(".draw_games").text($(this).data("draw"));
 							  }
 						  })
-						  
-						  
-						  
+
+
+
 						   $('.team').mouseleave(function(){
 							    if ($(this).hasClass('clic')){
 									 $('.team-details').hide();
 								}else{
 							   if (x == true){
 								   $(this).children().css('background-color','rgba(0, 128, 25, 0.49)');
-							 		$('.team_name').text('');  
+							 		$('.team_name').text('');
 								    $('.team_handicap').text('');
 								    $('.team_image').attr('src','');
-								     $('.team_rival').text('');	
+								     $('.team_rival').text('');
 								    $('.team-details').hide();
 							   }else{
 							  		$(this).children().css('background-color','rgba(45, 104, 172, 0.41)');
 							 		$('.team_name').text('');
 								   	$('.team_handicap').text('');
 								    $('.team_image').attr('src','');
-								    $('.team_rival').text('');	
+								    $('.team_rival').text('');
 								    $('.team-details').hide();
 							   }
 								}
 						  })
-						   
+
 							$('.team').click(function(){
 								$('.team-detail').show();
 								x = true;
 								$('.team').removeClass('clic');
-								$(this).addClass('clic');	
+								$(this).addClass('clic');
 								 $('.team_select_name').text($(this).data('name'));
                                   $('.played_games_selected').text($(this).data('played'));
                                  $('.won_games_selected').text($(this).data('won'));
@@ -353,15 +353,15 @@
 								$('.passgame').children().css('background-color','rgba(0, 0, 0, 0.59)');
 								$('.no-selectable').css('background-color','rgba(255, 0, 0, 0.49)');
 								$(this).children().css('background-color','rgba(0, 128, 25, 0.49) !important');
-								$('.team_name').text($(this).data('name'));						
+								$('.team_name').text($(this).data('name'));
 						  })
-                            
+
                             	$('.team').on("tap",function(){
 
 								$('.team-detail').show();
 								x = true;
 								$('.team').removeClass('clic');
-								$(this).addClass('clic');	
+								$(this).addClass('clic');
 								 $('.team_select_name').text($(this).data('name'));
                                   $('.played_games_selected').text($(this).data('played'));
                                  $('.won_games_selected').text($(this).data('won'));
@@ -375,64 +375,71 @@
 								$('.passgame').children().css('background-color','rgba(0, 0, 0, 0.59)');
 								$('.no-selectable').css('background-color','rgba(255, 0, 0, 0.49)');
 								$(this).children().css('background-color','rgba(0, 128, 25, 0.49) !important');
-								$('.team_name').text($(this).data('name'));						
+								$('.team_name').text($(this).data('name'));
 						  })
-							
+
 							$('.passgame').unbind('click');
                             $('.passgame').unbind('tap');
 							$('.passgame').unbind('mouseenter');
 							$('.passgame').unbind('mouseleave');
 							$('.passgame').children().css('background-color','rgba(0, 0, 0, 0.59)');
-							
-							
-							
+
+
+
 						 </script>
-		
+
 					 </div>
 					 <% end %>
-					 
+
 					 <script>
 						 var team_id; var user_id; var survivor_week_survivor_id;var purchase_date; var survivor_user_id;
 						$('.buy-ticket').click(function(){
-							
+
 								 team_id = parseInt($('.clic').data('id'));
 								 user_id = <%= current_user.id %>;
 								 survivor_week_survivor_id = <%= @survivor_week_sur[0].id %>;
 								 purchase_date = new Date();
 								 survivor_user_id = $(this).data('survivorcode');
-								
+
 								$('#select_team_name_modal').text('');
 								$('#select_team_modal').attr("src", $('.team_select_image').attr("src"));
 							    $('#select_team_name_modal').text($('.team_select_name').first().text());
 								$('#select_team_description_modal').text($('.team_select_description').first().text())
 								$('#confirm_modal').modal('show');
-							
+
 							$('#confirm_buy').click(function(){
-									
+
+									if(<%=current_user.gift_credit %> >= <%= @current_survivor.price %> || <%= current_user.balance %> >= <%= @current_survivor.price %>  ){
+
 									$(this).prop('disabled', true);
 									 $.ajax({
 									  method: "POST",
 									  url: "/survivor_users",
-									  dataType: "json",     
+									  dataType: "json",
 									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id, team_id: team_id ,  user_id: user_id ,purchase_date: purchase_date, survivor_user_id: survivor_user_id  }  }
 									}).done(function( data) {
 										 $('#confirm_modal').modal('hide');
 									 		$('#thanks_modal').modal('show');
-											setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000);  	  
+											setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000);
 								 	}).error(function(data) {
-											
+
 											 })
+										 }else{
+										alert('No tienes saldo suficiente');
+										window.location.assign("/partials/pay_methods")
+										 }
+
 							})
-															
+
 							})
-						
-							
+
+
 				</script>
-					 
-				
+
+
 				<script>
 					$('.select_life').click(function(){
-						$('.life-div').hide();	
+						$('.life-div').hide();
 						var id = $(this).attr('id');
 						$('#life'+id+'').show();
 						$("a").removeClass("clic");
@@ -466,13 +473,13 @@
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Participa en este survivor</h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> Haz comprado <%= @tickets_purchase.count %>  <span><%= @tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Cantidad de Rebuy: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
-      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4>
       		<hr>
       			<script>
-					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
+					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');
 					   $('#final_date').countdown(countdown1, function(event) {
 							$(this).html(event.strftime('%D Dias %H:%M:%S'));
-								  
+
   						});
 				</script>
          	</div>
@@ -486,23 +493,23 @@
       				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa: <span style="color:white" >$<%= @current_survivor.initial_balance.round(2) %>  </span> </h3>
       			</div>
       		</div>
-      		
+
       		<br>
       		<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<hr>
-                
+
                  <% if @tickets_purchase.count >= 2 && @current_survivor.id == 14 %>
                 <h4 style="text-align:center; color:white;">  Lo sentimos pero esta liga esta limitada a dos entradas por usuario. </h4>
                 <% else %>
       		<h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 60%; background-color:white; border-color:white; color:black; font-weight:900;"> Comprar Entrada </button></h4>
                 <% end %>
-                
-              
+
+
                  <% if @tickets_purchase.count != 0 %>
                     <h4 style="text-align:center"><a target="_self" href="/partials/select_week_1/<%= @current_survivor.id %>" class="btn btn-success btn-lg" style="width: 60%;  font-weight:900;">Semana 3 </a></h4>
                 <% end %>
-      		
-      		
+
+
       		<script>
 				$('#buy_entry').click(function(){
 					$(this).prop('disabled', true);
@@ -517,21 +524,21 @@
 					if(<%=current_user.gift_credit %> >= <%= @current_survivor.price %> || <%= current_user.balance %> >= <%= @current_survivor.price %>  ){
 					    user_balance = <%=current_user.gift_credit %>;
 						total_balance_update = user_balance - <%= @current_survivor.price %>;
-						
-                    	
+
+
 							  	 $.ajax({
 									  method: "POST",
 									  url: "/survivor_users",
-									  dataType: "json",     
+									  dataType: "json",
 									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id,  user_id: user_id ,purchase_date: purchase_date, status: "alive"}  }
 									}).done(function(data) {
 									 				$('#thanks_modal').modal('show');
-											setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000); 	  
+											setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000);
 								 	}).error(function(data) {
-												
+
 											 })
-							
-               
+
+
 					   }else{       //opcion cuando el cliente no tiene saldo
 						    alert('No tienes saldo suficiente');
 							window.location.assign("/partials/pay_methods")
@@ -563,13 +570,13 @@
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Participa en este survivor</h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> Haz comprado <%= @tickets_purchase.count %>  <span><%= @tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Cantidad de Rebuy: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
-      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4>
       		<hr>
       			<script>
-					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
+					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');
 					   $('#final_date').countdown(countdown1, function(event) {
 							$(this).html(event.strftime('%D Dias %H:%M:%S'));
-								  
+
   						});
 				</script>
          	</div>
@@ -583,7 +590,7 @@
       				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa: <span style="color:white" >$<%= @current_survivor.initial_balance.round(2) %>  </span> </h3>
       			</div>
       		</div>
-      		
+
       		<br>
       		<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<h3><%= @survivor_week_sur[0].id %></h3>
@@ -592,7 +599,7 @@
       		 <% if @tickets_purchase.count > 0 %>
                     <h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 60%; background-color:white; border-color:white; color:black; font-weight:900;">Seleccionar equipo semana 3 </button></h4>
                 <% end %>
-      		
+
       		<script>
 				$('#buy_entry').click(function(){
 					$(this).prop('disabled', true);
@@ -607,22 +614,22 @@
 					if(<%=current_user.gift_credit %> >= <%= @current_survivor.price %> || <%= current_user.balance %> >= <%= @current_survivor.price %>  ){
 					    user_balance = <%=current_user.gift_credit %>;
 						total_balance_update = user_balance - <%= @current_survivor.price %>;
-						
-                    	
+
+
 							  	 $.ajax({
 									  method: "POST",
 									  url: "/survivor_users",
-									  dataType: "json",     
+									  dataType: "json",
 									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id,  user_id: user_id ,purchase_date: purchase_date, status: "alive"}  }
 									}).done(function( data) {
 									 	$('#thanks_modal').modal('show');
-									 setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000); 
-										
+									 setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000);
+
 								 	}).error(function(data) {
-											 
+
 											 })
-						
-               
+
+
 					   }else{       //opcion cuando el cliente no tiene saldo
 						    alert('No tienes saldo suficiente');
 							window.location.assign("/partials/pay_methods")
@@ -634,16 +641,16 @@
       	 <% else %> <!-- Aqui termina la opcion si hay usuarios y la semana es igual a 0 y empieza mensaje de survivor cerrado --->
       	 <div class="row" style="background-image: url(/assets/default_background.png); margin-top:-20px !important;  ">
       	<br>
-     		     		 
-      	<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:40px; font-weight:800;">Lo sentimos pero esta liga ya comenzo</h4>	
+
+      	<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:40px; font-weight:800;">Lo sentimos pero esta liga ya comenzo</h4>
       	<h4 style="text-align:center"><img src="/assets/Sad.png"></h4>
-      	
+
       	<h3 style="font-size:18px; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center">Recuerda que para participar en una liga de survivor debes de compras tu entrada desde el comienzo del survivor.</h3>
       	<h3 style="font-size:18px; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center">
-     	  Ya que una ves que comienza la primera semana del survivor solo pueden participar los usuarios que compraron su entrada.</h3>	  
+     	  Ya que una ves que comienza la primera semana del survivor solo pueden participar los usuarios que compraron su entrada.</h3>
       	<br><br>
       	 </div>
-      
+
      	<% end %>
      	<% end %>
      	 <!-- Aqui termina el user each -->
@@ -669,13 +676,13 @@
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Participa en este survivor</h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> Haz comprado <%= @tickets_purchase.count %>  <span><%= @tickets_purchase.count > 1 ? "Entradas" : "Entrada" %></span> </h4>
       		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;">Cantidad de Rebuy: <span style="color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;"><%= @current_survivor.rebuy_quantity %></span></h4>
-      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4> 
+      		<h4 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:white; font-size:20px;"> <span style="color:#2D68AC; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900;" id="final_date"></span> horas para comprar entradas</h4>
       		<hr>
       			<script>
-					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');   
+					var countdown1 = moment('<%= (@current_week[0].final_date.end_of_day - 5.hours).to_s(:db)  %>').format('MM/DD/YYYY HH:mm');
 					   $('#final_date').countdown(countdown1, function(event) {
 							$(this).html(event.strftime('%D Dias %H:%M:%S'));
-								  
+
   						});
 				</script>
          	</div>
@@ -689,7 +696,7 @@
       				<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Bolsa: <span style="color:white" >$<%= @current_survivor.initial_balance.round(2) %>  </span> </h3>
       			</div>
       		</div>
-      		
+
       		<br>
       		<h3 style="text-align:center; color:#2D68AC;      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;; font-weight:900; font-size:30px;">Usuarios participando: <span style="color:white"><%= @current_survivor.alive_users %> </span>  </h3>
       		<hr>
@@ -697,7 +704,7 @@
                 <% if @tickets_purchase.count != 0 %>
                     <h4 style="text-align:center"><button id="buy_entry" class="btn btn-success btn-lg" style="width: 60%; background-color:white; border-color:white; color:black; font-weight:900;">Seleccionar equipo semana 3 </button></h4>
                 <% end %>
-      		
+
       		<script>
 				$('#buy_entry').click(function(){
 					$(this).prop('disabled', true);
@@ -712,22 +719,22 @@
 					if(<%=current_user.gift_credit %> >= <%= @current_survivor.price %> || <%= current_user.balance %> >= <%= @current_survivor.price %>  ){
 					    user_balance = <%=current_user.gift_credit %>;
 						total_balance_update = user_balance - <%= @current_survivor.price %>;
-						
-           
+
+
 							  	 $.ajax({
 									  method: "POST",
 									  url: "/survivor_users",
-									  dataType: "json",     
+									  dataType: "json",
 									  data: { survivor_user: {survivor_week_survivor_id: survivor_week_survivor_id,  user_id: user_id ,purchase_date: purchase_date, status: "alive"}  }
 									}).done(function( data) {
 									 	$('#thanks_modal').modal('show');
-									 	setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000);  
-										
+									 	setTimeout(function(){    window.location.assign("/partials/my_leagues"); }, 2000);
+
 								 	}).error(function(data) {
-												 
+
 											 })
-							
-               
+
+
 					   }else{       //opcion cuando el cliente no tiene saldo
 						    alert('No tienes saldo suficiente');
 							window.location.assign("/partials/pay_methods")
@@ -739,13 +746,13 @@
       <% else %> <!-- Aqui termina la ejecucion si la semana es la inicial y no hay usuarios y empieza el mensaje de survivor cerrado -->
       	<div class="row" style="background-image: url(/assets/default_background.png); margin-top:-20px !important;  ">
       	<br>
-     		 
-      	<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:40px; font-weight:800;">Lo sentimos pero esta liga ya comenzo</h4>	
+
+      	<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:40px; font-weight:800;">Lo sentimos pero esta liga ya comenzo</h4>
       	<h4 style="text-align:center"><img src="/assets/Sad.png"></h4>
-      	
+
       <h3 style="font-size:18px; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center">Recuerda que para participar en una liga de survivor debes de compras tu entrada desde el comienzo del survivor.</h3>
       	<h3 style="font-size:18px; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; text-align:center">
-     		 Ya que una ves que comienza la primera semana del survivor solo pueden participar los usuarios que compraron su entrada.</h3>	  
+     		 Ya que una ves que comienza la primera semana del survivor solo pueden participar los usuarios que compraron su entrada.</h3>
       		 <br><br>
       	 </div>
       <% end %>
@@ -766,7 +773,7 @@
         <h4 style="text-align:center; font-size:30px; font-weight:900; color:#2d68ac;">!Mucha suerte!</h4>
         <br>
       </div>
-     
+
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -789,7 +796,7 @@
         <br>
        	<h4><button class="btn btn-primary" style="width:70%" id="confirm_buy"> Confirmar equipo </button><button data-dismiss="modal" class="btn btn-danger" style="width:25%; margin-left:3%">Cancelar</button></h4>
       </div>
-     
+
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
