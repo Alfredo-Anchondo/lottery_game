@@ -2,11 +2,11 @@ class LotteriesController < ApplicationController
   load_and_authorize_resource  except: [:update]
   before_action :authenticate_user!
   before_action :set_lottery, only: [:show, :edit, :update, :destroy]
-  before_action :data, only: [:index, :new, :create, :edit, :update]   
+  before_action :data, only: [:index, :new, :create, :edit, :update]
 
   respond_to :html
   respond_to :json
-	
+
   def index
     @lotteries = Lottery.all
     respond_with(@lotteries)
@@ -14,7 +14,7 @@ class LotteriesController < ApplicationController
 	def last_lotteries
 		render :json => Lottery.last_lotteries
 	end
-	
+
     def team_logos
         @lottery = Lottery.find(params[:id])
         respond_with(:team1 => @lottery.game.team, :team2 => @lottery.game.team2)
@@ -24,10 +24,10 @@ class LotteriesController < ApplicationController
   def show
     respond_with(@lottery)
   end
-    
+
     def day_lottery
         params[:game_id]
-        render :json => Lottery.day_lottery 
+        render :json => Lottery.day_lottery
     end
 
   def new
@@ -45,12 +45,12 @@ class LotteriesController < ApplicationController
   end
 
   def update
-   
+
        respond_to do |format|
            if @lottery.update(lottery_params)
                format.html { redirect_to @lottery, notice: t('success_update_lottery') }
                format.json { render :show, status: :ok, location: @lottery }
-               
+
       else
         format.html { render :edit }
                format.json { render json: @lottery.errors, status: :unprocessable_entity }
@@ -69,6 +69,6 @@ class LotteriesController < ApplicationController
     end
 
     def lottery_params
-      params.require(:lottery).permit(:initial_balance, :show_banner, :rules, :description, :game_id, :winner_number, :initial_number, :final_number, :to_mainpage , :price, :purchase_gift_tickets)
+      params.require(:lottery).permit(:initial_balance, :rules, :description, :game_id, :winner_number, :initial_number, :final_number, :to_mainpage , :price, :purchase_gift_tickets)
     end
 end
