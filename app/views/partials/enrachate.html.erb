@@ -315,22 +315,25 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
 				    location.reload();
 				  })
 
-        }else if(balance >= price){
+        }else {
+          if(balance >= price){
 
-              $.ajax({
-				  method: "POST",
-				  url: "/enrachate_users",
-				  dataType: "json",
-				  data: { enrachate_user: {tira_enrachate_id: <%= @enrachate.current_tira.id  %>,  user_id: <%= current_user.id %> ,purchase_date: purchase_date, status: "bought", enrachates_id: <%= @enrachate.id %>}  }
-				  }).done(function(data) {
-				    location.realod();
-				  })
+                $.ajax({
+            method: "POST",
+            url: "/enrachate_users",
+            dataType: "json",
+            data: { enrachate_user: {tira_enrachate_id: <%= @enrachate.current_tira.id  %>,  user_id: <%= current_user.id %> ,purchase_date: purchase_date, status: "bought", enrachates_id: <%= @enrachate.id %>}  }
+            }).done(function(data) {
+              location.realod();
+            })
 
-        }else{
-            alert("No tienes saldo suficiente para realizar la compra");
-            location.assign("/partials/pay_methods");
+          }else{
+              alert("No tienes saldo suficiente para realizar la compra");
+              location.assign("/partials/pay_methods");
 
+          }
         }
+
 
 
     })
