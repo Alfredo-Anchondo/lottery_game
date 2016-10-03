@@ -24,6 +24,7 @@ end
          end
 
          @enrachate_id = params[:enrachate_id]
+         @enrachate = Enrachate.find(@enrachate_id)
 
          @tickets_for_tira = EnrachateUser.where("question_enrachate_id = ? and tira_enrachate_id = ? and enrachates_id = ? and answer = ?",@question_id, @tira_id, @enrachate_id, @answer.to_s)
 
@@ -46,9 +47,10 @@ end
          @question.update(:correct_answer => @answer)
 
          if  @winner == true
-           @enrachate = Enrachate.find(@enrachate_id)
+           if @enrachate.type_enrachate == 0
            @winner_user.update(:balance => @winner_user.balance + @enrachate.initial_balance )
            @enrachate.update(:winner => @winner_user.id )
+           end
          end
 
           respond_to do |format|

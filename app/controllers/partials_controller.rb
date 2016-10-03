@@ -390,7 +390,9 @@ end
        @tickets_for_enrachate = EnrachateUser.where("enrachates_id = ?", @enrachate.id).pluck(:enrachate_user_id).uniq
        @tickets_for_enrachate.each do | ticket |
           @user_ticket = EnrachateUser.where("enrachate_user_id = ? and status = ?",ticket, "alive").first
+          if @user_ticket != "" && @user_ticket != [] && @user_ticket != nil
           @top_100.push(@user_ticket)
+        end
        end
      end
    end
