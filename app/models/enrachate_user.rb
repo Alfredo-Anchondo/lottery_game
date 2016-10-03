@@ -9,7 +9,7 @@ class EnrachateUser < ActiveRecord::Base
 
 
   def winner?
-    
+
   end
 
   def update_enrachate_user_id
@@ -23,6 +23,7 @@ class EnrachateUser < ActiveRecord::Base
   end
 
   def update_user_balance
+    logger.info "Estoy entrando al updateuserbalance"
        @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ?",0,Time.now,Time.now).first
 
         if @enrachate.future_tira != nil && @enrachate.future_tira != "" && @enrachate.future_tira != []
