@@ -101,6 +101,7 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+            get "enrachates_survivor", to: "partials#enrachates_survivor"
             get "top_100_enrachate", to: "partials#top_100_enrachate"
             get "tira_banner"
             get "enrachate_history", to: "partials#enrachate_history"

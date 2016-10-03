@@ -2,8 +2,8 @@ class Enrachate < ActiveRecord::Base
     has_many :relation_enrachate_tiras
     has_many :tira_enrachates, :through => :relation_enrachate_tiras
     has_many :enrachate_users
-    
-    
+
+
     def current_tira
         @day_tira = ""
         relation_enrachate_tiras.each do |relation|
@@ -13,7 +13,7 @@ class Enrachate < ActiveRecord::Base
         end
         return @day_tira
     end
-    
+
     def past_tira
         @day_tira = ""
         relation_enrachate_tiras.each do |relation|
@@ -23,7 +23,7 @@ class Enrachate < ActiveRecord::Base
         end
         return @day_tira
     end
-    
+
      def future_tira
         @day_tira = ""
         relation_enrachate_tiras.each do |relation|
@@ -33,8 +33,8 @@ class Enrachate < ActiveRecord::Base
         end
         return @day_tira
     end
-    
-    
-    
+
+
+
 
 end

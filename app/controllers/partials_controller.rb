@@ -397,7 +397,9 @@ end
      end
    end
 
-
+   def enrachates_survivor
+       @enrachates = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",1,Time.now,Time.now,nil)
+   end
 
     def enrachate
         @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now,nil).first
@@ -414,7 +416,7 @@ end
          end
         @lose_count =  EnrachateUser.where("user_id = ? and enrachates_id = ? and status = ?",current_user.id, @enrachate.id, "loser").count
         @alive_count =  EnrachateUser.where("user_id = ? and enrachates_id = ? and status = ?",current_user.id, @enrachate.id, "alive").count
-        @recent_buy_ticket_enrachate = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, @enrachate.id, @current_tira.id ).last
+        @recent_buy_ticket_enrachate = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ? and status != ? ", current_user.id, @enrachate.id, @current_tira.id, "loser" ).last
         if   @last_tira != ""
           @last_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "alive", @enrachate.id, @last_tira.id ).last
         end
@@ -451,7 +453,7 @@ end
         @current_tira = @enrachate.current_tira
         @last_tira = @enrachate.past_tira
         @future_tira = @enrachate.future_tira
-        @recent_buy_ticket_enrachate = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, @enrachate.id, @current_tira.id ).last
+        @recent_buy_ticket_enrachate = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ? and status != ? ", current_user.id, @enrachate.id, @current_tira.id, "loser" ).last
           if @last_tira != nil && @last_tira != "" && @last_tira != []
            @last_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "alive", @enrachate.id, @last_tira.id ).last
           end

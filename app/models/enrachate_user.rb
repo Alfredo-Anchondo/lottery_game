@@ -6,6 +6,7 @@ class EnrachateUser < ActiveRecord::Base
 
   before_create :update_user_balance
   after_create :update_enrachate_user_id
+  before_create :check_exist_bought_ticket
 
 
   def winner?
@@ -17,6 +18,13 @@ class EnrachateUser < ActiveRecord::Base
 			update({enrachate_user_id: id})
 		end
   end
+
+  def check_exist_bought_ticket
+    if EnrachateUser.where("enrachates_id = ? && status != ? && tira_enrachate_id = ?", enrachates_id, "loser", tira_enrachate_id )
+      return false
+    end
+  end
+
 
   def racha
       EnrachateUser.where("enrachate_user_id = ? and status = ? ",enrachate_user_id, "alive").count
