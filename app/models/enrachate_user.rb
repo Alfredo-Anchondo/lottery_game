@@ -20,7 +20,7 @@ class EnrachateUser < ActiveRecord::Base
   end
 
   def check_exist_bought_ticket
-    if EnrachateUser.where("enrachates_id = ? && status != ? && tira_enrachate_id = ?", enrachates_id, "loser", tira_enrachate_id )
+    if EnrachateUser.where("enrachates_id = ? and status != ? and tira_enrachate_id = ? and user_id = ?", enrachates_id, "loser", tira_enrachate_id, user_id).count != 0
       return false
     end
   end
