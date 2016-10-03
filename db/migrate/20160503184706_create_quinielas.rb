@@ -4,14 +4,14 @@ class CreateQuinielas < ActiveRecord::Migration
 	  t.text :initial_balance, :null => false
 	  t.text :price
 	  t.text :description
-	  t.text :winner_number	
-      t.boolean :to_mainpage    
+	  t.text :winner_number
+      t.boolean :to_mainpage
 	  t.references :game, index: true, :null => false
 	  t.foreign_key :games, :on_delete => "cascade"
-	  t.text :purchase_gift_tickets	
+	  t.text :purchase_gift_tickets
 	  t.text :last_question
-      t.boolean :show_banner    
-	  
+       
+
       t.timestamps
     end
   end
