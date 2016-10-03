@@ -8,6 +8,9 @@ class EnrachateUser < ActiveRecord::Base
   after_create :update_enrachate_user_id
 
 
+  def winner?
+    
+  end
 
   def update_enrachate_user_id
 		if enrachate_user_id.blank?

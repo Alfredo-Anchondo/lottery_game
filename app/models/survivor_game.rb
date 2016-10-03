@@ -45,7 +45,8 @@ class SurvivorGame < ActiveRecord::Base
 
           if local_score > visit_score
               winner_team = team.id
-          else if local_score == visit_score
+          else
+             if local_score == visit_score
               winner_team = 185
           else
               winner_team = team2.id
@@ -94,15 +95,14 @@ class SurvivorGame < ActiveRecord::Base
           logger.info local_score_total
           logger.info visit_score_total
 
-          if local_score_total > visit_score
+          if local_score_total > visit_score.to_i
+             logger.info "El marcado local es mayor al del visitante"
               winner_team_final = team.id
-              else if local_score_total == visit_score_total
-                two_winners = team2.id
-                winner_team_final = team.id
               else
               winner_team_final = team2.id
+              logger.info "el ganado es el equipo visitante"
           end
-      end
+
 
          elegidos =  survivor_week_game.pick_users.each do |pick_user|
             games_user = PickUserGame.where(:pick_user_id => pick_user.id)

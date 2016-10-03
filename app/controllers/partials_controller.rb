@@ -384,7 +384,7 @@ end
 	end
 
    def top_100_enrachate
-     @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ?",0,Time.now,Time.now).first
+     @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now, nil).first
      if @enrachate != "" && @enrachate != [] && @enrachate != nil
        @top_100 = []
        @tickets_for_enrachate = EnrachateUser.where("enrachates_id = ?", @enrachate.id).pluck(:enrachate_user_id).uniq
@@ -398,7 +398,7 @@ end
 
 
     def enrachate
-        @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ?",0,Time.now,Time.now).first
+        @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now,nil).first
         if @enrachate != "" && @enrachate != [] && @enrachate != nil
 
         @current_tira = @enrachate.current_tira
@@ -445,7 +445,7 @@ end
 
 
     def enrachate_history
-        @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ?",0,Time.now,Time.now).first
+        @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now,nil).first
         @current_tira = @enrachate.current_tira
         @last_tira = @enrachate.past_tira
         @future_tira = @enrachate.future_tira

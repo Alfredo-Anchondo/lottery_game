@@ -77,13 +77,13 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                     </label></div>
                                    <div class="col-md-11 col-xs-11" style="padding:0px; text-align:center;">
                                    <span style="margin-left:15%; font-size:12px; color:black; min-width:50px;"><%= relationquestion.question_enrachate.answer1 %></span> <br>
-                                         <span style="margin-left:5%; color:black;"> <i class="fa fa-users" style="color:black;"></i> <%= relationquestion.question_enrachate.answer1_count %>  </span>
+                                         <span style="margin-left:15%; color:black;"> <i class="fa fa-users" style="color:black;"></i> <%= relationquestion.question_enrachate.answer1_count %>  </span>
                                     </div>
 
                                    </div>
                                 <div class="col-md-6 col-xs-6 float-question-right" style="padding:0px;" >
-                                    <div class="col-md-9 col-xs-9" style="padding:0px; text-align:center;">  <span style="margin-right:5%; color:black; font-size:12px;"><%= relationquestion.question_enrachate.answer2 %></span> <br> <span style="margin-left:5%; color:black;"> <i class="fa fa-users" style="color:black;"></i> <%= relationquestion.question_enrachate.answer2_count %>  </span></div>
-                                    <div class="col-md-3 col-xs-3" style="padding:0px; text-align:center;">
+                                    <div class="col-md-9 col-xs-9" style="padding:0px; text-align:center;">  <span style="margin-right:5%; color:black; font-size:12px;"><%= relationquestion.question_enrachate.answer2 %></span> <br> <span style="margin-right:5%; color:black;"> <i class="fa fa-users" style="color:black;"></i> <%= relationquestion.question_enrachate.answer2_count %>  </span></div>
+                                    <div class="col-md-3 col-xs-3" style="padding:0px; text-align:right;">
                                      <label>
                                       <input <%= relationquestion.question_enrachate.correct_answer == "2" ? "checked" : "" %> type="radio" name="question_past<%= relationquestion.question_enrachate.id %>" disabled value="small" />
                                       <img width="40px" src="/assets/radio_button.png">
@@ -122,7 +122,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                             <br>
                                          <span> <i class="fa fa-users" style="color:black;"></i> <%= relationquestion.question_enrachate.answer2_count %>  </span>
                                     </div>
-                                    <div class="col-md-3 col-xs-3" style="padding:0px; text-align:center;">
+                                    <div class="col-md-3 col-xs-3" style="padding:0px; text-align:right;">
                                      <label>
                                       <input <%= @can_change_question == true ? ""  : "disabled" %> <%= relationquestion.question_enrachate.program_date < Time.now ? "disabled" : "" %> <%= @question_selected == true ? @recent_buy_ticket_enrachate.answer.to_i == 2 ? "checked" : "" : "" %>  data-question=" <%= relationquestion.question_enrachate.id %>" data-tira=" <%= relationquestion.tira_enrachate.id %>" class="question <%= @question_selected == true ? @recent_buy_ticket_enrachate.answer.to_i == 2 ? "selected_prev" : "selected_not_check" : "" %>" type="radio" name="question" value="2" />
                                       <img width="40px" src="/assets/radio_button.png">

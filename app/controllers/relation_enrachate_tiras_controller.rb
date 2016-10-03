@@ -3,45 +3,58 @@ class RelationEnrachateTirasController < ApplicationController
 
   respond_to :html
   respond_to :json
-    
+
     def tiras_for_enrachate
         @enrachate = Enrachate.find(params[:enrachate_id])
      respond_to do |format|
    format.json { render :json => @enrachate }
 end
         end
-    
+
     def close_question
          @tira_id = params[:tira_id]
          @question_id = params[:question_id]
          @answer = params[:answer]
+         @winner = false
+         @winner_user = ""
          if @answer == "1"
-         @incorrect_answer = "2"     
+         @incorrect_answer = "2"
              else
-          @incorrect_answer = "1"     
-         end
-        
-         @enrachate_id = params[:enrachate_id]
-        
-         @tickets_for_tira = EnrachateUser.where("question_enrachate_id = ? and tira_enrachate_id = ? and enrachates_id = ? and answer = ?",@question_id, @tira_id, @enrachate_id, @answer.to_s)
-         
-         @tickets_for_tira.each do |ticket|
-             ticket.update(:status => "alive")
+          @incorrect_answer = "1"
          end
 
-         @incorrects_tickets_for_tira = EnrachateUser.where("question_enrachate_id = ? and tira_enrachate_id = ? and enrachates_id = ? and answer = ?",@question_id, @tira_id, @enrachate_id, @incorrect_answer) 
-        
-         @incorrects_tickets_for_tira.each do |iticket|
-             iticket.update(:status => "loser") 
+         @enrachate_id = params[:enrachate_id]
+
+         @tickets_for_tira = EnrachateUser.where("question_enrachate_id = ? and tira_enrachate_id = ? and enrachates_id = ? and answer = ?",@question_id, @tira_id, @enrachate_id, @answer.to_s)
+
+         @tickets_for_tira.each do |ticket|
+             ticket.update(:status => "alive")
+          @racha_count = EnrachateUser.where("enrachate_user_id = ? and status = ? ",  ticket.enrachate_user_id, "alive").count
+          if @racha_count == 25
+               @winner = true
+               @winner_user = ticket.user
+          end
          end
-        
+
+         @incorrects_tickets_for_tira = EnrachateUser.where("question_enrachate_id = ? and tira_enrachate_id = ? and enrachates_id = ? and answer = ?",@question_id, @tira_id, @enrachate_id, @incorrect_answer)
+
+         @incorrects_tickets_for_tira.each do |iticket|
+             iticket.update(:status => "loser")
+         end
+
          @question = QuestionEnrachate.find(@question_id)
          @question.update(:correct_answer => @answer)
-        
+
+         if  @winner == true
+           @enrachate = Enrachate.find(@enrachate_id)
+           @winner_user.update(:balance => @winner_user.balance + @enrachate.initial_balance )
+           @enrachate.update(:winner => @winner_user.id )
+         end
+
           respond_to do |format|
            format.json { render :json => true }
         end
-       
+
     end
 
   def index
