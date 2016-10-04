@@ -106,6 +106,7 @@ Rails.application.routes.draw do
             get "top_100_enrachate", to: "partials#top_100_enrachate"
             get "tira_banner"
             get "enrachate_history", to: "partials#enrachate_history"
+            get "enrachate_survivor/:id", to: "partials#enrachate_survivor"
             get "enrachate", to: "partials#enrachate"
             get "tiras_rules"
             get "_bank_tranfer"

@@ -398,7 +398,7 @@ end
    end
 
    def enrachates_survivor
-       @enrachates = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",1,Time.now,Time.now,nil)
+       @enrachates = Enrachate.where("type_enrachate = ?  and winner IS ?",1,nil)
    end
 
     def enrachate
@@ -450,6 +450,52 @@ end
     def my_ticket_history
       @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now,nil).first
       @tickets = EnrachateUser.where("user_id = ? and enrachates_id = ?", current_user.id, @enrachate.id)
+    end
+
+    def enrachate_survivor
+      @enrachate = Enrachate.where("type_enrachate = ? and id = ? and winner IS ?",1,params[:id],nil).first
+      if @enrachate != "" && @enrachate != [] && @enrachate != nil
+
+      @current_tira = @enrachate.current_tira
+      @last_tira = @enrachate.past_tira
+      @future_tira = @enrachate.future_tira
+      @tickets_for_enrachate = EnrachateUser.where("enrachates_id = ?", @enrachate.id).pluck(:enrachate_user_id).uniq
+      @racha_values = []
+       @tickets_for_enrachate.each do | ticket |
+         @count_ticket = EnrachateUser.where("enrachate_user_id = ? and status = ?",ticket, "alive").count
+         @racha_values.push(@count_ticket)
+       end
+      @lose_count =  EnrachateUser.where("user_id = ? and enrachates_id = ? and status = ?",current_user.id, @enrachate.id, "loser").count
+      @alive_count =  EnrachateUser.where("user_id = ? and enrachates_id = ? and status = ?",current_user.id, @enrachate.id, "alive").count
+      @recent_buy_ticket_enrachate = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ? and status != ? ", current_user.id, @enrachate.id, @current_tira.id, "loser" ).last
+      if   @last_tira != ""
+        @last_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "alive", @enrachate.id, @last_tira.id ).last
+      end
+      @can_change_question = true
+
+      if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil
+          logger.info "Entre A DONDE NO DEBERIA U________U"
+          logger.info @recent_buy_ticket_enrachate.id
+          @already_select_question = @recent_buy_ticket_enrachate.answer != nil  ? true : false
+          @can_select_next = @recent_buy_ticket_enrachate.status == "alive" ? true : false
+              if @recent_buy_ticket_enrachate.question_enrachate != "" && @recent_buy_ticket_enrachate.question_enrachate != [] && @recent_buy_ticket_enrachate.question_enrachate != nil
+          @can_change_question = @recent_buy_ticket_enrachate.question_enrachate.program_date < Time.now ? false : true
+              end
+          @enrachate_user_id = @recent_buy_ticket_enrachate.enrachate_user_id
+              if @future_tira != "" && @future_tira != [] && @future_tira != nil
+                   @future_ticket =  EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ?",current_user.id,@enrachate.id,@future_tira.id).first
+                   @future_tira_ticket = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ?",current_user.id,@enrachate.id,@future_tira.id).count != 0 ? true : false
+              end
+      end
+
+      if @last_day_ticket != "" && @last_day_ticket != [] && @last_day_ticket != nil
+           @enrachate_user_id = @last_day_ticket.enrachate_user_id
+      end
+
+           logger.info @can_change_question
+      logger.info "Se puede cambiar la respuesta????????????????"
+    else
+    end
     end
 
 

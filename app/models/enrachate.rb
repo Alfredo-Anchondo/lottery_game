@@ -7,9 +7,15 @@ class Enrachate < ActiveRecord::Base
     def current_tira
         @day_tira = ""
         relation_enrachate_tiras.each do |relation|
+          if type_enrachate == 1 && initial_date > Time.now
+            if relation.tira_enrachate.program_date.to_date == initial_date.to_date
+                @day_tira = relation.tira_enrachate
+            end
+          else
             if relation.tira_enrachate.program_date.to_date == Time.now.to_date
                 @day_tira = relation.tira_enrachate
             end
+          end
         end
         return @day_tira
     end
