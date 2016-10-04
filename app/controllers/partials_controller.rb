@@ -458,7 +458,11 @@ end
            @last_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "alive", @enrachate.id, @last_tira.id ).last
           end
         @ticket_alive = @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != nil && @recent_buy_ticket_enrachate != [] ? @recent_buy_ticket_enrachate : @last_day_ticket
+        if   @ticket_alive != "" &&   @ticket_alive != nil &&   @ticket_alive != []
         @tickets = EnrachateUser.where("enrachate_user_id = ?", @ticket_alive.enrachate_user_id )
+      else
+       @tickets = []
+     end
     end
 
 

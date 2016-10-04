@@ -14,6 +14,10 @@ class Enrachate < ActiveRecord::Base
         return @day_tira
     end
 
+    def register_users
+      EnrachateUser.where("enrachates_id = ?",id).count
+    end
+
     def past_tira
         @day_tira = ""
         relation_enrachate_tiras.each do |relation|
