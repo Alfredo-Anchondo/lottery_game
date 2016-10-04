@@ -23,6 +23,7 @@
             </tr>
         </thead>
         <tbody>
+          <% if @tickets != []  %>
             <% @tickets.order(:purchase_date).each do |ticket| %>
             <tr>
                 <td><%= ticket.purchase_date.strftime("%d-%m-%Y a las %T") %></td>
@@ -32,6 +33,7 @@
                 <td><%= ticket.status ==  "alive" ? "Vivo" : ticket.status == "bought" ? "Comprado" : "Perdedor"   %></td>
                 <td><%= Enrachate.find(ticket.enrachates_id).name %></td>
             </tr>
+            <% end %>
             <% end %>
         </tbody>
     </table>
