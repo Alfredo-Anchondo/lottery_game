@@ -408,9 +408,7 @@
 								$('#confirm_modal').modal('show');
 
 							$('#confirm_buy').click(function(){
-
-
-
+                  
 									$(this).prop('disabled', true);
 									 $.ajax({
 									  method: "POST",
@@ -424,6 +422,7 @@
 								 	}).error(function(data) {
 
 											 })
+
 
 
 							})

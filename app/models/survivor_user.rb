@@ -20,7 +20,7 @@ class SurvivorUser < ActiveRecord::Base
   validate :available_entrys, :on => :create
 
   #CALLBACKS
-  after_create :discount_price
+  before_create :discount_price
   after_create :update_survivor_user_id
   after_create :send_buy_mail
   before_create :can_buy
@@ -137,8 +137,12 @@ class SurvivorUser < ActiveRecord::Base
         user.update(:gift_credit => user.gift_credit.to_f - survivor_week_survivor.survivor.price.to_f)
 		survivor.update(:initial_balance => survivor.initial_balance + survivor.price)
     	else
-        user.update(:balance => user.balance - survivor_week_survivor.survivor.price)
-		survivor.update(:initial_balance => survivor.initial_balance + survivor.price)
+        if user.balance.to_f >= survivor_week_survivor.survivor.price.to_f
+          user.update(:balance => user.balance - survivor_week_survivor.survivor.price)
+		      survivor.update(:initial_balance => survivor.initial_balance + survivor.price)
+        else
+          return false
+        end
     	end
     end
    end
