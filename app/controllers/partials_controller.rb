@@ -412,7 +412,11 @@ end
         @racha_values = []
          @tickets_for_enrachate.each do | ticket |
            @count_ticket = EnrachateUser.where("enrachate_user_id = ? and status = ?",ticket, "alive").count
+           last =  @count_ticket.where("tira_enrachate_id = ?", @last_tira.id).count
+           current = @count_ticket.where("tira_enrachate_id = ?", @current_tira.id).count
+           if last != 0 & current != 0
            @racha_values.push(@count_ticket)
+           end
          end
         @lose_count =  EnrachateUser.where("user_id = ? and enrachates_id = ? and status = ?",current_user.id, @enrachate.id, "loser").count
         @alive_count =  EnrachateUser.where("user_id = ? and enrachates_id = ? and status = ?",current_user.id, @enrachate.id, "alive").count
