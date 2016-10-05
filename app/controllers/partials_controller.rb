@@ -411,9 +411,10 @@ end
         @tickets_for_enrachate = EnrachateUser.where("enrachates_id = ?", @enrachate.id).pluck(:enrachate_user_id).uniq
         @racha_values = []
          @tickets_for_enrachate.each do | ticket |
+           @tickets_s = EnrachateUser.where("enrachate_user_id = ? and status = ?",ticket, "alive")
            @count_ticket = EnrachateUser.where("enrachate_user_id = ? and status = ?",ticket, "alive").count
-           last =  @count_ticket.where("tira_enrachate_id = ?", @last_tira.id).count
-           current = @count_ticket.where("tira_enrachate_id = ?", @current_tira.id).count
+           last =  @tickets_s.where("tira_enrachate_id = ?", @last_tira.id).count
+           current =  @tickets_s.where("tira_enrachate_id = ?", @current_tira.id).count
            if last != 0 || current != 0
            @racha_values.push(@count_ticket)
            end
