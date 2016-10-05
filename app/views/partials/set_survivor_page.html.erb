@@ -409,7 +409,7 @@
 
 							$('#confirm_buy').click(function(){
 
-									if(<%=current_user.gift_credit %> >= <%= @current_survivor.price %> || <%= current_user.balance %> >= <%= @current_survivor.price %>  ){
+
 
 									$(this).prop('disabled', true);
 									 $.ajax({
@@ -424,10 +424,7 @@
 								 	}).error(function(data) {
 
 											 })
-										 }else{
-										alert('No tienes saldo suficiente');
-										window.location.assign("/partials/pay_methods")
-										 }
+
 
 							})
 
