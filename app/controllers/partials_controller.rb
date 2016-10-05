@@ -414,7 +414,7 @@ end
            @count_ticket = EnrachateUser.where("enrachate_user_id = ? and status = ?",ticket, "alive").count
            last =  @count_ticket.where("tira_enrachate_id = ?", @last_tira.id).count
            current = @count_ticket.where("tira_enrachate_id = ?", @current_tira.id).count
-           if last != 0 & current != 0
+           if last != 0 || current != 0
            @racha_values.push(@count_ticket)
            end
          end
