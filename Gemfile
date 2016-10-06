@@ -53,4 +53,18 @@ gem 'whenever'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'validates_overlap'
 gem 'rails_best_practices', group: :development
-#gem "ultrahook", group: :development
+gem "ultrahook", group: :development
+
+group :development, :test do
+  gem 'byebug'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails', '~> 4.5'
+  gem 'capybara', '~> 2.5'
+end
+
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.0', require: false
+  gem 'database_cleaner', '~> 1.5'
+  gem 'faker', '~> 1.6.1'
+end

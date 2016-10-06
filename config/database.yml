@@ -13,7 +13,7 @@ development:
 
 test:
   adapter: postgresql
-  database: lottery_game_test
+  database: lottery_game
   host: localhost
   username: postgres
   password: postgres
@@ -26,4 +26,3 @@ production:
   database: lottery_game
   username: postgres
   password: postgres
-

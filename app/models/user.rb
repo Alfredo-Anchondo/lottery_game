@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   #SCOPES
+   validates :name, presence: true
   scope :clients, -> { joins(:role).where(:role_id => 2) }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -9,7 +10,7 @@ class User < ActiveRecord::Base
       #Associations
     belongs_to :role
     has_many :user_lotteries
-	has_many :quiniela_users
+	  has_many :quiniela_users
     has_attached_file :photo,
     :styles => { :medium => "x300",
     :mobile => "x240" }
