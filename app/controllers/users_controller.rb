@@ -2,11 +2,11 @@ class UsersController < ApplicationController
 	  load_and_authorize_resource
 
      before_action :set_user, only: [:show, :edit, :update, :destroy]
-     before_action :data, only: [:index, :new, :create, :edit, :update]
-	 before_action :authenticate_user!, except: 'search_reference'
-	 respond_to :html
+     before_action :data, only: [:index, :new,  :edit, :update]
+	   before_action :authenticate_user!, except: 'search_reference'
+	   respond_to :html
   	 respond_to :json
- 	 
+
   # GET /users
   # GET /users.json
   def index
@@ -17,9 +17,9 @@ class UsersController < ApplicationController
   def show
       @user = User.find(params[:id])
   end
-	
+
 	def send_mails_all
-		logger.info params[:mails] 
+		logger.info params[:mails]
 		if params[:mails] != ''
 			@emails = params[:mails]
 			@content = params[:content].html_safe
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 		logger.info @subject
 		@emails.each do |email|
 			BuyMailer.send_mails_all(email, @subject, @content).deliver
-		end		
+		end
 		else
 			@email = []
 		@users = User.all.pluck(:email)
@@ -38,15 +38,15 @@ class UsersController < ApplicationController
 		logger.info @subject
 		@users.each do |email|
 			BuyMailer.send_mails_all(email, @subject, @content).deliver
-		end		
-		end		
+		end
+		end
 	end
-    
+
 	def search_reference
 		reference = params[:reference]
 		render :json => User.search_reference1(reference)
 	end
-   
+
 	def client_details
 		@user = User.find(params[:id_client])
 		@tickets = UserLottery.where(user_id: params[:id_client]).order(lottery_id: :desc);
@@ -54,13 +54,13 @@ class UsersController < ApplicationController
 		@recomend = User.where(reference_by_friend: @user.friend_reference)
 		respond_with(@user)
 	end
-       
-    
+
+
     def lotteries
       @user = User.find(params[:id])
       respond_with(@user.user_lotteries)
     end
-	
+
 	def quinielas
       @user = User.find(params[:id])
 	  respond_with(@user.quiniela_users)
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-	  
+
     @user = User.new(user_params)
     @user.save
     respond_with(@user)

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
      include ApplicationHelper
 	 before_filter :configure_permitted_parameters, if: :devise_controller?
-	 before_action :change_language
+	# before_action :change_language
 	before_filter do
   resource = controller_name.singularize.to_sym
   method = "#{resource}_params"
@@ -102,11 +102,11 @@ end
 end
 
 
-    def change_language
-        if current_user
-        I18n.locale = current_user.language
-        end
-    end
+  #  def change_language
+  #      if current_user
+  #      I18n.locale = current_user.language
+  #      end
+  #  end
 
 
   # Prevent CSRF attacks by raising an exception.
