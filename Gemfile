@@ -53,7 +53,7 @@ gem 'whenever'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'validates_overlap'
 gem 'rails_best_practices', group: :development
-gem "ultrahook", group: :development
+#gem "ultrahook", group: :development
 
 group :development, :test do
   gem 'byebug'
