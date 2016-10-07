@@ -399,7 +399,7 @@ end
 
    def enrachate_survivor_history
          @enrachate = Enrachate.where("type_enrachate = ? and id = ? and winner IS ?",1,params[:id],nil).first
-         
+         @tickets = EnrachateUser.where(" enrachates_id = ?", @enrachate.id)
    end
 
    def enrachates_survivor

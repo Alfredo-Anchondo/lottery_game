@@ -53,6 +53,25 @@ end
            end
          end
 
+         if @enrachate.type_enrachate == 1
+          @pending_question = false
+           RelationTiraQuestion.where("tira_enrachate_id = ?",@tira_id).each do |question|
+             if question.question_enrachate.correct_answer == nil
+               @pending_question = true
+             end
+           end
+           if @pending_question == false
+              if EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "bought", @tira_id).count == 0
+                 if EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "alive", @tira_id).count == 1
+                    @survivor_winner = EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "alive", @tira_id).first
+                    @survivor_winner.user.update(:balance => @survivor_winner.user.balance + @enrachate.initial_balance)
+                    @enrachate.update(:winner => @survivor_winner.user.id )
+                 end
+              end
+           end
+         end
+
+
           respond_to do |format|
            format.json { render :json => true }
         end
