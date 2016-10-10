@@ -1,5 +1,10 @@
+<style>
+  .footer{position:fixed;}
+</style>
+
 <% if  @top_100.first != [] && @top_100.last != []  %>
 
+<div class="row" style="margin-bottom:80px;">
 
 <h4 style="text-align:center; color:black; font-size:18px;"> Top 100 rachas  </h4>
 <hr>
@@ -9,6 +14,7 @@
         <tr>
             <th>Nombre</th>
             <th>Racha</th>
+            <th>Última Tira</th>
             <th>Última Pregunta</th>
             <th>Última Respuesta</th>
         </tr>
@@ -18,6 +24,7 @@
         <tr>
             <td><%= user.user.username %></td>
             <td><%= EnrachateUser.where("enrachate_user_id = ? and status = ?",user.enrachate_user_id, "alive").count %></td>
+            <td><%= EnrachateUser.where("enrachate_user_id = ? ",user.enrachate_user_id,).order(:id).last.tira_enrachate.name %></td>
             <td><%= EnrachateUser.where("enrachate_user_id = ? ",user.enrachate_user_id,).order(:id).last.question_enrachate.title %></td>
             <td><%= EnrachateUser.where("enrachate_user_id = ? ",user.enrachate_user_id,).order(:id).last.answer == "1" ? EnrachateUser.where("enrachate_user_id = ? ",user.enrachate_user_id,).order(:id).last.question_enrachate.answer1 : EnrachateUser.where("enrachate_user_id = ? ",user.enrachate_user_id,).order(:id).last.question_enrachate.answer2  %></td>
         </tr>
@@ -26,6 +33,7 @@
 </table>
 
 
+</div>
 <script>
        var current_language = $("#current_language").val();
        var languaje;
