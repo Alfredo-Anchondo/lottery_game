@@ -4,7 +4,11 @@
 
 <% if @enrachate.initial_date < Time.now && EnrachateUser.where("enrachates_id = ? and user_id = ?" , @enrachate.id, current_user.id).count == 0  %>
   <div class="row">
-    <h4 style="text-align:center; color:black; font-size:22px;"> La liga ya comenzo lo sentimos, pero puedes participar en otra liga o entrar a nuestra liga hasta 25 que siempre esta disponible </h4>
+    <h4 style="text-align:center; color:black; font-size:22px;"> Lo sentimos pero ya no puedes participar en esta liga </h4>
+    <hr>
+    <h4 style="text-align:center; color:black; font-size:18px;"> La liga ya comenzo lo sentimos, pero puedes participar en otra liga o entrar a nuestra liga hasta 25 que siempre esta disponible </h4>
+    <hr>
+    <h4 style="text-align:center" > <a class="btn btn-primary btn-lg" href="/partials/enrachate"> Enrachata hasta 25  </a> </h4>
   </div>
 <% else %>
 
