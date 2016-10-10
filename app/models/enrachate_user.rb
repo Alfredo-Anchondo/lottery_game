@@ -9,9 +9,6 @@ class EnrachateUser < ActiveRecord::Base
   before_create :check_exist_bought_ticket
 
 
-  def winner?
-
-  end
 
   def update_enrachate_user_id
 		if enrachate_user_id.blank?

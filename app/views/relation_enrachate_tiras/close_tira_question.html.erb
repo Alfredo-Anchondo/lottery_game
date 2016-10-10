@@ -115,7 +115,7 @@ label > input:disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                       })
 
                       $( ".question" ).click(function() {
-                         if ($(this).change()){
+                         if ($(this).change() == false ){
                              $( ".question" ).trigger( "change" );
                          }
 
