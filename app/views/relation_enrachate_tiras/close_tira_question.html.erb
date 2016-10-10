@@ -100,7 +100,7 @@ label > input:disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                                 var question_id = $(this).data("question");
                                 var answer = $(".answer"+question_id+":checked").val();
                                 var enrachate_id = $("#enrachates option:selected").val();
-                              
+
 
                                   $.ajax({
                               method: "GET",
@@ -113,6 +113,15 @@ label > input:disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 
                       })
+
+                      $( ".question" ).click(function() {
+                         if ($(this).change()){
+                             $( ".question" ).trigger( "change" );
+                         }
+
+                      });
+
+
 				  })
 
 

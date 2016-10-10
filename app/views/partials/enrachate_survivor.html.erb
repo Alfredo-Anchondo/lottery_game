@@ -14,7 +14,9 @@
 
 <% if @lose_count != 0 %>
   <div class="row">
-    <h4 style="text-align:center; color:black; font-size:22px;">Lo sentimos pero ya fuiste elimina de la liga, consulta el historial para mas detalle</h4>
+    <h4 style="text-align:center; color:black; font-size:22px;">Lo sentimos pero ya fuiste eliminado de la liga, consulta el historial para mas detalle</h4>
+    <hr>
+      <h4 style="text-align:center; color:black; font-size:22px;"><a class="btn btn-primary btn-lg" href="/partials/enrachate_survivor_history/<%= @enrachate.id %>"> Ver historial </a></h4>
   </div>
 <% else %>
 
