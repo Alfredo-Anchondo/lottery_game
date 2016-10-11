@@ -7,6 +7,7 @@
 <div style="background-color:white;" class="row">
     <br>
 <% if @user_charges != [] %>
+			<div class="table-responsive">
 <table id="example" class="display" cellspacing="0" width="100%">
         <thead style="background-color:#171616; color:white;">
             <tr>
@@ -20,7 +21,7 @@
                 <th> <%= t('transaction_date') %></th>
             </tr>
         </thead>
-      
+
         <tbody>
             <% if @user_charges %>
     <% @user_charges.each do |charges| %>
@@ -59,15 +60,16 @@
 <% when "The card was declined (k)" %>
 <td><%= t('cardrejected') %></td>
 <% when nil %>
-<td>  </td>                
+<td>  </td>
   <% end %>
               <td><%= charges['creation_date'] %></td>
             </tr>
-  
+
               <% end %>
             <% end %>
             </tbody>
     </table>
+	</div>
         <% else %>
             <br>
             <h3 style="text-align:center">No tienes registrada ninguna transacción en nuestra pagina.</h3>
@@ -78,14 +80,14 @@
 $(document).ready(function() {
       var current_language = $("#current_language").val();
        var languaje;
-    
+
     if(current_language == "en"){
     languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
 }else{
     languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 }
-    
-    
+
+
     $('#example').DataTable({
          responsive: true,
      "language": {

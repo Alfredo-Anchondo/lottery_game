@@ -7,17 +7,18 @@
    		 overflow-x: hidden;
 
 	}
-	
+
 </style>
 <div class="no-scroll">
   <div class="row">
-	<input type="hidden" id="quiniela_name"/> 
+	<input type="hidden" id="quiniela_name"/>
     <input type="hidden" id="lottery_name"/>
 		  <h3 style="text-align:center">Historial de billetes de Tiras</h3>
+			<div class="table-responsive">
           <table id="history-table"  class=" table responsive nowrap table-bordered table-striped" >
             <thead style="background-color:#171616; color:white;">
               <tr>
-                             	 
+
                               	  <th style="text-align:center">Tira</th>
                               	  <th style="text-align:center">Id</th>
                                   <th class="desktop" style="text-align:center"><%= t('purchase_number') %> </th>
@@ -28,35 +29,45 @@
             </thead>
 
             <tbody>
-           
-	
+
+
             </tbody>
 	  </table>
-						
-		
+
+</div>
 	</div>
-                           
+
                            <hr>
-                            
-                      
-                    
-   <div class="row"><h3 style="text-align:center">Historial de billetes Loterias</h3><table id="history-table-quiniela"  class="table responsive nowrap table-bordered table-hover table-striped " ><thead style="background-color:#171616; color:white;"><tr>  <th style="text-align:center"><%= t("lottery_id") %></th>  <th style="text-align:center">Id</th> <th style="text-align:center"><%= t('purchase_number') %> </th><th style="text-align:center"><%= t("activerecord.attributes.quiniela.winner_number") %></th><th style="text-align:center"><%= t("activerecord.attributes.quiniela.price") %></th><th style="text-align:center"><%= t("activerecord.attributes.quiniela_user.purchase_date") %></th></tr></thead><tbody></tbody>
-	   </table>
-     
+
+
+
+   <div class="row"><h3 style="text-align:center">Historial de billetes
+   Loterias</h3> 			<div class="table-responsive"><table id="history-table-quiniela"  class="table responsive
+   nowrap table-bordered table-hover table-striped " ><thead
+   style="background-color:#171616; color:white;"><tr>  <th
+   style="text-align:center"><%= t("lottery_id") %></th>  <th
+   style="text-align:center">Id</th> <th style="text-align:center"><%=
+   t('purchase_number') %> </th><th style="text-align:center"><%=
+   t("activerecord.attributes.quiniela.winner_number") %></th><th
+   style="text-align:center"><%= t("activerecord.attributes.quiniela.price")
+   %></th><th style="text-align:center"><%=
+   t("activerecord.attributes.quiniela_user.purchase_date")
+   %></th></tr></thead><tbody></tbody> </table> </div>
+
     <script>
-  
-    
-		
-					
+
+
+
+
 	   var current_language = $("#current_language").val();
        var languaje;
-    
+
     if(current_language == "en"){
     languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
 }else{
     languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 }
-    
+
   var table2 = $('#history-table-quiniela').DataTable( {
        responsive: true,
        order: [ 1, 'desc' ],
@@ -68,7 +79,7 @@
             "url": languaje
         },
     columns: [
-  		 
+
         { data: function ( row, type, val, meta ) {
            return '<h4 style="text-align:center">'+row.lottery.team.name + 'vs ' + row.lottery.team2.name +  '</h4>'
         }},
@@ -99,35 +110,35 @@
             }
         ]
 } );
-										
+
       </script>
    </div>
-  </div> 
-
-	                             
-                            
-                            
-                                
-                         
-                        
+  </div>
 
 
-              
 
-<!------------------------------------------------------------------------------------------------------------>	
+
+
+
+
+
+
+
+
+<!------------------------------------------------------------------------------------------------------------>
 
 
 <script>
-     
+
       var current_language = $("#current_language").val();
        var languaje;
-    
+
     if(current_language == "en"){
     languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
 }else{
     languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 }
-    
+
   var table = $('#history-table').DataTable( {
        responsive: true,
        order: [ 1, 'desc' ],
@@ -139,7 +150,7 @@
             "url": languaje
         },
     columns: [
-  		
+
         { data: function ( row, type, val, meta ) {
            return '<h4 style="text-align:center">' +row.quiniela.description+ '</h4>'
         }},
@@ -167,9 +178,6 @@
             }
         ]
 } );
-      
-	  
+
+
       </script>
-	
-	
-	  
