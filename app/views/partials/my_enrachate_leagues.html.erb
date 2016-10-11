@@ -29,6 +29,7 @@
   <hr>
   <% if @last_ticket != nil && @last_ticket != "" && @last_ticket != [] %>
     <h4 style="text-align:center; color:black;font-size:16px;"> Fecha de compra: <%= @last_ticket.purchase_date.strftime("%d-%m-%Y | %T") %>  </h4>
+    <hr>
   <div class="col-md-3 col-xs-3">
     <h4 style="text-align:center; color:black;"> Dia </h4>
     <h5 style="text-align:center; color:#2d68ac;  font-weight:600;"> <%= @last_ticket.tira_enrachate.name %> </h5>
