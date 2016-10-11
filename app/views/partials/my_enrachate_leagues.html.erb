@@ -1,0 +1,102 @@
+<style>
+
+.footer{position:fixed;}
+
+	#mainwrapper .box{
+		margin-left: 0px !important;
+		margin-top: 0px !important;
+	}
+
+	#mainwrapper .box .fade-caption, #mainwrapper .box .scale-caption{
+		margin-top:-200px ;
+	}
+
+    #mainwrapper .box{
+        border:5px solid #2d68ac    ;
+    }
+
+
+     .bootstrap-select{
+        width:40%!important;
+    }
+
+</style>
+
+<div class="row" style="margin-bottom:80px !important;">
+  <h4 style="text-align:center; color:black; font-size:18px;"> Enrachate 25 </h4>
+  <h4 style="text-align:center; color:black;"> Tu ultimo boleto comprado | Racha: <label> <span style="color:green; "> <%= @racha = @last_ticket != "" && @last_ticket != [] && @last_ticket != nil ? @last_ticket.racha : 0  %></span> </label>  </h4>
+  <h4 style="text-align:center"> <a class="btn btn-primary" href="/partials/enrachate"> Seleccionar Pick </a> </h4>
+  <hr>
+  <% if @last_ticket != nil && @last_ticket != "" && @last_ticket != [] %>
+    <h4 style="text-align:center; color:black;font-size:16px;"> Fecha de compra: <%= @last_ticket.purchase_date.strftime("%d-%m-%Y | %T") %>  </h4>
+  <div class="col-md-3 col-xs-3">
+    <h4 style="text-align:center; color:black;"> Dia </h4>
+    <h5 style="text-align:center; color:#2d68ac;  font-weight:600;"> <%= @last_ticket.tira_enrachate.name %> </h5>
+  </div>
+  <div class="col-md-3 col-xs-3">
+    <h4 style="text-align:center; color:black;"> Pregunta </h4>
+  <h5 style="text-align:center;color:#2d68ac;  font-weight:600;">   <%= @last_ticket.question_enrachate.title %> </h5>
+  </div>
+  <div class="col-md-3 col-xs-3">
+    <h4 style="text-align:center; color:black;"> Pick </h4>
+   <h5 style="text-align:center;color:#2d68ac;  font-weight:600;">   <%= @last_ticket.answer == 1 ? @last_ticket.question_enrachate.answer1 : @last_ticket.question_enrachate.answer2  %> </h5>
+  </div>
+  <div class="col-md-3 col-xs-3">
+    <h4 style="text-align:center; color:black;"> Status </h4>
+  <h5 style="text-align:center;color:#2d68ac; font-weight:600;"> <%= @last_ticket.status == "bought" ? "Comprado" : @last_ticket.tira_enrachate.status == "alive" ?  "Vivo" : "Perdedor"  %> </h5>
+  </div>
+  <div class="clearfix">  </div>
+  <hr>
+
+  <% else %>
+    <h4 style="text-align:center"> Lo sentimos pero no tienes ningun boleto en el survivor hasta 25, no esperes mas y participa. </h4>
+    <hr>
+  <% end %>
+
+    <div class="col-md-12">
+      <h4 style="text-align:center; color:black; font-size:18px;"> Enrachates Survivor </h4>
+      <br>
+
+        <div id="mainwrapper" style="margin-bottom:80px !important;">
+    <% @enrachates_id.each do |id| %>
+      <% if Enrachate.find(id).type_enrachate == 1 %>
+      <% enrachate = Enrachate.find(id)  %>
+
+          <div class="col-md-4">
+                <div id="box-3" style="background-color:white;" class="box col-md-12
+                col-xs-12"><div class="row" style="max-height:200px; height:200px;">
+                  <h4 style="color:black; text-align:center; font-weight:800;"> Fecha: <%= enrachate.initial_date.to_date %> al <%= enrachate.end_date.to_date %>   </h4>
+                <div class="col-md-5 col-xs-5"><h4
+                style="text-align:center;color:black; font-size:15px;
+                font-weight:800;"><%= enrachate.name %></h4>  <h3
+                style="color:black; font-size:15px; text-align:center; "> <img style="position:inherit" width="80%" src="/assets/Logoenrachate.png" > </h3>   <br></div> <div
+                class="col-md-7 col-xs-7"><div class="row"><div class="col-md-12
+                col-xs-12"><div class="col-md-6 col-xs-6"><h3 style="color:black; "> Entrada: </h3><h3
+                style="text-align:center; color: #2d68ac; font-size:20px;
+                text-transform: capitalize; font-weight:800;"> <span>$<%=
+                enrachate.price %> </span>  </h3></div> <div class="col-md-6 col-xs-6"><h3
+                style="color:black; "> Inscritos </h3><h3
+                style="text-align:center; color: #2d68ac; font-size:20px;
+                text-transform: capitalize; font-weight:800;"><%=
+                enrachate.register_users%></h3></div> <div class="clearfix"></div> <br> <h3 style="color:black; "> Bolsa:
+                </h3><h3 style="text-align:center; color: #2d68ac;font-size:20px;
+                text-transform: capitalize; font-weight:800;"> <span>$<%=
+                enrachate.initial_balance.round(2) %> </span>  </h3></div> <div
+                class="clearfix"></div> </div> </div> </div><span class="caption
+                normalcaption fade-caption"><h3 style="text-align:center"><%=
+                enrachate.name %> </h3> <h3 style="text-align:center; color:white;">
+                Creada por: <span style="text-align:center"> DONBILLETE </span> </h3>  <hr>  <h4
+                style="text-align:center"><a href="/partials/enrachate_survivor/<%=
+                enrachate.id %>"  style="font-weight:600;" class="enter_survivor btn
+                btn-primary"> Entrar a liga </a> <a href="/partials/enrachate_survivor_history/<%=
+                enrachate.id %>"  style="font-weight:600;" class="enter_history btn
+                btn-primary"> Consultar historial </a> </h4>   </span></div>  <div
+                class="clearfix"></div> <br>
+              </div>
+
+          <% end %>
+
+    <% end %>
+  </div>
+</div>
+</div>

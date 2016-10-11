@@ -462,6 +462,12 @@ end
       @tickets = EnrachateUser.where("user_id = ? and enrachates_id = ?", current_user.id, @enrachate.id)
     end
 
+    def my_enrachate_leagues
+      @enrachates_id = EnrachateUser.where("user_id = ?", current_user.id ).pluck(:enrachates_id).uniq
+      @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now, nil).first
+      @last_ticket = EnrachateUser.where("user_id = ? and enrachates_id = ?", current_user.id, @enrachate.id ).last
+    end
+
     def enrachate_survivor
       @enrachate = Enrachate.where("type_enrachate = ? and id = ? and winner IS ?",1,params[:id],nil).first
       if @enrachate != "" && @enrachate != [] && @enrachate != nil
