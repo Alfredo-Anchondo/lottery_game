@@ -13,8 +13,8 @@
     <table id="data-table" class=" table table-bordered table-hover table-striped nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Fecha de compra</th>
-                <th>Tira del dia</th>
+
+                <th>Fecha</th>
                 <th>Pregunta seleccionada</th>
                 <th>Respuesta</th>
                 <th>Status</th>
@@ -25,7 +25,7 @@
           <% if @tickets != []  %>
             <% @tickets.order(:purchase_date).each do |ticket| %>
             <tr>
-                <td><%= ticket.purchase_date.strftime("%d-%m-%Y a las %T") %></td>
+              
                 <td><%= ticket.tira_enrachate.name %></td>
                 <td><%= ticket.question_enrachate.title  %></td>
                 <td><%= ticket.answer == "1" ? ticket.question_enrachate.answer1 : ticket.question_enrachate.answer2  %></td>

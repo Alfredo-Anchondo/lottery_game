@@ -29,10 +29,11 @@
   <% if @last_ticket != nil && @last_ticket != "" && @last_ticket != [] %>
     <h4 style="text-align:center; color:black;font-size:16px;"> Fecha de compra: <%= @last_ticket.purchase_date.strftime("%d-%m-%Y | %T") %>  </h4>
     <hr>
+    <div class="table-responsive">
     <table id="data-table" class=" table table-bordered table-hover table-striped nowrap" cellspacing="0" width="80%">
         <thead>
             <tr>
-                <th>Tira </th>
+                <th>Fecha </th>
                 <th>Pregunta </th>
                 <th>Respuesta</th>
                 <th>Status</th>
@@ -47,7 +48,7 @@
             </tr>
         </tbody>
     </table>
-
+</div>
 
   <div class="clearfix">  </div>
   <hr style="    border-color: #2d68ac;">
