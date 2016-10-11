@@ -2,7 +2,7 @@
     .bootstrap-select {
         width:50% !important;
     }
-    
+
     .footer{
         position:fixed;
     }
@@ -22,6 +22,7 @@
     <div id="<%= week.id %>" class="row week_row" style="display:none; overflow:scroll; padding-bottom:60px !important;">
         <h5 style="text-align:center;color:black;font-size:20px;">Semana <%= week.week %></h5>
         <br>
+        <div class="table-responsive">
         <table id="example<%= week.id %>" class="table table-bordered  table-hover table-striped " cellspacing="0" width="100%">
         <thead style="background-color:black; color:white;">
             <tr>
@@ -30,27 +31,28 @@
               <% week.survivor_games.where('game_date < ?', Time.new).order(:id).each do |game| %>
                   <th style="padding-right:0px;text-align:center">  <%= game.game_date.strftime('%d/%m/%Y %H:%M %P ') %> <br> <%= game.team.name[0..2] %> - <%= game.team2.name[0..2] %>   </th>
               <% end %>
-           
-              <th style="text-align:center">Marcador Desempate</th>    
+
+              <th style="text-align:center">Marcador Desempate</th>
             </tr>
         </thead>
         <tbody>
-           
-        
-        
+
+
+
         </tbody>
     </table>
+  </div>
     </div>
     <script>
          var current_language = $("#current_language").val();
        var languaje;
-    
+
     if(current_language == "en"){
     languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
 }else{
     languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 }
-        
+
         $(document).ready(function() {
         var t = $('#example<%= week.id %>').DataTable({
                "language": {
@@ -58,12 +60,12 @@
                 },
                "iDisplayLength": 100
                    });
-               
+
               <% pick_survivor_weekx = PickSurvivorWeek.where('survivor_week_game_id = ? and pick_id =?', week.id ,@pickem.id ) %>
-               
+
               <% @pickem.pick_users.where('pick_survivor_week_id = ?', pick_survivor_weekx[0].id).each_with_index do |ticket,index| %>
-              
-          
+
+
                t.row.add([
                 '<h4 style="text-align:center"><%= ticket.user.username.upcase %> </h4>',
                 '<h4 style="text-align:center"><%= ticket.points.to_i %></h4>',
@@ -81,17 +83,17 @@
                    '<h4 style="text-align:center"></h4>',
                    <% end %>
                ]).draw(false);
-        
+
                <%end%>
-             
+
                     $('.loser').parent().css('background-color','rgba(255, 0, 0, 0.62)');
 	$('.alive').parent().css('background-color','rgba(49, 255, 0, 0.54)');
 	$('.winner').parent().css('background-color','rgba(49, 255, 0, 0.54)');
-             
-        } );
-        
 
-        
+        } );
+
+
+
     </script>
 <% end %>
 
@@ -100,7 +102,7 @@
     $(document).ready(function(){
         $('#week_number option[value=<%=   @current_week[0].id %>]').prop('selected', true);
         $('.week_row').hide();
-        $('#<%=   @current_week[0].id %>').show();      
+        $('#<%=   @current_week[0].id %>').show();
     })
 </script>
 
@@ -109,6 +111,6 @@
     $('#week_number').change(function(){
         $('.week_row').hide();
         $('#'+$(this).val()+'').show();
-   
+
     })
 </script>

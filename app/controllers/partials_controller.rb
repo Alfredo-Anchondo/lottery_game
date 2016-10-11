@@ -465,7 +465,8 @@ end
     def my_enrachate_leagues
       @enrachates_id = EnrachateUser.where("user_id = ?", current_user.id ).pluck(:enrachates_id).uniq
       @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now, nil).first
-      @last_ticket = EnrachateUser.where("user_id = ? and enrachates_id = ?", current_user.id, @enrachate.id ).last
+      @current_tira = @enrachate.current_tira
+      @last_ticket = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ?", current_user.id, @enrachate.id,@current_tira ).last
     end
 
     def enrachate_survivor

@@ -69,7 +69,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                <div class="col-md-4 col-xs-4"><h4 style="text-align:center; font-size:16px; color:black;">Bolsa: <span style="color:green;">$<%= @enrachate.initial_balance.round(0) %> </span></h4> </div>
                <div class="col-md-4 col-xs-4"> <h4 style="text-align:center; font-size:16px; color:black; margin-bottom:1px;">Racha: <label> <span style="color:green; "> <%= @racha = @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil ? @recent_buy_ticket_enrachate.racha : @last_day_ticket.racha %></span> </label>  </h4> <h4 style="text-align:center; margin:0px;"> <span style="color:green;"><%= @alive_count %></span>-<span style="color:red"><%=  @lose_count %></span>-<span>0</span> </h4></div>
                <div class="col-md-4 col-xs-4">
-                   <h4 style="text-align:center; font-size:16px; color:black;">Sobrevivientes: <span style="color:green;"><%= @last_ticket_users != nil && @last_ticket_users != "" && @last_ticket_users != [] ? @last_ticket_users.count : @enrachate.register_users %> </span> </h4>
+                   <h4 style="text-align:center; font-size:16px; color:black;">Vivos: <span style="color:green;"><%= @last_ticket_users != nil && @last_ticket_users != "" && @last_ticket_users != [] ? @last_ticket_users.count : @enrachate.register_users %> </span> </h4>
                </div>
                <div class="clearfix"></div>
                <hr>

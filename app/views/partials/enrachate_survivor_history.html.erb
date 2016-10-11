@@ -10,7 +10,7 @@
   <h4 style="text-align:center">  <a href="/partials/enrachate_survivor/<%= @enrachate.id %>" class="btn btn-primary"> Seleccionar Pick </a> </h4>
 
     <hr>
-
+<div class="table-responsive">
     <table id="data-table" class=" table table-bordered table-hover table-striped nowrap" cellspacing="0" width="100%; overflow:initial;">
         <thead>
             <tr>
@@ -27,7 +27,7 @@
             <% @tickets.order(:purchase_date).each do |ticket| %>
             <tr>
                 <td><%= ticket.user.username %></td>
-                <td><%= ticket.status ==  "alive" ? "Vivo" : ticket.status == "bought" ? "Comprado" : "Perdedor"   %></td>
+                <td><%= ticket.status ==  "alive" ? "Vivo" : ticket.status == "bought" ? "Pendiente" : "Perdedor"   %></td>
                 <td><%= ticket.tira_enrachate.name %></td>
                 <td><%= ticket.question_enrachate.title  %></td>
                 <td><%= ticket.answer == "1" ? ticket.question_enrachate.answer1 : ticket.question_enrachate.answer2  %></td>
@@ -36,6 +36,7 @@
             <% end %>
         </tbody>
     </table>
+  </div>
 </div>
 
 <script>

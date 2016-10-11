@@ -6,7 +6,7 @@
 	}
 
     td < .loser{background-color:red;}
-	
+
 </style>
 
 <div class="col-md-6">
@@ -39,6 +39,7 @@
 
 
 <div class="row">
+	<div class="table-responsive">
 	<table id="example" class="table table-bordered table-hover table-striped " cellspacing="0" width="100%">
         <thead style="background-color:black; color:white;">
             <tr>
@@ -62,11 +63,12 @@
                 <th style="text-align:center"> 17</th>
             </tr>
         </thead>
-      
+
         <tbody>
-           
+
         </tbody>
     </table>
+	</div>
 </div>
 
 
@@ -75,13 +77,13 @@
 $(document).ready(function(){
       var current_language = $("#current_language").val();
        var languaje;
-    
+
     if(current_language == "en"){
     languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
 }else{
     languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 }
-    
+
 t = $('#example').DataTable({
      "iDisplayLength": 100,
 	 "columnDefs": [
@@ -92,11 +94,11 @@ t = $('#example').DataTable({
             "url": languaje
         }
 });
-	
+
 		<% @usuarios.each do |user|  %>
 	    <%  user[1].each_with_index do |live, index| %>
 				<% @week_day = [] %>
-		<% live[1].each do |week| %>		
+		<% live[1].each do |week| %>
 			<% @week_day.push(week[1])  %>
 		<% end %>
 			<% logger.info @week_day %>
@@ -108,7 +110,7 @@ t = $('#example').DataTable({
 				   '<h4 class="<%= @week_day[1] ? @week_day[1][:status] : ''  %> <%= @week_day[1] ? @week_day[1][:game] : ''  %>" style="text-align:center;"><img width="80%" src ="<%= @week_day[1] ?  @week_day[1][:team] ? @week_day[1][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
 				   '<h4 class="<%= @week_day[2] ? @week_day[2][:status] : ''  %> <%= @week_day[2] ? @week_day[2][:game] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[2] ?  @week_day[2][:team] ?  @week_day[2][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
 				   '<h4 class="<%= @week_day[3] ? @week_day[3][:status] : ''  %> <%= @week_day[3] ? @week_day[3][:game] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[3] ?  @week_day[3][:team] ?  @week_day[3][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
-				    '<h4 class="<%= @week_day[4] ? @week_day[4][:status] : ''  %> <%= @week_day[4] ? @week_day[4][:game] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[4] ?  @week_day[4][:team] ?  @week_day[4][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',  
+				    '<h4 class="<%= @week_day[4] ? @week_day[4][:status] : ''  %> <%= @week_day[4] ? @week_day[4][:game] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[4] ?  @week_day[4][:team] ?  @week_day[4][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
 				    '<h4 class="<%= @week_day[5] ? @week_day[5][:status] : ''  %> <%= @week_day[5] ? @week_day[5][:game] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[5] ?  @week_day[5][:team]?  @week_day[5][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
 				    '<h4 class="<%= @week_day[6] ? @week_day[6][:status] : ''  %> <%= @week_day[6] ? @week_day[6][:game] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[6] ?  @week_day[6][:team] ?  @week_day[6][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
 				    '<h4 class="<%= @week_day[7] ? @week_day[7][:status] : ''  %> <%= @week_day[7] ? @week_day[7][:game] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[7] ?  @week_day[7][:team] ?  @week_day[7][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
@@ -123,19 +125,16 @@ t = $('#example').DataTable({
 				    '<h4 class="<%= @week_day[16] ? @week_day[16][:status] : ''  %> <%= @week_day[16] ? @week_day[16][:game] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[16] ?  @week_day[16][:team] ?  @week_day[16][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>',
 				    '<h4 class="<%= @week_day[17] ? @week_day[17][:status] : ''  %> <%= @week_day[17] ? @week_day[17][:game] : ''  %>" style="text-align:center"><img width="80%" src ="<%= @week_day[17] ?  @week_day[17][:team] ?  @week_day[17][:team].logo_url : '/assets/red-x4.png' : '' %>"></h4>'
         	] ).draw( false );
-  
+
      $('.loser').parent().css('background-color','rgba(255, 0, 0, 0.62)');
     $('.Juegopendiente').hide();
 	$('.alive').parent().css('background-color','rgba(49, 255, 0, 0.54)');
 	$('.winner').parent().css('background-color','rgba(255, 255, 0, 0.54)');
 		<% end %>
-    
+
 		<% end %>
-	 
-	
-	
+
+
+
 });
 </script>
-
-
-
