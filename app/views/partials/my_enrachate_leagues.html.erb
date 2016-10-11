@@ -101,7 +101,7 @@
 
     <% @enrachates_id.each do |id| %>
       <% enrachate = Enrachate.find(id)  %>
-        <%  if enrachate.type_enrachate == 1 %>
+        <%  if enrachate.type_enrachate == 1 && enrachate.winner == nil %>
           <div class="col-md-4">
                 <div id="box-3" style="background-color:white;" class="box col-md-12
                 col-xs-12"><div class="row" style="max-height:200px; height:200px;">
