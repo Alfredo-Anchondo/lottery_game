@@ -21,7 +21,7 @@ class Enrachate < ActiveRecord::Base
     end
 
     def register_users
-      EnrachateUser.where("enrachates_id = ?",id).count
+      EnrachateUser.where("enrachates_id = ?",id).pluck(:user_id).uniq.count
     end
 
     def past_tira
