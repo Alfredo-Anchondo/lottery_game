@@ -5,32 +5,29 @@
 </style>
 
 <div class="row" style="margin-bottom:80px !important;">
-    <h4 style="text-align:center; color:black; font-size:18px;"> Historial de enrachate hasta 25 </h4>
-
-    <h4 style="text-align:center; color:black; font-size:18px;"> Tu racha actual es <span style="color:#2d68ac; font-size:20px;"> <%=  @tickets != [] ? @tickets.first.racha : 0 %></span> ganadas al hilo </h4><%  %>
-     <h4 style="text-align:center"> <a class="btn btn-primary" href="/partials/enrachate"> Seleccionar Pick </a> <a class="btn btn-primary" href="/partials/top_100_enrachate"> Top 100 </a> <a href="/partials/my_ticket_history" class="btn btn-primary"> Mis boletos </a></h
-      <div class="clearfix"></div>
+    <h4 style="text-align:center; color:black; font-size:18px;"> Historial de billetes de enrachate </h4>
     <hr>
 <div class="table-responsive">
-    <table id="data-table" class=" table table-bordered table-hover table-striped nowrap" cellspacing="0" width="100%">
+    <table id="data-table" class=" table table-bordered table-hover table-striped nowrap" cellspacing="0" width="100%; overflow:initial;">
         <thead>
             <tr>
-
-                <th>Fecha </th>
-                <th>Pregunta </th>
-                <th>Respuesta</th>
+                <th> Enrachate </th>
                 <th>Status</th>
+                <th>Fecha</th>
+                <th>Pregunta </th>
+                <th>Pick</th>
+
             </tr>
         </thead>
         <tbody>
           <% if @tickets != []  %>
             <% @tickets.order(:purchase_date).each do |ticket| %>
             <tr>
-
+                <td><%= Enrachate.find(ticket.enrachates_id).name %></td>
+                <td><%= ticket.status ==  "alive" ? "Vivo" : ticket.status == "bought" ? "Pendiente" : "Perdedor"   %></td>
                 <td><%= ticket.tira_enrachate.name %></td>
                 <td><%= ticket.question_enrachate.title  %></td>
                 <td><%= ticket.answer == "1" ? ticket.question_enrachate.answer1 : ticket.question_enrachate.answer2  %></td>
-                <td><%= ticket.status ==  "alive" ? "Vivo" : ticket.status == "bought" ? "Pendiente" : "Perdedor"   %></td>
             </tr>
             <% end %>
             <% end %>
@@ -50,7 +47,7 @@
 }
 
 $('#data-table').DataTable({
-    order: [1,"desc"],
+    order: [2,"desc"],
      "language": {
             "url": languaje
         }

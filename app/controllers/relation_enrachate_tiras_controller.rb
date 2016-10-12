@@ -65,7 +65,28 @@ end
                  if EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "alive", @tira_id).count == 1
                     @survivor_winner = EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "alive", @tira_id).first
                     @survivor_winner.user.update(:balance => @survivor_winner.user.balance + @enrachate.initial_balance)
+                    @survivor_winner.update(:status => "Winner")
                     @enrachate.update(:winner => @survivor_winner.user.id )
+                 end
+                 if EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "alive", @tira_id).count == 0
+                    @last = EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "loser", @tira_id)
+                    @quantity = @last.length
+                    @balance_porcent = @enrachate.initial_balance / @quantity
+                    @last.each do |winner|
+                       winner.user.update(:balance => winner.user.balance + @balance_porcent)
+                       winner.update(:status => "Winner")
+                       @enrachate.update(:winner => winner.user.id )
+                    end
+                 end
+                 if  @enrachate.end_date.to_date == Time.now.to_date
+                   @lives = EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "alive", @tira_id)
+                   @quantity = @lives.length
+                   @balance_porcent = @enrachate.initial_balance / @quantity
+                   @lives.each do |winner|
+                     winner.user.update(:balance => winner.user.balance + @balance_porcent)
+                     winner.update(:status => "Winner")
+                     @enrachate.update(:winner => winner.user.id )
+                   end
                  end
               end
            end

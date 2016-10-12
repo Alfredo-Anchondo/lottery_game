@@ -457,6 +457,15 @@ end
       end
     end
 
+    def my_enrachate_tickets
+      @tickets = EnrachateUser.where("user_id = ?",current_user.id)
+
+    end
+
+    def answer_register
+      @tiras = TiraEnrachate.all
+    end
+
     def my_ticket_history
       @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now,nil).first
       @tickets = EnrachateUser.where("user_id = ? and enrachates_id = ?", current_user.id, @enrachate.id)

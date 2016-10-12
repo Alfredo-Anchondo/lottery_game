@@ -1,0 +1,104 @@
+<style media="screen">
+  .footer{
+    position:fixed;
+  }
+
+  label > input{ /* HIDE RADIO */
+visibility: hidden; /* Makes input not-clickable */
+position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+cursor:pointer;
+border:2px solid transparent;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+content:url("/assets/radio_button_checked.png");
+}
+
+label > .selected_prev:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+content:url("/assets/radio_button_checked_gold.png");
+}
+
+
+label > .selected_not_check + img{ /* (RADIO CHECKED) IMAGE STYLES */
+content:url("/assets/radio_button_selected_not_check.png");
+}
+
+label > input:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES */
+content:url("/assets/radio_button_disabled.png");
+}
+
+label > input:disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+content:url("/assets/radio_button_checked_disabled.png");
+}
+
+label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES */
+content:url("/assets/radio_button_checked_gold.png");
+}
+
+  .nav-tabs {
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: -webkit-box;
+  display: -moz-box;
+}
+.nav-tabs>li {
+  float: none;
+}
+
+.nav > li.active:hover{
+    border-top: 4px solid #f2f2f2;
+    background: #2d68ac;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+  color:black;
+}
+
+</style>
+
+<div class="row" style="margin-bottom:80px !important;">
+<h4 style="text-align:center; color:black; font-size:18px;"> Historial de respuestas por dia </h4>
+  <hr>
+  <div class="tabbable">
+     <ul class="nav nav-tabs">
+       <% @tiras.order(:program_date).each do |day|  %>
+       <li><a href="#tab<%= day.id %>" data-toggle="tab"><%= day.name %></a>
+       </li>
+        <% end %>
+     </ul>
+     <div class="tab-content">
+       <% @tiras.order(:program_date).each do |day|  %>
+       <div class="tab-pane" id="tab<%= day.id %>">
+         <% day.relation_tira_questions.each do |relationquestion| %>
+             <div class="row" style="border:1px solid black; margin-top:10px !important;">
+                 <h4 style="text-align:center; color:white; background-color:#053975; margin:0px; font-size:.7em;"><%= relationquestion.question_enrachate.program_date.strftime("%d-%m-%Y  %T") %></h4>
+                 <h4 style="text-align:center; color:black; font-size:.8em;"><span style="color:#2D68AC">  </span>   <%= relationquestion.question_enrachate.title %></h4>
+                 <div class="col-md-6 col-xs-6 float-question-left" style="padding:0px;">
+                     <div class="col-md-1 col-xs-1 " style="padding:0">   <label>
+                       <input type="radio" <%= relationquestion.question_enrachate.correct_answer == "1" ? "checked" : "" %> disabled name="question_past <%= relationquestion.question_enrachate.id %>" value="small" />
+                       <img width="40px" src="/assets/radio_button.png">
+                     </label></div>
+                    <div class="col-md-11 col-xs-11" style="padding:0px; text-align:center;">
+                    <span style="margin-left:15%; font-size:12px; color:black; min-width:50px;"><%= relationquestion.question_enrachate.answer1 %></span> <br>
+                          <span style="margin-left:15%; color:black;"> <i class="fa fa-users" style="color:black;"></i> <%= relationquestion.question_enrachate.answer1_count %>  </span>
+                     </div>
+
+                    </div>
+                 <div class="col-md-6 col-xs-6 float-question-right" style="padding:0px;" >
+                     <div class="col-md-9 col-xs-9" style="padding:0px; text-align:center;">  <span style="margin-right:5%; color:black; font-size:12px;"><%= relationquestion.question_enrachate.answer2 %></span> <br> <span style="margin-right:5%; color:black;"> <i class="fa fa-users" style="color:black;"></i> <%= relationquestion.question_enrachate.answer2_count %>  </span></div>
+                     <div class="col-md-3 col-xs-3" style="padding:0px; text-align:right;">
+                      <label>
+                       <input <%= relationquestion.question_enrachate.correct_answer == "2" ? "checked" : "" %> type="radio" name="question_past<%= relationquestion.question_enrachate.id %>" disabled value="small" />
+                       <img width="40px" src="/assets/radio_button.png">
+                     </label>
+                     </div>
+                   </div>
+                 </div>
+             <% end %>
+       </div>
+        <% end %>
+
+     </div>
+   </div>
+</div>
