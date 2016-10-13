@@ -27,7 +27,7 @@
                 <td><%= Enrachate.find(ticket.enrachates_id).name %></td>
                 <td><%= ticket.question_enrachate ? ticket.question_enrachate.title : "Sin seleccionar"  %></td>
                 <td><%= ticket.answer ? ticket.answer == "1" ? ticket.question_enrachate.answer1 : ticket.question_enrachate.answer2 : "Sin Respuesta" %></td>
-                <td><%= ticket.status ==  "alive" ? "Vivo" : ticket.status == "bought" ? "Pendiente" : "Perdedor"   %></td>
+                <td><%= ticket.status ==  "alive" ? "Vivo" : ticket.status == "bought" ? "Pendiente" : ticket.status == "Winner" ? "Ganador" : "Perdedor"   %></td>
             </tr>
             <% end %>
             <% end %>
