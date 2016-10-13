@@ -97,7 +97,7 @@ end
                    logger.info "Entre al de fin de temporada"
                    @quantity = @alive_tickets.length
                    @balance_porcent = @enrachate.initial_balance / @quantity
-                   @alives_tickets.each do |winner|
+                   @alive_tickets.each do |winner|
                      winner.user.update(:balance => winner.user.balance + @balance_porcent)
                      winner.update(:status => "Winner")
                      @enrachate.update(:winner => winner.user.id )
