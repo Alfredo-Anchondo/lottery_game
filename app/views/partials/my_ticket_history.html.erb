@@ -29,7 +29,7 @@
                 <td><%= ticket.tira_enrachate.name %></td>
                 <td><%= ticket.question_enrachate ? ticket.question_enrachate.title : "Sin seleccionar"  %></td>
                 <td><%= ticket.answer ? ticket.answer == "1" ? ticket.question_enrachate.answer1 : ticket.question_enrachate.answer2 : "Sin respuesta"  %></td>
-                <td><%= ticket.status ==  "alive" ? "Vivo" : ticket.status == "bought" ? "Comprado" : "Perdedor"   %></td>
+                <td><%= ticket.status ==  "alive" ? "Vivo" : ticket.status == "bought" ? "Comprado" : ticket.status == "Winner" ? "ganador" : "Perdedor"   %></td>
                 <td><%= Enrachate.find(ticket.enrachates_id).name %></td>
             </tr>
             <% end %>
