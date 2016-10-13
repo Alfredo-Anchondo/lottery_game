@@ -25,11 +25,14 @@ end
 
          @enrachate_id = params[:enrachate_id]
          @enrachate = Enrachate.find(@enrachate_id)
+         @question = QuestionEnrachate.find(@question_id)
+         @question.update(:correct_answer => @answer)
 
          @tickets_for_tira = EnrachateUser.where("question_enrachate_id = ? and tira_enrachate_id = ? and enrachates_id = ? and answer = ?",@question_id, @tira_id, @enrachate_id, @answer.to_s)
 
          @tickets_for_tira.each do |ticket|
              ticket.update(:status => "alive")
+             BuyMailer.close_question(ticket.user.email, "Vivo" ,ticket).deliver
           @racha_count = EnrachateUser.where("enrachate_user_id = ? and status = ? ",  ticket.enrachate_user_id, "alive").count
           if @racha_count == 25
                @winner = true
@@ -41,10 +44,10 @@ end
 
          @incorrects_tickets_for_tira.each do |iticket|
              iticket.update(:status => "loser")
+             BuyMailer.close_question(iticket.user.email, "Perdedor" ,iticket).deliver
          end
 
-         @question = QuestionEnrachate.find(@question_id)
-         @question.update(:correct_answer => @answer)
+
 
          if  @winner == true
            if @enrachate.type_enrachate == 0
@@ -56,39 +59,54 @@ end
          if @enrachate.type_enrachate == 1
           @pending_question = false
            RelationTiraQuestion.where("tira_enrachate_id = ?",@tira_id).each do |question|
-             if question.question_enrachate.correct_answer == nil
+             if question.question_enrachate.correct_answer == nil || question.question_enrachate.correct_answer == ""
+               logger.info "Entre por que ya no hay preguntas pendientes"
                @pending_question = true
              end
            end
            if @pending_question == false
-              if EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "bought", @tira_id).count == 0
-                 if EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "alive", @tira_id).count == 1
+             @winner_ticket =  EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "Winner", @tira_id)
+             @no_choose_tickets = EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ? and question_enrachate_id IS NULL", @enrachate_id, "bought", @tira_id)
+             @bought_tickets = EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "bought", @tira_id).where.not(:question_enrachate_id => nil)
+             @alive_tickets = EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "alive", @tira_id)
+             if  @winner_ticket.count == 0
+
+              if @bought_tickets.count == 0
+                @no_choose_tickets.each do |ticketx|
+                  ticketx.update(:status => "loser")
+                end
+                if  @alive_tickets.count == 0
+                  logger.info "Entre a donde no hay ningun vivo"
+                   @last = EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "loser", @tira_id)
+                   @quantity = @last.length
+                   @balance_porcent = @enrachate.initial_balance / @quantity
+                   @last.each do |winner|
+                      winner.user.update(:balance => winner.user.balance + @balance_porcent)
+                      winner.update(:status => "Winner")
+                      @enrachate.update(:winner => winner.user.id )
+                   end
+                end
+                 if  @alive_tickets.count == 1
+                   logger.info "Entre al de solo un vivo"
                     @survivor_winner = EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "alive", @tira_id).first
                     @survivor_winner.user.update(:balance => @survivor_winner.user.balance + @enrachate.initial_balance)
                     @survivor_winner.update(:status => "Winner")
                     @enrachate.update(:winner => @survivor_winner.user.id )
                  end
-                 if EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "alive", @tira_id).count == 0
-                    @last = EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "loser", @tira_id)
-                    @quantity = @last.length
-                    @balance_porcent = @enrachate.initial_balance / @quantity
-                    @last.each do |winner|
-                       winner.user.update(:balance => winner.user.balance + @balance_porcent)
-                       winner.update(:status => "Winner")
-                       @enrachate.update(:winner => winner.user.id )
-                    end
-                 end
                  if  @enrachate.end_date.to_date == Time.now.to_date
-                   @lives = EnrachateUser.where("enrachates_id = ? and status = ? and tira_enrachate_id = ?", @enrachate_id, "alive", @tira_id)
-                   @quantity = @lives.length
+                   logger.info "Entre al de fin de temporada"
+                   @quantity = @alive_tickets.length
                    @balance_porcent = @enrachate.initial_balance / @quantity
-                   @lives.each do |winner|
+                   @alives_tickets.each do |winner|
                      winner.user.update(:balance => winner.user.balance + @balance_porcent)
                      winner.update(:status => "Winner")
                      @enrachate.update(:winner => winner.user.id )
                    end
                  end
               end
+            else
+              logger.info "Ya hay ganador"
+            end
            end
          end
 

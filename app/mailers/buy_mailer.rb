@@ -6,33 +6,40 @@ class BuyMailer < ActionMailer::Base
 		@saldo = saldo
 		mail(to: @user.email, subject: '[DonBillete] Compra de Saldo DonBillete')
 	end
-    
+
     def admin_resume_lottery(lottery)
         @lottery = lottery
         @mails = ['alfredo_anchondo@hotmail.com','marianolascurain@gmail.com','rodrigolascurain@gmail.com']
         mail(to: @mails, subject: '[DonBillete] Resumen de loteria')
     end
-    
+
+    def close_question(mail,status,ticket)
+       @mail = mail
+       @status = status
+       @ticket = ticket
+      	mail(to: @mail, subject: '[DonBillete] Respuesta a Pregunta Enrachate')
+    end
+
      def admin_resume_tira(tira)
         @tira = tira
         @mails = ['alfredo_anchondo@hotmail.com','marianolascurain@gmail.com','rodrigolascurain@gmail.com']
         mail(to: @mails, subject: '[DonBillete] Resumen de Tira')
     end
-	
+
 	def buy_survivor_entry(survivor,user, next_week)
 		@user = user
 		@survivor = survivor
 		@next_week = next_week
 		mail(to: @user.email, subject: '[DonBillete] Compra de entrada liga survivor')
 	end
-	
+
 	def buy_pick_entry(pick,user, next_week)
 		@user = user
 		@pick = pick
 		@next_week = next_week
 		mail(to: @user.email, subject: "[DonBillete] Compra de entrada liga PICK'EM")
 	end
-	
+
 	def buy_survivor_team(survivor,user, next_week, team)
 		@user = user
 		@survivor = survivor
@@ -54,14 +61,14 @@ class BuyMailer < ActionMailer::Base
 		@user = user
 		mail(to: @mails, subject: '[DonBillete] Un amigo te invita a participar en su liga de survivor')
 	end
-    
+
     def invite_pick(mails,survivor,user)
 		@mails = mails
 		@survivor = survivor
 		@user = user
 		mail(to: @mails, subject: '[DonBillete] Un amigo te invita a participar en su liga de pick')
 	end
-	
+
   def buy_ticket(user, lottery, lottery_user)
     @user = user
     @lottery = lottery
@@ -139,14 +146,14 @@ class BuyMailer < ActionMailer::Base
 		mail(to: mails, subject: subject,  body: content,
          content_type: "text/html", )
 	end
-	
+
 	def access_request_mail(current_user, owner, survivor)
 		@current_user = current_user
 		@owner = owner
 		@survivor = survivor
 		mail(to: @owner.email, subject: 'Solicitud de acceso a tu liga survivor')
 	end
-    
+
     def access_request_mail_pick(current_user, owner, survivor)
 		@current_user = current_user
 		@owner = owner
@@ -161,7 +168,7 @@ class BuyMailer < ActionMailer::Base
 		@total_win = total_win
 		mail(to: @user.email, subject: '[DonBillete] Ganador de una liga survivor')
 	end
-    
+
     def response_access(request, owner, survivor, response)
 		@request = request
 		@owner = owner
@@ -169,7 +176,7 @@ class BuyMailer < ActionMailer::Base
 		@response = response
 		mail(to: @request.email, subject: '[DonBillete] Respuesta a solicitud de acceso a liga survivor')
 	end
-    
+
     def response_access_pick(request, owner, survivor, response)
 		@request = request
 		@owner = owner
