@@ -93,7 +93,7 @@ end
                     @survivor_winner.update(:status => "Winner")
                     @enrachate.update(:winner => @survivor_winner.user.id )
                  end
-                 if  @enrachate.end_date.to_date == Time.now.to_date
+                 if  @enrachate.end_date.to_date == DateTime.now.to_date
                    logger.info "Entre al de fin de temporada"
                    @quantity = @alive_tickets.length
                    @balance_porcent = @enrachate.initial_balance / @quantity
