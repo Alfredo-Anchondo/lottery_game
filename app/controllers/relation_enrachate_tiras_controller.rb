@@ -74,6 +74,7 @@ end
               if @bought_tickets.count == 0
                 @no_choose_tickets.each do |ticketx|
                   ticketx.update(:status => "loser")
+                  BuyMailer.close_question(ticketx.user.email, "Perdedor" ,ticketx).deliver
                 end
                 if  @alive_tickets.count == 0
                   logger.info "Entre a donde no hay ningun vivo"

@@ -33,9 +33,15 @@
       <div class="panel-body">
           <div class="margin-center row">
           <div class="col-md-12 " style="border: 1px dotted black;">
+             <% if @ticket.question_enrachate != nil && @ticket.question_enrachate != [] && @ticket.question_enrachate != "" %>
       			  <h3>La pregunta "  <%= @ticket.question_enrachate.title %>  " se a cerrado.</h3>
       			  <h3>La respuesta correcta fue: " <%= @ticket.question_enrachate.correct_answer == "1" ? @ticket.question_enrachate.answer1 : @ticket.question_enrachate.answer2   %> " </h3>
       			  <h3> <%= @status == "Vivo" ? "Tu respuesta fue correcta,sigues participando en la liga." : "Lo sentimos pero tu respuesta fue incorrecta, sigue participando con nosotros." %></h3>
+              <% else %>
+                <h3> Lo sentimos pero no seleccionaste ninguna pregunta para tu tira, y el tiempo de seleccion termino. </h3>
+                <h3> Tu boleto tendra estatus de perdedor. </h3>
+                <h3> Sigue participando con nosotros </h3>
+              <% end %>
             </div>
           </div>
           <br>
