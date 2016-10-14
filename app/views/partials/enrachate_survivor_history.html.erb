@@ -29,8 +29,8 @@
                 <td><%= ticket.user.username %></td>
                 <td><%= ticket.status ==  "alive" ? "Vivo" : ticket.status == "bought" ? "Pendiente" : ticket.status == "Winner" ? "Ganador" : "Perdedor"   %></td>
                 <td><%= ticket.tira_enrachate.name %></td>
-                <td><%= ticket.question_enrachate.title  %></td>
-                <td><%= ticket.question_enrachate.program_date < Time.now ? ticket.answer == "1" ? ticket.question_enrachate.answer1 : ticket.question_enrachate.answer2 : "" %></td>
+                <td><%= ticket.question_enrachate ? ticket.question_enrachate.title : "Sin seleccion"  %></td>
+                <td><%= ticket.question_enrachate ? ticket.question_enrachate.program_date < Time.now ? ticket.answer == "1" ? ticket.question_enrachate.answer1 : ticket.question_enrachate.answer2 : "" : "No selecciono" %></td>
             </tr>
             <% end %>
             <% end %>
