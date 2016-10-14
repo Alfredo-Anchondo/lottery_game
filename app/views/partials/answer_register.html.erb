@@ -63,13 +63,14 @@ content:url("/assets/radio_button_checked_gold.png");
   <div class="tabbable">
      <ul class="nav nav-tabs">
        <% @tiras.order(:program_date).each do |day|  %>
-       <li><a href="#tab<%= day.id %>" data-toggle="tab"><%= day.name %></a>
+       <%  day.program_date.to_date == DateTime.now.to_date  ? @selected_day = day.id : ""   %>
+       <li id="<%= day.id %>"  class="<%= day.program_date.to_date == DateTime.now.to_date ? "active" : "" %>"><a href="#tab<%= day.id %>" class="<%= day.program_date.to_date == DateTime.now.to_date ? "active" : "" %>" data-toggle="tab"><%= day.name %></a>
        </li>
         <% end %>
      </ul>
      <div class="tab-content">
        <% @tiras.order(:program_date).each do |day|  %>
-       <div class="tab-pane" id="tab<%= day.id %>">
+       <div class="tab-pane <%= day.program_date.to_date == DateTime.now.to_date ? "active" : "" %> " id="tab<%= day.id %>">
          <% day.relation_tira_questions.each do |relationquestion| %>
              <div class="row" style="border:1px solid black; margin-top:10px !important;">
                  <h4 style="text-align:center; color:white; background-color:#053975; margin:0px; font-size:.7em;"><%= relationquestion.question_enrachate.program_date.strftime("%d-%m-%Y  %T") %></h4>
@@ -102,3 +103,9 @@ content:url("/assets/radio_button_checked_gold.png");
      </div>
    </div>
 </div>
+
+<script type="text/javascript">
+    $("#<%= @selected_day %>").focus();
+
+$('.nav-tabs').scrollLeft($("#<%= @selected_day %>").position().left);
+</script>

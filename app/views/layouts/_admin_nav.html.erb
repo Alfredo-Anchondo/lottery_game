@@ -2,15 +2,15 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" style="" data-toggle="collapse" data-target="#myNavbar">
-       <i class="fa fa-bars"></i> 
+       <i class="fa fa-bars"></i>
       </button>
-       
-        
+
+
       <a class="navbar-brand" style="background-color:white !important; height:" href="/"> <img src="/assets/logo_donbillete.png" width="120px" height="50px" style="margin-top:-10%;"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
          <% if signed_in? %>
-   
+
       <ul id="menu" class="nav navbar-nav">
           <li  class="<%= 'active' if controller_name == 'roles' %>"><a href="/roles"> <span class="nav-label"><%= t('roles') %></span>  </a>
             </li>
@@ -25,12 +25,12 @@
             </li>
              <li  class="<%= 'active' if controller_name == 'sport_categories' %>"><a href="/sport_categories"> <span class="nav-label"><%= t('sportcategories') %></span>  </a>
             </li>
-							
+
                         </ul>
                     </li>
-         
-         
-          
+
+
+
           <li  class="<%= 'active' if controller_name == 'teams' %>"><a href="/teams"> <span class="nav-label"><%= t('teams') %></span>  </a>
             </li>
           <li  class="<%= 'active' if controller_name == 'games' %>"><a href="/games"> <span class="nav-label"><%= t('games') %></span>  </a>
@@ -89,7 +89,7 @@
             </li>
           <li  class="<%= 'active' if controller_name == 'user_lotteries' %>"><a href="/user_lotteries"> <span class="nav-label">Boletos de loteria</span>  </a>
             </li>
-							
+
                         </ul>
                     </li>
            <li class="dropdown">
@@ -99,7 +99,7 @@
                             <li><a href="/tira_enrachates">Tiras del Enrachate</a></li>
                             <li><a href="/question_enrachates">Preguntas del Enrachate</a></li>
                             <li><a href="/enrachate_users">Boletos del Enrachate</a></li>
-				            <li><a href="/relation_enrachate_tiras">Relación enrachate - Tira</a></li>
+				            <li><a href="/relation_enrachate_tiras">Relación Enrachate - Tira</a></li>
                             <li><a href="/relation_tira_questions">Relación Preguntas - Tira</a></li>
                             <li><a href="/relation_enrachate_tiras/close_tira_question">Cerrar pregunta</a></li>
                         </ul>
@@ -111,11 +111,11 @@
 							 </li>
 							  <li  class="<%= 'active' if controller_name == 'user' %>"><a href="users/send_mails"> <span class="nav-label">Envio de correos</span>  </a>
 							 </li>
-							
+
                         </ul>
                     </li>
-                    
-         
+
+
       </ul>
         <% end %>
       <ul class="nav navbar-nav navbar-right">

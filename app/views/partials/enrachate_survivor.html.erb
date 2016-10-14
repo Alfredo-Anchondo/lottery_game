@@ -4,11 +4,11 @@
 
 <% if @enrachate.initial_date < Time.now && EnrachateUser.where("enrachates_id = ? and user_id = ?" , @enrachate.id, current_user.id).count == 0  %>
   <div class="row">
-    <h4 style="text-align:center; color:black; font-size:22px;"> Lo sentimos pero ya no puedes participar en esta liga </h4>
+    <h4 style="text-align:center; color:black; font-size:22px;"> ¡Lo sentimos pero esta liga ya comenzo! </h4>
     <hr>
-    <h4 style="text-align:center; color:black; font-size:18px;"> La liga ya comenzo lo sentimos, pero puedes participar en otra liga o entrar a nuestra liga hasta 25 que siempre esta disponible </h4>
+    <h4 style="text-align:center; color:black; font-size:18px;"> Puedes participar en cualquier otra liga pública o entrar a nuestro Enrachate 25 que siempre esta disponible </h4>
     <hr>
-    <h4 style="text-align:center" > <a class="btn btn-primary btn-lg" href="/partials/enrachate"> Enrachata hasta 25  </a> </h4>
+    <h4 style="text-align:center" > <a class="btn btn-primary btn-lg" href="/partials/enrachate"> Enrachate 25  </a> </h4>
   </div>
 <% else %>
 
@@ -302,17 +302,21 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
 
 <div class="row" style="margin-bottom:80px !important">
 
-   <h4 style="text-align:center; font-size:26px; color:black;"> Bienvenido a nuestro enrachate tipo survivor </h4>
+   <h4 style="text-align:center; font-size:26px; color:black;"> Bienvenido a nuestro Enrachate survivor </h4>
    <h4 style="text-align:center"><img width="120px" src="/assets/Logoenrachate.png"></h4>
    <h4 style="text-align:center; font-size:22px; color:#2d68ac;"> <%= @enrachate.name  %> </h4>
     <h4 style="text-align:center; font-size:18px; color:black;"> La liga comienza el : <%=  @enrachate.initial_date.strftime("%d-%m-%Y")  %> y termina el <%=  @enrachate.end_date.strftime("%d-%m-%Y")  %> </h4>
    <hr>
    <div class="col-md-5">
        <h4 style="text-align:center; color:#2d68ac; font-size:20px;">Reglas</h4>
-       <h4 style="color:black; font-size:14px;">Las reglas de este juego son muy sencillas, diariamente tendrás entre 6-15 preguntas solo contesta 1 correctamente, lo único que tienes que hacer es comprar tu entrada, y el en el momento que comience, contestar una pregunta diariamente, basada en deportes del día, los ganadores son los usuarios que sobrevivan hasta el ultimo dia de la liga, o el ultimo en quedar en vivo.</h4>
+       <h4 style="color:black; font-size:14px;">¡Rápido! Diario tendras una lista
+          de entre 6 y 15 preguntas de la cual tendras que contestar UNA correctamente
+           para seguir adelante. ¡No te preocupes todas las preguntas estan basadas en
+            eventos deportivos del día! Para ganar tendrás que ser el último jugar sobreviviente.
+            ¡Puede durar desde un día hasta varias semanas!</h4>
    </div>
    <div class="col-md-7">
-       <h4 style="text-align:center; color:#2d68ac; font-size:20px;"> Participa ahora con nosotros </h4>
+       <h4 style="text-align:center; color:#2d68ac; font-size:20px;"> ¡Entra ya! </h4>
 
        <div class="col-md-6"><h4 style="text-align:center; font-size:20px; color:black;">Precio</h4><h4 style="text-align:center; color:#2d68ac; font-size:26px;">$ <%= @enrachate.price  %></h4> </div>
        <div class="col-md-6"><h4 style="text-align:center; color:black; font-size:20px;">Bolsa acumulada</h4><h4 style="text-align:center; color:#2d68ac; font-size:26px;">$ <%= @enrachate.initial_balance  %></h4> </div>
@@ -352,7 +356,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
            dataType: "json",
            data: { enrachate_user: {tira_enrachate_id: <%= @enrachate.current_tira.id  %>,  user_id: <%= current_user.id %> ,purchase_date: purchase_date, status: "bought", enrachates_id: <%= @enrachate.id %>}  }
            }).done(function(data) {
-             location.realod();
+             location.reload();
            })
 
          }else{
@@ -385,7 +389,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
        <h4 style="color:black; font-size:16px;">Las reglas de este juego son muy sencillas, diariamente  tendrás entre 6-15 preguntas solo contesta 1 correctamente, el juego tiene como máximo una duración de 25 días o hasta que quede un sobreviviente, lo único que tienes que hacer es comprar tu entrada , y el en el momento que comience , contestar una pregunta diariamente , basada en deportes del día , usa tus conocimientos para ser el ultimo sobreviviente , y ganarte la bolsa acumulada. </h4>
    </div>
    <div class="col-md-4" style="padding:40px">
-     <h4 style="color:#2d68ac; font-size:24px;">Hasta <span style="color:black"> 25 </span></h4>
+     <h4 style="color:#2d68ac; font-size:24px;">Enrachate <span style="color:black"> 25 </span></h4>
        <h4 style="color:black; font-size:16px;">En este modo lo único que cambia es que el ganador es el primero el llegar a 25 preguntas al hilo , no hay fecha de entrada es una liga abierta para todos , entra cuantas veces quieras , la bolsa se ira acumulando por el tiempo que dure el juego , y se renovara cada  ves que haya un ganador.</h4>
    </div>
 
