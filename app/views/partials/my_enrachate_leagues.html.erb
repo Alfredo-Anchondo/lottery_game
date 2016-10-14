@@ -42,8 +42,8 @@
         <tbody>
             <tr>
                 <td><%= @last_ticket.tira_enrachate.name %></td>
-                <td><%= @last_ticket.question_enrachate.title  %></td>
-                <td><%= @last_ticket.answer == "1" ? @last_ticket.question_enrachate.answer1 : @last_ticket.question_enrachate.answer2  %></td>
+                <td><%= @last_ticket.question_enrachate ? @last_ticket.question_enrachate.title : "Sin seleccionar"  %></td>
+                <td><%= @last_ticket.answer ? @last_ticket.answer == "1" ? @last_ticket.question_enrachate.answer1 : @last_ticket.question_enrachate.answer2 : "Sin seleccion" %></td>
                 <td><%= @last_ticket.status ==  "alive" ? "Vivo" : @last_ticket.status == "bought" ? "Pendiente" : "Perdedor"   %></td>
             </tr>
         </tbody>
