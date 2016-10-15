@@ -41,11 +41,16 @@ class Enrachate < ActiveRecord::Base
     end
 
      def future_tira
+
         @day_tira = ""
         relation_enrachate_tiras.each do |relation|
+          if program_date < Time.now
+            
+          else
             if relation.tira_enrachate.program_date.to_date == Time.now.tomorrow.to_date
                 @day_tira = relation.tira_enrachate
             end
+          end
         end
         return @day_tira
     end
