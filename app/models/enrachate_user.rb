@@ -33,8 +33,9 @@ class EnrachateUser < ActiveRecord::Base
 
         if @enrachate.future_tira != nil && @enrachate.future_tira != "" && @enrachate.future_tira != []
           if @enrachate.future_tira.id == tira_enrachate_id
+              logger.info "entre en la tira futura"
               return "ok"
-                logger.info "entre en la tira futura"
+
           end
         end
       @alive_buy = nil
