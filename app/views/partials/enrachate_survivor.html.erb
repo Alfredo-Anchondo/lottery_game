@@ -174,11 +174,11 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                        var enrachate_user_id = <%= @enrachate_user_id %>;
 
 
-                                       <% if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != nil %>
+                                       <% if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != nil && @recent_buy_ticket_enrachate != [] %>
 
                                          $.ajax({
                                              method: "PUT",
-                                             url: "/enrachate_users/<%= @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != nil ?   @recent_buy_ticket_enrachate.id : "" %>",
+                                             url: "/enrachate_users/<%= @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != nil && @recent_buy_ticket_enrachate != [] ?   @recent_buy_ticket_enrachate.id : "" %>",
                                              dataType: "json",
                                              data: { enrachate_user: { purchase_date: purchase_date, status: "bought", answer: answer, tira_enrachate_id: tira_id, question_enrachate_id: question_id } }
                                              }).done(function(data) {
