@@ -29,7 +29,7 @@ class EnrachateUser < ActiveRecord::Base
 
   def update_user_balance
     logger.info "Estoy entrando al updateuserbalance"
-       @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ?",0,Time.now,Time.now).first
+       @enrachate = Enrachate.find(enrachates_id)
 
         if @enrachate.future_tira != nil && @enrachate.future_tira != "" && @enrachate.future_tira != []
           if @enrachate.future_tira.id == tira_enrachate_id
