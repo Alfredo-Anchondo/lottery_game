@@ -34,6 +34,7 @@ class EnrachateUser < ActiveRecord::Base
         if @enrachate.future_tira != nil && @enrachate.future_tira != "" && @enrachate.future_tira != []
           if @enrachate.future_tira.id == tira_enrachate_id
               return "ok"
+                logger.info "entre en la tira futura"
           end
         end
       @alive_buy = nil
@@ -43,6 +44,7 @@ class EnrachateUser < ActiveRecord::Base
       logger.info @alive_buy
 
       if @alive_buy != "" && @alive_buy != [] && @alive_buy != nil
+          logger.info "entre en coompra viva"
           else
         if user.gift_credit.to_f >= Enrachate.find(enrachates_id).price
             user.update(:gift_credit => user.gift_credit.to_f - Enrachate.find(enrachates_id).price)
