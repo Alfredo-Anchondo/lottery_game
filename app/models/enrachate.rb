@@ -4,6 +4,16 @@ class Enrachate < ActiveRecord::Base
     has_many :enrachate_users
 
 
+    def already_start_question
+     day_tira = TiraEnrachate.where("program_date >= ? and program_date <= ?", DateTime.now.beginning_of_day, DateTime.now.end_of_day).first
+     RelationTiraQuestion.where("tira_enrachate_id = ?",day_tira.id).each do |relation|
+      if relation.question_enrachate.program_date < DateTime.now
+        return true
+      end
+     end
+     return false
+    end
+
     def current_tira
         @day_tira = ""
         relation_enrachate_tiras.each do |relation|

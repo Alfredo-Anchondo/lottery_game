@@ -323,7 +323,13 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
    </div>
    <div class="clearfix"></div>
    <hr>
-   <h4 style="text-align:center"> <button id="buy_entry" style="width:50%" class="btn btn-primary"> Comprar Entrada </button> </h4>
+   <h4 style="text-align:center">
+      <% if @enrachate.already_start_question == false  %>
+      <button id="buy_entry" style="width:50%" class="btn btn-primary"> Comprar Entrada </button>
+      <% else %>
+      <h4 style="text-align:center; color:red; font-size:18px;">  Lo sentimos pero la liga ya comenzo, prueba a participar en otra liga. </h4>
+      <% end %>
+   </h4>
 </div>
 
 
