@@ -27,7 +27,21 @@ class Enrachate < ActiveRecord::Base
       if   @last_tira != "" && @last_tira != [] && @last_tira != nil
         @last_day_ticket = EnrachateUser.where("status = ? and enrachates_id = ? and tira_enrachate_id = ? ",  "alive", id, @last_tira.id )
       end
-      return    @last_day_ticket != nil &&   @last_day_ticket != "" &&   @last_day_ticket != [] ? @last_day_ticket.count  :   @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil && @recent_buy_ticket_enrachate != "" ?   @recent_buy_ticket_enrachate.count : 0
+
+      @new_purchases = 0
+
+      @recent_buy_ticket_enrachate.each do |ticket_actual|
+        @last_day_ticket.each do |ticket_pasado|
+            if ticket_actual.user_id == ticket_pasado.user_id
+
+            else
+              @new_purchases += 1
+            end
+        end
+      end
+
+
+      return    @last_day_ticket != nil &&   @last_day_ticket != "" &&   @last_day_ticket != [] ? @last_day_ticket.count + @new_purchases  :   @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil && @recent_buy_ticket_enrachate != "" ?   @recent_buy_ticket_enrachate.count : 0
     end
 
     def past_tira
