@@ -35,6 +35,7 @@ class Enrachate < ActiveRecord::Base
             if ticket_actual.user_id == ticket_pasado.user_id
 
             else
+              logger.info "entreeeee aqui"
               @new_purchases += 1
             end
         end
