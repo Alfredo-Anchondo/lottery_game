@@ -256,6 +256,15 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                           </div>
 
                           <% end %>
+
+                                                    <div class="clearfix"></div>
+
+                          <div class="row ">
+                            <hr>
+                         <h4 style="text-align:center"><button type="button" name="button" class="confirm_change btn btn-primary"> Confirmar Picks </button> </h4>
+                         <hr>
+                          </div>
+
                           <div class="clearfix"></div>
 
                           <div class="row" style="border:1px solid black;">
@@ -464,7 +473,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 
 <script>
-          $(".change-team").click(function(){
+          $(".confirm_change").click(function(){
               var ticket_id = $(this).data("id");
               var team_id = $(this).data("team");
               $.ajax({

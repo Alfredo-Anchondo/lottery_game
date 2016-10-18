@@ -49,11 +49,11 @@ class EnrachateUser < ActiveRecord::Base
           else
         if user.gift_credit.to_f >= Enrachate.find(enrachates_id).price
             user.update(:gift_credit => user.gift_credit.to_f - Enrachate.find(enrachates_id).price)
-            Enrachate.find(enrachates_id).update(:initial_balance => Enrachate.find(enrachates_id).price * 0.90 + Enrachate.find(enrachates_id).initial_balance )
+            Enrachate.find(enrachates_id).update(:initial_balance => Enrachate.find(enrachates_id).price * Enrachate.find(enrachates_id).percentage + Enrachate.find(enrachates_id).initial_balance )
             else
                if user.balance.to_f >= Enrachate.find(enrachates_id).price
             user.update(:balance => user.balance.to_f - Enrachate.find(enrachates_id).price)
-            Enrachate.find(enrachates_id).update(:initial_balance => Enrachate.find(enrachates_id).price * 0.90 + Enrachate.find(enrachates_id).initial_balance )
+            Enrachate.find(enrachates_id).update(:initial_balance => Enrachate.find(enrachates_id).price * Enrachate.find(enrachates_id).percentage + Enrachate.find(enrachates_id).initial_balance )
         else
             return false
         end

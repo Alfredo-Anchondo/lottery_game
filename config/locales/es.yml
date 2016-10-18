@@ -379,7 +379,7 @@ es:
             initial_balance: "Bolsa acumulada"
             type: "Tipo"
             description: "Descripción"
-            percentage: "Porcentaje para el administrador"
+            percentage: "Numero decimal a sumar a la bolsa"
             winner: "Ganador?"
             initial_date: "Fecha de comienzo"
             end_date: "Fecha de fin"
