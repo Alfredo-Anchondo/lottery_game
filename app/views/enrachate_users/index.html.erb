@@ -31,7 +31,7 @@
               <tr>
                                   <td><%= Enrachate.find(enrachate_user.enrachates_id).name %></td>
                                   <td><%= enrachate_user.question_enrachate_id != nil ? enrachate_user.question_enrachate.title : "" %></td>
-                                  <td><%= enrachate_user.tira_enrachate.name %></td>
+                                  <td><%= enrachate_user.tira_enrachate ? enrachate_user.tira_enrachate.name : "" %></td>
                                   <td><%= enrachate_user.answer %></td>
                                   <td><%= enrachate_user.user.select_display %></td>
                                   <td><%= enrachate_user.status %></td>
