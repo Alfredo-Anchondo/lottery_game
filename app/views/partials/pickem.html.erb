@@ -1,4 +1,9 @@
 <style>
+  .for_change{
+    background-color:red !important;
+    color:white;
+    border-color: red;
+  }
 
      label > input{ /* HIDE RADIO */
   visibility: hidden; /* Makes input not-clickable */
@@ -473,17 +478,27 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 
 <script>
+    $(".change-team").click(function(){
+      $(this).addClass("for_change")
+    })
+
+
+
           $(".confirm_change").click(function(){
+
+            $(".for_change").each(function() {
               var ticket_id = $(this).data("id");
               var team_id = $(this).data("team");
               $.ajax({
-				      method: "POST",
-					  url: "/partials/change_pick_team",
-					  dataType: "json",
-					  data: { ticket_id: ticket_id, team_id: team_id }
-					}).done(function(data) {
-                  location.reload()
+              method: "POST",
+            url: "/partials/change_pick_team",
+            dataType: "json",
+            data: { ticket_id: ticket_id, team_id: team_id }
+          }).done(function(data) {
+
               })
 
+            });
+          setTimeout(function(){ location.reload(); }, 6000);    
           })
     </script>
