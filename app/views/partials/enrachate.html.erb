@@ -114,7 +114,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
                                 <h4 style="text-align:center; color:black; font-size:.8em;">   <%= relationquestion.title %></h4>
                                 <div class="col-md-6 col-xs-6 float-question-left" style="padding:0px;">
                                     <div class="col-md-1 col-xs-1" style="padding:0px;">  <label>
-                                      <input <%= @can_change_question == true  ? ""  : "disabled" %> <%= relationquestion.program_date < Time.now ? "disabled" : "" %>  <%= @question_selected == true ? @recent_buy_ticket_enrachate.answer.to_i == 1 ? "checked" : "" : "no" %>    data-question=" <%= relationquestion.id %>" data-tira=" <%= relationquestion.id %>" class="question <%= @question_selected == true ? @recent_buy_ticket_enrachate.answer.to_i == 1 ? "selected_prev" : "selected_not_check" : "" %>" type="radio" name="question" value="1" />
+                                      <input <%= @can_change_question == true  ? ""  : "disabled" %> <%= relationquestion.program_date < Time.now ? "disabled" : "" %>  <%= @question_selected == true ? @recent_buy_ticket_enrachate.answer.to_i == 1 ? "checked" : "" : "no" %>    data-question=" <%= relationquestion.id %>" data-tira=" <%= @current_tira.id %>" class="question <%= @question_selected == true ? @recent_buy_ticket_enrachate.answer.to_i == 1 ? "selected_prev" : "selected_not_check" : "" %>" type="radio" name="question" value="1" />
                                       <img width="40px" src="/assets/radio_button.png">
                                     </label></div>
                                     <div class="col-md-11 col-xs-11" style="padding:0px; text-align:center;">
