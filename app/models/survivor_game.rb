@@ -501,7 +501,7 @@ class SurvivorGame < ActiveRecord::Base
                     no_more_rebuys = false
                     looser_id = ''
                     if survivor.survivor_users.count >= 1
-                      if current_tickets2.where('survivor_id = ? and status = ?', survivor.id, 'alive' ).pluck(:user_id).uniq.count <= 1
+                      if current_tickets2.where('status = ?','alive' ).pluck(:user_id).uniq.count <= 1
                           logger.info 'Esta entrando por que el numero de vivos es 1 0 menor'
                           deel = current_tickets2.pluck()
 
