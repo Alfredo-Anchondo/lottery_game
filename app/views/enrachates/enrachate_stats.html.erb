@@ -30,8 +30,9 @@
           <h4 style="text-align:center;color:red;font-size:18px;"><%= enrachate.id  %> <span style="color:black;">| <%= enrachate.name  %> </span> </h4>
           <h4 style="text-align:center;color:black;font-size:12px;"><%= enrachate.initial_date.strftime("%d/%m/%Y")  %> - <%= enrachate.end_date.strftime("%d/%m/%Y")  %> </h4>
           <hr>
-
-                  <h4 style="color:black; text-align:center; font-size:16px;">Total entradas compradas: <span style="color:blue;"> <%= enrachate.purchase_tickets_number    %>  </span></h4>
+             <h4 style="color:black; text-align:center; font-size:16px;">Bolsa: <span style="color:blue;"> $<%= enrachate.initial_balance    %>  </span></h4>
+            <h4 style="color:black; text-align:center; font-size:16px;">Precio: <span style="color:blue;"> $<%= enrachate.price    %>  </span> | Porcentaje ganado:  <span style="color:blue;"> <%= 1 - enrachate.percentage    %>  </span>  </h4>
+            <h4 style="color:black; text-align:center; font-size:16px;">Total entradas compradas: <span style="color:blue;"> <%= enrachate.purchase_tickets_number    %>  </span></h4>
             <h4 style="color:black; text-align:center; font-size:16px;">Total  ganancias x entradas: <span style="color:blue;"> $<%= enrachate.purchase_tickets_number * (enrachate.price * (1 - enrachate.percentage) )   %>  </span></h4>
       </div>
     <% end %>
