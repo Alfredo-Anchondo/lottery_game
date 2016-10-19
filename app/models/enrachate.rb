@@ -47,7 +47,7 @@ class Enrachate < ActiveRecord::Base
 
       @recent_buy_ticket_enrachate.each do |ticket_actual|
         @last_day_ticket.each do |ticket_pasado|
-            if ticket_actual.user_id == ticket_pasado.user_id
+            if ticket_actual.enrachate_user_id == ticket_pasado.enrachate_user_id
 
             else
               logger.info "entreeeee aqui"
