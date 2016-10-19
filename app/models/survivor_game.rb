@@ -589,7 +589,7 @@ class SurvivorGame < ActiveRecord::Base
                         logger.info 'se salvara????????'
                         logger.info  'AUN SIGUE EL JUEGOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'
                         logger.info looser_with_rebuy
-                        logger.info survivor.survivor_users.where('status = ?', 'alive')
+                        logger.info survivor.survivor_users.where('status = ?', 'alive').count
 
                         if looser_with_rebuy == 1 && current_tickets2.where('status = ?', 'alive').count == 0
                             logger.info 'entre a esta opcion'
@@ -619,6 +619,7 @@ class SurvivorGame < ActiveRecord::Base
                         if looser_can_saves == false
 
                             if current_tickets2.where('status = ?', 'alive').count == 1
+                              logger.info "Entre al de solo un ganador"
                              winner = current_tickets2.where('status = ?', 'alive')
                              winner[0].update(:status => 'winner')
                              logger.info winner[0]
@@ -626,6 +627,7 @@ class SurvivorGame < ActiveRecord::Base
 
                                 if current_tickets2.where('status = ?', 'loser').count == current_tickets2.count
                                 current_tickets2.each do |ticket|
+                                  logger.info "entre en el que hay solo perdedores"
                                     ticket.update(:status => 'winner')
                                     logger.info ticket
                                 end
