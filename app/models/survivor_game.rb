@@ -616,6 +616,8 @@ class SurvivorGame < ActiveRecord::Base
 
                         end
 
+                        logger.info  looser_can_saves
+                        logger.info "ANTES DEL IFFFFFFFFFFFFFFFFFFF"
                         if looser_can_saves == false
 
                             if current_tickets2.where('status = ?', 'alive').count == 1
