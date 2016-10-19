@@ -501,7 +501,7 @@ class SurvivorGame < ActiveRecord::Base
                     looser_id = ''
                     if survivor.survivor_users.count >= 1
                       if current_tickets2.where('survivor_id = ? and status = ?', survivor.id, 'alive' ).pluck(:user_id).uniq.count <= 1
-                          logger.info 'Esta entrando por que el numero de vivos es menor a 1'
+                          logger.info 'Esta entrando por que el numero de vivos es 1 0 menor'
                           deel = current_tickets2.pluck()
 
                           enter_cycle = false
@@ -519,7 +519,7 @@ class SurvivorGame < ActiveRecord::Base
                            logger.info 'Status del ticket que se esta iterando'
                         quantity_lose = survivor.survivor_users.where('survivor_user_id = ? AND status = ?', ticket[8], 'loser')
                              if quantity_lose != nil && quantity_lose != []
-                                 if quantity_lose.count > survivor.rebuy_quantity
+                                 if quantity_lose.count >= survivor.rebuy_quantity
                                    logger.info survivor.name
                                    logger.info ticket[4]
                                    logger.info 'Ya no tiene recompras disponibles'
