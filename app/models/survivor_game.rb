@@ -491,12 +491,9 @@ class SurvivorGame < ActiveRecord::Base
 
 					else
 				    end
-
-
-
                 Survivor.where('status = ?','Enjuego').each do |survivor|
                   current_tickets2 =  survivor_week_game.survivor_users
-                  logger.info "contador de boletos global " + current_tickets2.count.to_s 
+                  logger.info "contador de boletos global " + current_tickets2.count.to_s
                    xsurvivor_week_survivor_current_id = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?',survivor.id, survivor_week_game.id ).first
                   current_tickets2 =  current_tickets2.where("survivor_week_survivor_id = ?",xsurvivor_week_survivor_current_id.id)
                   logger.info "contador de boletos " + current_tickets2.count.to_s
@@ -553,11 +550,7 @@ class SurvivorGame < ActiveRecord::Base
                                   deel.each do |ticket|
                                       SurvivorUser.find(ticket[0]).update(:status => 'winner')
                                   end
-
                               end
-
-
-
                           end
 
 
