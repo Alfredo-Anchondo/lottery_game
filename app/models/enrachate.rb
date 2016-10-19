@@ -14,6 +14,11 @@ class Enrachate < ActiveRecord::Base
      return false
     end
 
+    def  purchase_tickets_number
+      EnrachateUser.where("enrachates_id = ?",id).pluck(:enrachate_user_id).uniq.count
+    end
+
+
     def current_tira
         @day_tira = ""
         relation_enrachate_tiras.each do |relation|
