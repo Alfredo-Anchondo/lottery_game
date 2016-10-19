@@ -40,13 +40,15 @@ class Enrachate < ActiveRecord::Base
       @last_tira = past_tira
       @recent_buy_ticket_enrachate = EnrachateUser.where(" enrachates_id = ? and tira_enrachate_id = ? and status != ? ",  id, @current_tira.id, "loser" )
       if   @last_tira != "" && @last_tira != [] && @last_tira != nil
+
         @last_day_ticket = EnrachateUser.where("status = ? and enrachates_id = ? and tira_enrachate_id = ? ",  "alive", id, @last_tira.id )
+        @a = @recent_buy_ticket_enrachate.pluck(:enrachate_user_id)
+        @b = @last_day_ticket.pluck(:enrachate_user_id)
+
+        @new_purchases = (@a - @b).count
       end
 
-      @a = @recent_buy_ticket_enrachate.pluck(:enrachate_user_id)
-      @b = @last_day_ticket.pluck(:enrachate_user_id)
 
-      @new_purchases = (@a - @b).count
 
 
 
