@@ -621,7 +621,7 @@ class SurvivorGame < ActiveRecord::Base
                         if looser_can_saves == false
 
                           logger.info "Entre en el ciclo de looser_can_saves == false"
-
+                          logger.info current_tickets2.each.user.username 
                             if current_tickets2.where('status = ?', 'alive').count == 1
                               logger.info "Entre al de solo un ganador"
                              winner = current_tickets2.where('status = ?', 'alive')
