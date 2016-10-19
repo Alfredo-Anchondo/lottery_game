@@ -495,6 +495,7 @@ class SurvivorGame < ActiveRecord::Base
 
                      current_tickets2 =  survivor_week_game.survivor_users
                 Survivor.where('status = ?','Enjuego').each do |survivor|
+                  current_tickets2 =  survivor_week_game.survivor_users.where(:survivor_id => survivor.id)
                     looser_can_saves = false
                     looser_with_rebuy = 0
                     no_more_rebuys = false
@@ -622,7 +623,7 @@ class SurvivorGame < ActiveRecord::Base
 
                           logger.info "Entre en el ciclo de looser_can_saves == false"
                            current_tickets2.each do |hell|
-                             logger.info hell.user.username 
+                             logger.info hell.user.username
                          end
                             if current_tickets2.where('status = ?', 'alive').count == 1
                               logger.info "Entre al de solo un ganador"
