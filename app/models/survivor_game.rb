@@ -497,6 +497,7 @@ class SurvivorGame < ActiveRecord::Base
                 Survivor.where('status = ?','Enjuego').each do |survivor|
                    xsurvivor_week_survivor_current_id = SurvivorWeekSurvivor.where('survivor_id = ? AND survivor_week_game_id = ?',survivor.id, survivor_week_game.id ).first
                   current_tickets2 =  current_tickets2.where("survivor_week_survivor_id = ?",xsurvivor_week_survivor_current_id.id)
+                  logger.info "contador de boletos " + current_tickets2.count.to_s 
                     looser_can_saves = false
                     looser_with_rebuy = 0
                     no_more_rebuys = false
