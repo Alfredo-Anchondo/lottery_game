@@ -26,7 +26,7 @@
     <h4 style="text-align:center; color:black; font-size:18px;">Datos individuales por enrachate</h4>
     <br>
     <% Enrachate.all.order(:id).each do |enrachate| %>
-      <div class="col-md-4" style="border:1px solid black;">
+      <div class="col-md-4 col-xs-12" style="border:1px solid black;">
           <h4 style="text-align:center;color:red;font-size:18px;"><%= enrachate.id  %> <span style="color:black;">| <%= enrachate.name  %> </span> </h4>
           <h4 style="text-align:center;color:black;font-size:12px;"><%= enrachate.initial_date.strftime("%d/%m/%Y")  %> - <%= enrachate.end_date.strftime("%d/%m/%Y")  %> </h4>
           <hr>
