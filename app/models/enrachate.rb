@@ -47,12 +47,6 @@ class Enrachate < ActiveRecord::Base
 
         @new_purchases = (@a - @b).count
       end
-
-
-
-
-
-
       return    @last_day_ticket != nil &&   @last_day_ticket != "" &&   @last_day_ticket != [] ? type_enrachate == 0 ? @last_day_ticket.count + @new_purchases : @last_day_ticket.count   :   @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil && @recent_buy_ticket_enrachate != "" ?   @recent_buy_ticket_enrachate.count : 0
     end
 

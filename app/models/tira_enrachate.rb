@@ -21,13 +21,5 @@ class TiraEnrachate < ActiveRecord::Base
           relation.tira_enrachate_id = id
             relation.save
         end
-
     end
-
-
-
-
-
-
-
 end
