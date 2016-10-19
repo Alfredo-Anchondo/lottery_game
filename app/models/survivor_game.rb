@@ -622,6 +622,7 @@ class SurvivorGame < ActiveRecord::Base
                         if looser_can_saves == false
 
                           logger.info "Entre en el ciclo de looser_can_saves == false"
+                          logger.info current_tickets2.count 
                            current_tickets2.each do |hell|
                              logger.info hell.user.username
                          end
