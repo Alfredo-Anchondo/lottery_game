@@ -43,8 +43,8 @@ class Enrachate < ActiveRecord::Base
         @last_day_ticket = EnrachateUser.where("status = ? and enrachates_id = ? and tira_enrachate_id = ? ",  "alive", id, @last_tira.id )
       end
 
-      @a = @recent_buy_ticket_enrachate.pluck(enrachate_user_id)
-      @b = @last_day_ticket.pluck(enrachate_user_id)
+      @a = @recent_buy_ticket_enrachate.pluck(:enrachate_user_id)
+      @b = @last_day_ticket.pluck(:enrachate_user_id)
 
       @new_purchases = (@a - @b).count
 
