@@ -495,7 +495,7 @@ class SurvivorGame < ActiveRecord::Base
 
                      current_tickets2 =  survivor_week_game.survivor_users
                 Survivor.where('status = ?','Enjuego').each do |survivor|
-                  current_tickets2 =  survivor_week_game.survivor_users.where(:survivor_id => survivor.id)
+                  current_tickets2 =  current_tickets2.where(:survivor_id => survivor.id)
                     looser_can_saves = false
                     looser_with_rebuy = 0
                     no_more_rebuys = false
