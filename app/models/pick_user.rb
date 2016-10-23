@@ -17,6 +17,10 @@ class PickUser < ActiveRecord::Base
 		end
 	end
 
+  def select_display
+    user.name + " / " + pick.name
+  end
+
   def check_if_exist
     if PickUser.where("user_id = ? and pick_survivor_week_id = ? and pick_user_id = ?", user_id, pick_survivor_week_id, pick_user_id).count != 0
       return false
