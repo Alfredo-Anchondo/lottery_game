@@ -6,16 +6,20 @@
   <h4 style="text-align:center; color:black; font-size:20px;"> Estadisticas de ventas y perdidas de survivor </h4>
   <hr>
 
-  <div class="col-md-4">
+  <div class="col-md-3">
       <h4 style="color:black; text-align:center; font-size:16px;">Total de enrachates: <span style="color:blue;"> <%= Enrachate.all.count %> </span></h4>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-3">
       <h4 style="color:black; text-align:center; font-size:16px;">Total entradas compradas: <span style="color:blue;"> <% c= 0 %> <% x = Enrachate.all.each do |enracha | c += enracha.purchase_tickets_number  end  %> <%= c %> </span></h4>
   </div>
 
-  <div class="col-md-4">
-        <h4 style="color:black; text-align:center; font-size:16px;">Total  ganancias x entradas: <span style="color:blue;"> <% d= 0 %> <% x = Enrachate.all.each do |enracha | d += enracha.purchase_tickets_number * (enracha.price * (1 - enracha.percentage) )   end  %> $<%= d %> </span></h4>
+  <div class="col-md-3">
+        <h4 style="color:black; text-align:center; font-size:16px;">Total  ganancias x entradas DB: <span style="color:blue;"> <% d= 0 %> <% x = Enrachate.all.each do |enracha | d += enracha.purchase_tickets_number * (enracha.price * (1 - enracha.percentage) )   end  %> $<%= d %> </span></h4>
+  </div>
+
+  <div class="col-md-3">
+        <h4 style="color:black; text-align:center; font-size:16px;">Total  ganancias x entradas Cliente: <span style="color:blue;"> <% d= 0 %> <% x = Enrachate.all.each do |enracha | d += enracha.purchase_tickets_number * (enracha.price *  enracha.percentage )   end  %> $<%= d %> </span></h4>
   </div>
 
 <div class="clearfix"></div>
@@ -30,10 +34,11 @@
           <h4 style="text-align:center;color:red;font-size:18px;"><%= enrachate.id  %> <span style="color:black;">| <%= enrachate.name  %> </span> </h4>
           <h4 style="text-align:center;color:black;font-size:12px;"><%= enrachate.initial_date.strftime("%d/%m/%Y")  %> - <%= enrachate.end_date.strftime("%d/%m/%Y")  %> </h4>
           <hr>
-             <h4 style="color:black; text-align:center; font-size:16px;">Bolsa: <span style="color:blue;"> $<%= enrachate.initial_balance    %>  </span></h4>
-            <h4 style="color:black; text-align:center; font-size:16px;">Precio: <span style="color:blue;"> $<%= enrachate.price    %>  </span> | Porcentaje ganado:  <span style="color:blue;"> <%= 1 - enrachate.percentage    %>  </span>  </h4>
+             <h4 style="color:black; text-align:center; font-size:16px;">Bolsa inicial: <span style="color:blue;"> $<%= enrachate.initial_balance -  enrachate.purchase_tickets_number * (enrachate.price *  enrachate.percentage )    %>  </span> | Bolsa final:  <span style="color:blue;"> $<%= enrachate.initial_balance    %>  </span> </h4>
+            <h4 style="color:black; text-align:center; font-size:16px;">Precio: <span style="color:blue;"> $<%= enrachate.price    %>  </span> | Porcentaje ganado DB:  <span style="color:blue;"> <%= 1 - enrachate.percentage    %>  </span>  </h4>
             <h4 style="color:black; text-align:center; font-size:16px;">Total entradas compradas: <span style="color:blue;"> <%= enrachate.purchase_tickets_number    %>  </span></h4>
-            <h4 style="color:black; text-align:center; font-size:16px;">Total  ganancias x entradas: <span style="color:blue;"> $<%= enrachate.purchase_tickets_number * (enrachate.price * (1 - enrachate.percentage) )   %>  </span></h4>
+            <h4 style="color:black; text-align:center; font-size:16px;">Total  ganancias x entradas DB: <span style="color:blue;"> $<%= enrachate.purchase_tickets_number * (enrachate.price * (1 - enrachate.percentage) )   %>  </span></h4>
+            <h4 style="color:black; text-align:center; font-size:16px;">Total  ganancias x entradas Cliente: <span style="color:blue;"> $<%= enrachate.purchase_tickets_number * (enrachate.price *  enrachate.percentage )   %>  </span></h4>
       </div>
     <% end %>
 </div>
