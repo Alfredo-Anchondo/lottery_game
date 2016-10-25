@@ -31,71 +31,71 @@
 				</ul>
 				<!-- Submenu 1 -->
 				<ul data-menu="submenu-1" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="/partials/tickets_history">Mis billetes</a></li>
-					<li class="menu__item"><a class="menu__link" href="/partials/pay_methods">Cargar Crédito</a></li>
-					<li class="menu__item"><a class="menu__link" href="/partials/history"><%= t('history') %></a></li>
-					<li class="menu__item"><a class="menu__link" href="/partials/checkout"> <%= t('checkout') %> </a></li>
-					<li class="menu__item"><a class="menu__link" href="/partials/invite">Invitar Amigos</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/tickets_history">Mis billetes</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/pay_methods">Cargar Crédito</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/history"><%= t('history') %></a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/checkout"> <%= t('checkout') %> </a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/invite">Invitar Amigos</a></li>
 				</ul>
 				<!-- Submenu 2 -->
 				<ul data-menu="submenu-2" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="/partials/survivor_game">Survivor Home</a></li>
-					<li class="menu__item"><a class="menu__link" href="/partials/survivor_rules">Reglas del Survivor</a></li>
-					<li class="menu__item"><a class="menu__link" href="/survivors/new">Crear Liga</a></li>
-					<li class="menu__item"><a class="menu__link" href="/partials/survivor_leagues">Ligas de Survivor</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/survivor_game">Survivor Home</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/survivor_rules">Reglas del Survivor</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/survivors/new">Crear Liga</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/survivor_leagues">Ligas de Survivor</a></li>
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2-1" href="#">Mis Ligas</a></li>
 				</ul>
         <!-- Submenu 2-1 -->
         <ul data-menu="submenu-2-1" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="/partials/my_leagues">Mis ligas</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/my_leagues">Mis ligas</a></li>
           <% array_survivor = [] %>
           <% SurvivorUser.where("user_id = ?",current_user.id).pluck(:survivor_week_survivor_id).each do |pick_survivor| %>
                <% array_survivor.push(SurvivorWeekSurvivor.find(pick_survivor).survivor) %>
           <% end %>
           <% array_survivor.uniq.each do |pick| %>
-            <li class="menu__item"><a class="menu__link" href="/partials/set_survivor_page/<%= pick.id %>"><%= pick.name %></a></li>
+            <li class="menu__item"><a target="_self" class="menu__link" href="/partials/set_survivor_page/<%= pick.id %>"><%= pick.name %></a></li>
           <% end %>
 				</ul>
 
 
 				<!-- Submenu 3 -->
 				<ul data-menu="submenu-3" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="/partials/pickem_game">Pick`EM Home</a></li>
-					<li class="menu__item"><a class="menu__link" href="/partials/pickem_rules">Reglas Pick`EM</a></li>
-					<li class="menu__item"><a class="menu__link" href="/picks/new">Crear Liga</a></li>
-					<li class="menu__item"><a class="menu__link" href="/partials/pickem_leagues">Ligas Pick`EM</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/pickem_game">Pick`EM Home</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/pickem_rules">Reglas Pick`EM</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/picks/new">Crear Liga</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/pickem_leagues">Ligas Pick`EM</a></li>
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3-1" href="#">Mis ligas</a></li>
 				</ul>
 				<!-- Submenu 3-1 -->
 				<ul data-menu="submenu-3-1" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="/partials/my_pickem_leagues">Mis ligas</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/my_pickem_leagues">Mis ligas</a></li>
           <% array_picks = [] %>
           <% PickUser.where("user_id = ?",current_user.id).pluck(:pick_survivor_week_id).each do |pick_survivor| %>
                <% array_picks.push(PickSurvivorWeek.find(pick_survivor).pick) %>
           <% end %>
           <% array_picks.uniq.each do |pick| %>
-            <li class="menu__item"><a class="menu__link" href="/partials/pickem/<%= pick.id %>"><%= pick.name %></a></li>
+            <li class="menu__item"><a target="_self" class="menu__link" href="/partials/pickem/<%= pick.id %>"><%= pick.name %></a></li>
           <% end %>
 				</ul>
 				<!-- Submenu 4 -->
 				<ul data-menu="submenu-4" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="/partials/enrachate">Enrachate 25</a></li>
-					<li class="menu__item"><a class="menu__link" href="/partials/enrachates_survivor">Survivor</a></li>
-					<li class="menu__item"><a class="menu__link" href="/partials/my_enrachate_tickets">Mis billetes</a></li>
-					<li class="menu__item"><a class="menu__link" href="/partials/answer_register">Respuestas</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/enrachate">Enrachate 25</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/enrachates_survivor">Survivor</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/my_enrachate_tickets">Mis billetes</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/answer_register">Respuestas</a></li>
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-4-1" href="#">Mis ligas</a></li>
 				</ul>
 				<!-- Submenu 4-1 -->
 				<ul data-menu="submenu-4-1" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="/partials/my_enrachate_leagues">Mis ligas</a></li>
+					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/my_enrachate_leagues">Mis ligas</a></li>
           <% EnrachateUser.where("user_id = ?",current_user.id).pluck(:enrachates_id).uniq.each do |enrachate| %>
           <%  enrachate = Enrachate.find(enrachate) %>
           <% if enrachate.winner != nil && enrachate.winner != "" && enrachate.winner != [] %>
           <% else %>
             <% if enrachate.type_enrachate == 0 %>
-              <li class="menu__item"><a class="menu__link" href="/partials/enrachate"><%= enrachate.name %></a></li>
+              <li class="menu__item"><a target="_self" class="menu__link" href="/partials/enrachate"><%= enrachate.name %></a></li>
             <% else %>
-            <li class="menu__item"><a class="menu__link" href="/partials/enrachate_survivor/<%= enrachate.id %>"><%= enrachate.name %></a></li>
+            <li class="menu__item">< target="_self"a class="menu__link" href="/partials/enrachate_survivor/<%= enrachate.id %>"><%= enrachate.name %></a></li>
             <% end %>
             <% end %>
           <% end %>
@@ -103,12 +103,12 @@
 				</ul>
 
         <ul data-menu="submenu-5" class="menu__level">
-          <li class="menu__item"><a class="menu__link" href="/partials/tiras">Tiras Home</a></li>
-          <li class="menu__item"><a class="menu__link" href="/partials/tiras_rules">Reglas de Tiras</a></li>
+          <li class="menu__item"><a target="_self" class="menu__link" href="/partials/tiras">Tiras Home</a></li>
+          <li class="menu__item"><a target="_self" class="menu__link" href="/partials/tiras_rules">Reglas de Tiras</a></li>
         </ul>
 
         <ul data-menu="submenu-6" class="menu__level">
-          <li class="menu__item"><a class="menu__link" href="/partials/lottery">Loterias Home</a></li>
+          <li class="menu__item"><a target="_self" class="menu__link" href="/partials/lottery">Loterias Home</a></li>
 
         </ul>
 
