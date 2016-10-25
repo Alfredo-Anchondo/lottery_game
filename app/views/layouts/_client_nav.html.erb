@@ -4,7 +4,7 @@
     </div>
     <div class="bp-header__main">
     <span class="bp-header__present only-mobile">  <a target="_self" href="/"><img style="width: 60px; margin-top:-17%; height: 120px;" id="logo-image"  src=" <%= current_user != nil ? "/assets/nombre.png" : "/assets/nombre_white.png" %>"></a></span>
-      <span class="bp-header__present"><%= current_user != nil ? current_user.username : "Invitado"  %></span>
+      <span class="bp-header__present"><%= current_user != nil ? current_user.username : ""  %></span>
       <h1 class="bp-header__title">Saldo: $<%= current_user != nil ?  current_user.balance.round(2) : 0   %> | Saldo de regalo:  $<%= current_user != nil ? current_user.gift_credit.to_f.round(2) : 0 %> </h1>
       <nav class="bp-nav">
         <a style="position: relative" class="bp-nav__item bp-icon " data-method="delete"  href="/users/sign_out" data-info="Cerrar sesión"><span>Cerrar sesión</span><i class="fa fa-sign-out" style="margin-top:35%; margin-left:35%; color:black;" ></i></a>

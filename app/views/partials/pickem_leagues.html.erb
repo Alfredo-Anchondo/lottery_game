@@ -1,18 +1,18 @@
-<style>	
-		
+<style>
+
 	#mainwrapper .box{
 		margin-left: 0px !important;
 		margin-top: 0px !important;
 	}
-	
+
 	#mainwrapper .box .fade-caption, #mainwrapper .box .scale-caption{
 		margin-top:-200px ;
 	}
-    
+
       #mainwrapper .box{
         border:5px solid #2d68ac    ;
-    }    
-	
+    }
+
 </style>
 
 
@@ -20,16 +20,16 @@
 
 
 	<% @categories.each do |category| %>
-	
-    
 
-	<h4 style="text-align:center; font-size:16px;color:black;"> <%= SportCategory.find(category).select_display %></h4> <hr style="border-color:purple;">
+
+
+	<h4 style="text-align:center; font-size:16px;color:black;"> <%= SportCategory.find(category).select_display %></h4> <hr style="border-color:#2d68ac">
 	<div id="mainwrapper"> <br>
 
-	
-	
+
+
 <% @picks.each_with_index do |pick,index| %>
-	
+
 	<% if pick.sport_category_id == category %>
 	<% if pick.user_id == 1 %>
 			 <% if  @current_week[0].week == 0 %>
@@ -40,8 +40,8 @@
 		<% else %>
 				 <% if  @current_week[0].week == 0 %>
 			<% if pick.access_key.present? %>
-				<input id="pass<%=index%>" type="hidden"  value="<%= pick.access_key %>"><div id="box-3" style="background-color:white" class="box col-md-3 col-xs-12"><div class="row" style="max-height:200px; height:200px;"> <div class="col-md-5 col-xs-5"><h4 style="text-align:center; color:black; font-size:15px; font-weight:800;"><%= pick.name %></h4> <h4 style="text-align:center"> <img width="100%" style="position:relative; max-height:75px;" src="<%= pick.background_url %>"></h4> <h3 style="color:black; font-size:15px; "> Participantes: </h3> <h3 style="text-align:center; font-size:20px; color: #2d68ac; text-transform: capitalize; font-weight:800;"> <span>  <%=  pick.alive_users %> </span> </h3>   <br></div> <div class="col-md-7 col-xs-7"><div class="row"><div class="col-md-12 col-xs-12"><h3 style="color:black;"> Entrada: </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;"> <span>$<%= pick.price.round(2) %> </span>  </h3><h3 style="color:black;"> Bolsa:</h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;"> <span>$<%= pick.initial_balance.round(2) %> </span>  </h3></div> <div class="clearfix"></div> <div class="col-md-12 col-xs-12">  </div><h3 style="color:black; "> Premio Semanal: </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;">$<%= pick.week_amount.round(2) %> </h3></div> </div> </div><span class="caption normalcaption fade-caption"><h3 style="text-align:center"><%= pick.name %> </h3> <h3 style="text-align:center; color:white;"> Creada por: <span style="text-align:center"> <%= pick.user.username %> </span> </h3>  <hr>  <h4 style="text-align:center"><button data-password = "pass<%= index %>" data-pick = "<%= pick.id %>" data-input="input_access<%=index%>" style="font-weight:600;" class="enter_pick btn btn-primary"> Entrar a liga </button> <input class="input_access<%=index%>" style="color:black; " placeholder="Contraseña" type="text"> </h4> <h4> <button  class="btn send_mail" data-id="<%= pick.user_id %>" data-pick="<%= pick.id %>"  style="width:100%; font-weight:600; background-color:white; border-color:white; color:black;"> Solicitar acceso  </button> </h4>  </span></div>	
-			<% else %>	
+				<input id="pass<%=index%>" type="hidden"  value="<%= pick.access_key %>"><div id="box-3" style="background-color:white" class="box col-md-3 col-xs-12"><div class="row" style="max-height:200px; height:200px;"> <div class="col-md-5 col-xs-5"><h4 style="text-align:center; color:black; font-size:15px; font-weight:800;"><%= pick.name %></h4> <h4 style="text-align:center"> <img width="100%" style="position:relative; max-height:75px;" src="<%= pick.background_url %>"></h4> <h3 style="color:black; font-size:15px; "> Participantes: </h3> <h3 style="text-align:center; font-size:20px; color: #2d68ac; text-transform: capitalize; font-weight:800;"> <span>  <%=  pick.alive_users %> </span> </h3>   <br></div> <div class="col-md-7 col-xs-7"><div class="row"><div class="col-md-12 col-xs-12"><h3 style="color:black;"> Entrada: </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;"> <span>$<%= pick.price.round(2) %> </span>  </h3><h3 style="color:black;"> Bolsa:</h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;"> <span>$<%= pick.initial_balance.round(2) %> </span>  </h3></div> <div class="clearfix"></div> <div class="col-md-12 col-xs-12">  </div><h3 style="color:black; "> Premio Semanal: </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;">$<%= pick.week_amount.round(2) %> </h3></div> </div> </div><span class="caption normalcaption fade-caption"><h3 style="text-align:center"><%= pick.name %> </h3> <h3 style="text-align:center; color:white;"> Creada por: <span style="text-align:center"> <%= pick.user.username %> </span> </h3>  <hr>  <h4 style="text-align:center"><button data-password = "pass<%= index %>" data-pick = "<%= pick.id %>" data-input="input_access<%=index%>" style="font-weight:600;" class="enter_pick btn btn-primary"> Entrar a liga </button> <input class="input_access<%=index%>" style="color:black; " placeholder="Contraseña" type="text"> </h4> <h4> <button  class="btn send_mail" data-id="<%= pick.user_id %>" data-pick="<%= pick.id %>"  style="width:100%; font-weight:600; background-color:white; border-color:white; color:black;"> Solicitar acceso  </button> </h4>  </span></div>
+			<% else %>
 				<div id="box-3" style="background-color:white" class="box col-md-3 col-xs-12"><div class="row" style="max-height:200px; height:200px;"> <div class="col-md-5 col-xs-5"><h4 style="text-align:center; color:black; font-size:15px; font-weight:800;"><%= pick.name %></h4> <h4 style="text-align:center"> <img width="100%" style="position:relative; max-height:75px;" src="<%= pick.background_url %>"></h4> <h3 style="color:black; font-size:15px; "> Participantes: </h3> <h3 style="text-align:center; font-size:20px; color: #2d68ac; text-transform: capitalize; font-weight:800;"> <span>  <%=  pick.alive_users %> </span> </h3>   <br></div> <div class="col-md-7 col-xs-7"><div class="row"><div class="col-md-12 col-xs-12"><h3 style="color:black;"> Entrada: </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;"> <span>$<%= pick.price.round(2) %> </span>  </h3><h3 style="color:black;"> Bolsa:</h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;"> <span>$<%= pick.initial_balance.round(2) %> </span>  </h3></div> <div class="clearfix"></div> <div class="col-md-12 col-xs-12">  </div><h3 style="color:black; "> Premio Semanal: </h3><h3 style="text-align:center; color: #2d68ac; font-size:20px; text-transform: capitalize; font-weight:800;">$<%= pick.week_amount.round(2) %> </h3></div> </div> </div><span class="caption normalcaption fade-caption"><h3 style="text-align:center"><%= pick.name %> </h3> <h3 style="text-align:center; color:white;"> Creada por: <span style="text-align:center"> <%= pick.user.username %> </span> </h3>  <hr>  <h4 style="text-align:center"><a href="/partials/pickem/<%= pick.id %>"  style="font-weight:600;" class="enter_pick btn btn-primary"> Entrar a liga </a> </h4>   </span></div>
 			<% end %>
 			<% else %>
@@ -51,9 +51,9 @@
 	<% end %>
 <% end %>
 
-</div> 
+</div>
 <div class="clearfix"></div>
-<hr style="border-color:purple;">
+<hr style="border-color:#2d68ac;">
 <% end %>
 
  <script>
@@ -63,28 +63,26 @@
 			     var pick = $(this).data('pick');
 				 var password1 = $(this).data('password');
 			     var password = $('#'+password1+'').val();
-				 
+
 				 if($('.'+input).val() == password){
 					  window.location = '/partials/pickem/'+pick+''
 				 }else{
 					 $(this).prop('disabled',false);
 				 }
 			 })
-		  
+
 		  $('.send_mail').click(function(){
-			  
+
 			var pick = $(this).data('pick');
 			 var owner = $(this).data('id');
 			   $.ajax({
             method: "GET",
             url: "/partials/access_mail_pick",
             format: "json",
-			data: ({owner: owner, survivor: pick})	   
+			data: ({owner: owner, survivor: pick})
                }).done(function(data) {
 				   alert('Se a notificado a nuestros administradores, le notificaremos al creador de la liga y te responderemos lo mas pronto posible.');
 			   })
 		  });
 	</script>
 <!-- end of #mainwrapper-->
-
-

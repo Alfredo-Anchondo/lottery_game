@@ -229,11 +229,11 @@ Rails.application.routes.draw do
   get 'welcome/index_client'
   get 'language/i18n/:locale' => 'language#i18n'
   get 'partials/credit_card_form'
-  get 'welcome/terms'
-  get 'welcome/about'
-  get 'welcome/contact'
-  get 'welcome/privacy'
-  get 'welcome/faq'
+  get 'welcome/terms', to: "welcome#no_sign_in"
+  get 'welcome/about', to: "welcome#ho_we_are"
+  get 'welcome/contact', to: "welcome#contact"
+  get 'welcome/privacy', to: "welcome#privacy"
+  get 'welcome/faq', to: "welcome#faq"
   post "/webhooks", to: "webhooks#receive"
   post "/", to: "webhooks#receive"
 

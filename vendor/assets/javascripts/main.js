@@ -4,7 +4,7 @@
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2015, Codrops
  * http://www.codrops.com
  */
@@ -32,7 +32,7 @@
 		};
 
 	function extend( a, b ) {
-		for( var key in b ) { 
+		for( var key in b ) {
 			if( b.hasOwnProperty( key ) ) {
 				a[key] = b[key];
 			}
@@ -44,7 +44,7 @@
 		this.el = el;
 		this.options = extend( {}, this.options );
 		extend( this.options, options );
-		
+
 		// the menus (<ul>´s)
 		this.menus = [].slice.call(this.el.querySelectorAll('.menu__level'));
 		// index of current menu
@@ -62,7 +62,7 @@
 		backCtrl : true,
 		// delay between each menu item sliding animation
 		itemsDelayInterval : 60,
-		// direction 
+		// direction
 		direction : 'r2l',
 		// callback: item that doesn´t have a submenu gets clicked
 		// onItemClick([event], [inner HTML of the clicked item])
@@ -91,8 +91,8 @@
 			this.backCtrl.innerHTML = '<span class="icon icon--arrow-left"></span>';
 			this.el.insertBefore(this.backCtrl, this.el.firstChild);
 		}
-		
-		
+
+
 		// create breadcrumbs
 		if( self.options.breadcrumbsCtrl ) {
 			this.breadcrumbsCtrl = document.createElement('nav');
@@ -111,7 +111,7 @@
 
 		for(var i = 0, len = this.menusArr.length; i < len; ++i) {
 			this.menusArr[i].menuItems.forEach(function(item, pos) {
-				item.querySelector('a').addEventListener('click', function(ev) { 
+				item.querySelector('a').addEventListener('click', function(ev) {
 					var submenu = ev.target.getAttribute('data-submenu'),
 						itemName = ev.target.innerHTML,
 						subMenuEl = self.el.querySelector('ul[data-menu="' + submenu + '"]');
@@ -129,14 +129,14 @@
 							classie.remove(self.el.querySelector('.menu__link--current'), 'menu__link--current');
 						}
 						classie.add(ev.target, 'menu__link--current');
-						
+
 						// callback
 						self.options.onItemClick(ev, itemName);
 					}
 				});
 			});
 		}
-		
+
 		// back navigation
 		if( this.options.backCtrl ) {
 			this.backCtrl.addEventListener('click', function() {
@@ -150,7 +150,7 @@
 			return false;
 		}
 		this.isAnimating = true;
-		
+
 		// save "parent" menu index for back navigation
 		this.menusArr[this.menus.indexOf(subMenuEl)].backIdx = this.current;
 		// save "parent" menu´s name
@@ -194,7 +194,7 @@
 			classie.add(currentMenu, !isBackNavigation ? 'animate-outToLeft' : 'animate-outToRight');
 		}
 		else {
-			classie.add(currentMenu, isBackNavigation ? 'animate-outToLeft' : 'animate-outToRight');	
+			classie.add(currentMenu, isBackNavigation ? 'animate-outToLeft' : 'animate-outToRight');
 		}
 	};
 
@@ -241,7 +241,7 @@
 						if( self.options.backCtrl ) {
 							classie.remove(self.backCtrl, 'menu__back--hidden');
 						}
-						
+
 						// add breadcrumb
 						self._addBreadcrumb(nextMenuIdx);
 					}
@@ -254,8 +254,8 @@
 					self.isAnimating = false;
 				});
 			}
-		});	
-		
+		});
+
 		// animation class
 		if( this.options.direction === 'r2l' ) {
 			classie.add(nextMenuEl, !isBackNavigation ? 'animate-inFromRight' : 'animate-inFromLeft');
@@ -283,7 +283,7 @@
 				return false;
 			}
 			self.isAnimating = true;
-			
+
 			// current menu slides out
 			self._menuOut();
 			// next menu slides in

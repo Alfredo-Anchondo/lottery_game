@@ -174,9 +174,9 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 
 <!--- Aqui empiezan las acciones cuando no es la semana 0 y se pueden empezar a realizar las compras  --->
-	<div class="row" style=" margin-top:-20px !important; margin-bottom:80px !important; background-size: cover; background-image: url(/assets/default_background.png)">
+	<div class="row" style=" margin-bottom:80px !important; background-size: cover; background-image: url(/assets/default_background.png)">
         	<div class="row" style="background-color:rgba(0, 0, 0, 0.3)">
-         	<div class="col-md-3 " >
+         	<div class="col-md-3" style="padding:0px;" >
           	<h1 style="text-align:center; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size: 25px; color:white; font-weight:900;"><img style="margin-right:10px;" class="img-circle" width="80px" src="<%= @pick.background_url %>"><%= @pick.name %></h1>
           	<h4 style="text-align:center">  <a class="btn btn-primary"  href="/partials/pick_history/<%= @pick.id %>">Temporada</a>  <a class="btn btn-primary"  href="/partials/pickem_week_games_history/<%= @pick.id %>">Semanal</a>  <a class="btn btn-primary"  href="/partials/games_result/">Resultados</a> </h4> <hr>
       		<h4 style="text-align:center; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:20px;">Semana #<%= @current_week[0].week %></h4>
@@ -321,10 +321,10 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                                 <input type="radio" data-src="<%= game.team2.logo_url  %>" data-gameid="<%= game.id %>" data-id="<%= game.team2.id %>" class="fut_team" name="team<%= indexx %>" value="small" />
                                 <img class="<%= game.team2.name.delete(' ')  %><%= index+1 %>" width="40%" src="<%= game.team2.logo_url  %>"> </label></h4></div>
                             <% else %>
-    		  	 	 		<div class="col-md-2 col-xs-2" ><h4 style="text-align:center"> <img data-name="<%= game.team.name  %>" data-gameid="<%= game.id %>" data-id="<%= game.team.id %>" class="<%= game.team.name.delete(' ')  %><%= index+1 %>" width="80%" src="<%= game.team.logo_url  %>"> </h4> <h4 style="text-align:center; color:white;"> <% if game.plus_handicap == 0  %> + <%= game.handicap %> <% else %> - <%= game.handicap %> <% end %> </h4> </div>
+    		  	 	 		<div class="col-md-2 col-xs-2" ><h4 style="text-align:center"> <img data-name="<%= game.team.name  %>" data-gameid="<%= game.id %>" data-id="<%= game.team.id %>" class="<%= game.team.name.delete(' ')  %><%= index+1 %>" width="150%" src="<%= game.team.logo_url  %>"> </h4> <h4 style="text-align:center; color:white;"> <% if game.plus_handicap == 0  %> + <%= game.handicap %> <% else %> - <%= game.handicap %> <% end %> </h4> </div>
     		  	 	        <div class="col-md-8 col-xs-8"> <h5 style="text-align:center; color:white;">  <%= l(game.game_date, format: '%B %d %Y %T')   %> </h5> <h5 style="text-align:center"><input  class="team-switch<%= index+1 %> toggle_switch" data-size="small" 	data-handle-width="140" data-on-text="<%= game.team.name %>" data-off-text="<%= game.team2.name %>"  type="checkbox"  data-toggle="toggle" data-label-width="20" data-indeterminate="true" data-on="<%= game.team.name %>" data-off="<%= game.team2.name %>" data-onstyle="success" data-offstyle="primary"></h5></div>
 
-    		  	 	 		<div class="col-md-2 col-xs-2"><h4 style="text-align:center"><img class="<%= game.team2.name.delete(' ')  %><%= index+1 %>" data-gameid="<%= game.id %>" data-id="<%= game.team2.id %>" width="80%" src="<%= game.team2.logo_url  %>"></h4><h4 style="text-align:center; color:white;"> <% if game.plus_handicap == 0  %> - <%= game.handicap %> <% else %> + <%= game.handicap %> <% end %> </h4></div>
+    		  	 	 		<div class="col-md-2 col-xs-2"><h4 style="text-align:center"><img class="<%= game.team2.name.delete(' ')  %><%= index+1 %>" data-gameid="<%= game.id %>" data-id="<%= game.team2.id %>" width="150%" src="<%= game.team2.logo_url  %>"></h4><h4 style="text-align:center; color:white;"> <% if game.plus_handicap == 0  %> - <%= game.handicap %> <% else %> + <%= game.handicap %> <% end %> </h4></div>
                                 <% end %>
 
     		  	 	 		</div>

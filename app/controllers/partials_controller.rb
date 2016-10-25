@@ -355,7 +355,7 @@ end
 	end
 
 	def survivor_leagues
-	  	@survivors = Survivor.where('extract(year  from created_at) = ?',Time.now.year).order(:id)
+	  @survivors = Survivor.where('extract(year from created_at) = ? and status != ?',Time.now.year, "Cerrada").order(:id)
 		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ? AND sport_category = ?', Time.now, Time.now, 6)
 	end
 
@@ -701,7 +701,7 @@ end
 	end
 
 	def pickem_leagues
-		@picks = Pick.where('extract(year from created_at) = ?',Time.now.year).order(:id)
+		@picks = Pick.where('extract(year from created_at) = ? and id != ?',Time.now.year,9).order(:id)
 		@categories = Pick.where('extract(year from created_at) = ?',Time.now.year).order(:sport_category_id).pluck(:sport_category_id).uniq
 		@current_week = SurvivorWeekGame.where('initial_date <= ? AND final_date >= ?', Time.now, Time.now)
 	end

@@ -94,7 +94,6 @@
     <% end %>
     <% else %>
     <div class="content" style="margin-top:30px;"   id="main-con"><%= yield %>
-      <% if signed_in? %>
       <div class="clearfix"></div>
       <br>
     <div class="footer" style="text-align:center;">
@@ -106,7 +105,6 @@
    	 <div style="margin-top:4px; padding-right:12%;">
             <a href="/welcome/about" style="margin-right:3%; margin-top:1%; font-weight:800; display:inline;">Quiénes Somos</a><a href="/welcome/terms" style="margin-right:3%; font-weight:800; display:inline;">Términos y Condiciones</a> <a href="/welcome/contact" style="margin-right:3%; font-weight:800; display:inline;">Contáctanos</a> <a href="/welcome/privacy" style="margin-right:3%; font-weight:800; display:inline;">Privacidad y Seguridad</a>  <a href="/welcome/faq" style="margin-right:3%; font-weight:800; display:inline;">FAQ</a>
            </div></div>
-   	<% end %>
     </div>
     <% end %>
 
