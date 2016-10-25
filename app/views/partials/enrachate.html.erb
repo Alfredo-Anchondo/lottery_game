@@ -45,7 +45,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
 }
     </style>
 
-		<div class="container" style="margin-bottom: 80px !important; padding:0px;  ">
+		<div class="containerx" style="margin-bottom: 80px !important; padding:0px;  ">
 
             <div class="row">
                 <div class="col-md-4 col-xs-4"><h4 style="text-align:center; font-size:16px; color:black;">Bolsa: <span style="color:green;">$<%= @enrachate.initial_balance.round(0) %> </span></h4> </div>
@@ -67,7 +67,7 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
 						<li><a href="#section-3" class="icon-food"><span><%= Time.now.to_date.tomorrow %></span></a></li>
 					</ul>
 				</nav>
-				<div class="content">
+				<div class="contentx">
 					<section id="section-1">
                         <% if @last_tira != "" %>
                         <% @last_tira.question_enrachates.order(:program_date).each do |relationquestion| %>

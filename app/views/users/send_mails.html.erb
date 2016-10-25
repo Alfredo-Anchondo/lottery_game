@@ -5,7 +5,7 @@
 	.note-style{
 		margin-left:30% !important;
 	}
-	
+
 	.bootstrap-select{
 		width:80% !important;
 	}
@@ -17,24 +17,24 @@
                         <div class="ibox-title">
                             <h5>Envio de correos masivos</h5>
                             <span class="label label-primary">Enviar</span>
-                           
+
                         </div>
-                        
+
                         <h2>Personas</h2>
-                        
+
 			<%= select_tag "access", options_from_collection_for_select(User.all, "email", "select_display"), multiple: true, class: 'form_input', id: 'unique_id' %>
-						
+
                      	<h2 style="text-align:center; font-weight:800;">Asunto del Correo</h2>
-                     	
+
                      	<input type="text" id="subject" class="form-control">
-                     	
+
                      	<hr>
-                     	
+
                       	<h2 style="text-align:center; font-weight:800;">Cuerpo del Correo</h2>
-                       
+
                         <div class="ibox-content inspinia-timeline" >
 							<div id="summernote"></div>
-						
+
 							<br>
 							<h4 style="text-align:center"><button class="btn btn-primary" id="get" onclick="send_text()"> Enviar Correo </button></h4>
 								<br>
@@ -49,22 +49,22 @@
 $(document).ready(function() {
   $('#summernote').summernote();
 });
-	
+
 
 	function send_text(){
-		
+
 		var mails = $('#unique_id').val();
 		var content = $('#summernote').summernote('code');
 		var subject = $('#subject').val();
-		
+
 		if(subject == '' || subject == null){
 			alert('Agrega un asunto');
 		}else if (content == '' || content == null){
 			alert('Agrega contenido al correo');
 		}else{
-			
+
 			alert('Los correos se estan enviando ten paciencia, puedes cerrar este cuadro de dialogo es seguro, espera la confirmacion de envio exitoso antes de salir de la pagina.');
-			
+
 			$.ajax({
           method: "POST",
           url: "/users/send_mails_all",
@@ -72,9 +72,9 @@ $(document).ready(function() {
           format: "json"
         })
           .done(function(data) {
-				alert('Los correos se enviaron con exito'); 
+				alert('Los correos se enviaron con exito');
 			})
 		}
-		
+
 	}
 	</script>

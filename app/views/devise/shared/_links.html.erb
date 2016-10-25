@@ -11,7 +11,7 @@
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
 <%= link_to "#{provider.to_s.titleize} ",  omniauth_authorize_path(resource_name, provider), :id => provider, :class => 'btn', :style => 'width:49%; font-weight:900; margin-bottom:3px; margin-top:6px;' %>
-   
+
   <% end -%>
 <% end -%>
 
@@ -21,11 +21,11 @@
 <%# end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
- <!--p style="text-align:center; font-weight:900"> <%= t('not_account') %></p> 
+ <!--p style="text-align:center; font-weight:900"> <%= t('not_account') %></p>
  <!---  <p style="text-align:center"><%= t("just_click") %></p>    -->
-<%= link_to t('make_acount'), new_registration_path(resource_name) ,:class => "form-group btn", :style =>"background-color:#696969; color:white; width:100%;  font-weight:900;" %>
+<%= link_to t('make_acount'), new_registration_path(resource_name) ,:class => "form-group btn", :style =>"background-color:#2c67ab; color:white; width:100%;  font-weight:900;" %>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-<h5 style="text-align:center"><%= link_to t('forget_password'), new_password_path(resource_name), :style =>"color:black; width:100%; font-weight:900;" %></h5><br />
+<h5 style="text-align:center"><%= link_to t('forget_password'), new_password_path(resource_name), :style =>"color:white; width:100%; font-weight:900;" %></h5><br />
 <% end -%>

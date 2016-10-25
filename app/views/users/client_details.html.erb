@@ -1,8 +1,3 @@
-<style>
-	.footer{
-		position:fixed;
-	}
-</style>
 
 
 <div class="row" id="info_customer">
@@ -18,7 +13,7 @@
                         <div class="panel-body">
 
 <div class="col-md-4">
-	 <h2 style="text-align:center; font-weight:800; color:black;">Nombre Usuario: <span style="color:#2d68ac;"><%= @user.name %> </span> </h2> 
+	 <h2 style="text-align:center; font-weight:800; color:black;">Nombre Usuario: <span style="color:#2d68ac;"><%= @user.name %> </span> </h2>
 	</div>
 	<div class="col-md-4">
 	<h2 style="text-align:center ;  font-weight:800; color:black;">Saldo en DBS: <span style="color:#2d68ac;"> <%= @user.balance %> </span> </h2>
@@ -40,15 +35,15 @@
 		<h2 style="text-align:center;  font-weight:800; color:black"> Recomendado por: <span style="color:#2d68ac;"> <%= @user.reference_by_friend ? @user.reference_by_friend : 'No tiene codigo'  %> </span> </h2>
 	</div>
 	<div class="col-md-4">
-		
+
 	<h2 style="text-align:center;  font-weight:800; color:black;"> Cantidad de boletos loteria comprados: <span style="color:#2d68ac;"> <%= @tickets.length	 %></span></h2>
-	
+
 	<% lottery_id = 0 %>
 		 <div class="panel-body">
                                 <div class="panel-group" id="accordion">
-                                
+
 	<% @tickets.each do |status| %>
-		
+
 		<% if lottery_id != status.lottery.id %>
 		       <div class="panel panel-default">
                         <div class="panel-heading">
@@ -59,16 +54,16 @@
                        <div id="collapse<%= status.lottery.id %>" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                        <div class="panel-body">
                           <div class="col-md-12 loteria<%= status.lottery.id %>">
-							
+
 							<div class="col-md-2">
 									<h5>Billete: <%= status.ticket_number %> </h5>
 							</div>
-	
-						  </div>           
+
+						  </div>
                        </div>
                        </div>
                 </div>
-	
+
 		<% else %>
 		<script>
 		$('.loteria<%= status.lottery.id %>').append("<div class='col-md-2'><h5>Billete: <span><%= status.ticket_number %> </span></h5></div>");
@@ -79,18 +74,18 @@
 			 </div>
 		</div>
 	</div>
-	
-	
+
+
 	<div class="col-md-4">
-		
+
 	<h2 style="text-align:center; color:black; font-weight:800;"> Cantidad de boletos de tira comprados: <span style="color:#2d68ac;" > <%= @tira.length %></span></h2>
-	
+
 		<% quiniela_id = 0 %>
 		 <div class="panel-body">
                                 <div class="panel-group" id="accordion">
-                                
+
 	<% @tira.each do |status| %>
-		
+
 			<% if quiniela_id != status.quiniela.id %>
 		       <div class="panel panel-default">
                         <div class="panel-heading">
@@ -101,16 +96,16 @@
 				   <div id="collapse<%= status.quiniela.id %>" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                        <div class="panel-body">
 						   <div class="col-md-12 quiniela<%= status.quiniela.id %>">
-							
+
 							<div class="col-md-3">
 									<h5>Billete: <%= status.ticket_number %> </h5>
 							</div>
-	
-						  </div>           
+
+						  </div>
                        </div>
                        </div>
                 </div>
-	
+
 		<% else %>
 		<script>
 			$('.quiniela<%= status.quiniela.id %>').append("<div class='col-md-3'><h5>Billete: <span><%= status.ticket_number %> </span></h5></div>");
@@ -121,7 +116,7 @@
 			 </div>
 		</div>
 	</div>
-	
+
 	</div>
 	</div>
 </div>

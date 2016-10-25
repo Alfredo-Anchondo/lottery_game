@@ -1,8 +1,3 @@
-<style>
-	.footer {
-  position: fixed
-}
-</style>
 
 
 <div id="fb-root"></div>
@@ -27,7 +22,7 @@
 		  <h4 style="text-align:center">Solo escribe el correo de las personas que deseas invitar y comparte tu codigo de referencia:</h4>
 		  <h4 style="text-align:center"> Tu codigo: <span style="color:red" id="reference"><%= current_user.friend_reference %> </span></h4>
 		  <hr>
-		  
+
 		  <div class="col-md-6" >
 		  	<h3 style="text-align:center">Agrega el correo electronico de tus amigos que deseas invitar.</h3>
 			  <input type="email" class="form-control" id="invitation_mail">
@@ -37,7 +32,7 @@
 		  <div class="col-md-6" style="border-left:1px solid #e4007d">
 		  	<h3 style="text-align:center">Lista de correos electronicos para invitar</h3>
 			  <ul id="email_list">
-			  
+
 			  </ul>
 			 <h4 style="text-align:center"> <button disabled class="btn btn-primary" id="send_emails"> Enviar correo </button> </h4>
 		  </div>
@@ -62,21 +57,21 @@
 		}else
 		{ alert('Este no es un correo valido')}
 	})
-	
+
 	$('#send_emails').click(function(){
 			$(this).prop('disabled', true);
 			$.ajax({
 				  url: "/partials/inviting/",
 				  method: "POST",
                   data: { mails: emails, reference: reference }
-				
+
 					})
 				  .done(function( msg ) {
 					alert("La invitacion se realizo con exito. Gracias por invitar a tus amigos");
 				    setTimeout(function(){ location.reload(); }, 1000);
 				  });
 			})
-	
 
-	
+
+
 </script>

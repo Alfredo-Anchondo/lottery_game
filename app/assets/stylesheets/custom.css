@@ -2,12 +2,20 @@
   and (device-width: 601px)
   and (-webkit-min-device-pixel-ratio: 1.331)
   and (-webkit-max-device-pixel-ratio: 1.332) {
-      
+
+    .only-mobile{
+      display:inline !important;
+    }
+
+.footer{
+  display: none;
+}
+
       .icon-float{
     float:right;
     color:black;
 }
-      
+
       .score_label_client {
     position: static;
     top: 155px;
@@ -20,7 +28,7 @@
     background-color: transparent;
     color: #2d68ac;
 }
-	  
+
 	  .div-team{
 		  height:60px !important;
 	  }
@@ -32,7 +40,7 @@
          #alert-display-modal{
           width: 100% !important;
       }
-	  
+
 	  .display-phone{
 		  display:block !important;
 	  }
@@ -84,6 +92,7 @@
 
     #main-con{
         margin-top: 0% !important;
+        padding: 0px !important;
     }
 
     #user_image{
@@ -199,16 +208,16 @@
 	  .hide-phone {
 		  display:none;
 	  }
-      
+
       #bannerq{
-     display:none; 
-    position:absolute !important; 
+     display:none;
+    position:absolute !important;
     background-color:transparent;
     top: 30%;
     left: -8% !important;
 }
-      
-      
+
+
 .float-question-right{
     text-align: left !important;
 }
@@ -219,8 +228,16 @@
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) {
-      
-      
+
+
+    .only-mobile{
+          display:inline !important;
+        }
+
+    .footer{
+      display: none;
+    }
+
         .score_label_client {
     position: static;
     top: 155px;
@@ -233,11 +250,11 @@
     background-color: transparent;
     color: #2d68ac;
 }
-	  
+
 	   .div-team{
 		  height:60px !important;
 	  }
-	  
+
 	   .display-phone{
 		  display:block !important;
 	  }
@@ -298,6 +315,7 @@
 
     #main-con{
         margin-top: 0% !important;
+          padding: 0px !important;
     }
 
     #user_image{
@@ -410,10 +428,10 @@
       .hide-phone {
 		  display:none;
 	  }
-      
+
          #bannerq{
-     display:none; 
-    position:absolute !important; 
+     display:none;
+    position:absolute !important;
     background-color:transparent;
     top: 30%;
     left: -8% !important;
@@ -430,12 +448,21 @@
   and (device-height: 640px)
   and (-webkit-device-pixel-ratio: 3)
   and (orientation: landscape) {
-      
+
+
+        .only-mobile{
+          display:inline !important;
+        }
+
+    .footer{
+      display: none;
+    }
+
       .icon-float{
     float:right;
     color:black;
 }
-      
+
         .score_label_client {
     position: static;
     top: 155px;
@@ -511,6 +538,7 @@
 
     #main-con{
         margin-top: 0% !important;
+          padding: 0px !important;
     }
 
     #user_image{
@@ -634,15 +662,15 @@
 	  .hide-phone {
 		  display:none;
 	  }
-      
+
              #bannerq{
-     display:none; 
-    position:absolute !important; 
+     display:none;
+    position:absolute !important;
     background-color:transparent;
     top: 30%;
     left: -8% !important;
 }
-      
+
       .float-question-right{
     text-align: left  !important;
 }
@@ -650,12 +678,21 @@
 }
 
 @media screen and (max-width: 480px) {
-    
+
     .icon-float{
     float:right;
     color:black;
 }
-    
+
+
+    .only-mobile{
+      display:inline !important;
+    }
+
+.footer{
+  display: none;
+}
+
       .score_label_client {
     position: static;
     top: 155px;
@@ -668,11 +705,11 @@
     background-color: transparent;
     color: #2d68ac;
 }
-    
+
 	 .display-phone{
 		  display:block !important;
 	  }
-	
+
 	 .div-team{
 		  height:60px !important;
 	  }
@@ -734,6 +771,7 @@
 
     #main-con{
         margin-top: 0% !important;
+          padding: 0px !important;
     }
 
     #user_image{
@@ -856,10 +894,10 @@
 	.hide-phone {
 		  display:none;
 	  }
-    
+
            #bannerq{
-     display:none; 
-    position:absolute !important; 
+     display:none;
+    position:absolute !important;
     background-color:transparent;
     top: 30%;
     left: -8% !important;
@@ -867,7 +905,7 @@
     .float-question-right{
     text-align: left !important;
 }
-    
+
 }
 
 .row{
@@ -1495,8 +1533,8 @@ input[type='text'].score {
 }
 
 #bannerq{
-     display:none; 
-    position:absolute !important; 
+     display:none;
+    position:absolute !important;
     background-color:transparent;
     top: 30%;
     left: 40%;
@@ -1516,4 +1554,8 @@ input[type='text'].score {
 
 .icon-float{
     color:black;
+}
+
+.only-mobile{
+  display:none;
 }

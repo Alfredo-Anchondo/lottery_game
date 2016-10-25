@@ -1,12 +1,3 @@
-<style>
-	
-	.footer{
-		position:fixed;
-	}
-	
-
-	
-</style>
 
 
 <%= form_for(@survivor, :html => { :class => "form-horizontal" }) do |f| %>
@@ -51,19 +42,19 @@
           </div>
         </div>
 
-                
+
                  <% if signed_in? %>
                   <% if current_user.role.is_admin? %>
                    <div class="form-group">
           <%= f.label :to_mainpage, :class => "col-md-3" %>
           <div class="col-md-9">
            <%= f.radio_button :to_mainpage, true, :class => "" %>
-            <%= f.label 'Presentar en Pagina Principal', :class => "" %> 
-            
-           <%= f.radio_button :to_mainpage,  false, :class => "", :checked => true %> <%= f.label 'Ocultar en Pagina Principal', :class => "" %> 
+            <%= f.label 'Presentar en Pagina Principal', :class => "" %>
+
+           <%= f.radio_button :to_mainpage,  false, :class => "", :checked => true %> <%= f.label 'Ocultar en Pagina Principal', :class => "" %>
           </div>
         </div>
-                  
+
                   <div class="form-group">
           <%= f.label :initial_balance, :class => "col-md-3" %>
           <div class="col-md-9">
@@ -76,7 +67,7 @@
             <%= f.text_field :status, :class => "form-control" %>
           </div>
         </div>
-               
+
                 <% else %>
                  <%= f.hidden_field :status, :value => 'Enjuego' , :class => "form-control status_field" %>
                  <%= f.hidden_field :initial_balance, :value => 1, :class => "form-control" %>
@@ -84,7 +75,7 @@
                  <% end %>
 
 
-       
+
 
         <div class="form-group">
           <%= f.label :access_key, :class => "col-md-3" %>
@@ -93,42 +84,42 @@
           </div>
         </div>
 
-       
-        
-        
+
+
+
         <div class="form-group">
           <%= f.label :background, :class => "col-md-3" %>
           <div class="col-md-9">
             <%= f.file_field :background,  "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Puedes subir un logo a tu liga para darle identidad, recuerda que no debes subir imagenes ofensivas, en caso de ser asi se eliminara sin previo aviso." %>
           </div>
         </div>
-         
+
       </div>
-      
+
       <div class="col-md-6">
-     	  
+
       	  <div class="form-group">
           <%= f.label :price, :class => "col-md-3" %>
           <div class="col-md-9">
             <%= f.text_field :price, "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Es el costo de la entrada a la liga, este precio puede ser modificado cada semana para aumentar el precio de la recompra por semana si asi se desea.", :class => "form-control price", :required => 'required'  %>
           </div>
         </div>
-        
+
         <div class="form-group">
           <%= f.label :percentage,  :class => "col-md-3" %>
           <div class="col-md-9">
             <%= f.text_field :percentage, "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Es el porcentaje de la bolsa que se llevara el administrador como cuota de organización.", :class => "form-control percent" %>
           </div>
         </div>
-        
+
          <div class="form-group">
           <%= f.label :user_quantity,  :class => "col-md-3" %>
           <div class="col-md-9">
             <%= f.number_field :user_quantity, "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Este campo indica la cantidad maxima de usuarios que pueden comprar entrada en tu liga de survivor.", :class => "form-control", :min => 10, :value => 10  %>
           </div>
         </div>
-        
-        
+
+
          <div class="form-group" data-toggle = "tooltip" data-placement = "top" title = "Cantidad de veces que un jugador puede perder y volver a comprar su entrada. 0 = Sin recompras , 1 = Una recompra por entrada , 2 = Dos recompras por entrada">
          <%= f.label :rebuy_quantity, :class => "col-md-3" %>
           <div class="col-md-9">
@@ -137,10 +128,10 @@
            		<option  value="1" selected>1</option>
            		<option  value="2">2</option>
            </select>
-           
+
           </div>
         </div>
-        
+
       </div>
 <!-- end col-md-6 -->
 

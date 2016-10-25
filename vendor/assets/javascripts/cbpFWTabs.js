@@ -4,16 +4,16 @@
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
 ;( function( window ) {
-	
+
 	'use strict';
 
 	function extend( a, b ) {
-		for( var key in b ) { 
+		for( var key in b ) {
 			if( b.hasOwnProperty( key ) ) {
 				a[key] = b[key];
 			}
@@ -36,7 +36,7 @@
 		// tabs elemes
 		this.tabs = [].slice.call( this.el.querySelectorAll( 'nav > ul > li' ) );
 		// content items
-		this.items = [].slice.call( this.el.querySelectorAll( '.content > section' ) );
+		this.items = [].slice.call( this.el.querySelectorAll( '.contentx > section' ) );
 		// current index
 		this.current = -1;
 		// show current content item

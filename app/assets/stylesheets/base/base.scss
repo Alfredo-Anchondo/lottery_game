@@ -222,13 +222,12 @@ ul.unstyled, ol.unstyled {
 /* FOOTER */
 
 .footer {
-
-  background: none repeat scroll 0 0 white;
+  background: none repeat scroll 0 0 #f2f2f2;
   border-top: 1px solid $border-color;
   bottom: 0;
-  left: 0;
+  left: 250px;
   padding: 10px 20px;
-  position: relative;
+  position: fixed;
   right: 0;
 }
 
@@ -493,7 +492,7 @@ code {
 }
 
 .ibox {
-  border: 1px solid #171616;    
+  border: 1px solid #171616;
   clear: both;
   margin-bottom: 25px;
   margin-top: 0;
@@ -1217,14 +1216,14 @@ body.modal-open { padding-right:inherit !important; }
 .theadGreen{
     background-color: #1AB394 !important;
     color: #223544 !important;
-    
+
 }
 
 
 .slick-arrow{
     background-color: white !important;
-    padding-top:1px !important; 
-    
+    padding-top:1px !important;
+
 }
 
 .slick-prev {

@@ -1,289 +1,132 @@
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.6&appId=1549272788683515";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<header class="bp-header cf">
+    <div class="dummy-logo">
+    <a target="_self" href="/"><img style="width: 100%; margin-left:-5%; margin-top:-10%; height: 135px;" id="logo-image" src="/assets/nombre_white.png"></a>
+    </div>
+    <div class="bp-header__main">
+    <span class="bp-header__present only-mobile">  <a target="_self" href="/"><img style="width: 60px; margin-top:-17%; height: 120px;" id="logo-image"  src=" <%= current_user != nil ? "/assets/nombre.png" : "/assets/nombre_white.png" %>"></a></span>
+      <span class="bp-header__present"><%= current_user != nil ? current_user.username : "Invitado"  %></span>
+      <h1 class="bp-header__title">Saldo: $<%= current_user != nil ?  current_user.balance.round(2) : 0   %> | Saldo de regalo:  $<%= current_user != nil ? current_user.gift_credit.to_f.round(2) : 0 %> </h1>
+      <nav class="bp-nav">
+        <a style="position: relative" class="bp-nav__item bp-icon " data-method="delete"  href="/users/sign_out" data-info="Cerrar sesión"><span>Cerrar sesión</span><i class="fa fa-sign-out" style="margin-top:35%; margin-left:35%; color:black;" ></i></a>
+        <a style="position: relative" class="bp-nav__item bp-icon " href="/partials/client_details" data-info="Mi cuenta"><span>Mi cuenta</span><i class="fa fa-user" style="margin-top:35%; margin-left:35%; color:black;" ></i></a>
+          <a style="position: relative" class="bp-nav__item bp-icon " href="https://www.facebook.com/7donbillete/" data-info="Facebook"><span>Facebook</span><i class="fa fa-facebook" style="margin-top:35%; margin-left:35%; color:black;" ></i></a>
+      </nav>
+    </div>
+  </header>
 
-<script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
+<button class="action action--open" aria-label="Open Menu"><i class="fa fa-bars" style="color:black;"></i></button>
 
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
+<% if current_user != nil%>
 
-  return t;
-}(document, "script", "twitter-wjs"));</script>
-
-<div class="row" id="banner" >
- <div style="margin-left:6%; height:80px;">
-    <div class="col-md-5 col-xs-12"> <a target="_self" href="/"><img style="width: 60%;margin-top: -4%; margin-left:-5%; height: 163px;" id="logo-image" src="/assets/nombre.png"></a></div>
-    <div class="col-md-7" id="responsive-cellphone" style="margin-top:1%">
-           <% if signed_in? %>
-            <a target="_self" href="/partials/client_details">
-        <div class="col-md-12 col-xs-12 hide-phone">
-
-            <div class="col-md-2">
-				 <% if current_user.photo.present? %>
-               <h4><img id="user_image" class="pull-right" width="100px" height="100px" style="border-radius:150px; border:1px solid #696969;" src="<%= current_user.photo %>"></h4>
-				   <% end %>
-            </div>
-
-            <div class="col-md-10" style="background-color: rgb(255, 255, 255); color: black;">
-                <div class="col-md-7">
-                    <h4 style="color:#696969"> <%= t('welcome') %>: <span style="text-transform: uppercase; color:black"><%= current_user.username %></span> </h4>
-                     <h4 style="color:black">
-                       <span id="clock"></span> </h4>
-					    <% if signed_in? %>
-                <%= link_to destroy_user_session_path, :method => :delete, :style => "color:black" do %>
-           <h4> <i class="fa fa-sign-out"></i><%= t('logout') %> </h4>
+		<nav id="ml-menu" class="menu">
+			<button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
+			<div class="menu__wrap">
+				<ul data-menu="main" class="menu__level">
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1" href="#">Acciones</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Survivor</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Pick`EM</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Enrachate</a></li>
+          <li class="menu__item"><a class="menu__link" data-submenu="submenu-5" href="#">Tiras</a></li>
+          <li class="menu__item"><a class="menu__link" data-submenu="submenu-6" href="#">Loterias</a></li>
+				</ul>
+				<!-- Submenu 1 -->
+				<ul data-menu="submenu-1" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="/partials/tickets_history">Mis billetes</a></li>
+					<li class="menu__item"><a class="menu__link" href="/partials/pay_methods">Cargar Crédito</a></li>
+					<li class="menu__item"><a class="menu__link" href="/partials/history"><%= t('history') %></a></li>
+					<li class="menu__item"><a class="menu__link" href="/partials/checkout"> <%= t('checkout') %> </a></li>
+					<li class="menu__item"><a class="menu__link" href="/partials/invite">Invitar Amigos</a></li>
+				</ul>
+				<!-- Submenu 2 -->
+				<ul data-menu="submenu-2" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="/partials/survivor_game">Survivor Home</a></li>
+					<li class="menu__item"><a class="menu__link" href="/partials/survivor_rules">Reglas del Survivor</a></li>
+					<li class="menu__item"><a class="menu__link" href="/survivors/new">Crear Liga</a></li>
+					<li class="menu__item"><a class="menu__link" href="/partials/survivor_leagues">Ligas de Survivor</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2-1" href="#">Mis Ligas</a></li>
+				</ul>
+        <!-- Submenu 2-1 -->
+        <ul data-menu="submenu-2-1" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="/partials/my_leagues">Mis ligas</a></li>
+          <% array_survivor = [] %>
+          <% SurvivorUser.where("user_id = ?",current_user.id).pluck(:survivor_week_survivor_id).each do |pick_survivor| %>
+               <% array_survivor.push(SurvivorWeekSurvivor.find(pick_survivor).survivor) %>
           <% end %>
-             </a>
+          <% array_survivor.uniq.each do |pick| %>
+            <li class="menu__item"><a class="menu__link" href="/partials/set_survivor_page/<%= pick.id %>"><%= pick.name %></a></li>
+          <% end %>
+				</ul>
 
-                <h4><div class="fb-like" data-href="https://www.facebook.com/7donbillete/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div> </div> </h4>
 
-
-                <div class="col-md-5">
-                   <h4 style="color:#696969"> <span id="current_bal"> <%= t('current_user_balance') %>: <span style="text-transform: uppercase; color:black "><%= number_with_precision(current_user.balance, :precision => 2)  %> DB</span></span>
-					     <h4 style="color:#696969"> <span id="current_bal"> Saldo de Regalo: <span style="color:black;text-transform: uppercase;"><%= number_with_precision(current_user.gift_credit, :precision => 2)  %> DB</span></span>
-                  <h4 style="color:#696969"> 1 DB =<span style="color:black">  $1.00 MXN </span> </h4>
-							 <h4><a style="margin-top:1%;" class="twitter-follow-button" href="https://twitter.com/7DONBILLETE" data-show-count="false">
-							Follow @TwitterDev</a></h4>
-                </div>
-            </div>
-					<div class="col-md-12">
-						<div class="col-md-5"> <div class="pull-right" style="margin-right:-6%;">	</div></div>
-						<div class="col-md-3" style=""></div>
-
-					</div>
-
-        </div>
-             <% end %>
-        <% else %>
-        <div id="login_form_responsive" class="row">
-                        <%= form_for(resource, as: resource_name, url: session_path(resource_name), :class => "form-inline") do |f| %>
-            <div class="col-md-4">
-             <div class="field form-group">
-                 <%= f.label :email, :style => 'color:black' %><br />
-                  <%= f.email_field :email, :style => "color:black", :class => "form-control", autofocus: true %>
-                 <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-        <%= f.label t('remember_me') , :style => 'color:black' %>
-    </div>
-  <% end -%>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-            <div class="field form-group">
-    <%= f.label :password, :style => 'color:black' %><br />
-    <%= f.password_field :password, :style => "color:black",  :class => "form-control",  autocomplete: "off" %>
-                 <div class="actions" style="color:black">
-      <%= f.submit t('log_in'), :class => "form-group btn", :style => "background-color:#696969; margin-top:2%; width:100%; color: white;
-    font-weight: 900;" %> <br>
-
-      <div id="status">
-</div>
-  </div>
-  </div>
-            </div>
-
-            <div class="col-md-4">
-               <%= render "devise/shared/links" %>
-            </div>
-<% end %>
-        </div>
-        <% end %>
-
-        <% if signed_in? %>
-        <div class="col-md-2">
-        <!-- START Language list-->
-
-                        <!-- END Language list    -->
+				<!-- Submenu 3 -->
+				<ul data-menu="submenu-3" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="/partials/pickem_game">Pick`EM Home</a></li>
+					<li class="menu__item"><a class="menu__link" href="/partials/pickem_rules">Reglas Pick`EM</a></li>
+					<li class="menu__item"><a class="menu__link" href="/picks/new">Crear Liga</a></li>
+					<li class="menu__item"><a class="menu__link" href="/partials/pickem_leagues">Ligas Pick`EM</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3-1" href="#">Mis ligas</a></li>
+				</ul>
+				<!-- Submenu 3-1 -->
+				<ul data-menu="submenu-3-1" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="/partials/my_pickem_leagues">Mis ligas</a></li>
+          <% array_picks = [] %>
+          <% PickUser.where("user_id = ?",current_user.id).pluck(:pick_survivor_week_id).each do |pick_survivor| %>
+               <% array_picks.push(PickSurvivorWeek.find(pick_survivor).pick) %>
+          <% end %>
+          <% array_picks.uniq.each do |pick| %>
+            <li class="menu__item"><a class="menu__link" href="/partials/pickem/<%= pick.id %>"><%= pick.name %></a></li>
+          <% end %>
+				</ul>
+				<!-- Submenu 4 -->
+				<ul data-menu="submenu-4" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="/partials/enrachate">Enrachate 25</a></li>
+					<li class="menu__item"><a class="menu__link" href="/partials/enrachates_survivor">Survivor</a></li>
+					<li class="menu__item"><a class="menu__link" href="/partials/my_enrachate_tickets">Mis billetes</a></li>
+					<li class="menu__item"><a class="menu__link" href="/partials/answer_register">Respuestas</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-4-1" href="#">Mis ligas</a></li>
+				</ul>
+				<!-- Submenu 4-1 -->
+				<ul data-menu="submenu-4-1" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="/partials/my_enrachate_leagues">Mis ligas</a></li>
+          <% EnrachateUser.where("user_id = ?",current_user.id).pluck(:enrachates_id).uniq.each do |enrachate| %>
+          <%  enrachate = Enrachate.find(enrachate) %>
+          <% if enrachate.winner != nil && enrachate.winner != "" && enrachate.winner != [] %>
+          <% else %>
+            <% if enrachate.type_enrachate == 0 %>
+              <li class="menu__item"><a class="menu__link" href="/partials/enrachate"><%= enrachate.name %></a></li>
+            <% else %>
+            <li class="menu__item"><a class="menu__link" href="/partials/enrachate_survivor/<%= enrachate.id %>"><%= enrachate.name %></a></li>
             <% end %>
-        </div>
+            <% end %>
+          <% end %>
 
-     </div>
-    </div>
-</div>
+				</ul>
 
-<nav class="navbar navbar-teal">
-  <div class="container-fluid">
-    <div class="navbar-header">
-         <% if signed_in? %>
-        <span id="user_name" style="display:none"> <%= t('welcome') %>: <span style="text-transform: uppercase;"><%= current_user.username %></span> <br> <%= t('current_user_balance') %>: <span style="text-transform: uppercase;"><%= number_with_precision(current_user.balance, :precision => 2)  %> DB </span> <br> Saldo de regalo: <span style="text-transform: uppercase;"> <%= number_with_precision(current_user.gift_credit, :precision => 2)  %> DB</span> </span>
-        <% end %>
-      <button  type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-       <i style="margin-left:3px;" class="fa fa-bars"></i>
-      </button>
+        <ul data-menu="submenu-5" class="menu__level">
+          <li class="menu__item"><a class="menu__link" href="/partials/tiras">Tiras Home</a></li>
+          <li class="menu__item"><a class="menu__link" href="/partials/tiras_rules">Reglas de Tiras</a></li>
+        </ul>
 
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-         <% if signed_in? %>
+        <ul data-menu="submenu-6" class="menu__level">
+          <li class="menu__item"><a class="menu__link" href="/partials/lottery">Loterias Home</a></li>
 
-      <ul id="menu" class="nav navbar-nav metismenu">
-      <li id="user_acount" style="display:none"><a target="_self" href="/partials/client_details"> Ver perfil </a></li>
-       <!-- <li class="dropdown">
-             <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Ligas<span class="caret"></span></a>
-             <ul role="menu" class="dropdown-menu">
-             <#% Category.all.each do |category| %>
-                 <li  class="<#%= 'active' if controller_name == 'partials' && @category.try(:id) == category.id %>"><a href="/partials/<#%= category.friendly_name %>"> <span class="nav-label"><#%= category.name %></span>  </a>
-                 </li>
-             <#% end %>
-             </ul>
-         </li> -->
-         <li><a target="_self" href="/partials/tickets_history"> Mis billetes </a></li>
-         <!--<li><a href="/games/games_by_category"> <%= t('category_lotteries') %> </a> </li> -->
-          <li> <a target="_self" href="/partials/pay_methods">Cargar Crédito</a><%#= link_to t('buy_credit'), credit_card_form_partials_path(:id => current_user.id), :method => :post %></li>
-          <li><a target="_self" href="/partials/history"> <%= t('history') %> </a> </li>
-          <li><a target="_self" href="/partials/checkout"> <%= t('checkout') %> </a> </li>
-		  <li><a target="_self" href="/partials/invite">Invitar Amigos</a>  </li>
-           <li class="dropdown" >
-                        <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown"> <img width="25px" src="/assets/LogoMakr2White2.png"> Survivor<span class="caret"></span></a>
-                        <ul role="menu" class="dropdown-menu">
-                        	 <li><a target="_self" href="/partials/survivor_game">Home</a></li>
-                        	 <li><a target="_self" href="/partials/survivor_rules">Reglas del Survivor</a></li>
-                        	 <li><a target="_self" href="/survivors/new">Crear Liga</a></li>
-							 <li><a target="_self" href="/partials/survivor_leagues">Ligas de survivor</a></li>
-                       		 <li><a target="_self" href="/partials/my_leagues">Mis ligas</a></li>
-                        </ul>
-                    </li>
-           <li class="dropdown" >
-                        <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown"><img width="35px" src="/assets/Logo_pick.png"> Pick ‘em  <span class="caret"></span></a>
-                        <ul role="menu" class="dropdown-menu">
-                        	 <li><a target="_self" href="/partials/pickem_game">Home</a></li>
-                        	 <li><a target="_self" href="/partials/pickem_rules">Reglas del pick ‘em</a></li>
-                        	  <li><a target="_self" href="/picks/new">Crear Liga</a></li>
-							 <li><a target="_self" href="/partials/pickem_leagues">Ligas de pick ‘em</a></li>
-                       		 <li><a target="_self" href="/partials/my_pickem_leagues">Mis ligas</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" >
-                                  <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown"><img width="32px" src="/assets/Logoenrachate.png"> Enrachate <span class="caret"></span></a>
-                                  <ul role="menu" class="dropdown-menu">
-                                     <li><a target="_self" href="/partials/enrachate"> Enrachate 25</a>  </li>
-                                      <li><a target="_self" href="/partials/enrachates_survivor">Survivor</a></li>
-                                      <li><a target="_self" href="/partials/my_enrachate_leagues">Mis ligas</a></li>
-                                      <li><a target="_self" href="/partials/my_enrachate_tickets">Mis billetes</a></li>
-                                      <li><a target="_self" href="/partials/answer_register"> Respuestas</a></li>
-                                  </ul>
-                              </li>
-          <li class="dropdown" >
-                        <a aria-expanded="false" role="button" href="/partials/survivor_game" class="dropdown-toggle" data-toggle="dropdown"><img style="margin-right:7px" width="18px" src="/assets/logo_tira.png"> Tiras <span class="caret"></span></a>
-                        <ul role="menu" class="dropdown-menu">
-                        	 <li><a target="_self" href="/partials/tiras">Home</a></li>
-                        	 <li><a target="_self" href="/partials/tiras_rules">Reglas de Tiras</a></li>
-                        </ul>
-                    </li>
-           <li><a target="_self" href="/partials/lottery"><img width="40px" src="/assets/logo_lotto.png"> Loterias</a>  </li>
-
-
-          <li id="log_out_mov" style="display:none;"><%= link_to destroy_user_session_path, :method => :delete, :style => "color:white" do %>
-           <h4> <i class="fa fa-sign-out"></i><%= t('logout') %> </h4>
-          <% end %></li>
+        </ul>
 
 
 
-      </ul>
-        <% else %>
-         <!-- START Language list-->
-
-
-                        <!-- END Language list    -->
-        <% end %>
-
-      <!-- <ul class="nav navbar-nav navbar-right">
-           <li>
-                 <div class="" >
-                            <div class="btn-group i18n">
-                                <button type="button" data-toggle="dropdown" class="btn btn-primary">
-                                    <%= image_tag "#{I18n.locale}-icon.png" ,:style => "width:30px" %>
-                                </button>
-                                <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
-                                    <li id="es">
-                                    <%= link_to "/language/i18n/es", :style => 'color:black' do %>
-                                        <%= image_tag "es-icon.png", :style => "width:30px" %> <%= t('language_es') %>
-                                        <% end %>
-                                    </li>
-                                    <li id="en">
-                                        <#%= link_to "/language/i18n/en", :style => 'color:black' do %>
-                                          <#%= image_tag "en-icon.png", :style => "width:30px" %>  <#%= t('language_en') %>
-                                        <#% end %>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-        </li>
-      </ul> -->
-    </div>
-  </div>
-</nav>
-
-<script>
-
-$( document ).ready(function() {
-
-     var current_language = $("#current_language").val();
-
-function update() {
-    var date = new Date();
-  $('#clock').html(moment(date,'',current_language).format('D MMMM YYYY h:mm:ss a'));
-}
-
-setInterval(update, 1000);
-
-});
-</script>
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/570595f322b83c4b6a628a8a/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-
- <% if signed_in? %>
-
-<script>
-    $("#es").click(function(){
-        $.ajax({
-          method: "Put",
-            dataType: "json",
-            url: "/users/"+<%= current_user.id %>+"",
-           data: { user: {language: "es"} }
-        })
-          .done(function( msg ) {
-         });
-    })
-
-          $("#en").click(function(){
-        $.ajax({
-          method: "Put",
-            dataType: "json",
-            url: "/users/"+<%= current_user.id %>+"",
-           data: { user: {language: "en"} }
-        })
-          .done(function( msg ) {
-         });
-    })
-</script>
-
+			</div>
+		</nav>
+<% else %>
+<nav id="ml-menu" class="menu">
+  <button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
+  <div class="menu__wrap">
+    <ul data-menu="main" class="menu__level">
+      <li class="menu__item"><a class="menu__link" data-submenu="submenu-1" >Acciones</a></li>
+      <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" >Survivor</a></li>
+      <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" >Pick`EM</a></li>
+      <li class="menu__item"><a class="menu__link" data-submenu="submenu-4" >Enrachate</a></li>
+      <li class="menu__item"><a class="menu__link" data-submenu="submenu-5" >Tiras</a></li>
+      <li class="menu__item"><a class="menu__link" data-submenu="submenu-6" >Loterias</a></li>
+    </ul>
+  </nav>
 <% end %>

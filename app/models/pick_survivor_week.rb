@@ -6,4 +6,5 @@ class PickSurvivorWeek < ActiveRecord::Base
   def select_display
        "#{pick.name} / #{survivor_week_game.select_display}"
   end
+
 end

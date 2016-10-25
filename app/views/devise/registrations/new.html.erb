@@ -1,26 +1,24 @@
 <style>
-	.footer{
-		position:fixed;
-	}
-	
+
+
 	.ui-datepicker-month{
 		color:black;
 	}
-	
+
 	.ui-datepicker-year{
 		color:black;
 	}
-	
+
 	.dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus{
 		background-color: #696969;
 	}
-	
+
 	.btn-default {
     background-color: white;
     border-color: #E5E6E7;
     color: black;
 }
-	
+
 	.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{
     background-color: white;
     border-color: #696969;
@@ -28,7 +26,7 @@
 	}
 </style>
 
-<div class="row">		
+<div class="row">
     <br>
     <div class="col-md-3"></div>
     <div class="col-md-6" style="border:1px solid black; background-color:white; color:white; text-align:center">
@@ -37,9 +35,9 @@
   <%= devise_error_messages! %>
         <div class="field" >
 			<%= f.text_field :friend_reference, class: "form-control",style: "color:black; background-color:white; text-align:center; margin-bottom:3%; border-color:white; color:white;",autofocus: false %>
-  </div> 
+  </div>
         <div class="col-md-6">
-               
+
   <div class="field">
       <%= f.label :username, :style => 'color:#696969' %><br />
       <%= f.text_field :username, class: "form-control", style: "color:black", autofocus: true, required: true %>
@@ -48,18 +46,18 @@
     <%= f.label :name, :style => 'color:#696969' %><br />
     <%= f.text_field :name, class: "form-control", style: "color:black", autofocus: false, required: true %>
   </div>
-  <br>  
+  <br>
             <div class="field">
     <%= f.label :last_name, :style => 'color:#696969' %><br />
 	  <%= f.text_field :last_name, class: "form-control", style: "color:black", autofocus: false, required:true %>
     <%= f.hidden_field :balance, class: "form-control", style: "color:black", value: 0 , autofocus: false, required: true %>
-  </div>  <br>         
-            
+  </div>  <br>
+
 <div class="field">
     <%= f.label :email, :style => 'color:#696969' %><br />
     <%= f.email_field :email, class: "form-control", style: "color:black", autofocus: false, required: true %>
-  </div> 
- 
+  </div>
+
 
         </div>
         <div class="col-md-6">
@@ -67,17 +65,17 @@
      <%= f.label :birthday, :style => 'color:#696969' %><br />
      <%= f.date_field :birthday, class: "form-control", style: "color:black", autofocus: true, required: true %>
 	 <script>
-		 
+
    (function() {
       var elem = document.createElement('input');
       elem.setAttribute('type', 'date');
- 
+
       if ( elem.type === 'text' ) {
-        	$('#user_birthday').datepicker({changeYear: true, changeMonth: true} ); 
+        	$('#user_birthday').datepicker({changeYear: true, changeMonth: true} );
       }
    })();
- 
-	 
+
+
 	 </script>
   </div>
             <br>
@@ -85,19 +83,19 @@
 
 <div class="field">
          <%= f.label :gender, :class => "", :style => 'color:#696969' %>
-         
+
 			  <select class="form-control" name="user[gender]" id="user_gender" required>
 			  	<option style="color:black" value="Masculino">Masculino</option>
 				<option style="color:black" value="Femenino">Femenino</option>
 			  </select>
-         
-        </div>    <br>       
+
+        </div>    <br>
              <div class="field">
     <%= f.label :password, :style => 'color:#696969' %><br />
     <%= f.password_field :password, class: "form-control",style: "color:black", autocomplete: "off", required: true %>
   </div> <br>
 
-            
+
        <div class="field">
     <%= f.label :password_confirmation, :style => 'color:#696969' %><br />
     <%= f.password_field :password_confirmation, class: "form-control", style: "color:black", autocomplete: "off", required: true %>
@@ -107,29 +105,29 @@
 <div class="field" style="display:none">
     <%= f.label :role_id %><br />
     <%= f.hidden_field :role_id, value:2, class: "form-group",style: "color:black",autofocus: false %>
-  </div> 
-     
+  </div>
+
         </div>
         <br><br> <br>
-				
+
 		<div class="field">
 			<%= f.label "Recomendado por:", :style => "color:#696969; margin-top:3%" %><br />
 	   <input id="user_reference_by_friend" name="user[reference_by_friend]" value="" placeholder="Codigo de referencia" class="form-control" style="margin-bottom:3%; text-transform:uppercase; color:black; text-align:center;">
-  </div> 
-		
+  </div>
+
 <div class="field">
 	<input  type="checkbox" required> <label style="color:BLACK">He leido y acepto los <a data-toggle="modal" data-target="#myModal">Terminos y condiciones</a></label>
-  </div> 
-		
+  </div>
+
          <div class="actions">
-             
+
              <button id="validate" onclick="validate_date(event)" style="width:100%; margin-top:3%;" class="btn btn-primary"> <%= t('sign_up_now') %> </button>
-            
+
         </div>
         <% end %>
         <br> <br>
-        
-    
+
+
     </div>
     <div class="col-md-3"></div>
 </div>
@@ -148,22 +146,22 @@
 						<div class="row">
 						<div class="col-md-12">
 <h1>Términos y Condiciones</h1>
-<h4><span style="color:red">IMPORTANTE:</span> Cualquier referencia de dinero en este documento no son aplicables en los países y territorios en donde las apuestas en línea son ilegales y deberán de ser ignoradas por usuarios en estos territorios.</h4>  
+<h4><span style="color:red">IMPORTANTE:</span> Cualquier referencia de dinero en este documento no son aplicables en los países y territorios en donde las apuestas en línea son ilegales y deberán de ser ignoradas por usuarios en estos territorios.</h4>
 <br>
 <h2>1. Definiciones </h2>
 
 <h4>Los siguientes términos utilizados en el presente documento , tendrán los siguientes significados:</h4>
 
 <h4>Cuenta: Una cuenta registrada en el sitio detallado en la sección 4 del presente documento. </h4>
-<h4>Usuario: Significa cualquier persona que haya abierto una cuenta como se detalla en la sección 6 del presente documento.</h4> 
-<h4>Don Billete: Significa la empresa Don Billete SA de CV, incorporada con todos los requerimientos legales bajo las leyes de México.</h4> 
+<h4>Usuario: Significa cualquier persona que haya abierto una cuenta como se detalla en la sección 6 del presente documento.</h4>
+<h4>Don Billete: Significa la empresa Don Billete SA de CV, incorporada con todos los requerimientos legales bajo las leyes de México.</h4>
 <h4>Billetes: Significa cualquier billete que los usuarios compren para participar en las loterías del sitio. </h4>
 <h4>Servicio Cualquiera de los productos que se ofrezcan en el sitio. </h4>
 <h4>Sitio: Significa el dominio “www.DonBillete.com”. </h4>
 <h4>Lotería: Sorteos dependientes de los resultados de uno o más juegos de la NBA (National Basketball Association) y definidos por Don Billete. </h4>
 <br>
 <h2>2. Quienes somos.</h2>
-<h4>Don Billete es una compañía registrada de manera legal bajo las leyes de México.</h4> 
+<h4>Don Billete es una compañía registrada de manera legal bajo las leyes de México.</h4>
 <br>
 <h2>3. Aplicabilidad de este documento</h2>
  <h4>Cualquier usuario que utilice el sitio o cualquier de sus hipervínculos se considera ligado a estos Términos y Condiciones. </h4>
@@ -171,13 +169,13 @@
 <h2>4. Registro y uso de las cuentas</h2>
 <h4>Para poder abrir una cuenta en Donbillete.com el usuario debe de llenar correctamente la forma de nuevo usuario y leer y aceptar estos términos y condiciones.</h4>
 
-<h4>Don Billete puede sin tener que dar una explicación eliminar o remover cualquier cuenta del sitio. 
+<h4>Don Billete puede sin tener que dar una explicación eliminar o remover cualquier cuenta del sitio.
 Durante el registro el usuario necesita elegir su nombre de usuario y su contraseña. La contraseña puede ser cambiada en cualquier momento. Para cualquier pregunta los usuarios pueden mandar un correo a soporte@donbillete.com
 Al abrir una cuenta el usuario garantiza que: </h4>
 
 <h4>-	Tiene 18 años de edad y tiene las competencias legales para participar en juego de azar. </h4>
 
-<h4>-	Está de acuerdo en proveer sus datos personales correctos, incluyendo teléfono, nombre, y fecha de nacimiento.</h4> 
+<h4>-	Está de acuerdo en proveer sus datos personales correctos, incluyendo teléfono, nombre, y fecha de nacimiento.</h4>
 
 	<h4>-	Está de acuerdo en que su información es correcta. </h4>
 
@@ -194,8 +192,8 @@ Al abrir una cuenta el usuario garantiza que: </h4>
 <h4>- Los usuarios pueden comprar a través de puntos tantos billetes como deseen para participar en las distintas loterías ofrecidas en el sitio. </h4>
 <h4>- Las loterías dependen de uno o más juegos de la NBA (National Basketball Association) y del resultado de dichos juegos. Estos juegos serán seleccionados por Don Billete y serán definitivos una vez que se publiquen en el sitio. </h4>
 <h4>- El número ganador dependerá del último dígito de cada equipo de los juegos seleccionados
-Ejemplo: 
-Juego 1 - Equipo A 121 vs Equipo B 96. El número ganador en este caso es el 16. 
+Ejemplo:
+Juego 1 - Equipo A 121 vs Equipo B 96. El número ganador en este caso es el 16.
 Esta mecánica puede aplicarse con tantos juegos como  Don Billete lo decida. </h4>
 
 <h4>- Los premios  serán otorgados a los participantes que hayan adquirido el ticket con el número ganador. El premio consiste en el 80% del total acumulado por los participantes de la lotería. El otro 40% pertenece a Don Billete como una cuto de administración. </h4>
@@ -203,13 +201,13 @@ Esta mecánica puede aplicarse con tantos juegos como  Don Billete lo decida. </
 <h4>- El premio será dividido en partes iguales en caso de que exista más de un ganador. </h4>
 <h4>- Don Billete se reserve el derecho de cancelar cualquier apuesta previa a que inicie el juego sin tener que dar explicaciones. </h4>
 <h4>- Los saldos de los usuarios de Don Billete se manejarán con puntos que deberán ser adquiridos en el sitio. </h4>
-<h4>- Los cargos a los usuarios al hacer transacciones dentro del sitio se manejarán a través de puntos adquiridos en el sitio.</h4> 
+<h4>- Los cargos a los usuarios al hacer transacciones dentro del sitio se manejarán a través de puntos adquiridos en el sitio.</h4>
 <h4>- Los pagos a los ganadores que adquirieron sus billetes con tarjetas de crédito no podrán realizarse con OpenPay</h4>
-<h4>- OpenPay cobrará un monto de $2.5 MXN por cada transacción realizada por los usuarios.</h4> 
+<h4>- OpenPay cobrará un monto de $2.5 MXN por cada transacción realizada por los usuarios.</h4>
 
 <br>
 <h2>7. SERVICIO.</h2>
-<h4>Don Billete no es responsable bajo ninguna circunstancia a problemas relacionados a la conexión del usuario. 
+<h4>Don Billete no es responsable bajo ninguna circunstancia a problemas relacionados a la conexión del usuario.
 A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seguridad, Don Billete no puede asegurar a los usuarios que el servicio será ininterrumpido y sin errores. </h4>
 <br>
 <h2>8. RESPONSABILIDAD LIMITADA</h2>
@@ -223,7 +221,7 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 <h4>(e) lesiones o muerte</h4>
 <h4>(f) pérdida de la buena reputación</h4>
 <h4>(g) cualquier clase de pérdida no mencionada en este documento</h4>
-		
+
 	</div>
 </div>
 
@@ -237,20 +235,20 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 </div>
 
 <script>
-	
+
 	var pas = '';
-	
+
 	$('input#user_password').change(function(){
 		pas = $(this).val();
 	})
 
 	var random = Math.round(Math.random() * (10000 - 1) + 1);
-	
+
 	$('#user_username').change(function(){
 		$('#user_friend_reference').val("DB"+$('#user_username').val().toUpperCase()+random+"REF");
 	})
-	
-	
+
+
     function validate_date(event){
         var my_date = new Date($('#user_birthday').val());
         var day = my_date.getDate();
@@ -261,20 +259,20 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
         mydate.setFullYear(year, month-1, day);
 
         var currdate = new Date();
-        var setDate = new Date();        
+        var setDate = new Date();
         setDate.setFullYear(mydate.getFullYear() + age,month, day);
 
-        if ((currdate - setDate) > 0){ 
+        if ((currdate - setDate) > 0){
 			if(pas.length < 8){
 				event.preventDefault();
 				alert('La contraseña debe ser mayor a 8 digitos');
 			}else{
 			if($('#user_friend_reference').val() != null || $('#user_friend_reference').val() != ""){
-				
+
 			}else{
-				
+
 			}
-			
+
 		  }
 		}
          else{
@@ -282,7 +280,7 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
             event.preventDefault();
         }
 	}
-	
+
 	function add_gift(){
 		reference_friend = $('#user_reference_by_friend').val();
           if(reference_friend != null || reference_friend != ""){
@@ -291,7 +289,7 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 				  method: "POST",
 				  dataType: "json",
                   data: {reference: reference_friend}
-				
+
 					})
 				  .done(function( msg ) {
 						if(msg.users != '' && msg.users != null && msg.users != []){
@@ -299,32 +297,30 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 					}else{
 						$('#user_reference_by_friend').val("");
 						alert('El código de referencia no existe, porfavor introduce un código existente.');
-						
+
 					}
 				  });
 	}else{
-		
+
 	}
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	$('#user_reference_by_friend').change(function(){
 		add_gift()
 	})
 
-	
+
 	$('#user_password_confirmation').change(function(){
 		if($('#user_password_confirmation').val() == pas){
-			
+
 		}else{
 			alert('La contraseña y la confirmacion no coinciden');
 			$('#user_password_confirmation').val('');
 		}
 	})
-	
+
 </script>
-
-
