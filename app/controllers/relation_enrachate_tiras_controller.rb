@@ -80,6 +80,7 @@ end
              if  @winner_ticket.count == 0
 
               if @bought_tickets.count == 0
+                logger.info "Entre por que ya no hay boletos con estado comprado y vacios"
                 @no_choose_tickets.each do |ticketx|
                   ticketx.update(:status => "loser")
                   BuyMailer.close_question(ticketx.user.email, "Perdedor" ,ticketx).deliver
