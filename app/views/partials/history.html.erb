@@ -28,8 +28,8 @@
                 <% when "bank" %>
                 <td><%= t('bank') %></td>
                 <% end %>
-                <td><%= charges['card'] ? charges['card']['brand'] : "bank" %></td>
-                <td><%= charges['card']['card_number'] %></td>
+                <td><%= charges['card'] ? charges['card']['brand'] : "Banco" %></td>
+                <td><%= charges['card'] ? ['card_number']charges['card'] : "Banco" %></td>
                 <td><%= charges['description'] %></td>
                  <% case charges['status'] %>
                 <% when "completed" %>
