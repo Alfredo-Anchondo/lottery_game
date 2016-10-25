@@ -15,7 +15,12 @@ Rails.application.routes.draw do
 
   resources :tira_enrachates
 
-  resources :enrachates
+  resources :enrachates do
+    collection do
+      get "enrachate_stats"
+    end
+    end
+  end
 
   resources :pick_user_games
 
