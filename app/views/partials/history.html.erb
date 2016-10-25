@@ -19,7 +19,7 @@
         </thead>
 
         <tbody>
-            <% if @user_charges %>
+            <% if @user_charges != nil && @user_charges != [] && @user_charges != ""    %>
     <% @user_charges.each do |charges| %>
             <tr>
                 <% case charges['method'] %>
