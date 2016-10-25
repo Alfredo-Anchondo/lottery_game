@@ -151,6 +151,23 @@
 
       function openMenu() {
         classie.add(menuEl, 'menu--open');
+        $(".content").click(function(e){
+
+          if ($(e.target).closest(".menu").length === 0) {
+              closeMenu();
+          }
+
+      })
+
+      $(".bp-header__main").click(function(e){
+
+        if ($(e.target).closest(".menu").length === 0) {
+            closeMenu();
+        }
+
+    })
+
+
       }
 
       function closeMenu() {
@@ -161,12 +178,11 @@
       var gridWrapper = document.querySelector('.content');
 
       function loadDummyData(ev, itemName) {
-
-
         closeMenu();
-        //gridWrapper.innerHTML = '';
-
       }
+
+
+
     })();
     </script>
 
