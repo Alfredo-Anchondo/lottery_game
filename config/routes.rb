@@ -19,7 +19,6 @@ Rails.application.routes.draw do
     collection do
       get "enrachate_stats"
     end
-    end
   end
 
   resources :pick_user_games
