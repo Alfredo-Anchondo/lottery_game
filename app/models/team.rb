@@ -1,4 +1,4 @@
-class Team < ActiveRecord::Base
+  class Team < ActiveRecord::Base
   #Associations
   belongs_to :sport_category
   has_attached_file :logo,
@@ -18,21 +18,21 @@ class Team < ActiveRecord::Base
   def logo_url
     logo.url
   end
-    
+
     def played_games
-        SurvivorGame.where("team_id = ?  AND winner_team IS NOT NULL",id).count +  SurvivorGame.where("team2_id = ?  AND winner_team IS NOT NULL",id).count 
+        SurvivorGame.where("team_id = ?  AND winner_team IS NOT NULL",id).count +  SurvivorGame.where("team2_id = ?  AND winner_team IS NOT NULL",id).count
     end
-    
+
     def won_games
          SurvivorGame.where("winner_team = ? AND local_score != visit_score ",id).count
     end
-    
+
     def losed_games
-           SurvivorGame.where("team_id = ?  AND winner_team != ? AND local_score != visit_score",id,id).count +  SurvivorGame.where("team2_id = ?  AND winner_team != ? AND local_score != visit_score",id,id).count 
+           SurvivorGame.where("team_id = ?  AND winner_team != ? AND local_score != visit_score",id,id).count +  SurvivorGame.where("team2_id = ?  AND winner_team != ? AND local_score != visit_score",id,id).count
     end
-    
+
     def draw_games
-        SurvivorGame.where("team_id = ?  AND local_score = visit_score",id).count +  SurvivorGame.where("team2_id = ?  AND local_score = visit_score",id).count 
+        SurvivorGame.where("team_id = ?  AND local_score = visit_score",id).count +  SurvivorGame.where("team2_id = ?  AND local_score = visit_score",id).count
     end
-        
+
 end

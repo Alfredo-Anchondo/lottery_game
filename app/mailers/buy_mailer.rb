@@ -45,6 +45,8 @@ class BuyMailer < ActionMailer::Base
 		@survivor = survivor
 		@next_week = next_week
 		@team = team
+    attachments.inline['team.png'] = File.read(@team.logo_url)
+
 		mail(to: @user.email, subject: '[DonBillete] Seleccion de equipo semanal liga survivor')
 	end
 
