@@ -47,8 +47,8 @@ class BuyMailer < ActionMailer::Base
 		@team = team
     attachments.inline['team.png'] = File.read(@team.logo_path)
     attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilleteblanco.png"))
-    attachments.inline['hero.png'] = File.read("http://donbillete.com/seleccionteamsurvivor.png")
-    attachments.inline['fondo.png'] = File.read("http://donbillete.com/assets/images/bg1.jpg")
+    attachments.inline['hero.png'] = File.read(Rails.root.join("public", "seleccionteamsurvivor.png"))
+    attachments.inline['fondo.png'] = File.read(Rails.root.join("public", "assets/images/bg1.jpg"))
 
 
 		mail(to: @user.email, subject: '[DonBillete] Seleccion de equipo semanal liga survivor')
