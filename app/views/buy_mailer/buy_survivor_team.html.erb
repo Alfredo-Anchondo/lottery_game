@@ -195,6 +195,11 @@
                                     <h3>Gracias por seleccionar tu equipo para la semana <%= @next_week ? @next_week.week - 1 : 'Semana 17' %> del survivor:  </h3>
                                     <h3> <%= @survivor.name %> </h3>
                                     <h3> Creada por: <span><%= "" +@survivor.user.name+ " " + @survivor.user.last_name %></h3>
+
+                                      <h4>Equipo seleccionado:</h4>
+                                      <h3><%= @team.present? ? @team.name : "Lo sentimos pero no seleccionaste equipo esta semana" %></h3>
+                                          <img src="<%= @team.logo_url %>" width="300" height="" alt="alt_text" border="0" align="center" class="fluid" style=" max-width: 680px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;">
+
                                     <br><br>
                                     <!-- Button : BEGIN -->
                                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto">
@@ -626,8 +631,7 @@
           <div class="margin-center row">
           <div class="col-md-12 " style="border: 1px solid black;">
 
-          		<h4>Equipo seleccionado:</h4>
-          		<h3><%= @team.present? ? @team.name : "Lo sentimos pero no seleccionaste equipo esta semana" %></h3>
+
           		<hr>
 				<h4>Bolsa inicial:</h4>
 				<h3><%= @survivor.initial_balance %> DB</h3>
