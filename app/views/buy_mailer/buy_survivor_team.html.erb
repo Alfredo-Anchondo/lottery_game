@@ -192,15 +192,16 @@
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td style="padding: 40px; text-align: center; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;">
-                                    <h3>Gracias por seleccionar tu equipo para la semana <%= @next_week ? @next_week.week - 1 : 'Semana 17' %> del survivor:  <%= @survivor.name %> </h3>
+                                    <h3>Gracias por seleccionar tu equipo para la semana <%= @next_week ? @next_week.week - 1 : 'Semana 17' %> del survivor:  </h3>
+                                    <h3> <%= @survivor.name %> </h3>
                                     <h3> Creada por: <span><%= "" +@survivor.user.name+ " " + @survivor.user.last_name %></h3>
                                     <br><br>
                                     <!-- Button : BEGIN -->
                                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto">
                                         <tr>
                                             <td style="border-radius: 3px; background: #222222; text-align: center;" class="button-td">
-                                                <a href="http://www.google.com" style="background: #222222; border: 15px solid #222222; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
-                                                    <span style="color:#ffffff;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;A Button&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                <a href="http://donbillete.com/partials/set_survivor_page/<%= @survivor.id %>" style="background: #222222; border: 15px solid #222222; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
+                                                    <span style="color:#ffffff;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;Entrar a la liga&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                 </a>
                                             </td>
                                         </tr>
