@@ -7,9 +7,7 @@
       display:inline !important;
     }
 
-.footer{
-  display: none;
-}
+
 
       .icon-float{
     float:right;
@@ -151,9 +149,7 @@
           margin-bottom: 5px;
       }
 
-	  .footer{
-		  position:relative !important;
-	  }
+
 
 	  #team1{
 	width: 100% !important;
@@ -234,9 +230,8 @@
           display:inline !important;
         }
 
-    .footer{
-      display: none;
-    }
+
+
 
         .score_label_client {
     position: static;
@@ -373,9 +368,7 @@
           margin-bottom: 5px;
       }
 
-	   .footer{
-		  position:relative !important;
-	  }
+
 
 	    #team1{
 	width: 100% !important;
@@ -454,9 +447,7 @@
           display:inline !important;
         }
 
-    .footer{
-      display: none;
-    }
+
 
       .icon-float{
     float:right;
@@ -605,9 +596,7 @@
           margin-bottom: 5px;
       }
 
-	   .footer{
-		  position:relative !important;
-	  }
+
 
 	    #team1{
 	width: 100% !important;
@@ -689,9 +678,7 @@
       display:inline !important;
     }
 
-.footer{
-  display: none;
-}
+
 
       .score_label_client {
     position: static;
@@ -841,9 +828,7 @@
           font-size:15px;
           margin-bottom: 5px;
       }
-	 .footer{
-		  position:relative !important;
-	  }
+
 
 	  #team1{
 	width: 100% !important;
