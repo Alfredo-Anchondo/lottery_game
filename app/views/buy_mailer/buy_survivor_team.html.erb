@@ -181,7 +181,7 @@
                 <!-- Hero Image, Flush : BEGIN -->
                 <tr>
                     <td bgcolor="#ffffff">
-                        <img src="http://donbillete.com/seleccionsurvivorteam.png" width="680" height="" alt="alt_text" border="0" align="center" class="fluid" style="width: 100%; max-width: 680px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;">
+                        <img src="http://donbillete.com/seleccionteamsurvivor.png" width="680" height="" alt="alt_text" border="0" align="center" class="fluid" style="width: 100%; max-width: 680px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;">
                     </td>
                 </tr>
                 <!-- Hero Image, Flush : END -->
@@ -192,7 +192,8 @@
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td style="padding: 40px; text-align: center; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;">
-                                  Gracias por seleccionar tu equipo para la semana <%= @next_week ? @next_week.week - 1 : 'Semana 17' %> del survivor:  <%= @survivor.name %> 
+                                    <h3>Gracias por seleccionar tu equipo para la semana <%= @next_week ? @next_week.week - 1 : 'Semana 17' %> del survivor:  <%= @survivor.name %> </h3>
+                                    <h3> Creada por: <span><%= "" +@survivor.user.name+ " " + @survivor.user.last_name %></h3>
                                     <br><br>
                                     <!-- Button : BEGIN -->
                                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto">
@@ -619,15 +620,6 @@
 
 
 <!--
-  <body>
-      <div class="panel">
-        <div class="panel-header">
-            <h4 style="text-align:center"> <img width="80%" src="https://scontent-dfw1-1.xx.fbcdn.net/v/t1.0-9/13428419_255873698116190_4544569671011974568_n.png?oh=a341237d398d08639a411fd4533b9d24&oe=5825D3A7"></h4>
-           <h1 class="welcome">Gracias por seleccionar tu equipo para la semana <%= @next_week ? @next_week.week - 1 : 'Semana 17' %> del survivor: <span style="color:black"> <%= @survivor.name %> </span></h1>
-           <h2 class="welcome" style="font-weight:800"> Creada por: <span><%= "" +@survivor.user.name+ " " + @survivor.user.last_name %></span></h2>
-          </div>
-
-      </div>
       <div class="panel-body">
          <br>
           <div class="margin-center row">
