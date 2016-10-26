@@ -15,6 +15,10 @@
     name
   end
 
+def logo_path
+  logo.path
+end
+
   def logo_url
     logo.url
   end
