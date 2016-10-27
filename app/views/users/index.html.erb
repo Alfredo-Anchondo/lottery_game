@@ -33,16 +33,16 @@
             <tbody>
               <% @users.each do |user| %>
               <tr>
-				  				  <td><%= user.id %></td>
+				  				                <td><%= user.id %></td>
                                   <td><%= user.name %></td>
                                   <td><%= user.last_name %></td>
                                   <td><%= user.username %></td>
                                   <td><%= user.email %></td>
                                   <td><%= user.balance %></td>
-				  				  <td><%= user.gift_credit %></td>
-				  				  <td><%= user.created_at.strftime('%d/%m/%Y %H:%M') %></td>
+              				  				  <td><%= user.gift_credit %></td>
+              				  				  <td><%= user.created_at.strftime('%d/%m/%Y %H:%M') %></td>
                                   <td><%= user.ticket_purchase_lottery %></td>
-								  <td><%= user.ticket_purchase_quiniela %></td>
+								                  <td><%= user.ticket_purchase_quiniela %></td>
                                   <td><%= user.updated_at %></td>
 
 
