@@ -430,6 +430,10 @@ end
         if   @last_tira != ""
           @last_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "alive", @enrachate.id, @last_tira.id ).last
         end
+        if   @future_tira != ""
+          @future_day_ticket = EnrachateUser.where("user_id = ? and status = ? and enrachates_id = ? and tira_enrachate_id = ? ", current_user.id, "bought", @enrachate.id, @future_tira.id ).last
+        end
+
         @can_change_question = true
 
         if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil

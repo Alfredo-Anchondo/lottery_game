@@ -4,7 +4,31 @@
 
  <% if @enrachate != "" && @enrachate != [] && @enrachate != nil %>
 
-<% if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil   || @last_day_ticket != "" &&  @last_day_ticket != [] &&  @last_day_ticket != nil %>
+<% if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil || @last_day_ticket != "" &&  @last_day_ticket != [] &&  @last_day_ticket != nil || @future_day_ticket != "" &&  @future_day_ticket != [] &&  @future_day_ticket != nil %>
+
+<% if @recent_buy_ticket_enrachate == "" || @recent_buy_ticket_enrachate == [] || @recent_buy_ticket_enrachate == nil &&  @future_day_ticket != "" &&  @future_day_ticket != [] &&  @future_day_ticket != nil %>
+  <%  @recent_buy_ticket_enrachate = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ? and status != ? ", current_user.id, @enrachate.id, @future_tira.id, "loser" ).last %>
+  <% @current_tira = @enrachate.future_tira
+    @last_tira = @enrachate.current_tira
+    @future_tira = @enrachate.future_tira
+    @enrachate_user_id = @recent_buy_ticket_enrachate.enrachate_user_id
+
+    if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil
+        logger.info "Entre A DONDE NO DEBERIA U________U"
+        logger.info @recent_buy_ticket_enrachate.id
+        @already_select_question = @recent_buy_ticket_enrachate.answer != nil  ? true : false
+        @can_select_next = @recent_buy_ticket_enrachate.status == "alive" ? true : false
+            if @recent_buy_ticket_enrachate.question_enrachate != "" && @recent_buy_ticket_enrachate.question_enrachate != [] && @recent_buy_ticket_enrachate.question_enrachate != nil
+        @can_change_question = @recent_buy_ticket_enrachate.question_enrachate.program_date < Time.now ? false : true
+            end
+        @enrachate_user_id = @recent_buy_ticket_enrachate.enrachate_user_id
+            if @future_tira != "" && @future_tira != [] && @future_tira != nil
+                 @future_ticket =  EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ?",current_user.id,@enrachate.id,@future_tira.id).first
+                 @future_tira_ticket = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ?",current_user.id,@enrachate.id,@future_tira.id).count != 0 ? true : false
+            end
+    end
+ %>
+<% end %>
 
     <style>
     #main-con{
@@ -62,9 +86,9 @@ label > .selected_prev:checked:disabled + img{ /* (RADIO CHECKED) IMAGE STYLES *
 			<div id="tabs" class="tabs">
 				<nav>
 					<ul>
-						<li><a href="#section-1" class="icon-shop"><span><%= Date.today.prev_day %></span></a></li>
-						<li><a href="#section-2" class="icon-cup"><span><%= Time.now.to_date %></span></a></li>
-						<li><a href="#section-3" class="icon-food"><span><%= Time.now.to_date.tomorrow %></span></a></li>
+						<li><a href="#section-1" class="icon-shop"><span><%= @last_tira.program_date.to_date %></span></a></li>
+						<li><a href="#section-2" class="icon-cup"><span><%= @current_tira.program_date.to_date %></span></a></li>
+						<li><a href="#section-3" class="icon-food"><span><%= @future_tira.program_date.to_date %></span></a></li>
 					</ul>
 				</nav>
 				<div class="contentx">
@@ -302,6 +326,14 @@ No hay una fecha de entrada y puedes participar las veces que quieras. ¡La bols
     <h4 style="text-align:center"> <button id="buy_entry" style="width:50%" class="btn btn-primary"> Comprar Entrada </button> </h4>
 </div>
 
+<% @all_question_close = "" %>
+  <%  @current_tira.question_enrachates == [] || @current_tira.question_enrachates == "" || @current_tira.question_enrachates == nil ? @all_question_close = false : @all_question_close = true    %>
+  <% @current_tira.question_enrachates.order(:program_date).each do |question| %>
+      <% if question.program_date > DateTime.now  %>
+        <% @all_question_close = false %>
+      <% end %>
+  <% end %>
+
 
 <script>
 
@@ -311,14 +343,14 @@ No hay una fecha de entrada y puedes participar las veces que quieras. ¡La bols
    var purchase_date = new Date();
 
     $("#buy_entry").click(function(){
-
+      alert(<%= @all_question_close %>);
         if(gift_balance >= price){
 
              $.ajax({
 				  method: "POST",
 				  url: "/enrachate_users",
 				  dataType: "json",
-				  data: { enrachate_user: {tira_enrachate_id: <%= @enrachate.current_tira.id  %>,  user_id: <%= current_user.id %> ,purchase_date: purchase_date, status: "bought", enrachates_id: <%= @enrachate.id %>}  }
+				  data: { enrachate_user: {tira_enrachate_id: <%= @all_question_close == false ? @enrachate.current_tira.id : @enrachate.future_tira.id  %>,  user_id: <%= current_user.id %> ,purchase_date: purchase_date, status: "bought", enrachates_id: <%= @enrachate.id %>}  }
 				  }).done(function(data) {
 				    location.reload();
 				  })
@@ -330,7 +362,7 @@ No hay una fecha de entrada y puedes participar las veces que quieras. ¡La bols
             method: "POST",
             url: "/enrachate_users",
             dataType: "json",
-            data: { enrachate_user: {tira_enrachate_id: <%= @enrachate.current_tira.id  %>,  user_id: <%= current_user.id %> ,purchase_date: purchase_date, status: "bought", enrachates_id: <%= @enrachate.id %>}  }
+            data: { enrachate_user: {tira_enrachate_id: <%= @all_question_close == false ? @enrachate.current_tira.id : @enrachate.future_tira.id  %>,  user_id: <%= current_user.id %> ,purchase_date: purchase_date, status: "bought", enrachates_id: <%= @enrachate.id %>}  }
             }).done(function(data) {
               location.reload();
             })
