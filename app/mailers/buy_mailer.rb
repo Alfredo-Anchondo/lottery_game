@@ -46,7 +46,7 @@ class BuyMailer < ActionMailer::Base
 		@next_week = next_week
 		@team = team
     attachments.inline['team.png'] = File.read(@team.logo_path)
-    attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilleteblanco.png"))
+    attachments.inline['logo.png'] = File.read(Rails.root.join("public", "Nombre-full.png"))
     attachments.inline['hero.png'] = File.read(Rails.root.join("public", "seleccionteamsurvivor.png"))
 
 
