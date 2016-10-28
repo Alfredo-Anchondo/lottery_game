@@ -16,7 +16,7 @@
     if @recent_buy_ticket_enrachate != "" && @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil
         logger.info "Entre A DONDE NO DEBERIA U________U"
         logger.info @recent_buy_ticket_enrachate.id
-        @already_select_question = @recent_buy_ticket_enrachate.answer != nil  ? true : false
+        @already_select_question = @recent_buy_ticket_enrachate.answer != nil && @recent_buy_ticket_enrachate.answer != "" && @recent_buy_ticket_enrachate.answer != []  ? true : false
         @can_select_next = @recent_buy_ticket_enrachate.status == "alive" ? true : false
             if @recent_buy_ticket_enrachate.question_enrachate != "" && @recent_buy_ticket_enrachate.question_enrachate != [] && @recent_buy_ticket_enrachate.question_enrachate != nil
         @can_change_question = @recent_buy_ticket_enrachate.question_enrachate.program_date < Time.now ? false : true
