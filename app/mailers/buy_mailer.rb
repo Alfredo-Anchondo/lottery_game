@@ -4,7 +4,6 @@ class BuyMailer < ActionMailer::Base
 	def buy_saldo(user,saldo)
 		@user = user
 		@saldo = saldo
-
     attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
     attachments.inline['hero.png'] = File.read(Rails.root.join("public", "buy_saldo.png"))
 		mail(to: @user.email, subject: '[DonBillete] Compra de Saldo DonBillete')
@@ -85,7 +84,8 @@ class BuyMailer < ActionMailer::Base
     @user = user
     @lottery = lottery
     @user_lottery = lottery_user
-    @url  = 'http://example.com/login'
+    attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
+    attachments.inline['hero.png'] = File.read(Rails.root.join("public", "buy_ticket.png"))
         mail(to: @user.email, subject: '[DonBillete] Comprobante de Compra')
   end
 
