@@ -144,6 +144,9 @@ class BuyMailer < ActionMailer::Base
 		@game = lottery.game
 		@array = array
 		@lottery = lottery
+    attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
+    attachments.inline['hero.png'] = File.read(Rails.root.join("public", "many_tickets.png"))
+
 		mail(to: @user.email, subject: '[DonBillete] Comprobante de compra de billetes')
 	end
 
