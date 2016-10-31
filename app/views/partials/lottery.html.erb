@@ -1,30 +1,34 @@
 <style>
-	
+
     .bootstrap-select{
         width:60px !important;
     }
-    
+
+		#mainwrapper .box{
+			margin-left: 0px;
+		}
+
     #random_lotteries_div .bootstrap-select{
         width: 60% !important;
         text-align:center;
     }
-    
+
     #random_lotteries_div #quantity_tickets_ran .bootstrap-select {
         width: 60px !important;
         margin-left:5%;
     }
-	
+
 	  #random_lotteries_div2 .bootstrap-select{
         width: 60% !important;
         text-align:center;
     }
-	
+
 	#tira .bx-wrapper .bx-viewport{
 			 background-color:transparent;
-			 border: none;	
+			 border: none;
 			}
-    
-  
+
+
 </style>
 
 
@@ -36,7 +40,7 @@
 </div>
 
 <div id="mainwrapper2"><!-- This #mainwrapper section contains all of our images to make them center and look proper in the browser ->
- 
+
 </div> <!-- end of #mainwrapper-->
 
 </div>
@@ -46,16 +50,16 @@
 <br>
 <div class="margin-row" >
 
-  
 
-  	
+
+
   	<div class="row" style="margin-top: -20px !important;">
 <div id="slider1">
 </div>
-</div>   
+</div>
 
-   
-  
+
+
 
 
 <div class="row" id="no-lotteries" style="display:none;">
@@ -74,7 +78,7 @@
     </div>
 </div>
 
-	
+
 
 	<div class="modal fade" id="random_loterry_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -84,7 +88,7 @@
         <h4 class="modal-title" id="myModalLabel">Comprar Loteria Aleatoria</h4>
       </div>
       <div class="modal-body">
-      
+
     <div class="row">
              <div class="ibox float-e-margins">
                         <div class="ibox-title">
@@ -97,15 +101,15 @@
                             <h3>¿Te sientes con suerte y no sabes qué números elegir?</h3>
                             <h4>¡No te preocupes! Nosotros te ayudamos con el generador de números al azar.</h4> <br>
                                 <label>Lotería: </label> <select style="text-align:center" class="form-control" id="lotteries_random"><option value="0">Selecciona una lotería</option></select> <br><br>
-                                
+
                                 <div class="row">
                                 <div class="col-md-5 col-xs-5">
                                     <h4 style="text-align:center" id="local_team_random"></h4>
-                                    </div> 
+                                    </div>
                                     <div class="col-md-2 col-xs-2">
                                         <br>
                                         <br>
-                                      
+
                                     <h2 style="text-align:center; font-weight:900; font-size:40px; color:black;">VS</h2>
                                     </div>
                                 <div class="col-md-5 col-xs-5">
@@ -142,18 +146,18 @@
                                 <option value="14">14</option>
                                 <option value="15">15</option>
                             </select> </span>    <br> <hr>
-                                
-                                <h3>Números Generados: </h3> 
+
+                                <h3>Números Generados: </h3>
                                 <h2 style="font-weight:900; color:#696969; word-spacing:10px;" id="generate_numbers_div"></h2>
 								<hr>
 								<h3 style="font-weight:800">Total a pagar: <span style="font-size:120%; color:#696969" id="total_pay_ran"></span></h3>
                                 <hr>
-                                
+
                                 <button class="btn btn-primary" id="generate_numbers">Generar Números</button>
                                 <button style="display:none" class="btn btn-primary" id="buy_numbers">Comprar Números</button>
-								
+
 								<h5 style=" text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:black" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5>
-                                
+
                             </div>
                  </div>
             </div>
@@ -165,7 +169,7 @@
 	  </div>
 		</div>
 	</div>
-	
+
 	<div class="modal fade" id="serie_loterry_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -189,7 +193,7 @@
                                 <div class="row">
                                 <div class="col-md-5 col-xs-5">
                                     <h4 style="text-align:center" id="local_team_random2"></h4>
-                                    </div> 
+                                    </div>
                                     <div class="col-md-2 col-xs-2">
                                     <h2 style="text-align:center; font-weight:900; font-size:40px; color:black;">VS</h2>
                                     </div>
@@ -198,7 +202,7 @@
                                     </div>
                                 </div>
 						<hr>
-						
+
 						<div class="row" id="serie-caracteristics" style="display:none">
 							<div class="col-md-6">
 								<h4 style="text-align:center; color:black;">Bolsa acumulada: </h4>
@@ -211,7 +215,7 @@
 
 						</div>
 						<hr>
-						
+
 						<div class="row">
 							<h4 style="text-align:center">Selecciona el inicio y el final de tu serie de billetes</h4>
 							<div class="col-md-4">
@@ -229,10 +233,10 @@
 							<h3 style="text-align:center; font-weight:800;">Total a pagar: <span id="serie_total_buy" style="color:#696969;"></span></h3>
 							<hr>
 							<h4 style="text-align:center"> <button class="btn btn-primary" id="btn_buy_serie">Comprar Billetes</button></h4>
-							
+
 							<h5 style=" text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:black" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5>
 						</div>
-					
+
 			 </div>
 			</div>
 		</div>
@@ -244,13 +248,13 @@
 	  </div>
 		</div>
 	</div>
-	
-    
+
+
     <div class="clearfix"></div>
 
-    
+
     <div class="row">
-        
+
          <div class="col-md-7 col-md-offset-3 col-xs-12">
               <div class="ibox float-e-margins">
                         <div class="ibox-title">
@@ -260,23 +264,23 @@
 
                         <div class="ibox-content" id="finish_lotteries">
             <div class="slider8">
-               
+
             </div>
                   </div>
             </div>
         </div>
-        
-       
-        
-        
 
-    
-                                               
-      
-        
+
+
+
+
+
+
+
+
 	</div>
-    
-	
+
+
 <!--------------------- MODAL DE CONFIRMACION --------------------------->
 
 <div class="modal fade bs-example-modal-sm" id="confirm_buy" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -284,30 +288,30 @@
        <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
            <h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t('purchase_confirmation') %> <span style="margin-left:29%;" id="date_modal"></span></h4>
-           
+
       </div>
     <div class="modal-content">
-     <div class="row" style="padding:5px !important;"> 
+     <div class="row" style="padding:5px !important;">
          <h4 style="text-align:center"><%= t('ticket') %></h4>
             <div class="col-md-12" style="border: 1px dotted black">
                 <div class="row" style="padding:5px !important;">
-                <h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name"></h4>    
+                <h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name"></h4>
                 </div>
                 <div class="row" style="padding:5px !important; border-bottom:1px solid #009688;">
                 <div class="col-md-4 col-xs-4">
                     <h4 style="text-align:center"><%= t('name') %>:</h4>
                     <h5 style="text-align:center; text-transform:uppercase"><%= current_user.name %> </h5>
                     </div>
-                    
+
                 <div class="col-md-4 col-xs-4">
                     <h4 style="text-align:center"><%= t('last_name') %>:</h4>
                     <h5 style="text-align:center; text-transform:uppercase"><%= current_user.last_name %> </h5>
                     </div>
                     <div class="col-md-4 col-xs-4">
                     <h4 style="text-align:center"><%= t('ticket') %>:</h4>
-                 
+
                     <h5 style="text-align:center" id="ticket_numer_lottery"></h5>
-                 
+
                     </div>
                 </div>
                 <div class="row" style="padding:0px">
@@ -329,9 +333,9 @@
 
 <!-----------------------------------TERMINA MODAL ------------------------->
 
-    
+
 <!---------------------------------------MODAL PARA ALERTAS -------------------------------------->
-    
+
 <div class="modal fade" id="alert-modal" tabindex="-1" role="dialog" >
   <div class="modal-dialog" id="alert-display-modal">
     <div class="modal-content" >
@@ -350,8 +354,8 @@
     </div>
   </div>
 </div>
-    
-<!-------------------------------------------FIN DE MODAL DE ALERTAS ------------------------------->    
+
+<!-------------------------------------------FIN DE MODAL DE ALERTAS ------------------------------->
     <div class="modal fade" id="success-modal" tabindex="-1" role="dialog" >
   <div class="modal-dialog" id="success-display-modal">
     <div class="modal-content" >
@@ -370,7 +374,7 @@
     </div>
   </div>
 </div>
-    
+
 
 
 <!--------------------- MODAL DE COMPRA --------------------------->
@@ -387,29 +391,29 @@
             <h5 id="rules_modal"></h5>
 			<input type="hidden" id="gift_modal">
         </div>
-     <div class="row" style="padding:5px !important;"> 
+     <div class="row" style="padding:5px !important;">
          <h4><%= t('select_number') %>:</h4>
-         <input style="color:black" class="ticket_number form-control" id="lottery_number_in_modal" type="number" min="0" > 
+         <input style="color:black" class="ticket_number form-control" id="lottery_number_in_modal" type="number" min="0" >
         </div>
-     <div class="row" style="padding:5px !important;"> 
+     <div class="row" style="padding:5px !important;">
          <h4 style="text-align:center"><%= t('ticket') %></h4>
             <div class="col-md-12" style="border: 1px dotted black">
                 <div class="row" style="padding:0px">
-                <h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name_modal"></h4>    
+                <h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name_modal"></h4>
                 </div>
                 <div class="row" style="padding:0px; border-bottom:1px solid #009688;">
                 <div class="col-md-4 col-xs-4">
                     <h4 style="text-align:center"><%= t('name') %>:</h4>
                     <h5 style="text-align:center; text-transform:uppercase"><%= current_user.name %> </h5>
                     </div>
-                    
+
                 <div class="col-md-4 col-xs-4">
                     <h4 style="text-align:center"><%= t('last_name') %>:</h4>
                     <h5 style="text-align:center; text-transform:uppercase"><%= current_user.last_name %> </h5>
                     </div>
                     <div class="col-md-4 col-xs-4">
                     <h4 style="text-align:center"><%= t('ticket') %>:</h4>
-                 
+
                     <h5 style="text-align:center" id="ticket_numer_lottery_modal"></h5>
                     <input type="hidden" id="lottery_id_modal">
                     </div>
@@ -426,7 +430,7 @@
        <div class="modal-footer">
           <h4 style="text-align:center"> <button type="button" style="background-color:gray; border-color:727272;" class="btn btn-default" data-dismiss="modal"><%= t('close') %></button>
            <button type="button" id="confirm-buy-modal" style="background-color:#277ee3" class="btn btn-primary"><%= t('buy') %></button></h4>
-		   
+
 		   <h5 style="color:white; text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:#d1d1d1" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5>
       </div>
   </div>
@@ -461,32 +465,32 @@
         var lottery_price;
 	    var ticket_gift;
 		var nothing = false;
-    
+
       var current_language = $("#current_language").val();
        var languaje;
-    
+
     if(current_language == "en"){
     languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
 }else{
     languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 }
-                
-    
+
+
         $(document).ready(function(){
-            
-           
-          $('.team_score').change(function(){   
-                 var select_number = String($('.team_score option:selected').val() % 10) + String($('.team2_score option:selected').val() % 10);   
+
+
+          $('.team_score').change(function(){
+                 var select_number = String($('.team_score option:selected').val() % 10) + String($('.team2_score option:selected').val() % 10);
                 $(".ticket_number").val(select_number);
            })
-            $('.team2_score').change(function(){ 
-			
-                 var select_number = String($('.team_score option:selected').val() % 10) + String($('.team2_score option:selected').val() % 10);  	   
+            $('.team2_score').change(function(){
+
+                 var select_number = String($('.team_score option:selected').val() % 10) + String($('.team2_score option:selected').val() % 10);
                  $(".ticket_number").val(select_number);
            })
-             
-            
-                 
+
+
+
          $.ajax({
   method: "GET",
   url: "/partials/next_game",
@@ -500,11 +504,11 @@
         $('#team1').attr('src','/system/teams/logos/000/000/00'+data.partials[o].team.id+'/original/'+data.partials[o].team.logo_file_name);
     }   else{
        $('#team1').attr('src','/system/teams/logos/000/000/0'+data.partials[o].team.id+'/original/'+data.partials[o].team.logo_file_name);
-    }  
-   
-       
-			
-			
+    }
+
+
+
+
 				if(data.partials[o].category.id == 5){
 						var clase = "categoria5"
 					}else if(data.partials[o].category.id == 1){
@@ -512,22 +516,22 @@
 					}else{
 						var clase = ""
 					}
-					
+
 				 $('#loteri_background').addClass(clase);
 				 var background = ' url("/system/categories/backgrounds/000/000/00'+data.partials[o].category.id+'/original/'+data.partials[o].category.background_file_name + '")';
 				 $('#loteri_background').css("background-image",background);
-					
-			
-             
+
+
+
      $('#team_score').text(data.partials[o].local_score);
      ticket_gift = data.partials[o].lotteries[0].purchase_gift_tickets;
-     $('#initial_balance').text(data.partials[o].lotteries[0].initial_balance);   
-     $(".total_initial_balance").text("$"+data.partials[o].lotteries[0].initial_balance+ " ");         
+     $('#initial_balance').text(data.partials[o].lotteries[0].initial_balance);
+     $(".total_initial_balance").text("$"+data.partials[o].lotteries[0].initial_balance+ " ");
      $('#team_name').text(data.partials[o].team.name);
      $('#team2_name').text(data.partials[o].team2.name);
      $('#team2_score').text(data.partials[o].visit_score);
-     $('#game_date').text(moment(data.partials[o].game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a'));             
-     $('#ticket_name').text(data.partials[o].team.name + " vs " + data.partials[o].team2.name);         
+     $('#game_date').text(moment(data.partials[o].game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a'));
+     $('#ticket_name').text(data.partials[o].team.name + " vs " + data.partials[o].team2.name);
              if(data.partials[o].lotteries[0].final_number < 100){
             $('.ticket_number').mask('00', {placeholder: "00", reverse: false});
                  ticket_length = 2;
@@ -539,30 +543,30 @@
                   ticket_length = 4;
              }
      $('.ticket_number').attr('max',data.partials[o].lotteries[0].final_number);
-     $('#lottery_rules').text(data.partials[o].lotteries[0].rules); 
+     $('#lottery_rules').text(data.partials[o].lotteries[0].rules);
     if (data.partials[o].team2.id < 10){
          $('#team2').attr('src','/system/teams/logos/000/000/00'+data.partials[o].team2.id+'/original/'+data.partials[o].team2.logo_file_name)
     }   else{
         $('#team2').attr('src','/system/teams/logos/000/000/0'+data.partials[o].team2.id+'/original/'+data.partials[o].team2.logo_file_name)
-    }      
-   
-  
+    }
+
+
     $('#lottery_id').val(data.partials[o].lotteries[0].id);
     $('#lottery_id_type').text(data.partials[o].lotteries[0].id);
-    $('#lottery_price').val(data.partials[o].lotteries[0].price); 
-    $('#lottery_display_price').text(""+data.partials[o].lotteries[0].price); 
-             
+    $('#lottery_price').val(data.partials[o].lotteries[0].price);
+    $('#lottery_display_price').text(""+data.partials[o].lotteries[0].price);
+
         var countdown = data.partials[o].game_date;
-        var countdown1 = moment(countdown).format('MM/DD/YYYY HH:mm');   
-				 
-				
-             
-          
+        var countdown1 = moment(countdown).format('MM/DD/YYYY HH:mm');
+
+
+
+
   $('#getting-started').countdown(countdown1, function(event) {
       $(this).html(event.strftime('<%= t('lottery_finish') %>:  %d <%= t('day') %> %H:%M:%S <%= t('hours') %>'));
-								  
+
   });
-             
+
                  user_id = <%= current_user.id %>;
                  lottery_id = $('#lottery_id').val();
                  purchase_date = new Date();
@@ -586,14 +590,14 @@
                      $('#alert-content').empty();
                      $('#alert-content').append('<br><h3 style="text-align:center"><%=t('select_numer')%></h3>');
                      $('#alert-modal').modal('show');
-                     
-                 }       
+
+                 }
              })
-            
+
                    $('#initial_balance2').textillate({ loop: true, in:{effect: 'wobble'}, out:{effect: 'flash'}  });
-                    
-             
-             
+
+
+
         $('#confirm-buy').click(function(){
                  user_id = <%= current_user.id %>;
                  lottery_id = $('#lottery_id').val();
@@ -606,75 +610,75 @@
 				  current_balance = <%= current_user.balance %>;
 				  is_gift_purchase = false;
 			}
-               
-			  
+
+
             if( current_balance >= $('#lottery_price').val()){
-             $('#confirm_buy').modal('hide');    
+             $('#confirm_buy').modal('hide');
              update_balance();
              buy_ticket();
-                 
-                 
+
+
             }else{
                   $('#alert-content').empty();
                   $('#alert-content').append('<br><h3 style="text-align:center"><%=t('insuficient_balance')%></h3>');
                   $('#alert-modal').modal('show');
                    window.location.assign("/partials/pay_methods")
             }
-            
-           
+
+
         });
 	  		return
              }else{
                 nothing = true;
              }
 		  }
-             
+
 	  }
               else{
 				  nothing = true;
 								}
 				if(nothing){
 	  	 		 $('#no-lotteries').hide();
-				 $('#coming-lotteries').hide();		
-  					}				  
-       
+				 $('#coming-lotteries').hide();
+  					}
+
                });
-            
+
              function get_ticket_info(){
                  $('#ticket_numer_lottery').text($('.ticket_number').val());
                  $('#total_price').text($('#lottery_price').val());
                  $('#date_modal').text($('#game_date').text());
                  $('#date_modal1').text($('#game_date').text());
-                 
+
              }
-             
+
              function buy_ticket(){
                 ticket_number = $('.ticket_number').val();
                      $.ajax({
                       method: "POST",
                       url: "/user_lotteries",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { user_lottery: {user_id: user_id, lottery_id: lottery_id, ticket_number: ticket_number ,purchase_date: purchase_date, status: "Comprado"}  }
                     }).done(function( data) {
                      $('#success-modal').modal('show');
-                     setTimeout(function(){ location.reload(); }, 2000);     
+                     setTimeout(function(){ location.reload(); }, 2000);
                      });
-				 
+
 				 if(is_gift_purchase == true){
                        var current_bag = (lottery_price * 0.95) + parseInt($('#initial_balance').text())  ;
 					   $.ajax({
                       method: "PUT",
                       url: "/lotteries/"+lottery_id+"",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { lottery: {purchase_gift_tickets: parseInt(ticket_gift) + 1, initial_balance: current_bag }}
                     }).done(function( data) {
-                    	
+
                      });
 				 }
             }
-             
-          
-            
+
+
+
     function update_balance(){
                   user_id = <%= current_user.id %>;
                  lottery_id = $('#lottery_id').val();
@@ -688,25 +692,25 @@
             $.ajax({
                       method: "PUT",
                       url: "/users/"+user_id+"",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { user: {gift_credit: total_balance_update} }
                     }).done(function( data) {
-                        
+
                      $('#success-content').empty();
                      $('#success-content').append('<h2 style="text-align:center; color:#2D68AC; font-weight:900;">DON<span style="color:black; font-weight:900;">BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
-                    
+
                      });
-                
+
                 $.ajax({
                       method: "PUT",
                       url: "/lotteries/"+lottery_id+"",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { lottery: {initial_balance: current_bag} }
                     }).done(function( data) {
                    $('#success-content').append('<h1 style="text-align:center; font-weight:900;">'+ number_of_ticket +'</h1>');
                      });
-        
-         
+
+
 			}else{
 				  current_balance = <%= current_user.balance %>;
 							  lottery_price = $('#lottery_price').val();
@@ -715,27 +719,27 @@
             $.ajax({
                       method: "PUT",
                       url: "/users/"+user_id+"",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { user: {balance: total_balance_update} }
                     }).done(function( data) {
-                    
+
                      $('#success-content').empty();
                      $('#success-content').append('<h2 style="text-align:center; color:#2D68AC; font-weight:900;">DON<span style="color:black; font-weight:900;">BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
-                    
+
                      });
                          $.ajax({
                       method: "PUT",
                       url: "/lotteries/"+lottery_id+"",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { lottery: {initial_balance: current_bag} }
                     }).done(function( data) {
                    $('#success-content').append('<h1 style="text-align:center; font-weight:900;">'+ number_of_ticket +'</h1>');
                      });
-     
+
 			}
-               
-    }  
-            
+
+    }
+
        function buy_ticket_modal(){
                user_id = <%= current_user.id %>;
                 purchase_date = new Date();
@@ -743,94 +747,94 @@
                      $.ajax({
                       method: "POST",
                       url: "/user_lotteries",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { user_lottery: {user_id: user_id, lottery_id: $('#lottery_id_modal').val(), ticket_number: ticket_number ,purchase_date: purchase_date, status: "Comprado"}  }
                     }).done(function( data) {
                      $('#success-content').append('<br><h1 style="text-align:center; font-weight:700;"><%=t('success_buy')%></h1>');
                      $('#success-modal').modal('show');
                      });
-            }                       
-                            
+            }
+
     function update_balance_modal(){
                  user_id = <%= current_user.id %>;
                  lottery_id = $('#lottery_id_modal').val();
-				  var gift_tickets = $('#gift_modal').val();  
+				  var gift_tickets = $('#gift_modal').val();
                  lottery_price = $('#total_price_modal').text();
                  var current_bag = (parseInt(lottery_price) * 0.95) + parseInt($('.total_modal_initial_balance').text()) ;
-               
+
 		if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= lottery_price){
 				current_balance = <%= current_user.gift_credit %>;
 				  var total_balance_update = current_balance - lottery_price;
-			
+
 			  $.ajax({
                       method: "PUT",
                       url: "/lotteries/"+lottery_id+"",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { lottery: {purchase_gift_tickets: parseInt(gift_tickets) + 1 , initial_balance: current_bag}}
                     }).done(function( data) {
-                    	
+
                      });
-			
+
 				  $.ajax({
                       method: "PUT",
                       url: "/users/"+user_id+"",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { user: {gift_credit: total_balance_update} }
                     }).done(function( data) {
                      $('#success-content').empty();
                      $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_balance')%></h3>');
                      });
-      
+
 			}else{
 				  current_balance = <%= current_user.balance %>;
 				  var total_balance_update = current_balance - lottery_price;
 							  $.ajax({
                       method: "PUT",
                       url: "/users/"+user_id+"",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { user: {balance: total_balance_update} }
                     }).done(function( data) {
                      $('#success-content').empty();
                      $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_balance')%></h3>');
                      });
-        
+
            $.ajax({
                       method: "PUT",
                       url: "/lotteries/"+lottery_id+"",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { lottery: {initial_balance: current_bag} }
                     }).done(function( data) {
                          $('#success-content').append('<br><h3 style="text-align:center"><%=t('success_bag')%></h3>');
                      });
 			}
-		
-          
-    }                   
+
+
+    }
                $.ajax({
             method: "GET",
             url: "/partials/future_games",
             format: "json"
                }).done(function(data) {
                    for(var i in data.partials){
-                       
+
                      if(data.partials[i].lotteries != '' && data.partials[i].lotteries != [] && data.partials[i].lotteries != null){
-                       
-                
-                          
+
+
+
 
                        $('#lotteries_random').append('<option data-max-number = "'+ data.partials[i].lotteries[0].final_number +'" data-price="'+data.partials[i].lotteries[0].price+'" data-balance ="'+ data.partials[i].lotteries[0].initial_balance +'" value="'+ data.partials[i].lotteries[0].id +'">'+data.partials[i].team.name+ ' vs ' + data.partials[i].team2.name + '</option>');
-					   
+
 					   $('#lotteries_random2').append('<option data-max-number = "'+ data.partials[i].lotteries[0].final_number +'" data-price="'+data.partials[i].lotteries[0].price+'" data-balance ="'+ data.partials[i].lotteries[0].initial_balance +'" value="'+ data.partials[i].lotteries[0].id +'">'+data.partials[i].team.name+ ' vs ' + data.partials[i].team2.name + '</option>');
-     
-                       
+
+
                        if(data.partials[i].category.id < 10){
                            var url = "/system/categories/logos/000/000/00"+ data.partials[i].category.id+"/original/"+data.partials[i].category.logo_file_name+"" ;
                        }else{
                             var url = "/system/categories/logos/000/000/0"+ data.partials[i].category.id+"/original/"+data.partials[i].category.logo_file_name+"";
                        }
-                       
+
                        $("#future_lotteries").append('<div class="timeline-item"><div class="row"><div style="width:20%; padding-top:5px" class="col-xs-4 col-md-4 date"><img  class="category_logo" src=" '+url+' " ><span style="font-weight: 900;">'+moment(data.partials[i].game_date ,"", current_language ).format("MMMM D YYYY, h:mm:ss a")+'</span></div><div class="col-xs-9 col-md-9 content no-top-border"><a data-lotteryid="'+data.partials[i].lotteries[0].id+'" data-lotteryprice="'+data.partials[i].lotteries[0].price+'" data-lotterygift="'+data.partials[i].lotteries[0].purchase_gift_tickets+'" data-lotterybalance="'+data.partials[i].lotteries[0].initial_balance+'" data-lotteryfinal="'+data.partials[i].lotteries[0].final_number+'" data-lotteryrules="'+data.partials[i].lotteries[0].rules+'" data-teamname="'+data.partials[i].team.name+'" data-team2name="'+data.partials[i].team2.name+'"  class="display_modal"><h3 style="text-align:center"> '+ data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + ' </h3><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"><img height="80px" class="logo_lotteries" src="'+data.partials[i].team.logo_url+'"> </h4></div><div class="col-md-6 col-xs-6"> <h4 style="text-align:center"> <img height="80px" class="logo_lotteries"  src="'+data.partials[i].team2.logo_url+'"> </h4> </div></a></div></div></div> <hr>');
-                       
+
                           $('.display_modal').click(function(){
                               $('#lottery_number_in_modal').unmask();
                               $('#lottery_number_in_modal').val('');
@@ -853,30 +857,30 @@
                                           $('#lottery_number_in_modal').mask('0000', {placeholder: "0000", reverse: false});
                                           ticket_length_modal = 4;
                                 }
-                              
+
                               $("#lottery_number_in_modal").change(function(){
                               $("#ticket_numer_lottery_modal").text($('#lottery_number_in_modal').val());
-                              });							 
+                              });
                           })
-						  
+
 					 }else{
-						 
+
 					 }
-                       
-                   }      
-               
+
+                   }
+
                $('#lotteries_random').selectpicker('render');
 			   $('#lotteries_random2').selectpicker('render');
 
                });
-             
+
            $('#confirm-buy-modal').click(function(){
 			   if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= $('#lottery_price').val()){
 				var balance = <%= current_user.gift_credit %>;
 			}else{
 				 var balance = <%= current_user.balance %>;
 			}
-               
+
                if($("#lottery_number_in_modal").val() != ''){
                    var f = $('#lottery_number_in_modal').val();
                       f = f.length;
@@ -890,52 +894,52 @@
                           $('#alert-content').append('<br><h3 style="text-align:center"><%=t('insuficient_balance')%></h3>');
                           $('#buy_ticket_modal').modal('hide');
                           $('#alert-modal').modal('show');
-                        
+
                    }else{
-              
+
                update_balance_modal();
                buy_ticket_modal();
                $('#buy_ticket_modal').modal('hide');
                    }
                      }
-    
+
                }else{
                      $('#alert-content').empty();
                      $('#alert-content').append('<br><h3 style="text-align:center"><%=t('select_numer')%></h3>');
                      $('#alert-modal').modal('show');
                      $('#buy_ticket_modal').modal('hide');
                }
-              
+
            })
-           
+
             var count = 0;
-                   
-            
-  
-             
+
+
+
+
          });
-    
+
 
 </script>
-    
 
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
     <script>
     $(document).ready(function(){
           var current_language = $("#current_language").val();
         $.ajax({
           method: "GET",
           url: " /partials/finish_games",
-          dataType: "json"     
+          dataType: "json"
         })
           .done(function( data ) {
             for(var i in data.partials){
-                    
+
 				if(data.partials[i].lotteries[0]){
                 if (data.partials[i].lotteries[0].winner_number != null){
                     var lottery_winner = data.partials[i].lotteries[0].winner_number
@@ -945,66 +949,66 @@
                     var lottery_winner = "En Juego"
                 }
 				}else{
-					
+
 				}
-            if(data.partials[i].lotteries[0]){    
+            if(data.partials[i].lotteries[0]){
          $('.slider8').append('<div class="slide"><div class="row"> <h4 style="text-align:center; font-weight:800; color:black;"> <label class="label label-primary"> ' +moment(data.partials[i].game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a')+'   </label>  </h4> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Número Ganador </h4> <h1 style="font-weight:900; text-align:center; color:#696969;"> '+lottery_winner+' </h1> </div> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Bolsa: </h4> <h2 style="font-weight:900; color:#696969; text-align:center"> $'+data.partials[i].lotteries[0].initial_balance+'  </h2> </div> <div class="col-md-6 col-xs-12"> <div class="row"> <div class="col-md-4 col-xs-4"> <h4 style="text-align:center"> <img width="100%" src="'+data.partials[i].team.logo_url+'"> </h4> </div> <div class="col-md-2 col-xs-2"><br> <br> <h2 style="text-align:center; color:black; font-weight:800;"> '+data.partials[i].local_score+'  </h2> </div> <div class="col-md-2 col-xs-2"> <br> <br> <h2 style="text-align:center; font-weight:800; color:black;"">'+data.partials[i].visit_score+'</h2> </div> <div class="col-md-4 col-xs-4">  <h4 style="text-align:center"> <img width="100%" src="'+data.partials[i].team2.logo_url+'"> </h4> </div> </div> </div>  </div> <hr> </div> ');
 			}else{
             }
-				
+
 			}
-            
+
                 $('.slider8').bxSlider({
             mode: 'vertical',
             minSlides: 4,
             slideMargin: 13
           });
-            
+
           });
-       
-        
-    
+
+
+
     });
     </script>
-    
 
-    
+
+
     <script>
         var number_array = [];
       $('#lotteries_random').change(function(){
                 $.ajax({
-  method: "GET", 
+  method: "GET",
   url: "/partials/team_logos/"+$('#lotteries_random').val()+".json",
-  datatype: "json"             
+  datatype: "json"
 })
   .done(function( data) {
-               
+
         $("#visit_team_random").empty();
-        $("#local_team_random").empty();            
-        $("#visit_team_random").append('<img width="70%" src="'+data.team2+'">'); 
-        $("#local_team_random").append('<img width="70%" src="'+data.team1+'">');  
+        $("#local_team_random").empty();
+        $("#visit_team_random").append('<img width="70%" src="'+data.team2+'">');
+        $("#local_team_random").append('<img width="70%" src="'+data.team1+'">');
 		 $('#random_price').text( "$"+$('#lotteries_random option:selected').data('price') + "");
-         $('#random-balance').text("$"+$('#lotteries_random option:selected').data('balance') + " ");		
+         $('#random-balance').text("$"+$('#lotteries_random option:selected').data('balance') + " ");
 		$('#random-caracteristics').show();
-              			
-              
-         });   
-      })  
+
+
+         });
+      })
 	        $('#lotteries_random2').change(function(){
                 $.ajax({
-  method: "GET", 
+  method: "GET",
   url: "/partials/team_logos/"+$('#lotteries_random2').val()+".json",
-  datatype: "json"             
+  datatype: "json"
 })
   .done(function( data) {
-             
-                       
+
+
         $("#visit_team_random2").empty();
-        $("#local_team_random2").empty();            
-        $("#visit_team_random2").append('<img width="70%" src="'+data.team2+'">'); 
-        $("#local_team_random2").append('<img width="70%" src="'+data.team1+'">');  
+        $("#local_team_random2").empty();
+        $("#visit_team_random2").append('<img width="70%" src="'+data.team2+'">');
+        $("#local_team_random2").append('<img width="70%" src="'+data.team1+'">');
 		 $('#serie_price').text( "$"+$('#lotteries_random2 option:selected').data('price') + "");
-         $('#serie-balance').text("$"+$('#lotteries_random2 option:selected').data('balance') + " ");		
+         $('#serie-balance').text("$"+$('#lotteries_random2 option:selected').data('balance') + " ");
 					  if(parseInt($('#lotteries_random2 option:selected').data('max-number')) < 100){
             $('#initial_serie').mask('00', {placeholder: "00", reverse: false});
 			$('#final_serie').mask('00', {placeholder: "00", reverse: false});
@@ -1019,10 +1023,10 @@
                   ticket_length = 4;
              }
 		$('#serie-caracteristics').show();
-              
-         });   
-      })  
-       
+
+         });
+      })
+
     $('#generate_numbers').click(function(){
      number_array = [];
         $('#generate_numbers_div').empty();
@@ -1038,12 +1042,12 @@
             number_array.push(number);
         }
         $('#buy_numbers').show();
-		$('#total_pay_ran').text('$'+parseInt($('#random_price').text().substring(1)) * quantity + '');	
+		$('#total_pay_ran').text('$'+parseInt($('#random_price').text().substring(1)) * quantity + '');
     })
-    
+
      $('#buy_numbers').click(function(){
 		 this.disabled=true;
-         var user_id = <%= current_user.id %> ;  
+         var user_id = <%= current_user.id %> ;
          var quantity_sale = number_array.length;
          var lottery_id = $('#lotteries_random').val();
          var normal_buy;
@@ -1057,52 +1061,52 @@
 			 normal_buy = true;
 			}
 		 var total_balance_update = current_balance - (lottery_price * quantity_sale);
-		 
-            
+
+
          if(current_balance < (lottery_price * quantity_sale)){
              alert('No tienes saldo suficiente para realizar la transaccion');
 			 window.location.assign("/partials/pay_methods");
-			  
+
          }else if(lottery_id == 0){
 			  alert('Debes seleccionar una lotería para comprar el billete');
 		 }else{
-			 
+
 			 	 $.ajax({
                       method: "POST",
                       url: "/partials/buy_much_tickets",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { user_id: user_id, quantity_sale: quantity_sale, lottery_id: lottery_id, normal_buy: normal_buy, lottery_price: lottery_price, array_values: number_array }
                     }).always(function(data) {
                  		    $('#success-content').append('<h2 style="text-align:center; color:#2D68AC; font-weight:900;">DON<span style="color:black; font-weight:900;">BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
              			  $('#success-modal').modal('show');
-					  	setTimeout(function(){ location.reload(); }, 2000);     
+					  	setTimeout(function(){ location.reload(); }, 2000);
                      });
-		 }        
+		 }
      })
-     
+
     </script>
-    
+
 		<script>
 			var value;
 			var max_value;
 			var array_values = [];
-		
+
 			$('#initial_serie').change(function(){
 				$('#final_serie').attr( 'min', $('#initial_serie').val());
 			});
-			
+
 			$('#generate_serie').click(function(){
 				 value = parseInt($('#initial_serie').val());
 				max_value = parseInt($('#final_serie').val());
 				quantity = max_value - (value-1) ;
-		
+
 				$('#generate_serie_numbers').empty();
 				if($('#lotteries_random2').val() == 0 ){
 					alert('Selecciona por favor una lotería para participar');
 				}else{
-				
+
 				array_values = [];
-					if(value != null && max_value != null){		
+					if(value != null && max_value != null){
 						for(value; max_value >= value; value ++){
 							if(value < 10){
 								value = "0" + value + ""
@@ -1117,11 +1121,11 @@
 					$('#serie_total_buy').text('$'+parseInt($('#serie_price').text().substring(1)) * quantity + ' ');
 				}
 			 })
-		
-			
+
+
 			$('#btn_buy_serie').click(function(){
 				this.disabled=true;
-         var user_id = <%= current_user.id %> ;  
+         var user_id = <%= current_user.id %> ;
          var quantity_sale = array_values.length;
          var lottery_id = $('#lotteries_random2').val();
          var normal_buy;
@@ -1135,33 +1139,33 @@
 			 normal_buy = true;
 			}
 		 var total_balance_update = current_balance - (lottery_price * quantity_sale);
-		 
-           
+
+
          if(current_balance < (lottery_price * quantity_sale)){
              alert('No tienes saldo suficiente para realizar la transaccion');
 			 window.location.assign("/partials/pay_methods");
-			  
+
          }else if(lottery_id == 0){
 			  alert('Debes seleccionar una lotería para comprar el billete');
 		 }else{
-          
+
 			 $.ajax({
                       method: "POST",
                       url: "/partials/buy_much_tickets",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { user_id: user_id, quantity_sale: quantity_sale, lottery_id: lottery_id, normal_buy: normal_buy, lottery_price: lottery_price, array_values: array_values }
                     }).always(function( data) {
                  		$('#success-content').empty();
                          $('#success-content').append('<h2 style="text-align:center; color:#2D68AC; font-weight:900;">DON<span style="color:black; font-weight:900;">BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
-             			 $('#success-modal').modal('show');  
-				  		 setTimeout(function(){ location.reload(); }, 2000);     
+             			 $('#success-modal').modal('show');
+				  		 setTimeout(function(){ location.reload(); }, 2000);
                      });
      }
-                 //setTimeout(function(){ location.reload(); }, 2000);       
+                 //setTimeout(function(){ location.reload(); }, 2000);
      })
 		</script>
-		
-	
+
+
 
 
 <script>
@@ -1174,10 +1178,10 @@
                }).done(function(data) {
                                 for(var i in data.partials){
 									tiras_count++;
-									
-									if(data.partials[i].lotteries != [] && data.partials[i].lotteries != null && data.partials[i].lotteries != '') {									
-                                  
-                      
+
+									if(data.partials[i].lotteries != [] && data.partials[i].lotteries != null && data.partials[i].lotteries != '') {
+
+
 						if(data.partials[i].category.id == 5){
 						var clase2 = "categoria5";
 					}else if(data.partials[i].category.id == 1){
@@ -1185,23 +1189,23 @@
 					}else{
 						var clase2 = "";
 					}
-					
+
 					var background2 = data.partials[i].category.background_url ;
-                          
-                        	$("#mainwrapper2").append('<div class="col-md-4"><div id="box-3" style="background-size: cover; background-image: url('+background2+')" class="box col-md-10 col-xs-12"><div class="row"><h4 style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; font-size:18px; font-weight:800;">Lotería ' + data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + '</h4><h3 style="text-align:center; color:white; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; text-transform: capitalize; font-weight:800;"> '+moment(data.partials[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h3> <div class="col-md-6 col-xs-6"><img width="90%" style="margin-left:5%" src="'+data.partials[i].team.logo_url+'"></div><div class="col-md-6 col-xs-6"><img width="90%" style="margin-left:5%" src="'+data.partials[i].team2.logo_url+'"></div>  </div><span class="caption fade-caption" style="margin-top:-80px"><h3 style="text-align:center; margin-top:0px;">Lotería ' + data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + ' </h3><div class="col-md-6 col-xs-6"><h3 style="text-align:center; margin-top:0px; color:white;">Bolsa:</h3><h3 style="text-align:center; margin-bottom:0px; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; font-weight:800; font-size:20px;"> <span>$'+ data.partials[i].lotteries[0].initial_balance +' </span>  </h3> </div> <div class="col-md-6 col-xs-6"> <h3 style="text-align:center; color:white; margin-top:0px;"> Precio:</h3> <h3 style="text-align:center; margin-bottom:0px;     text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; font-size:20px; color:#696969; font-weight:800"> <span>$ '+ data.partials[i].lotteries[0].price +'</span>  </h3></div><div class="clearfix"></div><div class="col-md-6 col-xs-6"> <img width="50%" style="position:inherit" src="'+data.partials[i].team.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Primer digito:</label><label style="text-align:center; color:black; margin-left:34%;"><select data-selected=".team_score'+i+'  option:selected" data-selected2=".team2_score'+i+'  option:selected" data-count="'+i+'" class="form-control team_score'+i+' m-b" name="team_score"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label> </div> <div class="col-md-6 col-xs-6"> <img width="50%" style="position:inherit" src="'+data.partials[i].team2.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Segundo digito:</label><label style="text-align:center; color:black; margin-left:34%;"><select data-selected2=".team_score'+i+'  option:selected" data-selected=".team2_score'+i+'  option:selected" class="form-control team2_score'+i+' m-b" name="team2_score" data-count="'+i+'"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label> <input type="hidden" style="color:black; text-align:center" value="00" disabled id="ticket_number'+i+'" class="form-control" type="text" >  </div><h4 style="text-align:center"><button  data-toggle="modal" data-view="'+i+'" class="btn btn-primary open_modal'+i+'" data-target="#confirm_buy'+i+'" class="btn btn-primary" > Comprar Loteria </button> <button data-target="#random_loterry_modal" data-toggle="modal" class="btn btn-primary">Aleatorio</button><button style="margin-left:1%" data-toggle="modal" data-target="#serie_loterry_modal" class="btn btn-primary"> Serie </button></h4></span></div></div>');			                
-										
-						$("body").append('<div class="modal fade bs-example-modal-sm" id="confirm_buy'+i+'" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"><div style="background-color:#2D68AC"  class="modal-dialog modal-md confirm_buy_modal"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t("purchase_confirmation") %> <span style="margin-left:29%;" id="date_modal"></span></h4></div><div class="modal-content"><div class="row" style="padding:5px !important;"> <h4 style="text-align:center"><%= t("ticket") %></h4><div class="col-md-12" style="border: 1px dotted black"><div class="row" style="padding:5px !important;"><h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name"> '+ data.partials[i].team.name + ' VS '  + data.partials[i].team2.name + '</h4></div><div class="row" style="padding:5px !important; border-bottom:1px solid #009688;"><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("name") %>:</h4><h5 style="text-align:center; text-transform:uppercase"><%= current_user.name %> </h5></div><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("last_name") %>:</h4><h5 style="text-align:center; text-transform:uppercase"><%= current_user.last_name %> </h5></div><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("ticket") %>:</h4><h5 style="text-align:center" class="ticket_numer_lottery"></h5></div></div><div class="row" style="padding:0px"><h4 style="text-align:right; margin-right:8%;">Total: <span id="total_price">$'+ data.partials[i].lotteries[0].price +'</span>  </h4></div></div><div class="col-md-12"><h4><%= t('estimate_jackpot') %>: <span class="total_initial_balanc" style="color:#696969; font-size:120%;">$'+ data.partials[i].lotteries[0].initial_balance +' </span> </h4> <small>* <%= t('bag_polity') %>.</small></div></div></div><div class="modal-footer"><h4 style="text-align:center">  <button type="button" class="btn btn-default"  data-dismiss="modal"><%= t('close') %></button><button data-price="'+ data.partials[i].lotteries[0].price +'" data-balance="'+ data.partials[i].lotteries[0].initial_balance +'" data-lottery="'+ data.partials[i].lotteries[0].id +'" type="button"  style="background-color:#034898" class="btn btn-primary lottery_buy"><%= t("buy") %></button></h4><h5 style="color:white; text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:#d1d1d1" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5></div></div></div>');		
-										 
-								 
-										
-						
-									
-											
+
+                        	$("#mainwrapper2").append('<div class="col-md-4"><div id="box-3" style="background-size: cover; background-image: url('+background2+')" class="box col-md-12 col-xs-12"><div class="row"><h4 style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; font-size:18px; font-weight:800;">Lotería ' + data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + '</h4><h3 style="text-align:center; color:white; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; text-transform: capitalize; font-weight:800;"> '+moment(data.partials[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h3> <div class="col-md-6 col-xs-6"><img width="90%" style="margin-left:5%" src="'+data.partials[i].team.logo_url+'"></div><div class="col-md-6 col-xs-6"><img width="90%" style="margin-left:5%" src="'+data.partials[i].team2.logo_url+'"></div>  </div><span class="caption fade-caption" style="margin-top:-80px"><h3 style="text-align:center; margin-top:0px;">Lotería ' + data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + ' </h3><div class="col-md-6 col-xs-6"><h3 style="text-align:center; margin-top:0px; color:white;">Bolsa:</h3><h3 style="text-align:center; margin-bottom:0px; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; font-weight:800; font-size:20px;"> <span>$'+ data.partials[i].lotteries[0].initial_balance +' </span>  </h3> </div> <div class="col-md-6 col-xs-6"> <h3 style="text-align:center; color:white; margin-top:0px;"> Precio:</h3> <h3 style="text-align:center; margin-bottom:0px;     text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; font-size:20px; color:#696969; font-weight:800"> <span>$ '+ data.partials[i].lotteries[0].price +'</span>  </h3></div><div class="clearfix"></div><div class="col-md-6 col-xs-6"> <img width="50%" style="position:inherit" src="'+data.partials[i].team.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Primer digito:</label><label style="text-align:center; color:black; margin-left:34%;"><select data-selected=".team_score'+i+'  option:selected" data-selected2=".team2_score'+i+'  option:selected" data-count="'+i+'" class="form-control team_score'+i+' m-b" name="team_score"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label> </div> <div class="col-md-6 col-xs-6"> <img width="50%" style="position:inherit" src="'+data.partials[i].team2.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Segundo digito:</label><label style="text-align:center; color:black; margin-left:34%;"><select data-selected2=".team_score'+i+'  option:selected" data-selected=".team2_score'+i+'  option:selected" class="form-control team2_score'+i+' m-b" name="team2_score" data-count="'+i+'"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label> <input type="hidden" style="color:black; text-align:center" value="00" disabled id="ticket_number'+i+'" class="form-control" type="text" >  </div><h4 style="text-align:center"><button  data-toggle="modal" data-view="'+i+'" class="btn btn-primary open_modal'+i+'" data-target="#confirm_buy'+i+'" class="btn btn-primary" > Comprar Loteria </button> <button data-target="#random_loterry_modal" data-toggle="modal" class="btn btn-primary">Aleatorio</button><button style="margin-left:1%" data-toggle="modal" data-target="#serie_loterry_modal" class="btn btn-primary"> Serie </button></h4></span></div></div>');
+
+						$("body").append('<div class="modal fade bs-example-modal-sm" id="confirm_buy'+i+'" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"><div style="background-color:#2D68AC"  class="modal-dialog modal-md confirm_buy_modal"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t("purchase_confirmation") %> <span style="margin-left:29%;" id="date_modal"></span></h4></div><div class="modal-content"><div class="row" style="padding:5px !important;"> <h4 style="text-align:center"><%= t("ticket") %></h4><div class="col-md-12" style="border: 1px dotted black"><div class="row" style="padding:5px !important;"><h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name"> '+ data.partials[i].team.name + ' VS '  + data.partials[i].team2.name + '</h4></div><div class="row" style="padding:5px !important; border-bottom:1px solid #009688;"><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("name") %>:</h4><h5 style="text-align:center; text-transform:uppercase"><%= current_user.name %> </h5></div><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("last_name") %>:</h4><h5 style="text-align:center; text-transform:uppercase"><%= current_user.last_name %> </h5></div><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("ticket") %>:</h4><h5 style="text-align:center" class="ticket_numer_lottery"></h5></div></div><div class="row" style="padding:0px"><h4 style="text-align:right; margin-right:8%;">Total: <span id="total_price">$'+ data.partials[i].lotteries[0].price +'</span>  </h4></div></div><div class="col-md-12"><h4><%= t('estimate_jackpot') %>: <span class="total_initial_balanc" style="color:#696969; font-size:120%;">$'+ data.partials[i].lotteries[0].initial_balance +' </span> </h4> <small>* <%= t('bag_polity') %>.</small></div></div></div><div class="modal-footer"><h4 style="text-align:center">  <button type="button" class="btn btn-default"  data-dismiss="modal"><%= t('close') %></button><button data-price="'+ data.partials[i].lotteries[0].price +'" data-balance="'+ data.partials[i].lotteries[0].initial_balance +'" data-lottery="'+ data.partials[i].lotteries[0].id +'" type="button"  style="background-color:#034898" class="btn btn-primary lottery_buy"><%= t("buy") %></button></h4><h5 style="color:white; text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:#d1d1d1" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5></div></div></div>');
+
+
+
+
+
+
 		$('#getting2'+i+'').countdown( moment(data.partials[i].game_date).format('MM/DD/YYYY HH:mm'), function(event) {
       $(this).html(event.strftime('La loteria se cierra en:  %D <%= t('day') %> %H:%M:%S <%= t('hours') %>'));
-								  
+
   });
-											
+
 						/*$('#slider1').bxSlider({
 		  					mode: 'fade',
 		  					speed: 1000,
@@ -1209,45 +1213,45 @@
                             minSlides: 1,
                             maxSlides: 10,
                             slideMargin: 10,
-                            infiniteLoop: true,		
+                            infiniteLoop: true,
 		  					auto: true,
 		  					autoHover: true
                           });*/
-						   
+
                                     }else{
-											  
+
 											}
-			
-          
+
+
                                 }
 		   var count_global;
-		  for (var count_number=0; count_number <= tiras_count; count_number++){ 
-			   	$('.team_score'+count_number+'').change(function(){   
+		  for (var count_number=0; count_number <= tiras_count; count_number++){
+			   	$('.team_score'+count_number+'').change(function(){
 					var selected = $(this).data('selected');
 						var selected2 = $(this).data('selected2');
-                 var select_number = String($(''+selected+'').val() % 10) + String($(''+selected2+'').val() % 10);   
-				var count = $(this).data('count');		   
+                 var select_number = String($(''+selected+'').val() % 10) + String($(''+selected2+'').val() % 10);
+				var count = $(this).data('count');
                 $("#ticket_number"+count+"").val(select_number);
-					count_global = $(this).data('count');		  
+					count_global = $(this).data('count');
            })
-            $('.team2_score'+count_number+'').change(function(){ 
+            $('.team2_score'+count_number+'').change(function(){
 				var selected = $(this).data('selected');
 					var selected2 = $(this).data('selected2');
-                 var select_number = String($("" +selected2+"").val() % 10) + String($(''+selected+'').val() % 10);  
-                var count = $(this).data('count');		
-					count_global = $(this).data('count');	
+                 var select_number = String($("" +selected2+"").val() % 10) + String($(''+selected+'').val() % 10);
+                var count = $(this).data('count');
+					count_global = $(this).data('count');
                                  $("#ticket_number"+count+"").val(select_number);
            })
 			  $('.open_modal'+count_number+'').click(function(){
-				  
-			$('.ticket_numer_lottery').text($('#ticket_number'+$(this).data("view")+'').val());  
+
+			$('.ticket_numer_lottery').text($('#ticket_number'+$(this).data("view")+'').val());
 			  })
-			    
+
 		  }
-		 		
-				
+
+
 		  //Aqui comienza la compra de las loterias
-		  
+
 		    $('.lottery_buy').click(function(){
 				var lottery_id = $(this).data('lottery');
 				var lottery_price = $(this).data('price');
@@ -1259,7 +1263,7 @@
 				var total_balance_update ;
 				var is_gift_purchase;
 			    var user_balance;
-				
+
 				if(<%= current_user.gift_credit %> != 0 && <%= current_user.gift_credit %> >= lottery_price){
 				var user_balance = <%= current_user.gift_credit %>;
 				is_gift_purchase = true;
@@ -1267,74 +1271,74 @@
 				 var user_balance = <%= current_user.balance %>;
 				 is_gift_purchase = false;
 				}
-				
+
 				total_balance_update = parseInt(user_balance) - parseInt(lottery_price);
-				
+
 				if (user_balance >= lottery_price){
 					 $.ajax({
                       method: "POST",
                       url: "/user_lotteries",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { user_lottery: {user_id: user_id, lottery_id: lottery_id, ticket_number: ticket_number ,purchase_date: purchase_date, status: "Comprado"}  }
                     }).done(function( data) {
 					 $('.modal').hide();
 						 $('#success-content').empty();
                          $('#success-content').append('<h2 style="text-align:center; color:#2D68AC; font-weight:900;">DON<span style="color:black; font-weight:900;">BILLETE</span></h2><h2 style="text-align:center; font-weight:800;"><%=t('success_bag')%></h2>');
                      $('#success-modal').modal('show');
-                     setTimeout(function(){ location.reload(); }, 2000);     
+                     setTimeout(function(){ location.reload(); }, 2000);
                      });
-					
+
 					 if(is_gift_purchase == true){
 					   $.ajax({
                       method: "PUT",
                       url: "/lotteries/"+lottery_id+"",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { lottery: {purchase_gift_tickets: parseInt(ticket_gift) + 1, initial_balance: lottery_update_balance }}
                     }).done(function( data) {
-                    	
+
                      });
-						 
+
 						  $.ajax({
                       method: "PUT",
                       url: "/users/"+user_id+"",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { user: {gift_credit: total_balance_update} }
                     }).done(function( data) {
-                    
+
                      });
-        
+
 				 }else{
                       $.ajax({
                       method: "PUT",
                       url: "/lotteries/"+lottery_id+"",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { lottery: {initial_balance: lottery_update_balance }}
                     }).done(function( data) {
-                    	
+
                      });
-                     
+
 							  $.ajax({
                       method: "PUT",
                       url: "/users/"+user_id+"",
-                      dataType: "json",     
+                      dataType: "json",
                       data: { user: {balance: total_balance_update} }
                     }).done(function( data) {
-                    
-                     });	
+
+                     });
 							}
-					
-				}else{		
+
+				}else{
 					alert('Saldo insuficiente');
 					window.location.assign("/partials/pay_methods")
 				}
-				
-                    
-				 
-				
-				
+
+
+
+
+
 			  })
-		  
-		  
+
+
             $(document).ready(function(){
 				//$('#Instructions').modal('show');
 				$('#change_two').click(function(){
@@ -1350,10 +1354,8 @@
 					$('.introduction').fadeIn();
 				})
                         });
-      
+
       });
-	
-			
+
+
 </script>
-
-
