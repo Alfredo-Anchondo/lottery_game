@@ -7,19 +7,19 @@ class UserLotteriesController < ApplicationController
   # GET /user_lotteries.json
   respond_to :html
   respond_to :json
-	
+
   def search_ticket_by_lottery
 	 render :json => UserLottery.search_ticket_by_lottery(params[:id])
   end
-	
+
   def index
     @user_lotteries = UserLottery.all
   end
-	
+
 	def today_sales
 		render :json => UserLottery.today_sales(params[:date1], params[:date2])
 	end
-	
+
 	def sales_by_month
 		render :json => UserLottery.sales_by_month
 	end
@@ -37,39 +37,39 @@ class UserLotteriesController < ApplicationController
     def winners_total
         render :json => UserLottery.winners_total
     end
-    
-	def buy_much_tickets		
+
+	def buy_much_tickets
 		logger.info "entramos"
 		logger.info params
 		render nothing: true
 		@user_id = User.find(params[:user_id])
 		@array_values = params[:array_values]
-		
+
 		@array_values.each do |variable|
 			logger.info @user_id.id
 			create_cycle(@user_id.id, params[:lottery_id], 'Comprado',@array_values[Integer(variable)], DateTime.now )
 		end
-		
-	end
-	
-	
 
-    
+	end
+
+
+
+
   # GET /user_lotteries/1/edit
   def edit
   end
-	
+
   # POST /user_lotteries
   # POST /user_lotteries.json
   def create
-    
+
     @user_lottery = UserLottery.new(user_lottery_params)
 
     respond_to do |format|
       if @user_lottery.save
-        #BuyMailer.buy_ticket(@user_lottery.user, @user_lottery.lottery, @user_lottery).deliver
+        BuyMailer.buy_ticket(@user_lottery.user, @user_lottery.lottery, @user_lottery).deliver
         format.html { redirect_to @user_lottery, notice: 'User lottery was successfully created.' }
-        format.json { render :show, status: :created, location: @user_lottery } 
+        format.json { render :show, status: :created, location: @user_lottery }
       else
         format.html { render :new }
         format.json { render json: @user_lottery.errors, status: :unprocessable_entity }
@@ -80,7 +80,7 @@ class UserLotteriesController < ApplicationController
     def winners
         render :json => UserLottery.winners
     end
-    
+
   # PATCH/PUT /user_lotteries/1
   # PATCH/PUT /user_lotteries/1.json
   def update
