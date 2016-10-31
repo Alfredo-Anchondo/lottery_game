@@ -23,7 +23,7 @@
               <% @relation_enrachate_tiras.each do |relation_enrachate_tira| %>
               <tr>
                                   <td><%= relation_enrachate_tira.enrachate.name %></td>
-                                  <td><%= relation_enrachate_tira.tira_enrachate.name %></td>
+                                  <td><%= relation_enrachate_tira.tira_enrachate ? relation_enrachate_tira.tira_enrachate.name : "" %></td>
                                 <td class="action-link">
                   <% if can? :show,relation_enrachate_tira %>
                     <%= link_to relation_enrachate_tira, :class => "btn btn-default", :title => t("actions.show") do %>
@@ -47,7 +47,7 @@
           </table>
         </div>
         <div class="text-center">
-         
+
         </div>
       </div>
       <!-- end panel-body -->
@@ -75,13 +75,13 @@
 <script>
        var current_language = $("#current_language").val();
        var languaje;
-    
+
     if(current_language == "en"){
     languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
 }else{
     languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 }
-    
+
 $('#data-table').DataTable({
     responsive: true,
      "language": {
