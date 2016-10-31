@@ -351,7 +351,7 @@ end
 		@array_values.each_with_index do |_, i|
 		UserLottery.create({user_id: @user_id.id, lottery_id: params[:lottery_id], status: 'Comprado', ticket_number: @array_values[Integer(i)], purchase_date: DateTime.now})
 		end
-		#BuyMailer.buy_many_tickets(@user_id, @array_values, @lottery).deliver
+		BuyMailer.buy_many_tickets(@user_id, @array_values, @lottery).deliver
 	end
 
 	def survivor_leagues
