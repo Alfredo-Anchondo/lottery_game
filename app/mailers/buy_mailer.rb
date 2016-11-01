@@ -71,6 +71,8 @@ class BuyMailer < ActionMailer::Base
 		@mails = mails
 		@reference = reference
 		@user = user
+    attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
+    attachments.inline['hero.png'] = File.read(Rails.root.join("public", "invite.png"))
 		mail(to: @mails, subject: '[DonBillete] Un amigo te invita a registrarte')
 	end
 
