@@ -250,7 +250,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                                   <h4 style=" <% if empate == false %> color:white; <% else %> color:red; <% end %>  text-align:center; font-size:12px;"><%= game.team.name %> </h4>
                                 <% if  game.survivor_game.game_date > Time.now  %>
                                 <h4 style="text-align:center">  <button class="btn btn-sm btn-primary change-team" data-team = "<%= selected == true ? game.survivor_game.team2.id : game.survivor_game.team.id  %>" data-id = "<%= game.id %> ">Cambiar Equipo    </button>
-                                  <% if @pick.sport_category_id == 12 %><h4 style="text-align:center">   <button class="btn btn-sm btn-primary change-team" data-team = "<%= Team.find(185).id  %>" data-id = "<%= game.id %> ">Sleccionar Empate</button> <%end%> </h4>
+                                  <% if @pick.sport_category_id == 12 %><h4 style="text-align:center">   <button class="btn btn-sm btn-primary change-team" data-team = "<%= Team.find(185).id  %>" data-id = "<%= game.id %> ">Cambiar Empate</button> <%end%> </h4>
                                   </h4>  <% end %>
                               </div>
                               <div class="col-md-4 col-xs-4" >
