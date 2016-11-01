@@ -27,6 +27,8 @@ class BuyMailer < ActionMailer::Base
      def admin_resume_tira(tira)
         @tira = tira
         @mails = ['alfredo_anchondo@hotmail.com','marianolascurain@gmail.com','rodrigolascurain@gmail.com']
+        attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
+        attachments.inline['hero.png'] = File.read(Rails.root.join("public", "result_tira.png"))
         mail(to: @mails, subject: '[DonBillete] Resumen de Tira')
     end
 
