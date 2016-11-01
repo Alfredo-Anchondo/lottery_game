@@ -254,7 +254,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                                   </h4>  <% end %>
                               </div>
                               <div class="col-md-4 col-xs-4" >
-                                  <h4 style="text-align:center">  <img width="40%" <% if empate == false %> class="<%= selected == false ? "selected_team": "" %>" <% end %> src="<%= game.survivor_game.team2.logo_url %>"> </h4>
+                                  <h4 style="text-align:center">  <img width="40%" style="margin-left:25%" <% if empate == false %> class="<%= selected == false ? "selected_team": "" %>" <% end %> src="<%= game.survivor_game.team2.logo_url %>"> </h4>
                                       <% if handicap != "null" %>
                                     <h4 style="text-align:center; color:white;"> <%= handicap == true ? "+" : "-"  %> <%= game.survivor_game.handicap  %> </h4>
                                   <% end %>
