@@ -12,6 +12,8 @@ class BuyMailer < ActionMailer::Base
     def admin_resume_lottery(lottery)
         @lottery = lottery
         @mails = ['alfredo_anchondo@hotmail.com','marianolascurain@gmail.com','rodrigolascurain@gmail.com']
+        attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
+        attachments.inline['hero.png'] = File.read(Rails.root.join("public", "result_lottery.png"))
         mail(to: @mails, subject: '[DonBillete] Resumen de loteria')
     end
 
