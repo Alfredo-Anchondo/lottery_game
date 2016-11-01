@@ -21,6 +21,8 @@ class BuyMailer < ActionMailer::Base
        @mail = mail
        @status = status
        @ticket = ticket
+       attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
+       attachments.inline['hero.png'] = File.read(Rails.root.join("public", "close_question.png"))
       	mail(to: @mail, subject: '[DonBillete] Respuesta a Pregunta Enrachate')
     end
 
