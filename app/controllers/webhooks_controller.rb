@@ -13,12 +13,15 @@ class WebhooksController < ApplicationController
      if data["type"] == "charge.succeeded" && data["transaction"]["method"] == "store" || data["transaction"]["method"] == "bank_account"
        if data["type"] == "payout.succeeded"
        else
+         if data["type"] == "payout.created"
+         else
 
        user_actual =  User.where("openpay_id = ?", data["transaction"]["customer_id"])
        logger.info user_actual[0]
        user_actual[0].update(:balance => data["transaction"]["amount"].to_f + user_actual[0].balance)
      end
      end
+   end
 
 
     render nothing: true
