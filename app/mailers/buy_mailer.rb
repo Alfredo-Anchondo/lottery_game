@@ -140,6 +140,8 @@ class BuyMailer < ActionMailer::Base
         @lottery = lottery
         @tickets = tickets
         @repeat_number = repeat
+        attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
+        attachments.inline['hero.png'] = File.read(Rails.root.join("public", "close_lottery.png"))
         mail(to: @mail, subject: '[DonBillete] La loteria se ha cerrado')
     end
 
