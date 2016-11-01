@@ -315,7 +315,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                                 <div class="col-md-4 col-xs-4" > <h4 style="text-align:center; color:white;">  <%= game.team.name %></h4> <h4 style="text-align:center"><label><input class="fut_team" type="radio"  data-src="<%= game.team.logo_url  %>" data-name="<%= game.team.name  %>" data-gameid="<%= game.id %>" data-id="<%= game.team.id %>" name="team<%= indexx %>" value="small" /> <img  class="<%= game.team.name.delete(' ')  %><%= index+1 %>" width="40%" src="<%= game.team.logo_url  %>"> </label></h4>  </div>
                              <div class="col-md-4 col-xs-4"><h4 style="text-align:center">
                                  <h4 style="text-align:center; color:white;">  <%= Team.find(185).name%></h4>
-                                 <label><input class="fut_team"  data-src="<%= Team.find(185).logo_url  %>" data-gameid="<%= game.id %>" data-id="<%= Team.find(185).id %>" type="radio" name="team<%= indexx %>" value="small" /><img class="<%= Team.find(185).name.delete(' ')  %><%= index+1 %>"  width="40%" src="<%= Team.find(185).logo_url  %>"></label></h4></div>
+                                 <label><input class="fut_team"  data-src="<%= Team.find(185).logo_url  %>" data-gameid="<%= game.id %>" data-id="<%= Team.find(185).id %>" type="radio" name="team<%= indexx %>" value="small" /><img class="<%= Team.find(185).name.delete(' ')  %><%= index+1 %>"  width="40%" style="margin-left:25%" src="<%= Team.find(185).logo_url  %>"></label></h4></div>
                              <div class="col-md-4 col-xs-4"><h4 style="text-align:center">
                                   <h4 style="text-align:left; color:white;">  <%= game.team2.name %></h4>
                                 <label>
