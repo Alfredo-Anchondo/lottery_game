@@ -115,6 +115,8 @@ class BuyMailer < ActionMailer::Base
       @emails = emails
       @winner_number  = winner_number
       @lottery_name = lottery_name
+      attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
+      attachments.inline['hero.png'] = File.read(Rails.root.join("public", "winner_number_lottery.png"))
       mail(to: @emails, subject: '[DonBillete] Loteria Terminada - Número ganador de Loteria')
   end
 
