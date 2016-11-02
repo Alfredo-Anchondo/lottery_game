@@ -234,7 +234,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                           <h4 style="text-align:center; color:white; font-size:20px;">Ya seleccionaste los equipos para esta entrada</h4>
   @current_pick_survivor_week[0].survivor_week_games.id                        <% current_ticket = PickUser.where('user_id = ? AND pick_survivor_week_id = ? AND pick_user_id =?', current_user.id, @current_pick_survivor_week[0].id,entry.pick_user_id)%>
                           <% games_selected = PickUserGame.where('pick_user_id = ?',current_ticket[0].id).order('id') %>
-                          <% all_games = SurvivorGame.where("survivor_week_game_id = ?",@current_pick_survivor_week[0].survivor_week_game_id) %>
+                          <% all_games = SurvivorGame.where("survivor_week_game_id = ?",@current_pick_survivor_week[0].survivor_week_game_id).order(:game_date) %>
                           <% games_selected.each do | game | %>
                              <% selected = game.survivor_game.team.id == game.team.id ? true : false  %>
                            <% handicap = game.survivor_game.plus_handicap == 1 ? true : false %>
