@@ -232,9 +232,10 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                   <% if @current_tickets_purchase.include? entry.pick_user_id  %>
                       <div style="display:none; border-left:1px solid black;" class="col-md-9 col-xs-12 entry-div" id="entry<%= index + 1 %>">
                           <h4 style="text-align:center; color:white; font-size:20px;">Ya seleccionaste los equipos para esta entrada</h4>
-                          <% current_ticket = PickUser.where('user_id = ? AND pick_survivor_week_id = ? AND pick_user_id =?', current_user.id, @current_pick_survivor_week[0].id,entry.pick_user_id)%>
+  @current_pick_survivor_week[0].survivor_week_games.id                        <% current_ticket = PickUser.where('user_id = ? AND pick_survivor_week_id = ? AND pick_user_id =?', current_user.id, @current_pick_survivor_week[0].id,entry.pick_user_id)%>
                           <% games_selected = PickUserGame.where('pick_user_id = ?',current_ticket[0].id).order('id') %>
-                          <% games_selected.order.(:game_date).each do | game | %>
+                          <% all_games = SurvivorGame.where("survivor_week_games_id = ?",@current_pick_survivor_week[0].survivor_week_games.id) %>
+                          <% games_selected.each do | game | %>
                              <% selected = game.survivor_game.team.id == game.team.id ? true : false  %>
                            <% handicap = game.survivor_game.plus_handicap == 1 ? true : false %>
                            <% game.survivor_game.plus_handicap.nil? ? handicap = "null" : "" %>
@@ -275,7 +276,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
                           <div class="row" style="border:1px solid black;">
 
-                              <% if games_selected.last.survivor_game.game_date > Time.now  %>
+                              <% if all_games.last.survivor_game.game_date > Time.now  %>
                               <h4 style="text-align:center ; color:white;"> Cambiar marcador de desempate </h4>
                               <div class="col-md-4 col-xs-4"> <img style="margin-left:20%"  class="col-md-4 col-xs-12" src="<%= games_selected.last.survivor_game.team.logo_url%>"> <input class="col-md-4 col-xs-10 " id="local_score_selected<%= current_ticket[0].id %>" type="number" disabled style="font-size:32px
                                   ;  margin-top:6px; font-weight:800; color:#2d68ac; margin-left:10%;text-align:center;" value="<%= current_ticket[0].local_score %>">  </div>
