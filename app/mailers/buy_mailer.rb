@@ -100,7 +100,7 @@ class BuyMailer < ActionMailer::Base
     @user_lottery = lottery_user
     attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
     attachments.inline['hero.png'] = File.read(Rails.root.join("public", "buy_ticket.png"))
-        mail(to: @user.email, subject: '[DonBillete] Comprobante de Compra')
+    mail(to: @user.email, subject: '[DonBillete] Comprobante de Compra')
   end
 
   def welcome_user(user)
@@ -223,6 +223,8 @@ class BuyMailer < ActionMailer::Base
 		@owner = owner
 		@survivor = survivor
 		@response = response
+    attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
+    attachments.inline['hero.png'] = File.read(Rails.root.join("public", "response_pick.png"))
 		mail(to: @request.email, subject: "[DonBillete] Respuesta a solicitud de acceso a liga PICK'EM")
 	end
 end
