@@ -105,7 +105,8 @@ class BuyMailer < ActionMailer::Base
 
   def welcome_user(user)
     @user = user
-    @url  = 'http://example.com/login'
+    attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
+    attachments.inline['hero.png'] = File.read(Rails.root.join("public", "register.png"))
     mail(to: @user.email, subject: '[DonBillete] Gracias por Registrarte')
   end
 
