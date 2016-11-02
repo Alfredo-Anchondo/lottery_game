@@ -18,7 +18,7 @@ class PickUser < ActiveRecord::Base
 	end
 
 def select_display
-  user.name + "-" + pick.name
+  user.name + "-" + pick.name + "" + pick.id
 end
 
   def check_if_exist
