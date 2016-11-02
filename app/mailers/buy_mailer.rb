@@ -215,6 +215,8 @@ class BuyMailer < ActionMailer::Base
 		@owner = owner
 		@survivor = survivor
 		@response = response
+    attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
+    attachments.inline['hero.png'] = File.read(Rails.root.join("public", "response_survivor.png"))
 		mail(to: @request.email, subject: '[DonBillete] Respuesta a solicitud de acceso a liga survivor')
 	end
 
