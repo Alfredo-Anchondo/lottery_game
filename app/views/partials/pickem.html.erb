@@ -276,7 +276,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
                           <div class="row" style="border:1px solid black;">
 
-                              <% if all_games.last.survivor_game.game_date > Time.now  %>
+                              <% if all_games.last.game_date > Time.now  %>
                               <h4 style="text-align:center ; color:white;"> Cambiar marcador de desempate </h4>
                               <div class="col-md-4 col-xs-4"> <img style="margin-left:20%"  class="col-md-4 col-xs-12" src="<%= games_selected.last.survivor_game.team.logo_url%>"> <input class="col-md-4 col-xs-10 " id="local_score_selected<%= current_ticket[0].id %>" type="number" disabled style="font-size:32px
                                   ;  margin-top:6px; font-weight:800; color:#2d68ac; margin-left:10%;text-align:center;" value="<%= current_ticket[0].local_score %>">  </div>
