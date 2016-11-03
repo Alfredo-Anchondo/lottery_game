@@ -62,7 +62,7 @@
   <div class="col-md-2 col-sm-2 col-xs-6">  <h4 style="color:#2d68ac"> Ganancia DB: <span class="db_enrachate" style="color:black">  $<%= free_ticket == true ? "0 (racha)"  :  ((1 - Enrachate.find(ticket.enrachates_id).percentage) * Enrachate.find(ticket.enrachates_id).price).round(0) %> </span> </h4>   </div>
   <div class="clearfix"></div>
 <% end %>
-
+  <hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
 <div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:red"> Totales </h4> </div> <div class="col-md-3 col-sm-3 col-xs-12"> </div> <div class="col-md-2 col-sm-2 col-xs-12"> </div>
 <div class="col-md-2 col-sm-2 col-xs-6"> <h4 style="color:black; margin-left:20%" id="total_bag_enrachate">  </h4> </div>
 <div class="col-md-2 col-sm-2 col-xs-6"> <h4 style="color:black; margin-left:20%" id="total_db_enrachate">  </h4> </div>
