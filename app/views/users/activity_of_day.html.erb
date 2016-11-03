@@ -55,12 +55,12 @@
   <h4 style="text-align:center; font-size:20px; color:black;"> Enrachates </h4>
   <hr>
 <% @enrachate_ticket.each do |ticket| %>
+  <hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
   <% free_ticket = EnrachateUser.where("enrachate_user_id = ?", ticket.enrachate_user_id).order(:id).first.id == ticket.id ? false : true %>
   <div class="col-md-3 col-sm-3 col-xs-12"><h4 style="color:#2d68ac"> Usuario: <span style="color:black"> <%= ticket.user.name + " " + ticket.user.last_name %> </span> </h4></div> <div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:#2d68ac"> Enrachate: <span style="color:black">  <%= Enrachate.find(ticket.enrachates_id).name %> </span> </h4> </div> <div class="col-md-2 col-sm-2 col-xs-12"> <h4 style="color:#2d68ac"> Precio: <span style="color:black">  $<%= Enrachate.find(ticket.enrachates_id).price %> </span> </h4></div>
   <div class="col-md-2 col-sm-2 col-xs-6">  <h4 style="color:#2d68ac"> En bolsa: <span class="bag_enrachate" style="color:black">  $<%= free_ticket == true ? "0 (racha)" : (Enrachate.find(ticket.enrachates_id).percentage * Enrachate.find(ticket.enrachates_id).price).round(0) %> </span> </h4> </div>
   <div class="col-md-2 col-sm-2 col-xs-6">  <h4 style="color:#2d68ac"> Ganancia DB: <span class="db_enrachate" style="color:black">  $<%= free_ticket == true ? "0 (racha)"  :  ((1 - Enrachate.find(ticket.enrachates_id).percentage) * Enrachate.find(ticket.enrachates_id).price).round(0) %> </span> </h4>   </div>
   <div class="clearfix"></div>
-  <hr style="border-color:black; margin-top:10px; margin-bottom:10px;">
 <% end %>
 
 <div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:red"> Totales </h4> </div> <div class="col-md-3 col-sm-3 col-xs-12"> </div> <div class="col-md-2 col-sm-2 col-xs-12"> </div>
@@ -76,13 +76,13 @@
   <h4 style="text-align:center; font-size:20px; color:black;"> Loterias </h4>
   <hr>
   <% @lottery_ticket.each do |ticket| %>
+    <hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
     <div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:#2d68ac"> Usuario: <span style="color:black"> <%= ticket.user.name + " " + ticket.user.last_name %> </span> </h4></div> <div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:#2d68ac"> Loteria: <span style="color:black">  <%= ticket.lottery.select_display %> </span> </h4> </div> <div class="col-md-2 col-sm-2 col-xs-12"> <h4 style="color:#2d68ac"> Precio: <span style="color:black">  $<%= ticket.lottery.price %> </span> </h4></div>
     <div class="col-md-2 col-sm-2 col-xs-6">  <h4 style="color:#2d68ac"> En bolsa: <span class="bag_lottery" style="color:black">  $<%= (0.95 * ticket.lottery.price).round(0) %> </span> </h4> </div>
     <div class="col-md-2 col-sm-2 col-xs-6">  <h4 style="color:#2d68ac"> Ganancia DB: <span class="db_lottery" style="color:black">  $<%= (0.05 * ticket.lottery.price).round(0) %> </span> </h4>   </div>
     <div class="clearfix"></div>
-    <hr style="border-color:black; margin-top:10px; margin-bottom:10px;">
   <% end %>
-
+  <hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
   <div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:red"> Totales </h4> </div> <div class="col-md-3 col-sm-3 col-xs-12"> </div> <div class="col-md-2 col-sm-2 col-xs-12"> </div>
   <div class="col-md-2 col-sm-2 col-xs-6"> <h4 style="color:black; margin-left:20%" id="total_bag_lottery">  </h4> </div>
   <div class="col-md-2 col-sm-2 col-xs-6"> <h4 style="color:black; margin-left:20%" id="total_db_lottery">  </h4> </div>
