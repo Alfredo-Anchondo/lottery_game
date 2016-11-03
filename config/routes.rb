@@ -106,7 +106,7 @@ Rails.application.routes.draw do
     resources :partials  do
         collection do
             get "answer_register", to: "partials#answer_register"
-            get "my_enrachate_tickets", to: "partials#my_enrachate_tickets" 
+            get "my_enrachate_tickets", to: "partials#my_enrachate_tickets"
             get "my_enrachate_leagues", to: "partials#my_enrachate_leagues"
             get "enrachate_survivor_history/:id", to: "partials#enrachate_survivor_history"
             get "my_ticket_history", to: "partials#my_ticket_history"
@@ -194,10 +194,12 @@ Rails.application.routes.draw do
 
   resources :users do
       collection do
-          get "/lotteries/:id", to: "users#lotteries"
+      get "day_activity"
+      get "activity_of_day/:date" , to: "users#activity_of_day"
+      get "/lotteries/:id", to: "users#lotteries"
 		  get "/quinielas/:id", to: "users#quinielas"
 		  get "send_mails"
-          get "tickets_history"
+      get "tickets_history"
 		  match "/update_reference" => "users#search_reference", :via => :post
 		  get "/client_details/:id_client", to: "users#client_details"
 		  post "/send_mails_all", to: "users#send_mails_all"

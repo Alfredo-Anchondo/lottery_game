@@ -18,6 +18,15 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
   end
 
+
+def activity_of_day
+  @date_param =	params[:date]
+	@lottery_ticket = UserLottery.where("purchase_date::date = ?",@date_param.to_date)
+	@enrachate_ticket = EnrachateUser.where("purchase_date::date = ?", @date_param.to_date)
+  
+end
+
+
 	def send_mails_all
 		logger.info params[:mails]
 		if params[:mails] != ''
