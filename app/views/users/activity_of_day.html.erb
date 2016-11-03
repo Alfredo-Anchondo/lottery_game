@@ -84,12 +84,13 @@
   var db_enrachate_total = 0;
 
   $(".db_enrachate").each(function(){
-    bag_enrachate_total += parseFloat($(this).text().replace(/\D/g, ''));
+    db_enrachate_total += parseFloat($(this).text().replace(/\D/g, ''));
   })
-  $("#total_db_enrachate").text( "$" + bag_enrachate_total);
+  $("#total_db_enrachate").text( "$" + db_enrachate_total);
 
 
     $(".bag_enrachate").each(function(){
+      alert(parseFloat($(this).text().replace(/\D/g, '')));
       bag_enrachate_total += parseFloat($(this).text().replace(/\D/g, ''));
     })
     $("#total_bag_enrachate").text( "$" + bag_enrachate_total);
