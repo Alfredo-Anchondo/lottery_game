@@ -90,7 +90,6 @@
 
 
     $(".bag_enrachate").each(function(){
-      alert(parseFloat($(this).text().replace(/\D/g, '')));
       bag_enrachate_total += parseFloat($(this).text().replace(/\D/g, ''));
     })
     $("#total_bag_enrachate").text( "$" + bag_enrachate_total);
