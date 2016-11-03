@@ -75,6 +75,20 @@
 <div class="row">
   <h4 style="text-align:center; font-size:20px; color:black;"> Loterias </h4>
   <hr>
+  <% @lottery_ticket.each do |ticket| %>
+    <div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:#2d68ac"> Usuario: <span style="color:black"> <%= ticket.user.name + " " + ticket.user.last_name %> </span> </h4></div> <div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:#2d68ac"> Loteria: <span style="color:black">  <%= ticket.lottery.select_display %> </span> </h4> </div> <div class="col-md-2 col-sm-2 col-xs-12"> <h4 style="color:#2d68ac"> Precio: <span style="color:black">  $<%= ticket.lottery.price %> </span> </h4></div>
+    <div class="col-md-2 col-sm-2 col-xs-6">  <h4 style="color:#2d68ac"> En bolsa: <span class="bag_lottery" style="color:black">  $<%= (0.95 * ticket.lottery.price).round(0) %> </span> </h4> </div>
+    <div class="col-md-2 col-sm-2 col-xs-6">  <h4 style="color:#2d68ac"> Ganancia DB: <span class="db_lottery" style="color:black">  $<%= (0.05 * ticket.lottery.price).round(0) %> </span> </h4>   </div>
+    <div class="clearfix"></div>
+    <hr style="border-color:black; margin-top:10px; margin-bottom:10px;">
+  <% end %>
+
+  <div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:red"> Totales </h4> </div> <div class="col-md-3 col-sm-3 col-xs-12"> </div> <div class="col-md-2 col-sm-2 col-xs-12"> </div>
+  <div class="col-md-2 col-sm-2 col-xs-6"> <h4 style="color:black; margin-left:20%" id="total_bag_lottery">  </h4> </div>
+  <div class="col-md-2 col-sm-2 col-xs-6"> <h4 style="color:black; margin-left:20%" id="total_db_lottery">  </h4> </div>
+  <div class="clearfix"></div>
+  <hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
+
 </div>
 
 <script type="text/javascript">
@@ -82,6 +96,10 @@
 
   var bag_enrachate_total = 0;
   var db_enrachate_total = 0;
+  var db_lottery_total = 0;
+  var bag_lottery_total = 0;
+
+  //enrachate
 
   $(".db_enrachate").each(function(){
     db_enrachate_total += parseFloat($(this).text().replace(/\D/g, ''));
@@ -89,10 +107,22 @@
   $("#total_db_enrachate").text( "$" + db_enrachate_total);
 
 
-    $(".bag_enrachate").each(function(){
-      bag_enrachate_total += parseFloat($(this).text().replace(/\D/g, ''));
-    })
-    $("#total_bag_enrachate").text( "$" + bag_enrachate_total);
+      $(".bag_enrachate").each(function(){
+        bag_enrachate_total += parseFloat($(this).text().replace(/\D/g, ''));
+      })
+      $("#total_bag_enrachate").text( "$" + bag_enrachate_total);
+
+      //lottery
+
+      $(".bag_lottery").each(function(){
+        bag_lottery_total += parseFloat($(this).text().replace(/\D/g, ''));
+      })
+      $("#total_bag_lottery").text( "$" + bag_lottery_total);
+
+      $(".db_lottery").each(function(){
+        db_lottery_total += parseFloat($(this).text().replace(/\D/g, ''));
+      })
+      $("#total_db_lottery").text( "$" + db_lottery_total);
 
 
     $("#day_select").change(function(){
