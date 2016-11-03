@@ -232,7 +232,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                   <% if @current_tickets_purchase.include? entry.pick_user_id  %>
                       <div style="display:none; border-left:1px solid black;" class="col-md-9 col-xs-12 entry-div" id="entry<%= index + 1 %>">
                           <h4 style="text-align:center; color:white; font-size:20px;">Ya seleccionaste los equipos para esta entrada</h4>
-  @current_pick_survivor_week[0].survivor_week_games.id                        <% current_ticket = PickUser.where('user_id = ? AND pick_survivor_week_id = ? AND pick_user_id =?', current_user.id, @current_pick_survivor_week[0].id,entry.pick_user_id)%>
+                         <% current_ticket = PickUser.where('user_id = ? AND pick_survivor_week_id = ? AND pick_user_id =?', current_user.id, @current_pick_survivor_week[0].id,entry.pick_user_id)%>
                           <% games_selected = PickUserGame.where('pick_user_id = ?',current_ticket[0].id).order('id') %>
                           <% all_games = SurvivorGame.where("survivor_week_game_id = ?",@current_pick_survivor_week[0].survivor_week_game_id).order(:game_date) %>
                           <% games_selected.each do | game | %>
