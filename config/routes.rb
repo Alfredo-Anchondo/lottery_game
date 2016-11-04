@@ -105,6 +105,7 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+            get "lottery_rules"
             get "answer_register", to: "partials#answer_register"
             get "my_enrachate_tickets", to: "partials#my_enrachate_tickets"
             get "my_enrachate_leagues", to: "partials#my_enrachate_leagues"

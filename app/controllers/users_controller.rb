@@ -23,7 +23,7 @@ def activity_of_day
   @date_param =	params[:date]
 	@lottery_ticket = UserLottery.where("purchase_date::date = ?",@date_param.to_date)
 	@enrachate_ticket = EnrachateUser.where("purchase_date::date = ?", @date_param.to_date)
-  
+  @quiniela_ticket = QuinielaUser.where("purchase_date::date = ?",@date_param.to_date)
 end
 
 

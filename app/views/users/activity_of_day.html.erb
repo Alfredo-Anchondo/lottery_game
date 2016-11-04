@@ -1,44 +1,20 @@
 <style media="screen">
-@media print {
- .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
-      float: left;
- }
- .col-sm-12 {
-      width: 100%;
- }
- .col-sm-11 {
-      width: 91.66666667%;
- }
- .col-sm-10 {
-      width: 83.33333333%;
- }
- .col-sm-9 {
-      width: 75%;
- }
- .col-sm-8 {
-      width: 66.66666667%;
- }
- .col-sm-7 {
-      width: 58.33333333%;
- }
- .col-sm-6 {
-      width: 50%;
- }
- .col-sm-5 {
-      width: 41.66666667%;
- }
- .col-sm-4 {
-      width: 33.33333333%;
- }
- .col-sm-3 {
-      width: 25%;
- }
- .col-sm-2 {
-      width: 16.66666667%;
- }
- .col-sm-1 {
-      width: 8.33333333%;
- }
+#data-table2 thead {
+  background-color: #171616;
+  color: white;
+}
+
+#data-table3 thead {
+  background-color: #171616;
+  color: white;
+}
+
+.ui-datepicker-month{
+  color:black;
+}
+
+.ui-datepicker-year{
+  color:black;
 }
 </style>
 
@@ -52,20 +28,38 @@
 </div>
 
 <div class="row">
-  <h4 style="text-align:center; font-size:20px; color:black;"> Enrachates </h4>
+  <h4 style="text-align:center; font-size:30px; color:#2d68ac;"> Enrachates </h4>
   <hr>
+  <table id="data-table" class="table table-bordered table-hover table-striped nowrap">
+    <thead>
+           <tr>
+               <th>Usuario</th>
+               <th>Enrachate</th>
+               <th>Precio</th>
+               <th>En bolsa</th>
+               <th>Ganancia DB</th>
+           </tr>
+       </thead>
+       <tbody>
+
 <% @enrachate_ticket.each do |ticket| %>
-  <hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
-  <% free_ticket = EnrachateUser.where("enrachate_user_id = ?", ticket.enrachate_user_id).order(:id).first.id == ticket.id ? false : true %>
-  <div class="col-md-3 col-sm-3 col-xs-12"><h4 style="color:#2d68ac"> Usuario: <span style="color:black"> <%= ticket.user.name + " " + ticket.user.last_name %> </span> </h4></div> <div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:#2d68ac"> Enrachate: <span style="color:black">  <%= Enrachate.find(ticket.enrachates_id).name %> </span> </h4> </div> <div class="col-md-2 col-sm-2 col-xs-12"> <h4 style="color:#2d68ac"> Precio: <span style="color:black">  $<%= Enrachate.find(ticket.enrachates_id).price %> </span> </h4></div>
-  <div class="col-md-2 col-sm-2 col-xs-6">  <h4 style="color:#2d68ac"> En bolsa: <span class="bag_enrachate" style="color:black">  $<%= free_ticket == true ? "0 (racha)" : (Enrachate.find(ticket.enrachates_id).percentage * Enrachate.find(ticket.enrachates_id).price).round(0) %> </span> </h4> </div>
-  <div class="col-md-2 col-sm-2 col-xs-6">  <h4 style="color:#2d68ac"> Ganancia DB: <span class="db_enrachate" style="color:black">  $<%= free_ticket == true ? "0 (racha)"  :  ((1 - Enrachate.find(ticket.enrachates_id).percentage) * Enrachate.find(ticket.enrachates_id).price).round(0) %> </span> </h4>   </div>
-  <div class="clearfix"></div>
+<% free_ticket = EnrachateUser.where("enrachate_user_id = ?", ticket.enrachate_user_id).order(:id).first.id == ticket.id ? false : true %>
+
+<tr>
+    <td> <%= ticket.user.name + " " + ticket.user.last_name %></td>
+    <td><%= Enrachate.find(ticket.enrachates_id).name %></td>
+    <td>$<%= Enrachate.find(ticket.enrachates_id).price %></td>
+    <td>$<span class="bag_enrachate"><%= free_ticket == true ? "0 (racha)" : (Enrachate.find(ticket.enrachates_id).percentage * Enrachate.find(ticket.enrachates_id).price).round(0) %> </span></td>
+    <td>$ <span class="db_enrachate"><%= free_ticket == true ? "0 (racha)"  :  ((1 - Enrachate.find(ticket.enrachates_id).percentage) * Enrachate.find(ticket.enrachates_id).price).round(0) %></span></td>
+</tr>
+
 <% end %>
-  <hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
-<div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:red"> Totales </h4> </div> <div class="col-md-3 col-sm-3 col-xs-12"> </div> <div class="col-md-2 col-sm-2 col-xs-12"> </div>
-<div class="col-md-2 col-sm-2 col-xs-6"> <h4 style="color:black; margin-left:20%" id="total_bag_enrachate">  </h4> </div>
-<div class="col-md-2 col-sm-2 col-xs-6"> <h4 style="color:black; margin-left:20%" id="total_db_enrachate">  </h4> </div>
+    </tbody>
+  </table>
+<hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
+<div class="col-md-3 col-sm-3 col-xs-12"> <h2 style="color:red; font-weight:600;"> Totales: </h2> </div> <div class="col-md-3 col-sm-3 col-xs-12"> <h2 style="color:black; font-weight:600;"> Boletos comprados: <span> <%= @enrachate_ticket.count %><span> </h2> </div> <div class="col-md-2 col-sm-2 col-xs-12"> </div>
+<div class="col-md-2 col-sm-2 col-xs-6"> <h2 style="color:black; font-weight:600;"> En bolsa: <span class="total_bag"   id="total_bag_enrachate"></span>  </h2> </div>
+<div class="col-md-2 col-sm-2 col-xs-6"> <h2 style="color:black; font-weight:600;"> En DB:  <span class="total_db"  id="total_db_enrachate"></span>  </h2> </div>
 <div class="clearfix"></div>
 <hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
 </div>
@@ -73,19 +67,86 @@
 <hr style="border-color:#2d68ac; border-width: 20px;">
 
 <div class="row">
-  <h4 style="text-align:center; font-size:20px; color:black;"> Loterias </h4>
+  <h4 style="text-align:center; font-size:30px; color:#2d68ac;"> Loterias </h4>
   <hr>
+  <table id="data-table2" class="table table-bordered table-hover table-striped nowrap">
+    <thead>
+           <tr>
+               <th>Usuario</th>
+               <th>Loteria</th>
+               <th>Precio</th>
+               <th>En bolsa</th>
+               <th>Ganancia DB</th>
+           </tr>
+       </thead>
+       <tbody>
   <% @lottery_ticket.each do |ticket| %>
-    <hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
-    <div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:#2d68ac"> Usuario: <span style="color:black"> <%= ticket.user.name + " " + ticket.user.last_name %> </span> </h4></div> <div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:#2d68ac"> Loteria: <span style="color:black">  <%= ticket.lottery.select_display %> </span> </h4> </div> <div class="col-md-2 col-sm-2 col-xs-12"> <h4 style="color:#2d68ac"> Precio: <span style="color:black">  $<%= ticket.lottery.price %> </span> </h4></div>
-    <div class="col-md-2 col-sm-2 col-xs-6">  <h4 style="color:#2d68ac"> En bolsa: <span class="bag_lottery" style="color:black">  $<%= (0.95 * ticket.lottery.price).round(0) %> </span> </h4> </div>
-    <div class="col-md-2 col-sm-2 col-xs-6">  <h4 style="color:#2d68ac"> Ganancia DB: <span class="db_lottery" style="color:black">  $<%= (0.05 * ticket.lottery.price).round(0) %> </span> </h4>   </div>
-    <div class="clearfix"></div>
+  <tr>
+      <td> <%= ticket.user.name + " " + ticket.user.last_name %></td>
+      <td><%= ticket.lottery.select_display %></td>
+      <td>$<%= ticket.lottery.price %></td>
+      <td>$<span class="bag_lottery"> <%= (0.95 * ticket.lottery.price).round(0) %></span></td>
+      <td>$<span class="db_lottery"> <%= (0.05 * ticket.lottery.price).round(0) %> </span></td>
+  </tr>
   <% end %>
+</tbody>
+</table>
+<hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
+  <div class="col-md-3 col-sm-3 col-xs-12"> <h2 style="color:red; font-weight:600;"> Totales: </h2> </div> <div class="col-md-3 col-sm-3 col-xs-12"> <h2 style="color:black; font-weight:600;">Boletos vendidos: <%= @lottery_ticket.count %> </h2> </div> <div class="col-md-2 col-sm-2 col-xs-12"> </div>
+  <div class="col-md-2 col-sm-2 col-xs-6"> <h2 style="color:black;  font-weight:600;"> En bolsa: <span class="total_bag"   id="total_bag_lottery"></span>  </h2> </div>
+  <div class="col-md-2 col-sm-2 col-xs-6"> <h2 style="color:black;  font-weight:600;">En DB: <span class="total_db"   id="total_db_lottery"></span>  </h2> </div>
+  <div class="clearfix"></div>
   <hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
-  <div class="col-md-3 col-sm-3 col-xs-12"> <h4 style="color:red"> Totales </h4> </div> <div class="col-md-3 col-sm-3 col-xs-12"> </div> <div class="col-md-2 col-sm-2 col-xs-12"> </div>
-  <div class="col-md-2 col-sm-2 col-xs-6"> <h4 style="color:black; margin-left:20%" id="total_bag_lottery">  </h4> </div>
-  <div class="col-md-2 col-sm-2 col-xs-6"> <h4 style="color:black; margin-left:20%" id="total_db_lottery">  </h4> </div>
+
+</div>
+
+<hr style="border-color:#2d68ac; border-width: 20px;">
+
+<div class="row">
+  <h4 style="text-align:center; font-size:30px; color:#2d68ac;"> Tiras </h4>
+  <hr>
+  <table id="data-table3" class="table table-bordered table-hover table-striped nowrap">
+    <thead>
+           <tr>
+               <th>Usuario</th>
+               <th>Tira</th>
+               <th>Precio</th>
+               <th>En bolsa</th>
+               <th>Ganancia DB</th>
+           </tr>
+       </thead>
+       <tbody>
+  <% @quiniela_ticket.each do |ticket| %>
+  <tr>
+      <td> <%= ticket.user.name + " " + ticket.user.last_name %></td>
+      <td><%= ticket.quiniela.description %></td>
+      <td>$<%= ticket.quiniela.price %></td>
+      <td>$<span class="bag_quiniela"> <%= (0.95 * ticket.quiniela.price.to_f).round(0) %></span></td>
+      <td>$<span class="db_quiniela"> <%= (0.05 * ticket.quiniela.price.to_f).round(0) %> </span></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+<hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
+  <div class="col-md-3 col-sm-3 col-xs-12"> <h2 style="color:red; font-weight:600;"> Totales: </h2> </div> <div class="col-md-3 col-sm-3 col-xs-12"> <h2 style="color:black; font-weight:600;">Boletos vendidos: <%= @quiniela_ticket.count %> </h2> </div> <div class="col-md-2 col-sm-2 col-xs-12"> </div>
+  <div class="col-md-2 col-sm-2 col-xs-6"> <h2 style="color:black;  font-weight:600;"> En bolsa: <span class="total_bag"  id="total_bag_quiniela"></span>  </h2> </div>
+  <div class="col-md-2 col-sm-2 col-xs-6"> <h2 style="color:black;  font-weight:600;">En DB: <span class="total_db"  id="total_db_quiniela"></span>  </h2> </div>
+  <div class="clearfix"></div>
+  <hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
+
+</div>
+
+
+<hr style="border-color:#2d68ac; border-width: 20px;">
+
+<div class="row">
+  <h4 style="text-align:center; font-size:30px; color:#2d68ac;"> Totales </h4>
+  <hr>
+
+<hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
+  <div class="col-md-3 col-sm-3 col-xs-12"> <h2 style="color:red; font-weight:600;"> Totales: </h2> </div> <div class="col-md-3 col-sm-3 col-xs-12"> <h2 style="color:black; font-weight:600;">Boletos vendidos: <span id="total_tickets"><%= @quiniela_ticket.count + @lottery_ticket.count + @enrachate_ticket.count %>  </span> </h2> </div> <div class="col-md-2 col-sm-2 col-xs-12"> </div>
+  <div class="col-md-2 col-sm-2 col-xs-6"> <h2 style="color:black;  font-weight:600;"> En bolsa: <span  id="total_bag"></span>  </h2> </div>
+  <div class="col-md-2 col-sm-2 col-xs-6"> <h2 style="color:black;  font-weight:600;">En DB: <span  id="total_db"></span>  </h2> </div>
   <div class="clearfix"></div>
   <hr style="margin-top:10px; margin-bottom:10px; border-color:black;">
 
@@ -98,7 +159,10 @@
   var db_enrachate_total = 0;
   var db_lottery_total = 0;
   var bag_lottery_total = 0;
-
+  var bag_quiniela_total = 0;
+  var db_quiniela_total = 0;
+  var db_total = 0;
+  var bag_total = 0;
   //enrachate
 
   $(".db_enrachate").each(function(){
@@ -124,8 +188,80 @@
       })
       $("#total_db_lottery").text( "$" + db_lottery_total);
 
+      //Quiniela
+
+
+            $(".bag_quiniela").each(function(){
+              bag_quiniela_total += parseFloat($(this).text().replace(/\D/g, ''));
+            })
+            $("#total_bag_quiniela").text( "$" + bag_quiniela_total);
+
+            $(".db_quiniela").each(function(){
+              db_quiniela_total += parseFloat($(this).text().replace(/\D/g, ''));
+            })
+            $("#total_db_quiniela").text( "$" + db_quiniela_total);
+
+        //Totales
+        $(".total_bag").each(function(){
+          bag_total += parseFloat($(this).text().replace(/\D/g, ''));
+        })
+        $("#total_bag").text( "$" + bag_total);
+
+
+            $(".total_db").each(function(){
+            db_total += parseFloat($(this).text().replace(/\D/g, ''));
+            })
+            $("#total_db").text( "$" + db_total);
+
 
     $("#day_select").change(function(){
-       window.location.assign("/users/activity_of_day/" +$(this).val()+ "" )
+       window.location.assign("/users/activity_of_day/" +moment($(this).val()).format('YYYY-MM-DD')+ "" )
     })
+
+
+           var current_language = $("#current_language").val();
+           var languaje;
+
+        if(current_language == "en"){
+        languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+    }else{
+        languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+    }
+
+    $('#data-table').DataTable({
+        order: [1,"desc"],
+         "language": {
+                "url": languaje
+            }
+    });
+
+    $('#data-table2').DataTable({
+        order: [1,"desc"],
+         "language": {
+                "url": languaje
+            }
+    });
+
+    $('#data-table3').DataTable({
+        order: [1,"desc"],
+         "language": {
+                "url": languaje
+            }
+    });
+
+</script>
+
+
+<script>
+
+(function() {
+   var elem = document.createElement('input');
+   elem.setAttribute('type', 'date');
+
+   if ( elem.type === 'text' ) {
+       $('#day_select').datepicker({changeYear: true, changeMonth: true} );
+   }
+})();
+
+
 </script>
