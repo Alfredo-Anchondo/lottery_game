@@ -215,10 +215,9 @@
 				</h3><h3 style="text-align:center; color: #2d68ac;font-size:20px;
 				text-transform: capitalize; font-weight:800;"> <span>$<%=
 				@enrachate.initial_balance.round(2) %> </span>  </h3> <div class="col-md-12 col-xs-12"><h3
-				style="color:black; "> Inscritos:
+				style="color:black; "> Lider:
 				<span style="text-align:center; color: #2d68ac; font-size:20px;
-				text-transform: capitalize; font-weight:800;"><%=
-				@enrachate.register_users%></span></h3></div> <div class="clearfix"></div> </div> <div
+				text-transform: capitalize; font-weight:800;"><%= @racha_values != [] ? @racha_values.max : 0  %></span></h3></div> <div class="clearfix"></div> </div> <div
 				class="clearfix"></div> </div> </div> </div><span class="caption
 				normalcaption fade-caption"><h3 style="text-align:center"><%=
 				@enrachate.name %> </h3> <h3 style="text-align:center; color:white;">
