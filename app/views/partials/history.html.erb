@@ -33,6 +33,8 @@
                 <td><%= t('complete') %></td>
                 <% when "failed" %>
                 <td><%= t('failed') %></td>
+                <% else %>
+                <td>Pendiente</td>
                 <% end %>
                 <td>$<%= charges['amount'] %> MXN</td>
                  <% case charges['error_message'] %>
