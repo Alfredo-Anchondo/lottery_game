@@ -1,9 +1,21 @@
+<style media="screen">
+label{color:white;}
+
+input{color:black !important;}
+
+select{color:black !important;}
+
+.dataTables_info{
+  color:white !important;
+}
+
+</style>
 
 <% if  @top_100.first != [] && @top_100.last != []  %>
 
 <div class="row" style="margin-bottom:80px;">
 
-<h4 style="text-align:center; color:black; font-size:18px;"> Top 100 rachas  </h4>
+<h4 style="text-align:center; color:white; font-size:18px;"> Top 100 rachas  </h4>
 <h4 style="text-align:center">  <a class="btn btn-primary" href="/partials/enrachate"> Pick </a> <a class="btn btn-primary" href="/partials/enrachate_history"> Mi racha </a> <a class="btn btn-primary" href="/partials/my_ticket_history"> Mis boletos </a> </h4>
 <hr>
 <div class="table-responsive">

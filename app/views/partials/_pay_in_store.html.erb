@@ -1,4 +1,4 @@
-<div class="row" > 
+<div class="row" >
 <h4 style="text-align:center; font-size:26px; color:#2d68ac; font-weight:700;">Pago en tienda</h4>
 <hr>
 <div class="row" style="">
@@ -6,41 +6,41 @@
          <img width="100%" height="500px" src="/assets/vertical.gif">
     </div>
     <div class="col-md-4 col-xs-12" style="border-left:1px solid black; height:500px;">
-          <h4 style="text-align:center; color:black; font-size:18px;">Ahora tambien puedes abonar saldo por medio de tiendas de conveniencia</h4>
+          <h4 style="text-align:center; color:white; font-size:18px;">Ahora tambien puedes abonar saldo por medio de tiendas de conveniencia</h4>
         <hr>
         <h4 style="color:#2d68ac;">Como realizar el pago </h4>
          <ol  style="font-size:14px;">
-             <li style="margin-bottom:4px; color:black;">Selecciona de lado derecho la cantidad que deseas abonar a tu cuenta</li>
-             <li style="margin-bottom:4px; color:black;">Presiona el boton para generar el recibo de pago (Si tienes bloqueadas las ventanas emergentes,permitela ya que el recibo de pago se abrira en otra ventana)</li>
-             <li style="margin-bottom:4px; color:black;">Al presionar el boton se te abrira una ventana nueva con el recibo de pago, en caso de no ser asi presiona el boton que aparece debajo de generar recibo, guarda el recibo en tu smartphone, o imprimelo para mostrarlo en la tienda afiliada preferida</li>
-             <li style="margin-bottom:4px; color:black;">Acude a cualquier tienda afiliada</li>
-             <li style="margin-bottom:4px; color:black;">Entrega al cajero el código de barras y menciona que realizarás un pago de servicio Paynet</li>
-             <li style="margin-bottom:4px; color:black;">Realizar el pago en efectivo por la cantidad deseada (más $8 pesos por comisión)</li>
-             <li style="margin-bottom:4px; color:black;">Conserva el ticket para cualquier aclaración</li>
+             <li style="margin-bottom:4px; color:white;">Selecciona de lado derecho la cantidad que deseas abonar a tu cuenta</li>
+             <li style="margin-bottom:4px; color:white;">Presiona el boton para generar el recibo de pago (Si tienes bloqueadas las ventanas emergentes,permitela ya que el recibo de pago se abrira en otra ventana)</li>
+             <li style="margin-bottom:4px; color:white;">Al presionar el boton se te abrira una ventana nueva con el recibo de pago, en caso de no ser asi presiona el boton que aparece debajo de generar recibo, guarda el recibo en tu smartphone, o imprimelo para mostrarlo en la tienda afiliada preferida</li>
+             <li style="margin-bottom:4px; color:white;">Acude a cualquier tienda afiliada</li>
+             <li style="margin-bottom:4px; color:white;">Entrega al cajero el código de barras y menciona que realizarás un pago de servicio Paynet</li>
+             <li style="margin-bottom:4px; color:white;">Realizar el pago en efectivo por la cantidad deseada (más $8 pesos por comisión)</li>
+             <li style="margin-bottom:4px; color:white;">Conserva el ticket para cualquier aclaración</li>
         </ol>
         <br>
         <h4  style="color:#2d68ac;">Si tienes dudas comunicate por medio de nuestro chat, y un asesor te atendera con gusto.</h4>
-            
+
     </div>
     <div class="col-md-4 col-xs-12" style="border-left:1px solid black; height:500px;">
         <hr>
         <h4 style="text-align:center; font-size:20px; color:#2d68ac; margin-top:10%"> Realizar pago en tienda </h4>
         <hr>
-        <h4 style="text-align:center; font-size;18px; color:black;">Cantidad a abonar:</h4>
+        <h4 style="text-align:center; font-size;18px; color:white;">Cantidad a abonar:</h4>
      <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">$</span>
   <input id="amount_input" type="number" style="font-weight:800; color:#2d68ac;" class="form-control" placeholder="Cantidad en $ Pesos" aria-describedby="sizing-addon2">
 </div>
             <hr>
       <h4 style="text-align:center"><button id="pay_store" class="btn btn-lg btn-primary">Generar Recibo de Pago</button></h4>
-        
+
         <div class="row" style="display:none;" id="complete_store">
             <hr>
-           <h4 style="text-align:center; color:green;">El Recibo se a generado correctamente</h4> 
+           <h4 style="text-align:center; color:green;">El Recibo se a generado correctamente</h4>
             <hr>
             <h4 style="text-align:center; color:black;"> Si no se te mostro automaticamente el recibo de clic en este boton</h4>
             <h4 style="text-align:center"><a class="btn btn-primary" target="_blank" id="link_to_recibe">Ver Recibo</a></h4>
-            
+
         </div>
     </div>
 </div>
@@ -55,7 +55,7 @@
         $.ajax({
 				      method: "get",
 					  url: "/partials/pay_store",
-					  dataType: "json",     
+					  dataType: "json",
 					  data: { store_buy: true, amount: $("#amount_input").val() }
 					}).done(function(data) {
                 $("#complete_store").show();
@@ -64,9 +64,9 @@
             //    $("#link_to_recibe").attr("href","https://sandbox-dashboard.openpay.mx/paynet-pdf/m8dvprmyk9adbcmhonod/"+data.payment_method.reference+"");
               //  var win = window.open("https://sandbox-dashboard.openpay.mx/paynet-pdf/m8dvprmyk9adbcmhonod/"+data.payment_method.reference+"", '_blank');
                 win.focus();
-            
-                
-              })      
+
+
+              })
        }
     })
 </script>

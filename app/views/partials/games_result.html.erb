@@ -1,33 +1,33 @@
     <style>
-        
+
 .team-div:hover {
     border: 0px solid gold !important;
     border-radius: 5px;
 }
 
     </style>
-												
+
 		<div class="row">
-			<h2 style="text-align:center; font-weight:800; color:black;">Resultados de partidos</h2>
+			<h2 style="text-align:center; font-weight:800; color:white;">Resultados de partidos</h2>
 			<hr>
 			<div class="row">
 				<div class="col-md-1"></div>
-				<div class="col-md-2"><h4 style="color:black">Selecciona una categoria</h4></div>
+				<div class="col-md-2"><h4 style="color:white">Selecciona una categoria</h4></div>
 				<div class="col-md-3"><%= select_tag "category",  options_from_collection_for_select(SportCategory.all, "id", "select_display"), class: 'form_input', id: 'sport_category' %></div>
-				<div class="col-md-2"><h4 style="color:black">Selecciona una semana</h4></div>
+				<div class="col-md-2"><h4 style="color:white">Selecciona una semana</h4></div>
 				<div class="col-md-3"><select class="form-control" id="weeks"></select></div>
 				<div class="col-md-1"></div>
-				
+
 			</div>
-			
+
 			<hr>
 			<div class="row" id="games_row">
 			</div>
 			<div class="row text-center" id="submit_row">
 			</div>
 			<script>
-				
-				
+
+
 				$('#sport_category').change(function(){
 				  var sport_id = $('#sport_category option:selected').val();
 						$.ajax({
@@ -39,15 +39,15 @@
 					  .done(function( data ) {
 							$('#weeks').empty();
 							for( var i in data.survivor_week_games){
-								
+
 								$('#weeks').append('<option value="'+data.survivor_week_games[i].id+'">Semana '+data.survivor_week_games[i].week+'</option>');
 								$('#weeks').selectpicker('refresh');
 
 							}
 						})
 				})
-				
-				
+
+
 				var current_language = $("#current_language").val();
 
         function get_games() {
@@ -71,7 +71,7 @@
 						 var local_score_label = "";
 						 var visit_score_label = "";
 
-						
+
 
 		         if (data.survivor_games[i].local_score !== null) {
 							   local_score_label = "<label class='score_label_client'>" + data.survivor_games[i].local_score + "</label>";
@@ -80,7 +80,7 @@
 						 if (data.survivor_games[i].visit_score !== null){
 		             visit_score_label = "<label class='score_label_client'>" + data.survivor_games[i].visit_score + "</label>";
 						 }
-								$('#games_row').append('<div class="col-md-4 col-xs-12 teams-div"><h4 style="text-align: center; color:black;"> <span>'+moment(data.survivor_games[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+'  </span> </h4> <div class="col-md-6 col-xs-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team.id+'"><img width="50%" src="' + image_url + '">' + winner_team_1 + local_score_label + '</div><div class="col-md-6 col-xs-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team2.id+'">' + winner_team_2 + visit_score_label + '<img width="50%" src="' + image_url2 + '"></div></div>');
+								$('#games_row').append('<div class="col-md-4 col-xs-12 teams-div"><h4 style="text-align: center; color:white;"> <span>'+moment(data.survivor_games[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+'  </span> </h4> <div class="col-md-6 col-xs-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team.id+'"><img width="40%" src="' + image_url + '">' + winner_team_1 + local_score_label + '</div><div class="col-md-6 col-xs-6 team-div" data-game="'+data.survivor_games[i].id+'" data-team="'+data.survivor_games[i].team2.id+'">' + winner_team_2 + visit_score_label + '<img width="40%" src="' + image_url2 + '"></div></div>');
 		         }
 				  }
 
@@ -96,16 +96,16 @@
 				  });
 				}
 
-				
 
-				
 
-				
+
+
+
 				$('#weeks').change(get_games);
 				$('#weeks').each(get_games);
 
-				
 
-				
+
+
 			</script>
 		</div>

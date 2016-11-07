@@ -1,13 +1,21 @@
 
 <style>
+label{color:white;}
 
+input{color:black !important;}
+
+select{color:black !important;}
+
+.dataTables_info{
+  color:white !important;
+}
 
     td < .loser{background-color:red;}
 
 </style>
 
 <div class="col-md-6">
-    <h4 style="text-align:center; font-size:22px; color:#2D68AC">Liga del survivor: <span style="color:black"> <%= @survivor.name %> </span></h4>
+    <h4 style="text-align:center; font-size:22px; color:#2D68AC">Liga del survivor: <span style="color:white"> <%= @survivor.name %> </span></h4>
 </div>
 <div class="col-md-6">
   <h4 style="text-align:center">  <a class="btn btn-primary"  href="/partials/set_survivor_page/<%= @survivor.id %>">Seleccionar Pick semanal</a>  <a class="btn btn-primary"  href="/partials/games_result/">Resultados de Partidos</a> </h4>
@@ -23,13 +31,13 @@
 
 	<div class="col-md-6 col-md-offset-3">
 	<div class="col-md-4" style="background-color:rgba(255, 0, 0, 0.62);border:1px solid black;">
-		<h5 style="text-align:center; color:black;">Eliminado</h5>
+		<h5 style="text-align:center; color:white;">Eliminado</h5>
 	</div>
 		<div class="col-md-4" style="background-color:rgba(49, 255, 0, 0.54);border:1px solid black;">
-		<h5 style="text-align:center; color:black;">Sobreviviente</h5>
+		<h5 style="text-align:center; color:white;">Sobreviviente</h5>
 	</div>
 		<div class="col-md-4" style="border:1px solid black;">
-			<h5 style="text-align:center; color:black;">Esperando Resultado</h5>
+			<h5 style="text-align:center; color:white;">Esperando Resultado</h5>
 	</div>
 	</div>
 </div>

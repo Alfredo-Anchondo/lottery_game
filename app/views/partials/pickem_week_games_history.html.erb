@@ -3,21 +3,30 @@
         width:50% !important;
     }
 
+    label{color:white;}
+
+  	input{color:black !important;}
+
+  	select{color:black !important;}
+
+  	.dataTables_info{
+  		color:white !important;
+  	}
 </style>
 
-<div class="col-md-6"><h4 style="text-align:center; color:#2D68AC; font-size:20px;"> Liga PICK'EM: <span style="color:black;"> <%= @pickem.name %> </span></h4></div>
-<div class="col-md-6"><h4 style="text-align:center">  <a class="btn btn-primary"  href="/partials/pickem/<%= @pickem.id %>">Seleccionar Pick</a>  <a class="btn btn-primary"  href="/partials/pick_history/<%= @pickem.id %>">Temporada</a>  <a class="btn btn-primary"  href="/partials/games_result/">Resultados</a> </h4> </div>
+<div class="col-md-6"><h4 style="text-align:center; color:#2D68AC; font-size:20px;"> Liga PICK'EM: <span style="color:white;"> <%= @pickem.name %> </span></h4></div>
+<div class="col-md-6"><h4 style="text-align:center; color:white;">  <a class="btn btn-primary"  href="/partials/pickem/<%= @pickem.id %>">Seleccionar Pick</a>  <a class="btn btn-primary"  href="/partials/pick_history/<%= @pickem.id %>">Temporada</a>  <a class="btn btn-primary"  href="/partials/games_result/">Resultados</a> </h4> </div>
 
 <div class="clearfix"></div>
 <hr>
 
 
-<h4 style="text-align:center; color:black;"> Selección de semana: <%= select_tag "category",  options_from_collection_for_select(@weeks, "id", "select_display"), prompt: "Selecciona una semana por favor", class: 'form_input', id: 'week_number', :selected => @weeks[1], :style => 'width:50% !important' %>  </h4>
+<h4 style="text-align:center; color:white;"> Selección de semana: <%= select_tag "category",  options_from_collection_for_select(@weeks, "id", "select_display"), prompt: "Selecciona una semana por favor", class: 'form_input', id: 'week_number', :selected => @weeks[1], :style => 'width:50% !important' %>  </h4>
 <hr>
 
 <% @weeks.each do |week| %>
     <div id="<%= week.id %>" class="row week_row" style="display:none; overflow:scroll; padding-bottom:60px !important;">
-        <h5 style="text-align:center;color:black;font-size:20px;">Semana <%= week.week %></h5>
+        <h5 style="text-align:center;color:white;font-size:20px;">Semana <%= week.week %></h5>
         <br>
         <div class="table-responsive">
         <table id="example<%= week.id %>" class="table table-bordered  table-hover table-striped " cellspacing="0" width="100%">

@@ -5,8 +5,8 @@ class Enrachate < ActiveRecord::Base
 
 
     def already_start_question
-     day_tira = TiraEnrachate.where("program_date >= ? and program_date <= ?", DateTime.now.beginning_of_day, DateTime.now.end_of_day).first
-     RelationTiraQuestion.where("tira_enrachate_id = ?",day_tira.id).each do |relation|
+     #day_tira = TiraEnrachate.where("program_date >= ? and program_date <= ?", DateTime.now.beginning_of_day, DateTime.now.end_of_day).first
+     RelationTiraQuestion.where("tira_enrachate_id = ?",current_tira.id).each do |relation|
       if relation.question_enrachate.program_date < DateTime.now
         return true
       end
@@ -50,7 +50,7 @@ class Enrachate < ActiveRecord::Base
       end
       return    @last_day_ticket != nil &&   @last_day_ticket != "" &&   @last_day_ticket != [] ? type_enrachate == 0 ? @last_day_ticket.count + @new_purchases : @last_day_ticket.count   :   @recent_buy_ticket_enrachate != [] && @recent_buy_ticket_enrachate != nil && @recent_buy_ticket_enrachate != "" ?   @recent_buy_ticket_enrachate.count : 0
     else
-    end 
+    end
     end
 
     def past_tira

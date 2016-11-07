@@ -1,6 +1,7 @@
 <style media="screen">
 
 
+
   label > input{ /* HIDE RADIO */
 visibility: hidden; /* Makes input not-clickable */
 position: absolute; /* Remove input from document flow */
@@ -55,9 +56,10 @@ content:url("/assets/radio_button_checked_gold.png");
 
 </style>
 
-<div class="row" style="margin-bottom:80px !important;">
-<h4 style="text-align:center; color:black; font-size:18px;"> Historial de respuestas por dia </h4>
-  <hr>
+<h4 style="text-align:center; color:white; font-size:18px;"> Historial de respuestas por dia </h4>
+
+<div class="row" style="margin-bottom:80px !important; background-color:rgba(255, 255, 255, 0.79)">
+
   <div class="tabbable">
      <ul class="nav nav-tabs">
        <% @tiras.order(:program_date).each do |day|  %>
