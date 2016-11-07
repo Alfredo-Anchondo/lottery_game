@@ -18,6 +18,9 @@
         <tbody>
             <% if @user_charges != nil && @user_charges != [] && @user_charges != ""    %>
     <% @user_charges.each do |charges| %>
+    <script type="text/javascript">
+      alert("<%= charges['method']  %>")
+    </script>
             <tr>
                 <% case charges['method'] %>
                 <% when "card" %>
@@ -73,6 +76,7 @@
 
 <script>
 $(document).ready(function() {
+
       var current_language = $("#current_language").val();
        var languaje;
 
