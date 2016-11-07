@@ -27,6 +27,10 @@
                 <td><%= t('card') %></td>
                 <% when "bank" %>
                 <td><%= t('bank') %></td>
+                <% when "bank_account" %>
+                <td>Transferencia</td>
+                <% when "store" %>
+                <td>Tienda conveniencia</td>
                 <% end %>
                 <td><%= charges['card'] ? charges['card']['brand'] : "Banco" %></td>
                 <td><%= charges['method'] == "card" ? charges['card']['card_number'] : "Banco" %></td>
