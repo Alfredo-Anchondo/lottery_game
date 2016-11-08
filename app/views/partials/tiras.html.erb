@@ -180,18 +180,20 @@ color:black !important;
                                <ul class="nav nav-tabs" style="background-color:#2d68ac;">
                                  <% @closed_quinielas.each do |day|  %>
                                  <%  day.game.game_date.to_date == DateTime.now.to_date  ? @selected_day = day.id : ""   %>
-                                 <li id="<%= day.id %>"  class="<%= day.id == @closed_quinielas.first.id ? "active" : "" %>"><a style="color:white;" href="#tab<%= day.id %>" class="<%= day.game.game_date.to_date == DateTime.now.to_date ? "active" : "" %>" data-toggle="tab"><%= day.game.game_date.to_date %></a>
+                                 <li id="<%= day.id %>"  class="<%= day.id == @closed_quinielas.last.id ? "active" : "" %>"><a style="color:white;" href="#tab<%= day.id %>" class="<%= day.game.game_date.to_date == DateTime.now.to_date ? "active" : "" %>" data-toggle="tab"><%= day.game.game_date.to_date %></a>
                                  </li>
                                   <% end %>
                                </ul>
                                <div class="tab-content">
                                  <% @closed_quinielas.each do |day|  %>
-                                 <div class="tab-pane <%= day.id == @closed_quinielas.first.id  ? "active" : "" %> " id="tab<%= day.id %>">
+                                 <div class="tab-pane <%= day.id == @closed_quinielas.last.id  ? "active" : "" %> " id="tab<%= day.id %>">
                                    <div class="row">
                                      <br>
                                      <h4 style="text-align:center; color:#2d68ac; font-size:20px;"> <%= day.description %> </h4>
                                      <hr style="margin-top:10px; margin-bottom:10px;">
                                       <h4 style="text-align:center; color:black; font-size:20px;">Numero ganador: <span style="color:#11ca10;"> <%= day.winner_number %> </span> </h4>
+                                      <hr style="margin-top:10px; margin-bottom:10px;">
+                                      <h4 style="text-align:center; color:black; font-size:20px;">Bolsa final: <span style="color:#2d68ac;"> $<%= day.initial_balance %> </span> </h4>
                                       <hr style="margin-top:10px; margin-bottom:10px;">
                                      <div class="col-md-4 col-xs-12">
                                        <div class="col-md-5 col-xs-5">
@@ -238,9 +240,9 @@ color:black !important;
 	</div>
 
   <script type="text/javascript">
-      $("#<%= @selected_day %>").focus();
+      $("#<%= @closed_quinielas.last.id %>").focus();
 
-  $('.nav-tabs').scrollLeft($("#<%= @selected_day %>").position().left);
+  $('.nav-tabs').scrollLeft($("#<%= @closed_quinielas.last.id %>").position().left);
   </script>
 
 

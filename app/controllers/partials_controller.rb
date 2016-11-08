@@ -60,7 +60,7 @@ class PartialsController < ApplicationController
     end
 
 	def get_quinielas_no_winner
-		render :json => Quiniela.find_no_winners.order("created_at DESC")
+		render :json => Quiniela.find_no_winners.order("created_at ASC")
 	end
 
     def get_quinielas_mainpage
@@ -571,7 +571,7 @@ end
 
 	def tiras
     @selected_day
-		@closed_quinielas =	Quiniela.where('winner_number != ? ', '').order(id: :desc)
+		@closed_quinielas =	Quiniela.where('winner_number != ? ', '').order(id: :asc)
 	end
 
 
