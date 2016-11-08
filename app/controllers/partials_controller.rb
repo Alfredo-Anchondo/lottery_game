@@ -569,8 +569,9 @@ end
 		end
 	end
 
-	def close_quinielas
-		render :json =>	Quiniela.where('winner_number != ? ', '').order(id: :desc).first(10)
+	def tiras
+    @selected_day
+		@closed_quinielas =	Quiniela.where('winner_number != ? ', '').order(id: :desc)
 	end
 
 

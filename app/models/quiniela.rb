@@ -1,7 +1,9 @@
 class Quiniela < ActiveRecord::Base
 	belongs_to :game
 	before_update :update_winner, :if => :winner_number_changed?
+
 	has_many :quiniela_questions
+ has_many :questions, :through => :quiniela_questions
     has_one :team, :through => :game
     has_one :team2, :through => :game
 	has_attached_file :cap_result
@@ -14,13 +16,13 @@ class Quiniela < ActiveRecord::Base
 	def total_sales
 		QuinielaUser.where('quiniela_id = ?', id).length
 	end
-        
-        
+
+
     def participant_users
 		QuinielaUser.where('quiniela_id = ?', id).pluck(:user_id).uniq().count
 	end
 
-        
+
 	def self.quiniela_game
 		game.game_date
 	end
@@ -48,8 +50,8 @@ class Quiniela < ActiveRecord::Base
 		logger.info ids
 		where(:game_id => ids )
 	end
-		
-		
+
+
 
 		def self.toclose
 			where(:winner_number => '')

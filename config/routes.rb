@@ -124,7 +124,7 @@ Rails.application.routes.draw do
             post "change_score", to: "partials#change_score"
             post "change_pick_team", to: "partials#change_pick_team"
             get "select_pick_1/:id", to: "partials#select_pick_1"
-            get 'tiras'
+            get 'tiras', to: "partials#tiras"
             get "pay_store", to: "partials#pay_store"
             get 'survivor_rules'
             get 'pickem_rules'
@@ -147,7 +147,6 @@ Rails.application.routes.draw do
             get 'access_mail_pick', to: "partials#access_request_mail_pick"
 			      get 'my_leagues', to: "partials#my_leagues"
 			      get 'my_pickem_leagues', to: "partials#my_pickem_leagues"
-			      get 'quinielas_closed', to: "partials#close_quinielas"
 			      get 'next_game'
 			      get 'finish_games'
 			      get 'future_games'

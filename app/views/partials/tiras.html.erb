@@ -1,5 +1,25 @@
 <style>
 
+.nav-tabs {
+overflow-x: auto;
+overflow-y: hidden;
+display: -webkit-box;
+display: -moz-box;
+}
+.nav-tabs>li {
+float: none;
+}
+
+.nav > li.active:hover{
+  border-top: 4px solid #f2f2f2;
+  background: #2d68ac;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+color:black !important;
+}
+
+
     .bootstrap-select{
         width:60px !important;
     }
@@ -51,10 +71,9 @@
 
 <hr>
 <br>
+
 <div class="margin-row" >
   <div class="row" id="tiras_div">
-
-
 
                       <div class="cycle-tira" data-cycle-fx="tileBlind" data-cycle-pause-on-hover="true" data-cycle-speed="200">
 
@@ -145,9 +164,9 @@
 
 
 
-    <div class="row">
+    <div class="row" style="margin-bottom:80px !important;">
 
-         <div class="col-md-8 col-md-offset-2 col-xs-12">
+         <div class="col-md-12  col-xs-12">
               <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>Resultado de Tiras</h5>
@@ -155,14 +174,74 @@
                         </div>
 
                         <div class="ibox-content" id="finish_tiras">
-            <div class="slidertira">
+                          <div class="row" style=" background-color:rgba(255, 255, 255, 0.79)">
 
-            </div>
+                            <div class="tabbable">
+                               <ul class="nav nav-tabs" style="background-color:#2d68ac;">
+                                 <% @closed_quinielas.each do |day|  %>
+                                 <%  day.game.game_date.to_date == DateTime.now.to_date  ? @selected_day = day.id : ""   %>
+                                 <li id="<%= day.id %>"  class="<%= day.id == @closed_quinielas.first.id ? "active" : "" %>"><a style="color:white;" href="#tab<%= day.id %>" class="<%= day.game.game_date.to_date == DateTime.now.to_date ? "active" : "" %>" data-toggle="tab"><%= day.game.game_date.to_date %></a>
+                                 </li>
+                                  <% end %>
+                               </ul>
+                               <div class="tab-content">
+                                 <% @closed_quinielas.each do |day|  %>
+                                 <div class="tab-pane <%= day.id == @closed_quinielas.first.id  ? "active" : "" %> " id="tab<%= day.id %>">
+                                   <div class="row">
+                                     <br>
+                                     <h4 style="text-align:center; color:#2d68ac; font-size:20px;"> <%= day.description %> </h4>
+                                     <hr style="margin-top:10px; margin-bottom:10px;">
+                                      <h4 style="text-align:center; color:black; font-size:20px;">Numero ganador: <span style="color:#11ca10;"> <%= day.winner_number %> </span> </h4>
+                                      <hr style="margin-top:10px; margin-bottom:10px;">
+                                     <div class="col-md-4 col-xs-12">
+                                       <div class="col-md-5 col-xs-5">
+                                         <h4 style="text-align:center"><img width="100%" src="<%= day.game.team.logo_url %>"></h4>
+
+                                       </div>
+                                       <div class="col-md-2 col-xs-2">
+                                         <br>
+                                         <br>
+                                         <h4 style="text-align:center; font-size:30px; color:black;">VS</h4>
+                                         <br>
+                                         <br>
+                                       </div>
+                                       <div class="col-md-5 col-xs-5">
+                                         <h4 style="text-align:center"><img width="100%" src="<%= day.game.team2.logo_url %>"></h4>
+
+                                       </div>
+                                     </div>
+                                     <div class="col-md-8 col-xs-12">
+                                       <h4 style="text-align:center; color:black; font-size:18px;">Respuestas</h4>
+                                       <% day.questions.each_with_index do |question, index| %>
+                                       <% array_answer = day.winner_number.split("") %>
+                                      <div class="col-md-10 col-xs-9">
+                                        <h5> - <%= question.title %> </h5>
+                                      </div>
+                                      <div class="col-md-1 col-xs-1">
+                                        <h5 style="color:<%= array_answer[index] == "0" ? "Red" : "Green" %>">  <%= array_answer[index] == "0" ? "No" : "Si" %> </h5>
+                                      </div>
+                                      <div class="col-md-1 col-xs-1">
+                                        <h5 style="color:black;">  <%= array_answer[index] %> </h5>
+                                      </div>
+                                       <% end %>
+                                     </div>
+                                   </div>
+                                 </div>
+                                  <% end %>
+
+                               </div>
+                             </div>
+                          </div>
                   </div>
             </div>
         </div>
 	</div>
 
+  <script type="text/javascript">
+      $("#<%= @selected_day %>").focus();
+
+  $('.nav-tabs').scrollLeft($("#<%= @selected_day %>").position().left);
+  </script>
 
 
 <div class="modal fade bs-example-modal-sm" id="confirm_buy" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -1159,31 +1238,6 @@
                         });
 
       });
-
-
-</script>
-
-
-<script>
-
-	$.ajax({
-          method: "GET",
-          url: "/partials/quinielas_closed",
-          format: "json"
-        })
-          .done(function(data) {
-			for( var i in data.partials){
-				$('.slidertira').append('<div class="slide"><div class="row"> <h4 style="text-align:center; font-weight:500;"> <label style="font-size:15px;" class="label label-primary"> ' +moment(data.partials[i].game.game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a')+' </label>   </h4> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Número Ganador </h4> <h1 style="font-weight:900; text-align:center; color:#696969;"> '+data.partials[i].winner_number+' </h1> </div> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Bolsa Acumulada </h4> <h2 style="font-weight:900; color:#696969; text-align:center">$ '+data.partials[i].initial_balance+'  </h2> </div> <div class="col-md-6 col-xs-12"> <div class="row"> <div class="col-md-4 col-xs-4"> <h4 style="text-align:center"> <img width="100%" src="'+data.partials[i].game.team.logo_url+'"> </h4> </div> <div class="col-md-2 col-xs-2"><br> <br> <h2 style="text-align:center; font-size:10px; color:black; font-weight:800;"> '+data.partials[i].game.team.name+'  </h2> </div> <div class="col-md-2 col-xs-2"> <br> <br> <h2 style="text-align:center; font-weight:800; color:black; font-size:10px; ">'+data.partials[i].game.team2.name+'</h2> </div> <div class="col-md-4 col-xs-4">  <h4 style="text-align:center"> <img width="100%" src="'+data.partials[i].game.team2.logo_url+'"> </h4> </div> </div> </div>  </div> <hr> </div> ');
-			}
-
-		 	$('.slidertira').bxSlider({
-            mode: 'vertical',
-            minSlides: 4,
-            slideMargin: 13
-    		});
-	});
-
-
 
 
 </script>
