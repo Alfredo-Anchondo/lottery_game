@@ -75,8 +75,8 @@ class PartialsController < ApplicationController
 		render :json =>  Quiniela.find(ids)
 	end
 
-	 def finish_games
-        render :json => Game.finish_games
+	 def lottery
+        @finish_lotteries = Lottery.where("winner_number IS NOT NULL").order(updated_at: :asc)
     end
 
 	def get_user

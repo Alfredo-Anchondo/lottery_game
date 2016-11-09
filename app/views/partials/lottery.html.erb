@@ -1,5 +1,24 @@
 <style>
 
+.nav-tabs {
+overflow-x: auto;
+overflow-y: hidden;
+display: -webkit-box;
+display: -moz-box;
+}
+.nav-tabs>li {
+float: none;
+}
+
+.nav > li.active:hover{
+  border-top: 4px solid #f2f2f2;
+  background: #2d68ac;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+color:black !important;
+}
+
     .bootstrap-select{
         width:60px !important;
     }
@@ -59,24 +78,6 @@
 </div>
 
 
-
-
-
-<div class="row" id="no-lotteries" style="display:none;">
-    <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <div class="row" style="margin:0px; padding:0px;">
-                            <h4 style="text-align:left; color:white;"><%= t('no_lotteries_programed') %><span id="lottery_id_type"> </h4>
-                       </div>
-                    </div>
-                    <div class="ibox-content" style="display: block; text-align:center; background-image: url('/assets/fondonegro.jpg');background-size: cover; background-origin: border-box;">
-                        <br>
-                        <h4 style="text-align:center"><img width="10%" src="/assets/sad.ico"></h4>
-                        <h2 style="color:white; font-weight:900;"><%= t('no_available_lotteries') %></h2>
-                        <h5 style="color:white"><%= t('warning_lotteries') %></h5>
-        </div>
-    </div>
-</div>
 
 
 
@@ -253,32 +254,115 @@
     <div class="clearfix"></div>
 
 
-    <div class="row">
+    <div class="row" style="margin-bottom:80px !important;">
 
-         <div class="col-md-7 col-md-offset-3 col-xs-12">
+         <div class="col-md-12  col-xs-12">
               <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5><%= t('result_lotteries') %></h5>
+                            <h5>Resultado de Loterias</h5>
                             <span class="label label-primary"><%= t('last_results') %></span>
                         </div>
 
-                        <div class="ibox-content" id="finish_lotteries">
-            <div class="slider8">
+                        <div class="ibox-content" id="finish_tiras">
+                          <div class="row" style=" background-color:rgba(255, 255, 255, 0.79)">
 
-            </div>
+                            <div class="tabbable">
+                               <ul class="nav nav-tabs" style="background-color:#2d68ac;">
+                                 <% @finish_lotteries.each do |day|  %>
+                                 <%  day.game.game_date.to_date == DateTime.now.to_date  ? @selected_day = day.id : ""   %>
+                                 <li id="<%= day.id %>"  class="<%= day.id == @finish_lotteries.last.id ? "active" : "" %>"><a style="color:white;" href="#tab<%= day.id %>" class="<%= day.game.game_date.to_date == DateTime.now.to_date ? "active" : "" %>" data-toggle="tab"><%= day.game.game_date.to_date %></a>
+                                 </li>
+                                  <% end %>
+                               </ul>
+                               <div class="tab-content">
+                                 <% @finish_lotteries.each do |day|  %>
+                                 <div class="tab-pane <%= day.id == @finish_lotteries.last.id  ? "active" : "" %> " id="tab<%= day.id %>">
+                                   <div class="row">
+                                     <br>
+                                     <h4 style="text-align:center; color:#2d68ac; font-size:20px;"> <%= day.select_display %> </h4>
+                                     <hr style="margin-top:10px; margin-bottom:10px;">
+                                      <h4 style="text-align:center; color:black; font-size:20px;">Numero ganador: <span style="color:#11ca10;"> <%= day.winner_number %> </span> </h4>
+                                      <hr style="margin-top:10px; margin-bottom:10px;">
+                                      <h4 style="text-align:center; color:black; font-size:20px;">Bolsa final: <span style="color:#2d68ac;"> $<%= day.initial_balance %> </span> </h4>
+                                      <hr style="margin-top:10px; margin-bottom:10px;">
+                                      <h4 style="text-align:center; color:black; font-size:20px;">Marcador Final: </h4>
+                                     <div class="col-md-12 col-xs-12">
+                                       <div class="col-md-5 col-xs-5">
+                                         <div class="col-md-6 col-xs-12">
+                                           <h4 style="text-align:center"><img width="100%" src="<%= day.game.team.logo_url %>"></h4>
+
+                                         </div>
+                                         <div class="col-md-6 col-xs-12">
+                                           <br>
+                                           <br>
+                                           <br class="hide-mobile">
+                                           <h4 style="text-align:center; letter-spacing: -4px; font-size:8vh; color:black;"><% day.game.local_score.to_s.split("").each_with_index do |letter, index| %> <span style="text-align:center; <%= day.game.local_score.to_s.split("").count > 2 ? index == 2 ? "color:red" : "" :  index == 1 ? "color:red" : ""  %> "><%= letter %></span>  <% end %></h4>
+                                           <br>
+                                           <br>
+                                           <br>
+                                         </div>
+                                       </div>
+                                       <div class="col-md-2 col-xs-2">
+                                         <br>
+                                         <br>
+                                         <br>
+                                         <h4 style="text-align:center; font-size:4vh; color:#2d68ac;">VS</h4>
+                                         <br>
+                                         <br>
+                                       </div>
+
+                                       <div class="col-md-5 col-xs-5  only-mobile">
+
+                                         <div class="col-md-6 col-xs-12">
+                                           <h4 style="text-align:center"><img width="100%" src="<%= day.game.team2.logo_url %>"></h4>
+
+                                         </div>
+                                         <div class="col-md-6 col-xs-12">
+                                           <br>
+                                           <br>
+                                           <h4 style="text-align:center; letter-spacing: -4px; font-size:8vh; color:black;"><% day.game.visit_score.to_s.split("").each_with_index do |letter, index| %> <span style="text-align:center; <%= day.game.visit_score.to_s.split("").count > 2 ? index == 2 ? "color:red" : "" :  index == 1 ? "color:red" : ""  %> "><%= letter %></span>  <% end %> </h4>
+                                           <br>
+                                           <br>
+                                         </div>
+                                       </div>
+
+                                       <div class="col-md-5 col-xs-5  hide-mobile">
+                                         <div class="col-md-6 col-xs-12">
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <h4 style="text-align:center; letter-spacing: -4px; font-size:8vh; color:black;"><% day.game.visit_score.to_s.split("").each_with_index do |letter, index| %> <span style="text-align:center; <%= day.game.visit_score.to_s.split("").count > 2 ? index == 2 ? "color:red" : "" :  index == 1 ? "color:red" : ""  %> "><%= letter %></span>  <% end %> </h4>
+                                           <br>
+                                           <br>
+                                         </div>
+                                         <div class="col-md-6 col-xs-12">
+                                           <h4 style="text-align:center"><img width="100%" src="<%= day.game.team2.logo_url %>"></h4>
+
+                                         </div>
+                                       </div>
+
+
+
+
+                                     </div>
+
+                                   </div>
+                                 </div>
+                                  <% end %>
+
+                               </div>
+                             </div>
+                          </div>
                   </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
 	</div>
+
+  <script type="text/javascript">
+      $("#<%= @finish_lotteries.last.id %>").focus();
+
+  $('.nav-tabs').scrollLeft($("#<%= @finish_lotteries.last.id %>").position().left);
+  </script>
 
 
 <!--------------------- MODAL DE CONFIRMACION --------------------------->
@@ -923,53 +1007,6 @@
 </script>
 
 
-
-
-
-
-
-
-    <script>
-    $(document).ready(function(){
-          var current_language = $("#current_language").val();
-        $.ajax({
-          method: "GET",
-          url: " /partials/finish_games",
-          dataType: "json"
-        })
-          .done(function( data ) {
-            for(var i in data.partials){
-
-				if(data.partials[i].lotteries[0]){
-                if (data.partials[i].lotteries[0].winner_number != null){
-                    var lottery_winner = data.partials[i].lotteries[0].winner_number
-					if (lottery_winner < 10){
-						lottery_winner = "0"+lottery_winner+""}
-                }else{
-                    var lottery_winner = "En Juego"
-                }
-				}else{
-
-				}
-            if(data.partials[i].lotteries[0]){
-         $('.slider8').append('<div class="slide"><div class="row"> <h4 style="text-align:center; font-weight:800; color:black;"> <label class="label label-primary"> ' +moment(data.partials[i].game_date,"", current_language).format('dddd D MMMM, YYYY hh:mm a')+'   </label>  </h4> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Número Ganador </h4> <h1 style="font-weight:900; text-align:center; color:#696969;"> '+lottery_winner+' </h1> </div> <div class="col-md-3"> <h4 style="text-align:center; color:black;""> Bolsa: </h4> <h2 style="font-weight:900; color:#696969; text-align:center"> $'+data.partials[i].lotteries[0].initial_balance+'  </h2> </div> <div class="col-md-6 col-xs-12"> <div class="row"> <div class="col-md-4 col-xs-4"> <h4 style="text-align:center"> <img width="100%" src="'+data.partials[i].team.logo_url+'"> </h4> </div> <div class="col-md-2 col-xs-2"><br> <br> <h2 style="text-align:center; color:black; font-weight:800;"> '+data.partials[i].local_score+'  </h2> </div> <div class="col-md-2 col-xs-2"> <br> <br> <h2 style="text-align:center; font-weight:800; color:black;"">'+data.partials[i].visit_score+'</h2> </div> <div class="col-md-4 col-xs-4">  <h4 style="text-align:center"> <img width="100%" src="'+data.partials[i].team2.logo_url+'"> </h4> </div> </div> </div>  </div> <hr> </div> ');
-			}else{
-            }
-
-			}
-
-                $('.slider8').bxSlider({
-            mode: 'vertical',
-            minSlides: 4,
-            slideMargin: 13
-          });
-
-          });
-
-
-
-    });
-    </script>
 
 
 
