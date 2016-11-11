@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require sw
 //= require jquery_ujs
 // require turbolinks
 //= require bootstrap
@@ -37,8 +38,24 @@
 //= require bootstrap-switch
 //= require jquery.innerfade
 
+if ('serviceWorker' in navigator) {
+  console.log('Service Worker is supported');
+  navigator.serviceWorker.register('/serviceworker.js')
+    .then(function(registration) {
+      console.log('Successfully registered!', ':^)', registration);
+      registration.pushManager.subscribe({ userVisibleOnly: true })
+        .then(function(subscription) {
+            console.log('endpoint:', subscription.endpoint);
+        });
+  }).catch(function(error) {
+    console.log('Registration failed', ':^(', error);
+  });
+}
+
+
+
 $(document).ready(function(){
-	
+
 	  $('.collapse-link').click(function () {
         var ibox = $(this).closest('div.ibox');
         var button = $(this).find('i');
@@ -51,19 +68,19 @@ $(document).ready(function(){
             ibox.find('[id^=map-]').resize();
         }, 50);
     });
-    
-    
+
+
                 $('.datetimepicker').datetimepicker();
 
-    
+
       $('select').addClass('selectpicker');
     $('select').data('live-search', true);
-   
-    
+
+
          $(".alert").fadeTo(3000, 500).slideUp(500, function(){
     $(".alert").alert('close');
 });
-      
-    
-    
+
+
+
 });
