@@ -40,7 +40,7 @@
 
 if ('serviceWorker' in navigator) {
   console.log('Service Worker is supported');
-  navigator.serviceWorker.register('/serviceworker.js')
+  navigator.serviceWorker.register('/assets/sw.js')
     .then(function(registration) {
       console.log('Successfully registered!', ':^)', registration);
       registration.pushManager.subscribe({ userVisibleOnly: true })
