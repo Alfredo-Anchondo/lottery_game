@@ -1,5 +1,5 @@
 function onPush(event) {
-  var title = (event.data && event.data.text()) || "Yay a message";)
+  var title = (event.data && event.data.text()) || "Yay a message" ;
 
   event.waitUntil(
     self.registration.showNotification(title, {
