@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require sw
 //= require jquery_ujs
 // require turbolinks
 //= require bootstrap
@@ -37,6 +36,7 @@
 // require bootstrap2-toggle.min
 //= require bootstrap-switch
 //= require jquery.innerfade
+//= require serviceworker-companion
 
 if ('serviceWorker' in navigator) {
   console.log('Service Worker is supported');

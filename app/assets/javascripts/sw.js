@@ -8,6 +8,6 @@ function onPush(event) {
       tag:  "push-simple-demo-notification-tag"
     });
   )
-};
+}
 
 self.addEventListener("push", onPush);
