@@ -96,10 +96,7 @@ var google_remarketing_only = false;
   </div>
         <div class="col-md-6">
 
-  <div class="field">
-      <%= f.label :username, :style => 'color:#696969' %><br />
-      <%= f.text_field :username, class: "form-control", style: "color:black", autofocus: true, required: true %>
-  </div> <br>
+
 	 <div class="field">
     <%= f.label :name, :style => 'color:#696969' %><br />
     <%= f.text_field :name, class: "form-control", style: "color:black", autofocus: false, required: true %>
@@ -115,49 +112,54 @@ var google_remarketing_only = false;
     <%= f.label :email, :style => 'color:#696969' %><br />
     <%= f.email_field :email, class: "form-control", style: "color:black", autofocus: false, required: true %>
   </div>
+	<br>
+	<div class="field">
+<%= f.label :birthday, :style => 'color:#696969' %><br />
+<%= f.date_field :birthday, class: "form-control", style: "color:black", autofocus: true, required: true %>
+<script>
+
+(function() {
+var elem = document.createElement('input');
+elem.setAttribute('type', 'date');
+
+if ( elem.type === 'text' ) {
+ $('#user_birthday').datepicker({changeYear: true, changeMonth: true} );
+}
+})();
+
+
+</script>
+</div>
+
 
 
         </div>
         <div class="col-md-6">
-           <div class="field">
-     <%= f.label :birthday, :style => 'color:#696969' %><br />
-     <%= f.date_field :birthday, class: "form-control", style: "color:black", autofocus: true, required: true %>
-	 <script>
-
-   (function() {
-      var elem = document.createElement('input');
-      elem.setAttribute('type', 'date');
-
-      if ( elem.type === 'text' ) {
-        	$('#user_birthday').datepicker({changeYear: true, changeMonth: true} );
-      }
-   })();
 
 
-	 </script>
-  </div>
-            <br>
 
+<div class="field" style="margin-bottom:9px;">
+         <%= f.label :gender, :class => "", :style => 'color:#696969; margin-bottom:10px;' %>
 
-<div class="field">
-         <%= f.label :gender, :class => "", :style => 'color:#696969' %>
+<br>
+<label style="color:black; font-size:16px;" class="radio-inline">
+  <input  type="radio" name="user[gender]" id="user_gender1" value="Masculino"> Masculino
+</label>
+<label style="color:black; font-size:16px;" class="radio-inline">
+  <input type="radio" name="user[gender]" id="user_gender2" value="Femenino"> Femenino
+</label>
+</div>    <br>
+				<div class="field">
+						<%= f.label "Usuario", :style => 'color:#696969' %><br />
+						<%= f.text_field :username, class: "form-control", style: "color:black", autofocus: true, required: true %>
+				</div> <br>
 
-			  <select class="form-control" name="user[gender]" id="user_gender" required>
-			  	<option style="color:black" value="Masculino">Masculino</option>
-				<option style="color:black" value="Femenino">Femenino</option>
-			  </select>
-
-        </div>    <br>
              <div class="field">
     <%= f.label :password, :style => 'color:#696969' %><br />
-    <%= f.password_field :password, class: "form-control",style: "color:black", autocomplete: "off", required: true %>
+    <%= f.text_field :password, class: "form-control",style: "color:black", autocomplete: "off", required: true %>
   </div> <br>
 
 
-       <div class="field">
-    <%= f.label :password_confirmation, :style => 'color:#696969' %><br />
-    <%= f.password_field :password_confirmation, class: "form-control", style: "color:black", autocomplete: "off", required: true %>
-  </div>
 
 
 <div class="field" style="display:none">
@@ -166,7 +168,8 @@ var google_remarketing_only = false;
   </div>
 
         </div>
-        <br><br> <br>
+				<div class="clearfix"></div>
+        <br>
 
 		<div class="field">
 			<%= f.label "Recomendado por:", :style => "color:#696969; margin-top:3%" %><br />
@@ -372,13 +375,6 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 	})
 
 
-	$('#user_password_confirmation').change(function(){
-		if($('#user_password_confirmation').val() == pas){
 
-		}else{
-			alert('La contraseña y la confirmacion no coinciden');
-			$('#user_password_confirmation').val('');
-		}
-	})
 
 </script>
