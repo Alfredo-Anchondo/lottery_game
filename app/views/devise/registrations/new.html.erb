@@ -171,7 +171,9 @@ if ( elem.type === 'text' ) {
 				<div class="clearfix"></div>
         <br>
 
-		<div class="field">
+ <h4 style="color:#2d68ac;  cursor:pointer;" id="promotional">¿Tienes un código promocional?</h4>
+
+		<div id="promotional_div" class="field" style="display:none;">
 			<%= f.label "Recomendado por:", :style => "color:#696969; margin-top:3%" %><br />
 	   <input id="user_reference_by_friend" name="user[reference_by_friend]" value="" placeholder="Codigo de referencia" class="form-control" style="margin-bottom:3%; text-transform:uppercase; color:black; text-align:center;">
   </div>
@@ -374,7 +376,9 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 		add_gift()
 	})
 
-
+$("#promotional").click(function(){
+	$("#promotional_div").css("display","block");
+})
 
 
 </script>
