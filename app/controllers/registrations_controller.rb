@@ -8,32 +8,33 @@ class RegistrationsController < Devise::RegistrationsController
     if resource.persisted?
 		 if @user.reference_by_friend != nil && @user.reference_by_friend != ""
 		  logger.info "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NO maaaaa %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-		  x = User.search_reference1(@user.reference_by_friend) 
+		  x = User.search_reference1(@user.reference_by_friend)
              if x == nil || x == [] || x == ""
              else
 		    logger.info x
-             
+
 		  	if @user.gift_credit == nil
 				last = 0
 		  	else
 				last = Integer(@user.gift_credit)
 		  	end
-			 
+
 		    @user1 = User.find(x)
-		 
+
 		  	if @user1[0].gift_credit == nil
 				last1 = 0
 		  	else
 				last1 = Integer(@user1[0].gift_credit)
 		  	end
 		  @user1[0].update( :gift_credit => last1 +10)
-		  @user.update( :gift_credit =>  last + 10) 
+		  @user.update( :gift_credit =>  last + 10)
 		  logger.info @user1
 		  logger.info @user.gift_credit
-		  logger.info @user1[0].gift_credit 
+		  logger.info @user1[0].gift_credit
              end
 	  end
-		
+    @user.update( :gift_credit =>  @user.gift_credit.to_i + 50) 
+
     BuyMailer.welcome_user(@user).deliver
       if resource.active_for_authentication?
         sign_up(resource_name, resource)
@@ -48,11 +49,11 @@ class RegistrationsController < Devise::RegistrationsController
       respond_with resource
     end
   end
-	
+
 	protected
 
   def configure_permitted_parameters
 	  devise_parameter_sanitizer.for(:sign_up).push(:name, :last_name, :gender, :balance, :username, :password, :role_id, :birthday, :reference_by_friend, :friend_reference, :gift_credit)
   end
-	
+
 end
