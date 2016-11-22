@@ -2202,12 +2202,11 @@ body{ background-image: url("/assets/images/bg1.jpg") !important;
 
 <script type="text/javascript">
 $(document).ready(function(){
-	if (window.webkitNotifications) {
+	if (!("Notification" in window)) {
+     alert("This browser does not support desktop notification");
+		 $("#subscriber-pop-up-box").css("display","none");
+   }
 
-	}
-	else {
-		$("#subscriber-pop-up-box").css("display","none");
-	}
 })
 
 </script>
