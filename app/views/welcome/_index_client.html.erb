@@ -2201,10 +2201,13 @@ body{ background-image: url("/assets/images/bg1.jpg") !important;
 
 
 <script type="text/javascript">
-if (window.webkitNotifications) {
+$(document).ready(function(){
+	if (window.webkitNotifications) {
 
-}
-else {
-	$("#subscriber-pop-up-box").css("display","none");
-}
+	}
+	else {
+		$("#subscriber-pop-up-box").css("display","none");
+	}
+})
+
 </script>
