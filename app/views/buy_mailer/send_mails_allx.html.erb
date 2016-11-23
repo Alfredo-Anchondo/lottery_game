@@ -199,7 +199,8 @@
                                       <% if @lotteries_can == true %>
                                    <% @lotteries.each do |lottery| %>
                                      <h3 style="color:black;"> <%= lottery.select_display %> </h3>
-                                     <h4> <span>BOLSA: $<%=lottery.initial_balance%> </span>  <span style="margin-left:5%">PRECIO: $<%= lottery.price %> </span>    </h4>
+                                     <h4> <span>BOLSA:  <span style="color:#2d68ac">$<%=lottery.initial_balance%></span> </span>  <span style="margin-left:5%">PRECIO:  <span style="color:#2d68ac">$<%= lottery.price %> </span> </span>    </h4>
+                                     <br>
                                      <% end %>
                                    <% end %>
                                    <br>
