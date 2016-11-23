@@ -188,7 +188,7 @@ class BuyMailer < ActionMailer::Base
     @introduction = content
     @lotteries = Lottery.where("winner_number IS NULL")
     @tiras = Quiniela.where("winner_number IS NULL")
-    @enrachate = Enrachate.where("end_date >= ? and winner IS NULL",DateTime.now)
+    @enrachates = Enrachate.where("end_date >= ? and winner IS NULL",DateTime.now)
     attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
 
 		mail(to: mails, subject: subject)
