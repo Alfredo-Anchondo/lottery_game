@@ -36,7 +36,7 @@ end
 		logger.info @content
 		logger.info @subject
 		@emails.each do |email|
-			BuyMailer.send_mails_all(email, @subject, @content).deliver
+			BuyMailer.send_mails_allx(email, @subject, @content).deliver
 		end
 		else
 			@email = []
@@ -46,7 +46,7 @@ end
 		logger.info @content
 		logger.info @subject
 		@users.each do |email|
-			BuyMailer.send_mails_all(email, @subject, @content).deliver
+			BuyMailer.send_mails_allx(email, @subject, @content).deliver
 		end
 		end
 	end

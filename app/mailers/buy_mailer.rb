@@ -184,7 +184,7 @@ class BuyMailer < ActionMailer::Base
 		mail(to: @user.email, subject: '[DonBillete] Comprobante de compra de billetes')
 	end
 
-	def send_mails_all(mails, subject, content)
+	def send_mails_allx(mails, subject, content)
     @introduction = content
     @lotteries = Lottery.where("winner_number IS NULL")
     @tiras = Quiniela.where("winner_number IS NULL")
