@@ -180,7 +180,7 @@
                 <!-- Hero Image, Flush : BEGIN -->
                 <tr>
                     <td bgcolor="#ffffff">
-                    <h2><%= @introduction %></h2>
+                    <h2 style="text-align:center"><%= @introduction %></h2>
                     </td>
                 </tr>
                 <!-- Hero Image, Flush : END -->
@@ -199,6 +199,7 @@
                                       <% if @lotteries_can == true %>
                                    <% @lotteries.each do |lottery| %>
                                      <h3> <%= lottery.select_display %> </h3>
+                                     <h4> <span>BOLSA: $<%=lottery.initial_balance%> </span>  <span>PRECIO: $<%= lottery.price %> </span>    </h4>
                                      <% end %>
                                    <% end %>
                                    <br>
