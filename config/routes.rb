@@ -256,6 +256,12 @@ Rails.application.routes.draw do
 	  root 'welcome#index'
 
 
+    namespace :api do
+       namespace :v1 do
+         resources :users
+         get "login", to: "/api/v1/login#login"
+       end
+     end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
