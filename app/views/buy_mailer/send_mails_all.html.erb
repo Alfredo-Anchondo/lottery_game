@@ -195,15 +195,21 @@
                                    <br>
                                    <h2>Loterías</h2>
                                    <hr>
+                                      <% @lotteries_can = @lotteries != nil ? true : false %>
+                                      <% if @lotteries_can == true %>
                                    <% @lotteries.each do |lottery| %>
                                      <h3> <%= lottery.select_display %> </h3>
+                                     <% end %>
                                    <% end %>
                                    <br>
 
                                    <h2>Tiras</h2>
                                    <hr>
-                                   <% @tiras.each do |tira| %>
+                                   <% @tiras_can = @tiras != nil ? true : false %>
+                                   <% if @tiras_can == true %>
+                                   <% @tiras.each do |tira|  %>
                                        <h3> <%= tira.description %> </h3>
+                                   <% end %>
                                    <% end %>
 
                                    <br>
@@ -211,8 +217,11 @@
                                    <h2>Enrachates</h2>
                                    <hr>
 
+                                   <% @enrachate_can = @enrachates != nil ? true : false %>
+                                   <% if @enrachate_can == true %>
                                    <% @enrachates.each do |enrachate| %>
                                      <h3> <%= enrachate.name %> </h3>
+                                   <% end %>
                                    <% end %>
 
 
