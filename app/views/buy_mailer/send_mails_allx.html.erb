@@ -210,7 +210,7 @@
                                    <% @tiras_can = @tiras != nil ? true : false %>
                                    <% if @tiras_can == true %>
                                    <% @tiras.each do |tira|  %>
-                                       <h3> <%= tira.description %> </h3>
+                                       <h3 style="color:black"> <%= tira.description %> </h3>
                                         <h4> <span>BOLSA:  <span style="color:#2d68ac">$<%=tira.initial_balance%></span> </span>  <span style="margin-left:5%">PRECIO:  <span style="color:#2d68ac">$<%= tira.price %> </span> </span>    </h4>
                                         <br>
                                    <% end %>
@@ -224,7 +224,7 @@
                                    <% @enrachate_can = @enrachates != nil ? true : false %>
                                    <% if @enrachate_can == true %>
                                    <% @enrachates.each do |enrachate| %>
-                                     <h3> <%= enrachate.name %> </h3>
+                                     <h3 style="color:black"> <%= enrachate.name %> </h3>
                                      <h4><span>BOLSA:<span style="color:#2d68ac"> $<%= enrachate.initial_balance %> </span></span> <span style="margin-left:5%">PRECIO:<span style="color:#2d68ac"> $<%= enrachate.price %> </span></span> </h4>
                                      <br>
                                    <% end %>
