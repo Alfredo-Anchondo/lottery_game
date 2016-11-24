@@ -186,15 +186,13 @@ class BuyMailer < ActionMailer::Base
 
 	def send_mails_allx(mails, subject, content)
     @introduction = content
-    @array_teams_lotteries = []
     @lotteries = Lottery.where("winner_number IS NULL")
     @lotteries.each_with_index do |lottery, index|
         attachments.inline[index.to_s+'team.png'] = File.read(lottery.game.team.logo_path)
         attachments.inline[index.to_s+'team2.png'] = File.read(lottery.game.team2.logo_path)
     end
-    @tiras = Quiniela.where("winner_number IS NULL")
-    @tiras.each_with_index do |tira|
-      logger.info "Entre"
+    @tiras_m = Quiniela.where("winner_number IS NULL")
+    @tiras_m.each_with_index do |tira|
       attachments.inline[index.to_s+'tteam.png'] = File.read(tira.game.team.logo_path)
       attachments.inline[index.to_s+'tteam2.png'] = File.read(tira.game.team2.logo_path)
     end

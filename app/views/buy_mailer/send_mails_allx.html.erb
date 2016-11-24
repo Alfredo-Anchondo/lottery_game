@@ -210,9 +210,9 @@
 
                                   <h2>Tiras</h2>
                                   <hr>
-                                  <% @tiras_can = @tiras != nil ? true : false %>
+                                  <% @tiras_can = @tiras_m != nil ? true : false %>
                                     <% if @tiras_can == true %>
-                                    <% @tiras.each_with_index do |tira, index|  %>
+                                    <% @tiras_m.each_with_index do |tira, index|  %>
                                     <% logger.info "entre" %>
                                         <h3 style="color:black"> <%= tira.description %> </h3>
                                         <h4>  <%= image_tag attachments[index.to_s+'tteam.png'].url, :style => "height:100px; margin-left:5%; width:100px;" -%> <%= image_tag attachments[index.to_s+'tteam2.png'].url, :style => "height:100px; margin-left:5%; width:100px;" -%></h4>
