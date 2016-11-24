@@ -226,7 +226,7 @@
                                       <% if @lotteries_can == true %>
                                    <% @lotteries.each_with_index do |lottery, index| %>
                                      <h3 style="color:black;"> <%= lottery.select_display %> </h3>
-                                     <h4>  <%= image_tag attachments[index.to_s+'team.png'].url, :style => "height:100px; margin-left:10%; width:30%;" -%> <%= image_tag attachments[index.to_s+'team2.png'].url, :style => "height:100px; margin-left:10%; width:30%;" -%></h4>
+                                     <h4>  <%= image_tag attachments[index.to_s+'team.png'].url, :style => "height:100px; margin-left:5%; width:20%;" -%> <%= image_tag attachments[index.to_s+'team2.png'].url, :style => "height:100px; margin-left:5%; width:20%;" -%></h4>
                                      <h4> <span>BOLSA:  <span style="color:#2d68ac">$<%=lottery.initial_balance%></span> </span>  <span style="margin-left:5%">PRECIO:  <span style="color:#2d68ac">$<%= lottery.price %> </span> </span>    </h4>
                                      <br>
                                      <% end %>
