@@ -191,7 +191,7 @@ class BuyMailer < ActionMailer::Base
         attachments.inline[index.to_s+'team.png'] = File.read(lottery.game.team.logo_path)
         attachments.inline[index.to_s+'team2.png'] = File.read(lottery.game.team2.logo_path)
     end
-    @tiras_m = Quiniela.where("winner_number IS NULL")
+    @tiras_m = Quiniela.where("winner_number = ?", "")
     @tiras_m.each_with_index do |tira, index|
       attachments.inline[index.to_s+'tteam.png'] = File.read(tira.game.team.logo_path)
       attachments.inline[index.to_s+'tteam2.png'] = File.read(tira.game.team2.logo_path)
