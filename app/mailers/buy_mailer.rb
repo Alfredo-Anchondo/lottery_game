@@ -193,6 +193,10 @@ class BuyMailer < ActionMailer::Base
         attachments.inline[index.to_s+'team2.png'] = File.read(lottery.game.team2.logo_path)
     end
     @tiras = Quiniela.where("winner_number IS NULL")
+    @tiras.each_with_index do |tira|
+      attachments.inline[index.to_s+'tteam.png'] = File.read(tira.game.team.logo_path)
+      attachments.inline[index.to_s+'tteam2.png'] = File.read(tira.game.team2.logo_path)
+    end
     @enrachates = Enrachate.where("end_date >= ? and winner IS NULL",DateTime.now)
     attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
 

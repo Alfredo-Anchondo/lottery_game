@@ -194,6 +194,7 @@
                             <h2 class="welcome">Te invitamos a descubrir nuestros nuevos juegos disponibles:</h2>
                                    <br>
                                    <h2>Enrachates</h2>
+                                   <h5>Participa en nuestro enrachate 25, el cual esta siempre activo, y gana increibles premios.</h5>
                                    <hr>
 
                                    <% @enrachate_can = @enrachates != nil ? true : false %>
@@ -211,8 +212,9 @@
                                   <hr>
                                   <% @tiras_can = @tiras != nil ? true : false %>
                                     <% if @tiras_can == true %>
-                                    <% @tiras.each do |tira|  %>
+                                    <% @tiras.each_with_index do |tira, index|  %>
                                         <h3 style="color:black"> <%= tira.description %> </h3>
+                                        <h4>  <%= image_tag attachments[index.to_s+'tteam.png'].url, :style => "height:100px; margin-left:5%; width:20%;" -%> <%= image_tag attachments[index.to_s+'tteam2.png'].url, :style => "height:100px; margin-left:5%; width:20%;" -%></h4>
                                          <h4> <span>BOLSA:  <span style="color:#2d68ac">$<%=tira.initial_balance%></span> </span>  <span style="margin-left:5%">PRECIO:  <span style="color:#2d68ac">$<%= tira.price %> </span> </span>    </h4>
                                      <br>
                                   <% end %>
