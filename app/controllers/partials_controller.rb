@@ -384,7 +384,7 @@ end
 	end
 
    def top_100_enrachate
-     @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now, nil).first
+     @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ? and price != ?",0,Time.now,Time.now, nil,0).first
      if @enrachate != "" && @enrachate != [] && @enrachate != nil
        @top_100 = []
        @tickets_for_enrachate = EnrachateUser.where("enrachates_id = ?", @enrachate.id).pluck(:enrachate_user_id).uniq
@@ -407,7 +407,7 @@ end
    end
 
     def enrachate
-        @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now,nil).first
+        @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ? and price != ?",0,Time.now,Time.now,nil,0).first
         if @enrachate != "" && @enrachate != [] && @enrachate != nil
 
         @current_tira = @enrachate.current_tira
@@ -471,13 +471,13 @@ end
     end
 
     def my_ticket_history
-      @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now,nil).first
+      @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ? and price != ?",0,Time.now,Time.now,nil,0).first
       @tickets = EnrachateUser.where("user_id = ? and enrachates_id = ?", current_user.id, @enrachate.id)
     end
 
     def my_enrachate_leagues
       @enrachates_id = EnrachateUser.where("user_id = ?", current_user.id ).pluck(:enrachates_id).uniq
-      @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now, nil).first
+      @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ? and price != ?",0,Time.now,Time.now, nil,0).first
       @current_tira = @enrachate.current_tira
       @last_ticket = EnrachateUser.where("user_id = ? and enrachates_id = ? and tira_enrachate_id = ?", current_user.id, @enrachate.id,@current_tira.id ).last
     end
@@ -531,7 +531,7 @@ end
 
 
     def enrachate_history
-        @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now,nil).first
+        @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ? and price != ?",0,Time.now,Time.now,nil, 0).first
         @current_tira = @enrachate.current_tira
         @last_tira = @enrachate.past_tira
         @future_tira = @enrachate.future_tira
