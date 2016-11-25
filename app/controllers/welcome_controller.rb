@@ -24,6 +24,22 @@ class WelcomeController < ApplicationController
 					@racha_values.push(@count_ticket)
 					end
 				end
+
+				@current_tira_special = @enrachate_special.current_tira
+				@last_tira_special = @enrachate_special.past_tira
+				@future_tira_special = @enrachate_special.future_tira
+				@tickets_for_enrachate_special = EnrachateUser.where("enrachates_id = ?", @enrachate_special.id).pluck(:enrachate_user_id).uniq
+				@racha_values_special = []
+				 @tickets_for_enrachate_special.each do | ticket |
+					 @tickets_s_special = EnrachateUser.where("enrachate_user_id = ? and status = ?",ticket, "alive")
+					 @count_ticket_special = EnrachateUser.where("enrachate_user_id = ? and status = ?",ticket, "alive").count
+					 last_special =  @tickets_s_special.where("tira_enrachate_id = ?", @last_tira_special.id).count
+					 current_special =  @tickets_s_special.where("tira_enrachate_id = ?", @current_tira_special.id).count
+					 if last_special != 0 || current_special != 0
+					 @racha_values_special.push(@count_ticket_special)
+					 end
+				 end
+
 	end
 
 	def no_sign_in
