@@ -99,7 +99,7 @@ body{ background-image: url("/assets/images/bg1.jpg") !important;}
           <% if enrachate.winner != nil && enrachate.winner != "" && enrachate.winner != [] %>
           <% else %>
             <% if enrachate.type_enrachate == 0 %>
-            <% if encharate.id = 18 %>
+            <% if encharate.id == 18 %>
             <li class="menu__item"><a target="_self" class="menu__link" href="/partials/enrachate_special"><%= enrachate.name %></a></li>
             <% else %>
               <li class="menu__item"><a target="_self" class="menu__link" href="/partials/enrachate"><%= enrachate.name %></a></li>
