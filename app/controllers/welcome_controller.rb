@@ -8,6 +8,7 @@ class WelcomeController < ApplicationController
        @picks = Pick.where(:to_mainpage => true)
 			 @enrachates = Enrachate.where("initial_date >= ? and end_date >= ? and winner IS NULL and type_enrachate = ?",DateTime.now.to_date,DateTime.now.to_date, 1)
 			 @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ?",0,Time.now,Time.now, nil).first
+			 @enrachate_special = Enrachate.find(18);
 
 			 @current_tira = @enrachate.current_tira
 			 @last_tira = @enrachate.past_tira
