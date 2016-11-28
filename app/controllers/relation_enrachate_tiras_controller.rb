@@ -36,10 +36,17 @@ end
              ticket.update(:status => "alive")
              BuyMailer.close_question(ticket.user.email, "Vivo" ,ticket).deliver
           @racha_count = EnrachateUser.where("enrachate_user_id = ? and status = ? ",  ticket.enrachate_user_id, "alive").count
+          if ticket.enrachates_id == 18
+            if @racha_count == 30
+                 @winner = true
+                 @winner_user = ticket.user
+            end
+          else
           if @racha_count == 25
                @winner = true
                @winner_user = ticket.user
           end
+        end
          end
 
          @incorrects_tickets_for_tira = EnrachateUser.where("question_enrachate_id = ? and tira_enrachate_id = ?  and answer = ?",@question_id, @tira_id, @incorrect_answer)
