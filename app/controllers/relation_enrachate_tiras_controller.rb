@@ -37,7 +37,7 @@ end
              BuyMailer.close_question(ticket.user.email, "Vivo" ,ticket).deliver
           @racha_count = EnrachateUser.where("enrachate_user_id = ? and status = ? ",  ticket.enrachate_user_id, "alive").count
           if ticket.enrachates_id == 18
-            if @racha_count == 30
+            if @racha_count == 10
                  @winner = true
                  @winner_user = ticket.user
             end
