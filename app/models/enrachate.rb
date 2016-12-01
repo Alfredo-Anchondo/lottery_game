@@ -2,6 +2,22 @@ class Enrachate < ActiveRecord::Base
     has_many :relation_enrachate_tiras
     has_many :tira_enrachates, :through => :relation_enrachate_tiras
     has_many :enrachate_users
+    belongs_to :user
+    after_create :relation_to_tiras
+
+
+
+    def relation_to_tiras
+              logger.info "entre en el ciclo"
+              tira_enracha = TiraEnrachate.where("DATE(program_date) >= ? and DATE(program_date) <= ?", initial_date.to_date, end_date.to_date)
+
+              tira_enracha.each do |game|
+                relation = RelationEnrachateTira.new
+                relation.enrachate_id = id
+                relation.tira_enrachate_id = game.id
+                relation.save
+              end
+    end
 
 
     def already_start_question

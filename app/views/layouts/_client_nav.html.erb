@@ -87,9 +87,11 @@ body{ background-image: url("/assets/images/bg1.jpg") !important;}
 					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/enrachate">Enrachate 25</a></li>
           <li class="menu__item"><a target="_self" class="menu__link" href="/partials/enrachate_special">Enrachate a $1000</a></li>
 					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/enrachates_survivor">Survivor</a></li>
+          <li class="menu__item"><a target="_self" class="menu__link" href="/enrachates/new">Crear Enrachate</a></li>
 					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/my_enrachate_tickets">Mis billetes</a></li>
 					<li class="menu__item"><a target="_self" class="menu__link" href="/partials/answer_register">Respuestas</a></li>
-					<li class="menu__item"><a class="menu__link" data-submenu="submenu-4-1" href="#">Mis ligas</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-4-1" href="#">Mis ligas participando</a></li>
+          <li class="menu__item"><a class="menu__link" data-submenu="submenu-4-2" href="#">Mis ligas creadas</a></li>
 				</ul>
 				<!-- Submenu 4-1 -->
 				<ul data-menu="submenu-4-1" class="menu__level">
@@ -112,6 +114,13 @@ body{ background-image: url("/assets/images/bg1.jpg") !important;}
           <% end %>
 
 				</ul>
+
+        <ul data-menu="submenu-4-2" class="menu__level">
+          <% Enrachate.where("user_id = ?",current_user.id).each do |enrachate| %>
+            <li class="menu__item"><a target="_self"a class="menu__link" href="/partials/my_enrachate_create/<%= enrachate.id %>"><%= enrachate.name %></a></li>
+          <% end %>
+
+        </ul>
 
         <ul data-menu="submenu-5" class="menu__level">
           <li class="menu__item"><a target="_self" class="menu__link" href="/partials/tiras">Tiras Home</a></li>

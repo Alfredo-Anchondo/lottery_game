@@ -36,7 +36,7 @@ class SurvivorUsersController < ApplicationController
     @survivor_user.destroy
     respond_with(@survivor_user)
   end
-  
+
   private
     def set_survivor_user
       @survivor_user = SurvivorUser.find(params[:id])

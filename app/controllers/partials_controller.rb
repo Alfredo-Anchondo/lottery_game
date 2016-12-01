@@ -11,6 +11,12 @@ class PartialsController < ApplicationController
      render "credit_card_form"
   end
 
+  def my_enrachate_create
+    @enrachate = Enrachate.find(params[:id])
+    @enrachate_users = EnrachateUser.where("enrachates_id = ?", @enrachate.id)
+  end
+
+
 	def buy_random_quinielas
 		@numbers = params[:numbers]
 		@price = params[:price]

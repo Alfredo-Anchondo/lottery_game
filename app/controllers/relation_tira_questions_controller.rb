@@ -1,4 +1,5 @@
 class RelationTiraQuestionsController < ApplicationController
+  
   before_action :set_relation_tira_question, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

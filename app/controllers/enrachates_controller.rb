@@ -1,7 +1,11 @@
 class EnrachatesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_enrachate, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
+
+
+
 
   def index
     @enrachates = Enrachate.all
@@ -42,6 +46,6 @@ class EnrachatesController < ApplicationController
     end
 
     def enrachate_params
-      params.require(:enrachate).permit(:price, :name, :initial_balance, :percentage, :type_enrachate, :description, :winner, :initial_date, :end_date)
+      params.require(:enrachate).permit(:price, :user_id, :access_key, :name, :initial_balance, :percentage, :type_enrachate, :description, :winner, :initial_date, :end_date)
     end
 end

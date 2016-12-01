@@ -1,0 +1,34 @@
+<div class="col-md-12 col-xs-12" style="background-color:rgba(255, 255, 255, 0.50); color:black; margin-bottom:80px !important;">
+  <hr>
+  <h4 style="text-align:center; font-size:18px;">Bienvenido a tu liga creada, llamada: <span style="color:#2d68ac"><%= @enrachate.name %></span> </h4>
+  <hr>
+
+<div class="col-md-6 col-xs-6">
+    <h4 style="text-align:center; font-size:16px;">Fecha de inicio: <span style="color:#2d68ac"> <%= @enrachate.initial_date.strftime('%d %b %Y %H:%M:%S')  %> </span> </h4>
+</div>
+<div class="col-md-6 col-xs-6">
+  <h4 style="text-align:center; font-size:16px;">Fecha de final: <span style="color:#2d68ac"> <%= @enrachate.end_date.strftime('%d %b %Y %H:%M:%S')  %> </span> </h4>
+</div>
+<div class="clearfix">
+
+</div>
+<hr>
+
+<div class="col-md-6 col-xs-12">
+  <h4 style="text-align:center; font-size:18px;">Datos Generales</h4>
+  <hr>
+  <h4 style="text-align:center; font-size:16px;">Precio: <span  style="color:#2d68ac"> $<%= @enrachate.price %> </span> </h4>
+  <br>
+  <h4 style="text-align:center; font-size:16px;">Bolsa Acumulada: <span  style="color:#2d68ac"> $<%= @enrachate.initial_balance %> </span> </h4>
+  <br>
+  <h4 style="text-align:center; font-size:16px;">Contraseña: <span  style="color:#2d68ac"> <%= @enrachate.access_key %> </span> </h4>
+  <hr>
+</div>
+
+<div class="col-md-6 col-xs-12">
+  <h4 style="text-align:center; font-size:18px;">Usuarios Participando</h4>
+  <hr>
+  <h1 style="text-align:center; font-weight:800;"><%= @enrachate_users.count %></h1>
+</div>
+
+</div>

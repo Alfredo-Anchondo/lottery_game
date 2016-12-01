@@ -14,6 +14,7 @@
             <thead>
               <tr>
                                   <th><%= t("activerecord.attributes.enrachate.name") %></th>
+                                  <th><%= t("activerecord.attributes.enrachate.user_id") %></th>
                                   <th><%= t("activerecord.attributes.enrachate.price") %></th>
                                   <th><%= t("activerecord.attributes.enrachate.initial_balance") %></th>
                                   <th><%= t("activerecord.attributes.enrachate.percentage") %></th>
@@ -22,6 +23,7 @@
                                   <th><%= t("activerecord.attributes.enrachate.winner") %></th>
                                   <th><%= t("activerecord.attributes.enrachate.initial_date") %></th>
                                   <th><%= t("activerecord.attributes.enrachate.end_date") %></th>
+                                  <th><%= t("activerecord.attributes.enrachate.access_key") %></th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -29,7 +31,8 @@
             <tbody>
               <% @enrachates.each do |enrachate| %>
               <tr>
-                                  <td><%= enrachate.name %></td>    
+                                  <td><%= enrachate.name %></td>
+                                  <td><%= enrachate.user ? enrachate.user.select_display : "" %></td>
                                   <td><%= enrachate.price %></td>
                                   <td><%= enrachate.initial_balance %></td>
                                   <td><%= enrachate.percentage %></td>
@@ -38,6 +41,7 @@
                                   <td><%= enrachate.winner %></td>
                                   <td><%= enrachate.initial_date %></td>
                                   <td><%= enrachate.end_date %></td>
+                                  <td><%= enrachate.access_key %></td>
                                 <td class="action-link">
                   <% if can? :show,enrachate %>
                     <%= link_to enrachate, :class => "btn btn-default", :title => t("actions.show") do %>
@@ -61,7 +65,7 @@
           </table>
         </div>
         <div class="text-center">
-      
+
         </div>
       </div>
       <!-- end panel-body -->
@@ -89,13 +93,13 @@
 <script>
        var current_language = $("#current_language").val();
        var languaje;
-    
+
     if(current_language == "en"){
     languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
 }else{
     languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 }
-    
+
 $('#data-table').DataTable({
     responsive: true,
      "language": {

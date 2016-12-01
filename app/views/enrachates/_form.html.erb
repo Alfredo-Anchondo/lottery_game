@@ -16,6 +16,32 @@
 
 
 <div class="col-md-12">
+
+  <div class="form-group">
+    <div class="col-md-4">
+
+    </div>
+  <%= f.label :user_id, :class => "col-md-1" %>
+  <div class="col-md-3">
+    <label> <%= current_user.select_display %> </label>
+  <%= f.hidden_field :user_id, :class => "form-control", :value => current_user.id %>
+  </div>
+  </div>
+
+  <hr>
+
+  <% if current_user.role.is_admin? %>
+
+  <%else%>
+    <h4 style="text-align:center; color:#2d68ac; font-size:18px;"> ¿Quieres crear una liga de enrachate para invitar a tus amigos y participar solo con ellos?</h4>
+    <h4 style="text-align:center; color:black; font-size:16px;">!No te preocupes nosotros nos encargamos de administrar toda la liga!</h4>
+    <h4 style="text-align:center; color:black; font-size:16px;">!Solo debes agregar una contraseña y compartirla con tus amigos!</h4>
+  <%end%>
+
+  <hr>
+
+  <% if current_user.role.is_admin? %>
+
         <div class="form-group">
           <%= f.label :initial_date, :class => "col-md-2" %>
           <div class="col-md-10">
@@ -28,59 +54,150 @@
             <%= f.datetime_select :end_date, :class => "form-control" %>
           </div>
         </div>
+
+        <% else %>
+
+        <div class="containerx">
+    <div class="row">
+        <div class='col-md-5'>
+          <h4 style="text-align:center"> Fecha de Inicio: </h4>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input id="enrachate_initial_date" name="enrachate[initial_date]" type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+        <div class='col-md-5'>
+            <h4 style="text-align:center"> Fecha de Finalizado: </h4>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker2'>
+                    <input id="enrachate_end_date" name="enrachate[end_date]" type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                  sideBySide: true,
+                  format: "D/MM/YYYY H:mm",
+                  minDate: new Date()
+                });
+                $('#datetimepicker2').datetimepicker({
+                  sideBySide: true,
+                  format: "D/MM/YYYY H:mm",
+                  minDate: new Date()
+                });
+            });
+        </script>
+    </div>
 </div>
 
+<% end %>
+
+
+</div>
+
+<div class="clearfix">
+
+</div>
+<hr>
+
 <!-- begin col-md-6 -->
-<div class="col-md-6">
+<div class="col-md-6 col-xs-12">
+  <% if current_user.role.is_admin? %>
+
+<% else %>
+<div class="form-group">
+<%= f.label :type, :class => "col-md-3" %>
+<div class="col-md-9">
+<%= f.radio_button :type_enrachate, 1, :style => "margin-left:30%", :checked => "checked"  %>
+<%= label_tag(:age_child, "Survivor") %>
+</div>
+</div>
+<% end %>
+
     <div class="form-group">
           <%= f.label :name, :class => "col-md-3" %>
           <div class="col-md-9">
             <%= f.text_field :name, :class => "form-control" %>
           </div>
         </div>
-    
+
               <div class="form-group">
           <%= f.label :price, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.text_field :price, :class => "form-control" %>
+            <%= f.number_field :price, :class => "form-control" %>
           </div>
         </div>
-    
-     
+
+  <% if current_user.role.is_admin? %>
                   <div class="form-group">
           <%= f.label :initial_balance, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.text_field :initial_balance, :class => "form-control" %>
+            <%= f.number_field :initial_balance, :class => "form-control" %>
           </div>
         </div>
-                  <div class="form-group">
+        <div class="form-group">
           <%= f.label :percentage, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.text_field :percentage, :class => "form-control" %>
+            <%= f.number_field :percentage, :step => 0.1, :class => "form-control" %>
           </div>
         </div>
-                  <div class="form-group">
-          <%= f.label :type, :class => "col-md-3" %>
-          <div class="col-md-9">
-            <%= f.radio_button :type_enrachate, 0 %> 
-              <%= label_tag(:age_child, "Hasta 25") %>
-             <%= f.radio_button :type_enrachate, 1, :style => "margin-left:10%"  %>
-              <%= label_tag(:age_child, "Survivor") %>
-          </div>
-        </div>
-                  <div class="form-group">
-          <%= f.label :description, :class => "col-md-3" %>
-          <div class="col-md-9">
-            <%= f.text_area :description, :class => "form-control" %>
-          </div>
-        </div>
-                  <div class="form-group">
-          <%= f.label :winner, :class => "col-md-3" %>
-          <div class="col-md-9">
-            <%= f.text_field :winner, :class => "form-control" %>
-          </div>
-        </div>
-          
+    <% else %>
+        <%= f.hidden_field :initial_balance, :class => "form-control", :value => 0 %>
+        <%= f.hidden_field :percentage, :step => 0.1, :class => "form-control", :value => 0.01 %>
+    <% end %>
+
+
+
+
+      </div>
+
+      <div class="col-md-6 col-xs-12">
+          <% if current_user.role.is_admin? %>
+        <div class="form-group">
+<%= f.label :type, :class => "col-md-3" %>
+<div class="col-md-9">
+  <%= f.radio_button :type_enrachate, 0 %>
+    <%= label_tag(:age_child, "Hasta 25") %>
+   <%= f.radio_button :type_enrachate, 1, :style => "margin-left:10%"  %>
+    <%= label_tag(:age_child, "Survivor") %>
+</div>
+</div>
+  <% else %>
+
+  <% end %>
+        <div class="form-group">
+<%= f.label :description, :class => "col-md-3" %>
+<div class="col-md-9">
+  <%= f.text_area :description, :class => "form-control" %>
+</div>
+</div>
+  <% if current_user.role.is_admin? %>
+        <div class="form-group">
+<%= f.label :winner, :class => "col-md-3" %>
+<div class="col-md-9">
+  <%= f.text_field :winner, :class => "form-control" %>
+</div>
+</div>
+<% end %>
+
+<div class="form-group">
+<%= f.label :access_key, :class => "col-md-3" %>
+<div class="col-md-9">
+<%= f.text_field :access_key, :class => "form-control" %>
+</div>
+</div>
+
       </div>
 <!-- end col-md-6 -->
 

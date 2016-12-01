@@ -1,4 +1,5 @@
 class PickSurvivorWeeksController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_pick_survivor_week, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

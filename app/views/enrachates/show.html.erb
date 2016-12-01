@@ -1,3 +1,11 @@
+  <% if current_user.role.is_admin? %>
+
+  <% else %>
+    <script type="text/javascript">
+      window.location.replace("/partials/enrachates_survivor");
+    </script>
+  <% end %>
+
 <!-- begin row -->
 <div class="row">
   <!-- begin col-md-12 -->

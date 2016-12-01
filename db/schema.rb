@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921210944) do
+ActiveRecord::Schema.define(version: 20161130210984) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20160921210944) do
     t.integer  "user_id"
     t.text     "status"
     t.datetime "purchase_date"
+    t.integer  "enrachate_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "enrachate_user_id"
     t.integer  "enrachates_id"
   end
 
@@ -58,10 +58,14 @@ ActiveRecord::Schema.define(version: 20160921210944) do
     t.integer  "winner"
     t.datetime "initial_date"
     t.datetime "end_date"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
+    t.integer  "user_id"
+    t.string   "access_key"
   end
+
+  add_index "enrachates", ["user_id"], name: "index_enrachates_on_user_id", using: :btree
 
   create_table "error_reports", force: true do |t|
     t.integer  "user_id"
@@ -183,6 +187,7 @@ ActiveRecord::Schema.define(version: 20160921210944) do
     t.text     "answer1"
     t.text     "answer2"
     t.datetime "program_date"
+    t.string   "correct_answer"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
