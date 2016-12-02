@@ -86,16 +86,24 @@
         </div>
         <script type="text/javascript">
             $(function () {
+
+              var dateNow =  new Date();
+              var init_day = new Date();
+               init_day.setDate(init_day.getDate() + 1);
+              var end_day = new Date();
+              end_day.setDate(end_day.getDate() + 7);
+
+
                 $('#datetimepicker1').datetimepicker({
                   sideBySide: true,
                   format: "D/MM/YYYY 00:01",
-                  minDate: new Date().setHours(0,1,0,0),
+                  minDate: init_day.setHours(0,1,0,0),
 
                 });
                 $('#datetimepicker2').datetimepicker({
                   sideBySide: true,
                   format: "D/MM/YYYY 23:59",
-                  minDate: new Date().setHours(23,59,59,0),
+                  minDate: end_day.setHours(23,59,59,0),
 
                 });
             });
