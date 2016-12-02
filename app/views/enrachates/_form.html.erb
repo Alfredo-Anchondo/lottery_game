@@ -88,13 +88,15 @@
             $(function () {
                 $('#datetimepicker1').datetimepicker({
                   sideBySide: true,
-                  format: "D/MM/YYYY H:mm",
-                  minDate: new Date()
+                  format: "D/MM/YYYY 00:01",
+                  minDate: new Date().setHours(0,1,0,0),
+            
                 });
                 $('#datetimepicker2').datetimepicker({
                   sideBySide: true,
-                  format: "D/MM/YYYY H:mm",
-                  minDate: new Date()
+                  format: "D/MM/YYYY 23:59",
+                  minDate: new Date().setHours(23,59,59,0),
+
                 });
             });
         </script>
