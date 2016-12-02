@@ -22,7 +22,7 @@
             <tbody>
               <% @relation_enrachate_tiras.each do |relation_enrachate_tira| %>
               <tr>
-                                  <td><%= relation_enrachate_tira.enrachate.name %></td>
+                                  <td><%= relation_enrachate_tira.enrachate ? relation_enrachate_tira.enrachate.name : ""  %></td>
                                   <td><%= relation_enrachate_tira.tira_enrachate ? relation_enrachate_tira.tira_enrachate.name : "" %></td>
                                 <td class="action-link">
                   <% if can? :show,relation_enrachate_tira %>
