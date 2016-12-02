@@ -33,9 +33,9 @@
   <% if current_user.role.is_admin? %>
 
   <%else%>
-    <h4 style="text-align:center; color:#2d68ac; font-size:18px;"> ¿Quieres crear una liga de enrachate para invitar a tus amigos y participar solo con ellos?</h4>
-    <h4 style="text-align:center; color:black; font-size:16px;">!No te preocupes nosotros nos encargamos de administrar toda la liga!</h4>
-    <h4 style="text-align:center; color:black; font-size:16px;">!Solo debes agregar una contraseña y compartirla con tus amigos!</h4>
+    <h4 style="text-align:center; color:#2d68ac; font-size:16px;"> ¿Quieres crear una liga de enrachate para invitar a tus amigos y participar solo con ellos?</h4>
+    <h4 style="text-align:center; color:black; font-size:14px;">!No te preocupes nosotros nos encargamos de administrar toda la liga!</h4>
+    <h4 style="text-align:center; color:black; font-size:14px;">!Solo debes agregar una contraseña y compartirla con tus amigos!</h4>
   <%end%>
 
   <hr>
@@ -90,7 +90,7 @@
                   sideBySide: true,
                   format: "D/MM/YYYY 00:01",
                   minDate: new Date().setHours(0,1,0,0),
-            
+
                 });
                 $('#datetimepicker2').datetimepicker({
                   sideBySide: true,
