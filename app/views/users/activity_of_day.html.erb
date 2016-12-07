@@ -166,6 +166,11 @@
    if (isSafari == true){
       $('#day_select').datepicker({changeYear: true, changeMonth: true });
    }
+
+   if (/|iPhone|iPad|iPod|/i.test(navigator.userAgent)) {
+         $('#day_select').datepicker({changeYear: true, changeMonth: true });
+   }
+
 })();
 
 
