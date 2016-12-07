@@ -161,6 +161,11 @@
    if ( elem.type === 'text' ) {
        $('#day_select').datepicker({changeYear: true, changeMonth: true,defaultDate:""} );
    }
+
+   var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+   if (isSafari == true){
+      $('#day_select').datepicker({changeYear: true, changeMonth: true });
+   }
 })();
 
 
@@ -228,7 +233,7 @@
             $("#total_db").text( "$" + db_total);
 
 
-    $("#day_select").select(function(){
+    $("#day_select").change(function(){
       alert($(this).val());
        if ($(this).val() == "" || $(this).val() == null ){
 

@@ -24,12 +24,15 @@
    if ( elem.type === 'text' ) {
        $('#day_select').datepicker({changeYear: true, changeMonth: true });
    }
+
+
+   var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+   if (isSafari == true){
+      $('#day_select').datepicker({changeYear: true, changeMonth: true });
+   }
 })();
 
-var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
-if (isSafari == true){
-   $('#day_select').datepicker({changeYear: true, changeMonth: true });
-}
+
 
 
 </script>
