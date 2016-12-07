@@ -22,7 +22,7 @@
    elem.setAttribute('type', 'date');
 
    if ( elem.type === 'text' ) {
-       $('#day_select').datepicker({changeYear: true, changeMonth: true, onSelect: function(window.location.assign("/users/activity_of_day/" +moment($(this).val()).format('YYYY-MM-DD')+ "" )) {} );
+       $('#day_select').datepicker({changeYear: true, changeMonth: true, onSelect: function() {window.location.assign("/users/activity_of_day/" +moment($(this).val()).format('YYYY-MM-DD')+ "" )} );
    }
 })();
 
