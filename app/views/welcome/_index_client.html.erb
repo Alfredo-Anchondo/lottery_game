@@ -931,6 +931,10 @@ body{ background-image: url("/assets/images/bg1.jpg") !important;
 						}
 					}
 				}
+
+				$('#tiras_random').selectpicker('render');
+				$('#tiras_random').selectpicker('refresh');
+
 				$('input[type=radio][class=answers_select]').change(function(){
 					var xz = $(this).val();
 					current_view = $(this).data('id');
