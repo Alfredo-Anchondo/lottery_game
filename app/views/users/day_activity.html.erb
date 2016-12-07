@@ -25,17 +25,6 @@
        $('#day_select').datepicker({changeYear: true, changeMonth: true });
    }
 
-
-  var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0 || !isChrome && !isOpera && window.webkitAudioContext !== undefined;
-   if (isSafari == true){
-      $('#day_select').datepicker({changeYear: true, changeMonth: true });
-   }
-
-   if (/|iPhone|iPad|iPod|/i.test(navigator.userAgent)) {
-         $('#day_select').datepicker({changeYear: true, changeMonth: true });
-   }
-
-      $('#day_select').datepicker({changeYear: true, changeMonth: true });
 })();
 
 
