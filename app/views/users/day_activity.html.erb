@@ -15,7 +15,7 @@
   <hr style="border-color:#2d68ac;">
 </div>
 
-<script>
+<!--<script>
 
 (function() {
    var elem = document.createElement('input');
@@ -28,11 +28,11 @@
 
 
 </script>
-
+-->
 
 
 <script type="text/javascript">
-    $("#day_select").select(function(){
+    $("#day_select").change(function(){
        window.location.assign("/users/activity_of_day/" +moment($(this).val()).format('YYYY-MM-DD')+ "" )
     })
 </script>
