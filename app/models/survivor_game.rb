@@ -179,6 +179,7 @@ class SurvivorGame < ActiveRecord::Base
 			end
 		end
 
+    #pregunta si se esta cerrando un pick y survivor o solo survivor valor 1 = pick y survivor
             if type_update == '1'
                 last_pick = ""
                 winner_week = ""
@@ -187,7 +188,7 @@ class SurvivorGame < ActiveRecord::Base
 
                 #----------------------------------football soccer pick -----------------------------------
 
-                if survivor_week_game.pick_users[0].pick.sport_category_id == 12
+                if survivor_week_game.sport_category == 12
 
                 if type_update == '1'
                 last_pick = ""
@@ -196,7 +197,7 @@ class SurvivorGame < ActiveRecord::Base
                 balance = ""
 
                 if pending == false
-                  picks = Pick.where('sport_category_id = ?', survivor_week_game.pick_users[0].pick.sport_category_id )
+                  picks = Pick.where('sport_category_id = ?', survivor_week_game.sport_category )
                     picks.each do |pickx|
                             if survivor_week_game.week == 1
                                  if pickx.percentage.present?
@@ -252,10 +253,163 @@ class SurvivorGame < ActiveRecord::Base
 
 
                         pick_survivor = pickx.pick_survivor_weeks.where('survivor_week_game_id = ? and pick_id = ?', survivor_week_game.id, pickx.id).first
-                        logger.info survivor_week_game.id
-                        logger.info pickx.id
-                        logger.info pick_survivor
                        if pick_survivor != nil && pick_survivor != []
+                         #aqui comienza la pregunta si es la ultima semana del pick_id
+
+                         if  pickx.pick_survivor_weeks.last == pick_survivor
+                           logger.info "Es la ultima semanaaaaa"
+                           array_values = []
+                           array_users = []
+                           array_values_order = []
+                          usuarios = pick_survivor.pick_users.pluck(:pick_user_id).uniq
+                          usuarios.each do |usuario_id|
+                            array_values.push(PickUser.where("pick_user_id = ?",usuario_id).first.total_points)
+                            array_users.push(PickUser.where("pick_user_id = ?",usuario_id).first)
+                          end
+                          array_values_order = array_values.uniq.sort.reverse;
+                          array_values_order2 = array_values.sort.reverse;
+                          logger.info array_values_order
+                           count_first = array_values_order2.count(array_values_order[0])
+                           count_second = array_values_order2.count(array_values_order[1])
+                           count_third = array_values_order2.count(array_values_order[2])
+                           #Cuando solo existe un ganador de primero, un ganador de segundo y un ganador de tercero
+                           if count_first == 1 && count_second == 1 && count_third == 1
+                             logger.info "Entre en el que de todos solo hay un ganador"
+                             first_ticket = array_users[array_values.index(array_values_order[0])]
+                             second_ticket = array_users[array_values.index(array_values_order[1])]
+                             third_ticket = array_users[array_values.index(array_values_order[2])]
+                             price_per_week = (pickx.percentage_per_week/100) * pickx.initial_balance
+                             weeks_quantity = pickx.pick_survivor_weeks.count - 1
+                             give_in_weeks = price_per_week * weeks_quantity
+                             final_balance = pickx.initial_balance - give_in_weeks
+                             first_price = final_balance * (pickx.first_percentage/100)
+                             second_price = final_balance * (pickx.second_percentage/100)
+                             third_price = final_balance * (pickx.third_percentage/100)
+                             first_ticket.update(:status => "Ganador 1")
+                             second_ticket.update(:status => "Ganador 2")
+                             third_ticket.update(:status => "Ganador 3")
+                             first_ticket.user.update(:balance => first_ticket.user.balance + first_price )
+                             second_ticket.user.update(:balance => second_ticket.user.balance + second_price )
+                             third_ticket.user.update(:balance => third_ticket.user.balance + third_price )
+                           end
+                           #Acaba cuando solo hay un ganador de cada lugar
+                           #Empieza cuando hay solo un ganador de primero y segundo, pero hay mas de 1 de tercer lugar
+                           if count_first == 1 && count_second == 1 && count_third > 1
+                                logger.info "Entre en el que hay mas de 1 ganador de tercer lugar"
+                             first_ticket = array_users[array_values.index(array_values_order[0])]
+                             second_ticket = array_users[array_values.index(array_values_order[1])]
+                             array_index_third = array_values.each_with_index.map { |a, i| a == array_values_order[2] ? i : nil }.compact
+                             third_ticket = []
+                            array_index_third.each do |index|
+                               third_ticket.push(array_users[index])
+                               logger.info index
+                             end
+                             price_per_week = (pickx.percentage_per_week/100) * pickx.initial_balance
+                             weeks_quantity = pickx.pick_survivor_weeks.count - 1
+                             give_in_weeks = price_per_week * weeks_quantity
+                             final_balance = pickx.initial_balance - give_in_weeks
+                             first_price = final_balance * (pickx.first_percentage/100)
+                             second_price = final_balance * (pickx.second_percentage/100)
+                             third_price = (final_balance * (pickx.third_percentage/100))/count_third
+                             first_ticket.update(:status => "Ganador 1")
+                             second_ticket.update(:status => "Ganador 2")
+                             third_ticket.each do |ticket|
+                               ticket.update(:status => "Ganador 3")
+                             end
+                             first_ticket.user.update(:balance => first_ticket.user.balance + first_price )
+                             second_ticket.user.update(:balance => second_ticket.user.balance + second_price )
+                             third_ticket.each do |ticket|
+                               ticket.user.update(:balance => ticket.user.balance + third_price )
+                           end
+                         end
+                         #Termina cuando solo hay un ganador de primero y segundo pero hay mas de tercer lugar
+                         #Empieza cuando solo hay un ganador de primero pero hay mas de uno de segundo lugar
+                         if count_first == 1 && count_second > 1
+                           logger.info "entre en el un ganador de primero y mas de 1 de segundo"
+                           first_ticket = array_users[array_values.index(array_values_order[0])]
+                           second_ticket = []
+                           array_index_second = array_values.each_with_index.map { |a, i| a == array_values_order[1] ? i : nil }.compact
+                          array_index_second.each do |index|
+                             second_ticket.push(array_users[index])
+                             logger.info index
+                           end
+                           price_per_week = (pickx.percentage_per_week/100) * pickx.initial_balance
+                           weeks_quantity = pickx.pick_survivor_weeks.count - 1
+                           give_in_weeks = price_per_week * weeks_quantity
+                           final_balance = pickx.initial_balance - give_in_weeks
+                           first_price = final_balance * (pickx.first_percentage/100)
+                           second_price = final_balance * (pickx.second_percentage/100)
+                           third_price = (final_balance * (pickx.third_percentage/100))
+                           second_final_price = (second_price + third_price)/count_second
+                           first_ticket.update(:status => "Ganador 1")
+                           second_ticket.each do |ticket|
+                             ticket.update(:status => "Ganador 2")
+                           end
+                           first_ticket.user.update(:balance => first_ticket.user.balance + first_price )
+                           second_ticket.each do |ticket|
+                             ticket.user.update(:balance => ticket.user.balance + second_final_price )
+                         end
+                       end
+                       #Termina cuando hay 1 ganador de primero pero mas de 1 de segundo lugar
+                       #Empieza cuando hay 2 personas en primer lugar
+                       if count_first == 2
+                         logger.info "entre en el de dos ganadores de primer lugar"
+                         first_ticket = []
+                         second_ticket = array_users[array_values.index(array_values_order[1])]
+                         array_index_first = array_values.each_with_index.map { |a, i| a == array_values_order[0] ? i : nil }.compact
+                        array_index_first.each do |index|
+                           first_ticket.push(array_users[index])
+                           logger.info index
+                         end
+                         price_per_week = (pickx.percentage_per_week/100) * pickx.initial_balance
+                         weeks_quantity = pickx.pick_survivor_weeks.count - 1
+                         give_in_weeks = price_per_week * weeks_quantity
+                         final_balance = pickx.initial_balance - give_in_weeks
+                         first_price = final_balance * (pickx.first_percentage/100)
+                         second_price = final_balance * (pickx.second_percentage/100)
+                         third_price = final_balance * (pickx.third_percentage/100)
+                         first_final_price = (second_price + first_price)/2
+                         second_ticket.update(:status => "Ganador 3")
+                         first_ticket.each do |ticket|
+                           ticket.update(:status => "Ganador 1")
+                         end
+                         second_ticket.user.update(:balance => second_ticket.user.balance + third_price )
+                         first_ticket.each do |ticket|
+                           logger.info ticket.user.select_display
+                           ticket.user.update(:balance => ticket.user.balance + first_final_price )
+                       end
+                     end
+                     #Aqui termina cuando hay 2 ganadores de primer lugar
+                     #Aqui empieza cuando hay mas de 2 ganadores de primer lugar
+                     if count_first > 2
+                       logger.info "entre en el de mas de dos ganadores de primer lugar"
+                       first_ticket = []
+                       array_index_first = array_values.each_with_index.map { |a, i| a == array_values_order[0] ? i : nil }.compact
+                       array_index_first.each do |index|
+                         first_ticket.push(array_users[index])
+                         logger.info index
+                       end
+                       price_per_week = (pickx.percentage_per_week/100) * pickx.initial_balance
+                       weeks_quantity = pickx.pick_survivor_weeks.count - 1
+                       give_in_weeks = price_per_week * weeks_quantity
+                       final_balance = pickx.initial_balance - give_in_weeks
+                       first_price = final_balance * (pickx.first_percentage/100)
+                       second_price = final_balance * (pickx.second_percentage/100)
+                       third_price = final_balance * (pickx.third_percentage/100)
+                       first_final_price = (second_price + first_price + third_price)/count_first
+                       first_ticket.each do |ticket|
+                         ticket.update(:status => "Ganador 1")
+                       end
+                       first_ticket.each do |ticket|
+                         logger.info ticket.user.select_display
+                         ticket.user.update(:balance => ticket.user.balance + first_final_price )
+                     end
+                   end
+
+                         else
+
+
+                        #Aqui termina la pregunta si es la ultima semana
                         max_points = pick_survivor.pick_users.maximum("points")
                         winner_week = pick_survivor.pick_users.where(:points => max_points)
                            logger.info max_points
@@ -283,6 +437,7 @@ class SurvivorGame < ActiveRecord::Base
                         end
                         else
                         end
+                      end
                            else
                        end
 
@@ -298,8 +453,9 @@ class SurvivorGame < ActiveRecord::Base
                 #------------------------------------termina el pick de futball soccer --------------------
 
                 if pending == false
-                  picks = Pick.where('sport_category_id = ?', survivor_week_game.pick_users[0].pick.sport_category_id )
+                  picks = Pick.where('sport_category_id = ?', survivor_week_game.sport_category )
                     picks.each do |pickx|
+                      #Se reparte el porcentage para el administrador solo en la semana 1
                             if survivor_week_game.week == 1
                                  if pickx.percentage.present?
                                      total_porcentage = (pickx.percentage/100) * pickx.initial_balance
@@ -313,7 +469,7 @@ class SurvivorGame < ActiveRecord::Base
                 if pick_survivor != nil && pick_survivor != []
                 last_week_number = survivor_week_game.week - 1
 				category = survivor_week_game.sport_category
-				last_week_game = SurvivorWeekGame.where(:week => last_week_number, :sport_category => category).first
+				last_week_game = SurvivorWeekGame.where(:week => 0, :sport_category => category).first
 				logger.info last_week_game.id
 				logger.info '/////////////'
 				survivor_week_survivors = pickx.pick_survivor_weeks.where('survivor_week_game_id = ? and pick_id =?', last_week_game.id, pickx.id )
@@ -354,15 +510,171 @@ class SurvivorGame < ActiveRecord::Base
 
 
                         pick_survivor = pickx.pick_survivor_weeks.where('survivor_week_game_id = ? and pick_id = ?', survivor_week_game.id, pickx.id).first
-                        logger.info survivor_week_game.id
-                        logger.info pickx.id
-                        logger.info pick_survivor
+                        #aqui comienza la pregunta si es la ultima semana del pick_id
+
                        if pick_survivor != nil && pick_survivor != []
+
+                         #aqui comienza la pregunta si es la ultima semana del pick_id
+                         logger.info pick_survivor
+                         logger.info pickx.pick_survivor_weeks.last
+                         if  pickx.pick_survivor_weeks.order(:survivor_week_game_id).last == pick_survivor
+                           logger.info "Es la ultima semanaaaaa"
+                           array_values = []
+                           array_users = []
+                           array_values_order = []
+                          usuarios = pick_survivor.pick_users.pluck(:pick_user_id).uniq
+                          usuarios.each do |usuario_id|
+                            array_values.push(PickUser.where("pick_user_id = ?",usuario_id).first.total_points)
+                            array_users.push(PickUser.where("pick_user_id = ?",usuario_id).first)
+                          end
+                          array_values_order = array_values.uniq.sort.reverse;
+                          array_values_order2 = array_values.sort.reverse;
+                          logger.info array_values_order
+                           count_first = array_values_order2.count(array_values_order[0])
+                           count_second = array_values_order2.count(array_values_order[1])
+                           count_third = array_values_order2.count(array_values_order[2])
+                           #Cuando solo existe un ganador de primero, un ganador de segundo y un ganador de tercero
+                           if count_first == 1 && count_second == 1 && count_third == 1
+                             logger.info "Entre en el que de todos solo hay un ganador"
+                             first_ticket = array_users[array_values.index(array_values_order[0])]
+                             second_ticket = array_users[array_values.index(array_values_order[1])]
+                             third_ticket = array_users[array_values.index(array_values_order[2])]
+                             price_per_week = (pickx.percentage_per_week/100) * pickx.initial_balance
+                             weeks_quantity = pickx.pick_survivor_weeks.count - 1
+                             give_in_weeks = price_per_week * weeks_quantity
+                             final_balance = pickx.initial_balance - give_in_weeks
+                             first_price = final_balance * (pickx.first_percentage/100)
+                             second_price = final_balance * (pickx.second_percentage/100)
+                             third_price = final_balance * (pickx.third_percentage/100)
+                             first_ticket.update(:status => "Ganador 1")
+                             second_ticket.update(:status => "Ganador 2")
+                             third_ticket.update(:status => "Ganador 3")
+                             first_ticket.user.update(:balance => first_ticket.user.balance + first_price )
+                             second_ticket.user.update(:balance => second_ticket.user.balance + second_price )
+                             third_ticket.user.update(:balance => third_ticket.user.balance + third_price )
+                           end
+                           #Acaba cuando solo hay un ganador de cada lugar
+                           #Empieza cuando hay solo un ganador de primero y segundo, pero hay mas de 1 de tercer lugar
+                           if count_first == 1 && count_second == 1 && count_third > 1
+                                logger.info "Entre en el que hay mas de 1 ganador de tercer lugar"
+                             first_ticket = array_users[array_values.index(array_values_order[0])]
+                             second_ticket = array_users[array_values.index(array_values_order[1])]
+                             array_index_third = array_values.each_with_index.map { |a, i| a == array_values_order[2] ? i : nil }.compact
+                             third_ticket = []
+                            array_index_third.each do |index|
+                               third_ticket.push(array_users[index])
+                               logger.info index
+                             end
+                             price_per_week = (pickx.percentage_per_week/100) * pickx.initial_balance
+                             weeks_quantity = pickx.pick_survivor_weeks.count - 1
+                             give_in_weeks = price_per_week * weeks_quantity
+                             final_balance = pickx.initial_balance - give_in_weeks
+                             first_price = final_balance * (pickx.first_percentage/100)
+                             second_price = final_balance * (pickx.second_percentage/100)
+                             third_price = (final_balance * (pickx.third_percentage/100))/count_third
+                             first_ticket.update(:status => "Ganador 1")
+                             second_ticket.update(:status => "Ganador 2")
+                             third_ticket.each do |ticket|
+                               ticket.update(:status => "Ganador 3")
+                             end
+                             first_ticket.user.update(:balance => first_ticket.user.balance + first_price )
+                             second_ticket.user.update(:balance => second_ticket.user.balance + second_price )
+                             third_ticket.each do |ticket|
+                               ticket.user.update(:balance => ticket.user.balance + third_price )
+                           end
+                         end
+                         #Termina cuando solo hay un ganador de primero y segundo pero hay mas de tercer lugar
+                         #Empieza cuando solo hay un ganador de primero pero hay mas de uno de segundo lugar
+                         if count_first == 1 && count_second > 1
+                           logger.info "entre en el un ganador de primero y mas de 1 de segundo"
+                           first_ticket = array_users[array_values.index(array_values_order[0])]
+                           second_ticket = []
+                           array_index_second = array_values.each_with_index.map { |a, i| a == array_values_order[1] ? i : nil }.compact
+                          array_index_second.each do |index|
+                             second_ticket.push(array_users[index])
+                             logger.info index
+                           end
+                           price_per_week = (pickx.percentage_per_week/100) * pickx.initial_balance
+                           weeks_quantity = pickx.pick_survivor_weeks.count - 1
+                           give_in_weeks = price_per_week * weeks_quantity
+                           final_balance = pickx.initial_balance - give_in_weeks
+                           first_price = final_balance * (pickx.first_percentage/100)
+                           second_price = final_balance * (pickx.second_percentage/100)
+                           third_price = (final_balance * (pickx.third_percentage/100))
+                           second_final_price = (second_price + third_price)/count_second
+                           first_ticket.update(:status => "Ganador 1")
+                           second_ticket.each do |ticket|
+                             ticket.update(:status => "Ganador 2")
+                           end
+                           first_ticket.user.update(:balance => first_ticket.user.balance + first_price )
+                           second_ticket.each do |ticket|
+                             ticket.user.update(:balance => ticket.user.balance + second_final_price )
+                         end
+                       end
+                       #Termina cuando hay 1 ganador de primero pero mas de 1 de segundo lugar
+                       #Empieza cuando hay 2 personas en primer lugar
+                       if count_first == 2
+                         logger.info "entre en el de dos ganadores de primer lugar"
+                         first_ticket = []
+                         second_ticket = array_users[array_values.index(array_values_order[1])]
+                         array_index_first = array_values.each_with_index.map { |a, i| a == array_values_order[0] ? i : nil }.compact
+                        array_index_first.each do |index|
+                           first_ticket.push(array_users[index])
+                           logger.info index
+                         end
+                         price_per_week = (pickx.percentage_per_week/100) * pickx.initial_balance
+                         weeks_quantity = pickx.pick_survivor_weeks.count - 1
+                         give_in_weeks = price_per_week * weeks_quantity
+                         final_balance = pickx.initial_balance - give_in_weeks
+                         first_price = final_balance * (pickx.first_percentage/100)
+                         second_price = final_balance * (pickx.second_percentage/100)
+                         third_price = final_balance * (pickx.third_percentage/100)
+                         first_final_price = (second_price + first_price)/2
+                         second_ticket.update(:status => "Ganador 3")
+                         first_ticket.each do |ticket|
+                           ticket.update(:status => "Ganador 1")
+                         end
+                         second_ticket.user.update(:balance => second_ticket.user.balance + third_price )
+                         first_ticket.each do |ticket|
+                           logger.info ticket.user.select_display
+                           ticket.user.update(:balance => ticket.user.balance + first_final_price )
+                       end
+                     end
+                     #Aqui termina cuando hay 2 ganadores de primer lugar
+                     #Aqui empieza cuando hay mas de 2 ganadores de primer lugar
+                     if count_first > 2
+                       logger.info "entre en el de mas de dos ganadores de primer lugar"
+                       first_ticket = []
+                       array_index_first = array_values.each_with_index.map { |a, i| a == array_values_order[0] ? i : nil }.compact
+                       array_index_first.each do |index|
+                         first_ticket.push(array_users[index])
+                         logger.info index
+                       end
+                       price_per_week = (pickx.percentage_per_week/100) * pickx.initial_balance
+                       weeks_quantity = pickx.pick_survivor_weeks.count - 1
+                       give_in_weeks = price_per_week * weeks_quantity
+                       final_balance = pickx.initial_balance - give_in_weeks
+                       first_price = final_balance * (pickx.first_percentage/100)
+                       second_price = final_balance * (pickx.second_percentage/100)
+                       third_price = final_balance * (pickx.third_percentage/100)
+                       first_final_price = (second_price + first_price + third_price)/count_first
+                       first_ticket.each do |ticket|
+                         ticket.update(:status => "Ganador 1")
+                       end
+                       first_ticket.each do |ticket|
+                         logger.info ticket.user.select_display
+                         ticket.user.update(:balance => ticket.user.balance + first_final_price )
+                     end
+                   end
+
+                         else
+
+
+                        #Aqui termina la pregunta si es la ultima semana
+
+
                         max_points = pick_survivor.pick_users.maximum("points")
                         winner_week = pick_survivor.pick_users.where(:points => max_points)
-                           logger.info max_points
-                           logger.info winner_week
-                           logger.info winner_week.length
                            logger.info 'esta es la ultima que se ahace'
                         porcentaje = pickx.percentage_per_week
                         balance = pickx.initial_balance
@@ -424,22 +736,23 @@ class SurvivorGame < ActiveRecord::Base
                         end
                         else
                         end
-                           else
+
                        end
 
-
+                     end
 
                     end
 
                 end
-            end
+            end   #Aqui termina de hacer la parte del pick
 
+#empieza las acciones para el survivor
 
 			if pending == true
 
 				logger.info "Aun hay juegos pendientes"
 				else
-                 if survivor_week_game.pick_users[0].pick.sport_category_id == 12
+                 if survivor_week_game.sport_category == 12
                      return
                   end
 				logger.info "Ya no hay juegos pendientes"

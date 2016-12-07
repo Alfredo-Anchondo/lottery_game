@@ -17,6 +17,14 @@ class PickUser < ActiveRecord::Base
 		end
 	end
 
+  def total_points
+    total = 0
+    PickUser.where("pick_user_id = ?",pick_user_id).each do |pick|
+      total += pick.points ? pick.points : 0
+    end
+    return total
+  end
+
 def select_display
   user.name + "-" + pick.name + "" + id.to_s
 end
