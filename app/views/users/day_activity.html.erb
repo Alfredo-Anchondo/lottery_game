@@ -40,6 +40,7 @@
     })
 </script>
 
+
 <script type="text/javascript">
-  $('#day_select').datepicker({changeYear: true, changeMonth: true });
+  $('#day_select').datepicker({changeYear: true, changeMonth: true,  onSelect: function() {  window.location.assign("/users/activity_of_day/" +moment($(this).val()).format('YYYY-MM-DD')+ "" )} });
 </script>
