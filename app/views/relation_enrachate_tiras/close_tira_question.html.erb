@@ -63,8 +63,15 @@ label > input:disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                          $("#tiras").append("<option value='"+data.relation_enrachate_tiras[i].id+"'>"+data.relation_enrachate_tiras[i].name+"</option>");
 
                         $("#questions_div").append('<div style="display:none; margin-bottom:80px !important;" class="row tira_div" id="'+data.relation_enrachate_tiras[i].id+'"></div>');
+                        function compare(a,b) {
+                          if (a.question_enrachate.program_date < b.question_enrachate.program_date)
+                            return -1;
+                          if (a.question_enrachate.program_date > b.question_enrachate.program_date)
+                            return 1;
+                          return 0;
+                        }
 
-                       for (var e in data.relation_enrachate_tiras[i].relation_tira_questions){
+                       for (var e in data.relation_enrachate_tiras[i].relation_tira_questions.sort(compare)){
                          var already_close1;
                          var already_close2;
                         if (data.relation_enrachate_tiras[i].relation_tira_questions[e].question_enrachate.correct_answer == "1"){
