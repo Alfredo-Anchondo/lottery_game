@@ -315,6 +315,8 @@ es:
               taken: Ya esta en uso"
     models:
         picks: "Picks"
+        gift_cards: "Tarjetas de Regalo"
+        gift_card: "Tarjeta de Regalo"
         enrachate_user: "Boleto del Enrachate"
         enrachate_users: "Boletos del Enrachate"
         enrachates: "Enrachates"
@@ -373,6 +375,12 @@ es:
         lotteries: "Loterías"
         lottery: "Lotería"
     attributes:
+        gift_card:
+            value: "Valor Monetario"
+            user: "Id de usuario que la uso"
+            user_id: "Id de usuario que la uso"
+            code: "Codigo"
+            available: "Disponible?"
         enrachate:
             name: "Nombre"
             price: "Precio"

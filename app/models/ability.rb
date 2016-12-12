@@ -29,6 +29,7 @@ class Ability
 		    cannot [:new, :index, :create, :delete, :destroy], User
         cannot [:new, :create, :edit, :update, :delete, :destroy], SportCategory
         cannot [:new, :create, :edit, :update, :delete, :destroy], SurvivorWeekSurvivor
+        cannot [:new, :create, :edit, :update, :delete, :destroy], GiftCard
         cannot [ :delete, :destroy], EnrachateUser
         cannot [:new, :create, :edit, :update, :delete, :destroy], Lottery
         cannot [:edit, :update, :delete, :destroy], UserLottery

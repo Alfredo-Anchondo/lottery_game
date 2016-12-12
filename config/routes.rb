@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :gift_cards
+
   resources :relation_tira_questions
 
   resources :relation_enrachate_tiras do

@@ -1,0 +1,82 @@
+<!-- begin row -->
+<div class="row">
+  <!-- begin col-md-12 -->
+  <div class="col-md-12">
+    <div class="invoice">
+      <div class="invoice-content">
+        <div class="table-responsive">
+          <table class="table table-invoice">
+            <thead>
+              <tr>
+                <td colspan="2">
+                  <h4><%= t("details_of", model: t("activerecord.models.gift_card").downcase) %></h4>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.gift_card.value") %>: <br />
+                    <small><%= @gift_card.value %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.gift_card.user") %>: <br />
+                    <small><%= @gift_card.user %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.gift_card.code") %>: <br />
+                    <small><%= @gift_card.code %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.gift_card.available") %>: <br />
+                    <small><%= @gift_card.available %></small>
+                  </td>
+                </tr>
+                              <tr>
+                  <td>
+                    <%= t("activerecord.attributes.gift_card.created_at") %>: <br />
+                    <small><%= @gift_card.created_at %></small>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="invoice-footer text-muted"></div>
+    </div>
+  </div>
+  <!-- end col-md-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row -->
+<div class="row">
+  <div class="col-md-12">
+    <% if can? :edit, @gift_card %>
+      <%= link_to edit_gift_card_path(@gift_card), :class => "btn btn-default" do %>
+        <i class="icon-pencil"></i>
+        <%= t("actions.edit") %>
+      <% end %>
+    <% end %>
+    <% if can? :delete, @gift_card %>
+      <%= link_to @gift_card, method: :delete, data: { confirm: t("are_you_sure?", model: t("activerecord.models.gift_card").downcase) }, :class => "btn btn-danger" do %>
+        <i class="icon-trash"></i>
+        <%= t("actions.delete") %>
+      <% end %>
+    <% end %>
+    <% if can? :index, GiftCard  %>
+      <%= link_to gift_cards_path, :class => "btn btn-default" do %>
+        <i class="icon-chevron-left"></i>
+        <%= t("actions.back") %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- end col-12 -->
+</div>
+<!-- end row -->

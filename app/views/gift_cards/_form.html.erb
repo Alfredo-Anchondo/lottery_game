@@ -1,0 +1,64 @@
+<%= form_for(@gift_card, :html => { :class => "form-horizontal" }) do |f| %>
+<% if @gift_card.errors.any? %>
+<div id="error_explanation">
+  <% if @gift_card.errors.count == 1 %>
+  <h5><%= t("activerecord.errors.template.header.one", model: t("activerecord.models.gift_card")) %></h5>
+  <% else %>
+  <h5><%= t("activerecord.errors.template.header.other", model: t("activerecord.models.gift_card"), :count => @gift_card.errors.count) %></h5>
+  <% end %>
+  <ul>
+    <% @gift_card.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- begin col-md-6 -->
+<div class="col-md-6">
+  
+  <div class="form-group">
+<%= f.label :value, :class => "col-md-3" %>
+<div class="col-md-9">
+<%= f.text_field :value, :class => "form-control", :required => "required" %>
+</div>
+</div>
+
+<div class="form-group">
+<%= f.label :code, :class => "col-md-3" %>
+<div class="col-md-9">
+<%= f.text_field :code, :class => "form-control", :required => "required" %>
+</div>
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+                  <div class="form-group">
+          <%= f.label :user_id, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.collection_select(:user_id, User.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+          </div>
+        </div>
+
+                  <div class="form-group">
+          <%= f.label :available, :class => "col-md-3" %>
+          <div class="col-md-9">
+            <%= f.check_box :available, :class => "form-control" %>
+          </div>
+        </div>
+      </div>
+<!-- end col-md-6 -->
+
+<div class="col-md-12">
+  <div class="form-group">
+    <div class="col-md-12 text-center">
+      <%= f.button :class => "submit btn btn-success", :data => { :disable_with => t("actions.saving") } do %>
+      <i class='icon-ok'></i>
+      <%= t("actions.save") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
