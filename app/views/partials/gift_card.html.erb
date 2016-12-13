@@ -54,7 +54,7 @@
                 $("#response_modal").modal("show");
                 window.location.assign("/");
             }else{
-              if(msg == 0){
+              if(msg == 0 && msg != false){
                 $("#text_response").text("El código proporcionado ya fue utilizado anteriormente. Prueba con uno distinto");
                 $("#response_modal").modal("show");
               }else{
