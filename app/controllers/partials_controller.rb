@@ -906,4 +906,22 @@ end
          end
        end
 
+       def check_gift_card
+        @gift_card = GiftCard.where("code = ?",params[:code].upcase).first
+        logger.info @gift_card
+        if @gift_card != [] && @gift_card != nil && @gift_card != "" && @gift_card != {}
+          if @gift_card.available == false
+            render json: 0
+          else
+          current_user.update(:balance => current_user.balance + @gift_card.value )
+          @gift_card.update(:available => false)
+          @gift_card.update(:user_id => current_user.id)
+          BuyMailer.gift_card(@gift_card).deliver
+          render json: true
+        end
+        else
+           render json: false
+        end
+       end
+
 end

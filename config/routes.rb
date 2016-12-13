@@ -107,6 +107,8 @@ Rails.application.routes.draw do
 
     resources :partials  do
         collection do
+            get "check_gift_card", to: "partials#check_gift_card"
+            get "gift_card"
             get "my_enrachate_create/:id", to: "partials#my_enrachate_create"
             get "lottery_rules"
             get "answer_register", to: "partials#answer_register"

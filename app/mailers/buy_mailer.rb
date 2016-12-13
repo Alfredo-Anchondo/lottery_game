@@ -1,6 +1,14 @@
 class BuyMailer < ActionMailer::Base
     default from: "no-reply@donbillete.com"
 
+
+def gift_card(gift_card)
+  @gift_card = gift_card
+  attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
+  mail(to: @gift_card.user.email, subject: '[DonBillete] Canje de Tarjeta de Regalo')
+
+end
+
 	def buy_saldo(user,saldo)
 		@user = user
 		@saldo = saldo

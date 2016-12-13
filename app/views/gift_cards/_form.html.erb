@@ -16,7 +16,7 @@
 
 <!-- begin col-md-6 -->
 <div class="col-md-6">
-  
+
   <div class="form-group">
 <%= f.label :value, :class => "col-md-3" %>
 <div class="col-md-9">
@@ -38,7 +38,7 @@
                   <div class="form-group">
           <%= f.label :user_id, :class => "col-md-3" %>
           <div class="col-md-9">
-            <%= f.collection_select(:user_id, User.all, :id, :select_display, { :include_blank => false, :prompt => true }, required: true, :class => "form-control") %>
+            <%= f.collection_select(:user_id, User.all, :id, :select_display, { :include_blank => false, :prompt => true },  :class => "form-control") %>
           </div>
         </div>
 
