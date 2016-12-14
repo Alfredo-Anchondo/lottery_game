@@ -1,4 +1,6 @@
 class GiftCardsController < ApplicationController
+  load_and_authorize_resource
+  before_action :authenticate_user!
   before_action :set_gift_card, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -6,6 +8,19 @@ class GiftCardsController < ApplicationController
   def index
     @gift_cards = GiftCard.all
     respond_with(@gift_cards)
+  end
+
+
+  def generate_massive_cards
+    array_codes = []
+    for i in 1..params[:quantity].to_i
+      code = SecureRandom.hex(5).upcase
+      array_codes.push(code)
+      value = params[:value]
+      GiftCard.create({:value => value, :code => code, :available => true})
+    end
+    BuyMailer.generate_card_codes(array_codes, params[:value]).deliver
+    render json: true
   end
 
   def show

@@ -1,0 +1,78 @@
+<div class="row">
+  <br>
+  <h4 style="text-align:center; font-size:20px; color:black;">Creacion masiva de tarjetas</h4>
+  <hr>
+  <div class="col-md-6 col-xs-12">
+    <h4 style="text-align:center; color:black;">Selecciona la cantidad de tarjetas a crear:</h4>
+      <input id="quantity_cards" type="number" oninput="maxLengthCheck(this)" style="text-align:center; font-weight:800; color:black;" max="1000" maxlength = "3" class="input input-lg form-control" name="" value="">
+  </div>
+  <div class="col-md-6 col-xs-12">
+    <h4 style="text-align:center; color:black;">Selecciona el valor nominal de las tarjetas:</h4>
+    <input id="value_cards" type="number" oninput="maxLengthCheck(this)" style="text-align:center; font-weight:800; color:black;" max="1000" maxlength = "3" class="input input-lg form-control" name="" value="">
+  </div>
+  <div class="clearfix"></div>
+  <hr>
+  <div class="col-md-12 col-xs-12" id="generated_codes">
+
+  </div>
+<h4 style="text-align:center"><button type="button" id="generate_cards" class="btn btn-lg btn-primary" name="button">Generar tarjetas de regalo</button></h4>
+</div>
+
+
+
+<div id="response_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="color:white; background-color:#2d68ac;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 style="text-align:center" class="modal-title">Canjeo de tarjeta de regalo</h4>
+      </div>
+      <div class="modal-body">
+        <p style="color:black; font-weight:800; text-align:center;" id="text_response"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script type="text/javascript">
+    $("#generate_cards").click(function(){
+      $.ajax({
+method: "GET",
+url: "/gift_cards/generate_massive_cards",
+data: { value: $("#value_cards").val(), quantity: $("#quantity_cards").val()}
+}).done(function( msg ) {
+if(msg == true){
+    $("#text_response").text("Las tarjetas se generaron con exito")
+    $("#response_modal").modal("show");
+    setTimeout(function(){ window.location.assign("/gift_cards"); }, 4000);
+}else{
+  if(msg === 0){
+    $("#text_response").text("Hubo un error en la generacion");
+    $("#response_modal").modal("show");
+  }else{
+        $("#text_response").text("La generacion tuvo un error.");
+      $("#response_modal").modal("show");
+}
+}
+
+});
+    })
+</script>
+
+
+<script>
+  // This is an old version, for a more recent version look at
+  // https://jsfiddle.net/DRSDavidSoft/zb4ft1qq/2/
+  function maxLengthCheck(object)
+  {
+    if (object.value.length > object.maxLength)
+      object.value = object.value.slice(0, object.maxLength)
+  }
+</script>

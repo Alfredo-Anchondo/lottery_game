@@ -17,6 +17,7 @@
                                   <th><%= t("activerecord.attributes.gift_card.user") %></th>
                                   <th><%= t("activerecord.attributes.gift_card.code") %></th>
                                   <th><%= t("activerecord.attributes.gift_card.available") %></th>
+                                  <th>Fecha canje:</th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -25,9 +26,10 @@
               <% @gift_cards.each do |gift_card| %>
               <tr>
                                   <td><%= gift_card.value %></td>
-                                  <td><%= gift_card.user %></td>
+                                  <td><%= gift_card.user ? gift_card.user.select_display : "Aun no esta canjeada" %></td>
                                   <td><%= gift_card.code %></td>
                                   <td><%= gift_card.available %></td>
+                                  <td><%= gift_card.available == false ? gift_card.updated_at : "No se a canjeado"  %></td>
                                 <td class="action-link">
                   <% if can? :show,gift_card %>
                     <%= link_to gift_card, :class => "btn btn-default", :title => t("actions.show") do %>
@@ -51,7 +53,7 @@
           </table>
         </div>
         <div class="text-center">
-    
+
         </div>
       </div>
       <!-- end panel-body -->
@@ -75,3 +77,21 @@
   <!-- end col-12 -->
 </div>
 <!-- end row -->
+<script>
+       var current_language = $("#current_language").val();
+       var languaje;
+
+    if(current_language == "en"){
+    languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
+}else{
+    languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+}
+
+$('#data-table').DataTable({
+    responsive: true,
+    order: [0,"desc"],
+     "language": {
+            "url": languaje
+        }
+});
+</script>

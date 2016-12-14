@@ -2,6 +2,13 @@ class BuyMailer < ActionMailer::Base
     default from: "no-reply@donbillete.com"
 
 
+def generate_card_codes(codes, value)
+  @codes = codes
+  @value = value
+  attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))
+  mail(to:["Rodrigolascurain@gmail.com","Alfredo_anchondo@hotmail.com"], subject: '[DonBillete] Generacion de tarjetas de regalo')
+end
+
 def gift_card(gift_card)
   @gift_card = gift_card
   attachments.inline['logo.png'] = File.read(Rails.root.join("public", "donbilletelogo.png"))

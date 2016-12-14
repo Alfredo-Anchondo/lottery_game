@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :gift_cards
+
+  resources :gift_cards do
+    collection do
+      get "create_massive"
+      get "generate_massive_cards", to: "gift_cards#generate_massive_cards"
+    end
+  end
 
   resources :relation_tira_questions
 
