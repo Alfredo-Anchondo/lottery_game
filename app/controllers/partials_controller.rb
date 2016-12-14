@@ -907,9 +907,9 @@ end
        end
 
        def check_gift_card
-        @gift_card = GiftCard.where("code = ?",params[:code].upcase).first
+        @gift_card = GiftCard.where("code = ?", params[:code].upcase).first
         logger.info @gift_card
-        if @gift_card != [] && @gift_card != nil && @gift_card != "" && @gift_card != {}
+        if @gift_card != [] && @gift_card != nil && @gift_card != "" 
           if @gift_card.available == false
             render json: 0
           else
@@ -921,7 +921,7 @@ end
         end
         else
            render json: false
-        end 
+        end
        end
 
 end
