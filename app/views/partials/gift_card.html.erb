@@ -51,7 +51,7 @@
             if(msg == true){
                 $("#text_response").text("Felicidades tu tarjeta de regalo se canjeo exitosamente.")
                 $("#response_modal").modal("show");
-                window.location.assign("/");
+                setTimeout(function(){ window.location.assign("/"); }, 5000);
             }else{
               if(msg === 0){
                 $("#text_response").text("El código proporcionado ya fue utilizado anteriormente. Prueba con uno distinto");
