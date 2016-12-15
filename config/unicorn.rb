@@ -5,7 +5,7 @@ pid "tmp/pids/unicorn.pid"
 stderr_path "log/unicorn.log"
 stdout_path "log/unicorn.log"
 listen "/tmp/unicorn.lottery_game.sock"
-timeout 500
+timeout 5000
 
 before_fork do |server, worker|
   # Disconnect since the database connection will not carry over
