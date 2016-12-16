@@ -37,7 +37,7 @@ end
 		logger.info @subject
 		Thread.new do
 		@emails.each do |email|
-			BuyMailer.send_mails_allx(email, @subject, @content).deliver
+			BuyMailer.send_mails_allx(email, @subject, @content).deliver_later
 		end
 		 ActiveRecord::Base.connection.close
 	end
@@ -50,7 +50,7 @@ end
 		logger.info @subject
 		Thread.new do
 		@users.each do |email|
-			BuyMailer.send_mails_allx(email, @subject, @content).deliver
+			BuyMailer.send_mails_allx(email, @subject, @content).deliver_later
 		end
 		 ActiveRecord::Base.connection.close
 	end
