@@ -246,7 +246,7 @@ end
     logger.info @content
     logger.info @subject
     @emails.each do |email|
-      BuyMailer.send_mails_allx(email, @subject, @content).deliver_later
+      BuyMailer.send_mails_allx(email, @subject, @content).deliver
     end
 
     else
