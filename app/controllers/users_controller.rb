@@ -28,31 +28,9 @@ end
 
 
 	def send_mails_all
-		logger.info params[:mails]
-		if params[:mails] != ''
-			@emails = params[:mails]
-			@content = params[:content].html_safe
-		@subject = params[:subject]
-		logger.info @content
-		logger.info @subject
-		@emails.each do |email|
-			BuyMailer.send_mails_allx(email, @subject, @content).deliver_later
-		end
-
-		else
-			@email = []
-		@users = User.all.pluck(:email)
-		@content = params[:content].html_safe
-		@subject = params[:subject]
-		logger.info @content
-		logger.info @subject
-		@users.each do |email|
-			BuyMailer.send_mails_allx(email, @subject, @content).deliver
-		end
-
-		end
+		User.send_mails_all(params[:emails], params[:content], params[:subject])
 	end
-	 handle_asynchronously :send_mails_all
+
 
 	def search_reference
 		reference = params[:reference]

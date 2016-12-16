@@ -236,4 +236,33 @@ end
     !persisted? || !password.blank? || !password_confirmation.blank?
   end
 
+
+  def send_mails_all(emails, content, subject)
+    logger.info params[:mails]
+    if params[:mails] != ''
+      @emails = emails
+      @content = content params[:content].html_safe
+    @subject = subject
+    logger.info @content
+    logger.info @subject
+    @emails.each do |email|
+      BuyMailer.send_mails_allx(email, @subject, @content).deliver_later
+    end
+
+    else
+      @email = []
+    @users = User.all.pluck(:email)
+    @content = params[:content].html_safe
+    @subject = params[:subject]
+    logger.info @content
+    logger.info @subject
+    @users.each do |email|
+      BuyMailer.send_mails_allx(email, @subject, @content).deliver
+    end
+
+    end
+
+  end
+  handle_asynchronously :send_mails_all
+
 end
