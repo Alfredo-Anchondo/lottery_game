@@ -238,8 +238,8 @@ end
 
 
   def send_mails_all(emails, content, subject)
-    logger.info params[:mails]
-    if params[:mails] != ''
+    logger.info emails
+    if emails != ''
       @emails = emails
       @content = content.html_safe
     @subject = subject
@@ -252,8 +252,8 @@ end
     else
       @email = []
     @users = User.all.pluck(:email)
-    @content = params[:content].html_safe
-    @subject = params[:subject]
+    @content = content.html_safe
+    @subject = subject
     logger.info @content
     logger.info @subject
     @users.each do |email|
