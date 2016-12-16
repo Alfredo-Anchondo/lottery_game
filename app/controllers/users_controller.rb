@@ -52,6 +52,7 @@ end
 		@users.each do |email|
 			BuyMailer.send_mails_allx(email, @subject, @content).deliver
 		end
+		 ActiveRecord::Base.connection.close
 	end
 		end
 	end
