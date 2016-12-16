@@ -237,7 +237,7 @@ end
   end
 
 
-  def send_mails_all(emails, content, subject)
+  def self.send_mails_all(emails, content, subject)
     logger.info emails
     if emails != ''
       @emails = emails
