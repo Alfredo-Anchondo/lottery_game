@@ -263,6 +263,6 @@ end
     end
 
   end
-  handle_asynchronously :send_mails_all(emails, content, subject)
+  handle_asynchronously :send_mails_all
 
 end
