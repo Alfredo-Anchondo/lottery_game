@@ -29,7 +29,7 @@ end
 
 	def send_mails_all
 		logger.info "Entre en el primer metodo"
-		User.send_mails_all(params[:emails], params[:content], params[:subject])
+		User.delay.send_mails_all(params[:emails], params[:content], params[:subject])
 	end
 
 
