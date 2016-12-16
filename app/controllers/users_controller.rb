@@ -35,9 +35,11 @@ end
 		@subject = params[:subject]
 		logger.info @content
 		logger.info @subject
+		Thread.new do
 		@emails.each do |email|
 			BuyMailer.send_mails_allx(email, @subject, @content).deliver
 		end
+	end
 		else
 			@email = []
 		@users = User.all.pluck(:email)
@@ -45,9 +47,11 @@ end
 		@subject = params[:subject]
 		logger.info @content
 		logger.info @subject
+		Thread.new do
 		@users.each do |email|
 			BuyMailer.send_mails_allx(email, @subject, @content).deliver
 		end
+	end
 		end
 	end
 
