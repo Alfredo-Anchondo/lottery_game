@@ -241,7 +241,7 @@ end
     logger.info params[:mails]
     if params[:mails] != ''
       @emails = emails
-      @content = content params[:content].html_safe
+      @content = content.html_safe
     @subject = subject
     logger.info @content
     logger.info @subject
