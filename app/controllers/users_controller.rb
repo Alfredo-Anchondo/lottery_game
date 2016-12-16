@@ -40,6 +40,7 @@ end
 			BuyMailer.send_mails_allx(email, @subject, @content).deliver_later
 		end
 		 ActiveRecord::Base.connection.close
+		 render json: true
 	end
 		else
 			@email = []
@@ -53,6 +54,7 @@ end
 			BuyMailer.send_mails_allx(email, @subject, @content).deliver_later
 		end
 		 ActiveRecord::Base.connection.close
+		 render json: true
 	end
 		end
 	end
