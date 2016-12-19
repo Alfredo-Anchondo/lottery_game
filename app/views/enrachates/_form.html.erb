@@ -204,7 +204,7 @@
 <div class="form-group">
 <%= f.label :access_key, :class => "col-md-3" %>
 <div class="col-md-9">
-<%= f.text_field :access_key, :required => "required", :class => "form-control" %>
+<%= f.text_field :access_key, :required => if current_user.role.is_admin?  "false" : "required", :class => "form-control" %>
 </div>
 </div>
 
