@@ -383,6 +383,9 @@ es:
             available: "Disponible?"
         enrachate:
             name: "Nombre"
+            second_prize: "Premio segundo lugar"
+            third_prize: "Premio tercer lugar"
+            max_racha: "Racha para ganar"
             price: "Precio"
             initial_balance: "Bolsa acumulada"
             type: "Tipo"

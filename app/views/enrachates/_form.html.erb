@@ -210,6 +210,36 @@
 
       </div>
 <!-- end col-md-6 -->
+<div class="clearfix">
+
+</div>
+  <% if current_user.role.is_admin? %>
+<div class="col-md-12">
+<h4 style="text-align:center">Esta parte debe ser llenada solo si es el enrachate especial</h4>
+<hr>
+<div class="form-group">
+<%= f.label :second_prize, :class => "col-md-3" %>
+<div class="col-md-9">
+<%= f.number_field :second_prize,  :class => "form-control" %>
+</div>
+</div>
+
+<div class="form-group">
+<%= f.label :third_prize, :class => "col-md-3" %>
+<div class="col-md-9">
+<%= f.number_field :third_prize,  :class => "form-control" %>
+</div>
+</div>
+
+<div class="form-group">
+<%= f.label :max_racha, :class => "col-md-3" %>
+<div class="col-md-9">
+<%= f.number_field :max_racha, :class => "form-control" %>
+</div>
+</div>
+
+</div>
+<% end %>
 
 
 <div class="col-md-12 col-xs-12">

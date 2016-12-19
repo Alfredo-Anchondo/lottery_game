@@ -46,6 +46,6 @@ class EnrachatesController < ApplicationController
     end
 
     def enrachate_params
-      params.require(:enrachate).permit(:price, :user_id, :access_key, :name, :initial_balance, :percentage, :type_enrachate, :description, :winner, :initial_date, :end_date)
+      params.require(:enrachate).permit(:price, :user_id, :access_key, :name, :initial_balance, :percentage, :type_enrachate, :description, :winner, :initial_date, :end_date, :max_racha, :second_prize, :third_prize)
     end
 end

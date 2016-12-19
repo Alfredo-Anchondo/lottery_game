@@ -24,6 +24,7 @@
                                   <th><%= t("activerecord.attributes.enrachate.initial_date") %></th>
                                   <th><%= t("activerecord.attributes.enrachate.end_date") %></th>
                                   <th><%= t("activerecord.attributes.enrachate.access_key") %></th>
+                                  <th><%= t("activerecord.attributes.enrachate.second_prize") %></th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -42,6 +43,7 @@
                                   <td><%= enrachate.initial_date %></td>
                                   <td><%= enrachate.end_date %></td>
                                   <td><%= enrachate.access_key %></td>
+                                  <td><%= enrachate.second_prize %></td>
                                 <td class="action-link">
                   <% if can? :show,enrachate %>
                     <%= link_to enrachate, :class => "btn btn-default", :title => t("actions.show") do %>

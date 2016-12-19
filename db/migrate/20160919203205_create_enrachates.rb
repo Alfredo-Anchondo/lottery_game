@@ -10,6 +10,9 @@ class CreateEnrachates < ActiveRecord::Migration
       t.datetime :initial_date
       t.datetime :end_date
       t.string :name
+      t.float :second_prize
+      t.float :third_prize
+      t.integer :max_racha
 
       t.timestamps
     end
