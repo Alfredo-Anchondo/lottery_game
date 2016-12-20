@@ -52,17 +52,28 @@ end
 
          @incorrects_tickets_for_tira = EnrachateUser.where("question_enrachate_id = ? and tira_enrachate_id = ?  and answer = ?",@question_id, @tira_id, @incorrect_answer)
 
+         logger.info  @incorrects_tickets_for_tira.count
+        if @incorrects_tickets_for_tira.count > 1
+
          @incorrects_tickets_for_tira.each do |iticket|
-           if ticket.enrachates_id == 18
+           if iticket.enrachates_id == 18
              @racha_count_los = EnrachateUser.where("enrachate_user_id = ? and status = ? ",  iticket.enrachate_user_id, "alive").count
              @special_enrachate_los = Enrachate.find(iticket.enrachates_id)
+             logger.info "Entre a la de especial"
+             logger.info @special_enrachate_los
              if @racha_count_los == (@special_enrachate_los.max_racha - 1)
                  iticket.user.update(:balance => iticket.user.balance + @special_enrachate_los.second_prize )
                  iticket.update(:status => "Winner_second")
+                 BuyMailer.close_question(iticket.user.email, "Perdedor" ,iticket).deliver
              end
              if @racha_count_los == (@special_enrachate_los.max_racha - 2)
                  iticket.user.update(:balance => iticket.user.balance + @special_enrachate_los.third_prize )
                  iticket.update(:status => "Winner_third")
+                 BuyMailer.close_question(iticket.user.email, "Perdedor" ,iticket).deliver
+             end
+             if @racha_count_los != (@special_enrachate_los.max_racha - 2) && @racha_count_los != (@special_enrachate_los.max_racha - 1)
+               iticket.update(:status => "loser")
+               BuyMailer.close_question(iticket.user.email, "Perdedor" ,iticket).deliver
              end
            else
              iticket.update(:status => "loser")
@@ -71,7 +82,30 @@ end
 
          end
 
+       else
+          if @incorrects_tickets_for_tira.count != 0
+         @racha_count_los = EnrachateUser.where("enrachate_user_id = ? and status = ? ",  @incorrects_tickets_for_tira.first.enrachate_user_id, "alive").count
+         @special_enrachate_los = Enrachate.find(@incorrects_tickets_for_tira.first.enrachates_id)
+         logger.info "Entre a la de especial"
+         logger.info @special_enrachate_los
+         if @racha_count_los == (@special_enrachate_los.max_racha - 1)
+             @incorrects_tickets_for_tira.first.user.update(:balance => @incorrects_tickets_for_tira.first.user.balance + @special_enrachate_los.second_prize )
+             @incorrects_tickets_for_tira.first.update(:status => "Winner_second")
+             BuyMailer.close_question(@incorrects_tickets_for_tira.first.user.email, "Perdedor" ,@incorrects_tickets_for_tira.first).deliver
+         end
+         if @racha_count_los == (@special_enrachate_los.max_racha - 2)
+            @incorrects_tickets_for_tira.first.user.update(:balance => @incorrects_tickets_for_tira.first.user.balance + @special_enrachate_los.third_prize )
+             @incorrects_tickets_for_tira.first.update(:status => "Winner_third")
+             BuyMailer.close_question(@incorrects_tickets_for_tira.first.user.email, "Perdedor" ,@incorrects_tickets_for_tira.first).deliver
+         end
+         if @racha_count_los != (@special_enrachate_los.max_racha - 2) && @racha_count_los != (@special_enrachate_los.max_racha - 1)
+           @incorrects_tickets_for_tira.first.update(:status => "loser")
+           BuyMailer.close_question(@incorrects_tickets_for_tira.first.user.email, "Perdedor" ,@incorrects_tickets_for_tira.first).deliver
+         end
+
        end
+     end
+     end
 
          RelationEnrachateTira.where("tira_enrachate_id = ?", @tira_id).each do |tira_enrachate_relat|
            @enrachate = tira_enrachate_relat.enrachate
