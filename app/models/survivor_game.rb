@@ -524,15 +524,20 @@ class SurvivorGame < ActiveRecord::Base
                            array_values_order = []
                           usuarios = pick_survivor.pick_users.pluck(:pick_user_id).uniq
                           usuarios.each do |usuario_id|
-                            array_values.push(PickUser.where("pick_user_id = ?",usuario_id).first.total_points)
-                            array_users.push(PickUser.where("pick_user_id = ?",usuario_id).first)
+                            array_values.push(PickUser.where("pick_user_id = ?",usuario_id).last.total_points)
+                            array_users.push(PickUser.where("pick_user_id = ?",usuario_id).last)
                           end
                           array_values_order = array_values.uniq.sort.reverse;
                           array_values_order2 = array_values.sort.reverse;
                           logger.info array_values_order
+                          logger.info array_values_order2
+
                            count_first = array_values_order2.count(array_values_order[0])
                            count_second = array_values_order2.count(array_values_order[1])
                            count_third = array_values_order2.count(array_values_order[2])
+                             logger.info count_first
+                               logger.info count_second
+                                 logger.info count_third
                            #Cuando solo existe un ganador de primero, un ganador de segundo y un ganador de tercero
                            if count_first == 1 && count_second == 1 && count_third == 1
                              logger.info "Entre en el que de todos solo hay un ganador"

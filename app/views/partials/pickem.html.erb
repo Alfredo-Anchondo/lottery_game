@@ -39,6 +39,15 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     }
 </style>
 
+<% if @x == true%>
+  <div class="row">
+    <h4 style="text-align:center; color:white; font-size:24px;">Esta liga a terminada, agradecemos su preferencia participando con nosotros</h4>
+    <h4 style="text-align:center; color:white; font-size:20px;">Muchas felicidades a nuestros ganadores, no olvides consultar los resultados finales</h4>
+      <h4 style="text-align:center">  <a class="btn btn-primary"  href="/partials/pick_history/<%= @pick.id %>">Temporada</a>  <a class="btn btn-primary"  href="/partials/pickem_week_games_history/<%= @pick.id %>">Semanal</a>  <a class="btn btn-primary"  href="/partials/games_result/">Resultados</a> </h4> <hr>
+
+  </div>
+<% else %>
+
 
 <% if @current_week[0].week == 0 %>
 	<div class="row" style=" margin-bottom:80px !important; background-size: cover; background-image: url(/assets/default_background.png)">
@@ -504,3 +513,5 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
           setTimeout(function(){ location.reload(); }, 5000);
           })
     </script>
+
+<% end %>
