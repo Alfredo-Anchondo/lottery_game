@@ -58,6 +58,7 @@ color:black !important;
 </div>
 </div>
 
+<br>
 <div id="mainwrapper2"><!-- This #mainwrapper section contains all of our images to make them center and look proper in the browser ->
 
 </div> <!-- end of #mainwrapper-->
@@ -81,7 +82,7 @@ color:black !important;
 
 
 
-	<div class="modal fade" id="random_loterry_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="random_loterry_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background-color:#2d68ac; color:white;">
@@ -103,7 +104,7 @@ color:black !important;
                             <h4>¡No te preocupes! Nosotros te ayudamos con el generador de números al azar.</h4> <br>
                                 <label>Lotería: </label> <select style="text-align:center" class="form-control" id="lotteries_random"><option value="0">Selecciona una lotería</option></select> <br><br>
 
-                                <div class="row">
+                                <div class="row" id="2teams">
                                 <div class="col-md-5 col-xs-5">
                                     <h4 style="text-align:center" id="local_team_random"></h4>
                                     </div>
@@ -117,19 +118,48 @@ color:black !important;
                                      <h4 style="text-align:center" id="visit_team_random"></h4>
                                     </div>
                                 </div>
-                                <hr>
-								<div class="row" id="random-caracteristics" style="display:none">
-							<div class="col-md-6">
-								<h4 style="text-align:center; color:black;">Bolsa acumulada: </h4>
-								<h3  style="text-align:center;font-weight:900;  color:#696969" id="random-balance"></h3>
-							</div>
-							<div class="col-md-6">
-								<h4 style="text-align:center; color:black;">Precio del billete:</h4>
-								<h3 style="text-align:center; font-weight:900; color:#696969;" id="random_price"></h3>
-							</div>
 
-						</div>
-								<hr>
+                                <div class="row" style="display:none" id="3teams">
+                                <div class="col-md-4 col-xs-4">
+                                    <h4 style="text-align:center" id="local_team_random3"></h4>
+                                    </div>
+
+                                <div class="col-md-4 col-xs-4">
+                                     <h4 style="text-align:center" id="visit_team_random3"></h4>
+                                    </div>
+                                    <div class="col-md-4 col-xs-4">
+                                         <h4 style="text-align:center" id="team3_ran"></h4>
+                                        </div>
+                                </div>
+
+                                <div class="row" style="display:none" id="4teams">
+                                <div class="col-md-3 col-xs-3">
+                                    <h4 style="text-align:center" id="local_team_random34"></h4>
+                                    </div>
+
+                                <div class="col-md-3 col-xs-3">
+                                     <h4 style="text-align:center" id="visit_team_random34"></h4>
+                                    </div>
+                                    <div class="col-md-3 col-xs-3">
+                                         <h4 style="text-align:center" id="team34_ran"></h4>
+                                        </div>
+                                        <div class="col-md-3 col-xs-3">
+                                             <h4 style="text-align:center" id="team4_ran"></h4>
+                                            </div>
+                                </div>
+                                <hr>
+                <div class="row" id="random-caracteristics" style="display:none">
+              <div class="col-md-6">
+                <h4 style="text-align:center; color:black;">Bolsa: </h4>
+                <h3  style="text-align:center;font-weight:900;  color:#696969" id="random-balance"></h3>
+              </div>
+              <div class="col-md-6">
+                <h4 style="text-align:center; color:black;">Precio del billete:</h4>
+                <h3 style="text-align:center; font-weight:900; color:#696969;">$ <span id="random_price"></span>  </h3>
+              </div>
+
+            </div>
+                <hr>
                             <span id="quantity_tickets_ran"><label>Cantidad de boletos: </label><select class="form-control" id="number_quantity">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -150,28 +180,28 @@ color:black !important;
 
                                 <h3>Números Generados: </h3>
                                 <h2 style="font-weight:900; color:#696969; word-spacing:10px;" id="generate_numbers_div"></h2>
-								<hr>
-								<h3 style="font-weight:800">Total a pagar: <span style="font-size:120%; color:#696969" id="total_pay_ran"></span></h3>
+                <hr>
+                <h3 style="font-weight:800">Total a pagar: <span style="font-size:120%; color:#696969" id="total_pay_ran"></span></h3>
                                 <hr>
 
                                 <button class="btn btn-primary" id="generate_numbers">Generar Números</button>
                                 <button style="display:none" class="btn btn-primary" id="buy_numbers">Comprar Números</button>
 
-								<h5 style=" text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:black" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5>
+                <h5 style=" text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:black" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5>
 
                             </div>
                  </div>
             </div>
         </div>
-		</div>
-		 <div class="modal-footer" style="background-color:#2d68ac; color:white;">
+    </div>
+     <div class="modal-footer" style="background-color:#2d68ac; color:white;">
        <h4 style="text-align:center"> <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button></h4>
       </div>
-	  </div>
-		</div>
-	</div>
+    </div>
+    </div>
+  </div>
 
-	<div class="modal fade" id="serie_loterry_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="serie_loterry_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background-color:#2d68ac; color:white;">
@@ -191,7 +221,7 @@ color:black !important;
 					<h4 style="text-align:center">Selecciona todos esos números en un solo paso</h4> <br>
 					    <label style="margin-left:15%">Lotería: </label> <select style="text-align:center" class="form-control" id="lotteries_random2"><option value="0">Selecciona una lotería</option></select> <br><br>
                                 <hr>
-                                <div class="row">
+                                <div class="row" id="2teams_tira">
                                 <div class="col-md-5 col-xs-5">
                                     <h4 style="text-align:center" id="local_team_random2"></h4>
                                     </div>
@@ -202,16 +232,46 @@ color:black !important;
                                      <h4 style="text-align:center" id="visit_team_random2"></h4>
                                     </div>
                                 </div>
+																<div class="row" style="display:none" id="3teams_tira">
+																<div class="col-md-4 col-xs-4">
+																		<h4 style="text-align:center" id="local_team_random23"></h4>
+																		</div>
+
+																<div class="col-md-4 col-xs-4">
+																		 <h4 style="text-align:center" id="visit_team_random23"></h4>
+																		</div>
+
+																		<div class="col-md-4 col-xs-4">
+																	 <h4 style="text-align:center" id="team3_ran_tira"></h4>
+																		</div>
+																</div>
+																<div class="row" style="display:none" id="4teams_tira">
+																<div class="col-md-3 col-xs-3">
+																		<h4 style="text-align:center" id="local_team_random24"></h4>
+																		</div>
+
+																<div class="col-md-3 col-xs-3">
+																		 <h4 style="text-align:center" id="visit_team_random24"></h4>
+																		</div>
+
+																		<div class="col-md-3 col-xs-3">
+																	 <h4 style="text-align:center" id="team34_ran_tira"></h4>
+																		</div>
+
+																		<div class="col-md-3 col-xs-3">
+																	 <h4 style="text-align:center" id="team4_ran_tira"></h4>
+																		</div>
+																</div>
 						<hr>
 
 						<div class="row" id="serie-caracteristics" style="display:none">
 							<div class="col-md-6">
-								<h4 style="text-align:center; color:black;">Bolsa acumulada: </h4>
+								<h4 style="text-align:center; color:black;">Bolsa: </h4>
 								<h3  style="text-align:center;font-weight:900; color:#696969" id="serie-balance"></h3>
 							</div>
 							<div class="col-md-6">
 								<h4 style="text-align:center; color:black;">Precio del billete:</h4>
-								<h3 style="text-align:center; font-weight:900; color:#696969;" id="serie_price"></h3>
+								<h3 style="text-align:center; font-weight:900; color:#696969;">$ <span id="serie_price"></span> </h3>
 							</div>
 
 						</div>
@@ -250,7 +310,6 @@ color:black !important;
 		</div>
 	</div>
 
-
     <div class="clearfix"></div>
 
 
@@ -287,6 +346,43 @@ color:black !important;
                                       <hr style="margin-top:10px; margin-bottom:10px;">
                                       <h4 style="text-align:center; color:black; font-size:20px;">Marcador Final: </h4>
                                      <div class="col-md-12 col-xs-12">
+                                       <% if day.final_number == 999  %>
+                                       <div class="col-md-4 col-xs-4">
+                                            <h4 style="text-align:center"><img width="70%" src="<%= day.game.team.logo_url %>"></h4>
+                                             <h4 style="text-align:center; letter-spacing: -4px; font-size:8vh; color:black;"><% day.game.local_score.to_s.split("").each_with_index do |letter, index| %> <span style="text-align:center; <%= day.game.local_score.to_s.split("").count > 2 ? index == 2 ? "color:red" : "" :  index == 1 ? "color:red" : ""  %> "><%= letter %></span>  <% end %></h4>
+                                       </div>
+                                       <div class="col-md-4 col-xs-4">
+                                            <h4 style="text-align:center"><img width="70%" src="<%= day.game.team2.logo_url %>"></h4>
+                                            <h4 style="text-align:center; letter-spacing: -4px; font-size:8vh; color:black;"><% day.game.visit_score.to_s.split("").each_with_index do |letter, index| %> <span style="text-align:center; <%= day.game.visit_score.to_s.split("").count > 2 ? index == 2 ? "color:red" : "" :  index == 1 ? "color:red" : ""  %> "><%= letter %></span>  <% end %> </h4>
+                                       </div>
+                                       <div class="col-md-4 col-xs-4">
+                                         <h4 style="text-align:center"><img width="70%" src="<%= day.game2.team.logo_url %>"></h4>
+                                         <h4 style="text-align:center; letter-spacing: -4px; font-size:8vh; color:black;"><% day.game2.local_score.to_s.split("").each_with_index do |letter, index| %> <span style="text-align:center; <%= day.game.visit_score.to_s.split("").count > 2 ? index == 2 ? "color:red" : "" :  index == 1 ? "color:red" : ""  %> "><%= letter %></span>  <% end %> </h4>
+                                    </div>
+
+                                       <% end %>
+
+                                       <% if day.final_number == 9999  %>
+                                       <div class="col-md-3 col-xs-3">
+                                            <h4 style="text-align:center"><img width="90%" src="<%= day.game.team.logo_url %>"></h4>
+                                             <h4 style="text-align:center; letter-spacing: -4px; font-size:6vh; color:black;"><% day.game.local_score.to_s.split("").each_with_index do |letter, index| %> <span style="text-align:center; <%= day.game.local_score.to_s.split("").count > 2 ? index == 2 ? "color:red" : "" :  index == 1 ? "color:red" : ""  %> "><%= letter %></span>  <% end %></h4>
+                                       </div>
+                                       <div class="col-md-3 col-xs-3">
+                                            <h4 style="text-align:center"><img width="90%" src="<%= day.game.team2.logo_url %>"></h4>
+                                            <h4 style="text-align:center; letter-spacing: -4px; font-size:6vh; color:black;"><% day.game.visit_score.to_s.split("").each_with_index do |letter, index| %> <span style="text-align:center; <%= day.game.visit_score.to_s.split("").count > 2 ? index == 2 ? "color:red" : "" :  index == 1 ? "color:red" : ""  %> "><%= letter %></span>  <% end %> </h4>
+                                       </div>
+                                       <div class="col-md-3 col-xs-3">
+                                         <h4 style="text-align:center"><img width="90%" src="<%= day.game2.team.logo_url %>"></h4>
+                                         <h4 style="text-align:center; letter-spacing: -4px; font-size:6vh; color:black;"><% day.game2.local_score.to_s.split("").each_with_index do |letter, index| %> <span style="text-align:center; <%= day.game.visit_score.to_s.split("").count > 2 ? index == 2 ? "color:red" : "" :  index == 1 ? "color:red" : ""  %> "><%= letter %></span>  <% end %> </h4>
+                                    </div>
+                                    <div class="col-md-3 col-xs-3">
+                                      <h4 style="text-align:center"><img width="90%" src="<%= day.game2.team2.logo_url %>"></h4>
+                                      <h4 style="text-align:center; letter-spacing: -4px; font-size:6vh; color:black;"><% day.game2.visit_score.to_s.split("").each_with_index do |letter, index| %> <span style="text-align:center; <%= day.game.visit_score.to_s.split("").count > 2 ? index == 2 ? "color:red" : "" :  index == 1 ? "color:red" : ""  %> "><%= letter %></span>  <% end %> </h4>
+                                 </div>
+                                      
+                                       <% end %>
+
+                                       <% if day.final_number == 99 %>
                                        <div class="col-md-5 col-xs-5">
                                          <div class="col-md-6 col-xs-12">
                                            <h4 style="text-align:center"><img width="100%" src="<%= day.game.team.logo_url %>"></h4>
@@ -342,7 +438,7 @@ color:black !important;
                                        </div>
 
 
-
+                                       <% end %>
 
                                      </div>
 
@@ -911,6 +1007,27 @@ color:black !important;
 					   $('#lotteries_random2').append('<option data-max-number = "'+ data.partials[i].lotteries[0].final_number +'" data-price="'+data.partials[i].lotteries[0].price+'" data-balance ="'+ data.partials[i].lotteries[0].initial_balance +'" value="'+ data.partials[i].lotteries[0].id +'">'+data.partials[i].team.name+ ' vs ' + data.partials[i].team2.name + '</option>');
 
 
+             $('#lotteries_random').selectpicker('render');
+              $('#lotteries_random2').selectpicker('render');
+              $('#lotteries_random').selectpicker('refresh');
+              $('#lotteries_random2').selectpicker('refresh');
+
+              $(document).ready(function(){
+                $(".random_lott").click(function(){
+                   $("#lotteries_random option[value='"+$(this).data("id")+"']").prop('selected', true);
+                   $('#lotteries_random').selectpicker('refresh');
+                   $('#lotteries_random').trigger('change');
+
+                })
+                $(".random_lott2").click(function(){
+                   $("#lotteries_random2 option[value='"+$(this).data("id")+"']").prop('selected', true);
+                   $('#lotteries_random2').selectpicker('refresh');
+                   $('#lotteries_random2').trigger('change');
+
+                })
+
+              })
+
                        if(data.partials[i].category.id < 10){
                            var url = "/system/categories/logos/000/000/00"+ data.partials[i].category.id+"/original/"+data.partials[i].category.logo_file_name+"" ;
                        }else{
@@ -1020,13 +1137,42 @@ color:black !important;
 })
   .done(function( data) {
 
-        $("#visit_team_random").empty();
-        $("#local_team_random").empty();
-        $("#visit_team_random").append('<img width="70%" src="'+data.team2+'">');
-        $("#local_team_random").append('<img width="70%" src="'+data.team1+'">');
-		 $('#random_price').text( "$"+$('#lotteries_random option:selected').data('price') + "");
-         $('#random-balance').text("$"+$('#lotteries_random option:selected').data('balance') + " ");
-		$('#random-caracteristics').show();
+    $("#visit_team_random").empty();
+    $("#local_team_random").empty();
+    $("#visit_team_random").append('<img width="70%" src="'+data.team2+'">');
+    $("#local_team_random").append('<img width="70%" src="'+data.team1+'">');
+ $('#random_price').text($('#lotteries_random option:selected').data('price'));
+     $('#random-balance').text("$"+$('#lotteries_random option:selected').data('balance') + " ");
+$('#random-caracteristics').show();
+$("#3teams").hide();
+$("#4teams").hide();
+$("#2teams").show();
+
+if(data.team3 != null && data.team3 != "" && data.team4 == ""){
+  $("#visit_team_random3").empty();
+  $("#local_team_random3").empty();
+  $("#team3_ran").empty();
+  $("#visit_team_random3").append('<img width="70%" src="'+data.team2+'">');
+  $("#local_team_random3").append('<img width="70%" src="'+data.team1+'">');
+  $("#team3_ran").append('<img width="70%" src="'+data.team3+'">');
+  $("#2teams").hide();
+  $("#3teams").show();
+  $("#4teams").hide();
+}
+
+if(data.team4 != null && data.team4 != ""){
+  $("#visit_team_random34").empty();
+  $("#local_team_random34").empty();
+  $("#team34_ran").empty();
+  $("#team4_ran").empty();
+  $("#visit_team_random34").append('<img width="70%" src="'+data.team2+'">');
+  $("#local_team_random34").append('<img width="70%" src="'+data.team1+'">');
+  $("#team34_ran").append('<img width="70%" src="'+data.team3+'">');
+    $("#team4_ran").append('<img width="70%" src="'+data.team4+'">');
+  $("#2teams").hide();
+  $("#3teams").hide();
+  $("#4teams").show();
+}
 
 
          });
@@ -1039,48 +1185,99 @@ color:black !important;
 })
   .done(function( data) {
 
+            $("#visit_team_random2").empty();
+            $("#local_team_random2").empty();
+            $("#visit_team_random2").append('<img width="70%" src="'+data.team2+'">');
+            $("#local_team_random2").append('<img width="70%" src="'+data.team1+'">');
+    		 $('#serie_price').text($('#lotteries_random2 option:selected').data('price'));
+             $('#serie-balance').text("$"+$('#lotteries_random2 option:selected').data('balance') + " ");
+    				 var final_number = parseInt($('#lotteries_random2 option:selected').data('max-number'))
+    					  if( final_number < 100){
+                $('#initial_serie').mask('00', {placeholder: "00", reverse: false});
+    			$('#final_serie').mask('00', {placeholder: "00", reverse: false});
+                     ticket_length = 2;
+                 } else if(final_number < 1000 && final_number > 100 ){
+                     $('#initial_serie').mask('000', {placeholder: "000", reverse: false});
+    				  $('#final_serie').mask('000', {placeholder: "000", reverse: false});
+                      ticket_length = 3;
+                 } else {
+                      $('#initial_serie').mask('0000', {placeholder: "0000", reverse: false});
+    				  $('#final_serie').mask('0000', {placeholder: "0000", reverse: false});
+                      ticket_length = 4;
+                 }
+    						 $("#2teams_tira").show();
+    						 $("#3teams_tira").hide();
+    						 $("#4teams_tira").hide();
 
-        $("#visit_team_random2").empty();
-        $("#local_team_random2").empty();
-        $("#visit_team_random2").append('<img width="70%" src="'+data.team2+'">');
-        $("#local_team_random2").append('<img width="70%" src="'+data.team1+'">');
-		 $('#serie_price').text( "$"+$('#lotteries_random2 option:selected').data('price') + "");
-         $('#serie-balance').text("$"+$('#lotteries_random2 option:selected').data('balance') + " ");
-					  if(parseInt($('#lotteries_random2 option:selected').data('max-number')) < 100){
-            $('#initial_serie').mask('00', {placeholder: "00", reverse: false});
-			$('#final_serie').mask('00', {placeholder: "00", reverse: false});
-                 ticket_length = 2;
-             } else if(data.game.lotteries[0].final_number < 1000){
-                 $('#initial_serie').mask('000', {placeholder: "000", reverse: false});
-				  $('#final_serie').mask('000', {placeholder: "000", reverse: false});
-                  ticket_length = 3;
-             } else {
-                  $('#initial_serie').mask('0000', {placeholder: "0000", reverse: false});
-				  $('#final_serie').mask('0000', {placeholder: "0000", reverse: false});
-                  ticket_length = 4;
-             }
-		$('#serie-caracteristics').show();
+    						 if(data.team3 != null && data.team3 != "" &&  data.team4 == "" ){
+    					 		$("#visit_team_random23").empty();
+    					 		$("#local_team_random23").empty();
+    					 		$("#team3_ran_tira").empty();
+    					 		$("#visit_team_random23").append('<img width="70%" src="'+data.team2+'">');
+    					 		$("#local_team_random23").append('<img width="70%" src="'+data.team1+'">');
+    					 		$("#team3_ran_tira").append('<img width="70%" src="'+data.team3+'">');
+    					 		$("#2teams_tira").hide();
+    					 		$("#3teams_tira").show();
+    							$("#4teams_tira").hide();
+    					 	}
+
+    						if(data.team4 != null && data.team4 != "" ){
+    						 $("#visit_team_random24").empty();
+    						 $("#local_team_random24").empty();
+    						  $("#team34_ran_tira").empty();
+    						 $("#team4_ran_tira").empty();
+
+    						 $("#visit_team_random24").append('<img width="70%" src="'+data.team2+'">');
+    						 $("#local_team_random24").append('<img width="70%" src="'+data.team1+'">');
+    						 $("#team34_ran_tira").append('<img width="70%" src="'+data.team3+'">');
+    						 $("#team4_ran_tira").append('<img width="70%" src="'+data.team4+'">');
+    						 $("#2teams_tira").hide();
+    						 $("#3teams_tira").hide();
+    						 $("#4teams_tira").show();
+    					 }
+
+    		$('#serie-caracteristics').show();
 
          });
       })
 
-    $('#generate_numbers').click(function(){
-     number_array = [];
-        $('#generate_numbers_div').empty();
-         var quantity = $('#number_quantity').val();
-        for(var i=0; i < quantity; i++){
-            var number = Math.floor(Math.random()*(99-0+1)+0);
-            if(number < 10){
-                number = "0" + number + "";
-            }else{
-                number = "" + number;
-            }
-            $('#generate_numbers_div').append( "  " + number + "  ");
-            number_array.push(number);
-        }
-        $('#buy_numbers').show();
-		$('#total_pay_ran').text('$'+parseInt($('#random_price').text().substring(1)) * quantity + '');
-    })
+      $('#generate_numbers').click(function(){
+       number_array = [];
+          $('#generate_numbers_div').empty();
+           var quantity = $('#number_quantity').val();
+           var price = $("#random_price").text();
+           price = parseFloat(price);
+           var max_number = $("#lotteries_random option:selected").data("max-number");
+          for(var i=0; i < quantity; i++){
+              var number = Math.floor(Math.random()*(max_number)+1);
+              if(number < 10 && max_number == 99){
+                  number = "0" + number + "";
+              }else{
+                  number = "" + number;
+              }
+              if(number < 10 && max_number == 999){
+                number = "00" + number + ""
+              }
+              if(number < 100 && number > 10 && max_number == 999){
+                number = "0" + number + ""
+              }
+              if(number < 10  && max_number == 9999){
+                number = "000" + number + ""
+              }
+              if(number < 100 && number > 10 && number > 10 && max_number == 9999){
+                number = "00" + number + ""
+              }
+              if(number < 1000 && number > 100 && max_number == 9999){
+                number = "0" + number + ""
+              }
+
+
+              $('#generate_numbers_div').append( "  " + number + "  ");
+              number_array.push(number);
+          }
+          $('#buy_numbers').show();
+      $('#total_pay_ran').text('$'+ price * quantity + '');
+      })
 
      $('#buy_numbers').click(function(){
 		 this.disabled=true;
@@ -1132,32 +1329,48 @@ color:black !important;
 				$('#final_serie').attr( 'min', $('#initial_serie').val());
 			});
 
-			$('#generate_serie').click(function(){
-				 value = parseInt($('#initial_serie').val());
-				max_value = parseInt($('#final_serie').val());
-				quantity = max_value - (value-1) ;
+      $('#generate_serie').click(function(){
+         value = parseInt($('#initial_serie').val());
+        max_value = parseInt($('#final_serie').val());
+        quantity = max_value - (value-1) ;
+        var maximum_value = $("#lotteries_random2 option:selected").data("max-number")
 
-				$('#generate_serie_numbers').empty();
-				if($('#lotteries_random2').val() == 0 ){
-					alert('Selecciona por favor una lotería para participar');
-				}else{
+        $('#generate_serie_numbers').empty();
+        if($('#lotteries_random2').val() == 0 ){
+          alert('Selecciona por favor una lotería para participar');
+        }else{
 
-				array_values = [];
-					if(value != null && max_value != null){
-						for(value; max_value >= value; value ++){
-							if(value < 10){
-								value = "0" + value + ""
-							}
-							array_values.push(value);
-							$('#generate_serie_numbers').append(" " + value + " ");
-						}
-						$('#purchase_serie').show();
-					}else{
-						alert('Selecciona el número inicial y final de tu serie');
-					}
-					$('#serie_total_buy').text('$'+parseInt($('#serie_price').text().substring(1)) * quantity + ' ');
-				}
-			 })
+        array_values = [];
+          if(value != null && max_value != null){
+            for(value; max_value >= value; value ++){
+              if(value < 10 && maximum_value == 99){
+                value = "0" + value + ""
+              }
+              if(value < 100 && value > 10 && maximum_value == 999){
+                value = "0" + value + ""
+              }
+              if(value < 10  && maximum_value == 999){
+                value = "00" + value + ""
+              }
+              if(value < 10 && maximum_value == 9999){
+                value = "000" + value + ""
+              }
+              if(value < 100 && value > 10 && maximum_value == 9999){
+                value = "00" + value + ""
+              }
+              if(value < 1000 && value > 100  && maximum_value == 9999){
+                value = "0" + value + ""
+              }
+              array_values.push(value);
+              $('#generate_serie_numbers').append(" " + value + " ");
+            }
+            $('#purchase_serie').show();
+          }else{
+            alert('Selecciona el número inicial y final de tu serie');
+          }
+          $('#serie_total_buy').text('$'+parseInt($('#serie_price').text()) * quantity + ' ');
+        }
+       })
 
 
 			$('#btn_buy_serie').click(function(){
@@ -1229,10 +1442,26 @@ color:black !important;
 
 					var background2 = data.partials[i].category.background_url ;
 
-                        	$("#mainwrapper2").append('<div class="col-md-4"><div id="box-3" style="background-size: cover; background-image: url('+background2+')" class="box col-md-12 col-xs-12"><div class="row"><h4 style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; font-size:18px; font-weight:800;">Lotería ' + data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + '</h4><h3 style="text-align:center; color:white; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; text-transform: capitalize; font-weight:800;"> '+moment(data.partials[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h3> <div class="col-md-6 col-xs-6"><img width="90%" style="margin-left:5%" src="'+data.partials[i].team.logo_url+'"></div><div class="col-md-6 col-xs-6"><img width="90%" style="margin-left:5%" src="'+data.partials[i].team2.logo_url+'"></div>  </div><span class="caption fade-caption" style="margin-top:-80px"><h3 style="text-align:center; margin-top:0px;">Lotería ' + data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + ' </h3><div class="col-md-6 col-xs-6"><h3 style="text-align:center; margin-top:0px; color:white;">Bolsa:</h3><h3 style="text-align:center; margin-bottom:0px; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; font-weight:800; font-size:20px;"> <span>$'+ data.partials[i].lotteries[0].initial_balance +' </span>  </h3> </div> <div class="col-md-6 col-xs-6"> <h3 style="text-align:center; color:white; margin-top:0px;"> Precio:</h3> <h3 style="text-align:center; margin-bottom:0px;     text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; font-size:20px; color:#696969; font-weight:800"> <span>$ '+ data.partials[i].lotteries[0].price +'</span>  </h3></div><div class="clearfix"></div><div class="col-md-6 col-xs-6"> <img width="50%" style="position:inherit" src="'+data.partials[i].team.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Primer digito:</label><label style="text-align:center; color:black; margin-left:34%;"><select data-selected=".team_score'+i+'  option:selected" data-selected2=".team2_score'+i+'  option:selected" data-count="'+i+'" class="form-control team_score'+i+' m-b" name="team_score"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label> </div> <div class="col-md-6 col-xs-6"> <img width="50%" style="position:inherit" src="'+data.partials[i].team2.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Segundo digito:</label><label style="text-align:center; color:black; margin-left:34%;"><select data-selected2=".team_score'+i+'  option:selected" data-selected=".team2_score'+i+'  option:selected" class="form-control team2_score'+i+' m-b" name="team2_score" data-count="'+i+'"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label> <input type="hidden" style="color:black; text-align:center" value="00" disabled id="ticket_number'+i+'" class="form-control" type="text" >  </div><h4 style="text-align:center"><button  data-toggle="modal" data-view="'+i+'" class="btn btn-primary open_modal'+i+'" data-target="#confirm_buy'+i+'" class="btn btn-primary" > Comprar Loteria </button> <button data-target="#random_loterry_modal" data-toggle="modal" class="btn btn-primary">Aleatorio</button><button style="margin-left:1%" data-toggle="modal" data-target="#serie_loterry_modal" class="btn btn-primary"> Serie </button></h4></span></div></div>');
+          if(data.partials[i].lotteries[0].final_number == 99){
 
-						$("body").append('<div class="modal fade bs-example-modal-sm" id="confirm_buy'+i+'" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"><div style="background-color:#2D68AC"  class="modal-dialog modal-md confirm_buy_modal"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t("purchase_confirmation") %> <span style="margin-left:29%;" id="date_modal"></span></h4></div><div class="modal-content"><div class="row" style="padding:5px !important;"> <h4 style="text-align:center"><%= t("ticket") %></h4><div class="col-md-12" style="border: 1px dotted black"><div class="row" style="padding:5px !important;"><h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name"> '+ data.partials[i].team.name + ' VS '  + data.partials[i].team2.name + '</h4></div><div class="row" style="padding:5px !important; border-bottom:1px solid #009688;"><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("name") %>:</h4><h5 style="text-align:center; text-transform:uppercase"><%= current_user.name %> </h5></div><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("last_name") %>:</h4><h5 style="text-align:center; text-transform:uppercase"><%= current_user.last_name %> </h5></div><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("ticket") %>:</h4><h5 style="text-align:center" class="ticket_numer_lottery"></h5></div></div><div class="row" style="padding:0px"><h4 style="text-align:right; margin-right:8%;">Total: <span id="total_price">$'+ data.partials[i].lotteries[0].price +'</span>  </h4></div></div><div class="col-md-12"><h4><%= t('estimate_jackpot') %>: <span class="total_initial_balanc" style="color:#696969; font-size:120%;">$'+ data.partials[i].lotteries[0].initial_balance +' </span> </h4> <small>* <%= t('bag_polity') %>.</small></div></div></div><div class="modal-footer"><h4 style="text-align:center">  <button type="button" class="btn btn-default"  data-dismiss="modal"><%= t('close') %></button><button data-price="'+ data.partials[i].lotteries[0].price +'" data-balance="'+ data.partials[i].lotteries[0].initial_balance +'" data-lottery="'+ data.partials[i].lotteries[0].id +'" type="button"  style="background-color:#034898" class="btn btn-primary lottery_buy"><%= t("buy") %></button></h4><h5 style="color:white; text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:#d1d1d1" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5></div></div></div>');
+            $("#mainwrapper2").append('<div class="col-md-4 col-xs-12" style=""><div id="box-3" style="background-size: cover; margin:0px; background-image: url('+background2+')" class="box col-md-12 col-xs-12"><div class="row" style="height:300px;"><h4 style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; font-size:18px; font-weight:800;">Lotería ' + data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + '</h4><h3 style="text-align:center; color:white; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; text-transform: capitalize; font-weight:800;"> '+moment(data.partials[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h3> <div class="col-md-6 col-xs-6"><img width="90%" style="margin-left:5%" src="'+data.partials[i].team.logo_url+'"></div><div class="col-md-6 col-xs-6"><img width="90%" style="margin-left:5%" src="'+data.partials[i].team2.logo_url+'"></div>  </div><span class="caption fade-caption" style="margin-top: -300px;"><h3 style="text-align:center">Lotería ' + data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + ' </h3><div class="col-md-6 col-xs-6"><h3 style="text-align:center; color:white;">Bolsa:</h3><p style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; font-weight:800; font-size:20px;"> <span>$'+ data.partials[i].lotteries[0].initial_balance +' </span>  </h3> </div> <div class="col-md-6 col-xs-6"> <h3 style="text-align:center; color:white;"> Precio: </h3> <h3 style="text-align:center;     text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; font-size:20px; color:#696969; font-weight:800"> <span>$ '+ data.partials[i].lotteries[0].price +'</span>  </h3></div><div class="clearfix"></div><div class="col-md-6 col-xs-6"> <img width="50%" style="position:inherit" src="'+data.partials[i].team.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Primer digito:</label><label style="text-align:center; color:black; margin-left:34%;"><select data-selected=".team_score'+i+'  option:selected" data-selected2=".team2_score'+i+'  option:selected" data-count="'+i+'" class="form-control team_score'+i+' m-b" name="team_score"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label> </div> <div class="col-md-6 col-xs-6"> <img width="50%" style="position:inherit" src="'+data.partials[i].team2.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Segundo digito:</label><label style="text-align:center; color:black; margin-left:34%;"><select data-selected2=".team_score'+i+'  option:selected" data-selected=".team2_score'+i+'  option:selected" class="form-control team2_score'+i+' m-b" name="team2_score" data-count="'+i+'"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label> <input type="hidden" style="color:black; text-align:center" value="00" disabled id="ticket_number'+i+'" class="form-control" type="text" >  </div><h4 style="text-align:center"><button  data-toggle="modal" data-view="'+i+'" class="btn btn-primary open_modal'+i+'" data-target="#confirm_buy'+i+'" class="btn btn-primary" > Comprar  </button> <button data-id="'+ data.partials[i].lotteries[0].id +'" id="random_lottery_button" data-target="#random_loterry_modal" data-toggle="modal" class="btn random_lott btn-primary">Aleatorio</button><button data-id="'+ data.partials[i].lotteries[0].id +'" style="margin-left:1%" data-toggle="modal" data-target="#serie_loterry_modal" class="btn random_lott2 btn-primary"> Serie </button></h4></span></div></div>');
 
+            $("body").append('<div class="modal fade bs-example-modal-sm" id="confirm_buy'+i+'" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"><div style="background-color:#2D68AC"  class="modal-dialog modal-md confirm_buy_modal"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t("purchase_confirmation") %> <span style="margin-left:29%;" id="date_modal"></span></h4></div><div class="modal-content"><div class="row" style="padding:5px !important;"> <h4 style="text-align:center"><%= t("ticket") %></h4><div class="col-md-12" style="border: 1px dotted black"><div class="row" style="padding:5px !important;"><h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name"> '+ data.partials[i].team.name + ' VS '  + data.partials[i].team2.name + '</h4></div><div class="row" style="padding:5px !important; border-bottom:1px solid #009688;"><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("name") %>:</h4><h5 style="text-align:center; text-transform:uppercase"><%= current_user.name %> </h5></div><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("last_name") %>:</h4><h5 style="text-align:center; text-transform:uppercase"><%= current_user.last_name %> </h5></div><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("ticket") %>:</h4><h5 style="text-align:center" class="ticket_numer_lottery"></h5></div></div><div class="row" style="padding:0px"><h4 style="text-align:right; margin-right:8%;">Total: <span id="total_price">$'+ data.partials[i].lotteries[0].price +'</span>  </h4></div></div><div class="col-md-12"><h4><%= t('estimate_jackpot') %>: <span class="total_initial_balanc" style="color:#696969; font-size:120%;">$'+ data.partials[i].lotteries[0].initial_balance +' </span> </h4> <small>* <%= t('bag_polity') %>.</small></div></div></div><div class="modal-footer"><h4 style="text-align:center">  <button type="button" class="btn btn-default"  data-dismiss="modal"><%= t('close') %></button><button data-price="'+ data.partials[i].lotteries[0].price +'" data-lottery="'+ data.partials[i].lotteries[0].id +'"  data-balance="'+ data.partials[i].lotteries[0].initial_balance +'"  type="button"  style="background-color:#034898" class="btn btn-primary lottery_buy"><%= t("buy") %></button></h4><h5 style="color:white; text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:#d1d1d1" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5></div></div></div>');
+          }
+
+          if(data.partials[i].lotteries[0].final_number == 999){
+
+            $("#mainwrapper2").append('<div class="col-md-4 col-xs-12" style=""><div id="box-3" style="background-size: cover; margin:0px; background-image: url('+background2+')" class="box col-md-12 col-xs-12"><div class="row" style="height:300px;"><h4 style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; font-size:14px; font-weight:800;">Lotería 3 Equipos ' + data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + ' + ' + data.partials[i].lotteries[0].team.name + '</h4><h3 style="text-align:center; color:white; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; text-transform: capitalize; font-weight:800; font-size:13px;"> '+moment(data.partials[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h3> <div class="col-md-4 col-xs-4"><img width="90%" style="margin-left:5%" src="'+data.partials[i].team.logo_url+'"></div><div class="col-md-4 col-xs-4"><img width="90%" style="margin-left:5%" src="'+data.partials[i].team2.logo_url+'"></div> <div class="col-md-4 col-xs-4"><img width="90%" style="margin-left:5%" src="'+data.partials[i].lotteries[0].team.logo_url+'"></div>   </div><span class="caption fade-caption" style="margin-top: -300px; padding: 5px;"><h3 style="text-align:center">Lotería 3 equipos ' + data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + ' + ' + data.partials[i].lotteries[0].team.name +' </h3><div class="col-md-6 col-xs-6"><h3 style="text-align:center; color:white;">Bolsa:</h3><p style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; font-weight:800; font-size:20px;"> <span>$'+ data.partials[i].lotteries[0].initial_balance +' </span>  </h3> </div> <div class="col-md-6 col-xs-6"> <h3 style="text-align:center; color:white;"> Precio: </h3> <h3 style="text-align:center;     text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; font-size:20px; color:#696969; font-weight:800"> <span>$ '+ data.partials[i].lotteries[0].price +'</span>  </h3></div><div class="clearfix"></div><div class="col-md-4 col-xs-4"> <img width="50%" style="position:inherit" src="'+data.partials[i].team.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Primer digito:</label><label style="text-align:center; color:black; "><select data-selected=".team_score'+i+'  option:selected" data-selected2=".team2_score'+i+'  option:selected" data-selected3=".team3_score'+i+'  option:selected" data-count="'+i+'" class="form-control team_score'+i+' m-b" name="team_score"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label> </div> <div class="col-md-4 col-xs-4"> <img width="50%" style="position:inherit" src="'+data.partials[i].team2.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Segundo digito:</label><label style="text-align:center; color:black;"><select data-selected2=".team_score'+i+'  option:selected" data-selected=".team2_score'+i+' option:selected" data-selected3=".team3_score'+i+'  option:selected" class="form-control team2_score'+i+' m-b" name="team2_score" data-count="'+i+'"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label>   </div> <div class="col-md-4 col-xs-4"> <img width="50%" style="position:inherit" src="'+data.partials[i].lotteries[0].team.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Tercer digito:</label><label style="text-align:center; color:black;"><select data-selected2=".team_score'+i+'  option:selected" data-selected3=".team2_score'+i+'  option:selected" data-selected=".team3_score'+i+'  option:selected" class="form-control team3_score'+i+' m-b" name="team3_score" data-count="'+i+'"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label> <input type="hidden" style="color:black; text-align:center" value="00" disabled id="ticket_number'+i+'" class="form-control" type="text" >  </div> <h4 style="text-align:center"><button  data-toggle="modal" data-view="'+i+'" class="btn btn-primary open_modal'+i+'" data-target="#confirm_buy'+i+'" class="btn btn-primary" > Comprar  </button> <button data-id="'+ data.partials[i].lotteries[0].id +'" id="random_lottery_button" data-target="#random_loterry_modal" data-toggle="modal" class="btn random_lott btn-primary">Aleatorio</button><button data-id="'+ data.partials[i].lotteries[0].id +'" style="margin-left:1%" data-toggle="modal" data-target="#serie_loterry_modal" class="btn random_lott2 btn-primary"> Serie </button></h4></span></div></div>');
+
+            $("body").append('<div class="modal fade bs-example-modal-sm" id="confirm_buy'+i+'" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"><div style="background-color:#2D68AC"  class="modal-dialog modal-md confirm_buy_modal"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t("purchase_confirmation") %> <span style="margin-left:29%;" id="date_modal"></span></h4></div><div class="modal-content"><div class="row" style="padding:5px !important;"> <h4 style="text-align:center"><%= t("ticket") %></h4><div class="col-md-12" style="border: 1px dotted black"><div class="row" style="padding:5px !important;"><h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name"> '+ data.partials[i].team.name + ' VS '  + data.partials[i].team2.name + '</h4></div><div class="row" style="padding:5px !important; border-bottom:1px solid #009688;"><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("name") %>:</h4><h5 style="text-align:center; text-transform:uppercase"><%= current_user.name %> </h5></div><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("last_name") %>:</h4><h5 style="text-align:center; text-transform:uppercase"><%= current_user.last_name %> </h5></div><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("ticket") %>:</h4><h5 style="text-align:center" class="ticket_numer_lottery"></h5></div></div><div class="row" style="padding:0px"><h4 style="text-align:right; margin-right:8%;">Total: <span id="total_price">$'+ data.partials[i].lotteries[0].price +'</span>  </h4></div></div><div class="col-md-12"><h4><%= t('estimate_jackpot') %>: <span class="total_initial_balanc" style="color:#696969; font-size:120%;">$'+ data.partials[i].lotteries[0].initial_balance +' </span> </h4> <small>* <%= t('bag_polity') %>.</small></div></div></div><div class="modal-footer"><h4 style="text-align:center">  <button type="button" class="btn btn-default"  data-dismiss="modal"><%= t('close') %></button><button data-price="'+ data.partials[i].lotteries[0].price +'" data-lottery="'+ data.partials[i].lotteries[0].id +'"  data-balance="'+ data.partials[i].lotteries[0].initial_balance +'"  type="button"  style="background-color:#034898" class="btn btn-primary lottery_buy"><%= t("buy") %></button></h4><h5 style="color:white; text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:#d1d1d1" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5></div></div></div>');
+          }
+
+          if(data.partials[i].lotteries[0].final_number == 9999){
+
+            $("#mainwrapper2").append('<div class="col-md-4 col-xs-12" style=""><div id="box-3" style="background-size: cover; margin:0px; background-image: url('+background2+')" class="box col-md-12 col-xs-12"><div class="row" style="height:300px;"><h4 style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; font-size:14px; font-weight:800;">Lotería 4 Equipos ' + data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + ' + ' + data.partials[i].lotteries[0].team.name + ' VS ' +  data.partials[i].lotteries[0].team2.name + '</h4><h3 style="text-align:center; color:white; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; text-transform: capitalize; font-weight:800; font-size:13px;"> '+moment(data.partials[i].game_date,'',current_language).format('dddd D MMMM, YYYY hh:mm a')+' </h3> <div class="col-md-3 col-xs-3"><img width="90%" style="margin-left:5%" src="'+data.partials[i].team.logo_url+'"></div><div class="col-md-3 col-xs-3"><img width="90%" style="margin-left:5%" src="'+data.partials[i].team2.logo_url+'"></div> <div class="col-md-3 col-xs-3"><img width="90%" style="margin-left:5%" src="'+data.partials[i].lotteries[0].team.logo_url+'"></div> <div class="col-md-3 col-xs-3"><img width="90%" style="margin-left:5%" src="'+data.partials[i].lotteries[0].team2.logo_url+'"></div>   </div><span class="caption fade-caption" style="margin-top: -300px; padding: 5px;"><h3 style="text-align:center">Lotería 4 equipos ' + data.partials[i].team.name + ' VS ' + data.partials[i].team2.name + ' + ' + data.partials[i].lotteries[0].team.name +' VS '+ data.partials[i].lotteries[0].team2.name +' </h3><div class="col-md-6 col-xs-6"><h3 style="text-align:center; color:white;">Bolsa:</h3><p style="text-align:center; text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; color:#696969; font-weight:800; font-size:20px;"> <span>$'+ data.partials[i].lotteries[0].initial_balance +' </span>  </h3> </div> <div class="col-md-6 col-xs-6"> <h3 style="text-align:center; color:white;"> Precio: </h3> <h3 style="text-align:center;     text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; font-size:20px; color:#696969; font-weight:800"> <span>$ '+ data.partials[i].lotteries[0].price +'</span>  </h3></div><div class="clearfix"></div><div class="col-md-3 col-xs-3"> <img width="50%" style="position:inherit" src="'+data.partials[i].team.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Primer digito:</label><label style="text-align:center; color:black; "><select data-selected=".team_score'+i+'  option:selected" data-selected2=".team2_score'+i+'  option:selected" data-selected3=".team3_score'+i+'  option:selected"  data-selected4=".team4_score'+i+'  option:selected" data-count="'+i+'" class="form-control team_score'+i+' m-b" name="team_score" style="width:130%; font-size:12px;"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label> </div> <div class="col-md-3 col-xs-3"> <img width="50%" style="position:inherit" src="'+data.partials[i].team2.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Segundo digito:</label><label style="text-align:center; color:black;"><select style="width:130%; font-size:12px;" data-selected2=".team_score'+i+'  option:selected" data-selected3=".team3_score'+i+'  option:selected" data-selected=".team2_score'+i+' option:selected" data-selected4=".team4_score'+i+'  option:selected" class="form-control team2_score'+i+' m-b" name="team2_score" data-count="'+i+'"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label>   </div> <div class="col-md-3 col-xs-3"> <img width="50%" style="position:inherit" src="'+data.partials[i].lotteries[0].team.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Tercer digito:</label><label style="text-align:center; color:black;"><select style="width:130%; font-size:12px;" data-selected2=".team_score'+i+'  option:selected" data-selected3=".team2_score'+i+'  option:selected" data-selected4=".team4_score'+i+'  option:selected" data-selected=".team3_score'+i+'  option:selected" class="form-control team3_score'+i+' m-b" name="team3_score" data-count="'+i+'"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label>  </div> <div class="col-md-3 col-xs-3"> <img width="50%" style="position:inherit" src="'+data.partials[i].lotteries[0].team2.logo_url+'"> <label style="text-align:center; text-shadow: -1px 0 #696969, 0 1px #696969, 1px 0 #696969, 0 -1px #696969; color:white; width:40%">Cuarto digito:</label><label style="text-align:center; color:black;"><select style="width:130%; font-size:12px;" data-selected2=".team_score'+i+'  option:selected" data-selected3=".team2_score'+i+'  option:selected" data-selected=".team4_score'+i+'  option:selected" data-selected4=".team3_score'+i+'  option:selected" class="form-control team4_score'+i+' m-b" name="team4_score" data-count="'+i+'"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></label> <input type="hidden" style="color:black; text-align:center" value="00" disabled id="ticket_number'+i+'" class="form-control" type="text" >  </div>  <h4 style="text-align:center"><button  data-toggle="modal" data-view="'+i+'" class="btn btn-primary open_modal'+i+'" data-target="#confirm_buy'+i+'" class="btn btn-primary" > Comprar  </button> <button data-id="'+ data.partials[i].lotteries[0].id +'" id="random_lottery_button" data-target="#random_loterry_modal" data-toggle="modal" class="btn random_lott btn-primary">Aleatorio</button><button data-id="'+ data.partials[i].lotteries[0].id +'" style="margin-left:1%" data-toggle="modal" data-target="#serie_loterry_modal" class="btn random_lott2 btn-primary"> Serie </button></h4></span></div></div>');
+
+            $("body").append('<div class="modal fade bs-example-modal-sm" id="confirm_buy'+i+'" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"><div style="background-color:#2D68AC"  class="modal-dialog modal-md confirm_buy_modal"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" style="color:white" id="gridSystemModalLabel"><%= t("purchase_confirmation") %> <span style="margin-left:29%;" id="date_modal"></span></h4></div><div class="modal-content"><div class="row" style="padding:5px !important;"> <h4 style="text-align:center"><%= t("ticket") %></h4><div class="col-md-12" style="border: 1px dotted black"><div class="row" style="padding:5px !important;"><h4 style="text-align:center; border-bottom:1px solid #009688; padding-bottom:2%;" id="ticket_name"> '+ data.partials[i].team.name + ' VS '  + data.partials[i].team2.name + '</h4></div><div class="row" style="padding:5px !important; border-bottom:1px solid #009688;"><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("name") %>:</h4><h5 style="text-align:center; text-transform:uppercase"><%= current_user.name %> </h5></div><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("last_name") %>:</h4><h5 style="text-align:center; text-transform:uppercase"><%= current_user.last_name %> </h5></div><div class="col-md-4 col-xs-4"><h4 style="text-align:center"><%= t("ticket") %>:</h4><h5 style="text-align:center" class="ticket_numer_lottery"></h5></div></div><div class="row" style="padding:0px"><h4 style="text-align:right; margin-right:8%;">Total: <span id="total_price">$'+ data.partials[i].lotteries[0].price +'</span>  </h4></div></div><div class="col-md-12"><h4><%= t('estimate_jackpot') %>: <span class="total_initial_balanc" style="color:#696969; font-size:120%;">$'+ data.partials[i].lotteries[0].initial_balance +' </span> </h4> <small>* <%= t('bag_polity') %>.</small></div></div></div><div class="modal-footer"><h4 style="text-align:center">  <button type="button" class="btn btn-default"  data-dismiss="modal"><%= t('close') %></button><button data-price="'+ data.partials[i].lotteries[0].price +'" data-lottery="'+ data.partials[i].lotteries[0].id +'"  data-balance="'+ data.partials[i].lotteries[0].initial_balance +'"  type="button"  style="background-color:#034898" class="btn btn-primary lottery_buy"><%= t("buy") %></button></h4><h5 style="color:white; text-align:center">*Al dar click en comprar estas aceptando nuestros <a style="color:#d1d1d1" href="/welcome/terms" target="_blank">Términos y Condiciones</a></h5></div></div></div>');
+          }
 
 
 
@@ -1262,29 +1491,85 @@ color:black !important;
 
                                 }
 		   var count_global;
-		  for (var count_number=0; count_number <= tiras_count; count_number++){
-			   	$('.team_score'+count_number+'').change(function(){
-					var selected = $(this).data('selected');
-						var selected2 = $(this).data('selected2');
-                 var select_number = String($(''+selected+'').val() % 10) + String($(''+selected2+'').val() % 10);
-				var count = $(this).data('count');
-                $("#ticket_number"+count+"").val(select_number);
-					count_global = $(this).data('count');
-           })
-            $('.team2_score'+count_number+'').change(function(){
-				var selected = $(this).data('selected');
-					var selected2 = $(this).data('selected2');
-                 var select_number = String($("" +selected2+"").val() % 10) + String($(''+selected+'').val() % 10);
+       for (var count_number=0; count_number <= tiras_count; count_number++){
+           $('.team_score'+count_number+'').change(function(){
+           var selected = $(this).data('selected');
+             var selected2 = $(this).data('selected2');
+               var selected3 = $(this).data('selected3');
+               var selected4 = $(this).data('selected4');
+
+               if (selected3 === undefined || selected3 === null || selected3 === "NaN"){
+                  var select_number = String($(''+selected+'').val() % 10) + String($(''+selected2+'').val() % 10);
+               }
+               if(selected4 == undefined && selected3 != undefined && selected3 != null && selected3 != "NaN"){
+                   var select_number = String($(''+selected+'').val() % 10) + String($(''+selected2+'').val() % 10) + String($(''+selected3+'').val() % 10);
+               }
+               if(selected3 != undefined && selected3 != null && selected4 != undefined || selected4 != null){
+                  var select_number = String($(''+selected+'').val() % 10) + String($(''+selected2+'').val() % 10) + String($(''+selected3+'').val() % 10) + String($(''+selected4+'').val() % 10);
+               }
+
+
+         var count = $(this).data('count');
+                 $("#ticket_number"+count+"").val(select_number);
+           count_global = $(this).data('count');
+            })
+             $('.team2_score'+count_number+'').change(function(){
+         var selected = $(this).data('selected');
+           var selected2 = $(this).data('selected2');
+             var selected3 = $(this).data('selected3');
+               var selected4 = $(this).data('selected4');
+
+               if (selected3 === undefined || selected3 === null || selected3 === "NaN"){
+                    var select_number = String($("" +selected2+"").val() % 10) + String($(''+selected+'').val() % 10);
+               }
+               if(selected4 == undefined && selected3 != undefined && selected3 != null && selected3 != "NaN"){
+                    var select_number = String($("" +selected2+"").val() % 10) + String($(''+selected+'').val() % 10) + String($(''+selected3+'').val() % 10)  ;
+               }
+               if(selected3 !== undefined  && selected4 !== undefined ){
+                  var select_number = String($("" +selected2+"").val() % 10) + String($(''+selected+'').val() % 10) + String($(''+selected3+'').val() % 10) + String($(''+selected4+'').val() % 10) ;
+               }
+
+
+                 var count = $(this).data('count');
+           count_global = $(this).data('count');
+                                  $("#ticket_number"+count+"").val(select_number);
+            })
+            $('.team3_score'+count_number+'').change(function(){
+       var selected = $(this).data('selected');
+         var selected2 = $(this).data('selected2');
+           var selected3 = $(this).data('selected3');
+             var selected4 = $(this).data('selected4');
+
+             if(selected4 == undefined && selected3 != undefined && selected3 != null && selected3 != "NaN"){
+               var select_number = String($("" +selected2+"").val() % 10) + String($(''+selected3+'').val() % 10) + String($(''+selected+'').val() % 10) ;
+
+             }
+             if(selected3 != undefined && selected3 != null && selected4 != undefined || selected4 != null){
+               var select_number = String($("" +selected2+"").val() % 10) + String($(''+selected3+'').val() % 10) + String($(''+selected+'').val() % 10) +  String($(''+selected4+'').val() % 10) ;
+
+             }
                 var count = $(this).data('count');
-					count_global = $(this).data('count');
+         count_global = $(this).data('count');
                                  $("#ticket_number"+count+"").val(select_number);
            })
-			  $('.open_modal'+count_number+'').click(function(){
 
-			$('.ticket_numer_lottery').text($('#ticket_number'+$(this).data("view")+'').val());
-			  })
+           $('.team4_score'+count_number+'').change(function(){
+      var selected = $(this).data('selected');
+        var selected2 = $(this).data('selected2');
+          var selected3 = $(this).data('selected3');
+            var selected4 = $(this).data('selected4');
+                var select_number = String($("" +selected2+"").val() % 10) + String($(''+selected3+'').val() % 10) + String($(''+selected4+'').val() % 10) +  String($(''+selected+'').val() % 10) ;
+               var count = $(this).data('count');
+        count_global = $(this).data('count');
+                                $("#ticket_number"+count+"").val(select_number);
+          })
 
-		  }
+         $('.open_modal'+count_number+'').click(function(){
+
+       $('.ticket_numer_lottery').text($('#ticket_number'+$(this).data("view")+'').val());
+         })
+
+       }
 
 
 		  //Aqui comienza la compra de las loterias

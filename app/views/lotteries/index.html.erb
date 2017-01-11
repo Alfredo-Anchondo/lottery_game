@@ -21,9 +21,10 @@
                                   <th><%= t("activerecord.attributes.lottery.final_number") %></th>
                                   <th><%= t("activerecord.attributes.lottery.price") %></th>
 				  				  <th>Ticket regalo</th>
-                                  <th>Tickets Vendidos</th>	
+                                  <th>Tickets Vendidos</th>
                                   <th>Ganador?</th>
                                   <th>Principal?</th>
+                                    <th>Segundo juego?</th>
                                 <th style="width: 155px"></th>
               </tr>
             </thead>
@@ -42,6 +43,7 @@
 								  <td> <%= lottery.total_sales %></td>
                                 <td> <%= lottery.winner? %></td>
                                  <td> <%= lottery.to_mainpage %></td>
+                                  <td> <%= lottery.game2_id %></td>
                                 <td class="action-link">
                   <% if can? :show,lottery %>
                     <%= link_to lottery, :class => "btn btn-default", :title => t("actions.show") do %>
@@ -65,7 +67,7 @@
           </table>
         </div>
         <div class="text-center">
-         
+
         </div>
       </div>
       <!-- end panel-body -->
@@ -94,13 +96,13 @@
 <script>
        var current_language = $("#current_language").val();
        var languaje;
-    
+
     if(current_language == "en"){
     languaje= "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
 }else{
     languaje = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 }
-    
+
 $('#data-table').DataTable({
     responsive: true,
     order: [0,"desc"],

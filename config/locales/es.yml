@@ -606,6 +606,7 @@ es:
             rules: "Reglas"
             description: "Descripción"
             game: "Juego/partido"
+            game2_id: "SegundoJuego"
             lottery_game_id: "Juego/partido"
             winner_number: "Número Ganador"
             initial_number: "Número Inicial"

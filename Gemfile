@@ -55,6 +55,7 @@ gem 'validates_overlap'
 gem 'rails_best_practices', group: :development
 gem 'serviceworker-rails'
 gem 'delayed_job_active_record'
+
 #gem "ultrahook", group: :development
 
 group :development, :test do
