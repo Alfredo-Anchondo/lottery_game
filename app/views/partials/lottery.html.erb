@@ -1346,7 +1346,7 @@ if(data.team4 != null && data.team4 != ""){
               if(value < 10 && maximum_value == 99){
                 value = "0" + value + ""
               }
-              if(value < 100 && value > 10 && maximum_value == 999){
+              if(value < 100 && value >= 10 && maximum_value == 999){
                 value = "0" + value + ""
               }
               if(value < 10  && maximum_value == 999){
@@ -1355,10 +1355,10 @@ if(data.team4 != null && data.team4 != ""){
               if(value < 10 && maximum_value == 9999){
                 value = "000" + value + ""
               }
-              if(value < 100 && value > 10 && maximum_value == 9999){
+              if(value < 100 && value >= 10 && maximum_value == 9999){
                 value = "00" + value + ""
               }
-              if(value < 1000 && value > 100  && maximum_value == 9999){
+              if(value < 1000 && value >= 100  && maximum_value == 9999){
                 value = "0" + value + ""
               }
               array_values.push(value);
