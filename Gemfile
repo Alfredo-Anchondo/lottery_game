@@ -56,6 +56,7 @@ gem 'rails_best_practices', group: :development
 gem 'serviceworker-rails'
 gem 'delayed_job_active_record'
 gem 'devise_token_auth'
+gem 'responders', '~> 2.0'
 #gem "ultrahook", group: :development
 
 group :development, :test do
