@@ -65,9 +65,9 @@ label > input:disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
                         $("#questions_div").append('<div style="display:none; margin-bottom:80px !important;" class="row tira_div" id="'+data[i].id+'"></div>');
                         function compare(a,b) {
-                          if(a.question_enrachate == [] || (a.question_enrachate == "" ||  (a.question_enrachate == undefined)
+                          if(a.question_enrachate == [] || a.question_enrachate == "" ||  a.question_enrachate == undefined)
                             return -1
-                          if(b.question_enrachate == [] || (b.question_enrachate == "" || (b.question_enrachate == undefined)
+                          if(b.question_enrachate == [] || b.question_enrachate == "" || b.question_enrachate == undefined)
                              return -1
                           if (a.question_enrachate.program_date < b.question_enrachate.program_date)
                             return -1;
