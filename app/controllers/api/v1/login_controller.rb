@@ -4,6 +4,7 @@ class Api::V1::LoginController < ApplicationController
       render :json => Game.next_game
   end
 
+  before_filter :check_auth
 
 
   def check_auth
