@@ -61,7 +61,7 @@ label > input:disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                        $("#tiras").append("<option value=''>Selecciona una tira </option>");
                    for (var i in data){
                      alert(data[i]);
-                         $("#tiras").append("<option value='"+data.relation_enrachate_tiras[i].id+"'>"+data.relation_enrachate_tiras[i].name+"</option>");
+                         $("#tiras").append("<option value='"+data[i].id+"'>"+data[i].name+"</option>");
 
                         $("#questions_div").append('<div style="display:none; margin-bottom:80px !important;" class="row tira_div" id="'+data.relation_enrachate_tiras[i].id+'"></div>');
                         function compare(a,b) {
@@ -72,14 +72,14 @@ label > input:disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                           return 0;
                         }
 
-                       for (var e in data.relation_enrachate_tiras[i].relation_tira_questions.sort(compare)){
+                       for (var e in data[i].relation_tira_questions.sort(compare)){
                          var already_close1;
                          var already_close2;
-                        if (data.relation_enrachate_tiras[i].relation_tira_questions[e].question_enrachate.correct_answer == "1"){
+                        if (data[i].relation_tira_questions[e].question_enrachate.correct_answer == "1"){
                           already_close1  = "checked";
                           already_close2  = "";
                         }else{
-                          if (data.relation_enrachate_tiras[i].relation_tira_questions[e].question_enrachate.correct_answer == "2"){
+                          if (data[i].relation_tira_questions[e].question_enrachate.correct_answer == "2"){
                             already_close2  = "checked";
                             already_close1  = "";
                           }else{
@@ -88,7 +88,7 @@ label > input:disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                           }
                         }
 
-                           $("#"+data.relation_enrachate_tiras[i].id+"").append('<div class="row" style="border:1px dotted black;"> <h4 style="text-align:center; color:#2D68AC; font-size:.7em;">'+data.relation_enrachate_tiras[i].relation_tira_questions[e].question_enrachate.program_date+'</h4><h4 style="text-align:center; color:black; font-size:1em;"><span style="color:#2D68AC"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> </span>'+data.relation_enrachate_tiras[i].relation_tira_questions[e].question_enrachate.title+'</h4><div class="col-md-6 col-xs-12 float-question-left"><div class="col-md-1 col-xs-2 " style="padding:0"><label><input '+ already_close1 +'    data-question="'+data.relation_enrachate_tiras[i].relation_tira_questions[e].question_enrachate.id+'" data-tira="'+data.relation_enrachate_tiras[i].id+'" type="radio"  name="question'+data.relation_enrachate_tiras[i].relation_tira_questions[e].question_enrachate.id+'" class="question answer'+data.relation_enrachate_tiras[i].relation_tira_questions[e].question_enrachate.id+'" value="1" /><img width="40px" src="/assets/radio_button.png"></label></div><div class="col-md-11 col-xs-10 " style="margin-top:8px; padding:0"><span style="margin-left:5%; color:black; min-width:50px;">'+data.relation_enrachate_tiras[i].relation_tira_questions[e].question_enrachate.answer1+'</span></div> </div><div class="col-md-6 col-xs-12 float-question-right" ><div class="col-md-11 col-xs-10 col-md-push-0 col-xs-push-2" style="margin-top:8px;">  <span style="margin-right:5%; color:black;">'+data.relation_enrachate_tiras[i].relation_tira_questions[e].question_enrachate.answer2+'</span></div><div class="col-md-1 col-xs-2 col-md-pull-0 col-xs-pull-10" style="padding:0"><label><input '+ already_close2 +' data-tira="'+data.relation_enrachate_tiras[i].id+'" data-question="'+data.relation_enrachate_tiras[i].relation_tira_questions[e].question_enrachate.id+'" type="radio" name="question'+data.relation_enrachate_tiras[i].relation_tira_questions[e].question_enrachate.id+'" class="question answer'+data.relation_enrachate_tiras[i].relation_tira_questions[e].question_enrachate.id+'"  value="2" /><img width="40px" src="/assets/radio_button.png"></label> </div></div> </div></div>');
+                           $("#"+data[i].id+"").append('<div class="row" style="border:1px dotted black;"> <h4 style="text-align:center; color:#2D68AC; font-size:.7em;">'+data[i].relation_tira_questions[e].question_enrachate.program_date+'</h4><h4 style="text-align:center; color:black; font-size:1em;"><span style="color:#2D68AC"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> </span>'+data[i].relation_tira_questions[e].question_enrachate.title+'</h4><div class="col-md-6 col-xs-12 float-question-left"><div class="col-md-1 col-xs-2 " style="padding:0"><label><input '+ already_close1 +'    data-question="'+data[i].relation_tira_questions[e].question_enrachate.id+'" data-tira="'+data[i].id+'" type="radio"  name="question'+data[i].relation_tira_questions[e].question_enrachate.id+'" class="question answer'+data[i].relation_tira_questions[e].question_enrachate.id+'" value="1" /><img width="40px" src="/assets/radio_button.png"></label></div><div class="col-md-11 col-xs-10 " style="margin-top:8px; padding:0"><span style="margin-left:5%; color:black; min-width:50px;">'+data[i].relation_tira_questions[e].question_enrachate.answer1+'</span></div> </div><div class="col-md-6 col-xs-12 float-question-right" ><div class="col-md-11 col-xs-10 col-md-push-0 col-xs-push-2" style="margin-top:8px;">  <span style="margin-right:5%; color:black;">'+data[i].relation_tira_questions[e].question_enrachate.answer2+'</span></div><div class="col-md-1 col-xs-2 col-md-pull-0 col-xs-pull-10" style="padding:0"><label><input '+ already_close2 +' data-tira="'+data[i].id+'" data-question="'+data[i].relation_tira_questions[e].question_enrachate.id+'" type="radio" name="question'+data[i].relation_tira_questions[e].question_enrachate.id+'" class="question answer'+data[i].relation_tira_questions[e].question_enrachate.id+'"  value="2" /><img width="40px" src="/assets/radio_button.png"></label> </div></div> </div></div>');
 
                                                   }
 
