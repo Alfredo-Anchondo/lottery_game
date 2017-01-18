@@ -14,8 +14,6 @@ class CreateLotteries < ActiveRecord::Migration
 	    t.text :purchase_gift_tickets
       t.integer :game2_id
 
-
-
       t.timestamps
     end
   end

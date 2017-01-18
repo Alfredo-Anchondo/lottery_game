@@ -4,6 +4,8 @@ class Api::V1::LoginController < ApplicationController
       render :json => Game.next_game
   end
 
+
+
   def check_auth
     authenticate_or_request_with_http_basic do |username,password|
       resource = User.find_by_email(username)

@@ -52,13 +52,15 @@ class PartialsController < ApplicationController
 
 	end
 
-  def team_logos
-    @lottery = Lottery.find(params[:id])
-    @game4 =   @lottery.final_number == 9999 ? Game.find(@lottery.game2_id).team2.logo_url : "";
-    @game3 =  @lottery.final_number == 999 || @lottery.final_number == 9999 ? Game.find(@lottery.game2_id).team.logo_url : "";
 
-    respond_with(:team1 => @lottery.game.team.logo_url, :team2 => @lottery.game.team2.logo_url, :team3 => @game3, :team4 => @game4 )
-end
+	  def team_logos
+        @lottery = Lottery.find(params[:id])
+        @game4 =   @lottery.final_number == 9999 ? Game.find(@lottery.game2_id).team2.logo_url : "";
+        @game3 =  @lottery.final_number == 999 || @lottery.final_number == 9999 ? Game.find(@lottery.game2_id).team.logo_url : "";
+
+        respond_with(:team1 => @lottery.game.team.logo_url, :team2 => @lottery.game.team2.logo_url, :team3 => @game3, :team4 => @game4 )
+    end
+
 
 	def next_game
         render :json => Game.next_game

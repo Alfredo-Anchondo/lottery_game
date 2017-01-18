@@ -1,5 +1,6 @@
 class Lottery < ActiveRecord::Base
   belongs_to :game
+
 belongs_to :game2, :foreign_key => :game2_id
 before_update :update_winner, :if => :winner_number_changed?
 has_many :user_lotteries
@@ -7,6 +8,7 @@ has_one :team, :through => :game
 has_one :team2, :through => :game
 has_one :team, :through => :game2
 has_one :team2, :through => :game2
+
 
     def update_winner
         lottery_name = game.team.name + " vs " + game.team2.name

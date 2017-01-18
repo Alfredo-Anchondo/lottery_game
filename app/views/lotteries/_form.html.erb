@@ -44,7 +44,9 @@
         <div class="form-group">
           <%= f.label :game2_id, :class => "col-md-3" %>
           <div class="col-md-9">
+
           <%= f.collection_select(:game2, @games_select.order('id DESC'), :id, :select_display, { :include_blank => true, :prompt => true },  :class => "form-control") %>
+
           </div>
           </div>
 

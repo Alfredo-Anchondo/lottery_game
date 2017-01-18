@@ -968,7 +968,9 @@ $(document).ready(function(){
 				for(var o in data.lotteries){
 
 		      		if(data.lotteries[o].purchase_gift_tickets != null ){
-					labels2.push(data.lotteries[o].team.description);
+
+					labels2.push(data.lotteries[o].description );
+
 					var y = data.lotteries[o].total_sales - parseInt(data.lotteries[o].purchase_gift_tickets);
 					values2.push(y);
 					gift2.push(data.lotteries[o].purchase_gift_tickets);
