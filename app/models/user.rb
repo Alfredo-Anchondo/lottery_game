@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
   #SCOPES
+
    validates :name, presence: true
   scope :clients, -> { joins(:role).where(:role_id => 2) }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
           :rememberable, :trackable, :timeoutable, :validatable,:recoverable
+            include DeviseTokenAuth::Concerns::User
 #, :omniauthable, :omniauth_providers => [:facebook, :twitter]
       #Associations
     belongs_to :role
@@ -14,6 +16,8 @@ class User < ActiveRecord::Base
     has_attached_file :photo,
     :styles => { :medium => "x300",
     :mobile => "x240" }
+
+
 
     #Validations
     validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/

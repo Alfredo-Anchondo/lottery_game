@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
 
+
+  namespace :api do
+     scope :v1  do
+       resources :users
+         mount_devise_token_auth_for 'User', at: 'auth'
+         get "login", to: "/api/v1/login#login"
+         get 'next_game', to: "/api/v1/user_login#next_game"
+
+     end
+   end
+
   resources :gift_cards do
     collection do
       get "create_massive"
@@ -271,12 +282,7 @@ Rails.application.routes.draw do
 	  root 'welcome#index'
 
 
-    namespace :api do
-       namespace :v1 do
-         resources :users
-         get "login", to: "/api/v1/login#login"
-       end
-     end
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

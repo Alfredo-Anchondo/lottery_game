@@ -114,6 +114,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :last_name, :address_1, :address_2, :zip_code, :age, :email, :phone, :cellphone, :balance, :role_id, :country, :state, :city, :int_number, :photo, :ext_number, :username, :password, :openpay_id, :favorite_team, :birthday, :gender, :language, :friend_reference, :gift_credit, :reference_by_friend)
+      params.require(:user).permit(:name, :provider,  :last_name, :address_1, :address_2, :zip_code, :age, :email, :phone, :cellphone, :balance, :role_id, :country, :state, :city, :int_number, :photo, :ext_number, :username, :password, :openpay_id, :favorite_team, :birthday, :gender, :language, :friend_reference, :gift_credit, :reference_by_friend)
     end
 end

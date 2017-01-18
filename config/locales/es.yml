@@ -607,6 +607,7 @@ es:
             description: "Descripción"
             game: "Juego/partido"
             lottery_game_id: "Juego/partido"
+            game2_id: "SegundoJuego"
             winner_number: "Número Ganador"
             initial_number: "Número Inicial"
             final_number: "Número Final"

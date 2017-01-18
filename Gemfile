@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '4.2'
 # Use sqlite3 as the database for Active Record
 gem 'pg', '0.18.4'
 #gem 'pg', '~> 0.19.0.pre20160409114042'
@@ -29,7 +29,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
- gem 'unicorn', group: :production
+ #gem 'unicorn', group: :production
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -55,6 +55,7 @@ gem 'validates_overlap'
 gem 'rails_best_practices', group: :development
 gem 'serviceworker-rails'
 gem 'delayed_job_active_record'
+gem 'devise_token_auth'
 #gem "ultrahook", group: :development
 
 group :development, :test do

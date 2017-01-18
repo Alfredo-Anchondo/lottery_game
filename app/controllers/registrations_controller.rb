@@ -33,7 +33,7 @@ class RegistrationsController < Devise::RegistrationsController
 		  logger.info @user1[0].gift_credit
              end
 	  end
-    @user.update( :gift_credit =>  @user.gift_credit.to_i + 50) 
+    #@user.update( :gift_credit =>  @user.gift_credit.to_i + 50)
 
     BuyMailer.welcome_user(@user).deliver
       if resource.active_for_authentication?
@@ -53,7 +53,7 @@ class RegistrationsController < Devise::RegistrationsController
 	protected
 
   def configure_permitted_parameters
-	  devise_parameter_sanitizer.for(:sign_up).push(:name, :last_name, :gender, :balance, :username, :password, :role_id, :birthday, :reference_by_friend, :friend_reference, :gift_credit)
+	  devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :last_name, :gender, :balance, :username, :password, :role_id,:uid, :birthday, :reference_by_friend, :friend_reference, :gift_credit])
   end
 
 end

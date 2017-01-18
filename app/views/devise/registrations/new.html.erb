@@ -118,6 +118,7 @@ var google_remarketing_only = false;
 <div class="field">
     <%= f.label :email, :style => 'color:#696969' %><br />
     <%= f.email_field :email, class: "form-control", style: "color:black", autofocus: false, required: true %>
+      <%= f.hidden_field :uid, class: "form-control", style: "color:black", autofocus: false, required: true %>
   </div>
 	<br>
 	<div class="field">
@@ -305,6 +306,10 @@ A pesar de los esfuerzos de Don Billete por prestar un servicio de calidad y seg
 </div>
 
 <script>
+
+$("#user_email").change(function(){
+  $("#user_uid").val($(this).val())
+})
 
 	var pas = '';
 

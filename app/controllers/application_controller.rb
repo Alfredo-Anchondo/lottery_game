@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
      include ApplicationHelper
-	 before_filter :configure_permitted_parameters, if: :devise_controller?
+	 before_action :configure_permitted_parameters, if: :devise_controller?
 	# before_action :change_language
 	before_filter do
   resource = controller_name.singularize.to_sym
@@ -12,7 +12,6 @@ end
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
 
 
 
@@ -89,11 +88,12 @@ end
   protected
 
     def configure_permitted_parameters
-  devise_parameter_sanitizer.permit(:sign_up) { |params|
-    params.permit(
-        :email, :password, :password_confirmation, :name, :address_1, :address_2, :zip_code, :cellphone,:role_id, :country, :username,:last_name, :friend_reference, :gift_credit
-    )
-  }
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :uid, :password_confirmation, :name, :address_1, :address_2, :zip_code, :cellphone,:role_id, :country, :username,:last_name, :friend_reference, :gift_credit])
+#  devise_parameter_sanitizer.permit(:sign_up) { |params|
+#    params.permit(
+#        :email, :password, :uid, :config_name, :confirm_success_url, :password_confirmation, :name, :address_1, :address_2, :zip_code, :cellphone,:role_id, :country, :username,:last_name, :friend_reference, :gift_credit
+#    )
+#  }
   devise_parameter_sanitizer.permit(:account_update) { |params|
     params.permit(
       :email, :password, :password_confirmation, :name, :gift_credit, :last_name
@@ -111,5 +111,5 @@ end
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+      protect_from_forgery with: :null_session
 end
