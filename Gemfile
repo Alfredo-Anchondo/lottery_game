@@ -45,7 +45,7 @@ gem 'money-rails'
 gem "cancan"
 gem "will_paginate"
 gem "paperclip", "~> 4.2"
-gem 'active_model_serializers'
+gem 'active_model_serializers',  "~> 0.9.2"
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'openpay'
