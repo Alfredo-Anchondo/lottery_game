@@ -59,7 +59,8 @@ label > input:disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 				  data: {  }
 				  }).done(function(data) {
                        $("#tiras").append("<option value=''>Selecciona una tira </option>");
-                   for (var i in data.relation_enrachate_tiras){
+                   for (var i in data){
+                     alert(data[i]);
                          $("#tiras").append("<option value='"+data.relation_enrachate_tiras[i].id+"'>"+data.relation_enrachate_tiras[i].name+"</option>");
 
                         $("#questions_div").append('<div style="display:none; margin-bottom:80px !important;" class="row tira_div" id="'+data.relation_enrachate_tiras[i].id+'"></div>');
