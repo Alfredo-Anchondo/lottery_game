@@ -5,7 +5,9 @@ class RelationEnrachateTirasController < ApplicationController
   respond_to :json
 
     def tiras_for_enrachate
-      render :json => TiraEnrachate.all.order(program_date: :desc) 
+      metric_types = MetricType.all
+      hash = {:relation_enrachate_tiras => TiraEnrachate.all.order(program_date: :desc)}
+      render :json => hash
         end
 
     def close_question
