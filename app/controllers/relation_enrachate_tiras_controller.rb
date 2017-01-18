@@ -5,8 +5,7 @@ class RelationEnrachateTirasController < ApplicationController
   respond_to :json
 
     def tiras_for_enrachate
-     respond_to do |format|
-   format.json { render :json => TiraEnrachate.all.order(program_date: :desc) }
+      render :json => TiraEnrachate.all.order(program_date: :desc) 
 end
         end
 
