@@ -9,7 +9,7 @@ class SurvivorGame < ActiveRecord::Base
   has_many :picks, :through => :survivor_week_game
 
   #VALIDATIONS
-  validate :team_id, :team2_id, :survivor_week_game_id, :game_date, :presence => true
+  validates :team_id, :team2_id, :survivor_week_game_id, :game_date, :presence => true
 
   #CALLBACKS
   after_update :change_status
