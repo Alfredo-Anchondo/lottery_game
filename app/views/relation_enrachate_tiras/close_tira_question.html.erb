@@ -79,7 +79,7 @@ label > input:disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                        for (var e in data[i].relation_tira_questions.sort(compare)){
                          var already_close1;
                          var already_close2;
-                        if (data[i].relation_tira_questions[e].question_enrachate.correct_answer == "1"){
+                        if (data[i].relation_tira_questions[e].question_enrachate != undefined && data[i].relation_tira_questions[e].question_enrachate.correct_answer == "1"){
                           already_close1  = "checked";
                           already_close2  = "";
                         }else{
