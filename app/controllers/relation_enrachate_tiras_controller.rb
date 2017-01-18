@@ -6,7 +6,6 @@ class RelationEnrachateTirasController < ApplicationController
 
     def tiras_for_enrachate
       render :json => TiraEnrachate.all.order(program_date: :desc) 
-end
         end
 
     def close_question
