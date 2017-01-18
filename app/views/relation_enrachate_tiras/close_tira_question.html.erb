@@ -63,7 +63,7 @@ label > input:disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                      alert(data[i]);
                          $("#tiras").append("<option value='"+data[i].id+"'>"+data[i].name+"</option>");
 
-                        $("#questions_div").append('<div style="display:none; margin-bottom:80px !important;" class="row tira_div" id="'+data.relation_enrachate_tiras[i].id+'"></div>');
+                        $("#questions_div").append('<div style="display:none; margin-bottom:80px !important;" class="row tira_div" id="'+data[i].id+'"></div>');
                         function compare(a,b) {
                           if (a.question_enrachate.program_date < b.question_enrachate.program_date)
                             return -1;
