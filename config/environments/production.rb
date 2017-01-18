@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-    
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -20,7 +20,7 @@ Rails.application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-    config.serve_static_assets = true
+    config.serve_static_files = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -31,7 +31,7 @@ Rails.application.configure do
 
   # Generate digests for assets URLs.
   config.assets.digest = true
-    
+
       # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
 
@@ -75,10 +75,10 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
- 
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-    
+
     ActionMailer::Base.smtp_settings = {
         :enable_starttls_auto => true,
         :address => 'vps.donbillete.com',
@@ -88,11 +88,9 @@ Rails.application.configure do
         :user_name => 'no-reply@donbillete.com',
         :password => 'Patitos13'
 }
-    
-   
+
+
 
 end
 
 Rails.application.routes.default_url_options[:host] = 'donbillete.com'
-
-
