@@ -1,4 +1,4 @@
 class RelationTiraQuestionSerializer < ActiveModel::Serializer
   attributes :id
-  belongs_to :question_enrachate
+  has_one :question_enrachate
 end
