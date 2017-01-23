@@ -7,7 +7,7 @@ before_action :authenticate_user!
 
   def buy_lottery
     UserLottery.create(:user_id => params[:user_id], :lottery_id => params[:lottery_id], :status => "Comprado", :ticket_number => params[:ticket_number], :purchase_date => Time.now)
-    return true
+    render json: true
   end
 
 
