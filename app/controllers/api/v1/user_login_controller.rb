@@ -5,6 +5,11 @@ before_action :authenticate_user!
       render :json => Game.next_game
   end
 
+def enrachate_25
+  @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ? and price != ?",0,Time.now,Time.now,nil,0).first
+  render json: @enrachate
+end
+
   def buy_lottery
     @lottery = Lottery.find(params[:lottery_id])
     @user = User.find(params[:user_id])

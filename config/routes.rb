@@ -7,6 +7,7 @@ Rails.application.routes.draw do
          mount_devise_token_auth_for 'User', at: 'auth'
          get "login", to: "/api/v1/login#login"
          get 'next_game', to: "/api/v1/user_login#next_game"
+         get 'enrachate_25', to: "/api/v1/user_login#enrachate_25"
          post "buy_lottery_ticket", to: "/api/v1/user_login#buy_lottery"
 
      end
