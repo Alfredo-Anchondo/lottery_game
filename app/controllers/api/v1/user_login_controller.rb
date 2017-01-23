@@ -20,7 +20,7 @@ before_action :authenticate_user!
         UserLottery.create(:user_id => @user.id, :lottery_id => @lottery.id, :status => "Comprado", :ticket_number => params[:ticket_number], :purchase_date => Time.now)
             render json: true
       else
-        render :json => { :errors => "No tienes saldo suficiente" }
+        render :json => { :errors => "No tienes saldo suficiente" } , :status => 422
       end
     end
 
