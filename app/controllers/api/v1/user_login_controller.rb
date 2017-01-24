@@ -15,7 +15,7 @@ def enrachate_25_questions
   @current_tira = @enrachate.current_tira
   @last_tira = @enrachate.past_tira
   @future_tira = @enrachate.future_tira
-  render json: {@current_tira, @last_tira, @future_tira}
+  render json: [@current_tira, @last_tira, @future_tira]
 end
 
   def buy_lottery
