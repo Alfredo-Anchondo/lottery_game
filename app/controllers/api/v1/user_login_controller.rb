@@ -10,6 +10,14 @@ def enrachate_25
   render json: @enrachate
 end
 
+def enrachate_25_questions
+  @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ? and price != ?",0,Time.now,Time.now,nil,0).first
+  @current_tira = @enrachate.current_tira
+  @last_tira = @enrachate.past_tira
+  @future_tira = @enrachate.future_tira
+  render json: {@current_tira, @last_tira, @future_tira}
+end
+
   def buy_lottery
     @lottery = Lottery.find(params[:lottery_id])
     @user = User.find(params[:user_id])
