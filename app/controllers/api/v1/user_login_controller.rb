@@ -7,7 +7,7 @@ before_action :authenticate_user!
 
 def enrachate_25
   @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ? and price != ?",0,Time.now,Time.now,nil,0).first
-  render json: @enrachate
+  render json: @enrachate.pluck(:name, :price, :initial_balance)
 end
 
 def enrachate_25_questions
