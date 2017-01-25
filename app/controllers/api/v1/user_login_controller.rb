@@ -22,7 +22,7 @@ def enrachate_25_questions
   @current_tira = @enrachate.current_tira
   @last_tira = @enrachate.past_tira
   @future_tira = @enrachate.future_tira
-  @already_buy_ticket = EnrachateUser.where("enrachates_id = ? and tira_enrachate_id = ?", @enrachate.id, @current_tira.id)
+  @already_buy_ticket = EnrachateUser.where("enrachates_id = ? and tira_enrachate_id = ? and user_id = ?", @enrachate.id, @current_tira.id, current_user.id).first
   render json: [@current_tira, @last_tira, @future_tira, @already_buy_ticket ]
 end
 
