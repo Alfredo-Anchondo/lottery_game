@@ -13,7 +13,7 @@ end
 def create_enrachate_25_ticket
   @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ? and price != ?",0,Time.now,Time.now,nil,0).first
    if params[:already_buy] != nil && params[:already_buy] != "" && params[:already_buy] != {}
-     EnrachateUser.find(params[:already_buy].id).update(:question_enrachate_id => params[:question_id], :answer => params[:answer] )
+     EnrachateUser.find(params[:already_buy]).update(:question_enrachate_id => params[:question_id], :answer => params[:answer] )
    else
      EnrachateUser.create(:question_enrachate_id => params[:question_id] , :tira_enrachate_id => params[:tira_id] , :answer => params[:answer], :user_id => params[:user_id], :status => "bought", :purchase_date => Time.now, :enrachate_user_id => "", :enrachates_id => @enrachate.id)
      render json: true
