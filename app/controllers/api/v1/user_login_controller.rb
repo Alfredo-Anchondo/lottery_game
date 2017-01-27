@@ -16,8 +16,13 @@ def create_enrachate_25_ticket
      EnrachateUser.find(params[:already_buy]).update(:question_enrachate_id => params[:question_id], :answer => params[:answer] )
      render json: true
    else
+      if params[:enrachate_user_id] != "" && params[:enrachate_user_id] != nil
+        EnrachateUser.create(:question_enrachate_id => params[:question_id] , :tira_enrachate_id => params[:tira_id] , :answer => params[:answer], :user_id => params[:user_id], :status => "bought", :purchase_date => Time.now, :enrachate_user_id => params[:enrachate_user_id], :enrachates_id => @enrachate.id)
+        render json: true
+      else
      EnrachateUser.create(:question_enrachate_id => params[:question_id] , :tira_enrachate_id => params[:tira_id] , :answer => params[:answer], :user_id => params[:user_id], :status => "bought", :purchase_date => Time.now, :enrachate_user_id => "", :enrachates_id => @enrachate.id)
      render json: true
+   end
    end
 
 end
