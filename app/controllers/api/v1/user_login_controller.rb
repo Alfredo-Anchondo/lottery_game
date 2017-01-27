@@ -14,7 +14,7 @@ def create_enrachate_25_ticket
   @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ? and price != ?",0,Time.now,Time.now,nil,0).first
    if params[:already_buy] != nil && params[:already_buy] != "" && params[:already_buy] != {}
      EnrachateUser.find(params[:already_buy]).update(:question_enrachate_id => params[:question_id], :answer => params[:answer] )
-     render json: true 
+     render json: true
    else
      EnrachateUser.create(:question_enrachate_id => params[:question_id] , :tira_enrachate_id => params[:tira_id] , :answer => params[:answer], :user_id => params[:user_id], :status => "bought", :purchase_date => Time.now, :enrachate_user_id => "", :enrachates_id => @enrachate.id)
      render json: true
@@ -28,7 +28,8 @@ def enrachate_25_questions
   @last_tira = @enrachate.past_tira
   @future_tira = @enrachate.future_tira
   @already_buy_ticket = EnrachateUser.where("enrachates_id = ? and tira_enrachate_id = ? and user_id = ?", @enrachate.id, @current_tira.id, current_user.id).first
-  render json: [@current_tira, @last_tira, @future_tira, @already_buy_ticket ]
+  @last_ticket = EnrachateUser.where("enrachates_id = ? and tira_enrachate_id = ? and user_id = ? and status = ?", @enrachate.id, @last_tira.id, current_user.id, "alive").first
+  render json: [@current_tira, @last_tira, @future_tira, @already_buy_ticket, @last_ticket ]
 end
 
   def buy_lottery
