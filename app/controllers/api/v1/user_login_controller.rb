@@ -41,9 +41,9 @@ end
 
 
 def tickets
-  @lotteries_tickets = UserLottery.where("user_id = ?",current_user.id)
-  @enrachate_tickets = EnrachateUser.where("user_id = ?",current_user.id)
-  @tiras_tickets = QuinielaUser.where("user_id = ?", current_user.id)
+  @lotteries_tickets = UserLottery.where("user_id = ?",current_user.id).order(:purchase_date)
+  @enrachate_tickets = EnrachateUser.where("user_id = ?",current_user.id).order(:purchase_date)
+  @tiras_tickets = QuinielaUser.where("user_id = ?", current_user.id).order(:purchase_date)
   render json: [@lotteries_tickets, @enrachate_tickets, @tiras_tickets]
 end
 
