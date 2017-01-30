@@ -10,6 +10,10 @@ class EnrachateUser < ActiveRecord::Base
 
 
 
+  def enrachate
+    Enrachate.find(enrachates_id)
+  end
+
   def update_enrachate_user_id
 		if enrachate_user_id.blank?
 			update({enrachate_user_id: id})
