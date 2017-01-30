@@ -10,6 +10,8 @@ def enrachate_25
   render :json => @enrachate.to_json(:only => ["name","price","initial_balance"])
 end
 
+
+
 def create_enrachate_25_ticket
   @enrachate = Enrachate.where("type_enrachate = ? and end_date > ? and initial_date < ? and winner IS ? and price != ?",0,Time.now,Time.now,nil,0).first
    if params[:already_buy] != nil && params[:already_buy] != "" && params[:already_buy] != {}
@@ -35,6 +37,14 @@ def enrachate_25_questions
   @already_buy_ticket = EnrachateUser.where("enrachates_id = ? and tira_enrachate_id = ? and user_id = ?", @enrachate.id, @current_tira.id, current_user.id).first
   @last_ticket = EnrachateUser.where("enrachates_id = ? and tira_enrachate_id = ? and user_id = ? and status = ?", @enrachate.id, @last_tira.id, current_user.id, "alive").first
   render json: [@current_tira, @last_tira, @future_tira, @already_buy_ticket, @last_ticket ]
+end
+
+
+def tickets
+  @lotteries_tickets = Userlottery.where("user_id = ?",current_user.id)
+  @enrachate_tickets = EnrachateUser.where("user_id = ?",current_user.id)
+  @tiras_tickets = QuinielaUser.where("user_id = ?", current_user.id)
+  render json: [@lotteries_tickets, @enrachate_tickets, @tiras_tickets]
 end
 
   def buy_lottery

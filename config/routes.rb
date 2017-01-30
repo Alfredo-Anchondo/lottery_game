@@ -9,9 +9,10 @@ Rails.application.routes.draw do
          get 'next_game', to: "/api/v1/user_login#next_game"
          get 'enrachate_25', to: "/api/v1/user_login#enrachate_25"
          get "enrachate_25_questions", to: "/api/v1/user_login#enrachate_25_questions"
+         get "tickets", to: "/api/v1/user_login#tickets"
          post "buy_lottery_ticket", to: "/api/v1/user_login#buy_lottery"
          post "create_enrachate_25_ticket", to: "/api/v1/user_login#create_enrachate_25_ticket"
-         
+
      end
    end
 
